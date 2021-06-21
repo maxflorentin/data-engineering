@@ -1,0 +1,9 @@
+{
+    "serverAka": "rio187",
+    "database": "CSM",
+    "table": "casuisticas",
+    "table_type": "dim",
+    "environment": "RIO187",
+    "landing_path": "/santander/bi-corp/landing/rio187/dim/casuisticas/partition_date=${partition_date}",
+    "command": "sqoop import -Dmapreduce.output.basename= {table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \\\"{table}\\\" --columns \\\"ID_CASUISTICA, DESC_CASUISTICA, ID_TIPO_GESTION, ID_TIPOLOGIA, CANT_MESES_PRIMER_RECLAMO, CANT_DIAS_RESOLUCION, TIPO_PRODUCTO, ID_SECTOR_SOPORTE, HABILITADO, ID_USUARIO_ALTA, FECHA_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, TEXTO_MAIL_CASUISTICA, IND_INTERES_COMP, FECHA_BAJA, IND_SOLO_ACTIVAS, DIAS_WARNING_BCRA, ID_STATE, SINONIMOS, NOMBRE_ATAJOS, DESC_ATAJOS, SECCIONES, MONTO_DESDE_SUCU, MONTO_DESDE_ZONA, CANT_TOPE_MES, GESTIONES_SIMULTANEAS\\\" --bindir '/aplicaciones/bi/zonda/sqoop/rio187/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\\n"
+}

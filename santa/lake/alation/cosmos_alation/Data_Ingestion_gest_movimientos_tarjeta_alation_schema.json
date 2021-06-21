@@ -1,0 +1,623 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "Legajos Responsables Tecnicos separados por ','"
+            ],
+            "level": "Basic|Intermediate|Advanced|Optimized"
+        },
+        "table": {
+            "name": "nombre de la tabla",
+            "title": "MOVIMIENTOS DE LA TARJETA QUE PARTICIPAN EN LA GESTIÓN",
+            "schema": "bi_corp_staging|bi_corp_common|bi_corp_business",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "MOVIMIENTOS DE LA TARJETA QUE PARTICIPAN EN LA GESTIÓN",
+            "columns": [
+                {
+                    "name": "ID_GESTION",
+                    "title": "ID_GESTION",
+                    "description": "NÚMERO IDENTIFICADOR DE LA ENTIDAD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_MOVIMIENTO",
+                    "title": "NRO_MOVIMIENTO",
+                    "description": "NÚMERO DE MOVIMIENTO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_PRODUCTO_ALTAIR",
+                    "title": "COD_PRODUCTO_ALTAIR",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_CUENTA",
+                    "title": "NRO_CUENTA",
+                    "description": "NÚMERO CUENTA",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_TARJETA",
+                    "title": "NRO_TARJETA",
+                    "description": "NÚMERO TARJETA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_MOVIMIENTO",
+                    "title": "FECHA_MOVIMIENTO",
+                    "description": "FECHA DEL MOVIMIENTO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_COMPROBANTE",
+                    "title": "NRO_COMPROBANTE",
+                    "description": "NÚMERO DE COMPROBANTE",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_AUTORIZACION",
+                    "title": "COD_AUTORIZACION",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_ESTABLECIMIENTO",
+                    "title": "NRO_ESTABLECIMIENTO",
+                    "description": "NÚMERO DEL ESTABLECIMIENTO",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "DESC_MOVIMIENTO",
+                    "title": "DESC_MOVIMIENTO",
+                    "description": "DESCRIPCIÓN DE LA ENTIDAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_OPERATIVO",
+                    "title": "COD_OPERATIVO",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_MONEDA",
+                    "title": "COD_MONEDA",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "MONTO_MOVIMIENTO",
+                    "title": "MONTO_MOVIMIENTO",
+                    "description": "MONTO DEL MOVIMIENTO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "COMA (,)",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "IND_DEVOLUCION",
+                    "title": "IND_DEVOLUCION",
+                    "description": "N - NO SE DEVUELVE / S - A DEVOLVER / D - DEVUELTO",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_DEVOLUCION",
+                    "title": "FECHA_DEVOLUCION",
+                    "description": "FECHA DE DEVOLUCIÓN",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_EXPORTACION",
+                    "title": "FECHA_EXPORTACION",
+                    "description": "FECHA DE EXPORTACIÓN",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_CIERRE_RESUMEN",
+                    "title": "FECHA_CIERRE_RESUMEN",
+                    "description": "FECHA DE CIERRE DEL RESUMEN DE LA TARJETA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "MONTO_DEVOLUCION",
+                    "title": "MONTO_DEVOLUCION",
+                    "description": "MONTO DEVUELTO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "COMA (,)",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_RUBRO",
+                    "title": "COD_RUBRO",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_BAJA",
+                    "title": "FECHA_BAJA",
+                    "description": "FECHA DE BAJA DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "TASA_PROMEDIO",
+                    "title": "TASA_PROMEDIO",
+                    "description": "TASA DE INTERES PROMEDIO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "COMA (,)",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "MONTO_INTERES",
+                    "title": "MONTO_INTERES",
+                    "description": "INTERESES",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "MONTO_COMISION",
+                    "title": "MONTO_COMISION",
+                    "description": "MONTO DE LA COMISIÓN",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "COMA (,)",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CANT_CUOTA",
+                    "title": "CANT_CUOTA",
+                    "description": "CANTIDAD DE CUOTAS",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_CUOTA",
+                    "title": "NRO_CUOTA",
+                    "description": "NÚMERO DE CUOTA",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_CIERRE_CARTERA",
+                    "title": "FECHA_CIERRE_CARTERA",
+                    "description": "FECHA DE CIERRE DE LA CARTERA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_CUPON",
+                    "title": "NRO_CUPON",
+                    "description": "NÚMERO DE CUPÓN",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CANT_CUOTAS_RECLAMADAS",
+                    "title": "CANT_CUOTAS_RECLAMADAS",
+                    "description": "CANTIDAD DE CUOTAS RECLAMADAS",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "MONTO_RECLAMADO",
+                    "title": "MONTO_RECLAMADO",
+                    "description": "MONTO RECLAMADO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "COMA (,)",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

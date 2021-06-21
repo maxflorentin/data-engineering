@@ -1,0 +1,82 @@
+*             C O P Y       W A C N L 8 0 1                  *           
+*------------------------------------------------------------*           
+*  ESTADISTICAS DE CALIDAD Y PRODUCTIVIDAD                   *           
+*  LONG.REGISTRO: 150                                        *           
+*------------------------------------------------------------*           
+*                                                                        
+ 01  WACNL801.                                                           
+                                                                         
+* TIPO DE TRANSACCION R=EFECTUDA POR CLIENTE PPIO                        
+*                     O=EFECTUDA POR CLIENTE NO PROPIO                   
+     03 WACNL801-TIPO-CLIENTE             PIC X(1).                      
+                                                                         
+* SUCURSAL DE LA CUENTA DE LA TRANSACCION                                
+     03 WACNL801-SUCURSAL-CUENTA          PIC 9(3).                      
+                                                                         
+* IDENTIFICACION DE LA SUCURSAL DDE PERTENECE LA MAQUINA                 
+     03 WACNL801-SUCURSAL-MAQUINA         PIC 9(3).                      
+                                                                         
+* IDENTIFICACION DEL CANAL                                               
+*       ATM1=CAJERO BANELCO PROPIO                                       
+*       ATM2=CAJERO BANELCO NO PROPIO                                    
+*       ADM =SAFE 4700 TERMINAL ADM. O ALTAS A CORTO PLAZO               
+*       CAJA=SAFE 4700 TERMINAL DE CAJA                                  
+*       RIOS=RIOSELF                                                     
+*       RIOL1=RIOLINE 1                                                  
+*       RIOL2=RIOLINE2                                                   
+     03 WACNL801-CANAL                    PIC X(5).                      
+                                                                         
+* IDENTIFICACION DE LA MAQUINA DDE SE HIZO LA TX                         
+     03 WACNL801-MAQUINA                  PIC X(5).                      
+                                                                         
+* AAAAMMDD DE LA TRANSACCION                                             
+     03 WACNL801-FECHA-AMD                PIC 9(8).                      
+                                                                         
+* HHMMSS - HORA DE TRANSACCION                                           
+     03 WACNL801-HORA                     PIC 9(6).                      
+                                                                         
+* CODIGO DE TRANSACCION                                                  
+     03 WACNL801-TRANSACCION-ALFA.                                       
+        05 WACNL801-TRANSACCION           PIC 9(6).                      
+                                                                         
+* PARA 4700 EN LOS DEBITOS POR ADOM ES EL COD.DE SERVICIO                
+* SINO, ES CEROS                                                         
+     03 WACNL801-SERVICIO-ADOM            PIC 9(3).                      
+                                                                         
+* VALORES POSIBLES O=ORIGINAL R=REVERSO                                  
+     03 WACNL801-ORI-REV                  PIC X(1).                      
+                                                                         
+* FECHA DEL PROCESO                                                      
+     03 WACNL801-FECHA-AMD-PROCESO        PIC 9(8).                      
+                                                                         
+* MARCA DE PERSONA FISICA/JURIDICA                                       
+     03 WACNL801-MARCA-PERSONA            PIC X(1).                      
+                                                                         
+* NUMERO DE PERSONA (NUP)                                                
+     03 WACNL801-NUP                      PIC X(8).                      
+                                                                         
+* IDENTIFICACION DEL USUARIO                                             
+     03 WACNL801-USUARIO                  PIC X(8).                      
+                                                                         
+* IMPORTE DE LA TRANSACCION                                              
+     03 WACNL801-IMPORTE                  PIC 9(12)V99.                  
+                                                                         
+* DIVISA DE LA TRANSACCION                                               
+     03 WACNL801-DIVISA                   PIC X(3).                      
+                                                                         
+* CANTIDAD DE CHEQUES                                                    
+     03 WACNL801-CANT-CHEQUES             PIC 9(3).                      
+                                                                         
+* PRODUCTO DEL CONTRATO                                                  
+     03 WACNL801-PRODUCTO                 PIC X(2).                      
+                                                                         
+* SUBPRODUCTO DEL CONTRATO                                               
+     03 WACNL801-SUBPRODUCTO              PIC X(4).                      
+                                                                         
+* TIPO DE OPERACION (M-MANUAL / A-AUTOMATICA / T-AUTOMATICA NEC.)        
+     03 WACNL801-TIPO-OPERACION           PIC X.                         
+                                                                         
+* RELLENO                                                                
+     03 WACNL801-DATOS                    PIC X(57).                     
+                                                                         
+******************** FIN COPY WACNL801 *************************** 

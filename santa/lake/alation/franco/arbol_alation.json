@@ -1,0 +1,97 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "Graciela Saldaña"
+                ]
+            ],
+            "level": "Intermediate|Advanced|Optimized"
+        },
+        "table": {
+            "name": "bi_corp_common|bi_corp_business.arbol",
+            "title": "La vista contiene el arbol de los centros de costos.",
+            "schema": "bi_corp_common|bi_corp_business",
+            "source": "BUP",
+            "query": "HQL del ETL",
+            "type": "",
+            "description": "La vista contiene el arbol de los centros de costos.",
+            "columns": [
+                {
+                    "name": "CCOSTOS,",
+                    "title": "CCOSTOS,",
+                    "description": "Codigo del Centro de costo",
+                    "type": "Varchar1",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "DESCRIPCION,",
+                    "title": "DESCRIPCION,",
+                    "description": "Descripción del Centro de costo",
+                    "type": "Varchar2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "USUARIO_RESPONSABLE,",
+                    "title": "USUARIO_RESPONSABLE,",
+                    "description": "Usuario del Responsables del CC",
+                    "type": "Varchar2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "AYN_RESPONSABLE,",
+                    "title": "AYN_RESPONSABLE,",
+                    "description": "Apellido y Nombre del Responsable del CC",
+                    "type": "Varchar2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 49.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CCOSTOS_PADRE,",
+                    "title": "CCOSTOS_PADRE,",
+                    "description": "Codigo del CC Padre",
+                    "type": "Varchar2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "DESCRIPCION_PADRE",
+                    "title": "DESCRIPCION_PADRE",
+                    "description": "Descripción del Centro de costo Padre",
+                    "type": "Varchar2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 30.0,
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

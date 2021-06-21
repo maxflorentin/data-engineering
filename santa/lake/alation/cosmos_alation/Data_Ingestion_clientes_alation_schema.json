@@ -1,0 +1,461 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "Legajos Responsables Tecnicos separados por ','"
+            ],
+            "level": "Basic|Intermediate|Advanced|Optimized"
+        },
+        "table": {
+            "name": "nombre de la tabla",
+            "title": "CLIENTES",
+            "schema": "bi_corp_staging|bi_corp_common|bi_corp_business",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CLIENTES",
+            "columns": [
+                {
+                    "name": "ID_CLIENTE",
+                    "title": "ID_CLIENTE",
+                    "description": "ID CLIENTE",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NUP_CLIENTE",
+                    "title": "NUP_CLIENTE",
+                    "description": "NUP",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "TIPO_DOCUMENTO",
+                    "title": "TIPO_DOCUMENTO",
+                    "description": "TIPO DE DOCUMENTO",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NRO_DOCUMENTO",
+                    "title": "NRO_DOCUMENTO",
+                    "description": "NUMERO DE DOCUMENTO",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "SEC_DOCUMENTO",
+                    "title": "SEC_DOCUMENTO",
+                    "description": "SOLO PERSONAS JURIDICAS",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_NACIMIENTO",
+                    "title": "FECHA_NACIMIENTO",
+                    "description": "PARA PERSONAS JURIDICAS FECHA DE INICIO DE ACTIVIDAD",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "SEXO",
+                    "title": "SEXO",
+                    "description": "SOLO PERSONAS FISICAS: VALORES H Ó F",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "TIPO_PERSONA",
+                    "title": "TIPO_PERSONA",
+                    "description": "INDICA TIPO PERSONA F: FISCA Ó J: JURIDICA",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "NOMBRE_RAZON_SOCIAL",
+                    "title": "NOMBRE_RAZON_SOCIAL",
+                    "description": "NOMBRE PARA PERSONA FISICA, RAZON SOCIAL PARA  JURIDICA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "APELLIDO_NOM_FANTASIA",
+                    "title": "APELLIDO_NOM_FANTASIA",
+                    "description": "APELLIDO PARA PERSONA FISICA, NOMBRE DE FANTASIA PARA JURIDICA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "EMAIL",
+                    "title": "EMAIL",
+                    "description": "DIRECCION DE EMAIL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CELULAR_DDN",
+                    "title": "CELULAR_DDN",
+                    "description": "DISCADO DIRECTO NACIONAL  CELULAR",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CELULAR_NRO",
+                    "title": "CELULAR_NRO",
+                    "description": "NUMERO CELULAR",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "CELULAR_EMPRESA",
+                    "title": "CELULAR_EMPRESA",
+                    "description": "EMPRESA CELULAR",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_SEGMENTO",
+                    "title": "COD_SEGMENTO",
+                    "description": "CODIGO DE SEGMENTO",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "EMAIL_2",
+                    "title": "EMAIL_2",
+                    "description": "DIRECCION DE EMAIL SECUNDARIA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "FECHA_BAJA",
+                    "title": "FECHA_BAJA",
+                    "description": "FECHA DE BAJA DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "DIRECCION",
+                    "title": "DIRECCION",
+                    "description": "DIRECCION",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "COD_SUBSEGMENTO",
+                    "title": "COD_SUBSEGMENTO",
+                    "description": "CODIGO SUBSEGMENTO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "SUCURSAL_ADMINISTRADORA",
+                    "title": "SUCURSAL_ADMINISTRADORA",
+                    "description": "CODIGO SUCURSAL ",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

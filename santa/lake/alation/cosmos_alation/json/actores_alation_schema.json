@@ -1,0 +1,106 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307459"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cosmos_actores",
+            "title": "ACTORES QUE PARTICIPAN EN LA GESTIÓN. PUEDEN SER MANUALES O AUTOMATICOS",
+            "schema": "bi_corp_staging",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "ACTORES QUE PARTICIPAN EN LA GESTIÓN. PUEDEN SER MANUALES O AUTOMATICOS",
+            "columns": [
+                {
+                    "name": "ID_ACTOR",
+                    "title": "ID_ACTOR",
+                    "description": "ID_ACTOR",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_ACTOR",
+                    "title": "TIPO_ACTOR",
+                    "description": "A - AUTOMÁTICO / M - MANUAL / R - RESULTADO",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_ACTOR",
+                    "title": "DESC_ACTOR",
+                    "description": "DESC_ACTOR",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

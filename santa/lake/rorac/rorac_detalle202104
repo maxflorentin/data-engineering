@@ -1,0 +1,37 @@
+
+
+1	Revisar si para los componentes CCL y CCB se están enviando los importes parciales, en bbdd solo se visualiza la columna fc_ren_margen_mes (en verde ejemplos de PG de CCL y CTB sin importes)								
+									
+2	Eliminar de todos los contenidos los registros que correspondan, según el campo cod_ren_cta_resultados_niv_NN que se indica en la columna 'K' cuando el código sea igual al detallado en la columna 'J', ej: .cod_ren_cta_resultados_niv_3 = 99000 debe ignorarse 								
+									
+3	Incorporar a la lógica del flag de neteo que, si el campo cod_ren_contenido = 'CCL' y el SdbSMV <> 0, el flag_ren_neteo= 1, si no, conservar la actual, si cod_ren_contenido = 'CCL',  flag_ren_neteo = '2' , sino flag_ren_neteo= '0' (cero).								
+									
+4	Para los conceptos CCL y CTB, se les aplicará la siguiente tabla para la asignación del IDRU (por cod_ren_areanegociocorp y moneda). En caso de no conocer la moneda, se asignará la RU ML .								
+	Para el resto de los registros que no cuadren en esta clasificación se les asignará la IDRU por default, '9999999'.								
+									
+	cod_ren_areanegociocorp	id_ru ML 	id_ru MO						
+	AN01020210	1200201	1200649						
+	AN01040220	1200233	1200681						
+	AN01020410	1200137	1200585						
+	AN01020200	1200169	1200617						
+	AN01010500	1200425	1200425						
+	AN01010201	1200425	1200425						
+									
+5	Se han modificado los valores de la tabla para la consideración de las ID Rus, considerar los nuevos								
+									
+									
+	Atributos (Campo BDR-Valor o Ejes)					Vigentes al 23/3			
+	pesegcal in ("A", "B","C" "S") and cod_baremo_global in (6)					1200009			
+	pesegcal in ("A", "B","C" "S") and cod_baremo_global in (13, 182, 183)					1200041			
+	pesegcal in ("A", "B","C" "S") and cod_baremo_global = 17					1200073			
+	pesegcal in ("A", "B","C" "S") and cod_baremo_global Not in (17, 6, 13, 182, 183)					1200105			
+	pesegcal in (P1, C1)					1200137			
+	pesegcal = “P2” 					1200169			
+	pesegcal in (EM, G1, G2) 					1200201			
+	pesegcal in (IU, IP)					1200233			
+	cod_segmento_gest = 1 and pesegcal IN (F2,OF,GL,LA, LO, MU,OT, FI, F1)					0			
+	cod_segmento_gest = 11 and pesegcal in (F2 ,OF ,GL ,LA ,LO ,MU ,OT ,FI, F1)					1200290			
+	cod_segmento_gest = 17 and pesegcal in (F2 ,OF ,GL ,LA ,LO ,MU ,OT ,FI, F1)					1200322			
+	pesegcal = PU AND DIVISA = ARS					1200354			
+	pesegcal = PU AND DIVISA <> ARS					1040181
+

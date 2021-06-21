@@ -1,0 +1,119 @@
+{
+    "file": "clientes_schema",
+    "createTable": "bi_corp_staging.rio187_clientes",
+    "location": "/santander/bi-corp/landing/rio187/fact/clientes/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio187/fact/clientes",
+    "tempDirectory": "/santander/bi-corp/temp/rio187",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_cliente",
+            "type": "string"
+        },
+        {
+            "name": "nup_cliente",
+            "type": "string"
+        },
+        {
+            "name": "tipo_documento",
+            "type": "string"
+        },
+        {
+            "name": "nro_documento",
+            "type": "string"
+        },
+        {
+            "name": "sec_documento",
+            "type": "string"
+        },
+        {
+            "name": "fecha_nacimiento",
+            "type": "string"
+        },
+        {
+            "name": "sexo",
+            "type": "string"
+        },
+        {
+            "name": "tipo_persona",
+            "type": "string"
+        },
+        {
+            "name": "nombre_razon_social",
+            "type": "string"
+        },
+        {
+            "name": "apellido_nom_fantasia",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "celular_ddn",
+            "type": "string"
+        },
+        {
+            "name": "celular_nro",
+            "type": "string"
+        },
+        {
+            "name": "celular_empresa",
+            "type": "string"
+        },
+        {
+            "name": "cod_segmento",
+            "type": "string"
+        },
+        {
+            "name": "email_2",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "direccion",
+            "type": "string"
+        },
+        {
+            "name": "cod_subsegmento",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_administradora",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

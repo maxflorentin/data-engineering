@@ -1,0 +1,103 @@
+{
+    "file": "dialogos_watson_schema",
+    "createTable": "bi_corp_staging.rio143_dialogos_watson",
+    "location": "/santander/bi-corp/landing/rio143/fact/dialogos_watson/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio143/fact/dialogos_watson",
+    "tempDirectory": "/santander/bi-corp/temp/rio143",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "canal",
+            "type": "string"
+        },
+        {
+            "name": "jsessionid",
+            "type": "string"
+        },
+        {
+            "name": "fechahora",
+            "type": "string"
+        },
+        {
+            "name": "emisortipo",
+            "type": "string"
+        },
+        {
+            "name": "emisornomrbre",
+            "type": "string"
+        },
+        {
+            "name": "message",
+            "type": "string"
+        },
+        {
+            "name": "intent",
+            "type": "string"
+        },
+        {
+            "name": "confidence",
+            "type": "string"
+        },
+        {
+            "name": "ask_answer_was_useful",
+            "type": "string"
+        },
+        {
+            "name": "possiblequestions",
+            "type": "string"
+        },
+        {
+            "name": "suggestion_topics",
+            "type": "string"
+        },
+        {
+            "name": "options",
+            "type": "string"
+        },
+        {
+            "name": "nupcliente",
+            "type": "string"
+        },
+        {
+            "name": "idgenesys",
+            "type": "string"
+        },
+        {
+            "name": "transferidoahumano",
+            "type": "string"
+        },
+        {
+            "name": "fuepossiblequestions",
+            "type": "string"
+        },
+        {
+            "name": "fuesuggestion_topics",
+            "type": "string"
+        },
+        {
+            "name": "fueoptions",
+            "type": "string"
+        },
+        {
+            "name": "fecha_carga",
+            "type": "string"
+        },
+        {
+            "name": "fecha_proceso",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

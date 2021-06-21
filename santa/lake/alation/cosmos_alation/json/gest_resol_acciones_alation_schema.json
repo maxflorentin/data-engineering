@@ -1,0 +1,128 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307459"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "nombre de la tabla",
+            "title": "ACCIONES QUE SE APLICARON EN LA RESOLUCIÓN DE LA GESTIÓN",
+            "schema": "bi_corp_staging",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "ACCIONES QUE SE APLICARON EN LA RESOLUCIÓN DE LA GESTIÓN",
+            "columns": [
+                {
+                    "name": "ID_GESTION",
+                    "title": "ID_GESTION",
+                    "description": "NÚMERO IDENTIFICADOR DE LA ENTIDAD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_ACCION",
+                    "title": "ID_ACCION",
+                    "description": "NÚMERO IDENTIFICADOR DE LA ENTIDAD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_ORIGEN",
+                    "title": "IND_ORIGEN",
+                    "description": "M - MOTOR DE DECISIÓN / 1 - NIVEL 1 /  2 -NIVEL 2",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_BAJA",
+                    "title": "FECHA_BAJA",
+                    "description": "FECHA DE BAJA DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_EJECUCION",
+                    "title": "IND_EJECUCION",
+                    "description": "INDICA SI LA ACCIÓN TIENE EJECUCIÓN",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,87 @@
+{
+    "file": "reneg_process_schema",
+    "createTable": "bi_corp_staging.rio301_reneg_process",
+    "location": "/santander/bi-corp/landing/rio301/fact/reneg_process/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio301/fact/reneg_process",
+    "tempDirectory": "/santander/bi-corp/temp/rio301",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "process_id",
+            "type": "string"
+        },
+        {
+            "name": "account_number",
+            "type": "string"
+        },
+        {
+            "name": "account_type",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_brand",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_limit_adjustment",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_number",
+            "type": "string"
+        },
+        {
+            "name": "declared_income",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "first_due_date",
+            "type": "string"
+        },
+        {
+            "name": "quota_value",
+            "type": "string"
+        },
+        {
+            "name": "requested_amount",
+            "type": "string"
+        },
+        {
+            "name": "term_term",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "offer_id",
+            "type": "string"
+        },
+        {
+            "name": "process_state_id",
+            "type": "string"
+        },
+        {
+            "name": "term_offer_id",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

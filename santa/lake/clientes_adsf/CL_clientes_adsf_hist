@@ -1,0 +1,132 @@
+
+-- ·· DISCREPANCIAS ·· --
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201901' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201901) WHERE PERIODO = 201901 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-01-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-01-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201902' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201902) WHERE PERIODO = 201902 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-02-28'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-02-28 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201903' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201903) WHERE PERIODO = 201903 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-03-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-03-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201904' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201904) WHERE PERIODO = 201904 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-04-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-04-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201905' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201905) WHERE PERIODO = 201905 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-05-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-05-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201906' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201906) WHERE PERIODO = 201906 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-06-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-06-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201907' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201907) WHERE PERIODO = 201907 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-07-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-07-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201908' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201908) WHERE PERIODO = 201908 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-08-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-08-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201909' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201909) WHERE PERIODO = 201909 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-09-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-09-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201910' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201910) WHERE PERIODO = 201910 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-10-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-10-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201911' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201911) WHERE PERIODO = 201911 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-11-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-11-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_201912' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_201912) WHERE PERIODO = 201912 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2019-12-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2019-12-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+-- 
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202001' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202001) WHERE PERIODO = 202001 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-01-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-01-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202002' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202002) WHERE PERIODO = 202002 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-02-29'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-02-29 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202003' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202003) WHERE PERIODO = 202003 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-03-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-03-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202004' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202004) WHERE PERIODO = 202004 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-04-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-04-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202005' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202005) WHERE PERIODO = 202005 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-05-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-05-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202006' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202006) WHERE PERIODO = 202006 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-06-30'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-06-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+sqoop import -Doraoop.import.partitions='CLIENTES_202007' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront05:7366/rio5'  --username 'SRVCBI' --query "SELECT * FROM DSF.CLIENTES PARTITION(CLIENTES_202007) WHERE PERIODO = 202007 and \$CONDITIONS " --target-dir  '/santander/bi-corp/landing/rio5/fact/clientes/partition_date=2020-07-31'  -m 6 --split-by "NUP" --bindir /aplicaciones/bi/zonda/sqoop/rio5/CLIENTES --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-07-31 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio5/fact/clientes/clientes_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 8 --executor-cores 4 --executor-memory 16G --name STAGING_CLIENTES_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py clientes_schema.json
+
+
+
+
+
+
+
+
+
+
