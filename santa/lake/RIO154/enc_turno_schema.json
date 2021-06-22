@@ -1,0 +1,127 @@
+{
+    "file": "enc_turno_schema",
+    "createTable": "bi_corp_staging.rio154_enc_turno",
+    "location": "/santander/bi-corp/landing/rio154/fact/enc_turno/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/fact/enc_turno",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_turno",
+            "type": "string"
+        },
+        {
+            "name": "id_estado",
+            "type": "string"
+        },
+        {
+            "name": "tipodoc",
+            "type": "string"
+        },
+        {
+            "name": "nrodoc",
+            "type": "string"
+        },
+        {
+            "name": "sector",
+            "type": "string"
+        },
+        {
+            "name": "id_suc",
+            "type": "string"
+        },
+        {
+            "name": "fecha_hora_desde",
+            "type": "string"
+        },
+        {
+            "name": "fecha_hora_hasta",
+            "type": "string"
+        },
+        {
+            "name": "fraccion",
+            "type": "string"
+        },
+        {
+            "name": "dia",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "apellido",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "pesubseg",
+            "type": "string"
+        },
+        {
+            "name": "pesexper",
+            "type": "string"
+        },
+        {
+            "name": "id_motivo",
+            "type": "string"
+        },
+        {
+            "name": "mail",
+            "type": "string"
+        },
+        {
+            "name": "cuit",
+            "type": "string"
+        },
+        {
+            "name": "id_turno_orig",
+            "type": "string"
+        },
+        {
+            "name": "id_ejec_atencion",
+            "type": "string"
+        },
+        {
+            "name": "id_suc_atencion",
+            "type": "string"
+        },
+        {
+            "name": "id_puesto_citas",
+            "type": "string"
+        },
+        {
+            "name": "telefono",
+            "type": "string"
+        },
+        {
+            "name": "id_tipo_turno",
+            "type": "string"
+        },
+        {
+            "name": "fecha_desde",
+            "type": "string"
+        },
+        {
+            "name": "fecha_hasta",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

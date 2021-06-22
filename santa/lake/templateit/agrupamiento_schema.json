@@ -1,0 +1,51 @@
+{
+    "file": "agrupamiento_schema",
+    "createTable": "bi_corp_staging.rio30_agrupamiento",
+    "location": "/santander/bi-corp/landing/rio30/dim/agrupamiento/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio30/dim/agrupamiento",
+    "tempDirectory": "/santander/bi-corp/temp/rio30",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_sector",
+            "type": "string"
+        },
+        {
+            "name": "canal_id",
+            "type": "string"
+        },
+        {
+            "name": "tx_id",
+            "type": "string"
+        },
+        {
+            "name": "ente_id",
+            "type": "string"
+        },
+        {
+            "name": "cod_grupo",
+            "type": "string"
+        },
+        {
+            "name": "informa_marca",
+            "type": "string"
+        },
+        {
+            "name": "fecha_informa",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+	"airflowConnections": [{
+			"type": "ssh",
+			"connections": [{
+				"conn_id": "arda_ssh",
+				"host": "lxcdhedgesrv01.ar.bsch",
+				"user": "srvcarda",
+				"password": "test1234",
+				"port": 22
+			},
+			{
+				"conn_id": "cloudera_ssh",
+				"host": "lxcdhedgesrv11.ar.bsch",
+				"user": "srvcengineerbides",
+				"password": "Kl4b3b5r102k19",
+				"port": 22
+			},
+			{
+				"conn_id": "de_ssh",
+				"host": "lxbidusrv01.ar.bsch",
+				"user": "srvcengineerbides",
+				"password": "Kl4b3b5r102k19",
+				"port": 22
+			},
+			{
+				"conn_id": "sftp_ssh_cmis",
+				"host": "lxsfgwsrv01",
+				"user": "stcctm",
+				"password": "jumaco_6019",
+				"port": 5039
+			},
+			{
+				"conn_id": "sftp_ssh_bdr",
+				"host": "lxsfgwsrv01",
+				"user": "CargaIN",
+				"password": "test1234",
+				"port": 5039
+			},
+			{
+				"conn_id": "sftp_transmi",
+				"host": "LXSFTPZERO01",
+				"user": "srvcengineerbi",
+				"password": "test1234",
+				"port": 22
+			},
+			{
+				"conn_id": "sftp_transmi_rio61",
+				"host": "DBLXORAFRONT11",
+				"user": "srvcengineerbi",
+				"password": "test1234",
+				"port": 22
+			}]
+		},
+		{
+			"type": "google_cloud_platform",
+			"connections": [{
+				"conn_id": "aws_gcp",
+				"project_id": "dbi-santanderrio-2324477",
+				"keyfile_path": "/aplicaciones/bi/zonda/keys/dbi-santanderrio-2324477-a85c2bf0ecc0.json",
+				"scopes": ["https://www.googleapis.com/auth/datastore", "https://www.googleapis.com/auth/bigquery",
+					"https://www.googleapis.com/auth/devstorage.read_write"
+				]
+			}]
+		},
+		{
+			"type": "jdbc",
+			"connections": [{
+				"conn_id": "test_jdbc",
+				"user": "impala",
+				"password": "test1234",
+				"host": "jdbc:impala://impala-prod.ar.bsch:21050/default;AuthMech=1;KrbServiceName=impala;KrbHostFQDN=impala-prod.ar.bsch;KrbRealm=RIO.AR.BSCH;SSL=1;SSLTrustStore=/opt/cloudera/security/CAcerts/cacerts;KrbAuthType=2",
+				"driver_path": "/aplicaciones/bi/zonda/jdbc/ImpalaJDBC41.jar",
+				"driver_class": "com.cloudera.impala.jdbc41.Driver"
+			}]
+		},
+		{
+			"type": "hiveserver2",
+			"connections": [{
+				"conn_id": "cloudera_hive_beeline",
+				"host": "hive-homo.ar.bsch",
+				"user": "",
+				"password": "",
+				"port": "10000",
+				"schema": "default;ssl=true;sslTrustStore=/opt/cloudera/security/truststore/cdh.truststore;trustStorePassword=Lacasagrande6931",
+				"extra": {"use_beeline": true, "auth": "", "principal": "hive/hive-homo.ar.bsch@RIO.AR.BSCH"}
+			}]
+		},
+		{
+			"type": "",
+			"connections": [{
+				"conn_id": "cloudera_spark2",
+				"host": "yarn",
+				"extra": {"queue": "root.dataeng", "deploy-mode": "cluster", "spark-binary": "spark2-submit"}
+			}]
+		}
+	]
+}

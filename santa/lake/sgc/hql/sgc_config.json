@@ -1,0 +1,48 @@
+{
+    "tables": [
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "TIPO_GESTION",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/tipo_gestion",
+            "partition_field": "FEC_MODF_TPO_GEST",
+            "partition_field_value": "2003-07-01 00:00:00",
+            "command": "sqoop import --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir  '{landing_path}/partition_date={partition_date}' --num-mappers 6  --password '{password}' --fields-terminated-by '|' --delete-target-dir  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "TIPO_MEDIOS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/tipo_medios",
+            "partition_field": "FEC_MODF_MED",
+            "partition_field_value": "2003-07-01 00:00:00",
+            "command": "sqoop import --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir  '{landing_path}/partition_date={partition_date}'  --num-mappers 6  --password '{password}' --fields-terminated-by '|' --delete-target-dir  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "CLASIF_CRM",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/clasif_crm",
+            "partition_field": "FEC_ALT_MED",
+            "partition_field_value": "2003-07-01 00:00:00",
+            "command": "sqoop import --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir  '{landing_path}/partition_date={partition_date}'  --num-mappers 6  --password '{password}' --fields-terminated-by '|' --delete-target-dir  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_BCRA",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_bcra",
+            "partition_field": "FEC_ALT_MED",
+            "partition_field_value": "2003-07-01 00:00:00",
+            "command": "sqoop import --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir  '{landing_path}/partition_date={partition_date}'  --num-mappers 6  --password '{password}' --fields-terminated-by '|' --delete-target-dir  --verbose\n"
+        }
+    ]
+}

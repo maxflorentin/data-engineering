@@ -1,0 +1,131 @@
+{
+    "file": "movimiento_schema",
+    "createTable": "bi_corp_staging.rio30_movimiento",
+    "location": "/santander/bi-corp/landing/rio30/fact/movimiento/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio30/fact/movimiento",
+    "tempDirectory": "/santander/bi-corp/temp/rio30",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "maq_id",
+            "type": "string"
+        },
+        {
+            "name": "fecha",
+            "type": "string"
+        },
+        {
+            "name": "hora",
+            "type": "string"
+        },
+        {
+            "name": "tipo_cliente",
+            "type": "string"
+        },
+        {
+            "name": "suc_nro",
+            "type": "string"
+        },
+        {
+            "name": "suc_maq",
+            "type": "string"
+        },
+        {
+            "name": "canal_id",
+            "type": "string"
+        },
+        {
+            "name": "tx_id",
+            "type": "string"
+        },
+        {
+            "name": "ente_id",
+            "type": "string"
+        },
+        {
+            "name": "orig_rev",
+            "type": "string"
+        },
+        {
+            "name": "fecha_proc",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "usuario",
+            "type": "string"
+        },
+        {
+            "name": "cuadrante",
+            "type": "string"
+        },
+        {
+            "name": "importe",
+            "type": "string"
+        },
+        {
+            "name": "moneda",
+            "type": "string"
+        },
+        {
+            "name": "cantidad_cheques",
+            "type": "string"
+        },
+        {
+            "name": "pesubseg",
+            "type": "string"
+        },
+        {
+            "name": "fecha_carga",
+            "type": "string"
+        },
+        {
+            "name": "marca_man_aut",
+            "type": "string"
+        },
+        {
+            "name": "ide_pago",
+            "type": "string"
+        },
+        {
+            "name": "cantidad_efectivo",
+            "type": "string"
+        },
+        {
+            "name": "cantidad_otros",
+            "type": "string"
+        },
+        {
+            "name": "importe_cheques",
+            "type": "string"
+        },
+        {
+            "name": "importe_efectivo",
+            "type": "string"
+        },
+        {
+            "name": "importe_otros",
+            "type": "string"
+        },
+        {
+            "name": "medio_pago",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

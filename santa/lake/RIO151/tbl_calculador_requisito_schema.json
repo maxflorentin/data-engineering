@@ -1,0 +1,31 @@
+{
+    "file": "tbl_calculador_requisito_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_calculador_requisito",
+    "location": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_requisito/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/dim/tbl_calculador_requisito",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_requisito",
+            "type": "string"
+        },
+        {
+            "name": "ds_requisito",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

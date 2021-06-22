@@ -1,0 +1,26 @@
+CREATE TABLE GEC01.INFO_REQUERIDA
+(
+  COD_ENTIDAD           CHAR(4 BYTE)            NOT NULL,
+  COD_INFO_REQUE        NUMBER(5)               NOT NULL,
+  DESC_INFO_REQUE       VARCHAR2(400 BYTE)      NOT NULL,
+  COD_TPO_DAT           NUMBER(5)               NOT NULL,
+  LONG_INFO_REQUE       NUMBER(13)              NOT NULL,
+  CANT_DEC_INFO_REQUE   NUMBER(1)               NOT NULL,
+  RANG_DDE_INFO_REQUE   NUMBER(32,2)            NOT NULL,
+  RANG_HTA_INFO_REQUE   NUMBER(32,2)            NOT NULL,
+  FEC_DDE_INFO_REQUE    DATE                    NOT NULL,
+  FEC_HTA_INFO_REQUE    DATE                    NOT NULL,
+  EST_INFO_REQUE        CHAR(1 BYTE)            NOT NULL,
+  USER_ALT_INFO_REQUE   VARCHAR2(8 BYTE)        NOT NULL,
+  USER_MODF_INFO_REQUE  VARCHAR2(8 BYTE)        NOT NULL,
+  FEC_ALT_INFO_REQUE    DATE                    NOT NULL,
+  FEC_MODF_INFO_REQUE   DATE                    NOT NULL,
+  COD_TPO_CAMPO         NUMBER(5)               DEFAULT 1                     NOT NULL,
+  COD_FUNCION_ASOC      NUMBER(5)               DEFAULT 0                     NOT NULL,
+  COD_INFO_RELAC        NUMBER(5),
+  TPO_INFO_ESPECIAL     NUMBER(2)               DEFAULT 0                     NOT NULL,
+  SECTOR_OWNER          CHAR(4 BYTE)            NOT NULL,
+  TEXTO_AYUDA           VARCHAR2(200 BYTE),
+  COD_INFO_CONDIC       NUMBER(5),
+  COD_VALOR_CONDIC      VARCHAR2(5 BYTE)
+)

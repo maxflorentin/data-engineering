@@ -1,0 +1,201 @@
+
+-- WATSON RIO143
+
+
+start_date: "2019-10-30"
+end_date: '2019-12-18'
+
+
+
+
+spark2-submit --master yarn --conf spark.yarn.executor.memoryOverhead=8000 --conf spark.yarn.appMasterEnv.partition_date_filter=2019-10-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/watson/dialog/watson_chat_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 1 --executor-cores 2 --executor-memory 8G --name STAGING_Chat_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py watson_chat_schema.json
+
+
+
+
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date_filter=2019-10-30 --conf spark.yarn.appMasterEnv.file_date_filter=20201123 --conf spark.sql.sources.partitionOverwriteMode=dynamic --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 1 --executor-cores 2 --executor-memory 8G --name STAGING_Chat_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py /santander/bi-corp/config/watson_chat_schema.json
+
+--conf spark.yarn.appMasterEnv.file_date_filter=20191030
+
+
+sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxdbcsrv01:7365/RIO143' --username 'SRVCENGINEERLAKE' --query "SELECT CANAL,JSESSIONID,FECHAHORA,EMISORTIPO,EMISORNOMRBRE,MESSAGE,INTENT,CONFIDENCE,ASK_ANSWER_WAS_USEFUL,POSSIBLEQUESTIONS,SUGGESTION_TOPICS,'OPTIONS',NUPCLIENTE,IDGENESYS,TRANSFERIDOAHUMANO,FUEPOSSIBLEQUESTIONS,FUESUGGESTION_TOPICS,FUEOPTIONS FROM MCANAL.DIALOGOS_WATSON WHERE TO_CHAR(FECHAHORA,'YYYY-MM-DD') = '2019-10-30' AND \$CONDITIONS " --bindir '/aplicaciones/bi/zonda/sqoop/rio143/DIALOGOS_WATSON' --target-dir  '/santander/bi-corp/landing/watson/fact/chat/partition_date=2019-10-30' --delete-target-dir --fields-terminated-by ';' --num-mappers 1 --password 'Pdne_Dche47dbn_xC' --verbose
+
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date_filter=2019-10-30   --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/watson/dialog/watson_chat_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 1 --executor-cores 2 --executor-memory 8G --name STAGING_Chat_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py watson_chat_schema.json
+
+
+
+-- __/__/__/__/__/__/ CFG JSON
+
+,
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO_ERM",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_mi_equipo_erm",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_PROMOCION",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_calculador_promocion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_BENEFICIO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_promocion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_CATALOGO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_catalogo",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_CONDICION",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_condicion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_DETALLE",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_detalle",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_PROGRAMA_VENTA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_programa_venta",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_REGLA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_regla",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_REQUISITO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_requisito",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_mi_equipo",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO_PUESTO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_mi_equipo_puesto",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CANAL_VENTA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_canal_venta",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CANAL_COMUNICACION",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_canal_comunicacion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        }
+		
+		
+		
+-- __/__/__/__/__/__/ DAG LIST
+
+,TBL_MI_EQUIPO_ERM,TBL_CALCULADOR_PROMOCION,TBL_CALCULADOR_BENEFICIO,TBL_CALCULADOR_CATALOGO,TBL_CALCULADOR_CONDICION,TBL_CALCULADOR_DETALLE,TBL_CALCULADOR_PROGRAMA_VENTA,TBL_CALCULADOR_REGLA,TBL_CALCULADOR_REQUISITO,TBL_MI_EQUIPO,TBL_MI_EQUIPO_PUESTO,TBL_CANAL_VENTA,TBL_CANAL_COMUNICACION
+
+
+
+
+sqoop import -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename=TBL_CALCULADOR_BENEFICIO --connect 'jdbc:oracle:thin:@dblxorafront01:1555/RIO151'  --username 'SRVCENGINEERLAKE' --table "MKT02.TBL_CALCULADOR_BENEFICIO" --target-dir '/santander/bi-corp/landing/rio151/dim/tbl_calculador_beneficio/partition_date=2020-11-23'  -m 1 --fields-terminated-by '^' --hive-delims-replacement ' ' --password 'CBdfhn_bfjg67D'  --delete-target-dir --null-string '' --null-non-string ''  --verbose
+
+
+
+
+
+Dejo las tablas de +che:
+
+	- SELECT * FROM bi_corp_common.bt_suc_interaccion WHERE partition_date = '2020-11-23' ;
+	- SELECT * FROM bi_corp_common.bt_suc_interaccionalerta WHERE partition_date = '2020-11-23'  ;
+	- SELECT * FROM bi_corp_common.bt_suc_interaccionproducto WHERE partition_date = '2020-11-23' ;
+	
+Si están ok dejo cargando la historia durante la semana. Mientras continuo con la parte de turnos.
+
+
+
+
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.month=2020-10-30 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/bi_corp_risk/fact/rwa_final_envio/rwa_final_envio_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 20 --executor-cores 4 --executor-memory 16G --name STAGING_RWA_FINAL_ENVIO_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py rwa_final_envio_schema.json
+
+
+
+
+
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date=2020-11-29 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/rio163/fact/rtd_ofertas_presentadas/rtd_ofertas_presentadas_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 5 --executor-cores 5 --executor-memory 8G --name STAGING_RTD_OFERTAS_PRESENTADAS_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py rtd_ofertas_presentadas_schema.json
+
+
+
+

@@ -1,0 +1,34 @@
+name: RORAC_EXPORT_Tables
+description: 'Export RORAC Tables in delimited text file'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 15 * * *'
+start_date: '2020-06-30'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: ms0_dm_dwh_area_negocio_ctr
+tasks:
+  - name: EXPORT_INPUT_LOCAL_PARAM_RORAC
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: '/aplicaciones/bi/rorac/local_input_local_param_rorac.txt'
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/local_input_params.hql'
+notifications:
+  on_start: true
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

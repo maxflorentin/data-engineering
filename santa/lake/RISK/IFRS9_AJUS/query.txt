@@ -1,0 +1,119 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.stk_cys_ifrs9ajustesadicionales (
+	dt_cys_periodo	string ,
+	ds_cys_portfolioifrs9	string ,
+	ds_cys_segmentocontrol	string ,
+	fc_cys_drawbalance	decimal(38,15) ,
+	fc_cys_undrawbalance	decimal(38,15) ,
+	fc_cys_ead	decimal(38,15) ,
+	fc_cys_provisioninbalanceamount	decimal(38,15) ,
+	fc_cys_provisionoutbalanceamount decimal(38,15) ,
+	fc_cys_provision decimal(38,15) ,
+	int_cys_stagefinal int ,
+	fc_cys_rof	decimal(38,15) ,
+	fc_cys_insolvenciasrof	decimal(38,15) ,
+	fc_cys_nuevorof	decimal(38,15) ,
+	ds_cys_origen string ,
+	ds_cys_rubrocargabalinprovision string ,
+	ds_cys_rubrocargabaloutprovision string )
+PARTITIONED BY(partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '/santander/bi-corp/common/cys/stk_cys_ifrs9ajustesadicionales'
+
+
+set mapred.job.queue.name=root.dataeng;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+INSERT OVERWRITE TABLE bi_corp_common.stk_cys_ifrs9ajustesadicionales
+PARTITION(partition_date) 
+SELECT dt_periodo dt_cys_periodo 
+	, UPPER(TRIM(ds_portfolio_ifrs9)) ds_cys_portfolioifrs9
+	, UPPER(TRIM(ds_segmento_control)) ds_cys_segmentocontrol
+	, fc_draw_balance fc_cys_drawbalance
+	, fc_undraw_balance fc_cys_undrawbalance
+	, fc_ead fc_cys_ead
+	, fc_provision_in_balance_amount fc_cys_provisioninbalanceamount
+	, fc_provision_out_balance_amount fc_cys_provisionoutbalanceamount
+	, fc_provision	fc_cys_provision
+	, int_stagefinal int_cys_stagefinal
+	, fc_rof fc_cys_rof
+	, fc_insolvencias_rof fc_cys_insolvenciasrof
+	, fc_nuevo_rof fc_cys_nuevorof 
+	, IF(TRIM(ds_origen) = '""', NULL, TRIM(ds_origen)) ds_cys_origen
+	, TRIM(ds_rubro_cargabal_in_provision) ds_cys_rubrocargabalinprovision
+	, TRIM(ds_rubro_cargabal_out_provision) ds_cys_rubrocargabaloutprovision
+	, last_day(to_date(CONCAT(SUBSTRING(dt_periodo,1, 4),'-',SUBSTRING(dt_periodo,5, 2),'-01'))) partition_date
+FROM bi_corp_risk.ifrs_ajustes_adicionales ;
+
+------------------------------------------------------------------------------------
+
+SELECT DISTINCT partition_date FROM bi_corp_common.stk_cys_ifrs9ajustesadicionales ;
+
+------------------------------------------------------------------------------------
+
+-- bi_corp_risk.ifrs_ajustes_adicionales_por_nup
+
+DESCRIBE bi_corp_risk.ifrs_ajustes_adicionales_por_nup ;
+
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.stk_cys_ifrs9ajustesadicionalesnup (
+	dt_cys_periodo	string ,
+	ds_cys_portfolioifrs9	string ,
+	ds_cys_nombrecliente string ,
+	cod_per_nup bigint ,
+	ds_cys_segmentocontrol	string ,
+	fc_cys_drawbalance	decimal(38,15) ,
+	fc_cys_undrawbalance	decimal(38,15) ,
+	fc_cys_ead	decimal(38,15) ,
+	fc_cys_provisioninbalanceamount	decimal(38,15) ,
+	fc_cys_provisionoutbalanceamount decimal(38,15) ,
+	fc_cys_provision decimal(38,15) ,
+	int_cys_stagefinal int ,
+	fc_cys_rof	decimal(38,15) ,
+	fc_cys_insolvenciasrof	decimal(38,15) ,
+	fc_cys_nuevorof	decimal(38,15) ,
+	ds_cys_origen string ,
+	ds_cys_rubrocargabalinprovision string ,
+	ds_cys_rubrocargabaloutprovision string )
+PARTITIONED BY(partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '/santander/bi-corp/common/cys/stk_cys_ifrs9ajustesadicionalesnup'
+
+
+set mapred.job.queue.name=root.dataeng;
+set hive.exec.dynamic.partition.mode=nonstrict;
+
+INSERT OVERWRITE TABLE bi_corp_common.stk_cys_ifrs9ajustesadicionalesnup
+PARTITION(partition_date) 
+SELECT dt_periodo dt_cys_periodo 
+	, UPPER(TRIM(ds_portfolio_ifrs9)) ds_cys_portfolioifrs9
+	, UPPER(TRIM(ds_nombre_cliente)) ds_cys_nombrecliente
+	, CAST(cod_nup AS bigint) cod_per_nup
+	, UPPER(TRIM(ds_segmento_control)) ds_cys_segmentocontrol
+	, fc_draw_balance fc_cys_drawbalance
+	, fc_undraw_balance fc_cys_undrawbalance
+	, fc_ead fc_cys_ead
+	, fc_provision_in_balance_amount fc_cys_provisioninbalanceamount
+	, fc_provision_out_balance_amount fc_cys_provisionoutbalanceamount
+	, fc_provision	fc_cys_provision
+	, int_stagefinal int_cys_stagefinal
+	, fc_rof fc_cys_rof
+	, fc_insolvencias_rof fc_cys_insolvenciasrof
+	, fc_nuevo_rof fc_cys_nuevorof 
+	, IF(TRIM(ds_origen) = '""', NULL, TRIM(ds_origen)) ds_cys_origen
+	, TRIM(ds_rubro_cargabal_in_provision) ds_cys_rubrocargabalinprovision
+	, TRIM(ds_rubro_cargabal_out_provision) ds_cys_rubrocargabaloutprovision
+	, last_day(to_date(CONCAT(SUBSTRING(dt_periodo,1, 4),'-',SUBSTRING(dt_periodo,5, 2),'-01'))) partition_date
+FROM bi_corp_risk.ifrs_ajustes_adicionales_por_nup ;
+
+------------------------------------------------------------------------------------
+
+SELECT DISTINCT partition_date FROM bi_corp_common.stk_cys_ifrs9ajustesadicionales ;
+
+SELECT DISTINCT partition_date FROM bi_corp_common.stk_cys_ifrs9ajustesadicionalesnup ;
+
+
+
+------------------------------------------------------------------------------------

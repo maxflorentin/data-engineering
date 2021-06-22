@@ -1,0 +1,171 @@
+{
+    "file": "clientes_schema",
+    "createTable": "bi_corp_staging.rio5_clientes",
+    "location": "/santander/bi-corp/landing/rio5/fact/clientes/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio5/fact/clientes",
+    "tempDirectory": "/santander/bi-corp/temp/rio5",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "periodo",
+            "type": "string"
+        },
+        {
+            "name": "nro_ejecucion",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "deuda_total",
+            "type": "string"
+        },
+        {
+            "name": "banca",
+            "type": "string"
+        },
+        {
+            "name": "division",
+            "type": "string"
+        },
+        {
+            "name": "team_leader",
+            "type": "string"
+        },
+        {
+            "name": "ejec_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "gerente",
+            "type": "string"
+        },
+        {
+            "name": "jefe_area",
+            "type": "string"
+        },
+        {
+            "name": "sector",
+            "type": "string"
+        },
+        {
+            "name": "tipo_documento",
+            "type": "string"
+        },
+        {
+            "name": "nro_documento",
+            "type": "string"
+        },
+        {
+            "name": "denominacion",
+            "type": "string"
+        },
+        {
+            "name": "act_ppal",
+            "type": "string"
+        },
+        {
+            "name": "act_ppal_siscen",
+            "type": "string"
+        },
+        {
+            "name": "sexo",
+            "type": "string"
+        },
+        {
+            "name": "tipo_persona",
+            "type": "string"
+        },
+        {
+            "name": "tipo_cliente",
+            "type": "string"
+        },
+        {
+            "name": "grupo_economico",
+            "type": "string"
+        },
+        {
+            "name": "marca_castigo",
+            "type": "string"
+        },
+        {
+            "name": "marca_abandonado",
+            "type": "string"
+        },
+        {
+            "name": "marca_refinanciacion",
+            "type": "string"
+        },
+        {
+            "name": "marca_cli_pref",
+            "type": "string"
+        },
+        {
+            "name": "marca_sin_gar",
+            "type": "string"
+        },
+        {
+            "name": "clasif_objetiva",
+            "type": "string"
+        },
+        {
+            "name": "clasif_subjetiva",
+            "type": "string"
+        },
+        {
+            "name": "clasif_discrepancia",
+            "type": "string"
+        },
+        {
+            "name": "clasif_idt",
+            "type": "string"
+        },
+        {
+            "name": "clasif_idt_eventual",
+            "type": "string"
+        },
+        {
+            "name": "clasif_efd",
+            "type": "string"
+        },
+        {
+            "name": "clasif_efd_sin_disc",
+            "type": "string"
+        },
+        {
+            "name": "prev_total",
+            "type": "string"
+        },
+        {
+            "name": "prev_total_sin_disc",
+            "type": "string"
+        },
+        {
+            "name": "imp_incremen_prev",
+            "type": "string"
+        },
+        {
+            "name": "tip_doc_orig",
+            "type": "string"
+        },
+        {
+            "name": "cod_mipyme",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

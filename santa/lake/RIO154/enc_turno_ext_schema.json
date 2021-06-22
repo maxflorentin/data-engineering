@@ -1,0 +1,47 @@
+{
+    "file": "enc_turno_ext_schema",
+    "createTable": "bi_corp_staging.rio154_enc_turno_ext",
+    "location": "/santander/bi-corp/landing/rio154/fact/enc_turno_ext/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/fact/enc_turno_ext",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_turno",
+            "type": "string"
+        },
+        {
+            "name": "id_canal",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "notificacion",
+            "type": "string"
+        },
+        {
+            "name": "ejecutivo_rol",
+            "type": "string"
+        },
+        {
+            "name": "comentario_cliente",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

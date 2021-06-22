@@ -1,0 +1,65 @@
+{#
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+#}
+{% extends "airflow/dag.html" %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+<script>
+    function confirmCustomTriggerDag(dag_id){
+        if (confirm("Are you sure you want to run '"+ dag_id +"' now?")) {
+            document.getElementById("triggerTask").submit();
+        } else {
+        }
+        return false;
+    }
+</script>
+<h2>{{ title }}</h2>
+<br>
+<h4>{{ subtitle }}</h4>
+{% if input %}
+    <table class="table">
+        {% for k, v in input.items() %}
+            {% if not v %}
+                <tr>
+                    <th style="white-space: nowrap; width: 10em">{{ k }}</th>
+                    <td><input class="form-control" form="triggerTask" id="{{ k }}_parameter" name="{{ k }}" placeholder="{{ k }} parameter" spellcheck="false"/></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th style="white-space: nowrap; width: 10em">{{ k }}</th>
+                    <td><input class="form-control" form="triggerTask" id="{{ k }}_parameter" name="{{ k }}" placeholder="{{ v }}" spellcheck="false"/></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table >
+{% else %}
+<p>No input parameters</p>
+{% endif %}
+<br>
+
+<form action="{{ url_for('airflow.trigger', dag_id=dag.dag_id, origin=url_for('airflow.tree', dag_id=dag.dag_id)) }}" method="post" id="triggerTask">
+    <input name="csrf_token" type="hidden" value="{{ csrf_token() }}">
+    <input name="{{ name }}" type="hidden" value="{{ val }}">
+    <input class="btn btn-primary" type="button" onclick="confirmCustomTriggerDag('{{ dag.dag_id }}')" value="Run!">
+</form>
+
+{% endblock %}

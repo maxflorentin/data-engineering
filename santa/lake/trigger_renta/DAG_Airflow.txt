@@ -1,0 +1,38 @@
+# File Name: check-when-db1-sql-task-is-done
+
+from airflow import DAG
+from airflow.operators import TriggerDagRunOperator
+from airflow.operators import SqlSensor
+from datetime import datetime
+
+
+default_args = {
+        'owner': 'airflow',
+        'retry_delay': timedelta(minutes=5),
+}
+
+dag = DAG('check-when-db1-sql-task-is-done',
+        description='Check-when-DB1-SQL-task-is-done',
+        default_args=default_args,
+        schedule_interval='@once',
+        start_date=datetime.now(),
+        )
+
+# returns-0-or-1-based-on-job-task-status
+sqlsensor = SqlSensor (
+        task_id='sql-sensor',
+        poke_interval=30,
+        timeout=3200,
+        sql="""select last_run_outcome from msdb.dbo.sysjobsteps where job_id = '249A5A5D-6AFC-4D6B-8CB1-27C16724A450' and step_id = '1' and last_run_date = (select convert(varchar(24),getdate(),112)); """,    
+        mssql_conn_id='db1',
+        dag=dag,
+        )
+
+# dag-to-start
+trigger = TriggerDagRunOperator (
+        task_id='start-ssh-job',
+        trigger_dag_id="qa-knime-ssh-task",
+        python_callable=conditionally_trigger,
+        params={'condition_param': True,
+                'message': 'Hello World'},
+        dag=dag)

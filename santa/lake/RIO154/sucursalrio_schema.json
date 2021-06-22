@@ -1,0 +1,87 @@
+{
+    "file": "sucursalrio_schema",
+    "createTable": "bi_corp_staging.rio154_sucursalrio",
+    "location": "/santander/bi-corp/landing/rio154/dim/sucursalrio/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/dim/sucursalrio",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "codigo",
+            "type": "string"
+        },
+        {
+            "name": "descri",
+            "type": "string"
+        },
+        {
+            "name": "telefono",
+            "type": "string"
+        },
+        {
+            "name": "domicilio",
+            "type": "string"
+        },
+        {
+            "name": "localidad",
+            "type": "string"
+        },
+        {
+            "name": "postal",
+            "type": "string"
+        },
+        {
+            "name": "vendedores",
+            "type": "string"
+        },
+        {
+            "name": "sellos",
+            "type": "string"
+        },
+        {
+            "name": "respfondos",
+            "type": "string"
+        },
+        {
+            "name": "sugerida",
+            "type": "string"
+        },
+        {
+            "name": "visible_crm",
+            "type": "string"
+        },
+        {
+            "name": "zona",
+            "type": "string"
+        },
+        {
+            "name": "provincia",
+            "type": "string"
+        },
+        {
+            "name": "codlocalidad",
+            "type": "string"
+        },
+        {
+            "name": "activo",
+            "type": "string"
+        },
+        {
+            "name": "atencion_rapida",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

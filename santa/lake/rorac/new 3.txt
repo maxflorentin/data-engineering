@@ -1,0 +1,70 @@
+SELECT RE.cod_ren_contrato
+	, RE.cod_ren_cliente_rorac
+	, RE.cod_ren_contrato_rorac
+	, RE.cod_ren_pers_ods
+	, RE.cod_ren_contenido
+	, RE.cod_ren_area_negocio
+	, RE.cod_ren_producto_niv_3
+	, RE.dt_ren_altacontrato 
+	, RE.dt_ren_vencontraton 
+	, RE.cod_ren_entidad_espana 
+	, RE.cod_ren_centro_cont --cod_ren_centrocont
+	, IF(SUBSTRING(RE.cod_ren_contrato,11,4) = '', NULL, SUBSTRING(RE.cod_ren_contrato,11,4)) cod_ren_subprodu
+	, RE.cod_ren_gestor_prod 
+	, IF(RE.cod_ren_gestor = 'null', NULL, RE.cod_ren_gestor) cod_ren_gestor 
+	, RE.cod_ren_cta_resultados_niv_9
+	, RE.cod_ren_cta_resultados_niv_8
+	, IF(RE.cod_ren_vincula = 'null', 0, RE.cod_ren_vincula) cod_ren_vincula
+	, RE.cod_ren_divisa --cod_ren_divisa_mis
+	, RE.ds_per_nombre_apellido --ds_ren_nombrecliente
+	, IF(RE.cod_per_tipopersona = 'null', 'F', RE.cod_per_tipopersona) cod_per_tipopersona
+	, RE.cod_ren_origen_inf --ds_ren_intragrupo 
+	, CONCAT(TRIM(RE.cod_ren_tipo_ajuste),TRIM(RE.cod_ren_origen_inf)) cod_ren_internegocio 
+	, RE.cod_ren_producto_gest --cod_productogest 
+	, RE.cod_ren_segmento_gest --cod_segmentogest 
+	, RE.cod_ren_producto_generic --cod_producto_operacional 
+	, RE.dt_ren_reestruccontrato 
+	, ROW_NUMBER() OVER(PARTITION BY SUBSTRING(RE.cod_ren_contrato, 1, 26)) int_ren_ordercontrato
+	----------------------------
+	, SUM(COALESCE(RE.fc_ren_resultado_total_ml, 0)) fc_ren_resultado_total_ml
+	, SUM(COALESCE(RE.fc_ren_saldo_medio_ml, 0)) fc_ren_saldo_medio_ml
+	, SUM(COALESCE(RE.fc_ren_sdo_med_cap_ml, 0)) fc_ren_sdo_med_cap_ml
+	, SUM(COALESCE(RE.fc_ren_sdo_med_int_ml, 0)) fc_ren_sdo_med_int_ml
+	, SUM(COALESCE(RE.fc_ren_sdo_med_reajuste_ml, 0)) fc_ren_sdo_med_reajuste_ml
+	, SUM(COALESCE(RE.fc_ren_sdo_med_insolv_ml, 0)) fc_ren_sdo_med_insolv_ml
+	, SUM(COALESCE(RE.fc_ren_ing_per_ml, 0)) fc_ren_ing_per_ml
+	, SUM(COALESCE(RE.fc_ren_ing_cap_ml, 0)) fc_ren_ing_cap_ml
+	, SUM(COALESCE(RE.fc_ren_resultado_total_real_ml, 0)) fc_ren_resultado_total_real_ml
+	, RE.partition_date 
+FROM bi_corp_common.bt_ren_result RE, cto_contenido_a CA 
+WHERE RE.partition_date = '2020-10-31'
+	AND RE.cod_ren_contrato = CA.cod_ren_contrato
+	AND RE.cod_ren_contenido = CA.cod_ren_contenido
+	AND RE.cod_ren_contrato_rorac = CA.cod_ren_contrato_rorac
+GROUP RE.cod_ren_contrato
+	, RE.cod_ren_cliente_rorac
+	, RE.cod_ren_contrato_rorac
+	, RE.cod_ren_pers_ods
+	, RE.cod_ren_contenido
+	, RE.cod_ren_area_negocio
+	, RE.cod_ren_producto_niv_3
+	, RE.dt_ren_altacontrato 
+	, RE.dt_ren_vencontraton 
+	, RE.cod_ren_entidad_espana 
+	, RE.cod_ren_centro_cont --cod_ren_centrocont
+	, IF(SUBSTRING(RE.cod_ren_contrato,11,4) = '', NULL, SUBSTRING(RE.cod_ren_contrato,11,4)) --cod_ren_subprodu
+	, RE.cod_ren_gestor_prod 
+	, IF(RE.cod_ren_gestor = 'null', NULL, RE.cod_ren_gestor) --cod_ren_gestor 
+	, RE.cod_ren_cta_resultados_niv_9
+	, RE.cod_ren_cta_resultados_niv_8
+	, IF(RE.cod_ren_vincula = 'null', 0, RE.cod_ren_vincula) --cod_ren_vincula
+	, RE.cod_ren_divisa --cod_ren_divisa_mis
+	, RE.ds_per_nombre_apellido --ds_ren_nombrecliente
+	, IF(RE.cod_per_tipopersona = 'null', 'F', RE.cod_per_tipopersona) --cod_per_tipopersona
+	, RE.cod_ren_origen_inf --ds_ren_intragrupo 
+	, CONCAT(TRIM(RE.cod_ren_tipo_ajuste),TRIM(RE.cod_ren_origen_inf)) --cod_ren_internegocio 
+	, RE.cod_ren_producto_gest --cod_productogest 
+	, RE.cod_ren_segmento_gest --cod_segmentogest 
+	, RE.cod_ren_producto_generic --cod_producto_operacional 
+	, RE.dt_ren_reestruccontrato 
+	, RE.partition_date	;
