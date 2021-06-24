@@ -1,0 +1,128 @@
+{
+    "file": "casuisticas",
+    "location": "/santander/bi-corp/landing/csm/dim/casuisticas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/dim/casuisticas",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_casuisticas",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+      {
+        "name": "id_casuistica",
+        "type": "string"
+      },
+      {
+        "name": "desc_casuistica",
+        "type": "string"
+      },
+      {
+        "name": "id_tipo_gestion",
+        "type": "string"
+      },
+      {
+        "name": "id_tipologia",
+        "type": "string"
+      },
+      {
+        "name": "cant_meses_primer_reclamo",
+        "type": "string"
+      },
+      {
+        "name": "cant_dias_resolucion",
+        "type": "string"
+      },
+      {
+        "name": "tipo_producto",
+        "type": "string"
+      },
+      {
+        "name": "id_sector_soporte",
+        "type": "string"
+      },
+      {
+        "name": "habilitado",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_alta",
+        "type": "string"
+      },
+      {
+        "name": "fecha_alta",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_modif",
+        "type": "string"
+      },
+      {
+        "name": "fecha_modif",
+        "type": "string"
+      },
+      {
+        "name": "texto_mail_casuistica",
+        "type": "string"
+      },
+      {
+        "name": "ind_interes_comp",
+        "type": "string"
+      },
+      {
+        "name": "fecha_baja",
+        "type": "string"
+      },
+      {
+        "name": "ind_solo_activas",
+        "type": "string"
+      },
+      {
+        "name": "dias_warning_bcra",
+        "type": "string"
+      },
+      {
+        "name": "id_state",
+        "type": "string"
+      },
+      {
+        "name": "sinonimos",
+        "type": "string"
+      },
+      {
+        "name": "nombre_atajos",
+        "type": "string"
+      },
+      {
+        "name": "desc_atajos",
+        "type": "string"
+      },
+      {
+        "name": "secciones",
+        "type": "string"
+      },
+      {
+        "name": "monto_desde_sucu",
+        "type": "string"
+      },
+      {
+        "name": "monto_desde_zona",
+        "type": "string"
+      },
+      {
+        "name": "cant_tope_mes",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+      {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+      }
+    ]
+  }
+  

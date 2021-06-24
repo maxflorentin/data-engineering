@@ -1,0 +1,101 @@
+name: LOAD_STG_ACNL801-Daily
+description: 'Load data from ACNL801 Movimientos Daily'
+owner: BI-Corp
+active: true
+start_date: '2019-01-01'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: STAGING_ACNL801D_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ACNL801D_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acnl/fact/acnl801d/acnl801_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ACNL801-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['acnl801_schema.json']
+  - name: STAGING_ADDE805_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ADDE805_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/adde/fact/adde805/adde805_schema.json', '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/adde/fact/adde805/acnl801.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ACNL801-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: [ 'adde805_schema.json' ]
+  - name: STAGING_ABAE546_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE546_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae546/abae546_schema.json', '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae546/acnl801.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ACNL801-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: [ 'abae546_schema.json' ]
+  - name: STAGING_ABAE547_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE5487_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae547/abae547_schema.json', '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae547/acnl801.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ACNL801-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: [ 'abae547_schema.json' ]
+  - name: STAGING_ABAE549_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE549_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae549/abae549_schema.json', '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae549/acnl801.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ACNL801-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: [ 'abae549_schema.json' ]
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maflorentin@santandertecnologia.com.ar]

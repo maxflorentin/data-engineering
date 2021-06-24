@@ -1,0 +1,711 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307993"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "arce_warce004",
+      "title": "Tabla Documentos De Pago ",
+      "schema": "bi_corp_staging",
+      "source": "APRP",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla Documentos De Pago ",
+      "columns": [
+        {
+          "name": "WARCE004_IDE_PGO          ",
+          "title": "WARCE004_IDE_PGO          ",
+          "description": "Identificación del Pago",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 19.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_FORM_PGO     ",
+          "title": "WARCE004_COD_FORM_PGO     ",
+          "description": "Forma de pago",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_MONE         ",
+          "title": "WARCE004_COD_MONE         ",
+          "description": "Código de la moneda del instrumento",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_INSTR        ",
+          "title": "WARCE004_NRO_INSTR        ",
+          "description": "Número de instrumento",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 31.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_EMPR         ",
+          "title": "WARCE004_NRO_EMPR         ",
+          "description": "Nro. de Empresa",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_NRO_DIG_EMPR     ",
+          "title": "WARCE004_NRO_DIG_EMPR     ",
+          "description": "Dígito asociado al Nro. de Empresa",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_NRO_PROD         ",
+          "title": "WARCE004_NRO_PROD         ",
+          "description": "Nro. de Producto",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_NRO_INSTAN       ",
+          "title": "WARCE004_NRO_INSTAN       ",
+          "description": "Nro. de Instancia",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 2.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_NRO_CLTE         ",
+          "title": "WARCE004_NRO_CLTE         ",
+          "description": "Nro. de Cliente",
+          "type": "CHAR   ",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 22.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_FEC_ACRED        ",
+          "title": "WARCE004_FEC_ACRED        ",
+          "description": "Fecha de Acreditación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IMP              ",
+          "title": "WARCE004_IMP              ",
+          "description": "Importe",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 2.0,
+          "nullable": false,
+          "length": 15.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_ACRED_OLD    ",
+          "title": "WARCE004_FEC_ACRED_OLD    ",
+          "description": "Fecha de Acreditacion Anterior",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IMP_OLD          ",
+          "title": "WARCE004_IMP_OLD          ",
+          "description": "Importe Anterior",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 2.0,
+          "nullable": false,
+          "length": 15.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_ACRED        ",
+          "title": "WARCE004_MAR_ACRED        ",
+          "description": "Estado de la acreditación",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_APLIC        ",
+          "title": "WARCE004_COD_APLIC        ",
+          "description": "Codigo de Aplicación que origina el rechazo",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_MOT_RECHAZO  ",
+          "title": "WARCE004_COD_MOT_RECHAZO  ",
+          "description": "Motivo de rechazo",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_SEC_MOVIM    ",
+          "title": "WARCE004_NRO_SEC_MOVIM    ",
+          "description": "Código de secuencia del movimiento",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_MOVIM        ",
+          "title": "WARCE004_FEC_MOVIM        ",
+          "description": "Fecha de Movimiento",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_VTO_CPD      ",
+          "title": "WARCE004_FEC_VTO_CPD      ",
+          "description": "Fecha de Vencimiento del CPD",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_CAN_DIA_DIFE     ",
+          "title": "WARCE004_CAN_DIA_DIFE     ",
+          "description": "Cantidad de días de diferimiento",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_NO_A_LA_ORDEN",
+          "title": "WARCE004_COD_NO_A_LA_ORDEN",
+          "description": "Código de la leyenda a imprimir en el cheque",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_CONFIRMING   ",
+          "title": "WARCE004_MAR_CONFIRMING   ",
+          "description": "Marca que indica si el instrumento se puede negociar",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_FLOAT        ",
+          "title": "WARCE004_MAR_FLOAT        ",
+          "description": "Marca que indica si opera con Float",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_EST_INSTR    ",
+          "title": "WARCE004_COD_EST_INSTR    ",
+          "description": "Estado del instrumento",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_EMISION_CALC ",
+          "title": "WARCE004_FEC_EMISION_CALC ",
+          "description": "Fecha en que debe emitirse el instrumento (Emision menos delivery)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_SOLI_IMPRE   ",
+          "title": "WARCE004_MAR_SOLI_IMPRE   ",
+          "description": "Marca que indica si fue solicitada la impresión anticipadamente",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_EMISION      ",
+          "title": "WARCE004_FEC_EMISION      ",
+          "description": "Fecha de emisión informada por la empresa",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_CUADRE       ",
+          "title": "WARCE004_MAR_CUADRE       ",
+          "description": "Marca de cuadre",
+          "type": "CHAR   ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_CUADRE      ",
+          "title": "WARCE004_FEC_CUADRE      ",
+          "description": "Fecha de cuardre",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_EMISION        ",
+          "title": "WARCE004_NRO_EMISION        ",
+          "description": "Numero de emisión ",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_SUC_DIST       ",
+          "title": "WARCE004_NRO_SUC_DIST       ",
+          "description": "Número de sucursal de distribución",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_TPO_DIST           ",
+          "title": "WARCE004_TPO_DIST           ",
+          "description": "Tipo de distribución",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_EMPR_DIST      ",
+          "title": "WARCE004_NRO_EMPR_DIST      ",
+          "description": "Número de empresa de distribución",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_ALTA_ENVIO     ",
+          "title": "WARCE004_FEC_ALTA_ENVIO     ",
+          "description": "Fecha de alta del envío",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_ENVIO          ",
+          "title": "WARCE004_NRO_ENVIO          ",
+          "description": "Número de Envío",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_TOPE_PROCESAM  ",
+          "title": "WARCE004_FEC_TOPE_PROCESAM  ",
+          "description": "Fecha Tope de espera de novedades del instrumento",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_CUIT_CLTE      ",
+          "title": "WARCE004_NRO_CUIT_CLTE      ",
+          "description": "Número de cuit del cliente",
+          "type": "DECIMAL ",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_NOM_CLTE           ",
+          "title": "WARCE004_NOM_CLTE           ",
+          "description": "Nombre del cliente",
+          "type": "CHAR    ",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 30.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WARCE004_FEC_DEB            ",
+          "title": "WARCE004_FEC_DEB            ",
+          "description": "Fecha de realizado el debito en la cuenta de la empresa",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_EST_DEB        ",
+          "title": "WARCE004_COD_EST_DEB        ",
+          "description": "Estado del débito",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_SOLI_RESCATE   ",
+          "title": "WARCE004_MAR_SOLI_RESCATE   ",
+          "description": "Marca que indica si se solicitó el rescate del instrumento",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_GEST_RESC_BAJ  ",
+          "title": "WARCE004_FEC_GEST_RESC_BAJ  ",
+          "description": "Fecha de gestión del rescate",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IDE_CTA_DEB_CRED   ",
+          "title": "WARCE004_IDE_CTA_DEB_CRED   ",
+          "description": "Identificación de la cuenta de débito/ credito",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 31.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IMP_COTIZ_DL_VEND  ",
+          "title": "WARCE004_IMP_COTIZ_DL_VEND  ",
+          "description": "Cotización del dólar vendedor",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 2.0,
+          "nullable": false,
+          "length": 15.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IMP_COTIZ_DL_COMP  ",
+          "title": "WARCE004_IMP_COTIZ_DL_COMP  ",
+          "description": "Cotización del dólar comprador",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 2.0,
+          "nullable": false,
+          "length": 15.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_NEGOCIADO      ",
+          "title": "WARCE004_MAR_NEGOCIADO      ",
+          "description": "Marca que indica si fue negociado el instrumento",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_VTO_EMISION    ",
+          "title": "WARCE004_FEC_VTO_EMISION    ",
+          "description": "Fecha tope de espera para que se entregue el instrumento al beneficiario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NOM_EMPR_CHEQ      ",
+          "title": "WARCE004_NOM_EMPR_CHEQ      ",
+          "description": "Nombre de la empresa a imprimir en el cheque",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 30.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_INH_SOLI_IMPRE ",
+          "title": "WARCE004_MAR_INH_SOLI_IMPRE ",
+          "description": "Marca que inhibe la solicitud de impresión anticipada",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_INTERFACE      ",
+          "title": "WARCE004_MAR_INTERFACE      ",
+          "description": "Marca que indica si se generó alguna interface a otro aplicativo",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_INTERFACE      ",
+          "title": "WARCE004_FEC_INTERFACE      ",
+          "description": "Fecha de interface",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_EST_REND       ",
+          "title": "WARCE004_COD_EST_REND       ",
+          "description": "Código de estado de la rendición",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IDE_USER_ALTA      ",
+          "title": "WARCE004_IDE_USER_ALTA      ",
+          "description": "Usuario de Alta",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IDE_TERM_ALTA      ",
+          "title": "WARCE004_IDE_TERM_ALTA      ",
+          "description": "Terminal desde donde se dio de alta",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_HRA_ULT_MODF   ",
+          "title": "WARCE004_FEC_HRA_ULT_MODF   ",
+          "description": "Fecha y Hora de última modificación",
+          "type": "TIMESTMP",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 26.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IDE_USER_ULT_MODF  ",
+          "title": "WARCE004_IDE_USER_ULT_MODF  ",
+          "description": "Usuario última modificación",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_IDE_TERM_ULT_MODF  ",
+          "title": "WARCE004_IDE_TERM_ULT_MODF  ",
+          "description": "Terminal última modificación",
+          "type": "CHAR    ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NRO_SUC_ORIG_MOVIM ",
+          "title": "WARCE004_NRO_SUC_ORIG_MOVIM ",
+          "description": "Sucursal de origen del movimiento",
+          "type": "DECIMAL ",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_MAR_ACRED_INTE ",
+          "title": "WARCE004_MAR_ACRED_INTE ",
+          "description": "Marca de acreditación utilizada por los movimientos diferidos",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_NOM_BENF_CHEQ  ",
+          "title": "WARCE004_NOM_BENF_CHEQ  ",
+          "description": "Nombre del beneficiario a imprimir en el cheque",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 60.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_FEC_EST_INSTR  ",
+          "title": "WARCE004_FEC_EST_INSTR  ",
+          "description": "Fecha estado del instrumento",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WARCE004_COD_MOT_REND ",
+          "title": "WARCE004_COD_MOT_REND ",
+          "description": "Código motivo rendido",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

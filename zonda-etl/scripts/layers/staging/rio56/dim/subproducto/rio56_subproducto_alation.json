@@ -1,0 +1,119 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_subproducto",
+            "title": "Contiene los datos del subproducto (segmentacion del circuito)",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "N",
+            "description": "Contiene los datos del subproducto (segmentacion del circuito)",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBPROD",
+                    "title": "COD_SUBPROD",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_SUBPROD",
+                    "title": "DESC_SUBPROD",
+                    "description": "Descripcion del la informacion del Registro",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 80.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "EST_SUBPROD",
+                    "title": "EST_SUBPROD",
+                    "description": "Estado del registro ( Activo o Inactivo ) ",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_ALT_SUBPROD",
+                    "title": "USER_ALT_SUBPROD",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_ALT_SUBPROD",
+                    "title": "FEC_ALT_SUBPROD",
+                    "description": "Fecha de Alta del registro / DATA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_MODF_SUBPROD",
+                    "title": "USER_MODF_SUBPROD",
+                    "description": "Legajo del usuario que efectuo la Modificacion de la DATA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_MODF_SUBPROD",
+                    "title": "FEC_MODF_SUBPROD",
+                    "description": "Fecha de Modificacion del registro",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

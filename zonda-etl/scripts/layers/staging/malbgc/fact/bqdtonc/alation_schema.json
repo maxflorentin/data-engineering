@@ -1,0 +1,480 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A204202"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bqdtonc",
+            "title": "TABLA DE ORDENES DE NO PAGO DE CHEQUES",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "query": "",
+            "type": "FACT",
+            "description": "TABLA DE ORDENES DE NO PAGO DE CHEQUES",
+            "columns": [
+                {
+                    "name": "onc_entidad",
+                    "title": "onc_entidad",
+                    "description": "CLAVE DE ENTIDAD SEGUN BANCO DE ESPA#A",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_centro_alta",
+                    "title": "onc_centro_alta",
+                    "description": "CENTRO DE ALTA DE LA CUENTA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_cuenta",
+                    "title": "onc_cuenta",
+                    "description": "CLAVE DE LA CUENTA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_num_cheque",
+                    "title": "onc_num_cheque",
+                    "description": "NUMERO DE CHEQUE",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_secuencia",
+                    "title": "onc_secuencia",
+                    "description": "SECUENCIA DE LA ONP DEL CHEQUE",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_cont_onp",
+                    "title": "onc_cont_onp",
+                    "description": "NUMERO DE ORDEN DE LA ONP DONDE SE INCLUYO EL CHEQUE",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_cod_periodico",
+                    "title": "onc_cod_periodico",
+                    "description": "CODIGO DEL PERIODICO DONDE SE PUBLICA LA ONP ",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_motivo",
+                    "title": "onc_motivo",
+                    "description": "MOTIVO DE LA ONP 0: MOTIVO EN BLANCO 1: FIRMA FALSIFICADA 2: DOCUMENTO ALTERAD 3: DOCUMENTO EXTRAVI 4: HURTO DOCUMENTO 5: ROBO 6: FALLECIDO ",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_observaciones",
+                    "title": "onc_observaciones",
+                    "description": "GLOSA PARA EL MOTIVO EN BLANCO",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_denunciante",
+                    "title": "onc_denunciante",
+                    "description": "DENUNCIANTE DE LA ONP B: BENEFICIARIO T: TITULAR",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_nombre_benef",
+                    "title": "onc_nombre_benef",
+                    "description": "NOMBRE DEL BENEFICIARIO",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_tipo_id_denun",
+                    "title": "onc_tipo_id_denun",
+                    "description": "TIPO DE IDEN. DEL DENUNCIANTE",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_id_denun",
+                    "title": "onc_id_denun",
+                    "description": "IDENTIFICACION DEL DENUNCIANTE",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_fecha_alta",
+                    "title": "onc_fecha_alta",
+                    "description": "FECHA DE ALTA DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_hora_alta",
+                    "title": "onc_hora_alta",
+                    "description": "HORA  DE ALTA DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_usuario_alta",
+                    "title": "onc_usuario_alta",
+                    "description": "USUARIO QUE DA DE ALTA LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_importe",
+                    "title": "onc_importe",
+                    "description": "IMPORTE",
+                    "type": "NUMERIC",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_divisa",
+                    "title": "onc_divisa",
+                    "description": "DIVISA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_estado",
+                    "title": "onc_estado",
+                    "description": "ESTADO DE LA ONP E: ELIMINADA T: DENUNCIA TELEFONICA PROD: SIN DOCUMENTACION RESPAP: DENUNCIA POLICIAL J: DENUNCIA JUDICIAL K: DENUNCIA PROVISORA JUD. L: SIN DOC. RESPALDAT. CO SM: DENUN. POLICIAL CON SECN: DENUN. JUDICIAL CON SECT: PENDIENTE DE CONFIRMAR C: CONFIRMADA B: DENUNCIA BANCARIA CON ENTREGA DE CHEQUERA S: DENUNCIA BANCARIA SIN ENTREGA DE CHEQUERA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_ind_public",
+                    "title": "onc_ind_public",
+                    "description": "INDICA SI LA ONP HA SIDO PUBLICADA A TRAVES DEL SERVICIO QUE OFRECE EL BANCO",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_ind_baja_aut",
+                    "title": "onc_ind_baja_aut",
+                    "description": "INDICA SI LA ONP HA SIDO ELIMINADA AUTOMATICAMENTE AL NO SER CONFIRMADA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_baja",
+                    "title": "onc_baja",
+                    "description": "PERSONA QUE SOLICITA LA BAJA MANUAL DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_tipo_id_baja",
+                    "title": "onc_tipo_id_baja",
+                    "description": "TIPO DE IENTIFICACION DE LA PERSONA QUE SOLICITA LA BAJA MANUAL",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_id_baja",
+                    "title": "onc_id_baja",
+                    "description": "IDENT. DE LA PERSONA QUE SOLICITA LA BAJA",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_fecha_baja",
+                    "title": "onc_fecha_baja",
+                    "description": "FECHA DE BAJA DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_hora_baja",
+                    "title": "onc_hora_baja",
+                    "description": "HORA  DE BAJA DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_usuario_baja",
+                    "title": "onc_usuario_baja",
+                    "description": "USUARIO QUE DA DE BAJA LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_tipo_id_conf",
+                    "title": "onc_tipo_id_conf",
+                    "description": "TIPO DE IENTIFICACION DE LA PERSONA QUE SOLICITA LA CONFIRMACION",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_id_conf",
+                    "title": "onc_id_conf",
+                    "description": "IDENT. DE LA PERSONA QUE SOLICITA LA CONFIR. ",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_fecha_confirm",
+                    "title": "onc_fecha_confirm",
+                    "description": "FECHA DE CONFIRMACION DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_hora_confirm",
+                    "title": "onc_hora_confirm",
+                    "description": "HORA DE CONFIRMACION DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_usuario_confir",
+                    "title": "onc_usuario_confir",
+                    "description": "USUARIO DE CONFIRMACION DE LA ONP",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_entidad_umo",
+                    "title": "onc_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_centro_umo",
+                    "title": "onc_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_userid_umo",
+                    "title": "onc_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_netname_umo",
+                    "title": "onc_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_timest_umo",
+                    "title": "onc_timest_umo",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACION",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 26.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_entidad_ogl",
+                    "title": "onc_entidad_ogl",
+                    "description": "ENTIDAD ORIGINAL QUE GENERO LA ORDEN DE NO PAGO DE CHEQUE",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_centro_ogl",
+                    "title": "onc_centro_ogl",
+                    "description": "CENTRO ORIGINAL QUE GENERO LA ORDEN DE NO PAGO DE CHEQUE",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_cuenta_ogl",
+                    "title": "onc_cuenta_ogl",
+                    "description": "CUENTA ORIGINAL QUE GENERO LA ORDEN DE NO PAGO DE CHEQUE",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "onc_divisa_ogl",
+                    "title": "onc_divisa_ogl",
+                    "description": "DIVISA ORIGINAL QUE GENERO LA ORDEN DE NO PAGO DE CHEQUE",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NO APLICA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

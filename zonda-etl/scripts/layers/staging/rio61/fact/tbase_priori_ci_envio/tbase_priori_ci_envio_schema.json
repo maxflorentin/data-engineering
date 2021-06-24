@@ -1,0 +1,37 @@
+{
+	"file": "priori_ci_envio",
+	"location": "/santander/bi-corp/landing/rio61/fact/priori_ci_envio/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/priori_ci_envio",
+	"createTable": "bi_corp_staging.rio61_priori_ci_envio",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "legajo",
+			"type": "string"
+		},
+		{
+			"name": "evento",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

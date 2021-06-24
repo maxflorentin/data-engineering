@@ -1,0 +1,47 @@
+{
+    "name": "Cheques-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Acal-Daily",
+                    "tasks": ["STAGING_TCalif_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_Pacha-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALZX-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Acle-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_ECHEQ-Tables-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALZY-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Garra_WAGUCDEX-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"DOWNLOAD_BCRA_CHEQUES-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Cheques"
+                }
+    ]
+}

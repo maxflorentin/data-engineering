@@ -1,0 +1,82 @@
+name: LOAD_CMN_Mov_Cuentas
+description: 'Load Accounts Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '0 9 * * *'
+start_date: '2019-01-01'
+end_date: '2019-11-30'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_staging.malpe_pedt008, bi_corp_staging.malpe_pedt042, bi_corp_staging.tcdtgen, bi_corp_staging.malbgc_bgdtrpp, bi_corp_staging.garra_wagucdex, bi_corp_staging.bgdtcoo, bi_corp_staging.malbgc_bgdtacu, bi_corp_staging.exa_dim_productos, bi_corp_common.stk_cue_paquetes_upgrade, bi_corp_staging.risksql5_productos, bi_corp_staging.bgdtaux, bi_corp_staging.bgdtmae, bi_corp_staging.malbgc_bgdtmco
+tasks:
+  - name: bt_cue_movimientos_cuenta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/cuentas/bt_cue_movimientos_cuenta/ETLV-Load_Common_Table_repro.hql'
+  - name: bt_cue_movimientos_genuinos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/cuentas/bt_cue_movimientos_genuinos/ETLV-Load_Common_Table_repro.hql'      
+  - name: SHERIFF_Control_bt_cue_movimientos_cuenta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_cue_movimientos_cuenta
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/cuentas/bt_cue_movimientos_cuenta/bt_cue_movimientos_cuenta_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Mov_Cuentas') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_cue_movimientos_cuenta_sheriff.json']
+  - name: SHERIFF_Control_bt_cue_movimientos_genuinos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_cue_movimientos_genuinos
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/cuentas/bt_cue_movimientos_genuinos/bt_cue_movimientos_genuinos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Mov_Cuentas') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_cue_movimientos_genuinos_sheriff.json']      
+dependencies:
+  bt_cue_movimientos_cuenta: SHERIFF_Control_bt_cue_movimientos_cuenta
+  SHERIFF_Control_bt_cue_movimientos_cuenta: bt_cue_movimientos_genuinos
+  bt_cue_movimientos_genuinos: SHERIFF_Control_bt_cue_movimientos_genuinos
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

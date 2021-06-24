@@ -1,0 +1,149 @@
+{
+  "file":"ptmo_preacordado_schema",
+  "location":"/santander/bi-corp/landing/acal/fact/ptmo_preacordado/partition_date=${partition_date_filter}",
+  "destination":"/santander/bi-corp/staging/acal/fact/ptmo_preacordado",
+  "createTable": "bi_corp_staging.acal_ptmo_preacordado",
+  "extension":"txt",
+  "header":false,
+  "fixed":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [{
+    "name": "nup",
+    "type": "string",
+    "width": 8
+  },
+    {
+      "name": "cod_rechazo",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "mot_rechazo",
+      "type": "string",
+      "width": 30
+    },
+    {
+      "name": "tipo_doc",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "nro_doc",
+      "type": "string",
+      "width": 11
+    },
+    {
+      "name": "apellido",
+      "type": "string",
+      "width": 20
+    },
+    {
+      "name": "nombre",
+      "type": "string",
+      "width": 40
+    },
+    {
+      "name": "cod_producto",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "cod_subprodu",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "linea_pes",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "linea_dol",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "linea_disp_pes",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "linea_disp_dol",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "cuota_pes",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "cuota_dol",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "dom_calle",
+      "type": "string",
+      "width": 30
+    },
+    {
+      "name": "dom_numero",
+      "type": "string",
+      "width": 5
+    },
+    {
+      "name": "dom_localidad",
+      "type": "string",
+      "width": 30
+    },
+    {
+      "name": "dom_patent",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "dom_cod_post",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "dom_manzana",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "dom_cod_prov",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "dom_cod_pais",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "tel_prefij",
+      "type": "string",
+      "width": 7
+    },
+    {
+      "name": "tel_carcat",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "rel_numero",
+      "type": "string",
+      "width": 8
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

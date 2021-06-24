@@ -1,0 +1,414 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A279014"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio53_tplan_sueldo_ctas_dia",
+            "title": "Transaccionalidad de Acreditaciones",
+            "schema": "bi_corp_staging",
+            "source": "OFSA40",
+            "query": "",
+            "type": "FACT",
+            "description": "Transaccionalidad de Acreditaciones",
+            "columns": [
+                {
+                    "name": "ENT_EMPLEADO",
+                    "title": "ENTIDAD_EMPLEADO",
+                    "description": "Entidad bancaria del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_EMPLEADO",
+                    "title": "SUCURSAL_EMPLEADO",
+                    "description": "Sucursal contrato del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_EMPLEADO",
+                    "title": "NRO_CUENTA_EMPLEADO",
+                    "description": "Número de cuenta del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIV_EMPLEADO",
+                    "title": "DIVISA_EMPLEADO",
+                    "description": "Divisa de la cuenta empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENT_EMPLEADOR",
+                    "title": "ENTIDAD_EMPLEADOR",
+                    "description": "Entidad bancaria de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_EMPLEADOR",
+                    "title": "SUCURSAL_EMPLEADOR",
+                    "description": "Sucursal contrato de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_EMPLEADOR",
+                    "title": "CUENTA_EMPLEADOR",
+                    "description": "Número de cuenta de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIV_EMPLEADOR",
+                    "title": "DIVISA_EMPLEADOR",
+                    "description": "Divisa de la cuenta de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUIT_EMPLEADOR",
+                    "title": "CUIT_EMPLEADOR",
+                    "description": "CUIT de la empresa\n",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "IMPORTE",
+                    "title": "IMPORTE",
+                    "description": "Importe de la transacción",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "CON SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 14.2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PROGRAMA",
+                    "title": "PROGRAMA",
+                    "description": "Programa que informa la transacción",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SISTEMA",
+                    "title": "SISTEMA",
+                    "description": "Sistema que informa la transacción",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CONVENIO",
+                    "title": "CODIGO_CONVENIO",
+                    "description": "Código de convenio de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CBU_EMPLEADOR",
+                    "title": "CBU_EMPLEADOR",
+                    "description": "CBU de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUIL_EMPLEADO",
+                    "title": "CUIL_EMPLEADO",
+                    "description": "CUIL del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "TIPO_CUENTA",
+                    "title": "TIPO_CUENTA",
+                    "description": "Tipo de cuenta",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_PROC",
+                    "title": "TIPO_PROC",
+                    "description": "Tipo de proceso",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUP_EMPLEADO",
+                    "title": "NUP_EMPLEADO",
+                    "description": "NUP del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUP_EMPLEADOR",
+                    "title": "NUP_EMPLEADOR",
+                    "description": "NUP de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NOM_MPLEADO",
+                    "title": "NOMBRE_EMPLEADO",
+                    "description": "Nombre del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "NOM_MPLEADOR",
+                    "title": "NOMBRE_EMPLEADOR",
+                    "description": "Razon social de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FECHA_ACREDITACION",
+                    "title": "FECHA_ACREDITACION",
+                    "description": "YYYY-MM-DD",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUSCRIPTOR",
+                    "title": "SUSCRIPTOR",
+                    "description": "Código de suscriptor de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA_CTA_EMPLEADO",
+                    "title": "FECHA_ALTA_CTA_EMPLEADO",
+                    "description": "YYYY-MM-DD",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_ADM",
+                    "title": "SUCURSAL_ADMINISTRADORA",
+                    "description": "Sucursal administradora de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SEGMENTO",
+                    "title": "SEGMENTO",
+                    "description": "Segmento de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_EMPRESA",
+                    "title": "ID_EMPRESA",
+                    "description": "Id de la empresa en PAS",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "EMPRESA_PYRIP",
+                    "title": "EMPRESA_PYRIP",
+                    "description": "ID de la empresa en Pyrip",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUADRANTE",
+                    "title": "CUADRANTE",
+                    "description": "Cuadrante de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_PROCESO",
+                    "title": "FECHA_PROCESO",
+                    "description": "Fecha de proceso de la información",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CARGA",
+                    "title": "FECHA_CARGA",
+                    "description": "Fecha de carga de la tabla",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_ACRED",
+                    "title": "TIPO_ACREDITACION",
+                    "description": "Tipo de acreditacion que representa la transaccion",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGEN",
+                    "title": "ORIGEN",
+                    "description": "Origen de la transaccion",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_FISICA_EMPLEADO",
+                    "title": "SUCURSAL_FISICA_EMPLEADO",
+                    "description": "Sucursal fisica de la cuenta del empleado",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_FISICA_EMPLEADOR",
+                    "title": "SUCURSAL_FISICA_EMPLEADOR",
+                    "description": "Sucursal fisica de la cuenta de la empresa",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+           ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

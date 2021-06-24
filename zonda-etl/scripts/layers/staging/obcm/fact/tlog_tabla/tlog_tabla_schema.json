@@ -1,0 +1,66 @@
+{
+  "file": "tlog_tabla_schema",
+  "location": "/santander/bi-corp/landing/obcm/fact/tlog_tabla/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/obcm/fact/tlog_tabla/",
+  "createTable": "bi_corp_staging.obcm_tlog_tabla",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "columns": [{
+    "name": "ide_empresa",
+    "type": "string"
+  },
+    {
+      "name": "ide_usuario",
+      "type": "string"
+    },
+    {
+      "name": "ide_transaccion",
+      "type": "string"
+    },
+    {
+      "name": "nom_operacion",
+      "type": "string"
+    },
+    {
+      "name": "nom_producto",
+      "type": "string"
+    },
+    {
+      "name": "nom_req_frontend",
+      "type": "string"
+    },
+    {
+      "name": "cod_estado_trn",
+      "type": "string"
+    },
+    {
+      "name": "tim_ini_trn",
+      "type": "string"
+    },{
+      "name": "tim_fin_trn",
+      "type": "string"
+    },
+    {
+      "name": "mon_transaccion",
+      "type": "string"
+    },
+    {
+      "name": "nro_nup_empresa",
+      "type": "string"
+    },{
+      "name": "nro_nup_individuo",
+      "type": "string"
+    }
+  ],
+    "extraColumns": [{
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+
+}

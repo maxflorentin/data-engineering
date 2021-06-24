@@ -1,0 +1,117 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A288378"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "scoring_omdm_scoring",
+            "title": "Tabla referente a los scores internos resultantes de las solicitudes procesadas por el motor de admision (OMDM).",
+            "schema": "bi_corp_staging",
+            "source": "OMDM_SCORING",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla referente a los scores internos resultantes de las solicitudes procesadas por el motor de admision (OMDM).",
+            "columns": [
+                {
+                    "name": "COD_INQY (OMDM_SCORING)",
+                    "title": "COD_INQY (OMDM_SCORING)",
+                    "description": "Codigo de identificacion de la solicitud procesada.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_SEC_SCORING (OMDM_SCORING)",
+                    "title": "NRO_SEC_SCORING (OMDM_SCORING)",
+                    "description": "Numero de secuencia de score interno usado en el procesamiento de solicitudes.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_SCORECARD (OMDM_SCORING)",
+                    "title": "NRO_SCORECARD (OMDM_SCORING)",
+                    "description": "Nombre de score interno usado en el procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_FINAL_SCORE (OMDM_SCORING)",
+                    "title": "COD_FINAL_SCORE (OMDM_SCORING)",
+                    "description": "Valor del score interno usado en el procesamiento de solicitudes",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SCORE_RECOMEND (OMDM_SCORING)",
+                    "title": "COD_SCORE_RECOMEND (OMDM_SCORING)",
+                    "description": "Decision final resultante del procesamiento de la solicitud.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_CORTE_FINAL (OMDM_SCORING)",
+                    "title": "VAL_CORTE_FINAL (OMDM_SCORING)",
+                    "description": "Valor final del corte interno asociado al procesamiento de las solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_CORTE_MAX (OMDM_SCORING)",
+                    "title": "VAL_CORTE_MAX (OMDM_SCORING)",
+                    "description": "Valor maximo del corte interno asociado al procesamiento de las solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_PROCESO",
+                    "title": "FEC_PROCESO",
+                    "description": "Fecha de Proceso",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

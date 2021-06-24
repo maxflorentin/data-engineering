@@ -1,0 +1,20 @@
+{
+  "file": "lactm00_stock",
+  "createTable": "bi_corp_staging.banktrade_lactm00",
+  "location": "/santander/bi-corp/landing/banktrade/fact/lactm00/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/banktrade/fact/lactm00/",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "lactm00.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

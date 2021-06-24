@@ -1,0 +1,42 @@
+{
+  "file": "push_registry_schema",
+  "location": "/santander/bi-corp/landing/rio163/fact/push_registry/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio163/fact/push_registry",
+  "tempDirectory": "/santander/bi-corp/temp/rio163",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id",
+    "type": "string"
+  },
+    {
+      "name": "operation_date",
+      "type": "string"
+    },
+    {
+      "name": "device_id",
+      "type": "string"
+    },
+    {
+      "name": "notification_id",
+      "type": "string"
+    },
+    {
+      "name": "state",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

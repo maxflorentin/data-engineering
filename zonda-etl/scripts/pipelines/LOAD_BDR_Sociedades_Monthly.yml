@@ -1,0 +1,98 @@
+name: LOAD_BDR_Sociedades_Monthly
+description: 'LOAD Sociedades'
+owner: BI-Corp
+active: true
+start_date: '2020-09-06'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: BDR_Balance
+    operator: SparkSubmitOperator
+    config:
+      name: BDR_Balance
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/balance/exp_no_contr_balance_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Sociedades_Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['exp_no_contr_balance_schema.json']
+  - name: BDR_Pr_Ajuste
+    operator: SparkSubmitOperator
+    config:
+      name: BDR_Pr_Ajuste
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/pr_ajuste/exp_no_contr_pr_ajuste_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Sociedades_Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['exp_no_contr_pr_ajuste_schema.json']      
+  - name: BDR_Sd_Ajuste
+    operator: SparkSubmitOperator
+    config:
+      name: BDR_Sd_Ajuste
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/sd_ajuste/exp_no_contr_sd_ajuste_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Sociedades_Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['exp_no_contr_sd_ajuste_schema.json']         
+  - name: Repair_Table_Balance   
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/balance/ETLV-Repair-partitions-Table.hql'
+  - name: Repair_Table_Pr_ajuste   
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/pr_ajuste/ETLV-Repair-partitions-Table.hql'
+  - name: Repair_Table_Sd_ajuste   
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/exp_no_contr/sd_ajuste/ETLV-Repair-partitions-Table.hql'                
+dependencies:
+  BDR_Balance: Repair_Table_Balance      
+  BDR_Pr_Ajuste: Repair_Table_Pr_ajuste 
+  BDR_Sd_Ajuste: Repair_Table_Sd_ajuste      
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar]

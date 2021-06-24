@@ -1,0 +1,154 @@
+{
+    "file": "comprobante",
+    "location": "/santander/bi-corp/landing/pap/fact/comprobante/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/pap/fact/comprobante",
+    "createTable": "bi_corp_staging.pap_comprobante",
+    "extension": "csv",
+    "delimiter": "\t",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+{
+            "name": "id_compania",
+            "type": "string"
+        },
+{
+            "name": "compania_nombre",
+            "type": "string"
+        },
+{
+            "name": "nif_proveedor",
+            "type": "string"
+        },
+{
+            "name": "proveedor_nombre",
+            "type": "string"
+        },
+{
+            "name": "tipo_comprobante",
+            "type": "string"
+        },
+{
+            "name": "tipo_comprobante_nombre",
+            "type": "string"
+        },
+{
+            "name": "punto_venta",
+            "type": "string"
+        },
+{
+            "name": "numero_comprobante",
+            "type": "string"
+        },
+{
+            "name": "emision_dt",
+            "type": "string"
+        },
+{
+            "name": "vencimiento_dt",
+            "type": "string"
+        },
+{
+            "name": "moneda",
+            "type": "string"
+        },
+{
+            "name": "moneda_nombre",
+            "type": "string"
+        },
+{
+            "name": "tipo_cambio",
+            "type": "string"
+        },
+{
+            "name": "importe_gravado",
+            "type": "string"
+        },
+{
+            "name": "importe_exento",
+            "type": "string"
+        },
+{
+            "name": "importe_iva",
+            "type": "string"
+        },
+{
+            "name": "importe_otros_impuestos",
+            "type": "string"
+        },
+{
+            "name": "importe_total",
+            "type": "string"
+        },
+{
+            "name": "orden_compra",
+            "type": "string"
+        },
+{
+            "name": "orden_pago",
+            "type": "string"
+        },
+{
+            "name": "tipo_rechazo",
+            "type": "string"
+        },
+{
+            "name": "rechazo_motivo",
+            "type": "string"
+        },
+{
+            "name": "rubro",
+            "type": "string"
+        },
+{
+            "name": "rubro_nombre",
+            "type": "string"
+        },
+{
+            "name": "centro_costo",
+            "type": "string"
+        },
+{
+            "name": "centro_costo_nombre",
+            "type": "string"
+        },
+{
+            "name": "jurisdiccion",
+            "type": "string"
+        },
+{
+            "name": "anticipo",
+            "type": "string"
+        },
+{
+            "name": "distribucion",
+            "type": "string"
+        },
+{
+            "name": "sistema_erp_externo",
+            "type": "string"
+        },
+{
+            "name": "comprobante_id_externo",
+            "type": "string"
+        },
+{
+            "name": "estado",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

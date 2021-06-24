@@ -1,0 +1,59 @@
+{
+    "name": "Prestamos-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_MALPE_POST_BATCH-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALUG-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Garra_WAGUCDEX-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_GARRA_Updates-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id": "LOAD_STG_GARRA_Updates_Log_Cuotaphone-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id": "LOAD_STG_Garra_Normalizacion-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id": "LOAD_STG_GARANTIAS-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Contratos-Daily",
+                    "tasks": ["STAGING_BGDTMAE_AddPartition"]
+                },
+                {
+                    "dag_id":"LOAD_BDR_Rosetta_Risk_tables",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_RiskAlmacen_Mora-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_CMN_CyS",
+                    "tasks": "COMMON_LoadTable_stk_cys_solicitudcontrato"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_PRESTAMOS-Daily"
+                }
+    ]
+}

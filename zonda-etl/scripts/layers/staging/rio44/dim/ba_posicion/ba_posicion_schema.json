@@ -1,0 +1,71 @@
+{
+    "file": "ba_posicion_schema",
+    "createTable": "bi_corp_staging.rio44_ba_posicion",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_posicion/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_posicion",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_posicion",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "id_empresa",
+            "type": "string"
+        },
+        {
+            "name": "activo",
+            "type": "string"
+        },
+        {
+            "name": "posicion_tipo_id",
+            "type": "string"
+        },
+        {
+            "name": "posicion_sub_tipo_id",
+            "type": "string"
+        },
+        {
+            "name": "numero_id",
+            "type": "string"
+        },
+        {
+            "name": "numero_id_cont",
+            "type": "string"
+        },
+        {
+            "name": "origen",
+            "type": "string"
+        },
+        {
+            "name": "mail",
+            "type": "string"
+        },
+        {
+            "name": "gavetas_rotas",
+            "type": "string"
+        },
+        {
+            "name": "co",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

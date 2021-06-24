@@ -1,0 +1,31 @@
+{
+  "file": "v_precio_custodia_schema",
+  "location": "/santander/bi-corp/landing/gsa/fact/v_precio_custodia/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/gsa/fact/v_precio_custodia",
+  "tempDirectory": "/santander/bi-corp/temp/gsa",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "secid",
+    "type": "string"
+  },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "precio",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

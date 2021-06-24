@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.bt_suc_direccionador",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["dt_suc_fecha_atencion","cod_suc_sucursal", "cod_suc_ticket"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_suc_ticket", "ts_suc_proceso", "ts_suc_ingreso", "ts_suc_llamado", "ts_suc_finatencion"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_suc_fecha_atencion"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

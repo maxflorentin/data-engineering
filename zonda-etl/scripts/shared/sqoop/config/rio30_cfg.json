@@ -1,0 +1,22 @@
+{
+    "tables": [
+        {
+            "serverConfig": "dblxorafront05",
+            "database": "cnl01",
+            "table": "TRANSACCIONES",
+            "table_type": "dim",
+            "environment": "rio30",
+            "landing_path": "/santander/bi-corp/landing/rio30/dim/transacciones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"TX_ID,DESCRIPCION,AGRUP_PRODUCTO,GRUPO,ITACA,SVC_COORDINADOR,CATEGORIA,GRUPO_PLANTILLA,TIPO_DERIV,IND_AUTOMATIZ\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/{service}/{table} --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverConfig": "dblxorafront05",
+            "database": "cnl01",
+            "table": "AGRUPAMIENTO",
+            "table_type": "dim",
+            "environment": "rio30",
+            "landing_path": "/santander/bi-corp/landing/rio30/dim/agrupamiento",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"COD_SECTOR,CANAL_ID,TX_ID,ENTE_ID,COD_GRUPO,INFORMA_MARCA,FECHA_INFORMA\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/{service}/{table} --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        }
+    ]
+}

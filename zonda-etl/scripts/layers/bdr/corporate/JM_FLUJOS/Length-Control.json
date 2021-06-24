@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(concat(r9746_feoperac, r9746_s1emp, lpad(r9746_contra1, 9, '0'), r9746_fecmvto, r9746_clasmvto, r9746_importe, r9746_salonbal)) as longitud, concat(r9746_feoperac, r9746_s1emp, lpad(r9746_contra1, 9, '0'), r9746_fecmvto, r9746_clasmvto, r9746_importe, r9746_salonbal) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_flujos r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_FLUJOS' where partition_date = '$month_partition_bdr' and length(concat(r9746_feoperac, r9746_s1emp, lpad(r9746_contra1, 9, '0'), r9746_fecmvto, r9746_clasmvto, r9746_importe, r9746_salonbal)) != cast(d.longitud as int)"
+    ]
+}

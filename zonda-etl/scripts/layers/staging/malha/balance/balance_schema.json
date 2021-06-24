@@ -1,0 +1,99 @@
+{
+  "file": "balance_schema",
+  "location": "/santander/bi-corp/landing/malha/fact/balance/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malha/fact/balance",
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "createTable": "bi_corp_staging.malha_balance",
+  "cobolTypes": true,
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "columns": [
+     {
+      "name": "FIN-MES",
+      "type": "X(08)"
+    },
+{
+      "name": "FECON",
+      "type": "X(08)"
+    },
+{
+      "name": "NUMCTARE",
+      "type": "X(15)"
+    },
+{
+      "name": "NUCTA",
+      "type": "X(15)"
+    },
+{
+      "name": "CODDIV",
+      "type": "X(03)"
+    },
+{
+      "name": "COEF",
+      "type": "X(02)"
+    },
+{
+      "name": "BANDA",
+      "type": "X(02)"
+    },
+{
+      "name": "SIGNO-SALDO-PESOS",
+      "type": "X(01)"
+    },
+{
+      "name": "SALDO-PESOS",
+      "type": "X(13)V99"
+    },
+{
+      "name": "SIGNO-SALDO-ORIGEN",
+      "type": "X(01)"
+    },
+{
+      "name": "SALDO-ORIGEN",
+      "type": "X(13)V99"
+    },
+{
+      "name": "SIGNO-SALDO-PROM",
+      "type": "X(01)"
+    },
+{
+      "name": "PROMEDIO-PESOS",
+      "type": "X(13)V99"
+    },
+{
+      "name": "SIGNO-SALDO-PORIG",
+      "type": "X(01)"
+    },
+{
+      "name": "PROMEDIO-ORIGEN",
+      "type": "X(13)V99"
+    },
+{
+      "name": "EMPRESA",
+      "type": "X(04)"
+    },
+{
+      "name": "APLIC",
+      "type": "X(04)"
+    },
+{
+      "name": "ZONA",
+      "type": "X(01)"
+    },
+{
+      "name": "CEDESTIN",
+      "type": "9(04)"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

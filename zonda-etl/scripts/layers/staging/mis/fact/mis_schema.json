@@ -1,0 +1,59 @@
+{
+	   "file":"mis_schema",
+	   "location":"/santander/bi-corp/sandbox/bi/mis/mis/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/sandbox/bi/mis/parquet_files/mis/",
+       "createTable": "analytics.pf_mis_historico",
+	   "extension":"csv",
+	   "header":true,
+       "delimiter": ";",
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "penumper",
+                        "type": "string"
+                },
+                {
+                        "name": "fecha",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_margen",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_margen_activo",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_margen_pasivo",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_comisiones",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_rof",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_orex",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_insolv",
+                        "type": "string"
+                },
+                {
+                        "name": "resultado_bai",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

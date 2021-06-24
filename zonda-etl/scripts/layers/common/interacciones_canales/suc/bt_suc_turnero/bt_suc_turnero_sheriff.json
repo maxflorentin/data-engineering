@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_suc_turnero",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_turno", "ds_suc_sector"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_turno"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_suc_fechadesde","ts_suc_fechahasta"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

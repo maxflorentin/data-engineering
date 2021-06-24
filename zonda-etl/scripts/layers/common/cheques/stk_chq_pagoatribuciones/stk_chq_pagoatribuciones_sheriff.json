@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_chq_pagoatribuciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal","cod_chq_motivorechazo"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal","cod_chq_motivorechazo"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["fc_chq_montoacuerdo","fc_chq_montocalificado","fc_chq_importe","fc_chq_saldodeudor","fc_chq_saldodisponible"],
+      "threshold": 0.00
+    }
+  ]
+}

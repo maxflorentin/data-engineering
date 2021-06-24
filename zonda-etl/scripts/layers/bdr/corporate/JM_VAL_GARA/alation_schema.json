@@ -1,0 +1,353 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_val_gara",
+         "title":"Valoracion de Garantias BIS",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contendrá la valoración de todas las garantías reales dadas de alta en la tabla ‘Garantia real’ y adicionalmente un tipo de garantías personales que son los CDS.",
+         "columns":[
+            {
+               "name":"g4134_biengar1",
+               "title":"Identificador de la garantía",
+               "description":"Clave única de identificación de la garantía dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gdtmae",
+                     "column":"gttcmae_mae_cod_entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gdtmae",
+                     "column":"gttcmae_mae_num_garantia"
+                  }
+               ]
+            },
+            {
+               "name":"g4134_coddiv",
+               "title":"Divisa",
+               "description":"Divisa del importe de la garantia",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_fechvalr",
+               "title":"Fecha de Valoración",
+               "description":"Fecha en que se ha realizado la tasación/valoración del bien objeto de la garantía.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtbie",
+                     "column":"gttcbie_bie_fec_alta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdttas",
+                     "column":"gttctas_tas_fec_tasacion"
+                  }
+               ]
+            },
+            {
+               "name":"g4134_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_imgarant",
+               "title":"Importe Garantía",
+               "description":"Importe por el que ha sido valorada la garantía (a valor de mercado, excepto para el caso de inmuebles que se tomará el valor de tasación), contravalorado, si no lo estuviera ya, a moneda local",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_nomenti",
+               "title":"Entidad que valora",
+               "description":"Nombre de la entidad que realiza la tasación del bien en garantía",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4134_tip_gara",
+               "title":"Tipo de garantía",
+               "description":"Indicador de si se trata de una garantía personal o real. el objetivo es incluir las valoraciones de las garantías reales y de las personales personales los cds",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_des_textored"
+                  }
+               ]
+            },
+            {
+               "name":"g4134_tipvaln",
+               "title":"Tipo de Valoración",
+               "description":"Indica el tipo de valoración realizado a la garantía. baremo global (por tasación, valor en escrituras, etc…).",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

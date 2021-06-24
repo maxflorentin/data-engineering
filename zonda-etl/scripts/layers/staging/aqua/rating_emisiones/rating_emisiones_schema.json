@@ -1,0 +1,206 @@
+{
+  "file": "rating_emisiones",
+  "location": "/santander/bi-corp/landing/aqua/rating_emisiones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/aqua/rating_emisiones",
+  "extension": "csv",
+	"delimiter": "|",
+	"header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "createTable": "bi_corp_staging.rating_emisiones",
+  "columns":
+					[
+					   {
+					    "name": "isin",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody_shrt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody_shrt_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_shrt_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_moody_long",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_long_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_long_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_issuer_rating",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_issuer_rating_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_mdy_issuer_rtg_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_sp",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_sp_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_sp_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_long",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_long_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_long_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_shrt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_shrt_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_shrt_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_issuer_rating",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_issuer_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_sp_issuer_eff_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_shrt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_shrt_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_shrt_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_long",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_long_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_long_rating_dt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_issuer_rating",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_issuer_wt",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "rtg_fitch_issuer_eff_dt",
+					    "type": "string"
+					    
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

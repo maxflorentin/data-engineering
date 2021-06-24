@@ -1,0 +1,70 @@
+{
+    "file": "reestructuraciones",
+    "location": "/santander/bi-corp/landing/sql5/fact/reestructuraciones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/sql5/fact/reestructuraciones",
+    "createTable": "bi_corp_staging.risksql5_reestructuraciones",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "nup",
+        "type": "string"
+      },
+      {
+        "name": "sucursal",
+        "type": "string"
+      },
+      {
+        "name": "nro_cuenta",
+        "type": "string"
+      },
+      {
+        "name": "codigo_producto",
+        "type": "string"
+      },
+      {
+        "name": "codigo_subproducto",
+        "type": "string"
+      },
+      {
+        "name": "divisa",
+        "type": "string"
+      },
+      {
+        "name": "clasificacion",
+        "type": "string"
+      },
+      {
+        "name": "fecha_creacion",
+        "type": "string"
+      },
+      {
+        "name": "usuario",
+        "type": "string"
+      },
+      {
+        "name": "fecha_modificacion",
+        "type": "string"
+      },
+      {
+        "name": "usuario_modificacion",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

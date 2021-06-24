@@ -1,0 +1,46 @@
+{
+  "file": "cart_causas_anulacion_recibos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_causas_anulacion_recibos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_causas_anulacion_recibos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cana_cd_causa_anulacion",
+      "type": "string"
+    },
+    {
+      "name":"cana_de_causa_anulacion",
+      "type":"string"
+    },
+    {
+      "name":"cana_in_rp",
+      "type":"string"
+    },
+    {
+      "name":"cana_tp_causa",
+      "type":"string"
+    },
+    {
+      "name":"cana_cd_causa_impr",
+      "type":"string"
+    },
+    {
+      "name":"cana_de_causa_impr",
+      "type":"string"
+    },
+    {
+      "name":"cana_cd_familia",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

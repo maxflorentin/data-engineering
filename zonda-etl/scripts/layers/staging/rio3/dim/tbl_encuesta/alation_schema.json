@@ -1,0 +1,79 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_encuestas",
+      "title": "CABECERA DE ENCUESTA POR PRODUCTO",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "CABECERA DE ENCUESTA POR PRODUCTO",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO",
+          "description": "codigo de la encuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "DESCRI",
+          "title": "DESCRI",
+          "description": "descripcion de la encuesta",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 250.0,
+          "security": "Publico"                },
+        {
+          "name": "ACTIVO",
+          "title": "ACTIVO",
+          "description": "S si encuesta activa, N caso contrario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"                },
+        {
+          "name": "PRODUCTO",
+          "title": "PRODUCTO",
+          "description": "codigo de producto asociado a la encuesta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"                },
+        {
+          "name": "TIPO",
+          "title": "TIPO",
+          "description": "tipo de encuesta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

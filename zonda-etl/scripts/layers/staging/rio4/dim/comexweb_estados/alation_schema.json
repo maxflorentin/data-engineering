@@ -1,0 +1,74 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "rio4_comexweb_estados",
+      "title": "COMEXWEB_ESTADOS",
+      "schema": "bi_corp_staging",
+      "source": "rio4",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio4/fact/comexweb_estados/",
+      "type": "fact",
+      "description": "La tabla contiene las instancias a las que puede pertenecer una operación",
+      "columns":
+               [
+                {
+                  "name": "tipoop",
+                  "title": "TIPOOP",
+                  "description": "Tipo de operación",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 6,
+                  "security": "Público"
+                },
+                {
+                  "name": "bit",
+                  "title": "BIT",
+                  "description": "Instancia que puede tener la operación en SAM según su TIPOOP",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "estado",
+                  "title": "ESTADO",
+                  "description": "Estado en que se encuentra la operación en SAM según su TIPOOP y BIT",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 2,
+                  "security": "Público"
+                },
+                {
+                  "name": "descripcion",
+                  "title": "DESCRIPCION",
+                  "description": "Descripción del estado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

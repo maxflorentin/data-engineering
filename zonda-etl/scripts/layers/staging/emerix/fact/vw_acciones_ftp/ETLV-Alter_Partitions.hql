@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.emerix_acciones ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

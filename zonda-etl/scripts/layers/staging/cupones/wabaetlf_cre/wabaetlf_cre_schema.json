@@ -1,0 +1,15 @@
+{
+	"file": "wabaetlf_cre",
+	"location": "/santander/bi-corp/landing/cupones/wabaetlfcre/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/cupones/wabaetlfcre",
+	"createTable": "bi_corp_staging.abae_wabaetlf_cre",
+	"copybook": "wabaetlf_cre.cob",
+    "threshold": 0.7,
+	"extraColumns": [{
+		"name": "partition_date",
+		"value": "${partition_date_filter}",
+		"type": "string",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

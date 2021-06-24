@@ -1,0 +1,45 @@
+{
+  "file": "morexent",
+  "location": "/santander/bi-corp/landing/bcra/fact/morexent/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/morexent",
+  "createTable": "bi_corp_staging.bcra_morexent",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "fecha_informacion",
+          "type": "string",
+          "width": 6
+        },
+        {
+          "name": "denominacion",
+          "type": "string",
+          "width": 120
+        },
+        {
+          "name": "tipo_identificacion",
+          "type": "string",
+          "width": 2
+        },
+        {
+          "name": "numero_identificacion",
+          "type": "string",
+          "width": 11
+        },
+        {
+          "name": "proceso_judicial",
+          "type": "string",
+          "width": 1
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

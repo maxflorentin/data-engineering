@@ -1,0 +1,62 @@
+{
+	"file": "pendientes_sri_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/pendientes_sri/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/pendientes_sri",
+	"tempDirectory": "/santander/bi-corp/temp/pendientes_sri",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "id",
+			"type": "int"
+		},
+		{
+			"name": "cod_sucursal",
+			"type": "smallint"
+		},
+		{
+			"name": "nro_solicitud",
+			"type": "bigint"
+		},
+		{
+			"name": "cod_legajo",
+			"type": "string"
+		},
+		{
+			"name": "fecha_analisis",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ingreso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_elevacion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_resolucion",
+			"type": "string"
+		},
+		{
+			"name": "tiempo_horas",
+			"type": "int"
+		},
+		{
+			"name": "tiempo_dias",
+			"type": "int"
+		},
+		{
+			"name": "fecha_importacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+		{
+			"name": "cod_usuario",
+			"type": "string"
+		}
+	]
+}

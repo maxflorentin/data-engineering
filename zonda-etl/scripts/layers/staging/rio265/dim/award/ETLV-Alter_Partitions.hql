@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio265_award ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_fr_pagos_productos",
+            "title": "Relación Producto/Frecuencias de pago",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Relación Producto/Frecuencias de pago",
+            "columns": [
+                {
+                    "name": "CAPG_CARP_CD_RAMO",
+                    "title": "CAPG_CARP_CD_RAMO",
+                    "description": "Código de ramo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPG_CAPU_CD_PRODUCTO",
+                    "title": "CAPG_CAPU_CD_PRODUCTO",
+                    "description": "Código de producto",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPG_CAFP_CD_FR_PAGO",
+                    "title": "CAPG_CAFP_CD_FR_PAGO",
+                    "description": "Código de frecuencia de pago",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

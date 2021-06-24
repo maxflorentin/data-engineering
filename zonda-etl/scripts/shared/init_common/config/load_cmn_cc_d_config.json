@@ -1,0 +1,34 @@
+{
+  "name": "CC-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_RIO32-Tables-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_RIO3-Tables-Daily",
+      "tasks": "all"
+    },{
+      "dag_id":"LOAD_STG_MASCHE_RIO226-Tables-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_SLC_RIO75-Tables-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_INFOMART-Daily",
+      "tasks": ["STAGING_AGENTES_SKILL_Parquetize","STAGING_AGENTE_GRUPO_Parquetize","STAGING_DETALLADO_Parquetize"]
+    },
+    {
+      "dag_id":"LOAD_STG_Genesys-Daily",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_CONTACT_CENTER"
+    }
+  ]
+}

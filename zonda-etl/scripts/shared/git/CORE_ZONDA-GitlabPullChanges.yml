@@ -1,0 +1,23 @@
+name: CORE_ZONDA-GitlabPullChanges
+description: 'Get changes from Gitlab repositories'
+owner: BI-Corp
+schedule_interval: '*/5 * * * *'
+active: true
+depends_on_past: False
+wait_for_downstream: False
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: repositories
+    description: 'List of repositories to pull plus branch name (master default), separated by comma (absolute paths)'
+    default: '$ZONDA_DIR/repositories/zonda-etl:$GIT_BRANCH,$ZONDA_DIR/repositories/guyra:$GIT_BRANCH,$ZONDA_DIR/repositories/zonda-etl-ic:$GIT_BRANCH,$ZONDA_DIR/repositories/zonda-etl-risk:$GIT_BRANCH,$ZONDA_DIR/repositories/zonda-etl-cdg:$GIT_BRANCH,$ZONDA_DIR/repositories/zonda-etl-normativos:$GIT_BRANCH'
+tasks:
+  - name: PullChanges
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/git/pull.py {{ ti.xcom_pull(task_ids='InputConfig', key='repositories', dag_id='CORE_ZONDA-GitlabPullChanges') }}"
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

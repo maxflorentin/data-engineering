@@ -1,0 +1,105 @@
+{
+  "file": "detallado_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/detallado/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/detallado",
+  "createTable": "bi_corp_staging.infomart_detallado",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "notify": true,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "intervalo",
+      "type": "string"
+    },
+    {
+      "name": "tipo_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "asunto",
+      "type": "string"
+    },
+    {
+      "name": "last_queue",
+      "type": "string"
+    },
+    {
+      "name": "last_vqueue",
+      "type": "string"
+    },
+    {
+      "name": "from",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "documento",
+      "type": "string"
+    },
+    {
+      "name": "disposition_code",
+      "type": "string"
+    },
+    {
+      "name": "motivo_cierre",
+      "type": "string"
+    },
+    {
+      "name": "inicio_gestion_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "fin_gestion_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "agente",
+      "type": "string"
+    },
+    {
+      "name": "employee_id",
+      "type": "string"
+    },
+    {
+      "name": "interaction_id",
+      "type": "string"
+    },
+    {
+      "name": "fin_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "inicio_interaccion",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

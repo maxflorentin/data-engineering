@@ -1,0 +1,353 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_shipping",
+            "title": "TABLA DE ENVÍOS DE COURIERS-API",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "TABLA DE ENVÍOS DE COURIERS-API",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "id",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHIPPING_ID",
+                    "title": "SHIPPING_ID",
+                    "description": "fk de cp_envios de tracking",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRACKING_ID",
+                    "title": "TRACKING_ID",
+                    "description": "codigo de seguimiento del proveedor de envios",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER",
+                    "title": "COURIER",
+                    "description": "PROVEEDOR DE ENVIOS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRACT",
+                    "title": "CONTRACT",
+                    "description": "CÓDIGO DE CONTRATO",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_FULL_NAME",
+                    "title": "CUSTOMER_FULL_NAME",
+                    "description": "NOMBRE DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto"
+                },
+                {
+                    "name": "CUSTOMER_DOCUMENT_NUMBER",
+                    "title": "CUSTOMER_DOCUMENT_NUMBER",
+                    "description": "DOCUMENTO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_STREET",
+                    "title": "CUSTOMER_ADDRESS_STREET",
+                    "description": "CALLE DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_NUMBER",
+                    "title": "CUSTOMER_ADDRESS_NUMBER",
+                    "description": "NUMERO DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_FLOOR",
+                    "title": "CUSTOMER_ADDRESS_FLOOR",
+                    "description": "PISO DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_DEPARTMENT",
+                    "title": "CUSTOMER_ADDRESS_DEPARTMENT",
+                    "description": "DEPARTAMENTO DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_CITY",
+                    "title": "CUSTOMER_ADDRESS_CITY",
+                    "description": "CIUDAD DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_POSTAL_CODE",
+                    "title": "CUSTOMER_ADDRESS_POSTAL_CODE",
+                    "description": "CÓDIGO POSTAL DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_ADDRESS_PROVINCE",
+                    "title": "CUSTOMER_ADDRESS_PROVINCE",
+                    "description": "PROVINCIA DEL DOMICILIO DEL CLIENTE",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_CODE",
+                    "title": "BRANCH_CODE",
+                    "description": "SUCURSAL",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATION_DATE",
+                    "title": "CREATION_DATE",
+                    "description": "FECHA DE CREACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_UPDATE",
+                    "title": "LAST_UPDATE",
+                    "description": "FECHA DE ACTUALIZACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANCELED",
+                    "title": "CANCELED",
+                    "description": "FLAG DE CANCELADO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

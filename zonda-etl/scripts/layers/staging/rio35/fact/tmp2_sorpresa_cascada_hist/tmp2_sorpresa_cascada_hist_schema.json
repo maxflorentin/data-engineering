@@ -1,0 +1,31 @@
+{
+  "file": "tmp2_sorpresa_cascada_hist_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/tmp2_sorpresa_cascada_hist/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/fact/tmp2_sorpresa_cascada_hist",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "penumper",
+    "type": "string"
+  },
+    {
+      "name": "sorpresa_suscripto",
+      "type": "string"
+    },
+    {
+      "name": "sorpresa_suscriptor",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO147",
+      "table": "TRANSACTION_LOG",
+      "table_type": "fact",
+      "environment": "HBANK",
+      "landing_path": "/santander/bi-corp/landing/rio147/fact/transaction_log",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT FECHA,DOCUMENTO,FECHA_DE_NACIMIENTO,CANAL_ACCESO,TRANSACCION,COD_ERROR,PID,TIPO,PROCESADO,COMPROBANTE,IMPORTE,MONEDA,F_ALTA_REGISTRO,NUP,TIPO_TECLADO,IP,NOM_SERVER,NUM_LOG,CUENTA_ORIGEN,CUENTA_DESTINO,DISPOSITIVO, to_char(FECHA,'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.{table} WHERE  to_char(FECHA,'YYYY-MM-DD')='{partition_date}' AND \\$CONDITIONS\"   --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 6 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO147",
+      "table": "HB_DESC_TRX",
+      "table_type": "dim",
+      "environment": "HBANK",
+      "landing_path": "/santander/bi-corp/landing/rio147/dim/hb_desc_trx",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT TRANSACCION,DESCRIPCION,MODULO,TIPO_TRX  FROM {environment}.{table}  WHERE  \\$CONDITIONS\"   --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO147",
+      "table": "HB_CLIENT_MASTER",
+      "table_type": "fact",
+      "environment": "HBANK",
+      "landing_path": "/santander/bi-corp/landing/rio147/fact/hb_client_master",
+      "split_field": "to_char(FECHA_DE_ALTA_INSCRIPCION, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT DOCUMENTO,FECHA_DE_NACIMIENTO,TIPO_DE_DOCUMENTO,NOMBRE,APELLIDO,FECHA_DE_ALTA_INSCRIPCION,CANAL_VENTA,FECHA_INICIO_USO,SUCURSAL_ORIGEN,FECHA_INICIO_HABIL,F_ALTA_REGISTRO,ACEPTACION_CONTRATO,CANAL_ACTIVACION,FECHA_ACEPTACION_CONTRATO,ACEPTAC_CONTRATO_DDI,NUP,ACEPTAC_CONTRATO_PROG,CPI_FCI_C,CPI_FCI_T,CPI_BON_C,CPI_ACC_C,ACEPTAC_CONTRATO_VIAJ,ACEPTACION_CONTRATO_TAG,FECHA_ACEPTACION_CONTRATO_TAG,ADHESION_BILLETERA_TODOPAGO,ACEPTACION_CONTRATO_EXT_ATM,ECHEQ FROM {environment}.{table}  WHERE  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO147",
+      "table": "HB_CONTROL_SESION",
+      "table_type": "fact",
+      "environment": "HBANK",
+      "landing_path": "/santander/bi-corp/landing/rio147/fact/hb_control_sesion",
+      "split_field": "to_char(F_ALTA_REGISTRO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NUP,TOKEN,F_ALTA_REGISTRO,F_MODIFICACION_REGISTRO FROM {environment}.{table}  WHERE \\$CONDITIONS\"   --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO147",
+      "table": "HB_CREDITOS_PREAPROBADOS_MONO",
+      "table_type": "fact",
+      "environment": "HBANK",
+      "landing_path": "/santander/bi-corp/landing/rio147/fact/hb_creditos_preaprobados_mono",
+      "split_field": "to_char(FECHA_ALTA_REGISTRO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID,NUP,FECHA_INICIO_VIG,FECHA_FIN_VIG,DIVISA,CANT_CUOTAS_MIN,CANT_CUOTAS_MAX,IMPORTE_MIN,IMPORTE_MAX,TIPO_TASA,TNA,CFTA_SIN_IMP,CFTA_CON_IMP,ENTIDAD_UG,PRODUCTO_UG,SUBPRODUCTO_UG,HABILITADO,SOLICITADO,FECHA_ALTA_REGISTRO,to_char(FECHA_ALTA_REGISTRO, 'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE  to_char(FECHA_ALTA_REGISTRO, 'YYYY-MM-DD') ='{partition_date}' AND  \\$CONDITIONS\"   --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 6 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    }
+  ]
+}

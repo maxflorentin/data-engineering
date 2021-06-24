@@ -1,0 +1,52 @@
+{
+    "file": "mlops_aml_scib06",
+    "location": "/santander/bi-corp/landing/advance_analytics/fact/aml_scib06/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/advance_analytics/fact/mlops_aml_scib06",
+    "createTable": "bi_corp_staging.mlops_aml_scib06",
+    "extension": "txt",
+    "header": false,
+	"fixed":true,
+    "parquetFiles": 1,
+    "compression":"gzip",
+    "columns": [
+        {
+            "name": "cod_per_nup",
+            "type": "string",
+			"width": 8
+        },
+        {
+            "name": "fecha_base",
+            "type": "string",
+			"width": 10
+        },
+        {
+            "name": "variable",
+            "type": "string",
+			"width": 50
+        },
+        {
+            "name": "descripcion",
+            "type": "string",
+			"width": 80
+        },
+        {
+            "name": "valor",
+            "type": "string",
+			"width": 50
+        },
+        {
+            "name": "valor_normalizado",
+            "type": "string",
+			"width": 5
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

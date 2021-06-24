@@ -1,0 +1,87 @@
+{
+    "file": "ba_posicion_domicilio_schema",
+    "createTable": "bi_corp_staging.rio44_ba_posicion_domicilio",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_posicion_domicilio/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_posicion_domicilio",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_domicilio",
+            "type": "string"
+        },
+        {
+            "name": "posicion_id",
+            "type": "string"
+        },
+        {
+            "name": "provincia_id",
+            "type": "string"
+        },
+        {
+            "name": "localidad_id",
+            "type": "string"
+        },
+        {
+            "name": "calle",
+            "type": "string"
+        },
+        {
+            "name": "numero",
+            "type": "string"
+        },
+        {
+            "name": "piso",
+            "type": "string"
+        },
+        {
+            "name": "depto",
+            "type": "string"
+        },
+        {
+            "name": "postal",
+            "type": "string"
+        },
+        {
+            "name": "postal_cpa",
+            "type": "string"
+        },
+        {
+            "name": "f_alta",
+            "type": "string"
+        },
+        {
+            "name": "f_baja",
+            "type": "string"
+        },
+        {
+            "name": "u_alta",
+            "type": "string"
+        },
+        {
+            "name": "u_modif",
+            "type": "string"
+        },
+        {
+            "name": "tel",
+            "type": "string"
+        },
+        {
+            "name": "f_mod",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.bt_pre_bajas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_pre_productocierre","cod_pre_subproductocierre","cod_pre_entidad","cod_pre_ugofipre","cod_pre_ofelev","cod_pre_tipotasa","cod_pre_tipproducto","cod_pre_indclaseproducto","cod_pre_destino","dt_pre_fechasolicitud","dt_pre_fechaaprobacion","dt_pre_fechaformalizacion","dt_pre_fechaabono","dt_pre_fechapago","cod_pre_canalventa","dt_pre_fechaproximaliquidacion","dt_pre_fechaultimovencimiento","dt_pre_fechauliq","dt_pre_fechavencimiento","cod_pre_procedencia","cod_pre_situacionprestamo","cod_pre_situaciondeudaobjetiva","cod_pre_modalidadprestamo","dt_pre_fechaprimeracuota","int_pre_plazoinicial","int_pre_plazoreal","cod_pre_plazo","int_pre_diapago","int_pre_diapagoactual","int_pre_numcuota","cod_pre_diasperiodo","flag_pre_reestructuracion","flag_pre_prestamoindexado","cod_pre_numeropropuesta","flag_pre_marcacovid","cod_pre_tipoamortizacion","fc_pre_tasaanualequivalente","fc_pre_tasainteresinicial","fc_pre_tasainteresactual","fc_pre_cantidadcuotaspendientes","fc_pre_capitalsolicitado","fc_pre_lineacreditototal","fc_pre_capitalconcedido","fc_pre_saldocapitalpendfactura","fc_pre_importeinicialtomado","fc_pre_interescompensatorio","fc_pre_montocuota","fc_pre_saldoreal","fc_pre_saldointeres","fc_pre_importeprimeracuota","fc_pre_lineadisponible","fc_pre_importedispuesto","fc_pre_numdividendo","dt_pre_fechaprimerpago"],
+      "threshold": 0.001
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fechasolicitud","dt_pre_fechasit","dt_pre_fechaaprobacion","dt_pre_fechaformalizacion","dt_pre_fechaabono","dt_pre_fechavencprogramado","dt_pre_fechapago","dt_pre_fechaproximaliquidacion","dt_pre_fechaultimovencimiento","dt_pre_fechauliq","dt_pre_fechavencimiento","dt_pre_fechaaltacuenta","dt_pre_fechabajacuenta","dt_pre_fechaultimopago","dt_pre_fechaprimeracuota","dt_pre_fechaprimerpago"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

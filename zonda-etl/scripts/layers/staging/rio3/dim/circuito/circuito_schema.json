@@ -1,0 +1,65 @@
+{
+  "file": "circuito_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/circuito/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/circuito",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+      {
+    "name": "codigo",
+    "type": "string"
+  },
+ {
+    "name": "descri",
+    "type": "string"
+  },
+ {
+    "name": "dias_backoffice",
+    "type": "string"
+  },
+ {
+    "name": "activo",
+    "type": "string"
+  },
+ {
+    "name": "tipo_informe_entrevista",
+    "type": "string"
+  },
+ {
+    "name": "codificacion_oca",
+    "type": "string"
+  },
+ {
+    "name": "pais",
+    "type": "string"
+  },
+ {
+    "name": "tiposolicitud",
+    "type": "string"
+  },
+ {
+    "name": "procesotibco",
+    "type": "string"
+  },
+ {
+    "name": "tipocircuito",
+    "type": "string"
+  },
+ {
+    "name": "reversa",
+    "type": "string"
+  }
+  ],
+ "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+        }]
+}

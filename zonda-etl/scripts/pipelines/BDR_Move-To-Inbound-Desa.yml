@@ -1,0 +1,18 @@
+name: BDR_Move-To-Inbound-Desa
+description: 'Move files to Inbound Desa'
+owner: BI-Corp
+active: true
+start_date: "2020-10-01"
+schedule_interval: '*/30 * * * *'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: move_inbound
+    operator: BashOperator
+    config:
+      command: "python3.6 /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/shared/move_file/move_file_inbound.py
+                --pjson /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/shared/move_file/config/"

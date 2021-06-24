@@ -1,0 +1,196 @@
+{
+  "file": "waape684d_monthly_schema",
+  "location": "/santander/bi-corp/landing/malpe/fact/waape684d/monthly/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malpe/fact/waape684d/monthly",
+  "createTable": "bi_corp_staging.malpe_monthly_waape684d",
+  "cobolTypes": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+      {
+      "name": "PENUMPER",
+      "type": "X(08)"
+    },
+{
+      "name": "TIPDOC",
+      "type": "X(02)"
+    },
+{
+      "name": "DOCUM",
+      "type": "X(11)"
+    },
+{
+      "name": "APEYNOMB",
+      "type": "X(60)"
+    },
+{
+      "name": "PETIPPER",
+      "type": "X(01)"
+    },
+{
+      "name": "PESEGCAL",
+      "type": "X(03)"
+    },
+{
+      "name": "MONT-BAL1",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL1",
+      "type": "9(08)"
+    },
+{
+      "name": "MONT-BAL2",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL2",
+      "type": "9(08)"
+    },
+{
+      "name": "MONT-BAL3",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL3",
+      "type": "9(08)"
+    },
+{
+      "name": "CLANAE10",
+      "type": "X(03)"
+    },
+{
+      "name": "PERESIVA",
+      "type": "X(02)"
+    },
+{
+      "name": "MARCA-SEPYME",
+      "type": "X(01)"
+    },
+{
+      "name": "MARCA-5319",
+      "type": "X(03)"
+    },
+{
+      "name": "COD-MIPYME",
+      "type": "X(02)"
+    },
+{
+      "name": "FECHA-PROC",
+      "type": "X(10)"
+    },
+{
+      "name": "ORIGEN-REG",
+      "type": "X(03)"
+    },
+{
+      "name": "MARCA-BYP",
+      "type": "X(01)"
+    },
+{
+      "name": "MOTIVO-OK",
+      "type": "X(01)"
+    },
+{
+      "name": "TIP-DOC-ADSF",
+      "type": "X(02)"
+    },
+{
+      "name": "FEC-INSC",
+      "type": "X(10)"
+    },
+{
+      "name": "PENUMGRU",
+      "type": "9(08)"
+    },
+{
+      "name": "SECTOR",
+      "type": "X(02)"
+    },
+{
+      "name": "TAM-EMPRE",
+      "type": "X(02)"
+    },
+{
+      "name": "COD-MIPYME-REAL",
+      "type": "X(02)"
+    },
+{
+      "name": "USO-FUTURO",
+      "type": "X(13)"
+    },
+{
+      "name": "PECONPER",
+      "type": "X(03)"
+    },
+{
+      "name": "O-LETRA",
+      "type": "X(01)"
+    },
+{
+      "name": "PECODACT",
+      "type": "X(08)"
+    },
+{
+      "name": "CANTIDAD-BAL",
+      "type": "9"
+    },
+{
+      "name": "VTA-TOT-ANUAL",
+      "type": "S9(13)"
+    },
+{
+      "name": "OBS-REPETIDO",
+      "type": "X(08)"
+    },
+{
+      "name": "OBS-CLANAE",
+      "type": "X(30)"
+    },
+{
+      "name": "OBS-DESTINO",
+      "type": "X(24)"
+    },
+{
+      "name": "TIPO-ERROR",
+      "type": "X(01)"
+    },
+{
+      "name": "TIPO-ACCION",
+      "type": "X(01)"
+    },
+{
+      "name": "FILLER",
+      "type": "X(03)"
+    },
+{
+      "name": "ERR-BAL1",
+      "type": "X(01)"
+    },
+{
+      "name": "ERR-BAL2",
+      "type": "X(01)"
+    },
+{
+      "name": "ERR-BAL3",
+      "type": "X(01)"
+    },
+   {
+      "name": "OBS-BALANCE",
+      "type": "X(38)"
+    },
+    {
+      "name": "DEUDA-TOT-CLI",
+      "type": "9(15)V99"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

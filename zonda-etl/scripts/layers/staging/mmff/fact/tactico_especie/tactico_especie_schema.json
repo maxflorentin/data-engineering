@@ -1,0 +1,86 @@
+{
+  "file": "tactico_especie",
+  "location": "/santander/bi-corp/landing/mmff/fact/tactico_especie/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/mmff/fact/tactico_especie",
+  "createTable": "bi_corp_staging.mmff_tactico_especie",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ";",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "cargabal",
+          "type": "string"
+        },
+        {
+          "name": "bcra",
+          "type": "string"
+        },
+        {
+          "name": "cuenta",
+          "type": "string"
+        },
+        {
+          "name": "especie",
+          "type": "string"
+        },
+        {
+          "name": "suma_nominales",
+          "type": "string"
+        },
+        {
+          "name": "suma_posicion",
+          "type": "string"
+        },
+        {
+          "name": "isin_anexo",
+          "type": "string"
+        },
+        {
+          "name": "fecha_emision",
+          "type": "string"
+        },
+        {
+          "name": "emisor",
+          "type": "string"
+        },
+        {
+          "name": "isin",
+          "type": "string"
+        },
+        {
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "name": "maturity",
+          "type": "string"
+        },
+        {
+          "name": "issuer",
+          "type": "string"
+        },
+        {
+          "name": "instrument",
+          "type": "string"
+        },
+        {
+          "name": "bond_long_rating_sp",
+          "type": "string"
+        },
+        {
+          "name": "bond_long_rating_moodys",
+          "type": "string"
+        }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+name: ARDA_Loader_Tablon_Clientes
+description: 'ARDA_Loader_Tablon_Clientes'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: 'PREVIOUS_WORKING_DAY'
+    operator: PythonOperator
+    config:
+      function_name: 'previous_working_day'
+      function_def: |
+        def previous_working_day(*args, **kwargs):
+              import os
+              #VARIABLE
+              date_file = os.path.join(kwargs.get('path_file'),kwargs.get('file'))
+              ## Read date file
+              with open(date_file, 'r') as datefile:
+                date_p = datefile.read().replace('\n', '')
+              #DECLARE VARIABLE
+              kwargs['ti'].xcom_push(key='date_previous_working_day', value=date_p)
+              return date_p
+      provide_context: true
+      op_kwargs:
+        path_file: "$ZONDA_DIR/outbound/"
+        file: "DATE_PREVIOUS_WORKING_DAY_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ARDA_Loader_Tablon_Clientes') }}.TXT"
+  - name: tablon_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/ARDA_TABLON_CLIENTE_{{ ti.xcom_pull(task_ids='PREVIOUS_WORKING_DAY', key='date_previous_working_day', dag_id='ARDA_Loader_Tablon_Clientes') }}.TXT"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/queries/interfaces/tablon_clientes.hql'
+  - name: tablon_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_arda"
+      local_filepath: "$ZONDA_DIR/outbound/ARDA_TABLON_CLIENTE_{{ ti.xcom_pull(task_ids='PREVIOUS_WORKING_DAY', key='date_previous_working_day', dag_id='ARDA_Loader_Tablon_Clientes') }}.TXT"
+      remote_filepath: "/RIO105/INTERFACE/ARDA_TABLON_CLIENTE_{{ ti.xcom_pull(task_ids='PREVIOUS_WORKING_DAY', key='date_previous_working_day', dag_id='ARDA_Loader_Tablon_Clientes') }}.TXT"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/ARDA_TABLON_CLIENTE_{{ ti.xcom_pull(task_ids='PREVIOUS_WORKING_DAY', key='date_previous_working_day', dag_id='ARDA_Loader_Tablon_Clientes') }}.TXT"
+dependencies:
+  PREVIOUS_WORKING_DAY: tablon_execution
+  tablon_execution: tablon_send_sftp
+  tablon_send_sftp : EXECUTE_Remove_FILE
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [ffarinasgil@santandertecnologia.com.ar]

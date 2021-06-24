@@ -1,0 +1,33 @@
+{
+  "tables": [
+    {
+      "source": "INFOMART",
+      "type": "FACT",
+      "name": "DETALLADO",
+      "filePrefix": "REPORTE_DETALLADO_"
+    },
+    {
+      "source": "INFOMART",
+      "type": "FACT",
+      "name": "LOGIN_LOGOUT",
+      "filePrefix": "REPORTE_LOGIN_LOGOUT_"
+    },
+    {
+      "source": "INFOMART",
+      "type": "FACT",
+      "name": "AGENTES_GRUPO",
+      "filePrefix": "REPORTE_AGENTES_X_GRUPO_"
+    },
+    {
+      "source": "INFOMART",
+      "type": "FACT",
+      "name": "AGENTES_SKILL",
+      "filePrefix": "REPORTE_AGENTES_X_SKILL_"
+    }
+
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_INFOMART-Daily"
+  }
+}

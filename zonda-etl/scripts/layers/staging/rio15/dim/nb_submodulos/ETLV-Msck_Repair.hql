@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio15_nb_submodulos;

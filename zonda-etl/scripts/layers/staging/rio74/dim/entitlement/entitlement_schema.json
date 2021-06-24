@@ -1,0 +1,128 @@
+{
+  "file": "entitlement_schema",
+  "location": "/santander/bi-corp/landing/rio74/dim/entitlement/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/dim/entitlement",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_entitlement",
+    "type": "string"
+  },
+    {
+      "name": "entitlement",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "long_description",
+      "type": "string"
+    },
+    {
+      "name": "label",
+      "type": "string"
+    },
+    {
+      "name": "default_frequency",
+      "type": "string"
+
+    },
+    {
+      "name": "default_timeframe",
+      "type": "string"
+    },
+    {
+      "name": "default_days_to_maturity",
+      "type": "string"
+    },
+    {
+      "name": "id_status",
+      "type": "string"
+    },
+    {
+      "name": "visible",
+      "type": "string"
+    },
+    {
+      "name": "visible_search",
+      "type": "string"
+    },
+    {
+      "name": "description_search",
+      "type": "string"
+    },
+    {
+      "name": "format_input",
+      "type": "string"
+    },
+    {
+      "name": "priority",
+      "type": "string"
+    },
+    {
+      "name": "id_subchannelbank_default",
+      "type": "string"
+    },
+    {
+      "name": "id_channelbank_default",
+      "type": "string"
+    },
+    {
+      "name": "sample_input",
+      "type": "string"
+    },
+    {
+      "name": "id_rule",
+      "type": "string"
+
+    },
+    {
+      "name": "id_provider",
+      "type": "string"
+    },
+    {
+      "name": "ttl",
+      "type": "string"
+    },
+    {
+      "name": "page_show",
+      "type": "string"
+    },
+    {
+      "name": "newsletter",
+      "type": "string"
+    },
+    {
+      "name": "id_filter",
+      "type": "string"
+    },
+    {
+      "name": "tipo_especial",
+      "type": "string"
+    },
+    {
+      "name": "acnl",
+      "type": "string"
+    },
+    {
+      "name": "url",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

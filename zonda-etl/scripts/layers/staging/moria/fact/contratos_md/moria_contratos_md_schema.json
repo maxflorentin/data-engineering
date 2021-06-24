@@ -1,0 +1,21 @@
+{
+  "file": "contratos_md",
+  "location": "/santander/bi-corp/landing/moria/fact/contratos_md/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/moria/fact/moria_contratos_md/",
+  "tempDirectory": "/santander/bi-corp/temp/contratos_md/",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "MDEC1610.cob",
+  "createTable":"bi_corp_staging.moria_contratos_md",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+    "file": "ba_suc_zona_schema",
+    "createTable": "bi_corp_staging.rio44_ba_suc_zona",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_suc_zona/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_suc_zona",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "suc",
+            "type": "string"
+        },
+        {
+            "name": "zona",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

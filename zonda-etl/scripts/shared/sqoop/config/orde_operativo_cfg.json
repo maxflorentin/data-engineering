@@ -1,0 +1,81 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_EVENTO",
+            "table_type": "dim",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/dim/mvw_trk_evento",
+            "partition_field": "ID",
+            "split_field": "ID",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT ID, CODIGO, DESCRIPCION FROM CRM_ORDENADOR.MVW_TRK_EVENTO WHERE id <> 0 AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6 --split-by '{split_field}'  --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_PACHA",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_pacha",
+            "partition_field": "NUMERO_CHEQUE",
+            "split_field": "NUMERO_CHEQUE",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT LEGAJO, SUCURSAL, ID_EVENTO, FECHA, NUMERO_CUENTA, NUMERO_CHEQUE, MOTIVO, TIPO_CAMARA, ESTADO_INICIAL, ESTADO_SIGUIENTE, INFORMACION_ADICIONAL, ROL_USUARIO FROM CRM_ORDENADOR.MVW_TRK_PACHA WHERE to_char(FECHA, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6 --split-by '{split_field}'  --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_USABILIDAD",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_usabilidad",
+            "partition_field": "LEGAJO",
+            "split_field": "LEGAJO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT LEGAJO, SUCURSAL, ID_EVENTO, FECHA, INFORMACION_ADICIONAL, ID, ROL FROM CRM_ORDENADOR.MVW_TRK_USABILIDAD WHERE to_char(FECHA, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6 --split-by '{split_field}'  --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_COLDVIEW",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_coldview",
+            "partition_field": "FECHA",
+            "split_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{environment}.{table}\" --where \"TO_CHAR(FECHA, 'YYYY-MM-DD') = '{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --split-by '{split_field}'  --fields-terminated-by '|' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_PACHACHEQUERAS",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_pachachequeras",
+            "partition_field": "FECHA",
+            "split_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{environment}.{table}\" --where \"TO_CHAR(FECHA, 'YYYY-MM-DD') = '{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --num-mappers 1 --split-by '{split_field}' --fields-terminated-by '|' --password '{password}' --delete-target-dir --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_PRIORIDAD",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_prioridad",
+            "partition_field": "FECHA",
+            "split_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{environment}.{table}\" --where \"TO_CHAR(FECHA, 'YYYY-MM-DD') = '{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --num-mappers 1 --split-by '{split_field}'  --fields-terminated-by '|' --password '{password}' --delete-target-dir --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront09.ar.bsch",
+            "database": "rio226",
+            "table": "MVW_TRK_SIGNSYS",
+            "table_type": "fact",
+            "environment": "CRM_ORDENADOR",
+            "landing_path": "/santander/bi-corp/landing/rio226/fact/mvw_trk_signsys",
+            "partition_field": "FECHA",
+            "split_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --bindir '{zonda_dir}/sqoop/{environment}/{table}' --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{environment}.{table}\" --where \"TO_CHAR(FECHA, 'YYYY-MM-DD') = '{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --num-mappers 1 --split-by '{split_field}' --fields-terminated-by '|' --password '{password}' --delete-target-dir  --verbose\n"
+      }
+  ]
+}

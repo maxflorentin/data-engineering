@@ -1,0 +1,40 @@
+name: AA_Update-Tableau-Extracts
+description: 'Update Tableau Analytics Extracts'
+owner: BI-Corp
+active: true
+schedule_interval: '*/30 * * * *'
+start_date: '2020-09-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: UPDATE_Tableau_Extract_prod_dmm_metrica_general
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/447e2c8a-c000-4a25-9f90-7f13eeccd370/refresh'
+  - name: UPDATE_Tableau_Extract_prod_dmm_metrica_puntos_corte
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/d6374b8f-8099-48ee-85a2-b18e5701bf7c/refresh'
+  - name: UPDATE_Tableau_Extract_prod_dmm_metrica_cuantiles
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/363ff05a-0d80-4a00-813c-5b49ceb826c0/refresh'
+  - name: UPDATE_Tableau_Extract_prod_dmm_metrica_feature
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/fb788c63-b702-4d1f-99aa-9b8d040d4223/refresh'
+  - name: UPDATE_Tableau_Extract_merge_metricas_all
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/078c0df9-8cba-490c-8024-7173bc4f0ba1/refresh'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

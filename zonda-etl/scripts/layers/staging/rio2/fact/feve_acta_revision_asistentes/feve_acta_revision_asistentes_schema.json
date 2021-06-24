@@ -1,0 +1,42 @@
+{
+  "file": "feve_acta_revision_asistentes_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision_asistentes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/feve_acta_revision_asistentes",
+  "createTable": "bi_corp_staging.sge_feve_acta_revision_asistentes",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_acta",
+      "type": "string"
+    },
+    {
+      "name": "nombrecompleto",
+      "type": "string"
+    },
+    {
+      "name": "dni",
+      "type": "string"
+    },
+    {
+      "name": "codcargo",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

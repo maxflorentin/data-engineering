@@ -1,0 +1,94 @@
+{
+  "file":"zbdtgen_schema",
+  "location":"/santander/bi-corp/landing/malbgc/dim/zbdtgen/partition_date=${partition_date_filter}",
+  "destination":"/santander/bi-corp/staging/malbgc/dim/zbdtgen",
+  "createTable": "bi_corp_staging.malbgc_zbdtgen",
+  "extension":"txt",
+  "header":false,
+  "fixed":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [{
+    "name": "entidad",
+    "type": "string",
+    "width": 4
+  },
+    {
+      "name": "tabla",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "idioma",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "clave",
+      "type": "string",
+      "width": 19
+    },
+    {
+      "name": "datos",
+      "type": "string",
+      "width": 250
+    },
+    {
+      "name": "entidad_umo_a",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "centro_umo_a",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "userid_umo_a",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "netname_umo_a",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "timest_umo_a",
+      "type": "string",
+      "width": 26
+    },
+    {
+      "name": "entidad_umo",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "centro_umo",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "userid_umo",
+      "type": "string",
+      "width": 8
+    },
+        {
+      "name": "netname_umo",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "timest_umo",
+      "type": "string",
+      "width": 26
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,381 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308892"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "abkt_contragarantias",
+      "title": "Relacion Garantías/contragarantías de BANKTRADE",
+      "schema": "bi_corp_staging",
+      "source": "ABKT",
+      "query": "",
+      "type": "FACT",
+      "description": "Relacion Garantías/contragarantías de BANKTRADE",
+      "columns": [
+        {
+          "name": "CGR_GARANTIA_NRO",
+          "title": "GARANTIA_NRO",
+          "description": "Nro de la operación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_ID_CONTRATO",
+          "title": "ID_CONTRATO",
+          "description": "Nro de contrato identificatorio ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_LIABILITY",
+          "title": "LIABILITY",
+          "description": "Codigo del Subproducto",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_CODIGO_REFERENCIA",
+          "title": "CODIGO_REFERENCIA",
+          "description": "Codigo de referencia del exterior",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_BANCO_EMISOR",
+          "title": "BANCO_EMISOR",
+          "description": "Nombre Banco Emisor",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_NUP_BANCO_EMISOR",
+          "title": "NUP_BANCO_EMISOR",
+          "description": "Numero unico del banco emisor",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_BIC_BANCO_EMISOR",
+          "title": "BIC_BANCO_EMISOR",
+          "description": "Codigo BIC del banco emisor",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_ORDENANTE",
+          "title": "ORDENANTE",
+          "description": "Nombre del ordenante",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_CUIT_ORDENANTE",
+          "title": "CUIT_ORDENANTE",
+          "description": "Cuit del ordenante",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_BENEFICIARIO",
+          "title": "BENEFICIARIO",
+          "description": "Nombre del beneficiario",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_NUP_BENEFICIARIO",
+          "title": "NUP_BENEFICIARIO",
+          "description": "Numero unico del beneficiario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_CUIT_BENEFICIARIO",
+          "title": "CUIT_BENEFICIARIO",
+          "description": "CUIT del beneficiario",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_IMPORTE_ORIGINAL",
+          "title": "IMPORTE_ORIGINAL",
+          "description": "Importe original de la garantia",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 15.2,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SALDO_MONEDA_ORIGEN",
+          "title": "SALDO_MONEDA_ORIGEN",
+          "description": "Saldo moneda origen de la garantia",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 15.2,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SALDO_PESOS",
+          "title": "SALDO_PESOS",
+          "description": "Saldo en pesos de la garantia",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 18.2,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_MONEDA",
+          "title": "MONEDA",
+          "description": "Moneda",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 32.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_FECHA_EMISION",
+          "title": "FECHA_EMISION",
+          "description": "Fecha emsion de la garantia",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_FECHA_VTO",
+          "title": "FECHA_VTO",
+          "description": "Fecha de vencimiento de la garantia",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_NRO",
+          "title": "SBLC_NRO",
+          "description": "Numero de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_ID_CONTRATO",
+          "title": "SBLC_ID_CONTRATO",
+          "description": "Numero de contrado identificatorio de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_LIABILITY",
+          "title": "SBLC_LIABILITY",
+          "description": "Codigo del Subproducto de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_CODIGO_REFERENCIA",
+          "title": "SBLC_CODIGO_REFERENCIA",
+          "description": "Codigo de referencia del exterior de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_BANCO_EMISOR",
+          "title": "SBLC_BANCO_EMISOR",
+          "description": "Nombre del banco emisor de la de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_SBLC_NUP_BANCO_EMISOR",
+          "title": "SBLC_NUP_BANCO_EMISOR",
+          "description": "Numero unico del banco emisor de la de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_BIC_BANCO_EMISOR",
+          "title": "SBLC_BIC_BANCO_EMISOR",
+          "description": "Codigo BIC del banco emisor de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_BENEFICIARIO",
+          "title": "SBLC_BENEFICIARIO",
+          "description": "Nombre del beneficiario de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_SBLC_NUP_BENEFICIARIO",
+          "title": "SBLC_NUP_BENEFICIARIO",
+          "description": "Numero unico del beneficiario de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_CUIT_BENEFICIARIO",
+          "title": "SBLC_CUIT_BENEFICIARIO",
+          "description": "CUIT del beneficiario de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_SBLC_ORDENANTE",
+          "title": "SBLC_ORDENANTE",
+          "description": "Nombre del ordenante de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 35.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CGR_SBLC_CTA_ORDENANTE",
+          "title": "SBLC_CTA_ORDENANTE",
+          "description": "BIC del Ordenante de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SBLC_FECHA_EMISION",
+          "title": "SBLC_FECHA_EMISION",
+          "description": "Fecha de emision de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CGR_SLBC_FECHA_VTO",
+          "title": "SLBC_FECHA_VTO",
+          "description": "Fecha de Vencimiento de la Carta de credito Standby",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

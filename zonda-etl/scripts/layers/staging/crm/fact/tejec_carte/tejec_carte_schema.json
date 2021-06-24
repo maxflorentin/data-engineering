@@ -1,0 +1,43 @@
+{
+  "file": "tejec_carte_schema",
+  "location": "/santander/bi-corp/landing/crm/fact/tejec_carte/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/crm/fact/tejec_carte",
+  "createTable": "bi_corp_staging.crm_tejec_carte",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "user_id",
+    "type": "string"
+  },
+    {
+      "name": "pesucadm",
+      "type": "string"
+    },
+    {
+      "name": "pebancap",
+      "type": "string"
+    },
+    {
+      "name": "peejecue",
+      "type": "string"
+    },
+    {
+      "name": "pejefare",
+      "type": "string"
+    },
+    {
+      "name": "pesubseg",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,38 @@
+{
+  "file": "transaccion_schema",
+  "location": "/santander/bi-corp/landing/rio78/dim/transaccion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio78/dim/transaccion",
+  "tempDirectory": "/santander/bi-corp/temp/rio78",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "transaccion",
+    "type": "string"
+  },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "modulo",
+      "type": "string"
+    },
+    {
+      "name": "habilitado",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

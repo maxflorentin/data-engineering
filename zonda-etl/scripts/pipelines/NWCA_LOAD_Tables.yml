@@ -1,0 +1,26 @@
+name: NWCA_LOAD_Tables
+description: 'LOAD New Cargabal Tables in local schema'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Load_Master
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/corporate/Master/ETLV-Load_Table_Master.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar]

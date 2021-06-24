@@ -1,0 +1,23 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_gnl_control_libradores",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_nro_tramite_zx","cod_per_nup","id_adm_librador","cod_adm_nro_doc","int_adm_plazo","cod_adm_suc_cta_credito","cod_nro_cuenta_credito","ts_adm_fec_alta"],
+      "threshold": 0.0001
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","id_adm_librador","cod_adm_nro_doc","ts_adm_fec_alta"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fec_alta","ts_adm_fec_modif"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

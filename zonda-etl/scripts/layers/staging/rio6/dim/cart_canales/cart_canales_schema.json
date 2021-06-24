@@ -1,0 +1,58 @@
+{
+  "file": "cart_canales_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_canales/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_canales",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"canl_cd_canal",
+      "type": "string"
+    },
+    {
+      "name":"canl_de_canal",
+      "type":"string"
+    },
+    {
+      "name":"canl_nm_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"canl_nm_cargo_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"canl_cd_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"canl_mail_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"canl_nm_responsable",
+      "type":"string"
+    },
+    {
+      "name":"canl_in_cons_prestamo",
+      "type":"string"
+    },
+    {
+      "name":"canl_enum_ramos_cons",
+      "type":"string"
+    },
+    {
+      "name":"canl_enum_acceso_cons",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

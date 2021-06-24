@@ -1,0 +1,124 @@
+{
+  "file":"tcdt001_schema",
+  "location":"/santander/bi-corp/landing/maltc/dim/tcdt001/partition_date=${partition_date_filter}",
+  "destination":"/santander/bi-corp/staging/maltc/dim/tcdt001",
+  "createTable": "bi_corp_staging.tcdt001",
+  "extension":"txt",
+  "header":false,
+  "fixed":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [{
+    "name": "cdtabla",
+    "type": "string",
+    "width": 4
+  },
+    {
+      "name": "nbtabla",
+      "type": "string",
+      "width": 30
+    },
+    {
+      "name": "rutvalt",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "ident",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "fhalta",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "fhbaja",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "nbcopy",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "numregis",
+      "type": "string",
+      "width": 7
+    },
+    {
+      "name": "longtab",
+      "type": "string",
+      "width": 5
+    },
+    {
+      "name": "indact",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "banmat",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "ofimant",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "bancons",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "oficons",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "ultmod",
+      "type": "string",
+      "width": 26
+    },
+    {
+      "name": "banculmo",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "oficulmo",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "numter",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "usultmod",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "tcmidiom",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "tcidiomas",
+      "type": "string",
+      "width": 10
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

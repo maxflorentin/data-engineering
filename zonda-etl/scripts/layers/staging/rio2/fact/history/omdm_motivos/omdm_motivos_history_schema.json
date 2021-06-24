@@ -1,0 +1,65 @@
+{
+  "file": "omdm_motivos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/history/omdm_motivos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/omdm_motivos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 8,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "tipo_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_index",
+                    "type": "string"
+                },
+                {
+                    "name": "des_result",
+                    "type": "string"
+                },
+                {
+                    "name": "des_status",
+                    "type": "string"
+                },
+                {
+                    "name": "des_nombre",
+                    "type": "string"
+                },
+                {
+                    "name": "des_tipo",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_rank",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_decision",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_motivo",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_proceso",
+                    "type": "string"
+                }
+            ],
+           "mirrorColumns": [{
+                  "name": "partition_date",
+                  "type": "date",
+                  "target": "fec_proceso",
+                  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+  }]
+}

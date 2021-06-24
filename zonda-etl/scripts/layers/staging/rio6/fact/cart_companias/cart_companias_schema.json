@@ -1,0 +1,106 @@
+{
+  "file": "cart_companias_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_companias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_companias",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cacm_cd_compania",
+      "type": "string"
+    },
+    {
+      "name":"cacm_cd_rif",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_rif",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_cuit",
+      "type":"string"
+    },
+    {
+      "name":"cacm_de_compania",
+      "type":"string"
+    },
+    {
+      "name":"cacm_cd_origen_compania",
+      "type":"string"
+    },
+    {
+      "name":"cacm_tp_compania",
+      "type":"string"
+    },
+    {
+      "name":"cacm_di_compania1",
+      "type":"string"
+    },
+    {
+      "name":"cacm_di_compania2",
+      "type":"string"
+    },
+    {
+      "name":"cacm_caes_cd_estado",
+      "type":"string"
+    },
+    {
+      "name":"cacm_caci_cd_ciudad",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_telefono",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_fax",
+      "type":"string"
+    },
+    {
+      "name":"cacm_zn_postal",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_apartado",
+      "type":"string"
+    },
+    {
+      "name":"cacm_fe_exclusion",
+      "type":"string"
+    },
+    {
+      "name":"cacm_fe_inclusion",
+      "type":"string"
+    },
+    {
+      "name":"cacm_cjiv_cd_categoria",
+      "type":"string"
+    },
+    {
+      "name":"cacm_cjgn_cd_condicion",
+      "type":"string"
+    },
+    {
+      "name":"cacm_in_broker",
+      "type":"string"
+    },
+    {
+      "name":"cacm_tp_cta_comisiones_db",
+      "type":"string"
+    },
+    {
+      "name":"cacm_nu_cta_comisiones_db",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,62 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308723"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "atrc_rechazos",
+            "title": "Backend de Transferencias",
+            "schema": "bi_corp_staging",
+            "source": "ATRC",
+            "query": "",
+            "type": "DIM",
+            "description": "Backend de Transferencias",
+            "columns": [
+                {
+                    "name": "CODIGO",
+                    "title": "CODIGO",
+                    "description": "Codigo de rechazo",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIPCION",
+                    "title": "DESCRIPCION",
+                    "description": "Descripción del rechazo",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ULT_MODIF",
+                    "title": "FECHA_ULT_MODIF",
+                    "description": "Fecha de ultima modificación",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

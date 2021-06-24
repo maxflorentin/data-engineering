@@ -1,0 +1,206 @@
+{
+  "file": "deudas_bancarias_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/deudas_bancarias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/deudas_bancarias",
+  "createTable": "bi_corp_staging.sge_deudas_bancarias",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "fecha_deuda_id",
+      "type": "string"
+    },
+    {
+      "name": "cod_banco",
+      "type": "string"
+    },
+    {
+      "name": "acc_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "acc_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "aecc_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "aecc_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "dto_doc_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "dto_doc_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "leasing_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "leasing_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "gtia_real_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "gtia_real_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "otr_gtias_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "otr_gtias_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "cart_cred_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "cart_cred_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "avales_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "avales_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "peusualt",
+      "type": "string"
+    },
+    {
+      "name": "pefecalt",
+      "type": "string"
+    },
+    {
+      "name": "peusumod",
+      "type": "string"
+    },
+    {
+      "name": "pefecmod",
+      "type": "string"
+    },
+    {
+      "name": "acc_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "acc_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "aecc_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "aecc_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "dto_doc_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "dto_doc_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "leasing_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "leasing_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "gtia_real_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "gtia_real_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "otr_gtias_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "otr_gtias_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "avales_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "avales_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "cod_col_variable_1",
+      "type": "string"
+    },
+    {
+      "name": "cod_col_variable_2",
+      "type": "string"
+    },
+    {
+      "name": "variable_1_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "variable_1_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "variable_1_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "variable_1_lgo_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "variable_2_cto_plz",
+      "type": "string"
+    },
+    {
+      "name": "variable_2_lgo_plz",
+      "type": "string"
+    },
+    {
+      "name": "variable_2_cto_plz_dol",
+      "type": "string"
+    },
+    {
+      "name": "variable_2_lgo_plz_dol",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

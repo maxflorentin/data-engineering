@@ -1,0 +1,115 @@
+{
+    "file": "sucursales_schema",
+    "location": "/santander/bi-corp/landing/sql5/dim/sucursales/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_sucursales",
+	"tempDirectory": "/santander/bi-corp/temp/sucursales",
+	"createTable": "bi_corp_risk.parametria_sucursales",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "sucursal",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "zona_comercial",
+            "type": "string"
+        },
+        {
+            "name": "responsable_comercial",
+            "type": "string"
+        },
+        {
+            "name": "gerente",
+            "type": "string"
+        },
+        {
+            "name": "zona_riesgo",
+            "type": "string"
+        },
+        {
+            "name": "codigo_centro",
+            "type": "string"
+        },
+        {
+            "name": "codigo_gestor",
+            "type": "string"
+        },
+        {
+            "name": "responsable_riesgo",
+            "type": "string"
+        },
+        {
+            "name": "codigo_region",
+            "type": "string"
+        },
+        {
+            "name": "descripcion_region",
+            "type": "string"
+        },
+        {
+            "name": "informa_ebook",
+            "type": "string"
+        },
+        {
+            "name": "codigo_provincia",
+            "type": "string"
+        },
+        {
+            "name": "provincia",
+            "type": "string"
+        },
+        {
+            "name": "localidad",
+            "type": "string"
+        },
+        {
+            "name": "fecha_vigencia_desde",
+            "type": "string"
+        },
+        {
+            "name": "fecha_vigencia_hasta",
+            "type": "string"
+        },
+        {
+            "name": "indica_sucursal_digital",
+            "type": "string"
+        },
+        {
+            "name": "indica_work_cafe",
+            "type": "string"
+        },
+        {
+            "name": "latitud",
+            "type": "string"
+        },
+        {
+            "name": "longitud",
+            "type": "string"
+        },
+        {
+            "name": "fecha_importacion",
+            "type": "string"
+        },
+        {
+            "name": "region",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

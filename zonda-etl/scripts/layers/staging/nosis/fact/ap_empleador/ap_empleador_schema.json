@@ -1,0 +1,35 @@
+{
+	"file": "ape_empleador_schema",
+	"location": "/santander/bi-corp/landing/nosis/fact/ape_empleador/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/nosis/fact/ape_empleador",
+	"createTable": "bi_corp_staging.nosis_tmp_ap_empleador",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "cuit",
+		"type": "string"
+	}, {
+		"name": "periodo",
+		"type": "string"
+	}, {
+		"name": "aportes_seg_social",
+		"type": "string"
+	}, {
+		"name": "aportes_obra_social",
+		"type": "string"
+	}, {
+		"name": "contrib_obra_social",
+		"type": "string"
+	}],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

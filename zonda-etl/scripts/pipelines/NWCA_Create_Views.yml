@@ -1,0 +1,599 @@
+name: NWCA_Create_Views
+description: 'Create New Cargabal Master Views'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: Drop_Views
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/drop-views/drop_views.hql'
+#  - name: Create_Table_acc_portfolio_reclassification
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-acc_portfolio_reclassification.hql'
+#  - name: Load_Table_acc_portfolio_reclassification
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/acc_portfolio_reclassification.hql'
+#  - name: Create_Table_accounting_hedge
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-accounting_hedge.hql'
+#  - name: Load_Table_accounting_hedge
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/accounting_hedge.hql'
+#  - name: Create_Table_accounting_portfolio
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-accounting_portfolio.hql'
+#  - name: Load_Table_accounting_portfolio
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/accounting_portfolio.hql'
+#  - name: Create_Table_assetbacked_securities_interest
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-assetbacked_securities_interest.hql'
+#  - name: Load_Table_assetbacked_securities_interest
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/assetbacked_securities_interest.hql'
+#  - name: Create_Table_assets_origin
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-assets_origin.hql'
+#  - name: Load_Table_assets_origin
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/assets_origin.hql'
+#  - name: Create_Table_base
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-base.hql'
+#  - name: Load_Table_base
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/base.hql'
+#  - name: Create_Table_classified_as_held_for_sale
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-classified_as_held_for_sale.hql'
+#  - name: Load_Table_classified_as_held_for_sale
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/classified_as_held_for_sale.hql'
+#  - name: Create_Table_equity_generator
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-equity_generator.hql'
+#  - name: Load_Table_equity_generator
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/equity_generator.hql'
+#  - name: Create_Table_expenses_income
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-expenses_income.hql'
+#  - name: Load_Table_expenses_income
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/expenses_income.hql'
+#  - name: Create_Table_group_minority_interests
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-group_minority_interests.hql'
+#  - name: Load_Table_group_minority_interests
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/group_minority_interests.hql'
+#  - name: Create_Table_hedged_item
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-hedged_item.hql'
+#  - name: Load_Table_hedged_item
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/hedged_item.hql'
+#  - name: Create_Table_ineffective
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-ineffective.hql'
+#  - name: Load_Table_ineffective
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/ineffective.hql'
+#  - name: Create_Table_main_category
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-main_category.hql'
+#  - name: Load_Table_main_category
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/main_category.hql'
+#  - name: Create_Table_oci_gross_tax_impact
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-oci_gross_tax_impact.hql'
+#  - name: Load_Table_oci_gross_tax_impact
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/oci_gross_tax_impact.hql'
+#  - name: Create_Table_operational_risk_origin
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-operational_risk_origin.hql'
+#  - name: Load_Table_operational_risk_origin
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/operational_risk_origin.hql'
+#  - name: Create_Table_operational_risk
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-operational_risk.hql'
+#  - name: Load_Table_operational_risk
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/operational_risk.hql'
+#  - name: Create_Table_pension_concepts
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-pension_concepts.hql'
+#  - name: Load_Table_pension_concepts
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/pension_concepts.hql'
+#  - name: Create_Table_pension_plan_detail
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-pension_plan_detail.hql'
+#  - name: Load_Table_pension_plan_detail
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/pension_plan_detail.hql'
+#  - name: Create_Table_performing_status
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-performing_status.hql'
+#  - name: Load_Table_performing_status
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/performing_status.hql'
+#  - name: Create_Table_pl_generator
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-pl_generator.hql'
+#  - name: Load_Table_pl_generator
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/pl_generator.hql'
+#  - name: Create_Table_poci
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-poci.hql'
+#  - name: Load_Table_poci
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/poci.hql'
+#  - name: Create_Table_policyholder_risk
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-policyholder_risk.hql'
+#  - name: Load_Table_policyholder_risk
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/policyholder_risk.hql'
+#  - name: Create_Table_product
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-product.hql'
+#  - name: Load_Table_product
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/product.hql'
+#  - name: Create_Table_recorded_current_period
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-recorded_current_period.hql'
+#  - name: Load_Table_recorded_current_period
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/recorded_current_period.hql'
+#  - name: Create_Table_sector
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-sector.hql'
+#  - name: Load_Table_sector
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/sector.hql'
+#  - name: Create_Table_spanish_corporate_income_tax
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-spanish_corporate_income_tax.hql'
+#  - name: Load_Table_spanish_corporate_income_tax
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/spanish_corporate_income_tax.hql'
+#  - name: Create_Table_stages
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-stages.hql'
+#  - name: Load_Table_stages
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/stages.hql'
+#  - name: Create_Table_subordinated
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-subordinated.hql'
+#  - name: Load_Table_subordinated
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/subordinated.hql'
+#  - name: Create_Table_tangible_asset_purpose
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-tangible_asset_purpose.hql'
+#  - name: Load_Table_tangible_asset_purpose
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/tangible_asset_purpose.hql'
+#  - name: Create_Table_total_partial_write_off
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-total_partial_write_off.hql'
+#  - name: Load_Table_total_partial_write_off
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/total_partial_write_off.hql'
+#  - name: Create_Table_vat_base
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/ddlt-views/DDLT-vat_base.hql'
+#  - name: Load_Table_vat_base
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/others/etlv-views/vat_base.hql'
+#  - name: Create_View_Full_Master_English
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/views/DDLT-Create_view_full_master_english.hql'
+#  - name: Create_View_Full_Master_Spanish
+#    operator: ZondaHiveOperator
+#    config:
+#      connection_id: cloudera_hive_beeline
+#      schema: default
+#      is_hql_file: true
+#      hql:
+#        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/locals/views/DDLT-Create_view_full_master_spanish.hql'
+#dependencies:
+#  Drop_Views: [Create_Table_acc_portfolio_reclassification, Create_Table_accounting_hedge, Create_Table_accounting_portfolio, Create_Table_assetbacked_securities_interest, Create_Table_assets_origin, Create_Table_base, Create_Table_classified_as_held_for_sale, Create_Table_equity_generator, Create_Table_expenses_income, Create_Table_group_minority_interests, Create_Table_hedged_item, Create_Table_ineffective, Create_Table_main_category, Create_Table_oci_gross_tax_impact, Create_Table_operational_risk_origin, Create_Table_operational_risk, Create_Table_pension_concepts, Create_Table_pension_plan_detail, Create_Table_performing_status, Create_Table_pl_generator, Create_Table_poci, Create_Table_policyholder_risk, Create_Table_product, Create_Table_recorded_current_period, Create_Table_sector, Create_Table_spanish_corporate_income_tax, Create_Table_stages, Create_Table_subordinated, Create_Table_tangible_asset_purpose, Create_Table_total_partial_write_off, Create_Table_vat_base]
+#  Create_Table_acc_portfolio_reclassification: Load_Table_acc_portfolio_reclassification
+#  Create_Table_accounting_hedge: Load_Table_accounting_hedge
+#  Create_Table_accounting_portfolio: Load_Table_accounting_portfolio
+#  Create_Table_assetbacked_securities_interest: Load_Table_assetbacked_securities_interest
+#  Create_Table_assets_origin: Load_Table_assets_origin
+#  Create_Table_base: Load_Table_base
+#  Create_Table_classified_as_held_for_sale: Load_Table_classified_as_held_for_sale 
+#  Create_Table_equity_generator: Load_Table_equity_generator
+#  Create_Table_expenses_income: Load_Table_expenses_income
+#  Create_Table_group_minority_interests: Load_Table_group_minority_interests
+#  Create_Table_hedged_item: Load_Table_hedged_item
+#  Create_Table_ineffective: Load_Table_ineffective
+#  Create_Table_main_category: Load_Table_main_category
+#  Create_Table_oci_gross_tax_impact: Load_Table_oci_gross_tax_impact
+#  Create_Table_operational_risk_origin: Load_Table_operational_risk_origin
+#  Create_Table_operational_risk: Load_Table_operational_risk
+#  Create_Table_pension_concepts: Load_Table_pension_concepts
+#  Create_Table_pension_plan_detail: Load_Table_pension_plan_detail
+#  Create_Table_performing_status: Load_Table_performing_status
+#  Create_Table_pl_generator: Load_Table_pl_generator
+#  Create_Table_poci: Load_Table_poci
+#  Create_Table_policyholder_risk: Load_Table_policyholder_risk
+#  Create_Table_product: Load_Table_product
+#  Create_Table_recorded_current_period: Load_Table_recorded_current_period
+#  Create_Table_sector: Load_Table_sector
+#  Create_Table_spanish_corporate_income_tax: Load_Table_spanish_corporate_income_tax
+#  Create_Table_stages: Load_Table_stages
+#  Create_Table_subordinated: Load_Table_subordinated
+#  Create_Table_tangible_asset_purpose: Load_Table_tangible_asset_purpose
+#  Create_Table_total_partial_write_off: Load_Table_total_partial_write_off
+#  Create_Table_vat_base: Load_Table_vat_base
+#  Load_Table_acc_portfolio_reclassification: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_accounting_hedge: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_accounting_portfolio: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_assetbacked_securities_interest: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_assets_origin: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_base: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_classified_as_held_for_sale: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_equity_generator: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_expenses_income: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_group_minority_interests: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_hedged_item: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_ineffective: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_main_category: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_oci_gross_tax_impact: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_operational_risk_origin: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_operational_risk: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_pension_concepts: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_pension_plan_detail: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_performing_status: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_pl_generator: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_poci: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_policyholder_risk: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_product: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_recorded_current_period: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_sector: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_spanish_corporate_income_tax: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_stages: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_subordinated: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_tangible_asset_purpose: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_total_partial_write_off: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+#  Load_Table_vat_base: [Create_View_Full_Master_English, Create_View_Full_Master_Spanish]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar]

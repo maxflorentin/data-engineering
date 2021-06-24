@@ -1,0 +1,46 @@
+name: LOAD_CMN_MORA_PrimasDistribuidas-Daily
+description: 'Load Daily Primas Distribuidas in Common Layer'
+owner: BI-Corp
+active: true
+start_date: '2020-10-22'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: bi_corp_staging.garra_rel_contrato_integ_suc
+tasks:
+  - name: COMMON_LoadTable_dim_mora_primas_genericas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/dim_mora_primas_genericas/ETL-LOAD-dim_mora_primas_genericas.hql'
+  - name: COMMON_LoadTable_stk_mora_primas_redistribuidas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_primas_redistribuidas/ETL-LOAD-stk_mora_primas_redistribuidas.hql'
+  - name: COMMON_LoadTable_stk_mora_flujos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_flujos/ETL-LOAD-stk_mora_flujos.hql'
+dependencies:
+  COMMON_LoadTable_dim_mora_primas_genericas: COMMON_LoadTable_stk_mora_primas_redistribuidas
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar,lolivaressierra@santander.com.ar,hsesoldi@santander.com.ar,jcouso@santander.com.ar]

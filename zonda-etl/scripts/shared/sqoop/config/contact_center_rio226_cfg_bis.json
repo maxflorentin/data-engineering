@@ -1,0 +1,74 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_INTERACCION",
+      "table_type": "fact",
+      "environment": "CRMCC_INTERACCION",
+      "landing_path": "/santander/bi-corp/landing/rio226/fact/tbl_interaccion",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(DT_INICIO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_interaccion -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select CD_INTERACCION , NUP,CD_EJECUTIVO,DT_INICIO,DT_CIERRE,CD_CANAL_COMUNICACION,CD_CANAL_VENTA,CD_SUCURSAL,DS_COMENTARIO,MOTIVO,NRO_LLAMADO,CD_INTERACCION_SUCURSAL,ORIGEN,CD_INTERACCION_PADRE,NUMERO_TICKET,to_char(DT_INICIO, 'YYYY-MM-DD') PARTITION_DATE  from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_INTERACCION_TRANSACCION",
+      "table_type": "fact",
+      "environment": "CRMCC_INTERACCION",
+      "landing_path": "/santander/bi-corp/landing/rio226/fact/tbl_interaccion_transaccion",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(INTE.DT_INICIO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_interaccion_transaccion -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select TR.CD_INTERACCION , TR.ID_TRANSACCION,TR.NUMERO_OPERACION,TR.DATOS,TR.MARCA_REVERSADO,TR.MARCA_OPERACION_EXITOSA,TR.NOMBRE_SERVICIO,TR.ID_TRANSACCION_REVERSADO,TR.FECHA_MODIFICACION,TR.TIPO_OPERACION,TR.MARCA_REVERSABLE,TR.ID_SERVICIO,TR.ID_TRACKEO_TRANSACCION, to_char(INTE.DT_INICIO, 'YYYY-MM-DD') PARTITION_DATE  from {environment}.{table} TR LEFT JOIN CRMCC_INTERACCION.TBL_INTERACCION INTE ON TR.CD_INTERACCION=INTE.CD_INTERACCION  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_TRACKEO",
+      "table_type": "fact",
+      "environment": "CRMCC_TRACKEO",
+      "landing_path": "/santander/bi-corp/landing/rio226/fact/tbl_trackeo",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA_EVENTO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_trackeo -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select INTERACCION , CODIGO_EVENTO,FECHA_EVENTO,INFORMACION_ADICIONAL,NRO_LLAMADO,ID_TRACKEO_TRANSACCION, to_char(FECHA_EVENTO, 'YYYY-MM-DD') PARTITION_DATE  from {environment}.{table}  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_TRACKEO_EVENTO",
+      "table_type": "dim",
+      "environment": "CRMCC_TRACKEO",
+      "landing_path": "/santander/bi-corp/landing/rio226/dim/tbl_trackeo_evento",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_trackeo_evento -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select CODIGO, DESCRIPCION,OPERACION,VISIBLE,DESCRIPCION_USUARIO from {environment}.{table}  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_SERVICIO",
+      "table_type": "dim",
+      "environment": "CRMCC_INTERACCION",
+      "landing_path": "/santander/bi-corp/landing/rio226/dim/tbl_servicio",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_servicio -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select ID , NOMBRE,DESCRIPCION,TIPO,MARCA_REVERSABLE,MARCA_VENTA,FECHA_MODIFICACION,GRUPO  from {environment}.{table}  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    }
+  ,
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_CANAL_COMUNICACION",
+      "table_type": "dim",
+      "environment": "CRMCC_INTERACCION",
+      "landing_path": "/santander/bi-corp/landing/rio226/dim/tbl_canal_comunicacion",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_canal_comunicacion -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select CODIGO , DESCRIPCION from {environment}.{table}  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront09.ar.bsch",
+      "database": "RIO226",
+      "table": "TBL_CANAL_VENTA",
+      "table_type": "dim",
+      "environment": "CRMCC_INTERACCION",
+      "landing_path": "/santander/bi-corp/landing/rio226/dim/tbl_canal_venta",
+      "command": "sqoop import -Dmapreduce.output.basename=tbl_canal_venta -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select CODIGO , DESCRIPCION, MARCA_ACTIVO from {environment}.{table}  WHERE  \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    }
+  ]
+}

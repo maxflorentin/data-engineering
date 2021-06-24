@@ -1,0 +1,31 @@
+{
+    "file": "sucursal_x_opening_hour_sucu_schema",
+    "createTable": "bi_corp_staging.rio350_sucursal_x_opening_hour_sucu",
+    "location": "/santander/bi-corp/landing/rio350/dim/sucursal_x_opening_hour_sucu/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/sucursal_x_opening_hour_sucu",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "sucu_id",
+            "type": "string"
+        },
+        {
+            "name": "opening_hour_sucu_id",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

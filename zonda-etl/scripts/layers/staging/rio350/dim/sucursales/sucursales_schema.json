@@ -1,0 +1,55 @@
+{
+    "file": "sucursales_schema",
+    "createTable": "bi_corp_staging.rio350_sucursales",
+    "location": "/santander/bi-corp/landing/rio350/dim/sucursales/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/sucursales",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "sucu_id",
+            "type": "string"
+        },
+        {
+            "name": "cant_deposito_atm",
+            "type": "string"
+        },
+        {
+            "name": "cant_servicios_atm",
+            "type": "string"
+        },
+        {
+            "name": "cant_extraccion_atm",
+            "type": "string"
+        },
+        {
+            "name": "direccion_id",
+            "type": "string"
+        },
+        {
+            "name": "ref_legacy",
+            "type": "string"
+        },
+        {
+            "name": "sucu_nombre",
+            "type": "string"
+        },
+        {
+            "name": "habilitado",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

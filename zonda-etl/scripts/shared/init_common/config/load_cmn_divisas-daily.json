@@ -1,0 +1,15 @@
+{
+    "name": "LOAD_CMN_Divisas-Daily",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_AMEC-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Divisas-Daily"
+                }
+    ]
+}

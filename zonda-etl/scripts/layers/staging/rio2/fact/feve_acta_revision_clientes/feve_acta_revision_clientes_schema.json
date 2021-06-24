@@ -1,0 +1,34 @@
+{
+  "file": "feve_acta_revision_clientes_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision_clientes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/feve_acta_revision_clientes",
+  "createTable": "bi_corp_staging.sge_feve_acta_revision_clientes",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_acta",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "idfichafeve",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

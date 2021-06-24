@@ -1,0 +1,34 @@
+{
+    "table": "bi_corp_common.bt_rec_gestiones_tarjeta",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_gestion",
+                "cod_rec_orden_estado",
+                "cod_rec_producto_altair",
+                "cod_cue_cuenta"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_alta_cuenta",
+                "ts_rec_dev_acreedor",
+                "ts_rec_dev_acreedor_usd",
+                "ts_rec_alta",
+                "ts_rec_modif",
+                "ts_rec_baja",
+                "ts_rec_ultimo_cierre"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+            "threshold": 0.01
+        }
+    ]
+}

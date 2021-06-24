@@ -1,0 +1,71 @@
+{
+    "file": "ms0_dm_je_dwh_entidades_ctr",
+    "location": "/santander/bi-corp/landing/rio157/dim/ms0_dm_je_dwh_entidades_ctr/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio157/dim/ms0_dm_je_dwh_entidades_ctr",
+    "tempDirectory": "/santander/bi-corp/temp/ms0_dm_je_dwh_entidades_ctr",
+    "createTable": "bi_corp_staging.rio157_ms0_dm_je_dwh_entidades_ctr",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "cod_padre",
+            "type": "string"
+        },
+        {
+            "name": "cod_hijo",
+            "type": "string"
+        },
+        {
+            "name": "des_hijo",
+            "type": "string"
+        },
+        {
+            "name": "cod_jerarquia",
+            "type": "string"
+        },
+        {
+            "name": "ind_consolidacion",
+            "type": "string"
+        },
+        {
+            "name": "cod_primer_corporativo",
+            "type": "string"
+        },
+        {
+            "name": "userid_umo",
+            "type": "string"
+        },
+        {
+            "name": "timest_umo",
+            "type": "string"
+        },
+        {
+            "name": "num_nivel",
+            "type": "string"
+        },
+        {
+            "name": "ind_corporativo",
+            "type": "string"
+        },
+        {
+            "name": "num_orden",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

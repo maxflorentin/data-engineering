@@ -1,0 +1,67 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_coberturas",
+            "title": "Coberturas de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Coberturas de asistencias",
+            "columns": [
+                {
+                    "name": " ASCB_CD_COBERTURA",
+                    "title": " ASCB_CD_COBERTURA",
+                    "description": "Codigo de cobertura",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": " ASCB_DE_COBERTURA",
+                    "title": " ASCB_DE_COBERTURA",
+                    "description": "Descripcion de Cobertura",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 60.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": " ASCB_TP_COBERTURA",
+                    "title": " ASCB_TP_COBERTURA",
+                    "description": "Descripcion de Marca",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

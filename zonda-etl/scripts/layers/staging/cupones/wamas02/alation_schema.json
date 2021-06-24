@@ -1,0 +1,579 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308081"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.amas_wamas02",
+            "title": "Maestro de tarjetas de crédito (WAMAS02)",
+            "schema": "bi_corp_staging",
+            "source": "AMAS",
+            "query": "",
+            "type": "",
+            "description": "Maestro de tarjetas de crédito (WAMAS02)",
+            "columns": [
+                {
+                    "name": "s02_nro_tarjeta",
+                    "title": "WAMAS02-NRO-TARJETA",
+                    "description": "Numero de Tarjeta",
+                    "type": "int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 16.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_rel_aplicacion",
+                    "title": "WAMAS02-REL-APLICACION",
+                    "description": "Relación de aplicación del contrato",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_rel_cod_suc",
+                    "title": "WAMAS02-REL-COD-SUC",
+                    "description": "Relación de sucursal del contrato",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_rel_tipo_cta",
+                    "title": "WAMAS02-REL-TIPO-CTA",
+                    "description": "Tipo de Cuenta del contrato",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_rel_nro_cta",
+                    "title": "WAMAS02-REL-NRO-CTA",
+                    "description": "Numero de Cuenta relación (para ir a buscar a personas el contrato",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "13",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_rel_nro_firm",
+                    "title": "WAMAS02-REL-NRO-FIRM",
+                    "description": "Firmante del contrato (1=titular; 2 =adicionales; n=adicionales)",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_tipo_cuenta",
+                    "title": "WAMAS02-TIPO-CUENTA",
+                    "description": "1=VISA; 3=AMEX; 3=MASTER",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_cuenta_tc",
+                    "title": "WAMAS02-CUENTA-TC",
+                    "description": "Nro de cuenta crédito WAMAS01",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_cod_sucursal",
+                    "title": "WAMAS02-COD-SUCURSAL",
+                    "description": "Sucursal de la tarjeta",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_estado_tarjeta",
+                    "title": "WAMAS02-ESTADO-TARJETA",
+                    "description": "Estado de la Tarjeta",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_fecha_alta",
+                    "title": "WAMAS02-FECHA-ALTA",
+                    "description": "Fecha de alta de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "8",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_motivo_alta",
+                    "title": "WAMAS02-MOTIVO-ALTA",
+                    "description": "Motivo de alta de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_nro_solicitud",
+                    "title": "WAMAS02-NRO-SOLICITUD",
+                    "description": "Nro de solicitud enviado a Prisma",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "11",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_campania_id",
+                    "title": "WAMAS02-CAMPANIA-ID",
+                    "description": "Campaña de alta de TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_campania_nro_shot",
+                    "title": "WAMAS02-CAMPANIA-NRO-SHOT",
+                    "description": "",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_vig_des_aa",
+                    "title": "WAMAS02-VIG-DES-AA",
+                    "description": "Año vigencia desde",
+                    "type": "int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_vig_des_mm",
+                    "title": "WAMAS02-VIG-DES-MM",
+                    "description": "Mes vigencia desde",
+                    "type": "int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_vig_has_aa",
+                    "title": "WAMAS02-VIG-HAS-AA",
+                    "description": "Año vigencia hasta",
+                    "type": "int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_vig_has_mm",
+                    "title": "WAMAS02-VIG-HAS-MM",
+                    "description": "Año vigencia hasta",
+                    "type": "int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_ult_modif_fec",
+                    "title": "WAMAS02-ULT-MODIF-FEC",
+                    "description": "Fecha ultima modificación",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "8",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_ult_modif_orig",
+                    "title": "WAMAS02-ULT-MODIF-ORIG",
+                    "description": "Originante ultima modificación",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_ult_modif_hora",
+                    "title": "WAMAS02-ULT-MODIF-HORA",
+                    "description": "Hora de ultima modificación",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_ult_modif_userid",
+                    "title": "WAMAS02-ULT-MODIF-USERID",
+                    "description": "Job o usuario que modificó",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_tipo_tarjeta",
+                    "title": "WAMAS02-TIPO-TARJETA",
+                    "description": "Tipo de Tarjeta",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_marca_women",
+                    "title": "WAMAS02-MARCA-WOMEN",
+                    "description": "Marca de Women (\"W\" o espacios)",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_no_renov_motivo",
+                    "title": "WAMAS02-NO-RENOV-MOTIVO",
+                    "description": "Motivo de Renovación",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_no_renov_fecha",
+                    "title": "WAMAS02-NO-RENOV-FECHA",
+                    "description": "Fecha de renovación de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "8",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_fec_baja",
+                    "title": "WAMAS02-FEC-BAJA",
+                    "description": "Fecha de baja de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "8",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_motivo_baja",
+                    "title": "WAMAS02-MOTIVO-BAJA",
+                    "description": "Motivo de baja de  la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_nro_cta_emp",
+                    "title": "WAMAS02-NRO-CTA-EMP",
+                    "description": "Cuenta de empresa",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "7",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_mca_habilit",
+                    "title": "WAMAS02-MCA-HABILIT",
+                    "description": "Marca de habilitación para consumos",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_mca_cargo",
+                    "title": "WAMAS02-MCA-CARGO",
+                    "description": "",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_apel_nomb_emb",
+                    "title": "WAMAS02-APEL-NOMB-EMB",
+                    "description": "Apellido y nombre como figura en el plastico",
+                    "type": "string",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 24.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_cod_categoria",
+                    "title": "WAMAS02-COD-CATEGORIA",
+                    "description": "Categoria de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_fec_incl_boletin",
+                    "title": "WAMAS02-FEC-INCL-BOLETIN",
+                    "description": "Fecha de boletinamiento",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "8",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_motivo_incl_boletin",
+                    "title": "WAMAS02-MOTIVO-INCL-BOLETIN",
+                    "description": "Motivo de boletinamiento",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_userid_alta",
+                    "title": "WAMAS02-USERID-ALTA",
+                    "description": "Usuario de alta",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_canal_vta",
+                    "title": "WAMAS02-CANAL-VTA",
+                    "description": "Canal de venta de la TC",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_autorizado_tc",
+                    "title": "WAMAS02-AUTORIZADO-TC",
+                    "description": "Autorizado",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_marca_tc",
+                    "title": "WAMAS02-MARCA-TC",
+                    "description": "Marca de la TC:\n1= VISA\n3=MASTER\n4=AMEX",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_cargo",
+                    "title": "WAMAS02-CARGO",
+                    "description": "Suele venir vacio",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_bonificacion",
+                    "title": "WAMAS02-BONIFICACION",
+                    "description": "Suele venir vacio",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_cuotas",
+                    "title": "WAMAS02-CUOTAS",
+                    "description": "Suele venir vacio",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_linea4",
+                    "title": "WAMAS02-LINEA4",
+                    "description": "Suele venir vacio, puede contener la empresa u otras identidades del cliente",
+                    "type": "string",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "s02_lim_compras",
+                    "title": "WAMAS02-LIM-COMPRAS",
+                    "description": "Suele venir en cero",
+                    "type": "Decimal",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": "5",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_lim_cuotas",
+                    "title": "WAMAS02-LIM-CUOTAS",
+                    "description": "Suele venir en cero",
+                    "type": "Decimal",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": "5",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_lim_adelantos",
+                    "title": "WAMAS02-LIM-ADELANTOS",
+                    "description": "Suele venir en cero",
+                    "type": "Decimal",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": "5",
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_estado_activacion",
+                    "title": "WAMAS02-ESTADO-ACTIVACION",
+                    "description": "Suele venir vacio",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_nro_tarjeta_relac",
+                    "title": "WAMAS02-NRO-TARJETA-RELAC",
+                    "description": "Suele venir vacio",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 16.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "s02_fecha_actual_women",
+                    "title": "WAMAS02-FECHA-ACTUAL-WOMEN",
+                    "description": "Suele venir vacio",
+                    "type": "int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Stock",
+                "delta": "D+1"
+            }
+        }
+    }
+}

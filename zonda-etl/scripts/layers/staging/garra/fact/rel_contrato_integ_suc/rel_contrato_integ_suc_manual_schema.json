@@ -1,0 +1,90 @@
+{
+    "file": "rel_contrato_integ_suc",
+    "location": "/santander/bi-corp/landing/sql5/fact/rel_contrato_integ_suc/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/sql5/fact/rel_contrato_integ_suc",
+    "createTable": "bi_corp_staging.risksql5_rel_contrato_integ_suc",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+      {
+        "name": "nup",
+        "type": "string"
+      },
+      {
+        "name": "num_grupo",
+        "type": "string"
+      },
+      {
+        "name": "entidad_or",
+        "type": "string"
+      },
+      {
+        "name": "centro_or",
+        "type": "string"
+      },
+      {
+        "name": "contrato_or",
+        "type": "string"
+      },
+      {
+        "name": "producto_or",
+        "type": "string"
+      },
+      {
+        "name": "subprod_or",
+        "type": "string"
+      },
+      {
+        "name": "divisa_or",
+        "type": "string"
+      },
+      {
+        "name": "entidad_de",
+        "type": "string"
+      },
+      {
+        "name": "centro_de",
+        "type": "string"
+      },
+      {
+        "name": "contrato_de",
+        "type": "string"
+      },
+      {
+        "name": "producto_de",
+        "type": "string"
+      },
+      {
+        "name": "subprod_de",
+        "type": "string"
+      },
+      {
+        "name": "divisa_de",
+        "type": "string"
+      },
+      {
+        "name": "fec_traspaso",
+        "type": "string"
+      },
+      {
+        "name": "centro_op_or",
+        "type": "string"
+      },
+      {
+        "name": "centro_op_de",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

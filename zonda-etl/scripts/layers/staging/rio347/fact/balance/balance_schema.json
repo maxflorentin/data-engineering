@@ -1,0 +1,57 @@
+{
+  "file": "balance_schema",
+  "location": "/santander/bi-corp/landing/rio347/fact/balance/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio347/fact/balance",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"securities_contract_code",
+      "type":"string"
+    },
+    {
+      "name":"office_code",
+      "type":"string"
+    },
+    {
+      "name":"assetid",
+      "type":"string"
+    },
+    {
+      "name":"nominals",
+      "type":"string"
+    },
+    {
+      "name":"holding_status",
+      "type":"string"
+    },
+    {
+      "name":"place_holding",
+      "type":"string"
+    },
+    {
+      "name":"value_date",
+      "type":"string"
+    },
+    {
+      "name":"asset_price",
+      "type":"string"
+    },
+    {
+      "name":"creation_date",
+      "type":"string"
+    },
+    {
+      "name":"update_date",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

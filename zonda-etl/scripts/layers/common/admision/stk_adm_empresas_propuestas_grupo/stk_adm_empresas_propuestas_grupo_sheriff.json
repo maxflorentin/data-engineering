@@ -1,0 +1,28 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_propuestas_grupo",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_nro_pglobal","cod_adm_secuencia_pglobal"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_nro_pglobal","cod_adm_secuencia_pglobal","cod_adm_penumgru","cod_adm_estado_prop","dt_adm_pefecalt"],
+      "threshold": 0.0005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_est_prop","dt_adm_vto_prop","dt_adm_pefecalt","dt_adm_pefecmod","dt_adm_resolucion","dt_adm_env_esp","dt_adm_recep_esp","dt_adm_comite","dt_adm_proximo_envio","dt_adm_alerta_riesgo_bma"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_carga","ts_adm_alta_prop","ts_adm_cotizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

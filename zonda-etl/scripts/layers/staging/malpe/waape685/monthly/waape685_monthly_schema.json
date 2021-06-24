@@ -1,0 +1,144 @@
+{
+  "file": "waape685_monthly",
+  "location": "/santander/bi-corp/landing/malpe/fact/waape685/monthly/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malpe/fact/waape685/monthly",
+  "createTable": "bi_corp_staging.malpe_monthly_waape685",
+  "cobolTypes": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "PENUMPER",
+      "type": "X(08)"
+    },
+{
+      "name": "TIPDOC",
+      "type": "X(02)"
+    },
+{
+      "name": "DOCUM",
+      "type": "X(11)"
+    },
+{
+      "name": "APEYNOMB",
+      "type": "X(60)"
+    },
+{
+      "name": "PETIPPER",
+      "type": "X(01)"
+    },
+{
+      "name": "PESEGCAL",
+      "type": "X(03)"
+    },
+{
+      "name": "MONT-BAL1",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL1",
+      "type": "9(08)"
+    },
+{
+      "name": "MONT-BAL2",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL2",
+      "type": "9(08)"
+    },
+{
+      "name": "MONT-BAL3",
+      "type": "X(15)"
+    },
+{
+      "name": "FEC-BAL3",
+      "type": "9(08)"
+    },
+{
+      "name": "CLANAE",
+      "type": "X(03)"
+    },
+{
+      "name": "PERESIVA",
+      "type": "X(02)"
+    },
+{
+      "name": "MARCA-SEPYME",
+      "type": "X(01)"
+    },
+{
+      "name": "MARCA-5319",
+      "type": "X(03)"
+    },
+{
+      "name": "COD-MIPYME",
+      "type": "X(02)"
+    },
+{
+      "name": "FECHA-PROC",
+      "type": "X(10)"
+    },
+{
+      "name": "ORIGEN-REG",
+      "type": "X(03)"
+    },
+{
+      "name": "MARCA-BYP",
+      "type": "X(01)"
+    },
+{
+      "name": "MOTIVO-OK",
+      "type": "X(01)"
+    },
+{
+      "name": "TIP-DOC-ADSF",
+      "type": "X(02)"
+    },
+{
+      "name": "FEC-INSC",
+      "type": "X(10)"
+    },
+{
+      "name": "PENUMGRU",
+      "type": "9(08)"
+    },
+{
+      "name": "SECTOR",
+      "type": "X(02)"
+    },
+{
+      "name": "TAM-EMPRE",
+      "type": "X(02)"
+    },
+{
+      "name": "COD-MIPYME-REAL",
+      "type": "X(02)"
+    },
+{
+      "name": "USO-FUTURO",
+      "type": "X(13)"
+    },
+{
+      "name": "ISEC4110-IMP-DEUDA-T",
+      "type": "9(15)V9(02)"
+    },
+{
+      "name": "ISEC4110-IMP-DEUDA-P",
+      "type": "9(15)V9(02)"
+    },
+{
+      "name": "ISEC4110-IMP-DEUDA-M",
+      "type": "9(15)V9(02)"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

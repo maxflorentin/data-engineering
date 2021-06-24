@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.rel_cyp_pagos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cyp_ide_pgoorigen"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cyp_pgo_origen", "dt_cyp_pgo_destino"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

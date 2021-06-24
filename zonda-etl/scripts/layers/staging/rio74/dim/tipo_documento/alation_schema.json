@@ -1,0 +1,62 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_tipo_documento",
+      "title": "detalle de tipos de documento",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "detalle de tipos de documento",
+      "columns": [
+        {
+          "name": "CODIGO_DOCUMENTO",
+          "title": "CODIGO_DOCUMENTO",
+          "description": "ID de la tabla",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Descripción del tipo de documento",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CODIGO_CORREO",
+          "title": "CODIGO_CORREO",
+          "description": "ID del correo argentino",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Secreto"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

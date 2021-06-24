@@ -1,0 +1,55 @@
+name: LOAD_CMN_RECUPERACIONES_GarraMoria-Daily
+description: 'Load recovery model data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 13 * * *'
+#start_date: '2020-08-18'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [stk_cys_contratos,stk_rcp_contratosjudicializados,stk_rcp_contratosmoria,stk_rcp_pagosmoria]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_LoadTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/recuperaciones/${e}/ETL-LOAD-${e}.hql'
+  - name: SHERIFF_Control
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/recuperaciones/${e}/${e}_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_RECUPERACIONES_GarraMoria-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['${e}_sheriff.json']
+dependencies:
+  COMMON_LoadTable: SHERIFF_Control
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar]

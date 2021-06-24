@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_rcp_contratosjudicializados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_per_nup","cod_nro_cuenta","cod_div_divisa","cod_prod_producto","cod_prod_subproducto","cod_suc_sucursal","ds_rcp_numeroposicion","ds_rcp_numeroordenjudicial"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_nro_cuenta","cod_div_divisa","cod_prod_producto","cod_prod_subproducto","cod_suc_sucursal","ds_rcp_numeroposicion","ds_rcp_numeroordenjudicial"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechasuspensionproceso","dt_rcp_fechaaltaprocedimiento","dt_rcp_fechabajaprocedimiento","dt_rcp_fechabajacontrato","dt_rcp_fechaaltacontrato"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

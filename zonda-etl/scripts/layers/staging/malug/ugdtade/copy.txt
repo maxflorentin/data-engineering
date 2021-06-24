@@ -1,0 +1,389 @@
+000100******************************************************************00000100
+000200* UGTCADE. COPY DE LA TABLA DE COND. ADMON. ESPECIFICAS.         *00000200
+000300* CLAVE                                                          *00000300
+000400* CCC                                                            *00000400
+000500* CUENTA             NUMERO DE CUENTA                            *00000500
+000600* OFICINA            OFICINA DE LA CUENTA                        *00000600
+000700* ENTIDAD            CODIGO DE ENTIDAD                           *00000700
+000800* FECOVALI           FECHA COMIENZO VALIDEZ                      *00000800
+000900* DATOS--------------------                                      *00000900
+001000* FEFIVALI           FECHA FINAL VALIDEZ                         *00001000
+001100* DATOS-CALENDARIO ----------------                              *00001100
+001200* PERCAP             PERIODICIDAD DE AMORTIZACION DE CAPITAL     *00001200
+001300* PERINT             PERIODICIDAD DE LIQUIDACION DE INTERESES    *00001300
+001400* CARECAP            CARENCIA DE CAPITAL                         *00001400
+001500* CAREINT            PERIODICIDAD LIQ. INT. EN PERIODO CARENCIA  *00001500
+001600* TIPODIAS           TIPO DIAS                                   *00001600
+001700*    1 - A FECHA ANIVERSARIO                                     *00001700
+001800*    2 - A FIN DE MES                                            *00001800
+001900*    3 - A FIN DE MES CON AJUSTE 1ª CUOTA                        *00001900
+002000*    4 - A FIN DE TRIMESTRES NATURALES                           *00002000
+002100*    5 - ELECCION DIA DE PAGO                                    *00002100
+002110*    6 - ELECCION FECHA DE PAGO                                  *00002110
+002120*    7 - QUINCENAL                                               *00002120
+002130*    8 - HIPOTECARIOS DE CHILE                                   *00002130
+002200* DIA-PAGO           DIA DE PAGO                                 *00002200
+002300* IND-AJUSINHA       INDICADOR AJUSTE FECHA VENCIMIENTO POR INHAB*00002300
+002400*    S - SE AJUSTA EL PERIODO AL HABIL POSTERIOR                 *00002400
+002500*    N - SE MANTIENE FIJO EN EL DIA QUE SE PRODUJO               *00002500
+002600* COD-FECESPER A 1   TRATAMIENTO FECHA ESPERADA DE PAGO EN INHABI*00002600
+002700*    P - AL HABIL POSTERIOR                                      *00002700
+002800*    A - AL HABIL ANTERIOR                                       *00002800
+002900*    N - MANTENER FIJA LA FECHA                                  *00002900
+003000* DATOS -CARENCIA G -----------------------------                *00003000
+003100* COD-INTCAREN A 1   INDICADOR TRATAM. INTERESES EN CARENCIA     *00003100
+003200*    C - CAPITALIZACION                                          *00003200
+003300*    F - PAGO AL FINAL DEL PERIODO CARENCIA                      *00003300
+003400* COD-SEGCAREN       TRATAMIENTO DE SEGUROS EN CARENCIA          *00003400
+003500* PER-DIFERIDO       PEIODO DE DIFERIMIENTO INTERESES EN CARENCIA*00003500
+003600* IND-NTRAT          TRATAMIENTO DE LA INCIDENCIA                *00003600
+003610*   88-IND-NTRAT-VTO.........REDUCIR EL VENCIMIENTO              *00003610
+003700*   88-IND-NTRAT-CUO.........REDUCIR LA CUOTA                    *00003700
+003800* MAX-CAREINT  A 1   LIMITA EL NUM DE CARENCIAS INTERMEDIAS      *00003800
+005000* DATOS -CUPONERA   --------------------------------------       *00005000
+005100* IND-CUPONERA       INDICADOR DE CUPONERA (S/N)                 *00005100
+005300* NUM-CUOTAS         NUMERO DE CUOTAS EN EL PLAN DE PAGO/CUPONERA*00005300
+005400* DATOS-CUOTAS     ------------------------------------------    *00005400
+005500* CODTIAMO           CODIGO DE TIPO DE AMORTIZACION              *00005500
+005600*    1 - CUOTA CONSTANTE             INT + CA                    *00005600
+005700*    2 - CUOTA CONSTANTE                   CA                    *00005700
+005800*    3 - CUOTA GEOMETRICA SUCESIVA   INT + CA                    *00005800
+005900*    4 - CUOTA GEOMETRICA SUCESIVA         CA                    *00005900
+006000*    5 - CUOTA GEOMETRICA PERIODICA  INT + CA                    *00006000
+006100*    6 - CUOTA GEOMETRICA PERIODICA        CA                    *00006100
+006200*    7 - CUOTA ARITMETICA SUCESIVA   INT + CA                    *00006200
+006300*    8 - CUOTA ARITMETICA SUCESIVA         CA                    *00006300
+006400*    9 - CUOTA ARITMETICA PERIODICA  INT + CA                    *00006400
+006500*    0 - CUOTA ARITMETICA PERIODICA        CA                    *00006500
+006600*    A - CUOTA UNICA                 INT + CA                    *00006600
+006610*    D - FRANCES CON CUOTAS ADICIONALES REGULARES                *00006610
+006620*    I - FRANCES CON CUOTAS ADICIONALES IRREGULARES              *00006620
+006630*    N - NEGOCIADA / PREFIJADA                                   *00006630
+006640*    X - IRREGULAR                                               *00006640
+006641*    M - MUTUO HIPOTECARIOS                                      *00006641
+006642*    G - BOLETAS DE GARANTIA                                     *00006642
+006643*    P - PLANES DE PAGO ARGENTINA                                *00006643
+006644*    V - CAPITAL FIJO INTERES VARIABLE                           *00006644
+006645*    C - ADMINISTRAR EL NUEVO TIPO DE FORMULA DE CARENCIAS INTER *00006645
+006646*    E - EMPLEADOS VENEZUELA                                     *00006646
+006700* PROGGEOM           RAZON PROGRESION GEOMETRICA                 *00006700
+006800* PROGARIT           RAZON PROGRESION ARITMETICA                 *00006800
+006900* LININCUO           LINEAS ENTRE INCREMENTO DE CUOTA            *00006900
+007000* TIP-REDONDEO       TIPO DE REDONDEO DE LA CUOTA:               *00007000
+007100*    A - AL ALZA                                                 *00007100
+007200*    B - A LA BAJA                                               *00007200
+007300*    P - PURO                                                    *00007300
+007310*    S - SIN REDONDEO                                            *00007310
+007400* NUM-REDONDEO       FRACCION DE REDONDEO DE LA CUOTA            *00007400
+007500* IND-RECALCUO       INDICADOR DE RECALCULO DE LA CUOTA          *00007500
+007600*                    N MANTENER CUOTA Y PLAZO, C RECALCULAR CUOTA*00007600
+007610*                    P RECALCULAR PLAZO                          *00007610
+007700* PLZ-LIMITE         PLAZO LIMITE (SI PLAZO VARIABLE)            *00007700
+007800* COD-REFRECUO       CODIGO DE REFERENCIA PARA REVISION DE LA CUO*00007800
+007900* POR-REFINANC       PORCENTAJE DE REFINANCIAMIENTO DE LA CUOTA  *00007900
+008210* IND-CUOEXTRA       TIPO DE CUOTA EXTRAORDINARIA                *00008210
+008211* NUM-CUOEXTRA       NUMERO DE CUOTAS EXTRAORDINARIAS ADMITIDAS  *00008211
+008220*                    POR ANHO                                    *00008220
+008300* SWT-MESEXTRA       MESES CUOTAS EXTRAORDINARIAS                *00008300
+008400* IND-AJUSCUOT       INDICADOR DE AJUSTE PRIMER PERIODO          *00008400
+008500*    I - INICIAL                                                 *00008500
+008510*    F - FINAL                                                   *00008510
+008600*    P - PRORRATEADO                                             *00008600
+008700* POR-CAPRESID       PORCENTAJE CAPITAL RESIDUAL                 *00008700
+008800* UGYFARET           INDICADOR TIPO DE CALCULO DE LA CUOTA       *00008800
+008900*    C - CUOTA CALCULADA SOBRE CONCEDIDO                         *00008900
+009000*    D - CUOTA CALCULADA SOBRE DISPUESTO                         *00009000
+009300* DATOS-CARGO------------------------------                      *00009300
+009800* DIA-COBRO          INDICA EL DIA QUE DEBE HACERSE EL PRIMER    *00009800
+009801*                    INTENTO DE COBRO DE UN RECIBO CUANDO SEA FIJ*00009801
+009810* IND-CONCCOMP       INDICADOR DE PAGO DE CONCEPTOS COMPLETOS (S/*00009810
+009900* IND-SOBREGIR       INDICADOR ADMITE SOBRE GIRO                 *00009900
+010000* PERIGRA            DIAS PERIODO DE GRACIA                      *00010000
+010100* DATOS -ANTICIPOS  ---------------------------------            *00010100
+010200* INDLIQEN           INDICADOR DE LIQUIDACION EN ENTREGAS        *00010200
+010300*    S - SI LIQUIDA                                              *00010300
+010400*    N - NO LIQUIDA                                              *00010400
+010500* TIP-REDUCCEN       TIPO REDUCCION EN ENTREGAS ANTICIPADAS      *00010500
+010600*    P - SOLO REDUCE PLAZO                                       *00010600
+010700*    C - SOLO REDUCE CUOTAS                                      *00010700
+010800*    K - REDUCIR CAPITAL DE CUOTAS PROXIMAS                      *00010800
+010900*    T - TRANSACCION A ELEGIR                                    *00010900
+011000* TIP-LIQUCANC       TIPO DE LIQ. DE INTERES CANCELACION ANTICIPA*00011000
+011100*    F - A FIN DE PERIODO                                        *00011100
+011200*    D - A DIA CANCELACION                                       *00011200
+011300*    M - NUMERO DE MESES TRANSCURRIDOS                           *00011300
+011400* IND-CTRENCAN       INDICADOR CONTROL FECHAS EN ENTREGA Y CANCEL*00011400
+011500* DATOS-SUBVENCION  ---------------------------------------      *00011500
+011600* INDSUBVE           INDICADOR DE SUBVENCION                     *00011600
+011700*    L - LIBRE                                                   *00011700
+011800*    S - SUBVENCION                                              *00011800
+011900* NUMSUB                                                         *00011900
+012000* ENTSUB             ENTIDAD SUBVENCIONADORA                     *00012000
+012100* CONSUB             CONVENIO DE SUBVENCION                      *00012100
+012200* DATOS BALLOOM   ---------------------------------------------  *00012200
+012300* COD-BALLOOM        CODIGO DE BALLOOM                           *00012300
+012400*    M - MANUAL                                                  *00012400
+012500*    A - AUTOMATICO                                              *00012500
+012600*    N - NO GENERA BALLOOM                                       *00012600
+013110* NUM-CUOBALL      CADA CUANTAS CUOTAS SE UTILIZA  EL BALLOOM    *00013110
+013120* NUM-PROBALL      NUMERO DE CUOTAS A PARTIR DE LA FORMALIZACION *00013120
+013121*                  EN QUE NO SE COBRA BALLOOM                    *00013121
+013130* DATOS-LIQ-INT    ---------------------------------------       *00013130
+013400* IND-TIPOTASA       TIPO DE TASA A INFORMAR                     *00013400
+013500*    A - ANUAL                                                   *00013500
+013600*    E  - ESPECIAL ANUAL                                         *00013600
+013700*    M - MENSUAL                                                 *00013700
+013710*    O - ORDINARIA                                               *00013710
+013720*    C - DIARIA                                                  *00013720
+013800* DIASCAL            DIAS ANUALES A APLICAR                      *00013800
+013900*    N - NATURAL                                                 *00013900
+014000*    C - COMERCIAL                                               *00014000
+014100* IND-DIASPERI       DIAS DEL PERIODO                            *00014100
+014200*    N - NATURAL                                                 *00014200
+014300*    C - COMERCIAL                                               *00014300
+014400*    R - REAL                                                    *00014400
+014500* INDINANT           INDICADOR TIPO VENCIMIENTO                  *00014500
+014600*    V - INTERESES VENCIDOS                                      *00014600
+014700*    A - INTERESES ANTICIPADOS                                   *00014700
+014800* DATOS-RENOVACION -----------------------------                 *00014800
+014801* IND-NOM-RENOV      ADMITE PETICION DE RENOVACION               *00014801
+014802*                    'A' ANTES DEL VENCIMIENTO                   *00014802
+014803*                    'D' DESPUES DEL VENCIMIENTO                 *00014803
+014804*                    'S' ANTES Y DESPUES DEL VENVIMIENTO         *00014804
+014805* NUM-DIAMAXRE       NUM DIAS MAXIMO PARA REALIZAR UNA RENOVACION*00014805
+014806* NUM-MAXRENOV      NUM MAXIMO DE RENOVACIONES                  * 00014806
+014807* PER-MAXRENOV       PERIODO MAXIMO PARA REALIZAR UNA RENOVACION *00014807
+014808* NUM-AUTRENOV       NUMERO DE DIAS DE IMPAGO POR ENCIMA DE LOS  *00014808
+014809*                    CUALES SE REQUIERE AUTORIZACION PARA RENOVAR*00014809
+014810* DATOS IMPAGOS INVOLUNTARIOS ------------------                 *00014810
+014811* PER-CAIMPAVOL      PERIODO DE CARENCIA PARA IMPAGO VOLUNTARIO  *00014811
+014812* PER-IMPAVOL        PERIODICIDAD DE IMPAGO INVOLUNTARIO         *00014812
+014820* DATOS-VARIOS --------------------------------------            *00014820
+015000* DIA-MINVTOCU       NUMERO DIAS MINIMO VTO CUOTA                *00015000
+015010* POR-OPCOMPRA       PORCENTAJE OPCION DE COMPRA                 *00015010
+015020* IMP-OPCOMPRA       IMPORTE DE OPCION DE COMPRA                 *00015020
+015100* NUM-DIAMAXGA       NUM DIAS DE VENCIMIENTO QUE DEBEN DE SUPERAR*00015100
+015110*                    LAS GARANTIAS QUE CUBREN UN AVAL O UN PRESTA*00015110
+015120* IND-FECDESMOR                                                  *00015120
+015200* DATOS-AVALES --------------------------------------            *00015200
+015300* TIPOREDU           TIPO DE REDUCCION                           *00015300
+015400*    P - PERIODICA                                               *00015400
+015500*    A - APERIODICA                                              *00015500
+015600*    V - AL VENCIMIENTO                                          *00015600
+015700* PERIODICI          PERIODICIDAD DE REDUCCION                   *00015700
+015800* PER-REVCONTR       PERIODICIDAD DE REVISION DE CONTROL         *00015800
+015900* IND-LIQULPER       LIQUIDACION EN EL ULTIMO PERIODO:           *00015900
+016000*    F - TODO EL PERIODO                                         *00016000
+016100*    M - NUMERO DE MESES TRANSCURRIDOS                           *00016100
+016200*    D - DIAS REALES                                             *00016200
+016300* NUM-DIAMAXEJ       NUM DIAS TOPE PARA GESTIONAR LA EJECUCION DE*00016300
+016800* IND-LIQFLATPF      INDICADOR DE LIQUIDACION FLAT POST-FORMALIZA*00016800
+016810* IND-REC-CUO-CAPIT  INDICADOR DE REC CUO CAPIT                  *00016810
+016820* IND-TRAT-IMP-ARR   IND. TTO IMPUESTOS EN ARRENDAMIENTOS FINANC *00016820
+016830* IND-TRAT-INT-DIF   IND. TTO INTERESES DIFERIDOS                *00016830
+      * PER_CONV_TASA      PERIODO DE CONVERSION DE TASA (COLOMBIA)    *00016831
+      * DIA_FACTAUT_Q1     DIA DE FACT.QUINCENA 1 CR. AUT. COLOMBIA    *00016832
+      * DIA_FACTAUT_Q2     DIA DE FACT.QUINCENA 2 CR. AUT. COLOMBIA    *00016833
+      * DIA_PAGOAUT_Q1     DíA DE PAGO PARA AUTOM FORM EN 1ª QUINCENA  *00016834
+      * DIA_PAGOAUT_Q2     DíA DE PAGO PARA AUTOM FORM EN 2ª QUINCENA  *00016835
+      * MODIFICACIONES MODELO ---------------                          *00016836
+016840* TIPO-PREMIO        TIPO PREMIO                                 *00016840
+016850* FORMA-PAGO-PREMIO  FORMA PAGO DE PREMIO                        *00016850
+016850* STAMP --------------------------------                         *00016860
+017000* ENTIDAD-UMO        ENTIDAD ULTIMA MODIFICACION                 *00017000
+017100* CENTRO-UMO         CENTRO ULTIMA MODIFICACION                  *00017100
+017200* USERID-UMO         USUARIO ULTIMA MODIFICACION                 *00017200
+017300* NETNAME-UMO        TERMINAL ULTIMA MODIFICACION                *00017300
+017400* TIMEST-UMO         FECHA Y HORA ULTIMA MODIFICACION            *00017400
+017500******************************************************************00017500
+017600 02 UGTCADE.                                                      00017600
+017700    05 ADE-CLAVE.                                                 00017700
+017800       10 ADE-CCC.                                                00017800
+017900          15 ADE-CUENTA            PIC X(12).                     00017900
+018000          15 ADE-OFICINA           PIC X(04).                     00018000
+018100          15 ADE-ENTIDAD           PIC X(04).                     00018100
+018200       10 ADE-FECOVALI             PIC X(10).                     00018200
+018300    05 ADE-DATOS.                                                 00018300
+018400       10 ADE-FEFIVALI             PIC X(10).                     00018400
+018500       10 ADE-DATOS-CALENDARIO.                                   00018500
+018600          15 ADE-PERCAP            PIC X(04).                     00018600
+018700          15 ADE-PERINT            PIC X(04).                     00018700
+018800          15 ADE-CARECAP           PIC X(04).                     00018800
+018900          15 ADE-CAREINT           PIC X(04).                     00018900
+019000          15 ADE-TIPODIAS          PIC X(01).                     00019000
+019100             88 ADE-88-TIPODIAS-ANIVERS  VALUE '1'.               00019100
+019200             88 ADE-88-TIPODIAS-FINMESN  VALUE '2'.               00019200
+019300             88 ADE-88-TIPODIAS-FINMESA  VALUE '3'.               00019300
+019400             88 ADE-88-TIPODIAS-FINTRIM  VALUE '4'.               00019400
+019500             88 ADE-88-TIPODIAS-ELECCIO  VALUE '5'.               00019500
+019510             88 ADE-88-TIPODIAS-ELECFEC  VALUE '6'.               00019510
+019520             88 ADE-88-TIPODIAS-QUINCENAL VALUE '7'.              00019520
+019530             88 ADE-88-TIPODIAS-HIP-CHILE VALUE '8'.              00019530
+019600          15 ADE-DIA-PAGO          PIC S9(03)V COMP-3.            00019600
+019700          15 ADE-IND-AJUSINHA      PIC X(01).                     00019700
+019800             88 ADE-88-IND-AJUSINHA-SI   VALUE 'S'.               00019800
+019900             88 ADE-88-IND-AJUSINHA-NO   VALUE 'N'.               00019900
+020000          15 ADE-COD-FECESPER      PIC X(01).                     00020000
+020100             88 ADE-88-FECESPER-HABPOS   VALUE 'P'.               00020100
+020200             88 ADE-88-FECESPER-HABANT   VALUE 'A'.               00020200
+020300             88 ADE-88-FECESPER-FEFIJA   VALUE 'N'.               00020300
+020400       10 ADE-DATOS-CARENCIA.                                     00020400
+020500          15 ADE-COD-INTCAREN      PIC X(01).                     00020500
+020600             88 ADE-88-COD-INTCAREN-CAPI VALUE 'C'.               00020600
+020700             88 ADE-88-COD-INTCAREN-PAGO VALUE 'F'.               00020700
+020800          15 ADE-COD-SEGCAREN      PIC X(01).                     00020800
+020900             88 ADE-88-SEGCAREN-EXENTO   VALUE 'E'.               00020900
+021000             88 ADE-88-SEGCAREN-COBRAR   VALUE 'C'.               00021000
+021100          15 ADE-PER-DIFERIDO      PIC X(04).                     00021100
+021101          15 ADE-IND-NTRAT         PIC X(01).                     00021101
+021110             88 ADE-88-IND-NTRAT-VTO       VALUE 'V'.             00021110
+021200             88 ADE-88-IND-NTRAT-CUO       VALUE 'C'.             00021200
+021300          15 ADE-MAX-CAREINT       PIC X(01).                     00021300
+022400       10 ADE-DATOS-CUPONERA.                                     00022400
+022500          15 ADE-IND-CUPONERA      PIC X(01).                     00022500
+022700          15 ADE-NUM-CUOTAS        PIC S9(05)V COMP-3.            00022700
+022800       10 ADE-DATOS-CUOTAS.                                       00022800
+022900          15 ADE-CODTIAMO          PIC X(01).                     00022900
+023000             88 ADE-88-CODTIAMO-CAPINT-CTE VALUE '1'.             00023000
+023100             88 ADE-88-CODTIAMO-CAP-CTE    VALUE '2'.             00023100
+023200             88 ADE-88-CODTIAMO-CAPINT-CGS VALUE '3'.             00023200
+023300             88 ADE-88-CODTIAMO-CAP-CGS    VALUE '4'.             00023300
+023400             88 ADE-88-CODTIAMO-CAPINT-CGP VALUE '5'.             00023400
+023500             88 ADE-88-CODTIAMO-CAP-CGP    VALUE '6'.             00023500
+023600             88 ADE-88-CODTIAMO-CAPINT-CAS VALUE '7'.             00023600
+023700             88 ADE-88-CODTIAMO-CAP-CAS    VALUE '8'.             00023700
+023800             88 ADE-88-CODTIAMO-CAPINT-CAP VALUE '9'.             00023800
+023900             88 ADE-88-CODTIAMO-CAP-CAP    VALUE '0'.             00023900
+024000             88 ADE-88-CODTIAMO-CAP-UNICA  VALUE 'A'.             00024000
+024010             88 ADE-88-CODTIAMO-FRAN-REGU  VALUE 'D'.             00024010
+024020             88 ADE-88-CODTIAMO-FRAN-IRRE  VALUE 'I'.             00024020
+024030             88 ADE-88-CODTIAMO-NEGOCIADA  VALUE 'N'.             00024030
+024040             88 ADE-88-CODTIAMO-IRREGULAR  VALUE 'X'.             00024040
+024041             88 ADE-88-CODTIAMO-MUT-HIPOT  VALUE 'M'.             00024041
+024042             88 ADE-88-CODTIAMO-BOLE-GARA  VALUE 'G'.             00024042
+024043             88 ADE-88-CODTIAMO-PLAN-PAGO  VALUE 'P'.             00024043
+024044             88 ADE-88-CODTIAMO-CAPI-FIJO  VALUE 'V'.             00024044
+024045             88 ADE-88-CODTIAMO-CARE-INTE  VALUE 'C'.             00024045
+024046             88 ADE-88-CODTIAMO-EMPLEADOS  VALUE 'E'.             00024046
+024100          15 ADE-PROGGEOM          PIC S9(3)V9(6) COMP-3.         00024100
+024200          15 ADE-PROGARIT          PIC S9(07)V COMP-3.            00024200
+024300          15 ADE-LININCUO          PIC S9(03)V COMP-3.            00024300
+024400          15 ADE-TIP-REDONDEO      PIC X(01).                     00024400
+024500             88 ADE-88-REDONDEO-ALZA     VALUE 'A'.               00024500
+024600             88 ADE-88-REDONDEO-BAJA     VALUE 'B'.               00024600
+024700             88 ADE-88-REDONDEO-PURO     VALUE 'P'.               00024700
+024710             88 ADE-88-REDONDEO-SIN      VALUE 'S'.               00024710
+024800          15 ADE-NUM-REDONDEO      PIC S9(13)V9(4) COMP-3.        00024800
+024900          15 ADE-IND-RECALCUO      PIC X(01).                     00024900
+025100          15 ADE-PLZ-LIMITE        PIC X(04).                     00025100
+025200          15 ADE-COD-REFRECUO      PIC X(04).                     00025200
+025300          15 ADE-POR-REFINANC      PIC S9(3)V9(6) COMP-3.         00025300
+025610          15 ADE-IND-CUOEXTRA      PIC X(1).                      00025610
+025620          15 ADE-NUM-CUOEXTRA      PIC S9(3)V COMP-3.             00025620
+025700          15 ADE-SWT-MESEXTRA      PIC X(12).                     00025700
+025800          15 ADE-IND-AJUSCUOT      PIC X(01).                     00025800
+025900             88 ADE-88-AJUSCUOT-FINAL    VALUE 'F'.               00025900
+025910             88 ADE-88-AJUSCUOT-INICIAL  VALUE 'I'.               00025910
+026000             88 ADE-88-AJUSCUOT-PRORR    VALUE 'P'.               00026000
+026100          15 ADE-POR-CAPRESID      PIC S9(03)V9(6) COMP-3.        00026100
+026200          15 ADE-UGYFARET          PIC X(01).                     00026200
+026300             88 ADE-88-UGYFARET-CONC     VALUE 'C'.               00026300
+026400             88 ADE-88-UGYFARET-DISP     VALUE 'D'.               00026400
+026700       10 ADE-DATOS-CARGO.                                        00026700
+026800          15 ADE-DIA-COBRO         PIC X(02).                     00026800
+026900          15 ADE-IND-CONCCOMP      PIC X(01).                     00026900
+027000          15 ADE-IND-SOBREGIR      PIC X(01).                     00027000
+027100          15 ADE-PERIGRA           PIC S9(03)V COMP-3.            00027100
+027200       10 ADE-DATOS-ANTICIPOS.                                    00027200
+027300          15 ADE-INDLIQEN          PIC X(01).                     00027300
+027400             88 ADE-88-INDLIQEN-LIQSI    VALUE 'S'.               00027400
+027500             88 ADE-88-INDLIQEN-LIQNO    VALUE 'N'.               00027500
+027600          15 ADE-TIP-REDUCCEN      PIC X(01).                     00027600
+027700             88 ADE-88-REDUCCEN-PLAZO    VALUE 'P'.               00027700
+027800             88 ADE-88-REDUCCEN-CUOTA    VALUE 'C'.               00027800
+027900             88 ADE-88-REDUCCEN-CAPIT    VALUE 'K'.               00027900
+028000             88 ADE-88-REDUCCEN-ELECC    VALUE 'T'.               00028000
+028100          15 ADE-TIP-LIQUCANC      PIC X(01).                     00028100
+028200             88 ADE-88-LIQUCANC-FINPER   VALUE 'F'.               00028200
+028300             88 ADE-88-LIQUCANC-DIACAN   VALUE 'D'.               00028300
+028400             88 ADE-88-LIQUCANC-NUMMES   VALUE 'M'.               00028400
+028500          15 ADE-IND-CTRENCAN      PIC X(01).                     00028500
+028600       10 ADE-DATOS-SUBVENCION.                                   00028600
+028700          15 ADE-INDSUBVE          PIC X(01).                     00028700
+028800             88 ADE-88-INDSUBVE-LIBRE    VALUE 'L'.               00028800
+028900             88 ADE-88-INDSUBVE-SUBVE    VALUE 'S'.               00028900
+029000          15 ADE-NUMSUB.                                          00029000
+029100             20 ADE-ENTSUB         PIC X(04).                     00029100
+029200             20 ADE-CONSUB         PIC X(03).                     00029200
+029300       10 ADE-DATOS-BALLOOM.                                      00029300
+029400          15 ADE-COD-BALLOOM       PIC X(01).                     00029400
+029500             88 ADE-88-BALLOOM-MANUAL    VALUE 'M'.               00029500
+029600             88 ADE-88-BALLOOM-AUTOM     VALUE 'A'.               00029600
+029700             88 ADE-88-BALLOOM-NOBALL    VALUE 'N'.               00029700
+029900          15 ADE-NUM-CUOBALL       PIC S9(03)V COMP-3.            00029900
+030000          15 ADE-NUM-PROBALL       PIC S9(03)V COMP-3.            00030000
+030200       10 ADE-DATOS-LIQ-INT.                                      00030200
+030500          15 ADE-IND-TIPOTASA         PIC X(01).                  00030500
+030600             88 ADE-88-TIPOTASA-ANUAL       VALUE 'A'.            00030600
+030700             88 ADE-88-TIPOTASA-ANESP       VALUE 'E'.            00030700
+030800             88 ADE-88-TIPOTASA-MENSUAL     VALUE 'M'.            00030800
+030810             88 ADE-88-TIPOTASA-ORDINARIA   VALUE 'O'.            00030810
+030820             88 ADE-88-TIPOTASA-DIARIA      VALUE 'C'.            00030820
+030900          15 ADE-DIASCAL              PIC X(01).                  00030900
+031000             88 ADE-88-DIASCAL-NAT          VALUE 'N'.            00031000
+031100             88 ADE-88-DIASCAL-COM          VALUE 'C'.            00031100
+031200          15 ADE-IND-DIASPERI         PIC X(01).                  00031200
+031300             88 ADE-88-DIASPERI-NAT         VALUE 'N'.            00031300
+031400             88 ADE-88-DIASPERI-COM         VALUE 'C'.            00031400
+031500             88 ADE-88-DIASPERI-REAL        VALUE 'R'.            00031500
+031600          15 ADE-INDINANT             PIC X(01).                  00031600
+031700             88 ADE-88-INDINANT-VEN         VALUE 'V'.            00031700
+031800             88 ADE-88-INDINANT-ANT         VALUE 'A'.            00031800
+031900       10 ADE-DATOS-RENOV.                                        00031900
+031901          15 ADE-IND-NOM-RENOV     PIC X(01).                     00031901
+031902          15 ADE-NUM-DIAMAXRE      PIC S9(03)V COMP-3.            00031902
+031903          15 ADE-NUM-MAXRENOV      PIC S9(03)V COMP-3.            00031903
+031904          15 ADE-PER-MAXRENOV      PIC X(04).                     00031904
+031905          15 ADE-NUM-AUTRENOV      PIC S9(03)V COMP-3.            00031905
+031910       10 ADE-DATOS-IMPAGOS-INVOLUNTARIO.                         00031910
+031911          15 ADE-PER-CAIMPAVOL     PIC X(04).                     00031911
+031912          15 ADE-PER-IMPAVOL       PIC X(04).                     00031912
+031920       10 ADE-DATOS-VARIOS.                                       00031920
+032010          15 ADE-DIA-MINVTOCU      PIC S9(03)V COMP-3.            00032010
+032020          15 ADE-POR-OPCOMPRA      PIC S9(03)V9(6) COMP-3.        00032020
+032030          15 ADE-IMP-OPCOMPRA      PIC S9(13)V9(4) COMP-3.        00032030
+032100          15 ADE-NUM-DIAMAXGA      PIC S9(03)V COMP-3.            00032100
+032200          15 ADE-IND-FECDESMOR     PIC X(1).                      00032200
+032300       10 ADE-DATOS-AVALES.                                       00032300
+032400          15 ADE-TIPOREDU          PIC X(01).                     00032400
+032500             88 ADE-88-TIPOREDU-PER      VALUE 'P'.               00032500
+032600             88 ADE-88-TIPOREDU-APER     VALUE 'A'.               00032600
+032700             88 ADE-88-TIPOREDU-VTO      VALUE 'V'.               00032700
+032800          15 ADE-PERIODICI         PIC X(04).                     00032800
+032900          15 ADE-PER-REVCONTR      PIC X(04).                     00032900
+033000          15 ADE-IND-LIQULPER      PIC X(01).                     00033000
+033100             88 ADE-88-LIQULPER-TODO     VALUE 'F'.               00033100
+033200             88 ADE-88-LIQULPER-MESES    VALUE 'M'.               00033200
+033300             88 ADE-88-LIQULPER-DIAS     VALUE 'D'.               00033300
+033400          15 ADE-NUM-DIAMAXEJ      PIC S9(03)V COMP-3.            00033400
+033900          15 ADE-IND-LIQFLATPF     PIC X(01).                     00033900
+033910       10 ADE-IND-CAPIT-PROG       PIC X(1).                      00033910
+033920       10 ADE-POR-CAPIT-PROG       PIC S9(3)V9(6) COMP-3.         00033920
+033930       10 ADE-IND-REC-CUO-CAPIT    PIC X(1).                      00033930
+033940       10 ADE-IND-TRAT-IMP-ARR     PIC X(1).                      00033940
+033950       10 ADE-IND-TRAT-INT-DIF     PIC X(1).                      00033950
+             10 ADE-PER-CONV-TASA        PIC S9(2) COMP-3.              00033951
+             10 ADE-DIA-FACTAUT-Q1       PIC S9(2) COMP-3.              00033952
+             10 ADE-DIA-FACTAUT-Q2       PIC S9(2) COMP-3.              00033953
+             10 ADE-DIA-PAGOAUT-Q1       PIC S9(2) COMP-3.              00033954
+             10 ADE-DIA-PAGOAUT-Q2       PIC S9(2) COMP-3.              00033955
+          05 ADE-MODIF-IMPLANTACION.                                    00033956
+             10 ADE-DATOS-IMPAGO-VOLUNTARIO.                            00033957
+                15 ADE-TIPO-PREMIO       PIC X(03).                     00033958
+                15 ADE-FORMA-PAGO-PREMIO PIC X(01).                     00033959
+034000    05 ADE-STAMP.                                                 00034000
+034100       10 ADE-ENTIDAD-UMO          PIC X(04).                     00034100
+034200       10 ADE-CENTRO-UMO           PIC X(04).                     00034200
+034300       10 ADE-USERID-UMO           PIC X(08).                     00034300
+034400       10 ADE-NETNAME-UMO          PIC X(08).                     00034400
+034500       10 ADE-TIMEST-UMO           PIC X(26).                     00034500

@@ -1,0 +1,70 @@
+{
+	"file": "ac_clientes_schema",
+	"location": "/santander/bi-corp/landing/rio170/fact/ac_clientes/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/fact/ac_clientes",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_ac_clientes",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_ac_cliente",
+			"type": "string"
+		},
+        {
+			"name": "cod_origen",
+			"type": "string"
+		},
+        {
+			"name": "cod_accion_comercial",
+			"type": "string"
+		},
+        {
+			"name": "fe_carga_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_inicio_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_fin_ac",
+			"type": "string"
+		},
+        {
+			"name": "cod_cliente",
+			"type": "string"
+		},
+        {
+			"name": "indic_tipo_cliente",
+			"type": "string"
+		},
+        {
+			"name": "cod_campania",
+			"type": "string"
+		},
+        {
+			"name": "cod_grupo_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_actualizacion",
+			"type": "string"
+		},
+		{
+			"name": "indic_activa",
+			"type": "string"
+		}
+	],
+	"extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

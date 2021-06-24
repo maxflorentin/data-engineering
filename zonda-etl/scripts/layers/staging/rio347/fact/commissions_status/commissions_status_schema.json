@@ -1,0 +1,53 @@
+{
+  "file": "commissions_status_schema",
+  "location": "/santander/bi-corp/landing/rio347/fact/commissions_status/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio347/fact/commissions_status",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"customerid",
+      "type": "string"
+    },
+    {
+      "name":"securities_contract_code",
+      "type":"string"
+    },
+    {
+      "name":"office_code",
+      "type":"string"
+    },
+    {
+      "name":"origin",
+      "type":"string"
+    },
+    {
+      "name":"actionid",
+      "type":"string"
+    },
+    {
+      "name":"period",
+      "type":"string"
+    },
+    {
+      "name":"payment_date",
+      "type":"string"
+    },
+    {
+      "name":"creation_date",
+      "type":"string"
+    },
+    {
+      "name":"update_date",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

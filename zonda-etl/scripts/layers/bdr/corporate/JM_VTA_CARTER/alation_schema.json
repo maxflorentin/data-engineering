@@ -1,0 +1,295 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_vta_carter",
+         "title":"Ventas de carteras que se hayan realizado",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contiene todos los contratos que han sido objeto de venta de cartera durante el período de referencia.",
+         "columns":[
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9736_contra1",
+               "title":"Identificador del contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"cod_centro"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"num_contrato"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"cod_producto"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"cod_subprodu"
+                  }
+               ]
+            },
+            {
+               "name":"r9736_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9736_fvtacart",
+               "title":"Fecha Venta Cartera",
+               "description":"Fecha en que se realizó la venta de cartera que contenía este contrato.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"vc_venta ",
+                     "column":"fecha_venta"
+                  }
+               ]
+            },
+            {
+               "name":"r9736_imppdte",
+               "title":"Importe Total Pendiente",
+               "description":"Importe total pendiente de las obligaciones objeto de venta, incluyendo intereses y comisiones",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"saldo"
+                  }
+               ]
+            },
+            {
+               "name":"r9736_ind_credit",
+               "title":"Credit Related vs no Credit Related",
+               "description":"Yes -  considero los contratos default y contagio  (si superan umbral)  al resto de contratos de este deudor (siempre y cuando el default se este aplicando a nivel obligor)",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9736_precioob",
+               "title":"Precio acordado para las obligaciones vendidas",
+               "description":"En caso que el precio de la cartera vendida  se haya determinado especificando el descuento con respecto a las obligaciones crediticias concretas, se informará del precio de cada una de las obligaciones concretas. en caso que el precio de la cartera vendida se haya determinado a nivel de la cartera, deberá venir informado prorrateado",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"moria_vc_historico_venta ",
+                     "column":"imp_recuperar"
+                  }
+               ]
+            },
+            {
+               "name":"r9736_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

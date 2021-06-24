@@ -1,0 +1,130 @@
+{
+  "file": "hb_client_master_schema",
+  "location": "/santander/bi-corp/landing/rio147/fact/hb_client_master/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio147/fact/hb_client_master",
+  "tempDirectory": "/santander/bi-corp/temp/rio147",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "documento",
+    "type": "string"
+  },
+    {
+      "name": "fecha_de_nacimiento",
+      "type": "string"
+    },
+    {
+      "name": "tipo_de_documento",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "fecha_de_alta_inscripcion",
+      "type": "string"
+    },
+    {
+      "name": "canal_venta",
+      "type": "string"
+    },
+    {
+      "name": "fecha_inicio_uso",
+      "type": "string"
+    },
+    {
+      "name": "sucursal_origen",
+      "type": "string"
+    },
+    {
+      "name": "fecha_inicio_habil",
+      "type": "string"
+    },
+    {
+      "name": "f_alta_registro",
+      "type": "string"
+    },
+    {
+      "name": "aceptacion_contrato",
+      "type": "string"
+    },
+    {
+      "name": "canal_activacion",
+      "type": "string"
+    },
+    {
+      "name": "fecha_aceptacion_contrato",
+      "type": "string"
+    },
+    {
+      "name": "aceptac_contrato_ddi",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "aceptac_contrato_prog",
+      "type": "string"
+    },
+    {
+      "name": "cpi_fci_c",
+      "type": "string"
+    },
+    {
+      "name": "cpi_fci_t",
+      "type": "string"
+    },
+    {
+      "name": "cpi_bon_c",
+      "type": "string"
+    },
+    {
+      "name": "cpi_acc_c",
+      "type": "string"
+    },
+    {
+      "name": "aceptac_contrato_viaj",
+      "type": "string"
+    },
+    {
+      "name": "aceptacion_contrato_tag",
+      "type": "string"
+    },
+    {
+      "name": "fecha_aceptacion_contrato_tag",
+      "type": "string"
+    },
+    {
+      "name": "adhesion_billetera_todopago",
+      "type": "string"
+    },
+    {
+      "name": "aceptacion_contrato_ext_atm",
+      "type": "string"
+    },
+    {
+      "name": "echeq",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

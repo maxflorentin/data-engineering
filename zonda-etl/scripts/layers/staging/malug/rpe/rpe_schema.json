@@ -1,0 +1,16 @@
+{
+  "file": "rpe_schema",
+  "location": "/santander/bi-corp/landing/malug/fact/rpe/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/rpe",
+  "createTable": "bi_corp_staging.malug_rpe",
+  "copybook": "rpe.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

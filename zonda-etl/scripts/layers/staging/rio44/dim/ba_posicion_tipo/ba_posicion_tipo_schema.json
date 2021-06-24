@@ -1,0 +1,31 @@
+{
+    "file": "ba_posicion_tipo_schema",
+    "createTable": "bi_corp_staging.rio44_ba_posicion_tipo",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_posicion_tipo/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_posicion_tipo",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_posicion_tipo",
+            "type": "string"
+        },
+        {
+            "name": "descri_pos_tipo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,167 @@
+{
+  "file": "amuc550",
+  "location": "/santander/bi-corp/landing/amuc/fact/amuc550/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/amuc/fact/amuc550",
+  "createTable": "bi_corp_staging.amuc_amuc550",
+  "extension": "dat",
+  "header": false,
+  "fixed": "true",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "550_entidad",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "550_sucursal",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "550_cuenta",
+      "type": "string",
+      "width": 12
+    },
+    {
+      "name": "550_producto",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_subproducto",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "550_divisa",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "550_comprobante",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "550_motivo",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_fecha_rechazo",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "550_fec_pag",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "550_persona_empresa",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_firmante_1",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_firmante_2",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_firmante_3",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_firmante_4",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_firmante_5",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_codigo",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_subcodi",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_indicador_computable",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "550_importe",
+      "type": "string",
+      "width": 15
+    },
+    {
+      "name": "550_fec_cierre",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "550_nro_persona",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "550_m_sin_fondo_nres",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_m_sin_fondo_fter",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_m_sin_fondo_res",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_m_formales_nres",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_m_formales_fter",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "550_m_formales_res",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "filler",
+      "type": "string",
+      "width": 35
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

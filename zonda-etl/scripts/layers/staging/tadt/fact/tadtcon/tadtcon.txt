@@ -1,0 +1,120 @@
+ ******************************************************************        
+      * DCLGEN TABLE(MALP.TADTCON)                                     *        
+      *        LIBRARY(ACHG.ABASE.DCA(TAGTCON))                        *        
+      *        ACTION(REPLACE)                                         *        
+      *        LANGUAGE(COBOL)                                         *        
+      *        STRUCTURE(DCL-CON)                                      *        
+      *        APOST                                                   *        
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *        
+      ******************************************************************        
+           EXEC SQL DECLARE TADTCON TABLE                                       
+           ( TACDGENT                       CHAR(4) NOT NULL,                   
+             TACENTRO                       CHAR(4) NOT NULL,                   
+             TACUENTA                       CHAR(12) NOT NULL,                  
+             TAPRODUC                       CHAR(2) NOT NULL,                   
+             TASUBPRO                       CHAR(4) NOT NULL,                   
+             TASECPRO                       DECIMAL(5, 0) NOT NULL,             
+             TASECSIT                       DECIMAL(3, 0) NOT NULL,             
+             TAFECINI                       DATE NOT NULL,                      
+             TANUMPER                       CHAR(8) NOT NULL,                   
+             TAFECFIN                       DATE NOT NULL,                      
+             TAFECBAJ                       DATE NOT NULL,                      
+             TAPERING                       CHAR(1) NOT NULL,                   
+             TARESIVA                       CHAR(2) NOT NULL,                   
+             TACONIVA                       CHAR(1) NOT NULL,                   
+             TACEREXC                       CHAR(1) NOT NULL,                   
+             TAFECINE                       DATE NOT NULL,                      
+             TAFECVEE                       DATE NOT NULL,                      
+             TARESGAN                       CHAR(1) NOT NULL,                   
+             TACERNOR                       CHAR(1) NOT NULL,                   
+             TAPORNOR                       DECIMAL(5, 2) NOT NULL,             
+             TAFECINC                       DATE NOT NULL,                      
+             TAFECVEC                       DATE NOT NULL,                      
+             TACEREXE                       CHAR(1) NOT NULL,                   
+             TAAJUINF                       CHAR(1) NOT NULL,                   
+             TATIPINB                       CHAR(3) NOT NULL,                   
+             TANUMINB                       CHAR(20) NOT NULL,                  
+             TAMAREMP                       CHAR(1) NOT NULL,                   
+             TAMAREND                       CHAR(1) NOT NULL,                   
+             TAMARAUT                       CHAR(1) NOT NULL,                   
+             TAULTPRE                       CHAR(6) NOT NULL,                   
+             TAAGERET                       CHAR(1) NOT NULL,                   
+             TACERARE                       CHAR(1) NOT NULL,                   
+             TAPOREXC                       DECIMAL(5, 2) NOT NULL,             
+             TADNRPRE                       CHAR(8) NOT NULL,                   
+             TAMARCA1                       CHAR(1) NOT NULL,                   
+             TAMARCA2                       CHAR(1) NOT NULL,                   
+             TARESIMPCRE                    CHAR(1) NOT NULL,                   
+             TARESIMPDEB                    CHAR(1) NOT NULL,                   
+             TACERPAC                       CHAR(1) NOT NULL,                   
+             TAPACFIS                       CHAR(1) NOT NULL,                   
+             TACERRAD                       CHAR(1) NOT NULL,                   
+             TAPORREDSEL                    DECIMAL(5, 2) NOT NULL,             
+             TAVIGFINSEL                    DATE NOT NULL,                      
+             TAPORREDIBR                    DECIMAL(5, 2) NOT NULL,             
+             TAVIGFINIBR                    DATE NOT NULL,                      
+             ENTIDAD_UMO                    CHAR(4) NOT NULL,                   
+             CENTRO_UMO                     CHAR(4) NOT NULL,                   
+             NETNAME_UMO                    CHAR(8) NOT NULL,                   
+             USERID_UMO                     CHAR(8) NOT NULL,                   
+             TIMEST_UMO                     TIMESTAMP NOT NULL,                 
+             TAIVAEXC                       CHAR(1) NOT NULL                    
+           ) END-EXEC.                                                          
+      ******************************************************************        
+      * COBOL DECLARATION FOR TABLE TADTCON                            *        
+      ******************************************************************        
+       01  DCL-CON.                                                             
+           10 DIC-TACDGENT         PIC X(4).                                    
+           10 DIC-TACENTRO         PIC X(4).                                    
+           10 DIC-TACUENTA         PIC X(12).                                   
+           10 DIC-TAPRODUC         PIC X(2).                                    
+           10 DIC-TASUBPRO         PIC X(4).                                    
+           10 DIC-TASECPRO         PIC S9(5)V USAGE COMP-3.                     
+           10 DIC-TASECSIT         PIC S9(3)V USAGE COMP-3.                     
+           10 DIC-TAFECINI         PIC X(10).                                   
+           10 DIC-TANUMPER         PIC X(8).                                    
+           10 DIC-TAFECFIN         PIC X(10).                                   
+           10 DIC-TAFECBAJ         PIC X(10).                                   
+           10 DIC-TAPERING         PIC X(1).                                    
+           10 DIC-TARESIVA         PIC X(2).                                    
+           10 DIC-TACONIVA         PIC X(1).                                    
+           10 DIC-TACEREXC         PIC X(1).                                    
+           10 DIC-TAFECINE         PIC X(10).                                   
+           10 DIC-TAFECVEE         PIC X(10).                                   
+           10 DIC-TARESGAN         PIC X(1).                                    
+           10 DIC-TACERNOR         PIC X(1).                                    
+           10 DIC-TAPORNOR         PIC S9(3)V9(2) USAGE COMP-3.                 
+           10 DIC-TAFECINC         PIC X(10).                                   
+           10 DIC-TAFECVEC         PIC X(10).                                   
+           10 DIC-TACEREXE         PIC X(1).                                    
+           10 DIC-TAAJUINF         PIC X(1).                                    
+           10 DIC-TATIPINB         PIC X(3).                                    
+           10 DIC-TANUMINB         PIC X(20).                                   
+           10 DIC-TAMAREMP         PIC X(1).                                    
+           10 DIC-TAMAREND         PIC X(1).                                    
+           10 DIC-TAMARAUT         PIC X(1).                                    
+           10 DIC-TAULTPRE         PIC X(6).                                    
+           10 DIC-TAAGERET         PIC X(1).                                    
+           10 DIC-TACERARE         PIC X(1).                                    
+           10 DIC-TAPOREXC         PIC S9(3)V9(2) USAGE COMP-3.                 
+           10 DIC-TADNRPRE         PIC X(8).                                    
+           10 DIC-TAMARCA1         PIC X(1).                                    
+           10 DIC-TAMARCA2         PIC X(1).                                    
+           10 DIC-TARESIMPCRE      PIC X(1).                                    
+           10 DIC-TARESIMPDEB      PIC X(1).                                    
+           10 DIC-TACERPAC         PIC X(1).                                    
+           10 DIC-TAPACFIS         PIC X(1).                                    
+           10 DIC-TACERRAD         PIC X(1).                                    
+           10 DIC-TAPORREDSEL      PIC S9(3)V9(2) USAGE COMP-3.                 
+           10 DIC-TAVIGFINSEL      PIC X(10).                                   
+           10 DIC-TAPORREDIBR      PIC S9(3)V9(2) USAGE COMP-3.                 
+           10 DIC-TAVIGFINIBR      PIC X(10).                                   
+           10 DIC-ENTIDAD-UMO      PIC X(4).                                    
+           10 DIC-CENTRO-UMO       PIC X(4).                                    
+           10 DIC-NETNAME-UMO      PIC X(8).                                    
+           10 DIC-USERID-UMO       PIC X(8).                                    
+           10 DIC-TIMEST-UMO       PIC X(26).                                   
+           10 DIC-TAIVAEXC         PIC X(1).                                    
+      ******************************************************************        
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 50      *        
+      ******************************************************************        

@@ -1,0 +1,40 @@
+{
+  "file": "solicitud_propuesta_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/solicitud_propuesta/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/solicitud_propuesta",
+  "createTable": "bi_corp_staging.alcen_solicitud_propuesta",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+           {
+                    "name": "cod_sucursal",
+                    "type": "string"
+                },
+{
+                    "name": "nro_solicitud",
+                    "type": "string"
+                },
+{
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "mar_aprob_pyme",
+                    "type": "string"
+                }
+
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,241 @@
+{
+  "file": "txn_rdm_loy_schema",
+  "location": "/santander/bi-corp/landing/rio130/fact/txn_rdm_loy/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio130/fact/txn_rdm_loy",
+  "tempDirectory": "/santander/bi-corp/temp/rio130",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+     {
+    "name": "cod_entidad",
+    "type": "string"
+  },
+{
+    "name": "programa",
+    "type": "string"
+  },
+{
+    "name": "centro_redencion",
+    "type": "string"
+  },
+{
+    "name": "desc_centro",
+    "type": "string"
+  },
+{
+    "name": "disponibilidad_destino",
+    "type": "string"
+  },
+{
+    "name": "cod_articulo",
+    "type": "string"
+  },
+{
+    "name": "nombre_articulo",
+    "type": "string"
+  },
+{
+    "name": "cod_movimiento",
+    "type": "string"
+  },
+{
+    "name": "fecha_mov",
+    "type": "string"
+  },
+{
+    "name": "hora_mov",
+    "type": "string"
+  },
+{
+    "name": "cod_familia",
+    "type": "string"
+  },
+{
+    "name": "nro_remito",
+    "type": "string"
+  },
+{
+    "name": "cto_redencion_destino",
+    "type": "string"
+  },
+{
+    "name": "cod_canal",
+    "type": "string"
+  },
+{
+    "name": "id_canje",
+    "type": "string"
+  },
+{
+    "name": "nup",
+    "type": "string"
+  },
+{
+    "name": "tipo_doc",
+    "type": "string"
+  },
+{
+    "name": "nro_doc",
+    "type": "string"
+  },
+{
+    "name": "cant_art_canje",
+    "type": "string"
+  },
+{
+    "name": "cant_puntos",
+    "type": "string"
+  },
+{
+    "name": "costo_articulo",
+    "type": "string"
+  },
+{
+    "name": "x_txn_estado",
+    "type": "string"
+  },
+{
+    "name": "canal_servicio",
+    "type": "string"
+  },
+{
+    "name": "codigo_forma_pago",
+    "type": "string"
+  },
+{
+    "name": "cod_moneda_canje",
+    "type": "string"
+  },
+{
+    "name": "forma_entrega",
+    "type": "string"
+  },
+{
+    "name": "numero_tarjeta_envio",
+    "type": "string"
+  },
+{
+    "name": "nom_y_ape",
+    "type": "string"
+  },
+{
+    "name": "calle",
+    "type": "string"
+  },
+{
+    "name": "altura",
+    "type": "string"
+  },
+{
+    "name": "piso",
+    "type": "string"
+  },
+{
+    "name": "departamento",
+    "type": "string"
+  },
+{
+    "name": "localidad",
+    "type": "string"
+  },
+{
+    "name": "cod_provincia",
+    "type": "string"
+  },
+{
+    "name": "cod_postal",
+    "type": "string"
+  },
+{
+    "name": "nro_telefono",
+    "type": "string"
+  },
+{
+    "name": "tipo_stock",
+    "type": "string"
+  },
+{
+    "name": "tipo_mov",
+    "type": "string"
+  },
+{
+    "name": "usuario_id_oper",
+    "type": "string"
+  },
+{
+    "name": "ult_actualiz",
+    "type": "string"
+  },
+{
+    "name": "fecha_nac",
+    "type": "string"
+  },
+{
+    "name": "tipo_voucher",
+    "type": "string"
+  },
+{
+    "name": "monto_canje",
+    "type": "string"
+  },
+{
+    "name": "mca_delivery",
+    "type": "string"
+  },
+{
+    "name": "tipo_exencion",
+    "type": "string"
+  },
+{
+    "name": "clase_exencion",
+    "type": "string"
+  },
+{
+    "name": "importe_cargo",
+    "type": "string"
+  },
+{
+    "name": "disponibilidad",
+    "type": "string"
+  },
+{
+    "name": "estado_destino",
+    "type": "string"
+  },
+{
+    "name": "pre_compra",
+    "type": "string"
+  },
+{
+    "name": "valor_de_voucher",
+    "type": "string"
+  },
+{
+    "name": "id_loy",
+    "type": "string"
+  },
+{
+    "name": "numero_voucher",
+    "type": "string"
+  },
+{
+    "name": "fecha_creacion",
+    "type": "string"
+  },
+{
+    "name": "colidcanje",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha_creacion",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

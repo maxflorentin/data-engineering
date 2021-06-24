@@ -1,0 +1,117 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_usuarios_modalidad",
+      "title": "Tabla que relaciona el usuario con el contrato (rh_empresas)",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla que relaciona el usuario con el contrato (rh_empresas)",
+      "columns": [
+        {
+          "name": "N_UMOD_ID",
+          "title": "N_UMOD_ID",
+          "description": "Id de la tabla",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USUARIORH",
+          "title": "C_USUARIORH",
+          "description": "Código de usuario de SLC (tabla RH_USUARIOS, campo C_USUARIORH)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_EMPRESA",
+          "title": "C_EMPRESA",
+          "description": "Código de la empresa (tabla RH_EMPRESAS)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_TIPO_CONTRATO",
+          "title": "C_TIPO_CONTRATO",
+          "description": "Tipo de contrato (actualmente en desuso)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_UBICACION",
+          "title": "C_UBICACION",
+          "description": "Ubicación (actualmente en desuso)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_ALTA",
+          "title": "F_ALTA",
+          "description": "Fecha de alta de la relación usuario/empresa-contrato",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "F_BAJA",
+          "title": "F_BAJA",
+          "description": "Fecha de baja de la relación usuario/empresa-contrato",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "I_ACTIVO",
+          "title": "I_ACTIVO",
+          "description": "Indicador de registro activo",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

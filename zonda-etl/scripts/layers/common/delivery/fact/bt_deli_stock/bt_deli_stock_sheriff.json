@@ -1,0 +1,27 @@
+{
+  "table": "bi_corp_common.bt_deli_stock",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": []
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_deli_courier_shipping"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_deli_creacion","ts_deli_recibido"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+      "threshold": 0.01
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_deli_ultima_actualizacion","dt_deli_creacion_estado"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

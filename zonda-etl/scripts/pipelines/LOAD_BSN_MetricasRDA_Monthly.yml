@@ -1,0 +1,36 @@
+name: LOAD_BSN_MetricasRDA_Monthly
+description: 'Load de Metricas de RDA data from common to business layer (Monthly)'
+owner: BI-Corp
+active: true
+schedule_interval: '0 0 1 * *'
+start_date: '2020-12-01'
+#catchup: true
+retries: 2
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: CreateInsertTBLMetricasRDA
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/seguros/metricas_rda/DDLT-Create_business_tbl.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/seguros/metricas_rda/ETL-LOAD_business_tbl.hql'
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msanguinetti@santandertecnologia.com.ar]

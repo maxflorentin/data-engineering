@@ -1,0 +1,82 @@
+{
+     "file": "opp_monedas_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/opp_monedas/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/opp_monedas",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [		 {
+                     "name": "moncod",
+                     "type": "string"
+             },
+             {
+                     "name": "mondes",
+                     "type": "string"
+             },
+             {
+                     "name": "cod_afip",
+                     "type": "string"
+             },
+             {
+                     "name": "cod_bcra",
+                     "type": "string"
+             },
+             {
+                     "name": "usu_alta",
+                     "type": "string"
+             },
+             {
+                     "name": "fecha_alta",
+                     "type": "string"
+             },
+             {
+                     "name": "usu_modif",
+                     "type": "string"
+             },
+             {
+                     "name": "fecha_modif",
+                     "type": "string"
+             },
+             {
+                     "name": "usu_baja",
+                     "type": "string"
+             },
+             {
+                     "name": "fecha_baja",
+                     "type": "string"
+             },
+             {
+                     "name": "usu_verif",
+                     "type": "string"
+             },
+             {
+                     "name": "fecha_verif",
+                     "type": "string"
+             },
+             {
+                     "name": "corresponsal",
+                     "type": "string"
+             },
+             {
+                     "name": "oper_sml",
+                     "type": "string"
+             },
+             {
+                     "name": "gpi",
+                     "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

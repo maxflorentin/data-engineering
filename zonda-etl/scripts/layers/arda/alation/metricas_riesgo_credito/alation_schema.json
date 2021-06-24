@@ -1,0 +1,3430 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A304727"
+         ],
+         "documentation":"https://confluence.ar.bsch/pages/viewpage.action?pageId=13600275",
+         "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+         "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+         "businessSteward":[
+
+         ],
+         "level":"Advanced",
+         "verified":"Si",
+         "dataQuality":"<a href=\"http://lxqdusrv03.ar.bsch:3838/report_163723/\">Qualis - Data Quality Events </a>"
+      },
+      "schedule":{
+         "periodicity":"Monthly",
+         "loading":{
+            "type":"STOCK",
+            "delta":"D+1, D+2, D+3"
+         }
+      },
+      "table":{
+         "schema":"santander_business_risk_arda",
+         "name":"metricas_riesgo_credito",
+         "title":"Metricas riesgo de crédito",
+         "source":"Data Lake - ARDA",
+         "type":"FACT",
+         "description":"Metricas riesgo de crédito",
+         "columns":[
+            {
+               "name":"c_ggs_cr_00011",
+               "title":"CARTERA CONTENCIOSA",
+               "description":"Universo de contratos de la mora 404, ya calculado en cr.00013 y filtrar por alguna de estas condiciones:marca del contrato =  ‘co’ y  submarca del contrato =  ‘gen’ marca del contrato =  ‘co’ y  submarca del contrato =  ‘coh’ marca del contrato =  ‘co’ y  submarca del contrato =  ‘con’marca del contrato =  ‘mo’ y  submarca del contrato =  ‘con’  ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00011",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00012",
+               "title":"CARTERA DNP",
+               "description":"Universo de contratos de la mora 404, ya calculado en cr.00013 y filtrar por alguna de estas condiciones:marca del contrato =  ‘de’ y  submarca del contrato =  ‘gen’marca del contrato =  ‘no’ y  submarca del contrato =  ‘npl’ marca del contrato =  ‘de’ y  submarca del contrato =  ‘pas’marca del contrato =  ‘ir’  y  submarca del contrato =  ‘npl’",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00012",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00013",
+               "title":"SALDOS DUDOSOS",
+               "description":"Universo de contratos que cumplan con el criterio de mora 404. ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00013",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00014",
+               "title":"CARTERA PRE-CONTENCIOSA",
+               "description":"Universo de contratos calculado en cr.00013 y filtrar por alguna de estas condiciones:marca del contrato =  ‘pr’ y  submarca del contrato =  ‘con’marca del contrato =  ‘pr’ y  submarca del contrato =  ‘coh’ marca del contrato =  ‘pr’ y  submarca del contrato =  ‘gen’ marca del contrato =  ‘mo’ y submarca del contrato =  ‘pre’",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00014",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00019",
+               "title":"COSTE DE CRÉDITO",
+               "description":"Ratio entre numerador y denominador, multiplicado luego por 100.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00019",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00035"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00056"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00102"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00035",
+               "title":"DOTACIONES DE INSOLVENCIAS TOTALES (INCLUYE ASR)",
+               "description":"Diferencia entre periodo actual y periodo anterior",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00035",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00311"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00037",
+               "title":"PLAZO RESIDUAL DE LA CARTERA",
+               "description":"Universo de contratos, donde  fecha vto > fecha fin período . excluir  tarjetas de crédito y cuentas corrientes y número de días de demora = 0 .  días que faltan para el vencimiento del contrato de la siguiente manera: días para el vencimiento = fecha vencimiento del contrato  -  fecha fin del período. ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00037",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"num_dias_para_vcmto"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00052",
+               "title":"ENTRADAS A DUDOSIDAD",
+               "description":"Sumatoria de los importes de entradas a morosidad más los importes de incrementos de morosidad  (por cada período). ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00052",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito_diario_ajustado",
+                     "column":"c_ggs_cr_00052_acumulado"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00055",
+               "title":"PASE A FALLIDOS",
+               "description":"Universos de contratos que contengan el  importe de deuda contable mayor a cero.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00055",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_deuda_contable"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00056",
+               "title":"ACTIVOS EN SUSPENSO RECUPERADOS",
+               "description":"Universo de contratos  que se encuentren en estado fallido y que no hayan estado en mora durante el mes de la fecha de proceso.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00056",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_canc_contrato"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_gastos_moria"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_contable"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_imperc_int_cps"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_imperc_int_mor"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00067",
+               "title":"INVERSIÓN TOTAL",
+               "description":"Universo de contratos con cod_estado ≠ 10  y ≠ 20 y ≠ 30 o  nulo y ind_contingente = 0 ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00067",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_deuda"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00069",
+               "title":"CARTERA IRREGULAR",
+               "description":"Cantidad de contratos",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00069",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00182"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":" c_ggs_cr_00183"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00184"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00085",
+               "title":"MORA SIMPLE",
+               "description":"Universo de contratos contenidos en la metrica cr.00013, con cantidad de dias de atraso > 90",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00085",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00102",
+               "title":"CRÉDITO A CLIENTES",
+               "description":"Importe del crédito a clientes bruto del balance público",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00102",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_balances",
+                     "column":"imp_saldo_puntual_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00103",
+               "title":"PRIMA DE RIESGO SIN RIESGO PAÍS",
+               "description":"Variación de la mora de gestión (vmg) del periodo anualizada entre el saldo medio del riesgo total del mismo periodo.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00103",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00136 "
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00345"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00104",
+               "title":"RATING INTERNO",
+               "description":"Valoración interna de la calidad crediticia de un cliente en base a criterios corporativos.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00104",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"coef_rating"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00112",
+               "title":"RIESGOS CONTINGENTES",
+               "description":"Universo de contratos, en las que la entidad garantice obligaciones de un tercero, surgidas como consecuencia de garantías financieras concedidas u otro tipo de contratos",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00112",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_deuda"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00117",
+               "title":"SALIDAS DE GESTIÓN DE DUDOSIDAD",
+               "description":"Sumatoria de los importes de salidas de morosidad más los importes de incrementos de morosidad  (por cada período). ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00117",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito_diario_ajustado",
+                     "column":"c_ggs_cr_00117_acumulado"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00118",
+               "title":"TASA DE RECUPERACIÓN DE MOROSOS (%)",
+               "description":"Es el ratio que resulta de dividir las salidas de gestión de morosidad entre las entradas en morosidad de un período.salidas de mora de gestión / entradas en mora x 100",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00118",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00117"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00052"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00124",
+               "title":"STOCK DE FALLIDOS CONTABLE",
+               "description":"Sumarizar los importes de capital, ajuste, interes, en aquellos contratos moria fallidos",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00124",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_canc_contrato"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_gastos_moria"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_contable"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_imperc_int_cps"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_imperc_int_mor"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00125",
+               "title":"TASA DE COBERTURA",
+               "description":"Saldo final fondos constituidos / saldo final saldos dudosos (con riesgo y compromiso contingente y sin riesgo país) x 100",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00125",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00311"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00128",
+               "title":"TASA DE MOROSIDAD",
+               "description":"Saldo final saldos dudosos (con riesgo y compromiso contingente y sin riesgo país) / saldo final riesgo total x 100",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00128",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00133"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00133",
+               "title":"RIESGO DISPUESTO",
+               "description":"Resultante sumar la inversión y los riesgos contingentes.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00133",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00067"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00112"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00136",
+               "title":"VARIACIÓN DE LA MORA DE GESTIÓN (VMG)",
+               "description":"Es el resultado de restar la morosidad sin pase a fallidos menos los activos en suspenso recuperados. es decir, es la variación de los saldos dudosos en un período determinado, sin considerar el pase a fallidos, menos los activos en suspenso recuperados para el mismo período.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00136",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00135"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00198"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00144",
+               "title":"2AS O MÁS RECONDUCCIONES (STOCK)",
+               "description":"El total de 2as o más reconducciones será la suma del saldo de todas las operaciones reconducidas más de una vez.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00144",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00145",
+               "title":"% 2ª Y SUCESIVAS RECONDUCCIONES (STOCK)",
+               "description":"Saldo total de 2as reconducciones/saldo total de reconducciones.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00145",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00144"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00165"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00151",
+               "title":"RECURSOS PROPIOS",
+               "description":"Suma de capital, prima de emisión, reservas, otros instrumentos de capital y resultado del ejercicio menos la autocartera y dividendo a cuenta, mas los ajuste de valoración (reservas móviles)",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00151",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_balances",
+                     "column":"imp_saldo_puntual_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00153",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00117"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00056"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00124"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00052"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00160",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00052"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00134"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00165",
+               "title":"STOCK CARTERA RECONDUCIDA",
+               "description":"Con el término general de reconducción de deudas de clientes, término que da título a esta política corporativa, hacemos referencia a aquellas operaciones en las que el cliente presenta dificultades financieras – actuales o previsibles – para atender sus obligaciones de pago con el grupo santander en los términos contractuales vigentes y, por dicho motivo, se hace necesario modificar, cancelar y / o incluso formalizar una nueva operación.el total de reconducciones será la suma del saldo de todas las operaciones reconducidas.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00165",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00181",
+               "title":"CARTERA AL DÍA (NO MOROSA)",
+               "description":"Riesgo dispuesto de todos los contratos que no presentan atrasos en los pagos y que no hayan sido clasificados como morosos (dnp o cualquier otra clasificación morosa). se incluye cartera al día normal y cartera al día subestándar.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00181",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00182",
+               "title":"IRREGULAR 1-30",
+               "description":"Riesgo dispuesto de la cartera irregular que se encuentra en el periodo que comienza el primer día de incumplimiento y finaliza transcurrido 30 días desde entonces, ambos inclusive, es decir, si la primera liquidación impagada venció un día 5, este periodo se prolonga hasta finalizado el día 5 del siguiente mes.también es denominado i30",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00182",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00183",
+               "title":"IRREGULAR 31-60",
+               "description":"Riesgo dispuesto de la cartera irregular que se encuentran en el periodo que comienza transcurrido un mes y un día desde el primer día de incumplimiento y finaliza transcurrido otro mes más desde entonces, ambos inclusive, es decir, si la liquidación impagada venció un día 5, este periodo se prolonga hasta finalizado el día 5 (de los dos meses siguientes)también es denominado i60",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00183",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00184",
+               "title":"IRREGULAR 61-90",
+               "description":"Riesgo dispuesto de la cartera irregular que se encuentran en el periodo que comienza transcurridos dos meses y un día desde el primer día de incumplimiento y finaliza transcurrido otro mes más desde entonces, ambos inclusive, es decir, si la liquidación impagada venció un día 5, este periodo se prolonga hasta finalizado el día 5 (de los tres meses siguientes)también es denominado i90",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00184",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00188",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00189",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00190",
+               "title":"ENTRADAS A CARTERA RECONDUCIDA",
+               "description":"Es el importe total de reconducciones realizadas durante un periodo",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00190",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"imp_riesgo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00195",
+               "title":"MOROSIDAD SIN PASE A FALLIDOS",
+               "description":"Refleja el incremento (o decremento) de los saldos dudosos en un periodo dado, aislando el efecto de reducción en el saldo contable dudoso por el pase a fallido.por tanto, mspf = mf-mi+f, donde mf = existencia de morosidad al final del periodo; mi = existencia de morosidad al inicio del periodo; f = fallidos producidos en el periodo.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00195",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00013"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00055"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00196",
+               "title":"MARGEN BRUTO",
+               "description":"Linea de la cuenta de resultados que totaliza la suma: margen de intereses + comisiones netas (comisiones no financieras) + resultados de operaciones financieras (rof) + otros resultados de explotación netos (orex) + rendimientos de instrumentos de capital + resultados por puesta en equivalencia.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00196",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_resultados",
+                     "column":"imp_resultado_acum_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00196_delta",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00196"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00197",
+               "title":"RESULTADO ANTES DE IMPUESTOS",
+               "description":"Epígrafe de la cuenta de resultados que comprende el resultado continuado del periodo (sin considerar el resultado de las operaciones interrumpidas) antes del gasto de impuesto sobre beneficios.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00197",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_resultados",
+                     "column":"imp_resultado_acum_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00198",
+               "title":"FALLIDOS NETOS DE ASR",
+               "description":"Refleja el importe de la cartera que ha resultado fallida en el período menos las recuperaciones (asr) del mismo período. es decir, la diferencia entre el pase a fallidos del período y los activos en suspenso recuperados (asr).",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00198",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00055"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00056"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00200",
+               "title":"% ASR / FALLIDOS",
+               "description":"Ratio que resulta de dividir los activos en suspenso recuperados sobre el flujo de fallidos.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00200",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00056 "
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00055"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00201",
+               "title":"",
+               "description":"Ratio que resulta de dividir el saldo de irregular 61-90 sobre el stock de irregular",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Villella, Javier",
+                  "businessSteward":[
+                     "a009340"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00201",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00184"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00069"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00202",
+               "title":"% I90 SOBRE CARTERA IRREGULAR",
+               "description":"Epígrafe de la cuenta de resultados denominado beneficio atribuido al grupo que comprende el importe del resultado generado que corresponde al grupo. es el resultado consolidado del ejercicio menos el resultado atribuido a los minoritarios o socios externos y neto de plusvalías y saneamientos extraordinarios.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00202",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_resultados",
+                     "column":"imp_resultado_acum_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00208",
+               "title":"TOTAL ACTIVO",
+               "description":"Los activos totales se corresponden al epígrafe del balance denominado activo. el promedio es la media aritmética simple de los saldos finales contables del activo total, incluyendo el mes de diciembre del año anterior.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00208",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_balances",
+                     "column":"imp_saldo_puntual_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00272",
+               "title":"PROVISIONES ESPECÍFICAS ANALIZADAS INDIVIDUALMENTE",
+               "description":"Fondo de provisiones específicas para los activos dudosos para españa que se hayan estimado de forma individualizada; es decir, como diferencia entre el importe en libros bruto y el valor actual de los flujos de efectivo que se espera cobrar. como aproximación, se pueden considerar bajo este epígrafe las coberturas realizadas para activos dudosos (no subestándar) de los clientes carterizados, es decir, que tengan un analista asignado. (ias 39.63-70)",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00272",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_prevision"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00273",
+               "title":"PROVISIONES ESPECÍFICAS ANALIZADAS COLECTIVAMENTE",
+               "description":"Fondo de provisiones específicas calculadas para los instrumentos de deuda con importes que no sean individualmente significativos; es decir, la cobertura específica realizada para los activos dudosos para españa aplicando los porcentajes de cobertura colectiva en función de la antigüedad de los impagos y de las garantías existentes. como aproximación, se pueden considerar bajo este epígrafe las coberturas realizadas para activos dudosos de los clientes estandarizados, es decir, que no tengan un analista asignado. (ias 39.59, 64) por lo general, se informa con valor 0 por criterio de santander acordado con bde. no obstante, algunas unidades calculan provisiones específicas de manera colectiva.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00273",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_prevision"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00276",
+               "title":"TOTAL DE CLIENTES \"PERFORMING\" EN AÑO T -1",
+               "description":"En la matriz de transición, la muestra de clientes debe cubrir la población existente a la fecha de inicio del periodo, es decir, 31/12/t-1 (cuando la matriz de transición muestra variaciones entre \"t-1\" e \"t\"). número de clientes de activo cuyas operaciones se encuentran en situación normal (es decir, sin impagos superiores a 90 días) a la fecha t-1.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00276",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"ind_performing"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00277",
+               "title":"TOTAL DE CLIENTES \"PERFORMING\" EN AÑO T -1, QUE SIGUEN SIENDO PERFORMING EN AÑO T",
+               "description":"Número de clientes de activo que se consideraron no morosos en la fecha t-1 y siguen siendo no morosos en t.se considera la morosidad a nivel cliente, es decir, un cliente se considerará moroso si tiene al menos una exposición morosa (criterio cross-default)",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00277",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"ind_performing"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00278",
+               "title":"TOTAL DE CLIENTES \"PERFORMING\" EN AÑO T -1, QUE PASAN A NON-PERFORMING EN AÑO T",
+               "description":"Número de clientes de activo que se consideraron no morosos en la fecha t-1 y sin embargo son morosos en t.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00278",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"ind_performing"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00279",
+               "title":"VARIACIÓN RELATIVA DEL NÚMERO DE CLIENTES \"PERFORMING\" EN AÑO T -1",
+               "description":"Proporción del nº de clientes que eran performing en año t-1 y han salido de balance (por amortización ordinaria o anticipada) respecto al total de clientes que eran performing en año t-1.si el % de variación es mayor al 5% se deben aportar comentarios al respecto.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00279",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00276"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00277"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00278"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00276"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00281",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"num_dia_demora"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00282",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"c_ggs_cr_00311"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00289",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00035"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00289"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00299",
+               "title":"Importe máximo de las garantías reales o personales que pueden considerarse",
+               "description":"Suma del valor de todas las garantías  reales (o con colateral) y financieras (o sin colateral) recibidas que soportan exposiciones dentro y fuera de balance, considerando como importe máximo el valor contable neto de la operación crediticia a la que están asociadas las mencionadas garantías.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00299",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_max_cobertura"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_ini_mo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00302",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_interes_documentado"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_tot_ajuste_capital"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_capital"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_impuesto"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_total_interes"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00305",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00035"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00307",
+               "title":"NÚMERO DE OPERACIONES",
+               "description":"Número de operaciones efectuadas en un lapso temporal determinado.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00307",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_producto"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00311",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_prevision"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00311_ant",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"c_ggs_cr_00312",
+               "title":"Recuperaciones registradas directamente en el estado de resultados (flujo)",
+               "description":"Columna l anexo movin: “recuperaciones registradas directamente en la cuenta de pérdidas y ganancias” se informará de los importes correspondientes a recuperaciones de importes pasados por fallidos previamente (en el mismo ejercicio, o en ejercicios anteriores). estos importes serán un ingreso en la cuenta de resultados del ejercicio y se informarán en la línea  a la que pertenecían justo antes de ser considerados fallidos. ejemplo: un préstamo hipotecario a hogares en stage 3 que se consideró fallido hace 2 años, si la unidad se adjudica la casa y la vende, el ingreso que recibe se consignará en la línea préstamos – stage 3 – hogares – columna l. ",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00312",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_prevision"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00328",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_prevision"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00343",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00197"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00068"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00344",
+               "title":"MARGEN BRUTO SOBRE TOTAL RIESGO PROMEDIO DE LOS ÚLTIMOS 12 MESES",
+               "description":"Linea de la cuenta de resultados que totaliza la suma: margen de intereses + comisiones netas (comisiones no financieras) + resultados de operaciones financieras (rof) + otros resultados de explotación netos (orex) + rendimientos de instrumentos de capital + resultados por puesta en equivalencia entre el riesgo total de los últimos 12 meses.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00344",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00196"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00345"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00345",
+               "title":"RIESGO TOTAL (MEDIA 12 MESES)",
+               "description":"Riesgo total es igual a la media de los últimos 12 meses de las partidas de:• créditos sobre clientes del balance público bruto (antes de incluir el fondo de insolvencias).• riesgos contingentes (avales, cauciones prestadas, créditos documentarios irrevocables, derivados de créditos vendidos, activos afectos a obligaciones de terceros y otros riesgos contingentes contabilizados en cuentas de orden con clientes). no se incluyen los riesgos contingentes de entidades de crédito.• titulizaciones de activo (no se incluyen aquellas en las que el riesgo ha sido totalmente transferido aunque se realice la gestión del mismo).• saldos dudosos (operaciones de balance) de entidades de crédito.• riesgos contingentes dudosos.• saldos dudosos de los compromisos contingentes de clientes y de entidades de crédito (se excluyen saldos no dudosos de este epígrafe).• excluye en general el riesgo de derivados, la renta fija y el riesgo país.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00345",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00133"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00346",
+               "title":"RATIO DE ABSORCIÓN DE PÉRDIDAS DE LOS ÚLTIMOS 12 MESES",
+               "description":"Ratio que representa la relación entre el margen básico y coste de crédito o provisiones netas.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00346",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00196"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00019"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00347",
+               "title":"FEVE GRAVE SOBRE RIESGO TOTAL SEGMENTO",
+               "description":"Calificación del cliente que permite someter a un seguimiento más intenso a todo cliente en viglancia especial (feve) dividido entre el riesgo total.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00347",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00133"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00348",
+               "title":"STOCK CARTERA RECONDUCIDA SOBRE TOTAL RIESGO DE CRÉDITO",
+               "description":"Operaciones en las que el cliente presenta dificultades financieras – actuales o previsibles – para atender sus obligaciones de pago con el grupo santander en los términos contractuales vigentes dividido entre el total de riesgo de crédito.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00348",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00165"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00133 "
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00349",
+               "title":"LTV HIPOTECAS",
+               "description":"Importe del préstamo / valor del colateral. ltv actual y no el inicial. (sólo individuos)",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00349",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00350"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00351"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00350",
+               "title":"IMPORTE DEL PRÉSTAMO",
+               "description":"Cantidad prestada por la entidad financiera y que el prestatario devolverá en los términos acordados (sólo crédito hipotecarios).",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00350",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_deuda"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00351",
+               "title":"VALOR DEL COLATERAL",
+               "description":"Valor de los activos que son transferidos por una contrapartida si la exposición excede un umbral específico, basado normalmente en la calidad crediticia de la contrapartida.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00351",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":" imp_escritura"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00353",
+               "title":"% DE OPERACIONES CON LTV SUPERIOR A 80%",
+               "description":"Operaciones con ltv mayor a 80% / total de operaciones hipotecarias de individuos",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00353",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00354"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00355"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00354",
+               "title":"OPERACIONES CON LTV SUPERIOR A 80%",
+               "description":"Número de préstamos concedidos a individuos con ltv mayor a 80%",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00354",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"c_ggs_cr_00349"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00355",
+               "title":"TOTAL OPERACIONES HIPOTECARIAS INDIVIDUOS",
+               "description":"Número total de préstamos concedidos a individuos con fines hipotecarios.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00355",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"c_ggs_cr_00361",
+               "title":"DERIVADOS OTC SOBRE TOTAL ACTIVOS",
+               "description":"Derivados otc valorados en valor nominal dividido entre el total de activos de la unidad o grupo.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00361",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00362_prev"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00208"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00369",
+               "title":"VENCIMIENTO MEDIO PONDERADO",
+               "description":"Vencimiento medio ponderado por el valor nominal. si existiera colateral, se tomarían el número de días hasta vencimiento, en caso contrario, el vencimiento residual.(∑ (días hasta vcto de la transacción * valor nominal de la transacción)/ ∑ valor nominal de las transacciones)/365 días",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00369",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"imp_ini_mo"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00370",
+               "title":"DÍAS HASTA VENCIMIENTO DE LA OPERACIÓN",
+               "description":"Número de días hasta que el venza la operación o, si existiera colateral, se tomarían el número de días hasta vencimiento.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00370",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"c_ggs_cr_00373",
+               "title":"PATRIMONIO NETO",
+               "description":"El cálculo del patrimonio neto es el resultado de la suma de: i) capital, ii) reservas, iii)prima de emisión, iv) otros instrumentos de capital, v) (-)autocartera, vi) el beneficio no distribuido, vii) ajustes al patrimonio por valoración, viii) intereses minoritarios.",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00373",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"mis_balances",
+                     "column":"imp_saldo_puntual_ldn"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00375",
+               "title":"MARGEN BRUTO (%)",
+               "description":"Es el resultado de dividir la suma de los resultados mensuales de los últimos 12 meses del margen bruto entre la media aritmética de los 12 últimos saldos finales del riesgo total",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessReference":" Médico, Lucía ",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "metricID":"C.GGS.CR.00375",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00196"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"metricas_riesgo_credito",
+                     "column":"c_ggs_cr_00133"
+                  }
+               ]
+            },
+            {
+               "name":"c_ggs_cr_00380",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"cod_actividad",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"cod_actividad"
+                  }
+               ]
+            },
+            {
+               "name":"cod_cartera_basica",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"cartera_basica",
+                     "column":"cod_cartera_basica"
+                  }
+               ]
+            },
+            {
+               "name":"cod_producto",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_producto"
+                  }
+               ]
+            },
+            {
+               "name":"cod_reesctr",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_reesctr"
+                  }
+               ]
+            },
+            {
+               "name":"cod_sector_economico",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"cod_sector_economico"
+                  }
+               ]
+            },
+            {
+               "name":"cod_segmento",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"cod_segmento"
+                  }
+               ]
+            },
+            {
+               "name":"cod_segmento_calculado",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"cod_segmento_calculado"
+                  }
+               ]
+            },
+            {
+               "name":"cod_segmento_contraparte",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"cod_segmento_contraparte"
+                  }
+               ]
+            },
+            {
+               "name":"data_date_part",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"data_source_entity_code",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_entidad"
+                  }
+               ]
+            },
+            {
+               "name":"grado_feve",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"clientes",
+                     "column":"grado_feve"
+                  }
+               ]
+            },
+            {
+               "name":"grouping__id",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               }
+            },
+            {
+               "name":"idf_cto_supra",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"idf_cto_supra"
+                  }
+               ]
+            },
+            {
+               "name":"num_persona",
+               "title":"",
+               "description":"",
+               "type":"",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "A304727"
+                  ],
+                  "owner":"Roberto D´Empaire\nEsteban Perez Bodria\nMariano Perez Esteban",
+                  "businessSteward":[
+
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"ARQUITECTURA DE RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Advanced"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"num_persona"
+                  }
+               ]
+            }
+         ]
+      }
+   }
+}

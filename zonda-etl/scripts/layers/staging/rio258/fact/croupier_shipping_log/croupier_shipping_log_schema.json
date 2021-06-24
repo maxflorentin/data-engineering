@@ -1,0 +1,51 @@
+{
+	"file": "croupier_shipping_log_schema",
+	"location": "/santander/bi-corp/landing/rio258/fact/croupier_shipping_log/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/fact/rio258_croupier_shipping_log",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_croupier_shipping_log",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "id",
+			"type": "string"
+		},
+{
+			"name": "shipping_id",
+			"type": "string"
+		},
+{
+			"name": "new_shipping_status",
+			"type": "string"
+		},
+{
+			"name": "old_shipping_status",
+			"type": "string"
+		},
+{
+			"name": "created_date",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "motive",
+			"type": "string"
+		},
+{
+			"name": "branch_code",
+			"type": "string"
+		},
+{
+			"name": "office_user",
+			"type": "string"
+		},
+{
+			"name": "derived_branch_code",
+			"type": "string"
+		}
+	]
+}

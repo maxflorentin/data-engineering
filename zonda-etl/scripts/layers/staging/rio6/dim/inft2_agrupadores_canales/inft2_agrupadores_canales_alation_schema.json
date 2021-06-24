@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "inft2_agrupadores_canales",
+            "title": "Canales por Agrupador",
+            "schema": "bi_corp_staging",
+            "source": "INFOSEG",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Canales por Agrupador",
+            "columns": [
+                {
+                    "name": "INGC_INAG_CD_AGRUPADOR",
+                    "title": "INGC_INAG_CD_AGRUPADOR",
+                    "description": "Codigo de Agrupador",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INGC_INCA_CD_CANAL",
+                    "title": "INGC_INCA_CD_CANAL",
+                    "description": "Codigo de Canal",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

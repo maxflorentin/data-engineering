@@ -1,0 +1,39 @@
+{
+    "file": "tbl_mi_equipo_erm_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_mi_equipo_erm",
+    "location": "/santander/bi-corp/landing/rio151/fact/tbl_mi_equipo_erm/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/fact/tbl_mi_equipo_erm",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_legajo_emp",
+            "type": "string"
+        },
+        {
+            "name": "cd_legajo_jef",
+            "type": "string"
+        },
+        {
+            "name": "fec_desde",
+            "type": "string"
+        },
+        {
+            "name": "fec_hasta",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

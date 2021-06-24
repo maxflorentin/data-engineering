@@ -1,0 +1,76 @@
+{
+  "tables" :[
+        {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_ENVIO",
+            "table_type": "fact",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/fact/priori_envio",
+            "partition_field": "FECHA_PROCESO",
+            "split_field": "to_char(FECHA_PROCESO, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table}/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_CI_ENVIO",
+            "table_type": "fact",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/fact/priori_ci_envio",
+            "partition_field": "FECHA_PROCESO",
+            "split_field": "FECHA_PROCESO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table}/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_ENVIO_GETNET",
+            "table_type": "fact",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/fact/priori_envio_getnet",
+            "partition_field": "FECHA_PROCESO",
+            "split_field": "FECHA_PROCESO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_ORDEN",
+            "table_type": "dim",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/dim/priori_orden",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}'  --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_CI_ORDEN",
+            "table_type": "dim",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/dim/priori_ci_orden",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TBASE_PRIORI_ORDEN_GETNET",
+            "table_type": "dim",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/dim/priori_orden_getnet",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio61",
+            "serverConfig" : "dblxorafront11",
+            "database": "EST01",
+            "table": "TEST_INTER_RECAUD_OPER",
+            "table_type": "fact",
+            "environment": "rio61",
+            "landing_path": "/santander/bi-corp/landing/rio61/fact/test_inter_recaud_oper",
+            "partition_field": "FECHA_PROCESO",
+            "split_field": "to_char(FECHA_PROCESO, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop/rio61/{table} --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      }
+  ]
+}

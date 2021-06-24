@@ -1,0 +1,150 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_circuito",
+      "title": "diccionario de canales",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "diccionario de canales",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO",
+          "description": "codigo del circuito",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DESCRI",
+          "title": "DESCRI",
+          "description": "descripcion del circuito",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 25.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DIAS_BACKOFFICE",
+          "title": "DIAS_BACKOFFICE",
+          "description": "dias que puede permanecer en backoffice antes de escalarlo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ACTIVO",
+          "title": "ACTIVO",
+          "description": "S si esta activo, N caso contrario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPO_INFORME_ENTREVISTA",
+          "title": "TIPO_INFORME_ENTREVISTA",
+          "description": "tipo de informe para la visita en solicitudes de portal",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CODIFICACION_OCA",
+          "title": "CODIFICACION_OCA",
+          "description": "codificacion interna de oca para la visita en solicitudes de portal",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "PAIS",
+          "title": "PAIS",
+          "description": "codigo de tabla corporativa de pais",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPOSOLICITUD",
+          "title": "TIPOSOLICITUD",
+          "description": "tipo de solicitud (Adhesion = 'A',Individuo = 'P',CentroPyme = 'C',IndividuoRTF = 'I',Otro = 'O')",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "PROCESOTIBCO",
+          "title": "PROCESOTIBCO",
+          "description": "codigo proceso tibco (en desuso)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPOCIRCUITO",
+          "title": "TIPOCIRCUITO",
+          "description": "codigo del tipo de circuito (FK a tabla tmk.tmk_tipocircuito)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "REVERSA",
+          "title": "REVERSA",
+          "description": "S - si el circuito posee reversa, N - caso contrario ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

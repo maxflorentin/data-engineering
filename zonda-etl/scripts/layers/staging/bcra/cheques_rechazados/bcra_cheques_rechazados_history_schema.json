@@ -1,0 +1,64 @@
+{
+  "file": "bcra_cheques_rechazados_history",
+  "location": "/santander/bi-corp/landing/SQL5/bcra_cheques_rechazados",
+  "destination": "/santander/bi-corp/staging/bcra/bcra_cheques_rechazados",
+  "extension": "csv",
+  "delimiter": ",",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+                            "name": "cuit",
+                            "type": "string"
+                          },
+					{
+                            "name": "nro_cheque",
+                            "type": "string"
+                          },
+						{
+                            "name": "fecha_rechazo",
+                            "type": "string"
+                          },
+						{
+                            "name": "monto",
+                            "type": "string"
+                          },
+						{
+                            "name": "causal",
+                            "type": "string"
+                          },
+						{
+                            "name": "fecha_levantamiento",
+                            "type": "string"
+                          },
+						{
+                            "name": "revision",
+                            "type": "string"
+                          },
+						{
+                            "name": "judicial",
+                            "type": "string"
+                          },
+						{
+                            "name": "cuit_relacionado",
+                            "type": "string"
+                          },
+						{
+                            "name": "pago_multa",
+                            "type": "string"
+                          },
+							{
+                            "name": "otro",
+                            "type": "string"
+                          },
+							{
+                     "name": "partition_date",
+                     "type": "date",
+                     "partitionColumn": true,
+                     "partitionOrder": 1,
+                     "dateFormat" : "yyMMdd"
+                   }
+					]
+}

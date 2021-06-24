@@ -1,0 +1,18 @@
+{
+  "file": "ugdtmrc",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtmrc/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtmrc",
+  "createTable": "bi_corp_staging.malug_ugdtmrc",
+  "copybook": "ugdtmrc.cob",
+  "parquetFiles": 34,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

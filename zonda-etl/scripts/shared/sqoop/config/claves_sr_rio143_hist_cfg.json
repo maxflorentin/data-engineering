@@ -1,0 +1,26 @@
+{
+  "tables" :[
+    {
+      "serverAka": "watson_rio143",
+      "serverConfig" : "dblxdbcsrv01",
+      "database": "MCANAL",
+      "table": "TR_ALTA_RESET_SANTANDER",
+      "table_type": "fact",
+      "environment": "rio143",
+      "landing_path": "/santander/bi-corp/landing/rio143/fact/alta_reset",
+      "partition_field": "TO_CHAR(FECHA_PROCESO_MCANAL,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select TIPO_OPERACION,USUARIO1,USUARIO2,NUP,FECHA_MODIFICACION,FECHA_HORA_MODIFICACION,COD_RETORNO, TO_CHAR(FECHA_PROCESO_MCANAL,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverAka": "watson_rio143",
+      "serverConfig" : "dblxdbcsrv01",
+      "database": "MCANAL",
+      "table": "BIG_CLAVE_SR_CANAL_DIGIT",
+      "table_type": "fact",
+      "environment": "rio143",
+      "landing_path": "/santander/bi-corp/landing/rio143/fact/claves_sr_canales",
+      "partition_field": "TO_CHAR(FECHA_PROCESO,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select ENTIDAD,NUP,SESION,FASE,SYSID,TASK, TRMID,USERID,TRNID,SERVICIO,CANAL,SUBCANAL,RET_CODE,RET_TEXTO,STAMP,ID_RC,ID_CICLO,ID_SW_SISTEMA,ID_SW_PREGUNTAS,ID_SW_AUTENTICACION,ID_SW_PIN, ID_SW_CVV2,ID_SW_OTP,ID_TIPO,ID_NUMERO,NRO_DOC,FEC_NAC,PD_RC,PD_CICLO,PD_ID,PD_STAMP,AU_RC,AU_CICLO,AU_TIPO,AU_NUMERO,AU_OFFSET,CK_RC,CK_CICLO,DETALLE,TO_CHAR(FECHA_PROCESO,'YYYY-MM-DD') AS PARTITION_DATE from {database}.{table} where {partition_field} >= '2019-01-01' AND \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

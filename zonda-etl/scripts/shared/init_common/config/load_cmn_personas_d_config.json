@@ -1,0 +1,36 @@
+{
+  "name": "PERSONAS-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_Malpe-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_MALPE_POST_BATCH-Daily",
+      "tasks": ["STAGING_PEDT001_Parquetize","STAGING_PEDT008_Parquetize","STAGING_PEDT015_Parquetize","STAGING_PEDT030_Parquetize","STAGING_PEDT052_Parquetize"]
+    },
+    {
+      "dag_id":"LOAD_STG_Mesac-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_MALTC-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_Garra_WAGUCDEX-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_RIO102-ATM-Daily",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Personas-Daily",
+      "tasks": "all"
+    }
+  ]
+}

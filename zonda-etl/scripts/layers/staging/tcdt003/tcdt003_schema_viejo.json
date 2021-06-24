@@ -1,0 +1,83 @@
+{
+	   "file":"tcdt003_schema",
+	   "location":"/santander/bi-corp/landing/maltc/dim/tcdt003/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/maltc/dim/tcdt003",
+	   "extension":"txt",
+	   "header":false,
+	   "fixed":true,
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "cdcampo",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "nbcampo",
+                        "type": "string",
+                        "width": 25
+                },
+                {
+                        "name": "tipo",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "longitud",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "numinimo",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "numaximo",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "rutvalc",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ultmod",
+                        "type": "string",
+                        "width": 26
+                },
+                {
+                        "name": "banculmo",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "oficulmo",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "numter",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "usultmod",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "tcqdecim",
+                        "type": "string",
+                        "width": 2
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

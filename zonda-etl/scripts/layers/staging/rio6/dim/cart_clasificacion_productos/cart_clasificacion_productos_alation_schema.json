@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_clasificacion_productos",
+            "title": "Clasificacion de Productos",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Clasificacion de Productos",
+            "columns": [
+                {
+                    "name": "CACY_CD_CLASE",
+                    "title": "CACY_CD_CLASE",
+                    "description": "Codigo de Clasificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACY_DE_CLASE",
+                    "title": "CACY_DE_CLASE",
+                    "description": "Descripcion de Clasificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "file": "cart_operaciones_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_operaciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_operaciones",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"caop_cd_operacion",
+      "type": "string"
+    },
+    {
+      "name":"caop_cd_sub_operacion",
+      "type":"string"
+    },
+    {
+      "name":"caop_de_operacion",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

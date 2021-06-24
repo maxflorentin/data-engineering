@@ -1,0 +1,30 @@
+{
+  "file": "rev_rat_sistema_opcional_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/rev_rat_sistema_opcional/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/rev_rat_sistema_opcional",
+  "createTable": "bi_corp_staging.sge_rev_rat_sistema_opcional",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_rev_sistemaopcional",
+      "type": "string"
+    },
+    {
+      "name": "descripcion",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

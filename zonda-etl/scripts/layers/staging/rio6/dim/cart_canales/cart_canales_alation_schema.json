@@ -1,0 +1,137 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_canales",
+            "title": "Canales",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Canales",
+            "columns": [
+                {
+                    "name": "CANL_CD_CANAL",
+                    "title": "CANL_CD_CANAL",
+                    "description": "Codigo de Canal",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_DE_CANAL",
+                    "title": "CANL_DE_CANAL",
+                    "description": "Descripcion de Canal",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_NM_APODERADO",
+                    "title": "CANL_NM_APODERADO",
+                    "description": "Apoderado del Canal",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_NM_CARGO_APODERADO",
+                    "title": "CANL_NM_CARGO_APODERADO",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_CD_APODERADO",
+                    "title": "CANL_CD_APODERADO",
+                    "description": "Codigo apoderado",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_MAIL_APODERADO",
+                    "title": "CANL_MAIL_APODERADO",
+                    "description": "Mail Apoderado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_NM_RESPONSABLE",
+                    "title": "CANL_NM_RESPONSABLE",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_IN_CONS_PRESTAMO",
+                    "title": "CANL_IN_CONS_PRESTAMO",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_ENUM_RAMOS_CONS",
+                    "title": "CANL_ENUM_RAMOS_CONS",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANL_ENUM_ACCESO_CONS",
+                    "title": "CANL_ENUM_ACCESO_CONS",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

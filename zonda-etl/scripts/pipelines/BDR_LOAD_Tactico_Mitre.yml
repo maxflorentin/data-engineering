@@ -1,0 +1,61 @@
+name: BDR_LOAD_Tactico_Mitre
+description: 'Carga de Tactico Mitre en las distintas tablas'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Load_Normalizacion_Contratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_contratos/Tactico_Mitre/ETLV-Load_Table.hql'
+  - name: Load_Tactico_Mitre_in_JM_CONTR_BIS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_BIS/tactico_mitre/ETLV-Load_Table.hql'
+  - name: Load_Tactico_Mitre_in_JM_CONTR_OTROS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/tactico_mitre/ETLV-Load_Table.hql'
+  - name: Load_Tactico_Mitre_in_JM_INTERV_CTO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/tactico_mitre/ETLV-Load_Table.hql'
+  - name: Load_Tactico_Mitre_in_JM_POSIC_CONTR
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_POSIC_CONTR/tactico_mitre/ETLV-Load_Table.hql'
+dependencies:
+  Load_Normalizacion_Contratos: [Load_Tactico_Mitre_in_JM_CONTR_BIS,Load_Tactico_Mitre_in_JM_POSIC_CONTR,Load_Tactico_Mitre_in_JM_INTERV_CTO]
+  Load_Tactico_Mitre_in_JM_CONTR_BIS: Load_Tactico_Mitre_in_JM_CONTR_OTROS
+notifications:
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mamarmo@santandertecnologia.com.ar]

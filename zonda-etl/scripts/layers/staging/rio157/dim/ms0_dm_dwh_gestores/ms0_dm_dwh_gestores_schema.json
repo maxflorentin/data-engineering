@@ -1,0 +1,83 @@
+{
+    "file": "ms0_dm_dwh_gestores",
+    "location": "/santander/bi-corp/landing/rio157/dim/ms0_dm_dwh_gestores/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio157/dim/ms0_dm_dwh_gestores",
+    "tempDirectory": "/santander/bi-corp/temp/ms0_dm_dwh_gestores",
+    "createTable": "bi_corp_staging.rio157_ms0_dm_dwh_gestores",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "cod_gestor",
+            "type": "string"
+        },
+        {
+            "name": "des_gestor",
+            "type": "string"
+        },
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_oficial",
+            "type": "string"
+        },
+        {
+            "name": "cod_ofi_gestora",
+            "type": "string"
+        },
+        {
+            "name": "nom_cargo_gestor",
+            "type": "string"
+        },
+        {
+            "name": "cod_tip_oficial",
+            "type": "string"
+        },
+        {
+            "name": "num_doc_id",
+            "type": "string"
+        },
+        {
+            "name": "fec_alta",
+            "type": "string"
+        },
+        {
+            "name": "fec_baja",
+            "type": "string"
+        },
+        {
+            "name": "cod_proceso",
+            "type": "string"
+        },
+        {
+            "name": "ind_activo",
+            "type": "string"
+        },
+        {
+            "name": "userid_umo",
+            "type": "string"
+        },
+        {
+            "name": "timest_umo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

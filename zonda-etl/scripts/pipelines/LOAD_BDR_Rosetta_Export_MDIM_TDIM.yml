@@ -1,0 +1,73 @@
+name: LOAD_BDR_Rosetta_Export_MDIM_TDIM
+description: 'Export Rosetta MDIM and TDIM tables in CSV format'
+owner: BI-Corp
+active: true
+start_date: '2020-07-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Unload_mdim
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_MDIM.csv"
+      show_header: 'true'
+      output_format: dsv
+      empty_file: False
+      delimiter: ','
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rosetta/dim/export_dims/EXP-rosetta_mdim.hql'
+  - name: Unload_tdim
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_TDIM.csv"
+      show_header: 'true'
+      output_format: dsv
+      empty_file: False
+      delimiter: ','
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rosetta/dim/export_dims/EXP-rosetta_tdim.hql'
+  - name: Mdim_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_MDIM.csv"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/Rosetta/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_MDIM.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: Tdim_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_TDIM.csv"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/Rosetta/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_TDIM.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: Mdim_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_MDIM.csv"
+  - name: Tdim_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/RTTA_00017_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_Export_MDIM_TDIM') }}_01_TDIM.csv"
+dependencies:
+  Unload_mdim: Mdim_send_sftp
+  Unload_tdim: Tdim_send_sftp
+  Mdim_send_sftp: Mdim_Remove_FILE
+  Tdim_send_sftp: Tdim_Remove_FILE
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar]

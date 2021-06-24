@@ -1,0 +1,55 @@
+{
+  "file": "cart_retencion_resultados_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_retencion_resultados/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_retencion_resultados",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cres_nu_interaccion",
+      "type": "string"
+    },
+    {
+      "name":"cres_cd_usuario",
+      "type":"string"
+    },
+    {
+      "name":"cres_fe_proceso",
+      "type":"string"
+    },
+    {
+      "name":"cres_cd_nacionalidad",
+      "type":"string"
+    },
+    {
+      "name":"cres_nu_cedula_rif",
+      "type":"string"
+    },{
+      "name":"cres_nm_cliente",
+      "type": "string"
+    },
+    {
+      "name":"cres_fe_nacimiento",
+      "type":"string"
+    },
+    {
+      "name":"cres_tp_resultado",
+      "type":"string"
+    },
+    {
+      "name":"cres_de_observaciones",
+      "type":"string"
+    },
+    {
+      "name":"cres_cd_resultado",
+      "type":"string"
+    },
+    {
+      "name": "partition_date",
+      "type":"string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

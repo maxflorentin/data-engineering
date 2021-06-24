@@ -1,0 +1,88 @@
+{
+  "file": "cart_tipos_documentos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_tipos_documentos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_tipos_documentos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"catd_descripcion",
+      "type": "string"
+    },
+    {
+      "name":"catd_abreviatura",
+      "type":"string"
+    },
+    {
+      "name":"catd_status",
+      "type":"string"
+    },
+    {
+      "name":"catd_rector",
+      "type":"string"
+    },
+    {
+      "name":"catd_banco",
+      "type":"string"
+    },
+    {
+      "name":"catd_mapfre",
+      "type":"string"
+    },{
+      "name":"catd_meridional",
+      "type": "string"
+    },
+    {
+      "name":"catd_royal",
+      "type":"string"
+    },
+    {
+      "name":"catd_ace",
+      "type":"string"
+    },
+    {
+      "name":"catd_aon",
+      "type":"string"
+    },{
+      "name":"catd_herzfeld",
+      "type": "string"
+    },
+    {
+      "name":"catd_lacaja",
+      "type":"string"
+    },
+    {
+      "name":"catd_assurant",
+      "type":"string"
+    },
+    {
+      "name":"catd_zurich",
+      "type":"string"
+    },
+    {
+      "name":"catd_sancor",
+      "type": "string"
+    },
+    {
+      "name":"catd_qbe",
+      "type":"string"
+    },
+    {
+      "name":"catd_orbis",
+      "type":"string"
+    },
+    {
+      "name":"catd_triunfo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

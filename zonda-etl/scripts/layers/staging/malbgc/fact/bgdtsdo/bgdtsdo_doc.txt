@@ -1,0 +1,157 @@
+000001******************************************************************
+000002*                                                                *
+000003* NOMBRE DEL OBJETO:  BGTCSDO                                    *
+000004*                                                                *
+000005* DESCRIPCION:         SALDOS DIARIOS DE UNA CUENTA TRASPASADOS  *
+000006*                      POR POSICIONAMIENTO O COBERTURA           *
+000007* -------------------------------------------------------------  *
+000008*                                                                *
+000009*                                                                *
+000010*                   *******------------------------------******* *
+000011*                   *******      CLAVE DE ACCESO         ******* *
+000012*                   *******------------------------------******* *
+000013* CLAVE                                                          *
+000014* ENTIDAD           CLAVE DE ENTIDAD SEGUN BANCO DE ESPAÑA       *
+000015* CENTRO-ALTA       CENTRO  DE ALTA DE LA CUENTA                 *
+000016* CUENTA                                                         *
+000017*                                                                *
+000018* DIVISA-ORI    DIVISA DE LA CUENTA                              *
+000019* FECHA         FECHA A LA QUE CORRESPONDE                       *
+000020*                                                                *
+000021*          ********-----------------------------********         *
+000022*          *******        DATOS GENERALES        *******         *
+000023*          ********-----------------------------********         *
+000024*                                                                *
+000025*                                                                *
+000026* SALDO          SALDO CONTABLE DE LA CUENTA A LA FECHA VALOR    *
+000027* SALDO-FINAN      SALDO FINANCIERO DE LA CUENTA FECHA VALOR     *
+000028* SALDO-DISPO      SALDO DISPONIBLE DE LA CUENTA FECHA VALOR     *
+000029* SALDO-TRASP      SALDO TRASPASO EN EL DIA DE LA COBERTURA      *
+000030* SALDO-CANJE      SALDO CANJE                                   *
+000031* SALDO-REMESAS    SALDO REMESAS                                 *
+000032* SALDO-TRAS-CANJE SALDO DESPUES DEL CANJE RECIBIDO              *
+000033* DISP-TOTAL-ACU   DISPONIBLE TOTAL POR ACUERDOS                 *
+000034* DIAS-SALDO       DIAS DURANTE LOS CUALES SE MANTIENE EL SALDO  *
+000035* INT-ACREED       TASA INTERES ACREEDOR APLICADA EN EL DIA      *
+000036* INT-ACREED-MAX   TASA INTERES ACREEDOR MAS ALTA APLICADA EN EL *
+000037*                  DIA                                           *
+000038* INTE-PER-ACRE    INTERESES DEVENGADOS ACREEDORES EN LA ULTIMA  *
+000039*                  PERIODIFICACION                               *
+000040* INTE-PER-DEUD    INTERESES DEVENGADOS DEUDORES EN LA ULTIMA    *
+000041*                  PERIODIFICACION                               *
+000042* INTE-PER-EXCE    INTERESES DEVENGADOS EXCEDIDOS EN LA ULTIMA   *
+000043*                  PERIODIFICACION                               *
+000044* IND-NAT-TRASP    INDICADOR DE LA NATURALEZA DEL TRASPASO       *
+000045* 88-IND-COBERTURA   'C' COBERTURA                               *
+000046* 88-IND-POSICIONA   'P' POSICIONAMIENTO                         *
+000047* DIVISA-DEST      DIVISA DE LA CUENTA DESTINO DEL TRASPASO      *
+000048* RET-SALDO-LIQ    RETENCIONES PARA SALDO DE LIQUIDACION         *
+000049* DIAS-SOBREGIRO-D1 NRO. DIAS QUE LLEVA EN SOBREGIRO LA CUENTA   *
+000050*                   A DIA D-1                                    *
+000051* DIAS-SOBREGIRO-D  NRO. DIAS QUE LLEVA EN SOBREGIRO LA CUENTA   *
+000052*                   A DIA D                                      *
+000053* CUPO-SOBREGIRO    CUPO DE SOBREGIRO                            *
+000054* IND-DESB-MANUAL   INDICADOR DE DESBLOQUEO MANUAL (S/N)         *
+000055* CUPO-CANJE        CUPO CANJE                                   *
+000056* CUPO-REMESAS      CUPO REMESAS                                 *
+      *
+      * ALTEC-0001-I
+      * SALDO-CA          SALDO CONTABLE CAJA DE AHORRO
+      * SALDO-CC          SALDO CONTABLE CUENTA CORRIENTE
+      * ALTEC-0001-F
+      *
+000058*          ********-----------------------------********         *
+000059*          *******   LOG DE MODIFICACIONES       *******         *
+000060*          ********-----------------------------********         *
+000061*                                                                *
+000062*                                                                *
+000063* ENTIDAD-UMO            ENTIDAD ULTIMA MODIFICACION             *
+000064* CENTRO-UMO             CENTRO ULTIMA MODIFICACION              *
+000065* USERID-UMO             USUARIO ULTIMA MODIFICACION             *
+000066* NETNAME-UMO            TERMINAL ULTIMA MODIFICACION            *
+000067* TIMEST-UMO             FECHA Y HORA DE LA ULTIMA MODIFICACION  *
+000068*                                                                *
+000069*                                                                *
+000070******************************************************************
+      * LONG. 240 POSICIONES
+      ******************************************************************
+      * MODIFICACION     : ALTEC-0001                                  *
+      * PETICION         : 01-0965-0A                                  *
+      * AUTOR            : ALTEC-WAL094                                *
+      * FECHA            : 14-NOV-2001                                 *
+      * DESCRIPCION      : PROYECTO 4 CUENTAS                          *
+      ******************************************************************
+      *
+000071******************************************************************
+000072*                    DEFINICION DE LAS VARIABLES                 *
+000073*                                                                *
+000074******************************************************************
+000075
+000076 01  BGTCSDO.
+000077
+000078*          ********-----------------------------********
+000079*          *******       CLAVE DE ACCESO         *******
+000080*          ********-----------------------------********
+000081
+000082         10  SDO-CLAVE.
+000083
+000084             15  SDO-CCC.
+000085
+000086                 20  SDO-ENTIDAD            PIC X(04).
+000087                 20  SDO-CENTRO-ALTA        PIC X(04).
+000088                 20  SDO-CUENTA             PIC X(12).
+000089
+000090             15  SDO-DIVISA-ORI             PIC X(03).
+000091             15  SDO-FECHA                  PIC X(10).
+000092
+000093*          ********-----------------------------********
+000094*          *******        DATOS GENERALES        *******
+000095*          ********-----------------------------********
+000096
+000097         10  SDO-DATOS.
+000098             15  SDO-SALDO                  PIC S9(13)V99 COMP-3.
+000099             15  SDO-SALDO-FINAN            PIC S9(13)V99 COMP-3.
+000100             15  SDO-SALDO-DISPO            PIC S9(13)V99 COMP-3.
+000101             15  SDO-SALDO-TRASP            PIC S9(13)V99 COMP-3.
+000102             15  SDO-SALDO-CANJE            PIC S9(13)V99 COMP-3.
+000103             15  SDO-SALDO-REMESAS          PIC S9(13)V99 COMP-3.
+000104             15  SDO-SALDO-TRAS-CANJE       PIC S9(13)V99 COMP-3.
+000105             15  SDO-DISP-TOTAL-ACU         PIC S9(13)V99 COMP-3.
+000106             15  SDO-DIAS-SALDO             PIC S9(03)V   COMP-3.
+000107             15  SDO-INT-ACREED            PIC S9(03)V9(5) COMP-3.
+000108             15  SDO-INT-ACREED-MAX        PIC S9(03)V9(5) COMP-3.
+000109             15  SDO-INTE-PER-ACRE          PIC S9(13)V99 COMP-3.
+000110             15  SDO-INTE-PER-DEUD          PIC S9(13)V99 COMP-3.
+000111             15  SDO-INTE-PER-EXCE          PIC S9(13)V99 COMP-3.
+000112             15  SDO-IND-NAT-TRASP          PIC X(01).
+000113                 88  SDO-88-IND-COBERTURA             VALUE 'C'.
+000114                 88  SDO-88-IND-POSICIONA             VALUE 'P'.
+000115
+000116             15  SDO-DIVISA-DEST            PIC X(03).
+000117             15  SDO-RET-SALDO-LIQ          PIC S9(13)V99 COMP-3.
+000118             15  SDO-DIAS-SOBREGIRO-D1      PIC S9(03)V   COMP-3.
+000119             15  SDO-DIAS-SOBREGIRO-D       PIC S9(03)V   COMP-3.
+000120             15  SDO-CUPO-SOBREGIRO         PIC S9(13)V99 COMP-3.
+000121             15  SDO-IND-DESB-MANUAL        PIC X(01).
+000122             15  SDO-CUPO-CANJE             PIC S9(13)V99 COMP-3.
+000123             15  SDO-CUPO-REMESAS           PIC S9(13)V99 COMP-3.
+      *
+      * ALTEC-0001-I
+               10  SDO-NUEVO-PAQUETE.
+                   15 SDO-SALDO-CA               PIC S9(13)V99 COMP-3.
+                   15 SDO-SALDO-CC               PIC S9(13)V99 COMP-3.
+      * ALTEC-0001-F
+      *
+000125*          ********-----------------------------********
+000126*          *******   LOG DE MODIFICACIONES       *******
+000127*          ********-----------------------------********
+000128
+000129         10  SDO-STAMP.
+000130
+000131             15  SDO-ENTIDAD-UMO            PIC X(04).
+000132             15  SDO-CENTRO-UMO             PIC X(04).
+000133             15  SDO-USERID-UMO             PIC X(08).
+000134             15  SDO-NETNAME-UMO            PIC X(08).
+000140             15  SDO-TIMEST-UMO             PIC X(26).
+000150
+**************************** Bottom of Data ****************************

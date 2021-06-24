@@ -1,0 +1,139 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "a308609"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio32_histlog_callback_chat",
+      "title": "Informacion historica detallada chat",
+      "schema": "bi_corp_staging",
+      "source": "SLAUTO - tel.HISTLOG_CALLBACK_CHAT",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Informacion historica detallada chat",
+      "columns": [
+        {
+          "name": "SEGMENTO_OBP",
+          "title": "SEGMENTO_OBP",
+          "description": "Segmento  OBP del cliente",
+          "type": "VARCHAR2 (40 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 40.0,
+          "security": "Publico"                },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NUP del Cliente",
+          "type": "CHAR (8 Byte)",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"                },
+        {
+          "name": "JSESIONID",
+          "title": "JSESIONID",
+          "description": "ID de ssesion OBP",
+          "type": "VARCHAR2 (20 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "INTERACTIONID",
+          "title": "INTERACTIONID",
+          "description": "ID unico de interaccion",
+          "type": "VARCHAR2 (20 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "Fecha de la interaccion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "DOCUMENTO",
+          "title": "DOCUMENTO",
+          "description": "Documento del cliente",
+          "type": "CHAR (11 Byte)",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 11.0,
+          "security": "Confidencial"                },
+        {
+          "name": "DESCRIP",
+          "title": "DESCRIP",
+          "description": "DESCRIPCION",
+          "type": "VARCHAR2 (510 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 510.0,
+          "security": "Publico"                },
+        {
+          "name": "COD_APP",
+          "title": "COD_APP",
+          "description": "Codigo APP",
+          "type": "VARCHAR2 (50 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"                },
+        {
+          "name": "CANAL",
+          "title": "CANAL",
+          "description": "Canal de la interaccion",
+          "type": "VARCHAR2 (4 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"                },
+        {
+          "name": "ASUNTO",
+          "title": "ASUNTO",
+          "description": "Asunto de la interaccion",
+          "type": "VARCHAR2 (255 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "AGENTE",
+          "title": "AGENTE",
+          "description": "Agente asignado",
+          "type": "VARCHAR2 (20 Byte)",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

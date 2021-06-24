@@ -1,0 +1,47 @@
+{
+  "file": "tmotivo_sw_srs_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/tmotivo_sw_srs/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/tmotivo_sw_srs",
+  "createTable": "bi_corp_staging.alcen_tmotivo_sw_srs",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_grupo_decision",
+    "type": "string"
+  },
+  {
+    "name": "cod_motivo",
+    "type": "string"
+  },
+  {
+    "name": "nro_prioridad",
+    "type": "string"
+  },
+  {
+    "name": "cod_motivo_asol",
+    "type": "string"
+  },
+  {
+    "name": "nom_aplicativo",
+    "type": "string"
+  },
+  {
+    "name": "des_motivo",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

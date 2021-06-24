@@ -1,0 +1,34 @@
+{
+  "file": "benefitcategoryrefundday_schema",
+  "location": "/santander/bi-corp/landing/rio265/dim/benefitcategoryrefundday/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/dim/rio265_benefitcategoryrefundday",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_benefitcategoryrefundday",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitcategoryrefunddaycategoryrefund",
+      "type": "string"
+    },
+    {
+      "name": "id_day",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

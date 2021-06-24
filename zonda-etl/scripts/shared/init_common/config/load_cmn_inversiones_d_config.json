@@ -1,0 +1,31 @@
+{
+    "name": "Inversiones-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": ["STAGING_PEDT008_Parquetize","STAGING_PEDT042_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_FM-Daily",
+                    "tasks": ["STAGING_FM_SALDOS_Parquetize","STAGING_FM_SUSCRIPCIONES_Parquetize","STAGING_FM_RESCATES_Parquetize","STAGING_FM_MAESTRO_FONDOS_Parquetize","STAGING_FM_MAESTRO_CANALES_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_RIO347-Tables-Daily",
+                    "tasks": ["STAGING_TABLE_Parquetize_BALANCE"]
+                },
+                {
+                    "dag_id":"LOAD_STG_GSA-Daily",
+                    "tasks": ["STAGING_TABLE_Parquetize_V_PRECIO_CUSTODIA"]
+                },
+                {
+                    "dag_id":"LOAD_STG_SAM-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Inversiones"
+                }
+    ]
+}

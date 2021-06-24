@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(g4134_feoperac,g4134_s1emp,g4134_biengar1,g4134_fechvalr, g4134_nomenti,g4134_imgarant, g4134_fecultmo,g4134_tipvaln,  g4134_tip_gara,g4134_coddiv)) as longitud,CONCAT(g4134_feoperac,g4134_s1emp,g4134_biengar1,g4134_fechvalr, g4134_nomenti,g4134_imgarant,  g4134_fecultmo,g4134_tipvaln,  g4134_tip_gara,g4134_coddiv) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_val_gara r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_VAL_GARA' where partition_date = '$month_partition_bdr' and length(CONCAT(g4134_feoperac,g4134_s1emp,g4134_biengar1,g4134_fechvalr,g4134_nomenti,g4134_imgarant,g4134_fecultmo,g4134_tipvaln,g4134_tip_gara,g4134_coddiv)) != cast(d.longitud as int)"
+    ]
+}

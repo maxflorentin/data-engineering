@@ -1,0 +1,33 @@
+{
+	"file": "prem_rel_prem_inter_schema",
+	"location": "/santander/bi-corp/landing/rio102/dim/prem_rel_prem_inter/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/dim/rio102_prem_rel_prem_inter",
+	"tempDirectory": "/santander/bi-corp/temp/prem_rel_prem_inter",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "id_interfaz",
+			"type": "string"
+		},
+{
+			"name": "id_col_sum",
+			"type": "string"
+		}
+	],
+	"extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

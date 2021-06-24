@@ -1,0 +1,15 @@
+{
+  "tables" :[
+    {
+      "serverAka" : "rio53",
+      "database": "OFSA40",
+      "table": "TPLAN_SUELDO_CTAS_DIA",
+      "table_type": "fact",
+      "environment": "RIO53",
+      "landing_path": "/santander/bi-corp/landing/rio53/fact/tplan_sueldo_ctas_dia",
+      "partition_field": "TO_CHAR(fecha_proceso,'YYYY-MM-DD')",
+      "split_field": "FECHA_PROCESO",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select ent_empleado,suc_empleado,nro_empleado,div_empleado,ent_empleador,suc_empleador,nro_empleador,div_empleador,cuit_empleador,importe,programa,sistema,cod_convenio,cbu_empleador,cuil_empleado,tipo_cuenta,tipo_proc,nup_empleado,nup_empleador,nom_empleado,nom_empleador,TO_CHAR(fecha_acreditacion,'YYYY-MM-DD') fecha_acreditacion,suscriptor,TO_CHAR(fecha_alta_cta_empleado,'YYYY-MM-DD') fecha_alta_cta_empleado,suc_adm,segmento,id_empresa,empresa_pyrip,cuadrante,TO_CHAR(fecha_proceso,'YYYY-MM-DD') fecha_proceso,TO_CHAR(fecha_carga,'YYYY-MM-DD') fecha_carga,tipo_acred,origen,suc_fisica_empleado,suc_fisica_empleador,TO_CHAR(fecha_proceso,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} between TO_CHAR(trunc(to_date('{partition_date}','YYYY-MM-DD'),'MM'),'YYYY-MM-DD') and TO_CHAR(last_day(to_date('{partition_date}','YYYY-MM-DD')),'YYYY-MM-DD') AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio53/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

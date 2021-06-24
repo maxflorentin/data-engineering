@@ -1,0 +1,47 @@
+{
+  "file": "arbol_cc_vw_lake_schema",
+  "location": "/santander/bi-corp/landing/rio37/dim/arbol_cc_vw_lake/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio37/dim/arbol_cc_vw_lake",
+  "createTable": "bi_corp_staging.arbol_cc_vw_lake",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "ccostos",
+                    "type": "string"
+                },
+{
+                    "name": "descripcion",
+                    "type": "string"
+                },
+{
+                    "name": "usuario_responsable",
+                    "type": "string"
+                },
+{
+                    "name": "ayn_responsable",
+                    "type": "string"
+                },
+{
+                    "name": "ccostos_padre",
+                    "type": "string"
+                },
+{
+                    "name": "descripcion_padre",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,227 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_destination",
+      "title": "Tabla de destinos, relacinado con subscriber mediante id_subscriber",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla de destinos, relacionado con subscriber mediante id_subscriber",
+      "columns": [
+        {
+          "name": "ID_SUBSCRIBER",
+          "title": "ID_SUBSCRIBER",
+          "description": "nup del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 16.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_DEVICE",
+          "title": "ID_DEVICE",
+          "description": "dispositivo de envio de notificaciones",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SEQNUM",
+          "title": "SEQNUM",
+          "description": "secuencia de numeracion por device",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_CHANNEL",
+          "title": "ID_CHANNEL",
+          "description": "canal por el que se envia la notificacion",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESTINATION",
+          "title": "DESTINATION",
+          "description": "mail o celular del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 256.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CREATE_DATE",
+          "title": "CREATE_DATE",
+          "description": "fecha de creacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODIFY_DATE",
+          "title": "MODIFY_DATE",
+          "description": "fecha de modificación",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_STATUS",
+          "title": "ID_STATUS",
+          "description": "estado del registro",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESTADO",
+          "title": "ESTADO",
+          "description": "estado del registro",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "REJECT_COUNT",
+          "title": "REJECT_COUNT",
+          "description": "cantidad de rechazos que tuvo el envio a ese dipositivo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "REJECT_DATE1",
+          "title": "REJECT_DATE1",
+          "description": "fecha del primer rechazo",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "REJECT_DATE2",
+          "title": "REJECT_DATE2",
+          "description": "fecha del segundo rechazo ",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SOLUCION_FECHA",
+          "title": "SOLUCION_FECHA",
+          "description": "",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_OPERADOR",
+          "title": "ID_OPERADOR",
+          "description": "operador que realiza la carga o modificacion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "VALIDADO",
+          "title": "VALIDADO",
+          "description": "bandera para marcar si se valido o el destino",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CHANNEL_BANK",
+          "title": "CHANNEL_BANK",
+          "description": "canal por el cual generalmente se invoca",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SUB_CHANNEL_BANK",
+          "title": "SUB_CHANNEL_BANK",
+          "description": "subcanal por el cual generalmente se invoca",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "VALIDATE_DATE",
+          "title": "VALIDATE_DATE",
+          "description": "fecha de validacion del mail",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

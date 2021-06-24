@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.fm_valores_cuotas_partes ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

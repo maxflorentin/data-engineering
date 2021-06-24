@@ -1,0 +1,71 @@
+name: LOAD_OUTPUT_BDR
+description: 'Load data from output bdr tables'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 * * *'
+start_date: '2021-02-11'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: JM_CTO_RECIBO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: JM_CTO_RECIBO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/output_bdr/jm_cto_recibo/jm_cto_recibo_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_OUTPUT_BDR') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['jm_cto_recibo_schema.json']
+  - name: STAGING_JM_SOC_ENTBDR_Parquetize
+    operator: SparkSubmitOperator
+    config:
+        name: STAGING_JM_SOC_ENTBDR_Parquetize
+        connection_id: cloudera_spark2
+        executor_cores: 4
+        executor_memory: 8G
+        num_executors: 5
+        files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/output_bdr/jm_soc_entbdr/jm_soc_entbdr_schema.json']
+        application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+        py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+        conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_OUTPUT_BDR') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+        application_args: ['jm_soc_entbdr_schema.json']
+  - name: STAGING_JM_TIP_CAMBIO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+        name: STAGING_JM_TIP_CAMBIO _Parquetize
+        connection_id: cloudera_spark2
+        executor_cores: 4
+        executor_memory: 8G
+        num_executors: 5
+        files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/output_bdr/jm_tip_cambio/jm_tip_cambio_schema.json']
+        application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+        py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+        conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_OUTPUT_BDR') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+        application_args: ['jm_tip_cambio_schema.json']       
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [AMOURINO@santandertecnologia.com.ar, jhungramos@santandertecnologia.com.ar]

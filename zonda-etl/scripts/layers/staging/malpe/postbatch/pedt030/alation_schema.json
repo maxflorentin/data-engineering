@@ -1,0 +1,183 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "malpe_ptb_pedt030",
+      "title": "Segmentos",
+      "schema": "bi_corp_staging",
+      "source": "MALPE",
+      "query": "",
+      "type": "fact",
+      "description": "Segmentos",
+      "columns": [
+        {
+          "name": "PECDGENT",
+          "title": "PECDGENT",
+          "description": "Código de la entidad",
+          "type": "A ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PENUMPER",
+          "title": "PENUMPER",
+          "description": "Número de cliente",
+          "type": "A",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PECLASEG",
+          "title": "PECLASEG",
+          "description": "Clase de Segmento",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESEGCLA",
+          "title": "PESEGCLA",
+          "description": "Segmento de la Clase definida",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEFECSEG",
+          "title": "PEFECSEG",
+          "description": "Fecha de segmentación",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESEGMAN",
+          "title": "PESEGMAN",
+          "description": "Indicador de segmentación (manual/automática)",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEMARPER",
+          "title": "PEMARPER",
+          "description": "Marca de permanente o sujeto a resegmentación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESEGCAL",
+          "title": "PESEGCAL",
+          "description": "Segmento Calculado",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUALT",
+          "title": "PEUSUALT",
+          "description": "Usuario de alta",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEFECALT",
+          "title": "PEFECALT",
+          "description": "Fecha de alta del registro",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUMOD",
+          "title": "PEUSUMOD",
+          "description": "Usuario última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PETERMOD",
+          "title": "PETERMOD",
+          "description": "Terminal última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESUCMOD",
+          "title": "PESUCMOD",
+          "description": "Sucursal última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEHSTAMP",
+          "title": "PEHSTAMP",
+          "description": "Timestamp última modificación",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

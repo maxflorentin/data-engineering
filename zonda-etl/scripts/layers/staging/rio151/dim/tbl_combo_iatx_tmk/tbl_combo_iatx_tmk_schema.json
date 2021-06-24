@@ -1,0 +1,99 @@
+{
+    "file": "tbl_combo_iatx_tmk_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_combo_iatx_tmk",
+    "location": "/santander/bi-corp/landing/rio151/dim/tbl_combo_iatx_tmk/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/dim/tbl_combo_iatx_tmk",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "codigo",
+            "type": "string"
+        },
+        {
+            "name": "grupo",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "campo1",
+            "type": "string"
+        },
+        {
+            "name": "campo2",
+            "type": "string"
+        },
+        {
+            "name": "campo3",
+            "type": "string"
+        },
+        {
+            "name": "campo4",
+            "type": "string"
+        },
+        {
+            "name": "campo5",
+            "type": "string"
+        },
+        {
+            "name": "campo6",
+            "type": "string"
+        },
+        {
+            "name": "campo7",
+            "type": "string"
+        },
+        {
+            "name": "campo8",
+            "type": "string"
+        },
+        {
+            "name": "campo9",
+            "type": "string"
+        },
+        {
+            "name": "mc_activo",
+            "type": "string"
+        },
+        {
+            "name": "campo10",
+            "type": "string"
+        },
+        {
+            "name": "campo11",
+            "type": "string"
+        },
+        {
+            "name": "campo12",
+            "type": "string"
+        },
+        {
+            "name": "campo13",
+            "type": "string"
+        },
+        {
+            "name": "campo14",
+            "type": "string"
+        },
+        {
+            "name": "campo15",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

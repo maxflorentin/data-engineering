@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio29_t_form_referidos500k;

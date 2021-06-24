@@ -1,0 +1,29 @@
+{
+	"file": "score_schema",
+	"location": "/santander/bi-corp/landing/nosis/fact/score/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/nosis/fact/score",
+	"createTable": "bi_corp_staging.nosis_tmp_score",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": ",",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "cuit",
+		"type": "string"
+	}, {
+		"name": "periodo",
+		"type": "string"
+	}, {
+		"name": "score",
+		"type": "string"
+	}],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

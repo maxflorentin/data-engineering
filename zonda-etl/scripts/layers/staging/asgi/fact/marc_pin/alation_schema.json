@@ -1,0 +1,150 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307849"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "asgi_marc_pin",
+      "title": "Contiene los tipos de claves de los clientes y si poseen marca de bloqueo",
+      "schema": "bi_corp_staging",
+      "source": "ASGI",
+      "query": "",
+      "type": "FACT",
+      "description": "Contiene los tipos de claves de los clientes y si poseen marca de bloqueo",
+      "columns": [
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NÚNERO PERSONA",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESP1",
+          "title": "ESP1",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_CLAVE",
+          "title": "TIPO_CLAVE",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESP2",
+          "title": "ESP2",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_CREACION",
+          "title": "FECHA_CREACION ",
+          "description": "ALTA DE CLAVE",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESP3",
+          "title": "ESP3",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_CAMBIO_CLAVE ",
+          "title": "FECHA_CAMBIO_CLAVE ",
+          "description": "MODIF CLAVE",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESP4",
+          "title": "ESP4",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_ULTIMO_ACCESO",
+          "title": "FECHA_ULTIMO_ACCESO ",
+          "description": "ÚLT LOGIN SATISF",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ESP5",
+          "title": "ESP5",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MARCA_BLOQUEO",
+          "title": "MARCA_BLOQUEO",
+          "description": "SEPARADOR",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

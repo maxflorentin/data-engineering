@@ -1,0 +1,613 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_opp_trf",
+      "title": "transferencias",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/opp_trf/",
+      "type": "fact",
+      "description": "Datos adicionales de Transferencias",
+      "columns":
+               [
+                {
+                  "name": "cod_ops",
+                  "title": "cod_ops",
+                  "description": "codigo ops",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo",
+                  "title": "tipo",
+                  "description": "tipo",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 2,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_swift",
+                  "title": "id_swift",
+                  "description": "id swift",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "nro_form",
+                  "title": "nro_form",
+                  "description": "nro form",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "iva",
+                  "title": "iva",
+                  "description": "iva",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "alicuota_iva",
+                  "title": "alicuota_iva",
+                  "description": "alicuota iva",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "ganancias",
+                  "title": "ganancias",
+                  "description": "ganancias",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "motivo_gan",
+                  "title": "motivo_gan",
+                  "description": "motivo gan",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "alicuota_gan",
+                  "title": "alicuota_gan",
+                  "description": "alicuota gan",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "acargo_gan",
+                  "title": "acargo_gan",
+                  "description": "acargo gan",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "doble_imposicion",
+                  "title": "doble_imposicion",
+                  "description": "doble imposicion",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_fact",
+                  "title": "fecha_fact",
+                  "description": "fecha fact",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "banco_domic",
+                  "title": "banco_domic",
+                  "description": "banco domic",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "beneficiario",
+                  "title": "beneficiario",
+                  "description": "beneficiario",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "benef_domic",
+                  "title": "benef_domic",
+                  "description": "benef domic",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "benef_cta",
+                  "title": "benef_cta",
+                  "description": "benef cta",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "sis_origen",
+                  "title": "sis_origen",
+                  "description": "sis origen",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 20,
+                  "security": "Público"
+                },
+                {
+                  "name": "bco_pagador_corre",
+                  "title": "bco_pagador_corre",
+                  "description": "bco pagador corre",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "cta_bco_int",
+                  "title": "cta_bco_int",
+                  "description": "cta bco int",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "gastos_corre",
+                  "title": "gastos_corre",
+                  "description": "gastos corre",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 10,
+                  "security": "Público"
+                },
+                {
+                  "name": "importe_gastos_corre",
+                  "title": "importe_gastos_corre",
+                  "description": "importe gastos corre",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ",.",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "es_bco_benef",
+                  "title": "es_bco_benef",
+                  "description": "es bco benef",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "campo70",
+                  "title": "campo70",
+                  "description": "campo70",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 105,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_persona",
+                  "title": "tipo_persona",
+                  "description": "tipo persona",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "banco_receptor",
+                  "title": "banco_receptor",
+                  "description": "banco receptor",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 140,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_banco_receptor",
+                  "title": "tipo_banco_receptor",
+                  "description": "tipo banco receptor",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "banco_intermediario",
+                  "title": "banco_intermediario",
+                  "description": "banco intermediario",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 140,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_banco_intermediario",
+                  "title": "tipo_banco_intermediario",
+                  "description": "tipo banco intermediario",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "banco_beneficiario",
+                  "title": "banco_beneficiario",
+                  "description": "banco beneficiario",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 140,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_banco_beneficiario",
+                  "title": "tipo_banco_beneficiario",
+                  "description": "tipo banco beneficiario",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "envio_mail",
+                  "title": "envio_mail",
+                  "description": "envio mail",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "f_envio_mail",
+                  "title": "f_envio_mail",
+                  "description": "f envio mail",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "desc_gan",
+                  "title": "desc_gan",
+                  "description": "desc gan",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "baseimpo_iva",
+                  "title": "baseimpo_iva",
+                  "description": "baseimpo iva",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "baseimpo_gan",
+                  "title": "baseimpo_gan",
+                  "description": "baseimpo gan",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_swift",
+                  "title": "fecha_swift",
+                  "description": "fecha swift",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_gan",
+                  "title": "cod_gan",
+                  "description": "cod gan",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "benef_localidad",
+                  "title": "benef_localidad",
+                  "description": "benef localidad",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 35,
+                  "security": "Público"
+                },
+                {
+                  "name": "secuencia",
+                  "title": "secuencia",
+                  "description": "secuencia",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_anterior",
+                  "title": "tipo_anterior",
+                  "description": "tipo anterior",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 2,
+                  "security": "Público"
+                },
+                {
+                  "name": "alicuota_rubro",
+                  "title": "alicuota_rubro",
+                  "description": "alicuota rubro",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 8,
+                  "security": "Público"
+                },
+                {
+                  "name": "ref_ct",
+                  "title": "ref_ct",
+                  "description": "ref ct",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 16,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_alicuota",
+                  "title": "id_alicuota",
+                  "description": "id alicuota",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "exencion_ganancias",
+                  "title": "exencion_ganancias",
+                  "description": "exencion ganancias",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "invertir_acargo_gan",
+                  "title": "invertir_acargo_gan",
+                  "description": "invertir acargo gan",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_nif_ganancia",
+                  "title": "id_nif_ganancia",
+                  "description": "id nif ganancia",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "gan_ya_efectuada",
+                  "title": "gan_ya_efectuada",
+                  "description": "gan ya efectuada",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "guid",
+                  "title": "guid",
+                  "description": "guid",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "srp",
+                  "title": "srp",
+                  "description": "srp",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "inpi",
+                  "title": "inpi",
+                  "description": "inpi",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_regimen",
+                  "title": "id_regimen",
+                  "description": "id regimen",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "cuit_benef",
+                  "title": "cuit_benef",
+                  "description": "cuit benef",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 11,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_swift199",
+                  "title": "id_swift199",
+                  "description": "id swift199",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

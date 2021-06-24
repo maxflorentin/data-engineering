@@ -1,0 +1,20 @@
+{
+  "file": "bgeccdep",
+  "createTable": "bi_corp_staging.malbgc_bgeccdep",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgeccdep/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgeccdep",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgeccdep.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

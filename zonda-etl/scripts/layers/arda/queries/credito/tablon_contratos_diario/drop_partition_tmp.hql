@@ -1,0 +1,1 @@
+ALTER TABLE santander_business_risk_arda.dt_cto_ods DROP IF EXISTS PARTITION (data_date_part='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_ARDA_Contratos-Daily') }}')

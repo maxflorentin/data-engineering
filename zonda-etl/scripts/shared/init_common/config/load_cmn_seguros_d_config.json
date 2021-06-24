@@ -1,0 +1,19 @@
+{
+    "name": "Seguros-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": ["STAGING_PEDT001_Parquetize","STAGING_PEDT016_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_RIO6-Tables-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Seguros"
+                }
+    ]
+}

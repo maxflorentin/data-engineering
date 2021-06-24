@@ -1,0 +1,46 @@
+create external table if not exists bi_corp_bdr.jm_gara_real(
+g4091_feoperac string,
+g4091_s1emp  string,
+g4091_biengar1 string,
+g4091_contra1 string,
+g4091_id_prod string,
+g4091_cod_bien string,
+g4091_bco_cust string,
+g4091_bsindi1 string,
+g4091_indcotiz string,
+g4091_deudapub string,
+g4091_inddeuda string,
+g4091_tipfrecu string,
+g4091_frecplaz string,
+g4091_dkafecto string,
+g4091_cla_bien string,
+g4091_id_pais string,
+g4091_ord_hipo string,
+g4091_codivisa string,
+g4091_fchavcto string,
+g4091_inf_regi string,
+g4091_idemis string,
+g4091_codidper string,
+g4091_idnumcli string,
+g4091_emis_pzo string,
+g4091_codmercd string,
+g4091_num_titu string,
+g4091_indicea1 string,
+g4091_tip_inte string,
+g4091_codcompa string,
+g4091_gradocob string,
+g4091_num_doc string,
+g4091_indacept string,
+g4091_indddomi string,
+g4091_indblo string,
+g4091_imcarg string,
+g4091_fecultmo string,
+g4091_codposgr string,
+g4091_inayudpb string,
+g4091_tip_hipo string
+)
+partitioned by (`partition_date` string)
+row format serde 'org.apache.hadoop.hive.ql.io.parquet.serde.parquethiveserde'
+stored as inputformat 'org.apache.hadoop.hive.ql.io.parquet.mapredparquetinputformat'
+outputformat 'org.apache.hadoop.hive.ql.io.parquet.mapredparquetoutputformat'
+location '${DATA_LAKE_SERVER}/santander/bi-corp/bdr/jm_gara_real';

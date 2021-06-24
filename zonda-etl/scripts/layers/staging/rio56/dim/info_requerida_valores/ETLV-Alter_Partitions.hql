@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio56_info_requerida_valores ;

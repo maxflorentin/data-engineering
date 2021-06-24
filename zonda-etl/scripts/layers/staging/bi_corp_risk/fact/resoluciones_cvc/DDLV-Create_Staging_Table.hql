@@ -1,0 +1,35 @@
+SET mapred.job.queue.name=root.dataeng;
+CREATE VIEW  bi_corp_risk.resoluciones_cvc
+as
+                select
+                    cast(id as bigint) id,
+                    cast(cod_sucursal as smallint) cod_sucursal ,
+                    cast(nro_solicitud as bigint) nro_solicitud ,
+                    cod_legajo  ,
+                    fecha_ingreso  ,
+                    resolutor  ,
+                    cod_estado_resolucion  ,
+                    mot_resolucion_1  ,
+                    mot_resolucion_2  ,
+                    fecha_resolucion  ,
+                    elevador  ,
+                    cast(cod_estado_elevacion as smallint ) cod_estado_elevacion ,
+                    mot_elevacion_1  ,
+                    mot_elevacion_2  ,
+                    fecha_elevacion  ,
+                    cast(lim_acte_cvc as int) lim_acte_cvc ,
+                    cast(lim_avis_cvc as int ) lim_avis_cvc,
+                    cast(lim_amas_cvc as int) lim_amas_cvc ,
+                    cast(lim_amex_cvc as int) lim_amex_cvc ,
+                    cast(lim_aptm_cvc as int) lim_aptm_cvc ,
+                    cast(lim_per_cvc as int) lim_per_cvc ,
+                    observaciones_internas ,
+                    comentario_f as comentario_f4214  ,
+                    estado_10  ,
+                    estado_12  ,
+                    estado_13  ,
+                    repetido  ,
+                    tiempo_respuesta ,
+                    comite  ,
+                    fecha_importacion 
+                    from bi_corp_risk.raw_resoluciones_cvc;

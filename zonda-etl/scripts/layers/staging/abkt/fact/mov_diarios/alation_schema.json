@@ -1,0 +1,30 @@
+{
+  "objectMetadata": {
+    "active": false,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "abkt_mov_diarios",
+      "title": "Movimientos Diarios",
+      "schema": "bi_corp_staging",
+      "source": "mainframe",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abkt/fact/mov_diarios/",
+      "type": "fact",
+      "description": "La tabla contiene los movimientos diarios procesados desde mainframe",
+      "columns":
+               [
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

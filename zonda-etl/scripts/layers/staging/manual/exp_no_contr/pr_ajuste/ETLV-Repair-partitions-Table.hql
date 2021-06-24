@@ -1,0 +1,1 @@
+msck repair table bi_corp_staging.manual_pr_ajuste;

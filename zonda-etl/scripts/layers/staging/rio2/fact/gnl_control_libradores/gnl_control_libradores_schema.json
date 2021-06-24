@@ -1,0 +1,126 @@
+{
+  "file": "gnl_control_libradores_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/gnl_control_libradores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/gnl_control_libradores",
+  "createTable": "bi_corp_staging.sge_gnl_control_libradores",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+         {
+              "name": "nro_tramite_zx",
+              "type": "string"
+         },
+         {
+              "name": "nup",
+              "type": "string"
+         },
+         {
+              "name": "id_librador",
+              "type": "string"
+         },
+         {
+              "name": "nro_doc",
+              "type": "string"
+         },
+         {
+              "name": "plazo",
+              "type": "string"
+         },
+         {
+              "name": "suc_cta_credito",
+              "type": "string"
+         },
+         {
+              "name": "tipo_cta_credito",
+              "type": "string"
+         },{
+              "name": "cuenta_credito",
+              "type": "string"
+         },
+         {
+              "name": "monto_librador",
+              "type": "string"
+         },
+         {
+              "name": "mca_atomizacion",
+              "type": "string"
+         },
+         {
+              "name": "real_atomizacion",
+              "type": "string"
+         },
+         {
+              "name": "nosis_realizado",
+              "type": "string"
+         },
+         {
+              "name": "nosis_bcra",
+              "type": "string"
+         },
+         {
+              "name": "nosis_inhabilitados",
+              "type": "string"
+         },
+         {
+              "name": "nosis_cheques_rec",
+              "type": "string"
+         },
+         {
+              "name": "nosis_quiebra",
+              "type": "string"
+         },
+         {
+              "name": "nosis_concurso",
+              "type": "string"
+         },
+         {
+              "name": "observaciones",
+              "type": "string"
+         },
+         {
+              "name": "fec_alta",
+              "type": "string"
+         },
+         {
+              "name": "usu_alta",
+              "type": "string"
+         },
+         {
+              "name": "fec_modif",
+              "type": "string"
+         },
+         {
+              "name": "usu_modif",
+              "type": "string"
+         },
+         {
+              "name": "mca_vinculado",
+              "type": "string"
+         },
+         {
+              "name": "obs_vinculado",
+              "type": "string"
+         },
+         {
+              "name": "rechazo_antecedentes_int",
+              "type": "string"
+         },
+         {
+              "name": "tipo_cliente",
+              "type": "string"
+         }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

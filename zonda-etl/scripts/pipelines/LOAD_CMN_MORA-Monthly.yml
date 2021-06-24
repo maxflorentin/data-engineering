@@ -1,0 +1,31 @@
+name: LOAD_CMN_MORA-Monthly
+description: 'Load Morosidad (Ardaman) in Common Layer'
+owner: BI-Corp
+active: true
+start_date: '2020-09-01'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: COMMON_LoadTable_stk_mora_marcas_riesgos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_marcas_riesgos/ETL-LOAD-stk_mora_marcas_riesgos.hql'
+  - name: EXEC_DQIS
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/gitlab-pipelines/run_gitlab_pipelines.py --url https://gitlab.ar.bsch/api/v4/projects/1564/pipeline_schedules/43/play"
+dependencies:
+  COMMON_LoadTable_stk_mora_marcas_riesgos: EXEC_DQIS
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar,lolivaressierra@santander.com.ar,hsesoldi@santander.com.ar,jcouso@santander.com.ar]

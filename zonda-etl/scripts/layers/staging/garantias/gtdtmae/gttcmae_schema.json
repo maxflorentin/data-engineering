@@ -1,0 +1,19 @@
+{
+  "file": "gttcmae_schema",
+  "location": "/santander/bi-corp/landing/garantias/fact/gtdtmae/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/garantias/fact/gtdtmae",
+  "extension": "DAT",
+  "header": false,
+  "parquetFiles": 6,
+  "copybook": "copybook_gttcmae_schema.txt",
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

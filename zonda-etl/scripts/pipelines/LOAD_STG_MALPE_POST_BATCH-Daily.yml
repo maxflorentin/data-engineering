@@ -1,0 +1,152 @@
+name: LOAD_STG_MALPE_POST_BATCH-Daily
+description: 'Load data from Malpe Post Batch tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 * * *'
+start_date: '2019-12-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_PEDT001_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT001_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt001/pedt001_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt001_ptb_schema.json']
+
+  - name: STAGING_PEDT003_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT003_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 4G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt003/pedt003_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt003_ptb_schema.json']
+  - name: STAGING_PEDT008_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT008_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt008/pedt008_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt008_ptb_schema.json']
+
+  - name: STAGING_PEDT015_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT015_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt015/pedt015_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt015_ptb_schema.json']
+
+  - name: STAGING_PEDT030_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT030_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt030/pedt030_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt030_ptb_schema.json']
+
+  - name: STAGING_PEDT042_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT042_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 4G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt042/pedt042_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt042_ptb_schema.json']
+  - name: STAGING_PEDT052_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PEDT052_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/postbatch/pedt052/pedt052_ptb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE_POST_BATCH-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['pedt052_ptb_schema.json']
+
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

@@ -1,0 +1,87 @@
+{
+    "file": "ba_equipos_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_equipos/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_equipos",
+    "tempDirectory": "/santander/bi-corp/temp/rio44/ba_equipos",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "sigla",
+            "type": "string"
+        },
+        {
+            "name": "nro_serie",
+            "type": "string"
+        },
+        {
+            "name": "equipo",
+            "type": "string"
+        },
+        {
+            "name": "suc",
+            "type": "string"
+        },
+        {
+            "name": "f_alta",
+            "type": "string"
+        },
+        {
+            "name": "modelo",
+            "type": "string"
+        },
+        {
+            "name": "apertura",
+            "type": "string"
+        },
+        {
+            "name": "operador",
+            "type": "string"
+        },
+        {
+            "name": "reconoc_bill",
+            "type": "string"
+        },
+        {
+            "name": "funcionalidad",
+            "type": "string"
+        },
+        {
+            "name": "id_tipo_posicion",
+            "type": "string"
+        },
+        {
+            "name": "id_posicion",
+            "type": "string"
+        },
+        {
+            "name": "id_ubicacion",
+            "type": "string"
+        },
+        {
+            "name": "id_sed",
+            "type": "string"
+        },
+        {
+            "name": "id_equipos",
+            "type": "string"
+        },
+        {
+            "name": "buzon_dep",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

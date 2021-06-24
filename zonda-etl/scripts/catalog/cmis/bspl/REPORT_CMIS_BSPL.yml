@@ -1,0 +1,45 @@
+name: REPORT_CMIS_BSPL
+description: 'REPORT_CMIS_BSPL'
+owner: BI-Corp
+active: true
+schedule_interval: '30 10 1 * *'
+start_date: '2021-01-31'
+catchup: false
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [BSPL1,BSPL2,BIND,CAT,RAT1,RWA1]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: report_cmis
+    operator: ZondaHiveOperator
+    config:
+      name: 'report_cmis_${e}'
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/zonda/outbound/AR_${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='REPORT_CMIS_BSPL') }}.csv"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/cmis/conexiones/${e}.hql'
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_ssh_cmis"
+      local_filepath: "/aplicaciones/bi/zonda/outbound/AR_${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='REPORT_CMIS_BSPL') }}.csv"
+      remote_filepath: "/CMIS-IN/AR_${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='REPORT_CMIS_BSPL') }}.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+dependencies:
+  report_cmis: report_send_sftp
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [gbrizzio@santandertecnologia.com.ar]

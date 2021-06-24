@@ -1,0 +1,141 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_subconcepto",
+            "title": "Contiene los datos del Subconcepto (segmentacion del circuito)",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "N",
+            "description": "Contiene los datos del Subconcepto (segmentacion del circuito)",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBCPTO",
+                    "title": "COD_SUBCPTO",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_SUBCPTO",
+                    "title": "DESC_SUBCPTO",
+                    "description": "Descripcion del la informacion del Registro",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 80.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_DETALL_SUBCPTO",
+                    "title": "DESC_DETALL_SUBCPTO",
+                    "description": "Descripcion del la informacion del Registro",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "EST_SUBCPTO",
+                    "title": "EST_SUBCPTO",
+                    "description": "Estado del registro (Activo o Inactivo) ",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_ALT_SUBCPTO",
+                    "title": "USER_ALT_SUBCPTO",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_ALT_SUBCPTO",
+                    "title": "FEC_ALT_SUBCPTO",
+                    "description": "Fecha de Alta del registro / DATA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_MODF_SUBCPTO",
+                    "title": "USER_MODF_SUBCPTO",
+                    "description": "Legajo del usuario que efectuo la Modificacion de la DATA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_MODF_SUBCPTO",
+                    "title": "FEC_MODF_SUBCPTO",
+                    "description": "Fecha de Modificacion del registro",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECTOR_OWNER",
+                    "title": "SECTOR_OWNER",
+                    "description": "Uso Interno SGC Owner del registro",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

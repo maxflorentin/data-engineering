@@ -1,0 +1,28 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_producto_demanda_mercado",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_nro_prop"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_nro_prop","cod_adm_tpo_cliente","cod_adm_antig_cliente","flag_adm_dentro_radio","ds_adm_posicion","flag_adm_visitado","flag_adm_marco_visita","flag_adm_verificado"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_alta","ts_adm_mod"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_ultima_visita"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+	  ]
+}
+

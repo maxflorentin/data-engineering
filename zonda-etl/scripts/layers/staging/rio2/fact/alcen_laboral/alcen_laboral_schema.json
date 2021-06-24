@@ -1,0 +1,83 @@
+{
+  "file": "laboral_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/laboral/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/laboral",
+  "createTable": "bi_corp_staging.alcen_laboral",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+            {
+                    "name": "cod_sucursal",
+                    "type": "string"
+                },
+{
+                    "name": "nro_solicitud",
+                    "type": "string"
+                },
+{
+                    "name": "nro_participante",
+                    "type": "string"
+                },
+{
+                    "name": "tpo_empleo",
+                    "type": "string"
+                },
+{
+                    "name": "nom_empresa",
+                    "type": "string"
+                },
+{
+                    "name": "fec_ingreso",
+                    "type": "string"
+                },
+{
+                    "name": "cod_ocupac",
+                    "type": "string"
+                },
+{
+                    "name": "cod_cargo",
+                    "type": "string"
+                },
+{
+                    "name": "des_desempe",
+                    "type": "string"
+                },
+{
+                    "name": "mar_contrat",
+                    "type": "string"
+                },
+{
+                    "name": "cod_emp_tpo",
+                    "type": "string"
+                },
+{
+                    "name": "cod_emp_act",
+                    "type": "string"
+                },
+{
+                    "name": "rubro",
+                    "type": "string"
+                },
+{
+                    "name": "tpo_ocupac",
+                    "type": "string"
+                },
+{
+                    "name": "cant_personas_a_cargo",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

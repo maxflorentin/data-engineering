@@ -1,0 +1,86 @@
+{
+  "file": "push_notifications_schema",
+  "location": "/santander/bi-corp/landing/rio163/fact/push_notifications/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio163/fact/push_notifications",
+  "tempDirectory": "/santander/bi-corp/temp/rio163",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id",
+    "type": "string"
+  },
+    {
+      "name": "deep_link",
+      "type": "string"
+    },
+    {
+      "name": "id_message",
+      "type": "string"
+    },
+    {
+      "name": "message",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "created_at",
+      "type": "string"
+    },
+    {
+      "name": "opened_at",
+      "type": "string"
+    },
+    {
+      "name": "received_at",
+      "type": "string"
+    },
+    {
+      "name": "expiry",
+      "type": "string"
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "title",
+      "type": "string"
+    },
+    {
+      "name": "url",
+      "type": "string"
+    },
+    {
+      "name": "image",
+      "type": "string"
+    },
+    {
+      "name": "tag",
+      "type": "string"
+    },
+    {
+      "name": "deleted_at",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

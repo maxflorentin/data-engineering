@@ -1,0 +1,573 @@
+name: BDR_LOAD_Tables-Monthly
+description: 'LOAD BDR Tables for the New Default engine in local schema'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: santander_business_risk_arda.cotizaciones_bcra, santander_business_risk_arda.especies, bi_corp_common.rosetta_nkey_hist, bi_corp_common.rosetta_rnkd_hist, bi_corp_staging.aqua_rating_empresas, bi_corp_bdr.jm_client_bii, bi_corp_bdr.map_no_mrg, bi_corp_staging.afip, bi_corp_staging.afip_cat_monotributo, bi_corp_staging.alha9600, bi_corp_staging.aqua_clientes_asoc_geconomicos, bi_corp_staging.aqua_grupos_economicos, bi_corp_staging.aqua_tipo_cambio, bi_corp_staging.bcra, bi_corp_staging.bcra_sector, bi_corp_staging.bcra_sector_desc, bi_corp_staging.bgdtmae, bi_corp_staging.corresponsales, bi_corp_staging.gtdtrbc, bi_corp_staging.gtdtrgb, bi_corp_staging.inferencia_ingreso, bi_corp_staging.malbgc_acreditaciones, bi_corp_staging.malbgc_zbdtmig, bi_corp_staging.malpe_pedt008, bi_corp_staging.malpe_pedt015, bi_corp_staging.malpe_pedt024, bi_corp_staging.malpe_pedt042, bi_corp_staging.malpe_peec867c, bi_corp_staging.mddtccn, bi_corp_staging.mdr_contrapartes, bi_corp_staging.mmff_tactico_especie, bi_corp_staging.moria_vc_historico_ventas, bi_corp_staging.moria_vc_ventas, bi_corp_staging.no_mrg_grupo_relacion, bi_corp_staging.no_mrg_grupos, bi_corp_staging.no_mrg_juridica, bi_corp_staging.recla_adicional_cargabal, bi_corp_staging.recla_moro_cargabal, bi_corp_staging.rtra_economico, bi_corp_staging.rtra_regulatorio, bi_corp_staging.rubros_cargabal_provisiones, bi_corp_staging.sge_grupos_economicos, bi_corp_staging.view_clientes_en_mora, santander_business_risk_arda.calendario, santander_business_risk_arda.clientes, santander_business_risk_arda.contratos, santander_business_risk_arda.contratos_adsf, santander_business_risk_arda.contratos_deudores_adic, santander_business_risk_arda.contratos_garra, santander_business_risk_arda.contratos_refinanciados, santander_business_risk_arda.ifrs9_contratos, santander_business_risk_arda.ifrs9_tarjetas_saldos_amex, santander_business_risk_arda.ifrs9_tarjetas_saldos_master, santander_business_risk_arda.ifrs9_tarjetas_saldos_visa, santander_business_risk_arda.mapa_seguimiento, santander_business_risk_arda.marca_comite, santander_business_risk_arda.marcas_riesgo, santander_business_risk_arda.personas, santander_business_risk_arda.personas_comp_fisicas, santander_business_risk_arda.personas_valor_rgo, santander_business_risk_arda.rating_aqua_nilo, santander_business_risk_arda.rating_sge, santander_business_risk_arda.relacion_contrato_cliente, santander_business_risk_arda.score_comportamiento, santander_business_risk_arda.scoring_admision, bi_corp_staging.corresponsales_adicional_juridica, santander_business_risk_ifrs9.ifrs9_tablon, bi_corp_staging.malug_ugdtmae, bi_corp_bdr.saldos_tarjetas_covid, bi_corp_bdr.perim_contratos_bis_tarjetas_covid, bi_corp_common.stk_mora_marcas_riesgos 
+tasks:
+  - name: Load_Json_Variables
+    operator: BashOperator
+    config:
+      bash_command: "sh $ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/config/variables_update.sh '{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_LOAD_Tables-Monthly') }}'"
+  - name: DDLT_control_variables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/control_variables/DDLT-control_variables.hql'
+  - name: ETL_control_variables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/control_variables/ETL-control_variables.hql'
+  - name: Load_JM_CAL_EXT_CL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_EXT_CL/ETLV-Load_Table.hql'
+  - name: Load_Balances_Ajustes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/balances_ajustes/ETLV-Load_Table.hql'
+  - name: Load_Normalizacion_Id_Contratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_contratos/ETLV-Load_Table.hql'
+  - name: Load_Marca_UTP_Clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/marca_utp_clientes/ETLV-Load_Table.hql'
+  - name: Load_Normalizacion_Id_Clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_clientes/ETLV-Load_Table.hql'
+  - name: Load_JM_CLIENT_BII
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIENT_BII/ETLV-Load_Table.hql'
+  - name: Load_JM_CLIEN_JURI
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIEN_JURI/ETLV-Load_Table.hql'
+  - name: Load_CARTER_Field_in_JM_CLIENT_BII
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIENT_BII/ETLV-Load_CARTER_Field.hql'
+  - name: Load_JM_GRUP_ECONO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GRUP_ECONO/ETLV-Load_Table.hql'
+  - name: Load_JM_GRUP_RELA
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GRUP_RELA/ETLV-Load_Table.hql'
+  - name: Load_JM_VTA_CARTER
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_VTA_CARTER/ETLV-Load_Table.hql'
+  - name: Load_JM_TRZ_CONT_REN
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CONT_REN/ETLV-Load_Table.hql'
+  - name: Load_JM_TRZ_CONT_REN_COVID
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CONT_REN/ETLV_Load_Table_Moratoria_COVID.hql'        
+  - name: Load_JM_CONTR_BIS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_BIS/ETLV-Load_Table.hql'
+  - name: Load_JM_CTOS_CANCE
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CTOS_CANCE/ETLV-Load_Table.hql'
+  - name: Load_JM_INTERV_CTO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/ETLV-Load_Table.hql'
+  - name: Load_JM_POSIC_CONTR
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_POSIC_CONTR/ETLV-Load_Table.hql'      
+  - name: Load_JM_CONTR_OTROS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/ETLV-Load_Table.hql'
+  - name: Load_Table_TRZ_Cont
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/ELTV-Load_Table_TRZ_Cont.hql'
+  - name: Load_JM_CONTR_OTROS_AREA_DE_NEGOCIO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/ETLV-Load_Table_AreaDeNegocio.hql'
+  - name: Load_JM_EXPOS_NO_CON
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/ETLV-Load_Table.hql'
+  - name: Load_JM_FLUJOS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_FLUJOS/ETLV-Load_Table.hql'
+  - name: Load_JM_PROV_ESOTR
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_PROV_ESOTR/ETLV-Load_Table.hql'
+  - name: Load_JM_VAL_GARA
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_VAL_GARA/ETLV-Load_Table.hql'
+  - name: Load_JM_INF_AD_CLI
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INF_AD_CLI/ETLV-Load_Table.hql'
+  - name: DDLT_GARANTIA_CONTRATO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/DDLT_GARANTIA_CONTRATO.hql'
+  - name: ETLV_01_insert_aux_garant_calif_empresa
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_calif_empresa.hql'
+  - name: ETLV_01_insert_aux_garant_calif_pais
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_calif_pais.hql'
+  - name: ETLV_02_insert_aux_garant_garantias_genericas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_02_insert_aux_garant_garantias_genericas.hql'
+  - name: ETLV_01_insert_aux_garant_contratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_contratos.hql'
+  - name: ETLV_01_insert_aux_garant_garantias_especificas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_garantias_especificas.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_ini
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_ini.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop_x9
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_fin
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_fin.hql'
+  - name: ETLV_05_insert_garant_contratos_garantias_inicial
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_05_insert_garant_contratos_garantias_inicial.hql'
+  - name: Load_JM_GARANT_CTO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARANT_CTO/ETLV-Load_Table.hql'
+  - name: Load_JM_GARA_REAL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARA_REAL/ETLV-Load_Table.hql'
+  - name: Load_JM_INTERV_CTO_GARANTES
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/ETLV-Load_Table_Garantias.hql'
+  - name: Load_JM_CLIENT_BII_GARANTES
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIENT_BII/ETLV-Load_Table_garantias.hql'
+  - name: Load_JM_CAL_EMISION
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_EMISION/ETLV-Load_Table.hql'
+  - name: Load_JM_EAD_CONTR
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EAD_CONTR/ETLV-Load_Table.hql'
+  - name: Load_JM_CAL_IN_CL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_IN_CL/ETLV-Load_Table.hql'
+  - name: LOAD_STG_Veraz_Behavior-Daily
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_IN_CL/ETLV-Load_Table_Veraz_Behavior.hql'
+  - name: Ajuste_Multiples_Calificaciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_IN_CL/ETLV-Load_Table_Ajuste_Multiples_Calificaciones.hql'
+  - name: ETLV_01_insert_garant_miga
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/migas/ETLV_01_insert_garant_miga.hql'   
+  - name: Load_Normalizacion_Id_Contratos_ENC_ajustes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_contratos/ETLV-Load_Table_ENC_ajustes.hql'           
+  - name: Load_JM_EXPOS_NO_CON_ajustes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/ETLV-Load_Table_ajustes.hql'
+  - name: Load_JM_TRZ_CLIENTE
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CLIENTE/ELTV-Load_Table.hql'
+  - name: Load_Perim_Mdr_Contraparte
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_Mdr_Contraparte.hql'
+  - name: Load_Perim_Arda_Contratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_Arda_Contratos.hql'
+  - name: Load_Datos_Arda_Contratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Datos_Arda_Contratos.hql'
+  - name: Load_Perim_Contratos_bis
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_Contratos_bis.hql'
+  - name: Load_Perim_Rating_Aqua
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_Rating_Aqua.hql'   
+  - name: Load_Perim_ifrs_tablon_prov
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_ifrs_tablon_prov.hql' 
+  - name: Load_Perim_COVID
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ETLV-Load_Perim_COVID.hql'    
+  - name: Load_Perim_CBIS_COVID
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ELTV-Load_Perim_CBIS_COVID.hql'     
+  - name: Load_Perim_CBIS_COVID_Tarjetas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tablas_auxiliares_carga/ELTV-Load_Perim_CBIS_Tarjetas_COVID.hql'                   
+  - name: Load_JM_EXPOS_NO_CON_ajustes_prov
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/ETLV-Load_Table_ajustes_prov.hql'     
+  - name: Load_JM_POSIC_CONTR_MCOVID
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CONT_REN/ETLV-Load_Table_MCOVID_ImpPosCon.hql'               
+  - name: EXEC_DQI_Task
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/gitlab-pipelines/run_gitlab_pipelines.py --url https://gitlab.ar.bsch/api/v4/projects/1564/pipeline_schedules/27/play"
+dependencies:
+  Load_Perim_Arda_Contratos: Load_Datos_Arda_Contratos
+  Load_Perim_Contratos_bis: Load_JM_CONTR_OTROS
+  Load_Datos_Arda_Contratos: Load_JM_CONTR_OTROS
+  Load_Json_Variables: DDLT_control_variables
+  DDLT_control_variables: ETL_control_variables
+  ETL_control_variables: [Load_Perim_COVID, Load_Perim_ifrs_tablon_prov, Load_Perim_Mdr_Contraparte, DDLT_GARANTIA_CONTRATO, Load_Normalizacion_Id_Clientes, Load_Balances_Ajustes, Load_Marca_UTP_Clientes, Load_JM_GRUP_ECONO, Load_JM_VAL_GARA, Load_JM_INF_AD_CLI, Load_JM_CAL_EMISION]
+  Load_Perim_Mdr_Contraparte : [Load_Perim_Rating_Aqua, Load_JM_CLIEN_JURI, Load_JM_GRUP_RELA, Load_JM_TRZ_CLIENTE, Load_JM_CAL_IN_CL]
+  Load_Perim_Rating_Aqua : [Load_JM_CLIENT_BII, Load_JM_CAL_IN_CL]
+  Load_Balances_Ajustes: [Load_Normalizacion_Id_Contratos, Load_JM_EXPOS_NO_CON]
+  Load_Marca_UTP_Clientes: Load_JM_CLIENT_BII
+  Load_Normalizacion_Id_Clientes: [Load_JM_CLIENT_BII, Load_JM_INTERV_CTO]
+  Load_Perim_ifrs_tablon_prov: [Load_JM_PROV_ESOTR]
+  Load_Normalizacion_Id_Contratos: [Load_Perim_Arda_Contratos, Load_JM_TRZ_CONT_REN, Load_JM_VTA_CARTER, Load_JM_PROV_ESOTR, Load_JM_EAD_CONTR]
+  Load_JM_CLIENT_BII: [Load_JM_FLUJOS, Load_JM_CLIEN_JURI, Load_JM_POSIC_CONTR, Load_JM_CAL_IN_CL, Load_JM_TRZ_CLIENTE]
+  Load_JM_CLIEN_JURI: Load_CARTER_Field_in_JM_CLIENT_BII
+  Load_JM_CAL_IN_CL: LOAD_STG_Veraz_Behavior-Daily
+  LOAD_STG_Veraz_Behavior-Daily: Ajuste_Multiples_Calificaciones
+  Load_Perim_COVID : Load_JM_TRZ_CONT_REN_COVID
+  Load_Perim_CBIS_COVID: Load_JM_TRZ_CONT_REN_COVID
+  Load_Perim_CBIS_COVID_Tarjetas: Load_JM_TRZ_CONT_REN_COVID
+  Load_JM_TRZ_CONT_REN_COVID: [Load_Table_TRZ_Cont, Load_JM_POSIC_CONTR_MCOVID]
+  Load_JM_TRZ_CONT_REN: [Load_JM_CONTR_BIS, Load_JM_CTOS_CANCE, Load_JM_TRZ_CONT_REN_COVID]
+  Load_JM_CONTR_BIS: [Load_Perim_Contratos_bis, Load_Perim_CBIS_COVID, Load_Perim_CBIS_COVID_Tarjetas, Load_JM_INTERV_CTO, Load_JM_POSIC_CONTR, Load_JM_TRZ_CONT_REN_COVID]
+  Load_JM_POSIC_CONTR: [Load_JM_EXPOS_NO_CON, ETLV_01_insert_aux_garant_contratos, Load_CARTER_Field_in_JM_CLIENT_BII, Load_JM_TRZ_CONT_REN_COVID, Load_JM_POSIC_CONTR_MCOVID]
+  Load_JM_POSIC_CONTR_MCOVID : [Load_JM_EXPOS_NO_CON]
+  Load_JM_EXPOS_NO_CON: [Load_Normalizacion_Id_Contratos_ENC_ajustes]
+  Load_Normalizacion_Id_Contratos_ENC_ajustes: [Load_JM_EXPOS_NO_CON_ajustes]
+  Load_JM_EXPOS_NO_CON_ajustes: Load_JM_EXPOS_NO_CON_ajustes_prov
+  Load_JM_CONTR_OTROS: Load_JM_CONTR_OTROS_AREA_DE_NEGOCIO
+  Load_JM_CONTR_OTROS_AREA_DE_NEGOCIO: Load_Table_TRZ_Cont 
+  Load_Table_TRZ_Cont: Load_JM_FLUJOS
+  Load_JM_INTERV_CTO: [ETLV_01_insert_aux_garant_contratos, Load_CARTER_Field_in_JM_CLIENT_BII]
+  DDLT_GARANTIA_CONTRATO: [ETLV_01_insert_aux_garant_calif_pais, ETLV_01_insert_aux_garant_calif_empresa, ETLV_01_insert_aux_garant_garantias_especificas]
+  ETLV_01_insert_aux_garant_calif_pais: [ETLV_02_insert_aux_garant_garantias_genericas, ETLV_01_insert_aux_garant_contratos]
+  ETLV_01_insert_aux_garant_calif_empresa: [ETLV_02_insert_aux_garant_garantias_genericas, ETLV_01_insert_aux_garant_contratos]
+  ETLV_01_insert_aux_garant_contratos: [ETLV_04_insert_garant_contratos_garantias_st_ini]
+  ETLV_02_insert_aux_garant_garantias_genericas: ETLV_04_insert_garant_contratos_garantias_st_ini
+  ETLV_01_insert_aux_garant_garantias_especificas: [ETLV_04_insert_garant_contratos_garantias_st_ini]
+  ETLV_04_insert_garant_contratos_garantias_st_ini: [ETLV_04_insert_garant_contratos_garantias_st_loop_x9]
+  ETLV_04_insert_garant_contratos_garantias_st_loop_x9: [ETLV_04_insert_garant_contratos_garantias_st_fin]
+  ETLV_04_insert_garant_contratos_garantias_st_fin: [ETLV_01_insert_garant_miga]
+  ETLV_01_insert_garant_miga: [ETLV_05_insert_garant_contratos_garantias_inicial,Load_JM_GARANT_CTO,Load_JM_GARA_REAL,Load_JM_INTERV_CTO_GARANTES]
+  Load_JM_INTERV_CTO_GARANTES: [Load_JM_CLIENT_BII_GARANTES]
+  Load_JM_CLIENT_BII_GARANTES: [Load_JM_CAL_EXT_CL]
+  Load_JM_CAL_EXT_CL: [EXEC_DQI_Task]
+  Load_JM_GARA_REAL: [EXEC_DQI_Task]
+  Load_JM_GARANT_CTO: [EXEC_DQI_Task]
+notifications:
+  on_start: true
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

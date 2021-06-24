@@ -1,0 +1,46 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.stk_adm_ind_omdmdatosfinancieros (
+cod_adm_tipotramite string,
+cod_adm_tramite string,
+ts_adm_fecproceso string,
+cod_adm_tipoparticipante string,
+ds_adm_variable string,
+int_adm_antiguedadcuentaactmasant int,
+int_adm_antiguedadpresthipotecarioactmasant int,
+int_adm_antiguedadprestpersonalactmasant int,
+int_adm_antiguedadprestprendarioactmasant int,
+int_adm_antiguedadtotalbsr int,
+int_adm_cantidadmesesinversionestotal int,
+int_adm_cantidadmesesmbb int,
+int_adm_cantidadmesessaldocuenta int,
+cod_adm_cuadrantecrm string,
+fc_adm_montocuotatotalpresthipotecario double,
+fc_adm_montocuotatotalprestpersonal double,
+fc_adm_montocuotatotalprestprendario double,
+fc_adm_montombbpromedio6m double,
+fc_adm_montominimoinversionestotal6m double,
+fc_adm_montominimombbu6m double,
+fc_adm_montotenenciaacciones double,
+fc_adm_montotenenciabono double,
+fc_adm_montotenenciaplazofijo double,
+fc_adm_promedioconsumosdebito6m double,
+fc_adm_promedioconsumostarjamex6m double,
+fc_adm_promedioconsumostarjmaster6m double,
+fc_adm_promedioconsumostarjvisa6m double,
+fc_adm_promedioextraccionesdebito6m double,
+fc_adm_promedioinversionestotal6m double,
+fc_adm_promediosaldocuenta6m double,
+fc_adm_saldodeudaaptp double,
+fc_adm_saldodeudaprestamomono double,
+fc_adm_tasa60mppmono double,
+fc_adm_consumo double,
+fc_adm_limite double,
+cod_adm_codtipotarjeta string,
+fc_adm_saldonoutilizado double,
+ds_adm_json string
+)
+PARTITIONED BY (
+  partition_date string)
+STORED AS PARQUET
+LOCATION
+  '${DATA_LAKE_SERVER}/santander/bi-corp/common/admision/stk_adm_ind_omdmdatosfinancieros'
+;

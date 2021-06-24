@@ -1,0 +1,89 @@
+{
+  "file": "relacion_contrato_cru",
+  "location": "/santander/bi-corp/landing/moria/fact/relacion_contrato_cru/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/moria/fact/relacion_contrato_cru",
+  "extension": "csv",
+  "header": false,
+  "delimiter": ";",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "num_persona",
+      "type": "string"
+    },
+    {
+      "name": "nro_propuesta",
+      "type": "string"
+    },
+    {
+      "name": "cod_entidad",
+      "type": "string"
+    },
+    {
+      "name": "cod_centro",
+      "type": "string"
+    },
+    {
+      "name": "num_contrato",
+      "type": "string"
+    },
+    {
+      "name": "cod_producto",
+      "type": "string"
+    },
+    {
+      "name": "cod_subprodu",
+      "type": "string"
+    },
+    {
+      "name": "cod_divisa",
+      "type": "string"
+    },
+    {
+      "name": "cod_entidad_rel",
+      "type": "string"
+    },
+    {
+      "name": "cod_centro_rel",
+      "type": "string"
+    },
+    {
+      "name": "num_contrato_rel",
+      "type": "string"
+    },
+    {
+      "name": "cod_producto_rel",
+      "type": "string"
+    },
+    {
+      "name": "cod_subprodu_rel",
+      "type": "string"
+    },
+        {
+      "name": "cod_divisa_rel",
+      "type": "string"
+    },
+        {
+      "name": "imp_saldo_cierre",
+      "type": "string"
+    },
+        {
+      "name": "porc_deuda",
+      "type": "string"
+    },
+        {
+      "name": "cod_tipo_rel",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

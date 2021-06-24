@@ -1,0 +1,35 @@
+{
+    "file": "rel_nup_otro_bco_schema",
+    "createTable": "bi_corp_staging.rio125_rel_nup_otro_bco",
+    "location": "/santander/bi-corp/landing/rio125/fact/rel_nup_otro_bco/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio125/fact/rel_nup_otro_bco",
+    "tempDirectory": "/santander/bi-corp/temp/rio125",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "ident_otro_bco",
+            "type": "string"
+        },
+        {
+            "name": "entidad_origen",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

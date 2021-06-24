@@ -1,0 +1,73 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_pmr_reason",
+      "title": "descripción de las razones de rebote o rechazo de los envios de mail",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "descripción de las razones de rebote o rechazo de los envios de mail",
+      "columns": [
+        {
+          "name": "ID_REASON",
+          "title": "ID_REASON",
+          "description": "ID de la tabla",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_TYPE",
+          "title": "ID_TYPE",
+          "description": "ID asociado a la tabla pmr_type",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESC_REASON",
+          "title": "DESC_REASON",
+          "description": "descripcion de la razón del rebote",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 128.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CANTIDAD_MAX",
+          "title": "CANTIDAD_MAX",
+          "description": "cantidad máxima de rebotes",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

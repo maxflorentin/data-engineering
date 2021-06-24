@@ -1,0 +1,140 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A308837"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.malbgc_bgdtcac_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "ENTIDAD",
+                    "title": "ENTIDAD",
+                    "description": "CLAVE DE ENTIDAD",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "CENTRO-ALTA",
+                    "title": "CENTRO-ALTA",
+                    "description": "OFICINA DE ALTA DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "CUENTA",
+                    "title": "CUENTA",
+                    "description": "NUMERO DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0
+                },
+                {
+                    "name": "DIVISA",
+                    "title": "DIVISA",
+                    "description": "DIVISA DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0
+                },
+                {
+                    "name": "FECHA-DESDE",
+                    "title": "FECHA-DESDE",
+                    "description": "FECHA DE ENTRADA EN VIGOR DE LA CAMPAÑA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "FECHA-HASTA",
+                    "title": "FECHA-HASTA",
+                    "description": "FECHA DE FINALIZACIÓN DE LA CAMPAÑA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "ENTIDAD-UMO",
+                    "title": "ENTIDAD-UMO",
+                    "description": "ENTIDAD ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "CENTRO-UMO",
+                    "title": "CENTRO-UMO",
+                    "description": "CENTRO ULTIMA MODIFICACION            ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "USERID-UMO",
+                    "title": "USERID-UMO",
+                    "description": "USUARIO ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "NETNAME-UMO",
+                    "title": "NETNAME-UMO",
+                    "description": "TERMINAL ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "TIMEST-UMO",
+                    "title": "TIMEST-UMO",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

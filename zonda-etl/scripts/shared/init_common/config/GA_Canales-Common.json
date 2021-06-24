@@ -1,0 +1,15 @@
+{
+    "name": "GA_Canales-Common",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_GA_Canales-Daily",
+            "tasks": "STAGING_GA-Canales_Parquetize"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_CMN_GA_Canales"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+/*
+ * Hive e Impala
+ * date, userid, table accessed and operation.
+ *
+ * HDFS
+ * date, userid, hdfs file path and operation.
+ * This one requires a mapping between the tables and the file paths but enables the control of access via Spark, Phython or file browser.
+ *
+ * Exclude from de log the activity in the raw and staging area (were temporary tables get created and deleted with each execution).
+ *
+ * Exclude the support team (that manage incidents or review status) and the certification team (that run periodic checks to reconcile the data)
+ * considering these activities do not be classified as “usage of the data”
+ *
+ * Once the last access date is obtained for each table with the above process we classify at table level in
+ * Frozen (not used in 13 months),
+ * Cold (used between 12 and 07 months) and
+ * Hot (used in the last 06 months),
+ * obtaining with this segmentation, the number of tables in each category and the percentage with respect to the total.
+ *
+ *	The RAG classification will be related with the following rules:
+ *	- if the percentage of HOT data >= 70% then green
+ *	- if the percentage of FROZEN data >= 50 % then red
+ *	- else AMBER
+
+ */

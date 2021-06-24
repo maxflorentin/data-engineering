@@ -1,0 +1,139 @@
+name: LOAD_STG_FM-Daily
+description: 'Load data from FM (Daily)'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 19 * * *'
+start_date: '2020-01-08'
+catchup: false
+retries: 4
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_FM_SALDOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_SALDOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/fact/saldos/saldos_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['saldos_schema.json']
+  - name: STAGING_FM_SUSCRIPCIONES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_SUSCRIPCIONES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/fact/suscripciones/suscripciones_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['suscripciones_schema.json']
+  - name: STAGING_FM_RESCATES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_RESCATES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/fact/rescates/rescates_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['rescates_schema.json']
+  - name: STAGING_FM_MAESTRO_FONDOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_MAESTRO_FONDOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/dim/maestro_fondos/maestro_fondos_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['maestro_fondos_schema.json']
+  - name: STAGING_FM_MAESTRO_CANALES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_MAESTRO_CANALES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/dim/maestro_canales/maestro_canales_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['maestro_canales_schema.json']
+  - name: STAGING_FM_VALORES_CUOTAS_PARTES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_VALORES_CUOTAS_PARTES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/fact/valores_cuotas_partes/valores_cuotas_partes_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['valores_cuotas_partes_schema.json']
+  - name: STAGING_FM_COMISIONES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_FM_COMISIONES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/fm/fact/comisiones/comisiones_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_FM-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+      application_args: ['comisiones_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msanguinetti@santandertecnologia.com.ar]

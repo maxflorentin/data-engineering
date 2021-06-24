@@ -1,0 +1,31 @@
+{
+        "file": "mvw_trk_evento_schema",
+        "location": "/santander/bi-corp/landing/rio226/dim/mvw_trk_evento/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/dim/mvw_trk_evento",
+        "extension": "csv",
+        "delimiter": ";",
+        "header": false,
+        "createTable": "bi_corp_staging.orde_operativo_mvw_trk_evento",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "ID",
+                        "type": "string"
+                },
+                {
+                        "name": "CODIGO",
+                        "type": "string"
+                },
+                {
+                        "name": "DESCRIPCION",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

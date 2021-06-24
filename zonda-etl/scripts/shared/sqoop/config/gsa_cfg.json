@@ -1,0 +1,35 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBSORA7",
+      "database": "GSA",
+      "table": "V_POSICION_CUSTODIA",
+      "table_type": "fact",
+      "environment": "OPICS",
+      "landing_path": "/santander/bi-corp/landing/gsa/fact/v_posicion_custodia",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHAPOS, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=v_posicion_custodia -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT BRANCH, FECHAPOS, CNO, NUM_ATIT, SECID,LUGAR,ESTADO,SUBESTADO,SUBESTADO2,NOMINALES, to_char(FECHAPOS, 'yyyy-MM-dd') AS PARTITION_DATE FROM {environment}.{table} WHERE to_char(FECHAPOS, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6    --fields-terminated-by '|' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBSORA7",
+      "database": "GSA",
+      "table": "V_PRECIO_CUSTODIA",
+      "table_type": "fact",
+      "environment": "OPICS",
+      "landing_path": "/santander/bi-corp/landing/gsa/fact/v_precio_custodia",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=v_precio_custodia -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT SECID, FECHA, PRECIO, to_char(FECHA, 'yyyy-MM-dd') AS PARTITION_DATE FROM {environment}.{table} WHERE to_char(FECHA, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6    --fields-terminated-by '|' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBSORA7",
+      "database": "GSA",
+      "table": "V_ESPECIES",
+      "table_type": "fact",
+      "environment": "BCEP01",
+      "landing_path": "/santander/bi-corp/landing/gsa/fact/v_especies",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=v_especies -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT OID_ESPECIE,SECID,TIPO_ESPECIE,DENOMINACION ,COD_ROSSI,COD_BCE,COD_ISIN,COD_SAM,COD_BCRA,COD_CVSA,COD_ATIT,COD_MAE,COD_FM,COD_AMIGO,PAIS_EMISOR,MONEDA_DE_EMISION,FECHA_CUP_PROX,FECHA_CUP_ANT,FECHA_VTO,PERIODICIDAD_PAGOS,TIPO_TASA,TASA,VR,LAM_MIN,MIN_INCRE,CASH_FLOW,TIPO_CAP_PRECIO,PRECIO_EJ,FECHA_EJ,PER_DE_LIQ,CANT_POR_LOTE,DIVIDEND_DATE,DIVIDEND,AMB_NEGOCIACION,OBSERVACIONES,ESTADO,SUBESPECIE,FECHA_PRECIO,PLAZO,TITULO_PUBLICO_O_PRIVADO,LUGAR_DEFAULT_DE_CUSTODIA,SIC,ESPECIE,FTE_DE_PRECIO,TIPO_VALORIZACION,MONEDA_DE_COTIZACION,CLASIFICACION_EXTRACTO,BASIS,UNSOLICITED,PRODTYPE,INTERESES_CORRIDOS,PRODUCTO,COD_CATEGORIA_CV,OBRA_PUBLICA,FECHA_HASTA_AMB_NEG,AJUSTE_DE_CAPITAL,INDICE FROM {environment}.{table} WHERE  \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'   --num-mappers 1 --bindir {zonda_dir}/sqoop/{environment}/{table}   --fields-terminated-by '|'  --password '{password}'  --delete-target-dir   --verbose\n"
+    }
+  ]
+}

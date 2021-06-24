@@ -1,0 +1,43 @@
+name: LOAD_STG_Prisma_Limites_Disponibles-Weekly
+description: 'Load data from Acle checks tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2020-05-28'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_Limites_Disponibles_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Limites_Disponibles_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 2G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cupones/limites_disponibles/limites_disponibles_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Prisma_Limites_Disponibles-Weekly') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_Prisma_Limites_Disponibles-Weekly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['limites_disponibles_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

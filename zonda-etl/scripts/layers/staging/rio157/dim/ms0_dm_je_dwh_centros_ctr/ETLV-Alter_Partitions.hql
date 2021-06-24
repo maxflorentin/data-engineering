@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio157_ms0_dm_je_dwh_centros_ctr ADD IF NOT EXISTS PARTITION (partition_date ='{partition_date}');

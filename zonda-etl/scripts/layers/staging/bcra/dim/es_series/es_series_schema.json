@@ -1,0 +1,46 @@
+{
+  "file": "es_series",
+  "location": "/santander/bi-corp/landing/bcra/dim/es_series/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/dim/es_series",
+  "header": false,
+  "parquetFiles": 1,
+  "createTable": "bi_corp_staging.bcra_es_series",
+  "extension": "csv",
+  "delimiter": ";",
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "es_series_cod",
+          "type": "string"
+        },
+        {
+          "name": "es_series_nombre",
+          "type": "string"
+        },
+        {
+          "name": "es_series_notas_met",
+          "type": "string"
+        },
+        {
+          "name": "es_series_notas_ind",
+          "type": "string"
+        },
+        {
+          "name": "es_series_links",
+          "type": "string"
+        },
+        {
+          "name": "es_series_tipo",
+          "type": "string"
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

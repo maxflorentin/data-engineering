@@ -1,0 +1,68 @@
+{
+  "file": "mrg_grupos",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/mrg_grupos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/mrg_grupos",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "fecha",
+					    "type": "string"
+            },
+            {
+					    "name": "empresa",
+					    "type": "string"
+            },
+            {
+					    "name": "calificada_localmente",
+					    "type": "string"
+            },
+            {
+					    "name": "identificador_grupo_economico",
+					    "type": "string"
+            },
+            {
+					    "name": "nombre",
+					    "type": "string"
+            },
+            {
+					    "name": "pais",
+					    "type": "string"
+            },
+            {
+					    "name": "facturacion_grupo",
+					    "type": "string"
+            },
+            {
+					    "name": "total_activos",
+					    "type": "string"
+            },
+            {
+					    "name": "numero_de_empleados",
+					    "type": "string"
+            },
+            {
+					    "name": "fecha_informacion",
+					    "type": "string"
+            },
+            {
+					    "name": "sector",
+					    "type": "string"
+            },
+            {
+					    "name": "sector_grupo_economico",
+					    "type": "string"
+            }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

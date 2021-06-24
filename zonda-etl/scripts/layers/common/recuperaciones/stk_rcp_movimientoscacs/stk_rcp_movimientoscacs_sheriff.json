@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_rcp_movimientoscacs",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["ds_rcp_acctnum","dt_rcp_fechaactividad","ds_rcp_codigolocacion","ds_rcp_secuenciamovimiento"]
+    },
+	  {
+      "control_id": "null_values",
+      "field_to_check": ["ds_rcp_codigolocacion","ds_rcp_acctnum","cod_nro_cuenta","cod_per_nup","cod_suc_sucursal"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechaactividad","dt_rcp_fechapromesapago1","dt_rcp_fechapromesapago2","dt_rcp_fechaentradamora","dt_rcp_fechaholddate"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

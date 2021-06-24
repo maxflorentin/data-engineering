@@ -1,0 +1,196 @@
+name: LOAD_STG_MALBGC_Trx-Daily
+description: 'Load data from MALBGC Movimientos_Trx tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 * * *'
+start_date: '2019-11-29'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_ZBDTMIG_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ZBDTMIG_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtmig/zbdtmig_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtmig/zbdtmig.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['zbdtmig_schema.json']
+  - name: STAGING_ZBDTMIG_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtmig/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtmig/ETLV-Alter_Partitions.hql'
+  - name: STAGING_BGDTUMO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTUMO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtumo/bgdtumo_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtumo/bgdtumo.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtumo_schema.json']
+  - name: STAGING_BGDTUMO_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtumo/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtumo/ETLV-Alter_Partitions.hql'
+  - name: STAGING_BGDTMOB_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTMOB_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 4G
+      num_executors: 1
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmob/bgdtmob_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmob/bgdtmob.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtmob_schema.json']
+  - name: STAGING_BGDTMOB_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmob/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmob/ETLV-Alter_Partitions.hql'
+  - name: STAGING_BGDTMO1_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTMO1_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 4G
+      num_executors: 1
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo1/bgdtmo1_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo1/bgdtmo1.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtmo1_schema.json']
+  - name: STAGING_BGDTMO1_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo1/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo1/ETLV-Alter_Partitions.hql'
+  - name: STAGING_BGDTMO2_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTMO2_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 4G
+      num_executors: 1
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo2/bgdtmo2_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo2/bgdtmo2.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtmo2_schema.json']
+  - name: STAGING_BGDTMO2_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo2/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmo2/ETLV-Alter_Partitions.hql'
+  - name: STAGING_BGDTOBS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTOBS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtobs/bgdtobs_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtobs/bgdtobs.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC_Trx-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtobs_schema.json']
+  - name: STAGING_BGDTOBS_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtobs/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtobs/ETLV-Alter_Partitions.hql'
+dependencies:
+  STAGING_BGDTMOB_Parquetize: STAGING_BGDTMOB_AddPartition
+  STAGING_BGDTMO1_Parquetize: STAGING_BGDTMO1_AddPartition
+  STAGING_BGDTMO2_Parquetize: STAGING_BGDTMO2_AddPartition
+  STAGING_BGDTOBS_Parquetize: STAGING_BGDTOBS_AddPartition
+  STAGING_ZBDTMIG_Parquetize: STAGING_ZBDTMIG_AddPartition
+  STAGING_BGDTUMO_Parquetize: STAGING_BGDTUMO_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, Pabnunez@santandertecnologia.com.ar]

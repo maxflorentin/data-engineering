@@ -1,0 +1,1099 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A199720,A309338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cacs_mf_cuentas",
+            "title": "Contratos activos e inactivos",
+            "schema": "bi_corp_staging",
+            "source": "CACS",
+            "query": "",
+            "type": "fact",
+            "description": "Contratos activos e inactivos",
+            "columns": [
+                {
+                    "name": "LOCATION_CODE",
+                    "title": "LOCATION_CODE",
+                    "description": "Locacion",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCT_NUM",
+                    "title": "ACCT_NUM",
+                    "description": "Contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 18.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREDIT_LIMIT_AMT",
+                    "title": "CREDIT_LIMIT_AMT",
+                    "description": "Limite de las tarjetas Visa. Registro Cliente Liquidacion total Visa ",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 12.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "EXPIRATION_DATE",
+                    "title": "EXPIRATION_DATE",
+                    "description": "Prestamos: fecha vcto. Tarjetas: Ingreso a boletin. CLI: Fecha escenario TRIAD",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "BALANCE_AMT",
+                    "title": "BALANCE_AMT",
+                    "description": "Riesgo del Producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "OVERLIMIT_AMT",
+                    "title": "OVERLIMIT_AMT",
+                    "description": "Exceso /descubierto del producto. CLI: suma de ese campo",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "TOTAL_DUE_AMT",
+                    "title": "TOTAL_DUE_AMT",
+                    "description": "Depende el producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "COLL_ASGN_UD_1",
+                    "title": "COLL_ASGN_UD_1",
+                    "description": "Sucursal administradora",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 12.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "TOTAL_DELINQ_AMT",
+                    "title": "TOTAL_DELINQ_AMT",
+                    "description": "Deuda de cada Producto. CLI: suma deuda de c/producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "CYCLES_DELINQ_CNT",
+                    "title": "CYCLES_DELINQ_CNT",
+                    "description": "Ciclo de deuda",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_PAYMENT_AMT",
+                    "title": "LAST_PAYMENT_AMT",
+                    "description": "Pagos de cada producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHARGE_OFF_DATE",
+                    "title": "CHARGE_OFF_DATE",
+                    "description": "Fecha de escenario de TRIAD",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCT_OPEN_DATE",
+                    "title": "ACCT_OPEN_DATE",
+                    "description": "Depende el producto",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "NEXT_DUE_DATE",
+                    "title": "NEXT_DUE_DATE",
+                    "description": "Fecha vencimiento de cada producto",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "OTH_DELQ_AMT",
+                    "title": "OTH_DELQ_AMT",
+                    "description": "Depende el producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "REPOSSESSION_DATE",
+                    "title": "REPOSSESSION_DATE",
+                    "description": "Depende el producto",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAYMENT_AMT",
+                    "title": "PAYMENT_AMT",
+                    "description": "Pagos de cada producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRINCIPAL_DELQ_AMT",
+                    "title": "PRINCIPAL_DELQ_AMT",
+                    "description": "Limit concedido (TC). Capital concedido (Prestamos)",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "CYCLE_ID",
+                    "title": "CYCLE_ID",
+                    "description": "Depende el producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_BILLING_DATE",
+                    "title": "LAST_BILLING_DATE",
+                    "description": "Fecha de liquidacion (TC). Prox vcto (Prtmo)",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUMBER_OF_CARDS",
+                    "title": "NUMBER_OF_CARDS",
+                    "description": "Depende el producto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "WARN_BULLETIN_DATE",
+                    "title": "WARN_BULLETIN_DATE",
+                    "description": "Inicio de Mora",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "WARN_BULLETIN_ZONE",
+                    "title": "WARN_BULLETIN_ZONE",
+                    "description": "CLI: nro estrategia TRIAD. Depende el producto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "OTHER_ACCT_NUM",
+                    "title": "OTHER_ACCT_NUM",
+                    "description": "Prtmo: cuenta de debito",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 18.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_PAYMENT_DATE",
+                    "title": "LAST_PAYMENT_DATE",
+                    "description": "Fecha de pago mas reciente",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_MONETARY_TYPE",
+                    "title": "LAST_MONETARY_TYPE",
+                    "description": "CLI: marca de reactivacion en Prestamos",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "NEW_CLIENT_DATE",
+                    "title": "NEW_CLIENT_DATE",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "FLAG_INFINITY",
+                    "title": "FLAG_INFINITY",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 30.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRINCIPAL_AMT",
+                    "title": "PRINCIPAL_AMT",
+                    "description": "Depende el producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "OTHER_AMT",
+                    "title": "OTHER_AMT",
+                    "description": "defined-8(4)",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIG_BALANCE_AMT",
+                    "title": "ORIG_BALANCE_AMT",
+                    "description": "defined-8(5)",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "OFFICER_NUM",
+                    "title": "OFFICER_NUM",
+                    "description": "Sucursal del producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 9.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_NUM",
+                    "title": "BRANCH_NUM",
+                    "description": "CLI: Suc administradora. PROD:Sucursal del producto",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGINAL_TERM",
+                    "title": "ORIGINAL_TERM",
+                    "description": "CLI: SPID (TRIAD). PROD: depende el producto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCOUNT_TYPE",
+                    "title": "ACCOUNT_TYPE",
+                    "description": "Tipo de cuenta",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "SERVICE_TYPE",
+                    "title": "SERVICE_TYPE",
+                    "description": "CLI: '000'. PROD: '000': Pesos, '002': No pesos",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_INFO_NUM",
+                    "title": "CUSTOMER_INFO_NUM",
+                    "description": "Nup del cliente (FMT CACS)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 24.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "STATE_FLAG",
+                    "title": "STATE_FLAG",
+                    "description": "\"A\": activo, \"I\": inactivo",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_ACTIVITY_DATE",
+                    "title": "LAST_ACTIVITY_DATE",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COLLCTN_ENTRY_DATE",
+                    "title": "COLLCTN_ENTRY_DATE",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BOC_RESP_COLL",
+                    "title": "BOC_RESP_COLL",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BOC_DELINQUENT_AMT",
+                    "title": "BOC_DELINQUENT_AMT",
+                    "description": "",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "RETURN_TO_STE_CODE",
+                    "title": "RETURN_TO_STE_CODE",
+                    "description": "",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_COLLECTOR_ID",
+                    "title": "LAST_COLLECTOR_ID",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RESP_COLL_ID",
+                    "title": "RESP_COLL_ID",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACS_STATE_CODE",
+                    "title": "CACS_STATE_CODE",
+                    "description": "Estado del contrato",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "STATE_ENTRY_DATE",
+                    "title": "STATE_ENTRY_DATE",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHARGE_OFF_AMT",
+                    "title": "CHARGE_OFF_AMT",
+                    "description": "Riesgo asumido por el cliente",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM_NUP",
+                    "title": "NUM_NUP",
+                    "description": "Nup del Cliente",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "TIME_ZONE",
+                    "title": "TIME_ZONE",
+                    "description": "Segmento que pertenece el cliente",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COLL_ASGN_UD_2",
+                    "title": "COLL_ASGN_UD_2",
+                    "description": "TC: campaña. CLI: Campaña",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VALUE_CODE",
+                    "title": "VALUE_CODE",
+                    "description": "Indicador SPY",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUSTOMER_NAME",
+                    "title": "CUSTOMER_NAME",
+                    "description": "Nombre del titular del contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 45.0,
+
+                    "security": "Publico"
+                },
+                {
+                    "name": "RECOMMENDED_ACT_CD",
+                    "title": "RECOMMENDED_ACT_CD",
+                    "description": "Indicador si es cliente PAS",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RISK_CODE",
+                    "title": "RISK_CODE",
+                    "description": "Se informa antigüedad del cliente (mapa_riesgo.txt)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SOCIAL_SEC_NUM",
+                    "title": "SOCIAL_SEC_NUM",
+                    "description": "Número de documento del titular del contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "PLACE_CALLED",
+                    "title": "PLACE_CALLED",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARTY_CNTCT_CODE",
+                    "title": "PARTY_CNTCT_CODE",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COLL_ACTIVITY_CODE",
+                    "title": "COLL_ACTIVITY_CODE",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NONPAY_EXCUSE_CODE",
+                    "title": "NONPAY_EXCUSE_CODE",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HOLD_DATE",
+                    "title": "HOLD_DATE",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ZONA",
+                    "title": "ZONA",
+                    "description": "Zona comercial al que pertenece",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MARCA_BNP",
+                    "title": "MARCA_BNP",
+                    "description": "Marca del cliente. Ej: BNP; CITI",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "LETRA_SCORE",
+                    "title": "LETRA_SCORE",
+                    "description": "Score de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUMERO_SCORE",
+                    "title": "NUMERO_SCORE",
+                    "description": "Score de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BLOQUEO",
+                    "title": "BLOQUEO",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESCENARIO",
+                    "title": "ESCENARIO",
+                    "description": "Escenario TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_ESCENARIO",
+                    "title": "DESC_ESCENARIO",
+                    "description": "Descripcion escenario TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FIXED_ACTION_1",
+                    "title": "FIXED_ACTION_1",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FIXED_ACTION_2",
+                    "title": "FIXED_ACTION_2",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMED_ACTION_1",
+                    "title": "TIMED_ACTION_1",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMED_ACTION_2",
+                    "title": "TIMED_ACTION_2",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMED_ACTION_3",
+                    "title": "TIMED_ACTION_3",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMED_ACTION_4",
+                    "title": "TIMED_ACTION_4",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMED_ACTION_5",
+                    "title": "TIMED_ACTION_5",
+                    "description": "Informacion de TRIAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MORA_404",
+                    "title": "MORA_404",
+                    "description": "",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VERAZ_BEHAVIOR",
+                    "title": "VERAZ_BEHAVIOR",
+                    "description": "",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DATO_RENTA",
+                    "title": "DATO_RENTA",
+                    "description": "Segmento del cliente",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_1",
+                    "title": "PAGO_MIN_IMPG_TC_1",
+                    "description": "1° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_2",
+                    "title": "PAGO_MIN_IMPG_TC_2",
+                    "description": "2° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_3",
+                    "title": "PAGO_MIN_IMPG_TC_3",
+                    "description": "3° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_4",
+                    "title": "PAGO_MIN_IMPG_TC_4",
+                    "description": "4° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_5",
+                    "title": "PAGO_MIN_IMPG_TC_5",
+                    "description": "5° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAGO_MIN_IMPG_TC_6",
+                    "title": "PAGO_MIN_IMPG_TC_6",
+                    "description": "6° Pago minimo impacto TC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUOTA_ORIGINAL_PRESTAMO",
+                    "title": "CUOTA_ORIGINAL_PRESTAMO",
+                    "description": "Monto original 1° cuota impaga del prestamo",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "18,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "LETTER_USER_DEF_6",
+                    "title": "LETTER_USER_DEF_6",
+                    "description": "Producto-subproducto prestamo",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INA_ACTG_SYS_ID",
+                    "title": "INA_ACTG_SYS_ID",
+                    "description": "Accion de TRIAD??",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUT_OFF_CODE",
+                    "title": "CUT_OFF_CODE",
+                    "description": "Segmento del cliente",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "EXT_CUST_ID_TYPE",
+                    "title": "EXT_CUST_ID_TYPE",
+                    "description": "tipo de documento",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SCORE_ALINEADO",
+                    "title": "SCORE_ALINEADO",
+                    "description": "Score de B@R",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BALANCE_RISK_TOTAL",
+                    "title": "BALANCE_RISK_TOTAL",
+                    "description": "B@R total",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BALANCE_RISK_UNSECURED",
+                    "title": "BALANCE_RISK_UNSECURED",
+                    "description": "B@R unsecured",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BALANCE_RISK_SECURED",
+                    "title": "BALANCE_RISK_SECURED",
+                    "description": "B@R secured",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SCORECARD",
+                    "title": "SCORECARD",
+                    "description": "Scorecard",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

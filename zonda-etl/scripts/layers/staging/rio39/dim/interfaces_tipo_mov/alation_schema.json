@@ -1,0 +1,96 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_interfaces_tipo_mov",
+      "title": "interfaces",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/interfaces_tipo_mov/",
+      "type": "dim",
+      "description": "Información de interfaces",
+      "columns":
+               [
+                {
+                  "name": "tipo_mov",
+                  "title": "tipo_mov",
+                  "description": "tipo mov",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 10,
+                  "security": "Público"
+                },
+                {
+                  "name": "descripcion",
+                  "title": "descripcion",
+                  "description": "descripcion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 40,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_transaccion",
+                  "title": "tipo_transaccion",
+                  "description": "tipo transaccion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 12,
+                  "security": "Público"
+                },
+                {
+                  "name": "interface",
+                  "title": "interface",
+                  "description": "interface",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 10,
+                  "security": "Público"
+                },
+                {
+                  "name": "customer_rpt",
+                  "title": "customer_rpt",
+                  "description": "customer rpt",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 15,
+                  "security": "Público"
+                },
+                {
+                  "name": "int_pcios_transf",
+                  "title": "int_pcios_transf",
+                  "description": "int pcios transf",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

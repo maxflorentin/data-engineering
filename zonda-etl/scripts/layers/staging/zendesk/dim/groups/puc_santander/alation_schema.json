@@ -1,0 +1,173 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A304726"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "zendesk_gr_puc_santander",
+            "title": "Posee todos los grupos a los que se puede asignar un ticket",
+            "schema": "bi_corp_staging",
+            "source": "ZENDSK",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Posee todos los grupos a los que se puede asignar un ticket",
+            "columns": [
+                {
+                    "name": "id ",
+                    "title": "id ",
+                    "description": "Asignado automáticamente al crear grupos",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "url ",
+                    "title": "url ",
+                    "description": "La URL de la API de este grupo",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "name ",
+                    "title": "name ",
+                    "description": "El nombre del grupo",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "description ",
+                    "title": "description ",
+                    "description": "La descripción del grupo",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "default ",
+                    "title": "default ",
+                    "description": "Si el grupo es el predeterminado para la cuenta",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "deleted ",
+                    "title": "deleted ",
+                    "description": "\tLos grupos eliminados se marcan como tales",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "created_at ",
+                    "title": "created_at ",
+                    "description": "\tLa hora en que se creó el grupo",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "updated_at",
+                    "title": "updated_at",
+                    "description": "La hora de la última actualización del grupo.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

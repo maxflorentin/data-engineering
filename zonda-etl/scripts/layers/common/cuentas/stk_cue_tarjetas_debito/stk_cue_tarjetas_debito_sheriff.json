@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_cue_tarjetas_debito",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_cue_cuenta","cod_suc_sucursal","cod_cue_tarjeta","cod_cue_producto","cod_cue_subproducto","cod_cue_divisa"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cue_cuenta","cod_suc_sucursal","cod_cue_tarjeta","cod_cue_divisa","dt_cue_alta","cod_per_nup_tarjeta"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cue_baja", "dt_cue_alta","dt_cue_habilitacion","dt_cue_ult_act","dt_cue_envio_banelco","dt_cue_act_banelco","dt_cue_embz","dt_cue_pin","dt_cue_cambio_sucursal","dt_cue_utiles","dt_cue_estado_renov"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

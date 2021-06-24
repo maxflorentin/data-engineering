@@ -1,0 +1,179 @@
+{
+  "file": "resumen_crediticio_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/resumen_crediticio/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/resumen_crediticio",
+  "createTable": "bi_corp_staging.sge_resumen_crediticio",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "mar_bureau",
+                    "type": "string"
+                },
+{
+                    "name": "obs_bureau",
+                    "type": "string"
+                },
+{
+                    "name": "mar_incumplimiento_afip",
+                    "type": "string"
+                },
+{
+                    "name": "obs_incumplimiento_afip",
+                    "type": "string"
+                },
+{
+                    "name": "imp_peor_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "obs_peor_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "mar_cheques_rechazados",
+                    "type": "string"
+                },
+{
+                    "name": "can_cheques_rechazados",
+                    "type": "string"
+                },
+{
+                    "name": "can_antiguedad",
+                    "type": "string"
+                },
+{
+                    "name": "des_productos",
+                    "type": "string"
+                },
+{
+                    "name": "fec_balance_ddjj",
+                    "type": "string"
+                },
+{
+                    "name": "imp_resultado_neto",
+                    "type": "string"
+                },
+{
+                    "name": "imp_patrimonio",
+                    "type": "string"
+                },
+{
+                    "name": "imp_facturacion",
+                    "type": "string"
+                },
+{
+                    "name": "imp_deuda_bancaria",
+                    "type": "string"
+                },
+{
+                    "name": "cat_monotributo",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "mar_radio_sucursal",
+                    "type": "string"
+                },
+{
+                    "name": "can_empleados",
+                    "type": "string"
+                },
+{
+                    "name": "anio_monotributo",
+                    "type": "string"
+                },
+{
+                    "name": "mes_monotributo",
+                    "type": "string"
+                },
+{
+                    "name": "imp_ventas",
+                    "type": "string"
+                },
+{
+                    "name": "fec_recategorizacion",
+                    "type": "string"
+                },
+{
+                    "name": "imp_ingresos",
+                    "type": "string"
+                },
+{
+                    "name": "imp_utilidad",
+                    "type": "string"
+                },
+{
+                    "name": "cat_recategorizacion",
+                    "type": "string"
+                },
+{
+                    "name": "tpo_info",
+                    "type": "string"
+                },
+{
+                    "name": "anio_ganancias",
+                    "type": "string"
+                },
+{
+                    "name": "mon_rentabilidad_sr",
+                    "type": "string"
+                },
+{
+                    "name": "mon_facturacion_mensual",
+                    "type": "string"
+                },
+{
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "mon_resultado_operativo",
+                    "type": "string"
+                },
+{
+                    "name": "mon_amortizaciones",
+                    "type": "string"
+                },
+{
+                    "name": "mon_patrimonio_cabecera",
+                    "type": "string"
+                },
+{
+                    "name": "fec_ultimo_ejercicio",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

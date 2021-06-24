@@ -1,0 +1,61 @@
+******************************************************************
+      * PROYECTO: OBTENCION DE CLIENTES MIPYME                         *
+      * NOMBRE DEL OBJETO:  WAAPE684                                   *
+      *                                                                *
+      * CONSOLIDADO DE INFORMACION DE SGE MAS PEE                      *
+      *                                                                *
+      * LONGITUD TOTAL DEL REGISTRO EN BYTES :     370                 *
+      *                                                                *
+      ******************************************************************
+      * MODIFICACION     : ID4530                                      *
+      * PETICION         : ID4530                                      *
+      * AUTOR            : RUBEN SANCHEZ                               *
+      * FECHA            : 08-08-2013                                  *
+      * DESCRIPCION      : INCORPORAR EL CAMPO DEUDA                   *
+      ******************************************************************
+      * MODIFICACION     : MIPYME                                      *
+      * PETICION         : MIPYME                                      *
+      * AUTOR            : GERARDO PALLARES                            *
+      * FECHA            : 02-07-2020                                  *
+      * DESCRIPCION      : INCORPORAR EL CAMPO WAAPEPYM-TIPO-ACCION    *
+      *                  : ESTE CAMPO INDICA SI EL CLIENTE SE INCLUYE, *
+      *                  : SE EXCLUYE DEL PROCESO O NO SE HACE NADA    *
+      ******************************************************************
+      ******************************************************************
+       COPY WAAPE683.
+      *   ----------------------------------------------- HASTA AQUI:219
+       03 WAAPE684-REG-CPA.
+          05 WAAPEPYM-PECONPER             PIC X(03).
+          05 WAAPEPYM-O-LETRA              PIC X(01).
+          05 WAAPEPYM-PECODACT             PIC X(08).
+          05 WAAPEPYM-CANTIDAD-BAL         PIC  9.
+          05 WAAPEPYM-VTA-TOT-ANUAL        PIC S9(13).
+      *   ----------------------------------------------- HASTA AQUI:245
+          05 WAAPEPYM-OBS-REPETIDO         PIC X(08).
+          05 WAAPEPYM-OBS-CLANAE           PIC X(30).
+          05 WAAPEPYM-OBS-DESTINO          PIC X(24).
+          05 WAAPEPYM-TIPO-ERROR           PIC X(01).
+          05 WAAPEPYM-TIPO-ACCION          PIC X(01).
+             88 W684-SIN-ACCION                     VALUE SPACES.
+             88 W684-CLIENTE-INC                    VALUE 'I'.
+             88 W684-CLIENTE-EXC                    VALUE 'E'.
+          05 WAAPEPYM-FILLER               PIC X(03).
+      * CUALQUIER VALOR EN ITEM 1,2,3 INDICA ERROR EN BAL1/BAL2/BAL3
+      * G EN ITEM(X) = ANTIGUEDAD DE FECHA BALANCE1/2/3 > 18 MESES
+      * D EN ITEM(X) = FECHA INVALIDA EN FECHA BALANCE1/2/3
+      * F EN ITEM(X) = ERROR DE FORMATO EN VALOR BAL1/BAL2/BAL3
+      * Z EN ITEM(X) = CEROS EN VALOR BAL1/BAL2/BAL3
+          05 WAAPEPYM-IND-ERR-BAL.
+             07 WAAPEPYM-ERR-BAL1          PIC X(01).
+                88 W684-SIN-ERR-BAL1                   VALUE SPACES.
+                88 W684-ANT-ERR-BAL1                   VALUE 'G'.
+             07 WAAPEPYM-ERR-BAL2          PIC X(01).
+             07 WAAPEPYM-ERR-BAL3          PIC X(01).
+          05 FILLER REDEFINES WAAPEPYM-IND-ERR-BAL.
+             07 WAAPEPYM-ERR-BAL           PIC X(01) OCCURS 3 TIMES.
+ID4530*   05 WAAPEPYM-OBS-BALANCE          PIC X(55).
+          05 WAAPEPYM-OBS-BALANCE          PIC X(38).
+             88 W684-SIN-ERR-BALANCE                   VALUE SPACES.
+ID4530    05 WAAPEPYM-DEUDA-TOT-CLI        PIC 9(15)V99.
+      *   ----------------------------------------------- HASTA AQUI:370
+      *

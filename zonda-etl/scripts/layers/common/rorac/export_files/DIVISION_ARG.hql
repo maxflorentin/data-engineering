@@ -1,0 +1,1 @@
+SELECT DISTINCT cod_ren_area_negocio_niv_2,	ds_ren_area_negocio_niv_2 FROM bi_corp_common.dim_ren_areanegocioctr ;

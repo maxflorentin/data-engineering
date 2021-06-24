@@ -1,0 +1,55 @@
+      *
+      ***** ARCHIVO DE COMISIONES PENDIENTES DE PAGO DE CAJA DE SEG ********
+      *----------------------------------------------------------*
+      ******* TIPO.REG...= FIJO                          *********
+      ******* LONGITUD   = 180                           *********
+      ******* CLAVE      = 032                           *********
+      *
+      *                                                    Desde  Hasta
+       02  WACSE500.
+      *        Sucursal, Contrato, Comision, Periodo           1     24
+           05  WACSE500-CLAVE.
+              10  WACSE500-CLAVE-ALTERNA.
+      *              Sucursal                                  1      4
+                  15 WACSE500-SUCURSAL             PIC X(04).
+      *              Contrato                                  5     16
+                  15 WACSE500-CONTRATO             PIC X(12).
+      *              Comision                                 17     18
+                  15 WACSE500-COMISION             PIC X(02).
+      *              Periodo                                  19     24
+              10  WACSE500-CLAVE-RESTO.
+                  15 WACSE500-PERIODO-LIQ          PIC 9(06).
+      *              Fecha de Liquidaciìn                     25     32
+                  15 WACSE500-FECHA-LIQ            PIC 9(08).
+      *
+      *        Concepto                                       33     36
+           05  WACSE500-COD-CONCEPTO               PIC X(04).
+      *        Importe de la Comision                         37     51
+           05  WACSE500-IMP-CONCEPTO               PIC 9(13)V99.
+      *        Importe de impuestos de la comision            52     66
+           05  WACSE500-IMP-IMPUESTO               PIC 9(13)V99.
+      *        Forma de pago de la comision                   67     67
+           05  WACSE500-FORMA-PAGO                 PIC X(01).
+      *        Identificacion de la cuenta de debito          68     90
+           05  WACSE500-ID-CTA-DEBITO.
+                  10 WACSE500-CCC.
+      *                  Entidad de la cuenta de debito       68     71
+                      15 WACSE500-ENTIDAD-DEBITO   PIC X(04).
+      *                  Sucursal de la cuenta de debito      72     75
+                      15 WACSE500-SUCURSAL-DEBITO  PIC X(04).
+      *                  Numero de cuenta de debito           76     87
+                      15 WACSE500-CUENTA-DEBITO    PIC X(12).
+      *              Divisa de la cuenta de debito            88     90
+                  10 WACSE500-DIVISA-DEBITO        PIC X(03).
+      *        Fecha de pago de la comision                   91     98
+           05  WACSE500-FECHA-PAGO                 PIC 9(08).
+      *        Canal de pago de la comision                   99    100
+           05  WACSE500-CODIGO-CANAL               PIC X(02).
+      *        NUP de la persona que hizo el pago             101   108
+           05  WACSE500-NUMPER                     PIC X(08).
+      *        NUP de la persona que hizo el pago             101   108
+           05  WACSE500-USUARIO-OPER               PIC X(08).
+      *        Codigo de Campa‹a                              109   112
+           05  WACSE500-CAMPANIA                   PIC X(04).
+      *        Relleno                                        113   180
+           05  WACSE500-FILLER                     PIC X(060).

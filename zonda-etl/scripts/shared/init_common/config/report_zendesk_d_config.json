@@ -1,0 +1,24 @@
+{
+  "name": "Zendesk-Daily-Report",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_ZENDESK-Daily",
+      "tasks": ["STAGING_Zendesk_TK_PUC_AddPartition","STAGING_Zendesk_TK_Santander_AddPartition","STAGING_Zendesk_USR_PUC_AddPartition","STAGING_Zendesk_USR_Santander_AddPartition"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"ZENDESK_EJECUTIVO_REPORT"
+    },
+    {
+      "dag_id":"ZENDESK_REPORT"
+    },
+    {
+      "dag_id":"ZENDESK_REDES_SOCIALES_REPORT"
+    },
+    {
+      "dag_id":"ZENDESK_HOLA_REPORT"
+    }
+  ]
+}

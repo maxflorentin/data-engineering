@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "advance_analytics",
+      "type": "fact",
+      "name": "sancionados_full",
+      "filePrefix": "sancionados_full_"
+    },
+    {
+      "source": "advance_analytics",
+      "type": "fact",
+      "name": "sancionados_novedades",
+      "filePrefix": "sancionados_novedades_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_AAML-Sancionados-Daily"
+  }
+}

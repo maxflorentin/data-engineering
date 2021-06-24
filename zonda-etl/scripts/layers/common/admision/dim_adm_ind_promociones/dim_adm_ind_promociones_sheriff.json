@@ -1,0 +1,26 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_promociones",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_promocion","ds_adm_descripcion"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_promocion","ds_adm_descripcion"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["ds_adm_grupo","flag_adm_activa","ts_adm_fecha_alta"],
+        "threshold": 0.005
+      },
+     {
+        "control_id": "date_format",
+        "field_to_check": ["ts_adm_fecha_alta","ts_adm_fecha_baja"],
+        "pattern": "yyyy-MM-dd",
+        "threshold": 0.01
+      }
+    ]
+  }

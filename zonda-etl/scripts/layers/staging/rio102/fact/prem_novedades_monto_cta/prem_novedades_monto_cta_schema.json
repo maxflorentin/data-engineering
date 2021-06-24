@@ -1,0 +1,71 @@
+{
+	"file": "prem_novedades_monto_cta_schema",
+	"location": "/santander/bi-corp/landing/rio102/fact/prem_novedades_monto_cta/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/fact/rio102_prem_novedades_monto_cta",
+	"tempDirectory": "/santander/bi-corp/temp/prem_novedades_monto_cta",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "nro_cuenta",
+			"type": "string"
+		},
+{
+			"name": "sucursal",
+			"type": "string"
+		},
+{
+			"name": "importe",
+			"type": "string"
+		},
+{
+			"name": "fecha_proc",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "estado",
+			"type": "string"
+		},
+{
+			"name": "observaciones",
+			"type": "string"
+		},
+{
+			"name": "fecha_impacto",
+			"type": "string"
+		},
+{
+			"name": "estado_impacto",
+			"type": "string"
+		},
+{
+			"name": "nro_cuota_da",
+			"type": "string"
+		},
+{
+			"name": "fecha_vencimiento_da",
+			"type": "string"
+		},
+{
+			"name": "fecha_actualizacion",
+			"type": "string"
+		}
+	]
+}

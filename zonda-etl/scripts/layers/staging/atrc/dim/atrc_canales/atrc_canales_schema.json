@@ -1,0 +1,33 @@
+{
+	"file": "atrc_canales_schema",
+	"location": "/santander/bi-corp/landing/atrc/dim/atrc_canales/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/atrc/dim/atrc_canales",
+	"createTable": "bi_corp_staging.atrc_canales",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ult_modif",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

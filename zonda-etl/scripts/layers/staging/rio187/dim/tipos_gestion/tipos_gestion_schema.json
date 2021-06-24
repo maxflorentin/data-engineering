@@ -1,0 +1,63 @@
+{
+    "file": "tipos_gestion_schema",
+    "createTable": "bi_corp_staging.rio187_tipos_gestion",
+    "location": "/santander/bi-corp/landing/rio187/dim/tipos_gestion/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio187/dim/tipos_gestion",
+    "tempDirectory": "/santander/bi-corp/temp/rio187",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_tipo_gestion",
+            "type": "string"
+        },
+        {
+            "name": "desc_tipo_gestion",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "informa_bcra",
+            "type": "string"
+        },
+        {
+            "name": "prefijo_ticket",
+            "type": "string"
+        },
+        {
+            "name": "id_tipos_gestion_sgc",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

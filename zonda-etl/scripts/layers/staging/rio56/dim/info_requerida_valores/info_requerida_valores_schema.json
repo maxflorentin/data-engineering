@@ -1,0 +1,67 @@
+{
+    "file": "info_requerida_valores",
+    "location": "/santander/bi-corp/landing/rio56/dim/info_requerida_valores/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/info_requerida_valores",
+    "tempDirectory": "/santander/bi-corp/temp/info_requerida_valores",
+    "createTable": "bi_corp_staging.rio56_info_requerida_valores",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "cod_valor",
+            "type": "string"
+        },
+        {
+            "name": "nro_valor",
+            "type": "string"
+        },
+        {
+            "name": "desc_valor",
+            "type": "string"
+        },
+        {
+            "name": "est_valor",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_valor",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_valor",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_valor",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_valor",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_reque_valores",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

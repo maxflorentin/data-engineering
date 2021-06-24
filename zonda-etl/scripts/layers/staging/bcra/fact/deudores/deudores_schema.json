@@ -1,0 +1,140 @@
+{
+  "file": "deudores",
+  "location": "/santander/bi-corp/landing/bcra/fact/deudores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/deudores",
+  "createTable": "bi_corp_staging.bcra_deudores",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "codigo_entidad",
+          "type": "int",
+          "width": 5
+        },
+        {
+          "name": "fecha_informacion",
+          "type": "int",
+          "width": 6
+        },
+        {
+          "name": "tipo_identificacon",
+          "type": "int",
+          "width": 2
+        },
+        {
+          "name": "n_identificacion",
+          "type": "string",
+          "width": 11
+        },
+        {
+          "name": "actividad",
+          "type": "int",
+          "width": 3
+        },
+        {
+          "name": "situacion",
+          "type": "int",
+          "width": 2
+        },
+        {
+          "name": "prestamos",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "participaciones",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "garantias_otorgadas",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "otros_conceptos",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "garantias_preferidas_A",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "garantias_preferidas_B",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "sin_garantias_preferidas",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "contragarantias_preferidas_A",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "contragarantias_preferidas_B",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "sin_contragarantias_preferidas",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "previsiones",
+          "type": "int",
+          "width": 12
+        },
+        {
+          "name": "deuda_cubierta",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "proceso_judicial",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "refinanciaciones",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "recategorizacion_obligatoria",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "situacion_juridica",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "irrecuperables",
+          "type": "int",
+          "width": 1
+        },
+        {
+          "name": "dias_atraso",
+          "type": "int",
+          "width": 4
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

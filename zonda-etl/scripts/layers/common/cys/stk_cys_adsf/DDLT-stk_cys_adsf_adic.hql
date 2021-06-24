@@ -1,0 +1,1 @@
+CREATE TABLE bi_corp_common.stk_cys_adsf_adic LIKE bi_corp_common.stk_cys_adsf ;

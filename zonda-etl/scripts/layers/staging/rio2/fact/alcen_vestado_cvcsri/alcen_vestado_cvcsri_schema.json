@@ -1,0 +1,75 @@
+{
+  "file": "alcen_vestado_cvcsri_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/vestado_cvcsri/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/vestado_cvcsri",
+  "createTable": "bi_corp_staging.alcen_vestado_cvcsri",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sector",
+    "type": "string"
+  },
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "fec_ingreso",
+    "type": "string"
+  },
+  {
+    "name": "fec_ini_resol",
+    "type": "string"
+  },
+  {
+    "name": "fec_fin_resol",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol1",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol2",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol3",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol4",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol5",
+    "type": "string"
+  },
+  {
+    "name": "cod_analista",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

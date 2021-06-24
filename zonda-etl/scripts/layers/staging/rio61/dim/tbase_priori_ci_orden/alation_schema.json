@@ -1,0 +1,117 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_servicio",
+      "title": "tabla basica donde guardamos todos los servicios iatx y ws que utiliza maschecc (se actualiza a mano)",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "tabla basica donde guardamos todos los servicios iatx y ws que utiliza maschecc (se actualiza a mano)",
+      "columns": [
+        {
+          "name": "ID                             ",
+          "title": "ID                             ",
+          "description": "PK id secuencial",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NOMBRE                         ",
+          "title": "NOMBRE                         ",
+          "description": "nombre servicio",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 100.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DESCRIPCION                    ",
+          "title": "DESCRIPCION                    ",
+          "description": "descripcion del servicio",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPO                           ",
+          "title": "TIPO                           ",
+          "description": "tipo de servicio (IATX / WS)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 100.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MARCA_REVERSABLE               ",
+          "title": "MARCA_REVERSABLE               ",
+          "description": "si el servicio es reversable",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MARCA_VENTA                    ",
+          "title": "MARCA_VENTA                    ",
+          "description": "si el servicio genera una venta de producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "FECHA_MODIFICACION             ",
+          "title": "FECHA_MODIFICACION             ",
+          "description": "fecha de creacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "GRUPO                          ",
+          "title": "GRUPO                          ",
+          "description": "agrupacion de servicios (no se utiliza hoy en dia)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 3.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

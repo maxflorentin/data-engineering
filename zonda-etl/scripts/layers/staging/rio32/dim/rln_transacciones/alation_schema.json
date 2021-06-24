@@ -1,0 +1,79 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio32_rln_transacciones",
+      "title": "diccionario de transacciones",
+      "schema": "bi_corp_staging",
+      "source": "SLHUMA",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "diccionario de transacciones",
+      "columns": [
+        {
+          "name": "ID",
+          "title": "ID",
+          "description": "codigo de transaccion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "NOMBRE",
+          "title": "NOMBRE",
+          "description": "nombre iatx de la transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"                },
+        {
+          "name": "IDFAMILIA",
+          "title": "IDFAMILIA",
+          "description": "codigo de familia",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "descripcion de la transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 75.0,
+          "security": "Publico"                },
+        {
+          "name": "ROBUSTECIDA",
+          "title": "ROBUSTECIDA",
+          "description": "flag de reintento si la transaccion no se pudo grabar en registro electronico",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

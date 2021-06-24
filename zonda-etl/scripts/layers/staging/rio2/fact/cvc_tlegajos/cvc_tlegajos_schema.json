@@ -1,0 +1,107 @@
+{
+  "file": "tlegajos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tlegajos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tlegajos",
+  "createTable": "bi_corp_staging.cvc_tlegajos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_legajo",
+    "type": "string"
+  },
+  {
+    "name": "cod_ult_estado",
+    "type": "string"
+  },
+  {
+    "name": "cod_user_actual",
+    "type": "string"
+  },
+  {
+    "name": "cod_niv_actual",
+    "type": "string"
+  },
+  {
+    "name": "fec_ult_estado",
+    "type": "string"
+  },
+  {
+    "name": "fec_ingreso",
+    "type": "string"
+  },
+  {
+    "name": "cod_user_original",
+    "type": "string"
+  },
+  {
+    "name": "fec_reasignacion",
+    "type": "string"
+  },
+  {
+    "name": "origen_ingreso",
+    "type": "string"
+  },
+  {
+    "name": "comite_fis_vir",
+    "type": "string"
+  },
+  {
+    "name": "mar_res_cond",
+    "type": "string"
+  },
+  {
+    "name": "mar_aprobacion",
+    "type": "string"
+  },
+  {
+    "name": "mar_aprobacion_observ",
+    "type": "string"
+  },
+  {
+    "name": "mar_asol",
+    "type": "string"
+  },
+  {
+    "name": "status_ingreso",
+    "type": "string"
+  },
+  {
+    "name": "status_aprobacion",
+    "type": "string"
+  },
+  {
+    "name": "status_egreso",
+    "type": "string"
+  },
+  {
+    "name": "exigibles",
+    "type": "string"
+  },
+  {
+    "name": "rotativos",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

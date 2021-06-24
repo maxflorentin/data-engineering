@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "tadt",
+      "type": "FACT",
+      "name": "tadtexp",
+      "filePrefix": "BARP_CTB_TADTEXP_D"
+    },
+    {
+      "source": "tadt",
+      "type": "FACT",
+      "name": "tadtcon",
+      "filePrefix": "BARP_CTB_TADTCON_D"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_TADT-Daily"
+  }
+}

@@ -1,0 +1,96 @@
+{
+        "file": "alzyuonp_cheques",
+        "location": "/santander/bi-corp/landing/malzy/fact/zydtonp/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzy/fact/alzyuonp",
+		"createTable": "bi_corp_staging.malzy_alzyuonp",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":  
+                  [
+                    {
+                      "name": "cmc7_cheque",
+                      "width": 29,
+                      "type": "string"
+                    },
+                    {
+                      "name": "bco_girado",
+                      "width": 3,
+                      "type": "string"
+                    },
+                    {
+                      "name": "suc_girada",
+                      "width": 3,
+                      "type": "string"
+                    },
+                    {
+                      "name": "cod_postal",
+                      "width": 4,
+                      "type": "string"
+                    },
+                    {
+                      "name": "nro_cheque",
+                      "width": 8,
+                      "type": "string"
+                    },
+                    {
+                      "name": "cta_girada",
+                      "width": 11,
+                      "type": "string"
+                    },
+                    {
+                      "name": "fecha_alta",
+                      "width": 10,
+                      "type": "string"
+                    },
+                    {
+                      "name": "fecha_baja",
+                      "width": 10,
+                      "type": "string"
+                    },
+                    {
+                      "name": "estado_onp",
+                      "width": 1,
+                      "type": "string"
+                    },
+                    {
+                      "name": "tim_alta",
+                      "width": 26,
+                      "type": "string"
+                    },
+                    {
+                      "name": "ide_user_alta",
+                      "width": 8,
+                      "type": "string"
+                    },
+                    {
+                      "name": "ide_term_alta",
+                      "width": 4,
+                      "type": "string"
+                    },
+                    {
+                      "name": "tim_ult_modf",
+                      "width": 26,
+                      "type": "string"
+                    },
+                    {
+                      "name": "ide_user_ult_modf",
+                      "width": 8,
+                      "type": "string"
+                    },
+                    {
+                      "name": "ide_term_ult_modf",
+                      "width": 4,
+                      "type": "string"
+                    }
+                  ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

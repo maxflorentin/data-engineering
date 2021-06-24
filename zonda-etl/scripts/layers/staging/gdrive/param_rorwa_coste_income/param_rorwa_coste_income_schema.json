@@ -1,0 +1,30 @@
+{
+    "file": "param_rorwa_coste_income_schema",
+    "createTable": "bi_corp_staging.param_rorwa_coste_income",
+    "location": "/santander/bi-corp/landing/googledrive/dim/param_rorwa_coste_income/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/gdrive/param_rorwa_coste_income",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_adn_cg",
+            "type": "string"
+        },
+        {
+            "name": "pondera_ci",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

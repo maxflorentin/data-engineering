@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "inft2_agrupadores",
+            "title": "Agrupadores de Canales",
+            "schema": "bi_corp_staging",
+            "source": "INFOSEG",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Agrupadores de Canales",
+            "columns": [
+                {
+                    "name": "INAG_CD_AGRUPADOR",
+                    "title": "INAG_CD_AGRUPADOR",
+                    "description": "Codigo de Agrupador",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INAG_DE_AGRUPADOR",
+                    "title": "INAG_DE_AGRUPADOR",
+                    "description": "Descripcion de Agrupador",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INAG_ST_AGRUPADOR",
+                    "title": "INAG_ST_AGRUPADOR",
+                    "description": "Estado del Agrupador",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

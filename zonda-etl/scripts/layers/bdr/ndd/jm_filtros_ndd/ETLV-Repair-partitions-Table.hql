@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_bdr.jm_filtros_ndd;

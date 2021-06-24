@@ -1,0 +1,47 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.stk_zen_usuarios (
+cod_zen_usuario bigint,
+ds_zen_url string,
+ds_zen_nombre string,
+ds_zen_email string,
+ts_zen_creacion timestamp,
+ts_zen_actualizacion timestamp,
+cod_zen_organizacion string,
+ds_zen_rol string,
+flag_zen_verificado int,
+cod_zen_externo string,
+cod_zen_etiquetas string,
+flag_zen_activo int,
+ds_zen_celular string,
+ds_zen_celular2 string,
+ds_zen_celular3 string,
+ds_zen_numdoc string,
+ds_zen_ejecutivo_asignado string,
+ds_zen_ejecutivo_asignado2 string,
+cod_zen_estado_cliente string,
+cod_per_nup int,
+cod_zen_ig_followers string,
+cod_zen_ig_login string,
+cod_zen_ig_valid string,
+ds_zen_mail_ejecutivo string,
+ds_zen_mail_ejecutivo2 string,
+flag_zen_agro int,
+flag_zen_duo int,
+flag_zen_exciti int,
+flag_zen_pyme int,
+flag_zen_sol int,
+flag_zen_vip int,
+flag_zen_remoto int,
+ds_zen_legajo_ejecutivo string,
+ds_zen_legajo_ejecutivo2 string,
+cod_zen_producto_cliente string,
+ds_zen_provincia string,
+cod_zen_semaf_rentabilidad string,
+cod_zen_semaf_renta_fac string,
+ds_zen_social_messagin_user string,
+ds_zen_whatsapp string
+)
+PARTITIONED BY (
+      partition_date string)
+STORED AS PARQUET
+LOCATION
+  '${DATA_LAKE_SERVER}/santander/bi-corp/common/zendesk/fact/stk_zen_usuarios'

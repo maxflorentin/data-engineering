@@ -1,0 +1,2693 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308837"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bgdtaux",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "ENTIDAD",
+                    "title": "ENTIDAD",
+                    "description": "CLAVE DE LA ENTIDAD",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-ALTA",
+                    "title": "CENTRO-ALTA",
+                    "description": "CENTRO DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUENTA",
+                    "title": "CUENTA",
+                    "description": "NÚMERO DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIVISA",
+                    "title": "DIVISA",
+                    "description": "DIVISA DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-VTO",
+                    "title": "TIPO-VTO",
+                    "description": "DETERMINA EN QUÉ UNIDADES VIENE EXPRESADO EL VENCIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM-VTO",
+                    "title": "NUM-VTO",
+                    "description": "NÚMERO DE DÍAS, MESES O AÑOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "UNI-NEGOCIO",
+                    "title": "UNI-NEGOCIO",
+                    "description": "SEGMENTO DE CLIENTE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO-LIQ",
+                    "title": "PERIODO-LIQ",
+                    "description": "PERÍODO DE LIQUIDACIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIANATU-LIQ",
+                    "title": "DIANATU-LIQ",
+                    "description": "DÍA NATURAL DE LA LIQUIDACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTLIQ",
+                    "title": "FECHA-ULTLIQ",
+                    "description": "FECHA ÚLTIMA LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PROLIQ",
+                    "title": "FECHA-PROLIQ",
+                    "description": "FECHA DE PRÓXIMA LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FRANQUIC",
+                    "title": "FRANQUIC",
+                    "description": "FRANQUICIA DE LA CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-LIQ",
+                    "title": "TIPO-LIQ",
+                    "description": "TIPO DE LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "METOD-LIQ",
+                    "title": "METOD-LIQ",
+                    "description": "MÉTODO DE LA LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-LIQ",
+                    "title": "SALDO-LIQ",
+                    "description": "TIPO DE LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIAS-LIQ",
+                    "title": "DIAS-LIQ",
+                    "description": "CÁLCULO DÍAS EN LIQUIDACIÓN EN BASE A DÍAS NATURALES O DÍAS COMERCIALES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CLASE-LIQ",
+                    "title": "CLASE-LIQ",
+                    "description": "CLASE DE LIQUIDACIÓN CON TRAMOS DE SALDO O SIN TRAMOS DE SALDO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TARIFA",
+                    "title": "TARIFA",
+                    "description": "TARIFA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPOINT-POS",
+                    "title": "TIPOINT-POS",
+                    "description": "TIPO INTERÉS POSITIVO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPOINT-NEG",
+                    "title": "TIPOINT-NEG",
+                    "description": "TIPO INTERÉS NEGATIVO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPOINT-EXC",
+                    "title": "TIPOINT-EXC",
+                    "description": "TIPO INTERÉS EXCE/DES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COEFICI-POS",
+                    "title": "COEFICI-POS",
+                    "description": "CLAVE DEL COEFICIENTE SOBRE EL QUE VARÍA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PUNTOS-POS",
+                    "title": "PUNTOS-POS",
+                    "description": "PUNTOS DE MÁS O DE MENOS A APLICAR AL COEF",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COEFICI-NEG",
+                    "title": "COEFICI-NEG",
+                    "description": "CLAVE DEL COEFICIENTE SOBRE EL QUE VARÍA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PUNTOS-NEG",
+                    "title": "PUNTOS-NEG",
+                    "description": "PUNTOS DE MÁS O DE MENOS A APLICAR AL COEF",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COEFICI-EXC",
+                    "title": "COEFICI-EXC",
+                    "description": "CLAVE DEL COEFICIENTE SOBRE EL QUE VARÍA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PUNTOS-EXC",
+                    "title": "PUNTOS-EXC",
+                    "description": "PUNTOS DE MÁS O DE MENOS A APLICAR AL COEF",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODRED",
+                    "title": "CODRED",
+                    "description": "CÓDIGO DE REDONDEO LA TARIFA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO-TAR",
+                    "title": "PERIODO-TAR",
+                    "description": "PERÍODO DE VARIACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTCAM",
+                    "title": "FECHA-ULTCAM",
+                    "description": "FECHA DE ÚLTIMA VARIACIÓN DE TIPO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPOINT-INC",
+                    "title": "TIPOINT-INC",
+                    "description": "FECHA INCREMENTAL PARA TIPO DE INTERÉS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "REFER-LIQ",
+                    "title": "REFER-LIQ",
+                    "description": "NÚMERO DE REFERENCIA DE LIQUIDACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CLASE-TAF",
+                    "title": "CLASE-TAF",
+                    "description": "CLASE DE TARIFA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPOINT-INC-SBRG",
+                    "title": "TIPOINT-INC-SBRG",
+                    "description": "INCREMENTAL DE TIPO DE INTERÉS PARA SEGUNDO PERÍODO DE SOBREGIRO DE LA CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PREAPE",
+                    "title": "FECHA-PREAPE",
+                    "description": "FECHA DE PREAPERTURA ORIGINAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ALTA",
+                    "title": "FECHA-ALTA",
+                    "description": "FECHA DE APERTURA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-IMPAGA",
+                    "title": "FECHA-IMPAGA",
+                    "description": "FECHA DE ENTRADA DE IMPAGO MÁS ANTIGUO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-BLOQUEO",
+                    "title": "FECHA-BLOQUEO",
+                    "description": "FECHA DE BLOQUEO POR ASESORÍA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-INMOVIL",
+                    "title": "FECHA-INMOVIL",
+                    "description": "FECHA DE ENTRADA INMOVILIZADA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-CANCEL",
+                    "title": "FECHA-CANCEL",
+                    "description": "FECHA DE CANCELACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-CIERRE",
+                    "title": "FECHA-CIERRE",
+                    "description": "FECHA DE CIERRE DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-RENOVA",
+                    "title": "FECHA-RENOVA",
+                    "description": "FECHA DE RENOVACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTREAJU",
+                    "title": "FECHA-ULTREAJU",
+                    "description": "FECHA EN QUE SE HIZO EL ÚLTIMO REAJUSTE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PROREAJU",
+                    "title": "FECHA-PROREAJU",
+                    "description": "FECHA PREVISTA PARA EL PRÓXIMO REAJUSTE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PER-REA",
+                    "title": "FECHA-PER-REA",
+                    "description": "FECHA DE PÉRDIDA DE REAJUSTES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-INICIALI",
+                    "title": "FECHA-INICIALI",
+                    "description": "FECHA DE INICIALIZACIÓN DE GIROS",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PROC-LIQ",
+                    "title": "FECHA-PROC-LIQ",
+                    "description": "FECHA DE EJECUCIÓN DE PROCESOS DE LIQUIDACIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-UPRO-LIQ",
+                    "title": "FECHA-UPRO-LIQ",
+                    "description": "FECHA ÚLTIMO PROCESO DE LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-CAP-LIQ",
+                    "title": "FECHA-CAP-LIQ",
+                    "description": "FECHA DE CAPITALIZACIÓN DE LOS INTERESES CALCULADOS EN EL PROCESO DE LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-EXCEDI",
+                    "title": "FECHA-EXCEDI",
+                    "description": "FECHA DE ENTRADA EN EXCEDIDO/DESCUBIERTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-PRI-EXCE",
+                    "title": "FECHA-PRI-EXCE",
+                    "description": "FECHA DEL PRIMER EXCEDIDO/DESCUBIERTO EN CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ALT-ACU",
+                    "title": "FECHA-ALT-ACU",
+                    "description": "FECHA ANTERIOR AL ALTA DE ACUERDO COMÚN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULT-PER",
+                    "title": "FECHA-ULT-PER",
+                    "description": "FECHA DE ÚLTIMA PERIODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTSO",
+                    "title": "FECHA-ULTSO",
+                    "description": "FECHA DE ÚLTIMO CAMBIO SITU. OBJETIVA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTSS",
+                    "title": "FECHA-ULTSS",
+                    "description": "FECHA DE ÚLTIMO CAMBIO SITU. SUBJETIVA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ULTSI",
+                    "title": "FECHA-ULTSI",
+                    "description": "FECHA DE ÚLTIMO CAMBIO SITU. INDUCIDA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-CARTOLA",
+                    "title": "CNT-CARTOLA",
+                    "description": "CONTADOR DE CARTOLAS OFICIALES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-SERV-FAX",
+                    "title": "CNT-SERV-FAX",
+                    "description": "CONTADOR DE SERVICIOS DE FAX EN CUENTAS QUE PERTENECEN A PAQUETES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-MOVIM-FAX",
+                    "title": "CNT-MOVIM-FAX",
+                    "description": "CONTADOR DE MOVIMIENTOS VÍA FAX",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-PROTESTOS",
+                    "title": "CNT-PROTESTOS",
+                    "description": "CONTADOR DE PROTESTOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-ACLARA",
+                    "title": "CNT-ACLARA",
+                    "description": "CONTADOR DE ACLARACIONES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-BLOQ-CUPO",
+                    "title": "CNT-BLOQ-CUPO",
+                    "description": "CONTADOR DE BLOQUE DE CUPO DE SOBREGIRO EN EL PERÍODO DE VIGENCIA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-DIA-CUPO-DES",
+                    "title": "CNT-DIA-CUPO-DES",
+                    "description": "CONTADOR DEL NÚMERO DE DÍAS QUE AL FINAL DE LA ÚLTIMA LIQUIDACIÓN LLEVABA CUBRIENDO EL DESCUBIERTO EN CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-DIA-USO-EXCE",
+                    "title": "CNT-DIA-USO-EXCE",
+                    "description": "CONTADOR DEL NÚMERO DE DÍAS QUE AL FINAL DE LA ÚLTIMA LIQUIDACIÓN LLEVABA EL EXCEDIDO SIENDO UTILIZADO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-ECU-PER",
+                    "title": "PCO-ECU-PER",
+                    "description": "INDICADOR DE PERIODICIDAD DE ESTADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-ECU-SOP",
+                    "title": "PCO-ECU-SOP",
+                    "description": "INDICADOR DE SOPORTE DEL ESTADO CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-ECU-FHPR",
+                    "title": "PCO-ECU-FHPR",
+                    "description": "FECHA DEL PRÓXIMO ESTADO DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-COP-IND",
+                    "title": "PCO-COP-IND",
+                    "description": "INDICADOR DE COMUNICAR OPERACIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-COP-ULMO",
+                    "title": "PCO-COP-ULMO",
+                    "description": "ÚLTIMO NÚMERO DE MOVIMIENTO COMUNICADO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-COP-ULCO",
+                    "title": "PCO-COP-ULCO",
+                    "description": "FECHA DE ÚLTIMA COMUNICACIÓN DE OPERACIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-COP-HOJA",
+                    "title": "PCO-COP-HOJA",
+                    "description": "ÚLTIMO NÚMERO DE HOJA COMUNICADA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-SALDO-ULEX",
+                    "title": "PCO-SALDO-ULEX",
+                    "description": "SALDO ÚLTIMO EXTRACTO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-NUM-MOV",
+                    "title": "PCO-NUM-MOV",
+                    "description": "NÚMERO DE MOVIMIENTOS PARA GENERAR EXTRACTOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-IND-DESTINO",
+                    "title": "PCO-IND-DESTINO",
+                    "description": "DESTINO DE EXTRACTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENVCART-SINMOV",
+                    "title": "ENVCART-SINMOV",
+                    "description": "INDICADOR DE ENVÍO DE CARTOLA SIN MOVIMIENTOS",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVO-CANCEL",
+                    "title": "MOTIVO-CANCEL",
+                    "description": "MOTIVO DE LA CANCELACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVO-REAPER",
+                    "title": "MOTIVO-REAPER",
+                    "description": "MOTIVO DE REAPERTURA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TASA-MIN-GARAN",
+                    "title": "TASA-MIN-GARAN",
+                    "description": "TASA MÍNIMA GARANTIZADA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TASA-MAX-CONV",
+                    "title": "TASA-MAX-CONV",
+                    "description": "TASA MÁXIMA CONVENCIONAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PORC-AMOR-LCA",
+                    "title": "PORC-AMOR-LCA",
+                    "description": "PORCENTAJE DE AMORTIZACIÓN DE LA LCA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PER-AMOR-LCA",
+                    "title": "PER-AMOR-LCA",
+                    "description": "PERIODICIDAD DE AMORTIZACIÓN LCA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUCURSAL-FISICA",
+                    "title": "SUCURSAL-FISICA",
+                    "description": "SUCURSAL FÍSICA DEL CONTRATO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRIORIDAD-ACU",
+                    "title": "PRIORIDAD-ACU",
+                    "description": "PRIORIDAD DE ACUERDO COMÚN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IMP-MIN-TRASP",
+                    "title": "IMP-MIN-TRASP",
+                    "description": "IMPORTE MÍNIMO DE TRASPASOS PARA LCA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-MIN-LCA",
+                    "title": "SALDO-MIN-LCA",
+                    "description": "SALDO MÍNIMO DEUDOR A DEJAR EN CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-MIN-CTA",
+                    "title": "SALDO-MIN-CTA",
+                    "description": "SALDO MÍNIMO ACREEDOR A DEJAR EN CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "GARANTÍA",
+                    "title": "GARANTÍA",
+                    "description": "CÓDIGO DE GARANTÍA PRINCIPAL ASOCIADO A CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-UR-ULT",
+                    "title": "SALDO-UR-ULT",
+                    "description": "SALDO UNIDADES DE REAJUSTE ÚLTIMO PROCESO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 17.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-ULIQ-VA",
+                    "title": "SALDO-ULIQ-VA",
+                    "description": "SALDO ÚLTIMA LIQUIDACIÓN POR VALORACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PER-ABO-REAJU",
+                    "title": "PER-ABO-REAJU",
+                    "description": "PERIODICIDAD CON QUE SE REALIZAN LOS REAJUSTES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIAS-DESP-PRO",
+                    "title": "DIAS-DESP-PRO",
+                    "description": "DÍAS DESPÚES DE LA FECHA-PROLIQ QUE SE PASA EL PROCESO DE LIQUIDACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIAS-DESP-CAP",
+                    "title": "DIAS-DESP-CAP",
+                    "description": "DÍAS DESPÚES DE LA FECHA-PROLIQ QUE SE PASA EL PROCESO DE CAPITALIZACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-TIPODIA",
+                    "title": "IND-TIPODIA",
+                    "description": "INDICA EL TIPO DE DÍA PARA LA LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "INTE-DEVACRE",
+                    "title": "INTE-DEVACRE",
+                    "description": "INTERESES DEVENGADOS ACREEDORES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "INTE-DEVDEUD",
+                    "title": "INTE-DEVDEUD",
+                    "description": "INTERESES DEVENGADOS DEUDORES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "INTE-DEVEXCE",
+                    "title": "INTE-DEVEXCE",
+                    "description": "INTERESES DEVENGADOS EXCEDIDOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "REAJU-DEVENG",
+                    "title": "REAJU-DEVENG",
+                    "description": "REAJUSTES PERIODIFICADOS NO IMPUTADOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-57-BIS",
+                    "title": "IND-57-BIS",
+                    "description": "INDICADOR DE ASOCIADO A LA NORMA 57 BUS",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-LIQ-NORMAL",
+                    "title": "IND-LIQ-NORMAL",
+                    "description": "INDICADOR DE LIQUIDACIÓN ALTAMIRA NORMAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-LIQ-TASAFIN",
+                    "title": "IND-LIQ-TASAFIN",
+                    "description": "INDICADOR DE LIQUIDAR A TASA FIN PERÍODO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-ISR",
+                    "title": "IND-ISR",
+                    "description": "INDICADOR DE COBRO DE IMPUESTO SOBRE LA RENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-PAQUETE",
+                    "title": "IND-PAQUETE",
+                    "description": "INDICADOR DE CUENTA A LA QUE PERTENECE EL PAQUETE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-PIVOTE",
+                    "title": "IND-PIVOTE",
+                    "description": "INDICADOR DE CUENTA SOBRE LA QUE SE LIQUIDAN LAS COMISIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-PET-LIQ",
+                    "title": "IND-PET-LIQ",
+                    "description": "INDICADOR DE PETICIÓN DE LIQUIDACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-BONIFICA",
+                    "title": "IND-BONIFICA",
+                    "description": "INDICADOR DE BONIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-EXCAUTO",
+                    "title": "IND-EXCAUTO",
+                    "description": "MARCA EXCEDIDO AUTORIZADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-RENAUTO",
+                    "title": "IND-RENAUTO",
+                    "description": "INDICADOR DE RENOVACIÓN AUTOMÁTICA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-SORTEO",
+                    "title": "IND-SORTEO",
+                    "description": "INDICADOR DE CUENTA QUE PARTICIPA EN EL SORTEO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-FANTASIA",
+                    "title": "IND-FANTASIA",
+                    "description": "INDICADOR DE NOMBRE DE FANTASÍA DADO DE ALTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-SEG-PR-CAMARA",
+                    "title": "IND-SEG-PR-CAMARA",
+                    "description": "INDICADOR DE SEGUNDA PRESENTACIÓN A CÁMARA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-ACU-AHORRO",
+                    "title": "IND-ACU-AHORRO",
+                    "description": "INDICADOR DE ACUERDOS ACTIVOS EN CAJA DE AHORRO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-LIQUIDA-PROMO",
+                    "title": "IND-LIQUIDA-PROMO",
+                    "description": "INDICADOR DE QUE LA CUENTA LIQUIDA CON PROMOCIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULT-NUM-CHEQ",
+                    "title": "ULT-NUM-CHEQ",
+                    "description": "ÚLTIMO NÚMERO DE CHQUE ASIGNADO A LA CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-BLOQ-ENTRE",
+                    "title": "IND-BLOQ-ENTRE",
+                    "description": "INDICADOR DE BLOQUEAR LA ENTREGA DE TALONARIOS",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVO-BLOQ",
+                    "title": "MOTIVO-BLOQ",
+                    "description": "CÓDIGO QUE REPRESENTA EL MOTIVO DEL BLOQUEO DE LA ENTREGA DE TALONARIOS",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "STOCK-TLN",
+                    "title": "STOCK-TLN",
+                    "description": "STOCK DE TALONARIOS QUE DEBE MANTENERSE PARA LA CUENTA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONT-ONP",
+                    "title": "CONT-ONP",
+                    "description": "NÚMERO DE ÓRDENES DE NO PAGO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHQ-RECH-FONDO",
+                    "title": "CHQ-RECH-FONDO",
+                    "description": "NÚMERO DE CHEQUES RECHAZADOS POR DEFECTO DE FONDOS",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHQ-RECH-FORMA",
+                    "title": "CHQ-RECH-FORMA",
+                    "description": "NÚMERO DE CHEQUES RECHAZADOS POR DEFECTO DE FORMA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHQ-RECH-ONP",
+                    "title": "CHQ-RECH-ONP",
+                    "description": "NÚMERO DE CHEQUES RECHAZADOS POR ONP",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-CHQ-GIR-M",
+                    "title": "CNT-CHQ-GIR-M",
+                    "description": "CONTROLADOR DE CHEQUES GIRADOS EN EL MES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-CHQ-DEVU-M",
+                    "title": "CNT-CHQ-DEVU-M",
+                    "description": "CONTROLADOR DE CHEQUES DEVUELTOS EN EL MES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-CHQ-GIR-MA",
+                    "title": "CNT-CHQ-GIR-MA",
+                    "description": "CONTROLADOR DE CHEQUES GIRADOS EN EL MES ANTERIOR",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-CHQ-DEVU-MA",
+                    "title": "CNT-CHQ-DEVU-MA",
+                    "description": "CONTROLADOR DE CHEQUES DEVUELTOS EN EL MES ANTERIOR",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-SINFON-COMP",
+                    "title": "CNT-SINFON-COMP",
+                    "description": "CONTADOR DE RECHAZOS POR SIN FONDOS COMPUTABLES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-SINFON-NOCOMP",
+                    "title": "CNT-SINFON-NOCOMP",
+                    "description": "CONTADOR DE RECHAZOS POR SIN FONDOS NO COMPUTABLES",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-FORMA-LIBRADOR",
+                    "title": "CNT-FORMA-LIBRADOR",
+                    "description": "CONTADOR DE RECHAZOS POR DEFECTOS FORMALES IMPUTABLES AL LIBRADOR",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CNT-ONP-LIBRADOR",
+                    "title": "CNT-ONP-LIBRADOR",
+                    "description": "CONTADOR DE ONPS DADAS DE ALTA POR EL LIBRADOR",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUCURSAL-ENT",
+                    "title": "SUCURSAL-ENT",
+                    "description": "CÓDIGO DE SUCURSAL SI EL TALONARIO SE ENTREGA AQUÍ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DOMICILIO-ENT",
+                    "title": "DOMICILIO-ENT",
+                    "description": "DOMICILIO DE ENTREGA DEL TALONARIO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-TNL-STNDR",
+                    "title": "TIPO-TNL-STNDR",
+                    "description": "TIPO DE TALONARIO ESTÁNDAR",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM-LIB",
+                    "title": "NUM-LIB",
+                    "description": "NÚMERO DE LIBRETA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-LIBRET",
+                    "title": "SALDO-LIBRET",
+                    "description": "SALDO ÚLTIMO ACTUALIZADO EN LA LIBRETA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOV-ACTLIB",
+                    "title": "MOV-ACTLIB",
+                    "description": "NÚMERO DEL ÚLTIMO MOVIMIENTO ACTUALIZADO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TERM-ACTLIB",
+                    "title": "TERM-ACTLIB",
+                    "description": "TERMINAL DE ÚLTIMA ACTUALIZACIÓN DE LIBRETA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "OPER-ACTLIB",
+                    "title": "OPER-ACTLIB",
+                    "description": "ÚLTIMA OPERACIÓN DE ACTUALIZAR LIBRETA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FCHA-ACTLIB",
+                    "title": "FCHA-ACTLIB",
+                    "description": "FECHA DE ÚLTIMA OPERACIÓN DE ACTUALIZAR LIBRETA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA-ACTLIB",
+                    "title": "HORA-ACTLIB",
+                    "description": "HORA DE ÚLTIMA ACTUALIZACIÓN DE LIBRETA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVO-ASIG-LIB",
+                    "title": "MOTIVO-ASIG-LIB",
+                    "description": "MOTIVO DE ASIGNACIÓN DE LIBRETA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-ULIQ-VA-CA",
+                    "title": "SALDO-ULIQ-VA-CA",
+                    "description": "SALDO ÚLTIMA LIQUIDACIÓN VALORADA CAJA DE AHORRO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-ULIQ-VA-CC",
+                    "title": "SALDO-ULIQ-VA-CC",
+                    "description": "SALDO ÚLTIMA LIQUIDACIÓN VALORADA CUENTA CORRIENTE",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-SALDO-ULEX-CA",
+                    "title": "PCO-SALDO-ULEX-CA",
+                    "description": "SALDO DE ÚLTIMO RESUMEN DE CAJA DE AHORRO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PCO-SALDO-ULEX-CC",
+                    "title": "PCO-SALDO-ULEX-CC",
+                    "description": "SALDO DE ÚLTIMO RESUMEN DE CUENTA CORRIENTE",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENTIDAD-UMO",
+                    "title": "ENTIDAD-UMO",
+                    "description": "ENTIDAD DE ÚLTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-UMO",
+                    "title": "CENTRO-UMO",
+                    "description": "CENTRO DE ÚLTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "USERID-UMO",
+                    "title": "USERID-UMO",
+                    "description": "USUARIO ÚLTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NETNAME-UMO",
+                    "title": "NETNAME-UMO",
+                    "description": "TERMINAL DE ÚLTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMEST-UMO",
+                    "title": "TIMEST-UMO",
+                    "description": "FECHA Y HORA DE ÚLTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

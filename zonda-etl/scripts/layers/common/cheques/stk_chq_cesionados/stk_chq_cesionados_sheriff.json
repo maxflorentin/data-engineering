@@ -1,0 +1,31 @@
+{
+  "table": "bi_corp_common.stk_chq_cesionados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal","cod_per_nup","fc_chq_importecheque"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_sucursal","cod_chq_producto","cod_chq_subproducto","ds_chq_producto","cod_chq_divisa","cod_chq_programa","cod_chq_nrolote","dt_chq_fechalectura","dt_chq_fechapresentacion","dt_chq_fechacompensacion","cod_chq_evento","cod_chq_estcheque","cod_chq_canal"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_destinofondos","ds_chq_destinofondos","dt_chq_fechaaltaproducto","dt_chq_fechavtoproducto","cod_chq_marca","cod_chq_submarca","cod_chq_productocontrato","cod_chq_subproductocontrato","fc_chq_importeriesgo","fc_chq_diasatraso","cod_chq_segmento","cod_chq_agrupacionsegmento"],
+      "threshold": 0.2
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_chq_fechasituacionirregular","dt_chq_fechalectura","dt_chq_fechapresentacion","dt_chq_fechavalor","dt_chq_fechavto","dt_chq_fechacompensacion","dt_chq_ultimafechadiferimiento"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

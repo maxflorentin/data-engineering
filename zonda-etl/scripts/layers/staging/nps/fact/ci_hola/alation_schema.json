@@ -1,0 +1,688 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A279014,A308949,A307821"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "qualtrics_nps_ci_hola",
+            "title": "Encuesta de Satisfaccion de cliente interno Hola",
+            "schema": "bi_corp_staging",
+            "source": "QUALTRICS",
+            "type": "FACT",
+            "description": "Encuesta de Satisfaccion de cliente interno Hola",
+            "columns": [
+                {
+                    "name": "response_id",
+                    "title": "response_id",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "variable",
+                    "title": "variable",
+                    "description": "Orden de la Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "respuesta",
+                    "title": "respuesta",
+                    "description": "Respuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "question_id",
+                    "title": "question_id",
+                    "description": "Orden de la Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "question_desc",
+                    "title": "question_desc",
+                    "description": "Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "start_date",
+                    "title": "start_date",
+                    "description": "Dia y Hora de Inicio de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "end_date",
+                    "title": "end_date",
+                    "description": "Dia y Hora de Fin de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "status",
+                    "title": "status",
+                    "description": "Estado de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ip_address",
+                    "title": "ip_address",
+                    "description": "Direccion IP desde la cual fue respondida la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "progress",
+                    "title": "progress",
+                    "description": "Progreso de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "duration",
+                    "title": "duration",
+                    "description": "Duracion de la Encuesta",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "finished",
+                    "title": "finished",
+                    "description": "Flag que indica si se finalizo la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recorded_date",
+                    "title": "recorded_date",
+                    "description": "Fecha de Respuesta de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recipient_last_name",
+                    "title": "recipient_last_name",
+                    "description": "Apellido del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "recipient_first_name",
+                    "title": "recipient_first_name",
+                    "description": "Nombre del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "recipient_email",
+                    "title": "recipient_email",
+                    "description": "Mail del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "external_reference",
+                    "title": "external_reference",
+                    "description": "Referencia Externa",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "location_latitude",
+                    "title": "location_latitude",
+                    "description": "Dato de geolocalizacion del Encuestado - Latitud",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "location_longitude",
+                    "title": "location_longitude",
+                    "description": "Dato de geolocalizacion del Encuestado - Longitud",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "distribution_channel",
+                    "title": "distribution_channel",
+                    "description": "Canal de Distribucion de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "user_language",
+                    "title": "user_language",
+                    "description": "Idioma utilizado en la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "q1_nps_group",
+                    "title": "q1_nps_group",
+                    "description": "Indica si la respuesta nps pertenece al grupo detractor, neutro o promotor",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "responseid",
+                    "title": "responseid",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "url",
+                    "title": "url",
+                    "description": "URL del ticket de Zendesk PUC",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "id",
+                    "title": "id",
+                    "description": "Numero de ticket de Zendesk PUC",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "via",
+                    "title": "via",
+                    "description": "Medio de contacto del cliente",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_creacion",
+                    "title": "fecha_creacion",
+                    "description": "Fecha de creacion del ticket",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_update",
+                    "title": "fecha_update",
+                    "description": "Fecha de modificacion del ticket",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "motivo",
+                    "title": "motivo",
+                    "description": "Motivo general del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "motivo_raiz",
+                    "title": "motivo_raiz",
+                    "description": "Motivo raiz del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "qsedstatus",
+                    "title": "qsedstatus",
+                    "description": "Estado del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "requester_id",
+                    "title": "requester_id",
+                    "description": "Numero interno en Zendesk del solicitante del ticket",
+                    "type": "INT",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "assignee_id",
+                    "title": "assignee_id",
+                    "description": "Numero interno en Zendesk del resolutor del ticket",
+                    "type": "INT",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "group_id",
+                    "title": "group_id",
+                    "description": "Numero interno en Zendesk del grupo",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "tags",
+                    "title": "tags",
+                    "description": "Tagueos del ticket en Zendesk",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ticket_form_id",
+                    "title": "ticket_form_id",
+                    "description": "Numero interno formulario en Zendesk",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "brand_id",
+                    "title": "brand_id",
+                    "description": "Numero interno marca en Zendesk",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "id_solicitante",
+                    "title": "id_solicitante",
+                    "description": "Numero interno en Zendesk del solicitante del ticket",
+                    "type": "INT",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "email",
+                    "title": "email",
+                    "description": "Mail ingresado en el ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "momento_critico",
+                    "title": "momento_critico",
+                    "description": "Momento Critico",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "result_type",
+                    "title": "result_type",
+                    "description": "Resultado",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "name_solicitante",
+                    "title": "name_solicitante",
+                    "description": "Nombre del solicitante del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "url_solicitante",
+                    "title": "url_solicitante",
+                    "description": "URL del solicitante del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "legajo_solicitante",
+                    "title": "legajo_solicitante",
+                    "description": "Legajo del solicitante del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "sucursal_solicitante",
+                    "title": "sucursal_solicitante",
+                    "description": "Sucursal del solicitante del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "rol_solicitante",
+                    "title": "rol_solicitante",
+                    "description": "Rol en Zendesk del solicitante del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "id_colaborador",
+                    "title": "id_colaborador",
+                    "description": "Numero interno en Zendesk del colaborador del ticket",
+                    "type": "INT",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "name_colaborador",
+                    "title": "name_colaborador",
+                    "description": "Nombre del colaborador del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "url_colaborador",
+                    "title": "url_colaborador",
+                    "description": "URL del colaborador del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "legajo_colaborador",
+                    "title": "legajo_colaborador",
+                    "description": "Legajo del colaborador del ticket",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "rol_colaborador",
+                    "title": "rol_colaborador",
+                    "description": "Rol en Zendesk del colaborador del ticket",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_encuesta",
+                    "title": "fecha_encuesta",
+                    "description": "Fecha en la que se envio la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                 {
+                    "name": "id_respuesta",
+                    "title": "id_respuesta",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "partition_date_colaborador",
+                    "title": "partition_date_colaborador",
+                    "description": "Particion de la cual se tomaron los datos del colaborador",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_envio",
+                    "title": "fecha_envio",
+                    "description": "Fecha de Envio de la encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "transactiondate",
+                    "title": "transactiondate",
+                    "description": "Fecha de Transaccion",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "device",
+                    "title": "device",
+                    "description": "Dispositivo utilizado por el Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "nps_hola",
+                    "title": "nps_hola",
+                    "description": "Respuesta NPS",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "comentarios_ci_hola",
+                    "title": "comentarios_ci_hola",
+                    "description": "Respuesta Comentarios NPS",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "direcc_correo_electronico",
+                    "title": "direcc_correo_electronico",
+                    "description": "Mail del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

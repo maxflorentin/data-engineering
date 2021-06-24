@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio258_cp_paquetes_crupier ;

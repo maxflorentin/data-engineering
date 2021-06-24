@@ -1,0 +1,53 @@
+{
+  "file": "exp_no_contr_pr_ajuste",
+  "location": "/santander/bi-corp/landing/manual/exp_no_contr/pr_ajuste/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/exp_no_contr/pr_ajuste",
+  "header": false,
+	"parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "sociedad",
+					    "type": "string",
+					    "width": 5
+					  },
+					  {
+					    "name": "ajuste",
+					    "type": "string",
+					    "width": 12
+					  },
+					  {
+					    "name": "cargabal",
+					    "type": "string",
+					    "width": 22
+					  },
+					  {
+					    "name": "sociedad_eliminacion",
+					    "type": "string",
+					    "width": 5
+					  },
+					  {
+					    "name": "moneda_informada",
+					    "type": "string",
+					    "width": 3
+					  },
+					  {
+					    "name": "importe",
+					    "type": "string",
+					    "width": 19
+					  },
+					  {
+					    "name": "ajuste_fiscal",
+					    "type": "string",
+					    "width": 1
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

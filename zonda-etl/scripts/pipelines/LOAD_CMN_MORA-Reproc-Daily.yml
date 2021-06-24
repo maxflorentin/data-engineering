@@ -1,0 +1,32 @@
+name: LOAD_CMN_MORA-Reproc-Daily
+description: 'Manual Reproc from Load Daily 404 Mora in Common Layer'
+owner: BI-Corp
+active: true
+start_date: '2020-10-01'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_LoadTable_Mora_404
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_404/ETL-LOAD-stk_mora_404_Reproc.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar,lolivaressierra@santander.com.ar,hsesoldi@santander.com.ar,jcouso@santander.com.ar]

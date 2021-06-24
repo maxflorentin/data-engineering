@@ -1,0 +1,107 @@
+{
+  "objectMetadata": {
+    "active": false,
+    "governance": {
+      "steward": [
+        "Legajos Responsables Tecnicos separados por ','"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "mesac_test_inversor_usuario",
+      "title": "Sistema de cumplimiento normativo",
+      "schema": "bi_corp_staging|",
+      "source": "MESAC",
+      "query": "",
+      "type": "FACT",
+      "description": "Sistema de cumplimiento normativo",
+      "columns": [
+        {
+          "name": "ID_TEST",
+          "title": "ID_TEST",
+          "description": "Codigo unico de identificaion del registro",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 9.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP_CLIENTE",
+          "title": "NUP_CLIENTE",
+          "description": "NUP del cliente titular de la cuenta con la que intenta realizar el test",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP_REALIZA",
+          "title": "NUP_REALIZA",
+          "description": "NUP del cliente que realiza el test del inversor",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_TEST",
+          "title": "FECHA_TEST",
+          "description": "Fecha en que se realiza el test del inversor",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "RESULTADO_TEST",
+          "title": "RESULTADO_TEST",
+          "description": "Valoracion asignada al test del inversor",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 9.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_PERFIL",
+          "title": "ID_PERFIL",
+          "description": "identificador del perfil de inversor asignado de acuerdo al resultado del test",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 2.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "COD_CANAL",
+          "title": "COD_CANAL",
+          "description": "Codigo del canal por el cual se realizó el test",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 5.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "DIARIO",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

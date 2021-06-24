@@ -1,0 +1,42 @@
+name: LOAD_STG_Partition_Loader_Tarjetas
+description: 'Partition tables with specific field'
+owner: BI-Corp
+active: true
+start_date: '2020-01-01'
+schedule_interval: '0 5 * * *'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 1
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: ChangePartitionSTG
+    operator: SparkSubmitOperator
+    config:
+      name: ChangePartitionSTG
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/shared/partition_loader/config/config_tarjetas_loader.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/partition_loader/partition_loader.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Partition_Loader_Tarjetas') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['config_tarjetas_loader.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

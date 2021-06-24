@@ -1,0 +1,50 @@
+{
+  "file": "clasificacion_deudores_per_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/clasificacion_deudores_per/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/clasificacion_deudores_per",
+  "createTable": "bi_corp_staging.sge_clasificacion_deudores_per",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_cladeu",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "nro_cta_cte",
+      "type": "string"
+    },
+    {
+      "name": "clasif_vigente",
+      "type": "string"
+    },
+    {
+      "name": "clasif_definitiva",
+      "type": "string"
+    },
+    {
+      "name": "com_plan_accion",
+      "type": "string"
+    },
+    {
+      "name": "com_comite_banca",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

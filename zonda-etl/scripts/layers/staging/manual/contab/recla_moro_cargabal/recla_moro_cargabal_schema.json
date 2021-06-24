@@ -1,0 +1,29 @@
+{
+    "file": "recla_moro_cargabal",
+    "location": "/santander/bi-corp/landing/manual/contab/recla_moro_cargabal/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/manual/contab/recla_moro_cargabal",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                          "name": "rubro_cargabal_12",
+                          "type": "string"
+                        },
+                        {
+                          "name": "rubro_cargabal_14",
+                          "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date_filter}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }
+  

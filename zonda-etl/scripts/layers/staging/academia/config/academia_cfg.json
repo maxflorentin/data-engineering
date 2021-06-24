@@ -1,0 +1,45 @@
+{
+  "tables" :[
+       {
+            "serverConfig" : "AcademiaMySQL",
+            "database": "ACADEMIA",
+            "table": "ACADEMIA_VIEW_COURSES_DATA",
+            "landing_path": "/aplicaciones/bi/zonda/tmp",
+            "hdfs_path": "/santander/bi-corp/landing/academia/academia_view_courses_data",
+            "command": "mysql -h {host} -P {port} -u {username} --password=$ACADEMIA_PASSWORD -e 'select * from view_courses_data' > {landing_path}/academia_view_courses_data.csv",
+            "command_hdfs_path": "hdfs dfs -mkdir -p {hdfs_path}/partition_date={partition_date}",
+            "command_hdfs": "hdfs dfs -put -f {landing_path}/academia_view_courses_data.csv {hdfs_path}/partition_date={partition_date}"
+      },
+      {
+            "serverConfig" : "AcademiaMySQL",
+            "database": "ACADEMIA",
+            "table": "ACADEMIA_VIEW_PLAN_COURSE_ALL",
+            "landing_path": "/aplicaciones/bi/zonda/tmp",
+            "hdfs_path": "/santander/bi-corp/landing/academia/academia_view_plan_course_all",
+            "command": "mysql -h {host} -P {port} -u {username} --password=$ACADEMIA_PASSWORD -e 'select * from view_plan_course_all' > {landing_path}/academia_view_plan_course_all.csv",
+            "command_hdfs_path": "hdfs dfs -mkdir -p {hdfs_path}/partition_date={partition_date}",
+            "command_hdfs": "hdfs dfs -put -f {landing_path}/academia_view_plan_course_all.csv {hdfs_path}/partition_date={partition_date}"
+      },
+      {
+            "serverConfig" : "AcademiaMySQL",
+            "database": "ACADEMIA",
+            "table": "ACADEMIA_VIEW_PLAN_COURSE_USER",
+            "landing_path": "/aplicaciones/bi/zonda/tmp",
+            "hdfs_path": "/santander/bi-corp/landing/academia/academia_view_plan_course_user",
+            "command": "mysql -h {host} -P {port} -u {username} --password=$ACADEMIA_PASSWORD -e 'select * from view_plan_course_user' > {landing_path}/academia_view_plan_course_user.csv",
+            "command_hdfs_path": "hdfs dfs -mkdir -p {hdfs_path}/partition_date={partition_date}",
+            "command_hdfs": "hdfs dfs -put -f {landing_path}/academia_view_plan_course_user.csv {hdfs_path}/partition_date={partition_date}"
+      },
+      {
+            "serverConfig" : "AcademiaMySQL",
+            "database": "ACADEMIA",
+            "table": "ACADEMIA_VIEW_USERS_DATA",
+            "landing_path": "/aplicaciones/bi/zonda/tmp",
+            "hdfs_path": "/santander/bi-corp/landing/academia/academia_view_users_data",
+            "command": "mysql -h {host} -P {port} -u {username} --password=$ACADEMIA_PASSWORD -e 'select * from view_users_data' > {landing_path}/academia_view_users_data.csv",
+            "command_hdfs_path": "hdfs dfs -mkdir -p {hdfs_path}/partition_date={partition_date}",
+            "command_hdfs": "hdfs dfs -put -f {landing_path}/academia_view_users_data.csv {hdfs_path}/partition_date={partition_date}"
+      }
+
+   ]
+}

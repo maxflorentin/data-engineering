@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_pla_plazofijo",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_pla_entidad", "cod_pla_sucursal", "cod_pla_cuenta", "cod_pla_producto", "cod_pla_subproducto", "cod_pla_divisa", "cod_pla_secuencia", "cod_pla_secrenovacion"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_pla_fechaalta","dt_pla_fechaopera", "dt_pla_fechavencimiento"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

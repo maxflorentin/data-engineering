@@ -1,0 +1,28 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "dblxorafront13",
+            "database": "ECHEQ",
+            "table": "ACTIONS",
+            "table_type": "fact",
+            "environment": "echeq",
+            "landing_path": "/santander/bi-corp/landing/echeq/fact/actions",
+            "partition_field": "POSTED",
+            "partition_field_value": "2019-12-05",
+            "split_field": "OPERATION_ID",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT OPERATION_ID, CHEQUE_ID, OPERATION, STATUS, TARGET, to_char(POSTED, 'yyyy-MM-dd') AS POSTED, EXECUTED, MSG, REQ, RES, CUIT, EMISOR, RECEPTOR FROM ECHEQ.ACTIONS WHERE to_char(POSTED, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6 --bindir {zonda_dir}/sqoop/echeq/actions --split-by '{split_field}'  --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+    {
+            "serverConfig" : "dblxorafront13",
+            "database": "ECHEQ",
+            "table": "CHEQUES",
+            "table_type": "fact",
+            "environment": "echeq",
+            "landing_path": "/santander/bi-corp/landing/echeq/fact/cheques",
+            "partition_field": "UPDATED",
+            "partition_field_value": "2019-12-03",
+            "split_field": "CHEQUE_ID",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT CHEQUE_ID,CT_EM_BANCO_CODIGO,CT_EM_BANCO_NOMBRE,CT_EM_SUCURSAL_CODIGO,CT_EM_SUCURSAL_NOMBRE,CT_EM_SUCURSAL_DOMICILIO,CT_EM_SUCURSAL_CP,CT_EM_SUCURSAL_PROVINCIA,CT_EM_EMISOR_CUIT,CT_EM_EMISOR_RAZON_SOCIAL,CT_EM_EMISOR_CBU,CT_EM_EMISOR_CUENTA,CT_EM_EMISOR_SUBCUENTA,CT_EM_EMISOR_MONEDA,CT_EM_EMISOR_DOMICILIO,CT_EM_EMISOR_CP,NUMERO_CHEQUERA,CMC7,CHEQUE_NUMERO,ESTADO,EMITIDO_A_BENEF_DOC_TIPO,EMITIDO_A_BENEF_DOC,EMITIDO_A_BENEF_NOMBRE,TENENCIA_BENEF_DOC_TIPO,TENENCIA_BENEF_DOC,TENENCIA_BENEF_NOMBRE,FECHA_PAGO,FECHA_EMISION,CHEQUE_TIPO,CHEQUE_CARACTER,CHEQUE_MODO,CHEQUE_CONCEPTO,CHEQUE_MOTIVO_PAGO,MOTIVO_REPUDIO_EMISION,MOTIVO_ANULACION,AGRUPADOR_ID,MONTO,COD_VISUALIZACION,FECHA_ULT_MODIF,FECHA_PAGO_VENCIDA,CBU_CUSTODIA,CBU_DEPOSITO,CHEQUE_ACORDADO,SOLICITANDO_ACUERDO,RE_PRESENTAR,REPUDIO_ENDOSO,CERTIFICADO_EMITIDO,ACUERDO_RECHAZADO,ONP,EMITIDO,CODIGO_EMISION,OPERATION_ID,CREATED,CHQ,TRK_CNL,TRK_SCNL,TRK_JSESSIONID,INFORMADO,NUEVA_FECHA_DEPOSITO,CERT_RECH_INF,to_char(UPDATED, 'yyyy-MM-dd') AS UPDATED,CALCULATED_ESTADO,EMISOR,RECEPTOR,TRAMITE_NUMERO,ESTADO_DESCUENTO,PAGO_PROV FROM ECHEQ.CHEQUES WHERE to_char(UPDATED, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 6 --bindir {zonda_dir}/sqoop/echeq/cheques --split-by '{split_field}'  --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      }
+  ]
+}

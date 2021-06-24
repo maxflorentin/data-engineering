@@ -1,0 +1,100 @@
+name: CORE_Cloudera_logs-Daily
+description: 'Load data from Cloudera Logs'
+owner: BI-Corp
+active: true
+schedule_interval: '15 3 * * *'
+start_date: '2021-02-07'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Download_API_Info
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/cloudera-logs-unloader.py
+        {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='CORE_Cloudera_logs-Daily') }}"
+  - name: HDFS_Put
+    operator: BashOperator
+    config:
+      command: "hdfs dfs -put \
+      $ZONDA_DIR/tmp/navigator-api/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='CORE_Cloudera_logs-Daily') }} \
+      /santander/bi-corp/landing/cloudera_logs/"
+  - name: STAGING_LOGS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_LOGS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra-json.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/cloudera_logs_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='CORE_Cloudera_logs-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['cloudera_logs_schema.json']
+  - name: DeleteDownlodedFiles
+    operator: BashOperator
+    config:
+      command: "rm -r \
+      $ZONDA_DIR/tmp/navigator-api/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='CORE_Cloudera_logs-Daily') }}"
+  - name: STAGING_LOGS_ListTables_analytics
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py analytics"
+  - name: STAGING_LOGS_ListTables_bi_corp_common
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_common"
+  - name: STAGING_LOGS_ListTables_bi_corp_business
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_business"
+  - name: STAGING_LOGS_ListTables_bi_corp_cg
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_cg"
+  - name: STAGING_LOGS_ListTables_bi_corp_ic
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_ic"
+  - name: STAGING_LOGS_ListTables_bi_corp_risk
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_risk"
+  - name: STAGING_LOGS_ListTables_bi_corp_staging
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py bi_corp_staging"
+  - name: STAGING_LOGS_ListTables_santander_business_risk_arda
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py santander_business_risk_arda"
+  - name: STAGING_LOGS_ListTables_santander_business_risk_ifrs9
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --name list_tables --num-executors 2 --executor-cores 2 --executor-memory 16G --queue root.dataeng --deploy-mode cluster --conf spark.yarn.maxAppAttempts=1 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/list_tables.py santander_business_risk_ifrs9"
+dependencies:
+  Download_API_Info: HDFS_Put
+  HDFS_Put: STAGING_LOGS_Parquetize
+  STAGING_LOGS_Parquetize: DeleteDownlodedFiles
+notifications:
+  on_start: false
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [lalvarezhamann@santandertecnologia.com.ar, luccontreras@santandertecnologia.com.ar]

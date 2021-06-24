@@ -1,0 +1,202 @@
+{
+  "file": "eoaf_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/eoaf/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/eoaf",
+  "createTable": "bi_corp_staging.sge_eoaf",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "fec_blc",
+      "type": "string"
+    },
+    {
+      "name": "consolidado",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "fec_eoaf",
+      "type": "string"
+    },
+    {
+      "name": "deudxvtas",
+      "type": "string"
+    },
+    {
+      "name": "bscambio",
+      "type": "string"
+    },
+    {
+      "name": "deucomerci",
+      "type": "string"
+    },
+    {
+      "name": "deusocyfisc",
+      "type": "string"
+    },
+    {
+      "name": "deusistfinanc",
+      "type": "string"
+    },
+    {
+      "name": "inv_actintang",
+      "type": "string"
+    },
+    {
+      "name": "aportescap",
+      "type": "string"
+    },
+    {
+      "name": "distresult",
+      "type": "string"
+    },
+    {
+      "name": "credsocyev",
+      "type": "string"
+    },
+    {
+      "name": "otr_varcaptr1",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr1",
+      "type": "string"
+    },
+    {
+      "name": "otr_varcaptr2",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr2",
+      "type": "string"
+    },
+    {
+      "name": "otr_varcaptr3",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr3",
+      "type": "string"
+    },
+    {
+      "name": "otr_oanooper1",
+      "type": "string"
+    },
+    {
+      "name": "otr_oanooper2",
+      "type": "string"
+    },
+    {
+      "name": "otr_oanooper3",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr1_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr2_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr3_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper1_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper2_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper3_ori",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr1_apl",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr2_apl",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_varcaptr3_apl",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper1_apl",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper2_apl",
+      "type": "string"
+    },
+    {
+      "name": "imp_otr_oanooper3_apl",
+      "type": "string"
+    },
+    {
+      "name": "ingxvtasxperid",
+      "type": "string"
+    },
+    {
+      "name": "resultposblc",
+      "type": "string"
+    },
+    {
+      "name": "difmeses",
+      "type": "string"
+    },
+    {
+      "name": "peusualt",
+      "type": "string"
+    },
+    {
+      "name": "peusumod",
+      "type": "string"
+    },
+    {
+      "name": "pefecalt",
+      "type": "string"
+    },
+    {
+      "name": "pefecmod",
+      "type": "string"
+    },
+    {
+      "name": "id_blc",
+      "type": "string"
+    },
+    {
+      "name": "observaciones",
+      "type": "string"
+    },
+    {
+      "name": "nro_ultima_prop",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

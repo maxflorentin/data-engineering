@@ -1,0 +1,174 @@
+{
+	   "file":"t_calif_paquete_schema",
+	   "location":"/santander/bi-corp/landing/acal/fact/tcalif_paquete/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/acal/fact/tcalif_paquete",
+       "createTable": "bi_corp_staging.acal_tcalif_paquete",
+	   "extension":"txt",
+	   "header":false,
+	   "fixed":true,
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "ide_persona",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "cod_entidad",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "tim_alta",
+                        "type": "string",
+                        "width": 26
+                },
+                {
+                        "name": "ide_user_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ide_term_alta",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cod_paq",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cod_segm",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "can_ingr_acuerdo",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "can_ingr_tarjeta",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "can_ingr_preac",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_acuerdo",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_tarjeta",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_preac",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "ide_paq",
+                        "type": "string",
+                        "width": 20
+                },
+                {
+                        "name": "ide_user_dist",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_dist",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "tpo_dist",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "fec_ult_toma",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "mon_ult_toma",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_acumulado",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "tim_ult_modf",
+                        "type": "string",
+                        "width": 26
+                },
+                {
+                        "name": "ide_user_ult_modf",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ide_term_ult_modf",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "preac_habilitado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "can_ingr_tar_amex",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_tar_amex",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "can_ingr_cheq",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mon_cheq",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "mar_lineas_optim",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "mon_preac_blo",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "fec_preac_blo",
+                        "type": "string",
+                        "width": 10
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

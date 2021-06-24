@@ -1,0 +1,66 @@
+name: BDR_EXPORT_Tables
+description: 'Export BDR Tables for the New Default engine, in TXT format with fixed length (Monthly)'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [ICN_EXPEDIENTES, JM_ACU_MTO_ND, JM_ACUMTO_BDI, JM_ADIC_CALCO, JM_AVAL_EJEC, JM_BAREMOS_LOC, JM_CAL_EMISION, JM_CAL_EXT_CL, JM_CAL_IN_CL, JM_CAL_IN_CO, JM_CAL_IN_GR, JM_CALIF_EMISOR, JM_CAMB_SIT_BDI, JM_CARAC_EMISIO, JM_CLIEN_JURI, JM_CLIENT_BII, JM_CONTR_BIS, JM_CONTR_OTROS, JM_CTOS_CANCE, JM_DERIVAD_CRED, JM_DEUD_INI_BDI, JM_EAD_CONTR, JM_EAD_NETTING, JM_ESTADO_VIG, JM_EXPEDIEN_BDI, JM_EXPOS_NO_CON, JM_FLUJOS, JM_GAR_POSADJ, JM_GARA_REAL, JM_GARANT_CTO, JM_GRUP_ECONO, JM_GRUP_RELA, JM_INF_AD_CLI, JM_INM_POSADJ, JM_INMUEBLES, JM_INTERV_CTO, JM_POSIC_CONTR, JM_PROV_ESOTR, JM_REL_BARGL_LO, JM_REL_INMGAR, JM_SERIE_TITULZ, JM_TITULIZ, JM_TRZ_CLIE_REN, JM_TRZ_CLIENTE, JM_TRZ_CONT_REN, JM_TRZ_CONTRATO, JM_TRZ_GAR_REAL, JM_TRZ_GREC_REN, JM_TRZ_GRU_ECON, JM_VAL_GARA, JM_VAL_INMU, JM_VTA_CARTER, JM_TRZ_INV_APLI, JM_LINLIQ_TIT, JM_ACUMTO_GC, JM_AD_GAR_CON, JM_CALIF_INTER, JM_CAL_EX_GR, JM_COLATERAL, JM_COL_CASH, JM_COL_DEUDA, JM_COL_ELEGIBLE, JM_COL_EQUITY, JM_COL_PRODUCTO, JM_EAD_CLIENTE, JM_GRUP_JERARQ, JM_NETTING, JM_PARAM_GAR, JM_PARAM_GECO, JM_PARAM_INTR, JM_PARAM_OPER, JM_PATA_CONTRAT, JM_POS_CARTERA, JM_PROV_GENERIC, JM_REL_CONTRA, JM_REL_EXPUEC, JM_REPOS, JM_SPV, JM_TRZ_ASIGNA, JM_TRZ_COLATERA, JM_TRZ_IND_INMU, JM_TRZ_IND_UNEC, JM_TRZ_NETTING, JM_AD_GAR_REA, JM_TASA_RECOB]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: ExportData
+    operator: SparkSubmitOperator
+    config:
+      name: 'ExportData-${e}'
+      connection_id: cloudera_spark2
+      num_executors: 2
+      executor_cores: 4
+      executor_memory: 4G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/unloader/unloader.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Send-File.hql'
+      conf: {
+        'spark.yarn.appMasterEnv.month_partition_bdr': "{{ ti.xcom_pull(task_ids='InputConfig', key='month_partition_bdr', dag_id='BDR_EXPORT_Tables') }}",
+        'spark.yarn.appMasterEnv.month': "{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}"
+      }
+      application_args: ['--query', "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Send-File.hql",
+                         '--output', "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt",
+                         '--header', "false"]
+
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt"
+      local_path: "$ZONDA_DIR/tmp/bdr/files/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt"
+      skip_errors: false
+  - name: CompressFiles
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f $ZONDA_DIR/tmp/bdr/files/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt"
+  - name: SendDataFTP
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_ssh_bdr"
+      local_filepath: "$ZONDA_DIR/tmp/bdr/files/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt.gz"
+      remote_filepath: "/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables') }}.txt.gz"
+      operation: "put"
+      create_intermediate_dirs: False
+dependencies:
+  ExportData: MoveFileToLocalServer
+  MoveFileToLocalServer: CompressFiles
+  CompressFiles: SendDataFTP
+notifications:
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar]

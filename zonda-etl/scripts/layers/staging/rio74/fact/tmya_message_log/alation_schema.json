@@ -1,0 +1,128 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_tmya_message_log",
+      "title": "Registra el log del envio de cada novedad",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Registra el log del envio de cada novedad",
+      "columns": [
+        {
+          "name": "MSG_ID",
+          "title": "MSG_ID",
+          "description": "id de log del mensaje - primary key",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "numero de cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 16.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_CLIENTE",
+          "title": "ID_CLIENTE",
+          "description": "numero de documento del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 16.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "fecha de generacion del log",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_ENTITLEMENT",
+          "title": "ID_ENTITLEMENT",
+          "description": "codigo de entitlement",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESTINATION",
+          "title": "DESTINATION",
+          "description": "destino por el que se envia la novedad",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 256.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_ESTADO",
+          "title": "ID_ESTADO",
+          "description": "estado del mensaje",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_DEVICE",
+          "title": "ID_DEVICE",
+          "description": "dispositivo por el que envio la novedad",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_NOTIFICACION",
+          "title": "ID_NOTIFICACION",
+          "description": "codigo de notificacion que se envia por push",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 256.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

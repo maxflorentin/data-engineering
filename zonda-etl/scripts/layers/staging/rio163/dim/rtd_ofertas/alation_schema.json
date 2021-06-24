@@ -1,0 +1,443 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio163_rtd_ofertas",
+            "title": "Contiene productos y promociones a ofrecer por Banco Santander a través de sus canales, deberá existir un registro relacionado con la oferta por segmento de cliente, si una oferta es elegible para todos los segmentos, deberá contener en el campo segmento la palabra \"TODOS\" como indicador de esa situación y sólo se espera un registro de la misma.",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Contiene productos y promociones a ofrecer por Banco Santander a través de sus canales, deberá existir un registro relacionado con la oferta por segmento de cliente, si una oferta es elegible para todos los segmentos, deberá contener en el campo segmento la palabra \"TODOS\" como indicador de esa situación y sólo se espera un registro de la misma.",
+            "columns": [
+                {
+                    "name": "ID_OFERTA_RTD",
+                    "title": "ID_OFERTA_RTD",
+                    "description": "Identificador único de RTD (sin caracteres especiales)",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_OFERTA_INTERNO",
+                    "title": "ID_OFERTA_INTERNO",
+                    "description": "Si la oferta tuviese un identificador en otro sistema del banco debería ser usado en este campo",
+                    "type": "VARCHAR2 (50 Char)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CATEGORIA_OFERTA",
+                    "title": "CATEGORIA_OFERTA",
+                    "description": "Categoría a la que pertenece la oferta. Valores posibles:\nValores posibles para ofertas dirigidas:\nDIRIGIDAS_SUPERCLUB\nDIRIGIDAS_PRODUCTO\n\nValores posibles para ofertas Evaluables:\nBeneficios\n     AADVANTAGE\n     PGM_SUPERCLUB\n          SC_SEGUI\n          SUPERCLUB\n     SUPERCLUB_DEFAULT\nProductos\n\nValores posibles para Superclub:\nGLOBAL\nLOCALIZADO\nDESPEGAR\n\nValores posibles para ofertas de producto:\nCREDITOS\n     PPP_AUTO\n     PRE_ACORDADO_PLAZO_A\n     PRE_ACORDADO_PLAZO_B\nFINANCIACION\n     EXPRESS_PLAN\n     PLAN_V\nPAGOS\n     PAGOS_GENERALES    \n     PAGOS_MIS_CUENTAS\n         RECARGA_DE_CELULAR\n         SERVICIOS\n               AFIP\n               AGUA\n              CABLE\n              CELULAR\n              GAS\n              LUZ\n              OBRA_SOCIAL\nSEGUROS\n    VIDA\n    ROBO_CAJEROS\n    PROTECCION_CARTERA\n    COMPRA_PROTEGIDA\n    INGRESO_PROTEGIDO\n    AUTO\n    VIVIENDA\n    ACC_PERSONALES\nPRODUCTO_DEFAULT\n\nPara los nuevos canales, se debe considerar las nuevas categoria de ofertas.",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_OFERTA",
+                    "title": "TIPO_OFERTA",
+                    "description": "Indica el tipo de oferta.\n\nValores Posibles:\nPRODUCTO\nSUPERCLUB",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SEGMENTO_APLICA",
+                    "title": "SEGMENTO_APLICA",
+                    "description": "Segmento del cliente al que aplica la oferta (ejemplo: SELECT, BLACK, TODOS).\n\nRTD evalúa las ofertas que coincidan con el segmento del cliente (Variable perfil_cliente del perfil informativo).\nTambién aquellas que tengan el valor TODOS.",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NOMBRE_OFERTA",
+                    "title": "NOMBRE_OFERTA",
+                    "description": "Nombre descriptivo de la oferta en el caso de ser necesario",
+                    "type": "VARCHAR2 (100 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_INICIO",
+                    "title": "FECHA_INICIO",
+                    "description": "Fecha de inicio de la vigencia de la oferta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_FINALIZACION",
+                    "title": "FECHA_FINALIZACION",
+                    "description": "Fecha de finalización de la vigencia de la oferta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PG_1_SCORE",
+                    "title": "PG_1_SCORE",
+                    "description": "Se utiliza para el performance goal Minimizar costo de la oferta",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PG_2_SCORE",
+                    "title": "PG_2_SCORE",
+                    "description": "Se utiliza para el performance goal Maximizar la priorización de las ofertas",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PG_3_SCORE",
+                    "title": "PG_3_SCORE",
+                    "description": "campo reservado para performance goal 3",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PG_4_SCORE",
+                    "title": "PG_4_SCORE",
+                    "description": "campo reservado para performance goal 4",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LOCALIDAD",
+                    "title": "LOCALIDAD",
+                    "description": "Localidad donde aplica la oferta",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PROVINCIA",
+                    "title": "PROVINCIA",
+                    "description": "Provincia donde aplica la oferta",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANT_PUNTOS_BASE",
+                    "title": "CANT_PUNTOS_BASE",
+                    "description": "Cantidad de puntos necesarios para realizar el canje para las ofertas de tipo SUPERCLUB.\nTodas las ofertas de tipo SUPERCLUB deben informar este campo. RTD utiliza este campo para evaluar la eligibilidad de las ofertas.\n\n\n",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "URL",
+                    "title": "URL",
+                    "description": "URL del banner",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIA_SEM_APLICA_BENEFICIO",
+                    "title": "DIA_SEM_APLICA_BENEFICIO",
+                    "description": "Día de la semana que aplica el beneficio",
+                    "type": "VARCHAR2 (30 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CARGA",
+                    "title": "FECHA_CARGA",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECCION",
+                    "title": "SECCION",
+                    "description": "Atributo que indica en que sección se puede mostrar la oferta",
+                    "type": "VARCHAR2 (30 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_LOYALTY",
+                    "title": "ID_LOYALTY",
+                    "description": "Contiene el ID del articulo/ID de Categoría  en Loyalty para las ofertas asociadas al catálogo Superclub",
+                    "type": "VARCHAR2 (12 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 12.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRODUCTO",
+                    "title": "PRODUCTO",
+                    "description": "",
+                    "type": "VARCHAR2 (60 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 60.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FAMILIA",
+                    "title": "FAMILIA",
+                    "description": "",
+                    "type": "VARCHAR2 (60 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 60.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "VALIDA_PRODUCTO_FAMILIA",
+                    "title": "VALIDA_PRODUCTO_FAMILIA",
+                    "description": "",
+                    "type": "VARCHAR2 (60 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 60.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

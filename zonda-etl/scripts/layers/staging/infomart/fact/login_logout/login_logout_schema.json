@@ -1,0 +1,52 @@
+{
+  "file": "login_logout_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/login_logout/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/login_logout",
+  "createTable": "bi_corp_staging.infomart_login_logout",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "legajo",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "fecha_inicio",
+      "type": "string"
+    },
+    {
+      "name": "hora_inicio",
+      "type": "string"
+    },
+    {
+      "name": "fecha_fin",
+      "type": "string"
+    },
+    {
+      "name": "hora_fin",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

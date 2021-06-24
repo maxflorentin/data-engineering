@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.dim_inv_especies_titulos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_inv_tipo_especie", "ds_inv_especie", "cod_inv_moneda_emision"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_inv_especie"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_inv_fecha_precio", "dt_inv_dividend_date", "dt_inv_fecha_ej", "dt_inv_fecha_cup_proxima", "dt_inv_fecha_cup_anterior", "dt_inv_fecha_vencimiento", "dt_inv_fecha_hasta_amb_neg"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

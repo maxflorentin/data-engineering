@@ -1,0 +1,18 @@
+{
+  "file": "ugdtmae",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtmae/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtmae/history",
+  "createTable": "bi_corp_staging.malug_ugdtmae_history",
+  "copybook": "ugdtmae.cob",
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

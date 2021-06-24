@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_bdr.jm_out_cli_ndd;

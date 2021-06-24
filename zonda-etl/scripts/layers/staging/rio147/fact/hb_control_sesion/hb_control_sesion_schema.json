@@ -1,0 +1,38 @@
+{
+  "file": "hb_control_sesion_schema",
+  "location": "/santander/bi-corp/landing/rio147/fact/hb_control_sesion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio147/fact/hb_control_sesion",
+  "tempDirectory": "/santander/bi-corp/temp/rio147",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "nup",
+    "type": "string"
+  },
+    {
+      "name": "token",
+      "type": "string"
+    },
+    {
+      "name": "f_alta_registro",
+      "type": "string"
+    },
+    {
+      "name": "f_modificacion_registro",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

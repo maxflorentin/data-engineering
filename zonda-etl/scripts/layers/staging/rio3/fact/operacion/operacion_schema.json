@@ -1,0 +1,116 @@
+{
+  "file": "operacion_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/operacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/operacion",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [  {
+    "name": "operacion",
+    "type": "string"
+  },
+ {
+    "name": "contacto",
+    "type": "string"
+  },
+ {
+    "name": "origen",
+    "type": "string"
+  },
+ {
+    "name": "medio",
+    "type": "string"
+  },
+ {
+    "name": "llamada",
+    "type": "string"
+  },
+ {
+    "name": "usuario",
+    "type": "string"
+  },
+ {
+    "name": "fecha",
+    "type": "string"
+  },
+ {
+    "name": "hora",
+    "type": "string"
+  },
+ {
+    "name": "gestion",
+    "type": "string"
+  },
+ {
+    "name": "duracion",
+    "type": "string"
+  },
+ {
+    "name": "dia_rel",
+    "type": "string"
+  },
+ {
+    "name": "hor_rel",
+    "type": "string"
+  },
+ {
+    "name": "com_rel",
+    "type": "string"
+  },
+ {
+    "name": "unico_ope",
+    "type": "string"
+  },
+ {
+    "name": "vfecha",
+    "type": "string"
+  },
+ {
+    "name": "vdesde",
+    "type": "string"
+  },
+ {
+    "name": "vhasta",
+    "type": "string"
+  },
+ {
+    "name": "vcomenta",
+    "type": "string"
+  },
+ {
+    "name": "exportada",
+    "type": "string"
+  },
+ {
+    "name": "vgestor",
+    "type": "string"
+  },
+ {
+    "name": "canal",
+    "type": "string"
+  },
+ {
+    "name": "canal_comunicacion",
+    "type": "string"
+  },
+ {
+    "name": "sucursal",
+    "type": "string"
+  },
+ {
+    "name": "llamada2",
+    "type": "string"
+  }
+  ],"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha",
+   "type": "date",
+   "dateFormat": "yyyyMMdd",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

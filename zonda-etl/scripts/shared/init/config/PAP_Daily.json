@@ -1,0 +1,38 @@
+{
+  "tables": [
+    {
+      "source": "pap",
+      "type": "fact",
+      "name": "comprobante",
+      "filePrefix": "PAP_COMPROBANTE_"
+    },
+    {
+      "source": "pap",
+      "type": "fact",
+      "name": "comprobante_impuesto",
+      "filePrefix": "PAP_COMPROBANTE_IMPUESTO_"
+    },
+    {
+      "source": "pap",
+      "type": "fact",
+      "name": "pago",
+      "filePrefix": "PAP_PAGO_"
+    },
+    {
+      "source": "pap",
+      "type": "fact",
+      "name": "pago_comprobante",
+      "filePrefix": "PAP_PAGO_COMPROBANTE_"
+    },
+    {
+      "source": "pap",
+      "type": "fact",
+      "name": "pago_retencion",
+      "filePrefix": "PAP_PAGO_RETENCION_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_PAP-Daily"
+  }
+}

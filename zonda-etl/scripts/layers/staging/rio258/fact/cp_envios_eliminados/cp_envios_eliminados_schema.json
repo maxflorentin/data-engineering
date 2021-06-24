@@ -1,0 +1,30 @@
+{
+	"file": "cp_envios_eliminados_schema",
+	"location": "/santander/bi-corp/landing/rio258/fact/cp_envios_eliminados/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/fact/rio258_cp_envios_eliminados",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_envios_eliminados",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "crupier_id",
+			"type": "string"
+		},
+{
+			"name": "fecha",
+			"type": "string"
+		}
+	],
+	"extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

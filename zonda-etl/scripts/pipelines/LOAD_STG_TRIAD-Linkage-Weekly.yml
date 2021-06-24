@@ -1,0 +1,46 @@
+name: LOAD_STG_TRIAD-Linkage-Weekly
+description: 'Load data from TRIAD Linkage tables in STG (Weekly Credit Facilities Processes)'
+owner: BI-Corp
+active: true
+start_date: '2020-08-01'
+# catchup: true
+retries: 0
+retry_delay: 30
+include_dummy_task: false
+max_active_runs: 1
+loop:
+  values: [trdfldco, trdfldcu, trdfldrv, trdflduf, trdflduk]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_TABLE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Weekly_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/triad/fact/weekly/${e}/${e}_schema.json,$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/triad/fact/weekly/${e}/${e}.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_TRIAD-Linkage-Weekly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['${e}_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [nbucardo@santandertecnologia.com.ar]

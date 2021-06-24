@@ -1,0 +1,16 @@
+{
+  "file": "ptmosq_schema",
+  "location": "/santander/bi-corp/landing/malug/fact/ptmosq/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ptmosq",
+  "createTable": "bi_corp_staging.malug_ptmosq",
+  "copybook": "ptmosq.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

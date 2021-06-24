@@ -1,0 +1,52 @@
+{
+  "file": "icaap_tdim",
+  "location": "/santander/bi-corp/landing/manual/icaap/dim/tdim/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/icaap/dim/tdim",
+  "extension": "csv",
+  "delimiter": ",",
+  "header": true ,
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "attribute_code",
+					    "type": "string"
+					  },
+					  {
+					    "name": "dimension_value",
+					    "type": "string"
+					  },
+					  {
+					    "name": "vision",
+					    "type": "string"
+					  },
+					  {
+					    "name": "name",
+					    "type": "string"
+					  },
+					  {
+					    "name": "second_name",
+					    "type": "string"
+					  },
+					  {
+					    "name": "father_attribute_code",
+					    "type": "string"
+					  },
+					  {
+					    "name": "father_dimension_value",
+					    "type": "string"
+					  },
+					  {
+					    "name": "end_date",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

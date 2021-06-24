@@ -1,0 +1,73 @@
+{
+  "file": "tipoestadosolicitud_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/tipoestadosolicitud/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/tipoestadosolicitud",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "gestion",
+      "type": "string"
+    },
+    {
+      "name": "estadoproducto",
+      "type": "string"
+    },
+    {
+      "name": "estadoasol",
+      "type": "string"
+    },
+    {
+      "name": "ordenbo",
+      "type": "string"
+    },
+    {
+      "name": "imprimesolicitud",
+      "type": "string"
+    },
+    {
+      "name": "asol_bo",
+      "type": "string"
+    },
+    {
+      "name": "estadorector",
+      "type": "string"
+    },
+    {
+      "name": "activo",
+      "type": "string"
+    },
+    {
+      "name": "tipo_estado",
+      "type": "string"
+    },
+    {
+      "name": "documentacion",
+      "type": "string"
+    },
+    {
+      "name": "codigomensaje",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

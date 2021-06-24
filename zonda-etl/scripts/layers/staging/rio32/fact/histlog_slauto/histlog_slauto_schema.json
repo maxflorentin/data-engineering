@@ -1,0 +1,43 @@
+{
+  "file": "histlog_slauto_schema",
+  "location": "/santander/bi-corp/landing/rio32/fact/histlog_slauto/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/fact/histlog_slauto",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "fecha",
+    "type": "string"
+  },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "documento",
+      "type": "string"
+    },
+    {
+      "name": "sesionid",
+      "type": "string"
+    },
+    {
+      "name": "cod_app",
+      "type": "string"
+    },
+    {
+      "name": "descrip",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

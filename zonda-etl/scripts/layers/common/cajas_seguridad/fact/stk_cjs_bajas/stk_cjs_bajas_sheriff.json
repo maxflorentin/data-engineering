@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.stk_cjs_bajas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cjs_suc_caja","cod_cjs_sector_caja","cod_cjs_numero_caja","cod_marca_baja"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cjs_fecha_alta","dt_cjs_fecha_baja","dt_cjs_fec_locacion"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

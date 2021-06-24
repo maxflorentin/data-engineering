@@ -1,0 +1,47 @@
+name: LOAD_STG_NPS_Daily
+description: 'Load Data From NPS'
+owner: BI-Corp
+active: true
+start_date: '2020-02-10'
+#schedule_interval: '0 5 * * *'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [caja, cont_cent, cont_cent_rs, onboard_dig, onboarding, plataforma, reclamos, seguros, sust_tarj, onboarding_dlv, onboard_dig_dlv, atm, tas, ejecutivo_select,
+           work_cafe, relacional, caja_pym, cont_cent_pym, plataforma_pym, reclamos_pym, cosmos, getnet_alta, relacional_promo ,superclub_fisico, baja_cliente,
+           ejecutivo_remoto, onboarding_pym, inversiones, baja_cliente_pj, comex, consumo_tc, consumo_td, corresponsalias, empresa_pas, getnet_dongle, getnet_mpago,
+           onboarding_90d, prendarios, relacional_duo, relacional_pj, watson, canales_ind, canales_emp, work_cafe_efic, getnet_cust_serv, ci_comex, ci_cosmos,
+           ci_one_solution, ci_zendesk_puc, ci_riesgos_emp, ci_riesgos_ind, ci_verif_altas, nodo_casa_central, nodo_wilde, nodo_tucuman, nodo_san_juan, nodo_oronio,
+           nodo_mendoza, nodo_mardel, nodo_leloir, nodo_la_plata, nodo_fisherton, nodo_cordoba, nodo_banfield, ci_hola, relacional_65, relacional_sorpresa]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: STAGING_TABLE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/nps/fact/${e}/${e}_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_NPS_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['${e}_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [gbernardini@santandertecnologia.com.ar, nlask@santandertecnologia.com.ar, msuliano@santandertecnologia.com.ar, nbucardo@santandertecnologia.com.ar]

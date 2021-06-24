@@ -1,0 +1,62 @@
+{
+  "file": "proveedores_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/proveedores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/proveedores",
+  "createTable": "bi_corp_staging.sge_proveedores",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "nro_prop",
+      "type": "string"
+    },
+    {
+      "name": "cod_prov",
+      "type": "string"
+    },
+    {
+      "name": "nom_prov",
+      "type": "string"
+    },
+    {
+      "name": "plz_pago",
+      "type": "string"
+    },
+    {
+      "name": "porc_compras",
+      "type": "string"
+    },
+    {
+      "name": "ref_obt",
+      "type": "string"
+    },
+    {
+      "name": "peusualt",
+      "type": "string"
+    },
+    {
+      "name": "pefecalt",
+      "type": "string"
+    },
+    {
+      "name": "peusumod",
+      "type": "string"
+    },
+    {
+      "name": "pefecmod",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

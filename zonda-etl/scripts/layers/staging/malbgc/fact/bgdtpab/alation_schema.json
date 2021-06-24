@@ -1,0 +1,190 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A308837"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtpab_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "pab_num_convenio",
+                    "title": "pab_num_convenio",
+                    "description": "NÚMERO DE CONVENIO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0
+                },
+                {
+                    "name": "pab_concepto",
+                    "title": "pab_concepto",
+                    "description": "CODIGO DE CONCEPTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "pab_porc_suscriptor",
+                    "title": "pab_porc_suscriptor",
+                    "description": "PORCENTAJE DE ABSORCIÓN SUSCRIPTOR",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "pab_porc_entidad",
+                    "title": "pab_porc_entidad",
+                    "description": "PORCENTAJE DE ABSORCIÓN ENTIDAD",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "pab_porc_cliente",
+                    "title": "pab_porc_cliente",
+                    "description": "PORCENTAJE DE ABSORCIÓN CLIENTE",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "pab_entidad",
+                    "title": "pab_entidad",
+                    "description": "CLAVE DE ENTIDAD",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "pab_centro_alta",
+                    "title": "pab_centro_alta",
+                    "description": "OFICINA DE ALTA DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "pab_cuenta",
+                    "title": "pab_cuenta",
+                    "description": "NUMERO DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0
+                },
+                {
+                    "name": "pab_divisa",
+                    "title": "pab_divisa",
+                    "description": "DIVISA DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0
+                },
+                {
+                    "name": "pab_indesta",
+                    "title": "pab_indesta",
+                    "description": "INDICADOR DE ESTADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0
+                },
+                {
+                    "name": "pab_fecha_est",
+                    "title": "pab_fecha_est",
+                    "description": "FECHA ESTADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "pab_entidad_umo",
+                    "title": "pab_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "pab_centro_umo",
+                    "title": "pab_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION            ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "pab_userid_umo",
+                    "title": "pab_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "pab_netname_umo",
+                    "title": "pab_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "pab_timest_umo",
+                    "title": "pab_timest_umo",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

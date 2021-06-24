@@ -1,0 +1,39 @@
+{
+	"file": "carteras_basicas_schema",
+	"location": "/santander/bi-corp/landing/sql5/dim/carteras_basicas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_carteras_basicas",
+	"tempDirectory": "/santander/bi-corp/temp/carteras_basicas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "codigo",
+			"type": "string"
+		},
+		{
+			"name": "nombre",
+			"type": "string"
+		},
+		{
+			"name": "segmento",
+			"type": "string"
+		},
+		{
+			"name": "renta",
+			"type": "string"
+		},
+		{
+			"name": "producto",
+			"type": "string"
+		},
+		{
+			"name": "fecha_informacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

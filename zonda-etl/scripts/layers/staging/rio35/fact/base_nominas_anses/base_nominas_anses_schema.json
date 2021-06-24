@@ -1,0 +1,56 @@
+{
+  "file": "base_nominas_anses_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/base_nominas_anses/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/fact/base_nominas_anses",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "cuit",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "capitas_brio",
+      "type": "string"
+    },
+    {
+      "name": "capitas_anses",
+      "type": "string"
+    },
+    {
+      "name": "ind_baja",
+      "type": "string"
+    },
+    {
+      "name": "titular",
+      "type": "string"
+    },
+    {
+      "name": "tiene_pas",
+      "type": "string"
+    },
+    {
+      "name": "masa_salarial",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

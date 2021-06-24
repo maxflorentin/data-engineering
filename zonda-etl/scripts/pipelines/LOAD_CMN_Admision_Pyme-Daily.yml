@@ -1,0 +1,331 @@
+name: LOAD_CMN_Admision_Pyme-Daily
+description: 'Load pyme data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 13 * * *'
+start_date: '2021-03-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_garantias/DDLT-stk_adm_pyme_garantias.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas/DDLT-stk_adm_pyme_accionistas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas_prop/DDLT-stk_adm_pyme_accionistas_prop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_lineas/DDLT-stk_adm_pyme_lineas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadospropuesta/DDLT-dim_adm_pyme_estadospropuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadosoperacion/DDLT-dim_adm_pyme_estadosoperacion.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_personas/DDLT-stk_adm_pyme_personas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_estadospropuesta/DDLT-stk_adm_estadospropuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_estadosoperacion/DDLT-stk_adm_pyme_estadosoperacion.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_operaciones/DDLT-stk_adm_pyme_operaciones.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_propuestas/DDLT-stk_adm_propuestas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_estadospropuesta/DDLT-dim_adm_empresas_estadospropuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_garantias
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_garantias/ETL-LOAD-stk_adm_pyme_garantias.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_accionistas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas/ETL-LOAD-stk_adm_pyme_accionistas.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_accionistas_prop
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas_prop/ETL-LOAD-stk_adm_pyme_accionistas_prop.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_lineas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_lineas/ETL-LOAD-stk_adm_pyme_lineas.hql'
+  - name: COMMON_LoadTable_dim_adm_pyme_estadospropuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadospropuesta/ETL-LOAD-dim_adm_pyme_estadospropuesta.hql'
+  - name: COMMON_LoadTable_dim_adm_pyme_estadosoperacion
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadosoperacion/ETL-LOAD-dim_adm_pyme_estadosoperacion.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_personas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_personas/ETL-LOAD-stk_adm_pyme_personas.hql'
+  - name: COMMON_LoadTable_stk_adm_estadospropuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_estadospropuesta/ETL-LOAD-stk_adm_estadospropuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_estadosoperacion
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_estadosoperacion/ETL-LOAD-stk_adm_pyme_estadosoperacion.hql'
+  - name: COMMON_LoadTable_stk_adm_propuestas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_propuestas/ETL-LOAD-stk_adm_propuestas.hql'
+  - name: COMMON_LoadTable_stk_adm_pyme_operaciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_operaciones/ETL-LOAD-stk_adm_pyme_operaciones.hql'
+  - name: COMMON_LoadTable_dim_adm_empresas_estadospropuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_estadospropuesta/ETL-LOAD-dim_adm_empresas_estadospropuesta.hql'
+  - name: SHERIFF_Control_stk_adm_pyme_garantias
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_garantias/stk_adm_pyme_garantias_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: ['stk_adm_pyme_garantias_sheriff.json']
+  - name: SHERIFF_Control_stk_adm_pyme_accionistas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas/stk_adm_pyme_accionistas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_accionistas_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_pyme_accionistas_prop
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_accionistas_prop/stk_adm_pyme_accionistas_prop_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_accionistas_prop_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_pyme_lineas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_lineas/stk_adm_pyme_lineas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_lineas_sheriff.json' ]
+  - name: SHERIFF_Control_dim_adm_pyme_estadospropuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadospropuesta/dim_adm_pyme_estadospropuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'dim_adm_pyme_estadospropuesta_sheriff.json' ]
+  - name: SHERIFF_Control_dim_adm_pyme_estadosoperacion
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_pyme_estadosoperacion/dim_adm_pyme_estadosoperacion_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'dim_adm_pyme_estadosoperacion_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_pyme_personas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_personas/stk_adm_pyme_personas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_personas_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_estadospropuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_estadospropuesta/stk_adm_estadospropuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_estadospropuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_pyme_estadosoperacion
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_estadosoperacion/stk_adm_pyme_estadosoperacion_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_estadosoperacion_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_pyme_operaciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_pyme_operaciones/stk_adm_pyme_operaciones_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_pyme_operaciones_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_propuestas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_propuestas/stk_adm_propuestas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Pyme-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+        }
+      application_args: [ 'stk_adm_propuestas_sheriff.json' ]
+dependencies:
+  COMMON_CreateTables: [COMMON_LoadTable_stk_adm_pyme_garantias, COMMON_LoadTable_stk_adm_pyme_accionistas, COMMON_LoadTable_stk_adm_pyme_accionistas_prop, COMMON_LoadTable_stk_adm_pyme_lineas, COMMON_LoadTable_dim_adm_pyme_estadospropuesta, COMMON_LoadTable_dim_adm_pyme_estadosoperacion, COMMON_LoadTable_stk_adm_pyme_personas, COMMON_LoadTable_stk_adm_estadospropuesta, COMMON_LoadTable_stk_adm_pyme_estadosoperacion, COMMON_LoadTable_stk_adm_pyme_operaciones, COMMON_LoadTable_stk_adm_propuestas]
+  COMMON_LoadTable_stk_adm_pyme_garantias: SHERIFF_Control_stk_adm_pyme_garantias
+  COMMON_LoadTable_stk_adm_pyme_accionistas: SHERIFF_Control_stk_adm_pyme_accionistas
+  COMMON_LoadTable_stk_adm_pyme_accionistas_prop: SHERIFF_Control_stk_adm_pyme_accionistas_prop
+  COMMON_LoadTable_stk_adm_pyme_lineas: [SHERIFF_Control_stk_adm_pyme_lineas, COMMON_LoadTable_stk_adm_propuestas]
+  COMMON_LoadTable_dim_adm_pyme_estadospropuesta: [SHERIFF_Control_dim_adm_pyme_estadospropuesta, COMMON_LoadTable_stk_adm_estadospropuesta]
+  COMMON_LoadTable_dim_adm_pyme_estadosoperacion: [SHERIFF_Control_dim_adm_pyme_estadosoperacion, COMMON_LoadTable_stk_adm_pyme_estadosoperacion]
+  COMMON_LoadTable_stk_adm_pyme_personas: SHERIFF_Control_stk_adm_pyme_personas
+  COMMON_LoadTable_stk_adm_estadospropuesta: [SHERIFF_Control_stk_adm_estadospropuesta, COMMON_LoadTable_stk_adm_propuestas]
+  COMMON_LoadTable_stk_adm_pyme_estadosoperacion: [SHERIFF_Control_stk_adm_pyme_estadosoperacion, COMMON_LoadTable_stk_adm_pyme_operaciones]
+  COMMON_LoadTable_stk_adm_propuestas: [SHERIFF_Control_stk_adm_propuestas, COMMON_LoadTable_stk_adm_pyme_operaciones]
+  COMMON_LoadTable_stk_adm_pyme_operaciones: SHERIFF_Control_stk_adm_pyme_operaciones
+  COMMON_LoadTable_dim_adm_empresas_estadospropuesta: COMMON_LoadTable_stk_adm_estadospropuesta
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mlevisrossi@santandertecnologia.com.ar, fscagnettibrusatori@santandertecnologia.com.ar]

@@ -1,0 +1,14 @@
+{
+  "tables" :[
+    {
+      "serverAka": "rio53",
+      "serverConfig": "dblxorafront01",
+      "database": "RIO53",
+      "table": "rio53_cg_ref_codes",
+      "landing_path": "/santander/bi-corp/landing/rio53/dim/rio53_cg_ref_codes",
+      "table_type": "dim",
+      "environment": "rio53",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM OFSA40.CG_REF_CODES WHERE  \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

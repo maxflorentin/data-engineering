@@ -1,0 +1,37 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "RIO347DB",
+      "database": "CUSLAK",
+      "table": "BALANCE",
+      "table_type": "fact",
+      "environment": "RIO347",
+      "landing_path": "/santander/bi-corp/landing/rio347/fact/balance",
+      "partition_field": "TO_CHAR(value_date,'YYYY-MM-DD')",
+      "split_field": "VALUE_DATE",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select securities_contract_code,office_code,assetid,nominals,holding_status,place_holding,value_date,asset_price,creation_date,update_date, TO_CHAR(value_date,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= TO_CHAR(TO_DATE('{partition_date}','YYYY-MM-DD')-90,'YYYY-MM-DD') AND {partition_field} <= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio347/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "RIO347DB",
+      "database": "CUSLAK",
+      "table": "COMMISSIONS",
+      "table_type": "fact",
+      "environment": "RIO347",
+      "landing_path": "/santander/bi-corp/landing/rio347/fact/commissions",
+      "partition_field": "TO_CHAR(creation_date,'YYYY-MM-DD')",
+      "split_field": "CREATION_DATE",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select customerid,securities_contract_code,office_code,origin,actionid,period,periodicity,transaction_type,nominal_holding,valuated_holding,percentage,count_movements,fixed_price_movement,ammount,bonus,creation_date,update_date, TO_CHAR(creation_date,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} = '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio347/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "RIO347DB",
+      "database": "CUSLAK",
+      "table": "COMMISSIONS_STATUS",
+      "table_type": "fact",
+      "environment": "RIO347",
+      "landing_path": "/santander/bi-corp/landing/rio347/fact/commissions_status",
+      "partition_field": "TO_CHAR(creation_date,'YYYY-MM-DD')",
+      "split_field": "CREATION_DATE",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select customerid,securities_contract_code,office_code,origin,actionid,period,payment_date,creation_date,update_date, TO_CHAR(creation_date,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} = '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio347/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

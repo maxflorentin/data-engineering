@@ -1,0 +1,46 @@
+{
+	"file": "pendientes_scoring_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/pendientes_scoring/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/pendientes_scoring",
+	"tempDirectory": "/santander/bi-corp/temp/pendientes_scoring",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "id",
+			"type": "int"
+		},
+		{
+			"name": "cod_sucursal",
+			"type": "smallint"
+		},
+		{
+			"name": "nro_solicitud",
+			"type": "bigint"
+		},
+		{
+			"name": "fecha_analisis",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ingreso",
+			"type": "string"
+		},
+		{
+			"name": "tiempo_horas",
+			"type": "int"
+		},
+		{
+			"name": "tiempo_dias",
+			"type": "int"
+		},
+		{
+			"name": "fecha_importacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

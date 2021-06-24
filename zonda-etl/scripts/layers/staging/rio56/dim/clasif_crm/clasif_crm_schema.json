@@ -1,0 +1,43 @@
+{
+    "file": "clasif_crm",
+    "location": "/santander/bi-corp/landing/rio56/dim/clasif_crm/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/clasif_crm",
+    "tempDirectory": "/santander/bi-corp/temp/clasif_crm",
+    "createTable": "bi_corp_staging.rio56_clasif_crm",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "tpo_pers",
+            "type": "string"
+        },
+        {
+            "name": "cod_crm",
+            "type": "string"
+        },
+        {
+            "name": "desc_crm",
+            "type": "string"
+        },
+        {
+            "name": "id_clasif_select",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

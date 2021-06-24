@@ -1,0 +1,19 @@
+{
+  "name": "GARANTIAS-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_GARANTIAS-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_Sucursales-Daily",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_GARANTIAS"
+    }
+  ]
+}

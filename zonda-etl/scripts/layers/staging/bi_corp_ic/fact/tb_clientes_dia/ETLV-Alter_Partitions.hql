@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_ic.tb_clientes_dia ADD IF NOT EXISTS PARTITION (as_of_date='{partition_date}');

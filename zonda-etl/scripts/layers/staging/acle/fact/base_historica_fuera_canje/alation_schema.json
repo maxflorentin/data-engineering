@@ -1,0 +1,337 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A146157"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "acle_base_historica_fuera_canje",
+            "title": "Rechazos fuera de canje",
+            "schema": "bi_corp_staging",
+            "source": "ACLE",
+            "query": "",
+            "type": "fact",
+            "description": "Interfaz de rechazos de cheques fuera de canje (posterior a la compensación)",
+            "columns": [
+                {
+                    "name": "tipo_reg",
+                    "title": "WACLE640-TIPO-REG",
+                    "description": "Tipo de registro: A:alta; M:modificación",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "banco_cmc7",
+                    "title": "WACLE640-BANCO-CMC7",
+                    "description": "Banco CMC7",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No  aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "sucursal_cmc7",
+                    "title": "WACLE640-SUCURSAL-CMC7",
+                    "description": "Sucursal CMC7",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No  aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "nro_cheque_cmc7",
+                    "title": "WACLE640-NRO-CHEQUE-CMC7",
+                    "description": "Numero de cheque CMC7",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "nro_cuenta_cmc7",
+                    "title": "WACLE640-NRO-CTA-CMC7",
+                    "description": "Cuenta CMC7",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_compensacion",
+                    "title": "WACLE640-FECHA-COMPENSACION",
+                    "description": "Fecha de compensación del cheque (formato aaaammdd)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "tipo_cheque",
+                    "title": "WACLE640-TIPO-CHEQUE",
+                    "description": "Tipo de cheque: C:canje interno; M:cámara remitida; B:cámara recibida; P:cheque pagador; S:sobrante",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_postal",
+                    "title": "WACLE640-COD-POSTAL",
+                    "description": "Código postal CMC7",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "importe",
+                    "title": "WACLE640-IMPORTE",
+                    "description": "Importe del cheque",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "fec_pres",
+                    "title": "WACLE640-FEC-PRES",
+                    "description": "Fecha de presentación del cheque (formato aaaammdd)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "fec_deposito",
+                    "title": "WACLE640-FEC-DEPOSITO",
+                    "description": "Fecha de depósito del cheque (formato aaaammdd)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "mot_rech_ppal",
+                    "title": "WACLE640-MOT-RECH-PPAL",
+                    "description": "Motivo rechazo NACHA principal",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "mot_rech_depo",
+                    "title": "WACLE640-MOT-RECH-DEPO",
+                    "description": "Motivo rechazo NACHA de depositaria ",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "estado",
+                    "title": "WACLE640-ESTADO",
+                    "description": "Estado del cheque: P: pagado; R: rechazado; B: baja; '': no definido",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No  aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "pto_intercambio",
+                    "title": "WACLE640-PTO-INTERCAMBIO",
+                    "description": "Punto de intercambio",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "bco_recep",
+                    "title": "WACLE640-BCO-RECEP",
+                    "description": "Banco receptor del cheque para cámara recibida",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "canal_ingreso",
+                    "title": "WACLE640-CANAL-INGRESO",
+                    "description": "Canal de ingreso del cheque",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "bco_corresp",
+                    "title": "WACLE640-BCO-CORRESP",
+                    "description": "Banco corresponsal",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "suc_corresp",
+                    "title": "WACLE640-SUC-CORRESP",
+                    "description": "Sucursal corresponsal",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "plazo",
+                    "title": "WACLE640-PLAZO",
+                    "description": "Plazo del canje para CI y cámara remitida. 10: CI 24 hs; 11: CI 48 hs; 06: C.Remitida, suc.depósito de AMBA y CP compensa en AMBA; 13: C.Remitida, CP de suc. depósito diferente al CP donde compensa (código postal compensa en una localidad donde el banco tiene presencia); 14: C.Remitida, CP de suc. depósito diferente al CP donde compensa (código postal compensa en una localidad donde el banco no tiene presencia); 15: C.Remitida, suc.depósito de INTERIOR y CP compensa en AMBA; 16: C.Remitida, suc.depósito de INTERIOR y CP compensa en la misma cámara que la suc.depósito",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "suc_acred",
+                    "title": "WACLE640-SUC-ACRED",
+                    "description": "Sucursal de acreditación",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cta_acred",
+                    "title": "WACLE640-CTA-ACRED",
+                    "description": "Cuenta de acreditación",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "suc_origen",
+                    "title": "WACLE640-SUC-ORIGEN",
+                    "description": "Sucursal donde se depositó el cheque",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "suc_girada",
+                    "title": "WACLE640-SUC-GIRADA",
+                    "description": "Sucursal de débito",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cta_girada",
+                    "title": "WACLE640-CTA-GIRADA",
+                    "description": "Cuenta de débito",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "moneda",
+                    "title": "WACLE640-MONEDA",
+                    "description": "Moneda ARS: pesos; USD: dólar",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "nro_caja",
+                    "title": "WACLE640-NRO-CAJA",
+                    "description": "Caja donde se guarda el físico",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "volumen",
+                    "title": "WACLE640-VOLUMEN",
+                    "description": "Nro. de medio magnético donde se graba la imagen ",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Incremental",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+name: BDR_EXEC_Controls
+description: 'EXEC BDR Integrity Tests for the New Default engine in local schema'
+owner: BI-Corp
+active: true
+schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [JM_TRZ_CLIENTE, JM_CAL_EXT_CL, JM_CLIEN_JURI, JM_CLIENT_BII, JM_CONTR_BIS, JM_CONTR_OTROS, JM_CTOS_CANCE, JM_EAD_CONTR, JM_EXPOS_NO_CON, JM_FLUJOS, JM_GRUP_ECONO, JM_GRUP_RELA, JM_INTERV_CTO, JM_POSIC_CONTR, JM_PROV_ESOTR, JM_TRZ_CONT_REN, JM_VTA_CARTER, JM_GARANT_CTO, JM_GARA_REAL, JM_CAL_EMISION, JM_CAL_IN_CL, JM_INF_AD_CLI, JM_VAL_GARA]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: ExecLengthControls
+    operator: SparkSubmitOperator
+    config:
+      name: 'BDR_${e}_Controls'
+      connection_id: cloudera_spark2
+      num_executors: 20
+      executor_cores: 4
+      executor_memory: 16G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/controls/control_runner.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Length-Control.json'
+      conf: {
+            'spark.yarn.appMasterEnv.month_partition_bdr': "{{ ti.xcom_pull(task_ids='InputConfig', key='month_partition_bdr', dag_id='BDR_EXEC_Controls') }}",
+            'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+            'spark.sql.autoBroadcastJoinThreshold': '-1'
+      }
+      application_args: ['Length-Control.json']
+  - name: ExecIntegrityControls
+    operator: SparkSubmitOperator
+    config:
+      name: 'BDR_${e}_Controls'
+      connection_id: cloudera_spark2
+      num_executors: 20
+      executor_cores: 4
+      executor_memory: 16G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/controls/control_runner.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Integrity-Control.json'
+      conf: {
+            'spark.yarn.appMasterEnv.month_partition_bdr': "{{ ti.xcom_pull(task_ids='InputConfig', key='month_partition_bdr', dag_id='BDR_EXEC_Controls') }}",
+            'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+            'spark.sql.autoBroadcastJoinThreshold': '-1'
+      }
+      application_args: ['Integrity-Control.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar, hpolitano@santandertecnologia.com.ar, lmirandagonzalez@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

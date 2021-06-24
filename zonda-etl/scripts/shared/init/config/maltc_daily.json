@@ -1,0 +1,32 @@
+{
+  "tables": [
+    {
+      "source": "MALTC",
+      "type": "DIM",
+      "name": "TCDT080",
+      "filePrefix": "TCDT080"
+    },
+    {
+      "source": "MALTC",
+      "type": "DIM",
+      "name": "TCDTRAC",
+      "filePrefix": "TCDTRAC"
+    },
+    {
+      "source": "MALTC",
+      "type": "FACT",
+      "name": "TCDT081",
+      "filePrefix": "TCDT081"
+    },
+    {
+      "source": "MALTC",
+      "type": "FACT",
+      "name": "TCDT090",
+      "filePrefix": "TCDT090"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_MALTC-Daily"
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309193"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio78_dispositivo",
+      "title": "Tabla que registra las caracteristicas de los dispositivos logeados a la app",
+      "schema": "bi_corp_staging",
+      "source": "RIO78 Mobile Banking Individuos",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla que registra las caracteristicas de los dispositivos logeados a la app",
+      "columns": [
+        {
+          "name": "ID_TERMINAL",
+          "title": "ID_TERMINAL",
+          "description": "Id aleatorio que se asigna al dispositivo",
+          "type": "NUMBER(38,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 38.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TOKEN",
+          "title": "TOKEN",
+          "description": "Dato con el que se identifica el dispositivo",
+          "type": "VARCHAR2(100 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_RUNTIME",
+          "title": "ID_RUNTIME",
+          "description": "Id de la plataforma del dispositivo (ej: iOs/Android)",
+          "type": "NUMBER(38,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 38.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_ID",
+          "title": "DEVICE_ID",
+          "description": "Marca del dispositivo",
+          "type": "VARCHAR2(50 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_MODEL",
+          "title": "DEVICE_MODEL",
+          "description": "Modelo del dispositivo",
+          "type": "VARCHAR2(50 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "Fecha",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_HARDWARE_ID",
+          "title": "DEVICE_HARDWARE_ID",
+          "description": "Hardware del dispositivo",
+          "type": "VARCHAR2(100 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_MAC_ADDRESS",
+          "title": "DEVICE_MAC_ADDRESS",
+          "description": "Mac Address del dispositivo",
+          "type": "VARCHAR2(50 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_VERSION_SO",
+          "title": "DEVICE_VERSION_SO",
+          "description": "Versión del sistema operativo del dispositivo",
+          "type": "VARCHAR2(15 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEVICE_OS_ID",
+          "title": "DEVICE_OS_ID",
+          "description": "Sistema operativo del dispositivo",
+          "type": "VARCHAR2(100 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

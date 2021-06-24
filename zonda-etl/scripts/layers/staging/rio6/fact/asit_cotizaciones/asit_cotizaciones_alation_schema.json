@@ -1,0 +1,93 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_cotizaciones",
+            "title": "Cotizaciones",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Cotizaciones",
+            "columns": [
+                {
+                    "name": "  ASCO_COTI_JSON",
+                    "title": "  ASCO_COTI_JSON",
+                    "description": "Json con la informacion de la cotizacion",
+                    "type": "CLOB",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCO_NU_COTIZACION",
+                    "title": "  ASCO_NU_COTIZACION",
+                    "description": "Numero de cotizacion",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCO_FE_COTIZACION",
+                    "title": "  ASCO_FE_COTIZACION",
+                    "description": "Fecha de cotizacion",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCO_TP_DOCUMENTO",
+                    "title": "  ASCO_TP_DOCUMENTO",
+                    "description": "Tipo de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCO_NU_DOCUMENTO",
+                    "title": "  ASCO_NU_DOCUMENTO",
+                    "description": "Numero de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCO_IN_ENVIADA",
+                    "title": "  ASCO_IN_ENVIADA",
+                    "description": "Indicador de solicitud enviada a la cia",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

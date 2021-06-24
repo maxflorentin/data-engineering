@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_pre_normalizaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_nrosecuencia","cod_per_nup","cod_pre_entidad","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_pre_marcaclasificacionactual","dt_pre_fechacambioclasificacion","cod_pre_nroree"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_nrosecuencia","cod_per_nup","cod_pre_entidad","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","dt_pre_fechaapertura","cod_pre_nroree"],
+      "threshold": 0.00
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fechaapertura","dt_pre_fechacambioclasificacion","dt_pre_fechacura","dt_pre_fechanormalizacion"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+	"file": "priori_orden_getnet",
+	"location": "/santander/bi-corp/landing/rio61/fact/priori_orden_getnet/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/priori_orden_getnet",
+	"createTable": "bi_corp_staging.rio61_priori_orden_getnet",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "orden",
+			"type": "string"
+		},
+		{
+			"name": "evento",
+			"type": "string"
+		},
+		{
+			"name": "evento",
+			"type": "string"
+		},
+		{
+			"name": "habilitado",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		},
+		{
+			"name": "fecha_desde",
+			"type": "string"
+		},
+		{
+			"name": "fecha_hasta",
+			"type": "string"
+		},
+		{
+			"name": "dias_dist_evento",
+			"type": "string"
+		},
+		{
+			"name": "dias_igual_evento",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

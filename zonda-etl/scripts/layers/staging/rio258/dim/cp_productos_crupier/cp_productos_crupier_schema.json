@@ -1,0 +1,27 @@
+{
+	"file": "cp_productos_crupier_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_productos_crupier/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_productos_crupier",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_productos_crupier",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_producto",
+			"type": "string"
+		},
+{
+			"name": "desc_producto",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

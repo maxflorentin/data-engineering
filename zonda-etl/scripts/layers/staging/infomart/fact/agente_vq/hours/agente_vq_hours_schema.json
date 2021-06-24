@@ -1,0 +1,108 @@
+{
+  "file": "agente_vq_hours_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/agente_vq/hours/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/agente_vq/hours/",
+  "createTable": "bi_corp_staging.infomart_agente_vq_hours",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "agente",
+      "type": "string"
+    },
+    {
+      "name": "vq",
+      "type": "string"
+    },
+    {
+      "name": "tipo_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "hora",
+      "type": "string"
+    },
+    {
+      "name": "total_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "transferencias_recibidas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_consulta_recibidas",
+      "type": "string"
+    },
+    {
+      "name": "consultas_recibidas",
+      "type": "string"
+    },
+    {
+      "name": "transferencias_hechas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_consulta_hechas",
+      "type": "string"
+    },
+    {
+      "name": "consultas_hechas",
+      "type": "string"
+    },
+    {
+      "name": "invite",
+      "type": "string"
+    },
+    {
+      "name": "invite_time",
+      "type": "string"
+    },
+    {
+      "name": "total_hold",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_interactuando",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_interactuando2",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_hold",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_hold2",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_acw",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_acw2",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

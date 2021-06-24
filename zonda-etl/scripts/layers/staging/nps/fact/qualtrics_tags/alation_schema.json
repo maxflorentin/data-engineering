@@ -1,0 +1,127 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A279014,A308949,A307821"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "qualtrics_nps_tags",
+            "title": "Tagueos asociados a las respuestas",
+            "schema": "bi_corp_staging",
+            "source": "QUALTRICS",
+            "type": "FACT",
+            "description": "Tagueos asociados a las respuestas",
+            "columns": [
+                {
+                    "name": "momento_critico",
+                    "title": "momento_critico",
+                    "description": "Momento critico que distingue el tipo de Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "id_respuesta",
+                    "title": "id_respuesta",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "parent_topics",
+                    "title": "parent_topics",
+                    "description": "Topicos asociados de la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "sentiment_polarity",
+                    "title": "sentiment_polarity",
+                    "description": "Sentiment Polarity de la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "sentiment_score",
+                    "title": "sentiment_score",
+                    "description": "Puntaje del Sentiment de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "sentiment",
+                    "title": "sentiment",
+                    "description": "Sentiment de la Encuesta",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "topic_sentiment_label",
+                    "title": "topic_sentiment_label",
+                    "description": "Sentiment Topico de la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "topic_sentiment_score",
+                    "title": "topic_sentiment_score",
+                    "description": "Puntaje del Sentiment Topic",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "topics",
+                    "title": "topics",
+                    "description": "Topicos de la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,194 @@
+{
+   "objectMetadata": {
+      "active": true,
+      "governance": {
+         "steward": [
+            "A307461"
+         ],
+         "level": "Intermediate"
+      },
+      "table": {
+         "name": "jm_interv_cto",
+         "title": "Relación Entre Contratos Bis Y Clientes Bis",
+         "schema": "bi_corp_bdr",
+         "source": "Data Lake - BDR",
+         "type": "",
+         "description": "Esta tabla contiene la relación, con su forma de intervención, entre los contratos y los clientes.",
+         "columns": [
+            {
+               "name": "g4128_contra1",
+               "title": "",
+               "description": "Clave de identificación única del contrato dentro de la entidad",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cod_entidad"
+                  },
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cod_centro"
+                  },
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "num_cuenta"
+                  },
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cod_producto"
+                  },
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cod_subprodu"
+                  }
+               ]
+            },
+            {
+               "name": "g4128_fecultmo",
+               "title": "",
+               "description": "Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro. la fecha se informará en formato aaaa-mm-dd",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": ""
+            },
+            {
+               "name": "g4128_feoperac",
+               "title": "",
+               "description": "Fecha de los datos que se están informando.",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": ""
+            },
+            {
+               "name": "g4128_formintv",
+               "title": "",
+               "description": "Identifica la forma de intervención de un cliente (unipersonal, mancomunado, etc.)",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "bgdtmae",
+                     "column": "ind-mancomu"
+                  },
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "maestra_cuentas_y_auxiliar",
+                     "column": "ind-mancomu"
+                  }
+               ]
+            },
+            {
+               "name": "g4128_idnumcli",
+               "title": "",
+               "description": "Clave de identificación única del cliente",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "num_persona"
+                  }
+               ]
+            },
+            {
+               "name": "g4128_numordin",
+               "title": "",
+               "description": "Número de orden del tipo de intervención anterior, se informará ‘1’ para el primero, ‘2’ para el segundo y así sucesivamente",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "ord_participacion"
+                  }
+               ]
+            },
+            {
+               "name": "g4128_porpartn",
+               "title": "",
+               "description": "Porcentaje de responsabilidad del cliente dentro del contrato.",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": ""
+            },
+            {
+               "name": "g4128_s1emp",
+               "title": "",
+               "description": "Código de la entidad (ver pestaña 'empresa')",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": ""
+            },
+            {
+               "name": "g4128_tipintev",
+               "title": "",
+               "description": "Código identificativo del tipo de intervención del cliente en el contrato (titular, avalista,..)",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cal_participacion"
+                  }
+               ]
+            },
+            {
+               "name": "g4128_tipintv2",
+               "title": "",
+               "description": "Código de tipo de intervención local asociado al contrato. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los distintos tipos de intervención",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": "",
+               "sourceColumns": [
+                  {
+                     "schema": "bi_corp_staging",
+                     "table": "relacion_contrato_cliente",
+                     "column": "cal_participacion"
+                  }
+               ]
+            },
+            {
+               "name": "partition_date",
+               "title": "",
+               "description": "Fecha de partición del dato",
+               "type": "string",
+               "personIdentifier": "No",
+               "decimalSeparator": "",
+               "nullable": ""
+            }
+         ]
+      },
+      "schedule": {
+         "periodicity": "Daily",
+         "loading": {
+            "type": "",
+            "delta": ""
+         }
+      }
+   }
+}

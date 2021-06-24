@@ -1,0 +1,55 @@
+{
+  "file": "saldos_loy_schema",
+  "location": "/santander/bi-corp/landing/rio130/fact/saldos_loy/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio130/fact/saldos_loy",
+  "tempDirectory": "/santander/bi-corp/temp/rio130",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+     {
+    "name": "mem_num",
+    "type": "string"
+  },
+{
+    "name": "programa",
+    "type": "string"
+  },
+{
+    "name": "fecha_de_vencimiento",
+    "type": "string"
+  },
+{
+    "name": "puntos_totales",
+    "type": "string"
+  },
+{
+    "name": "puntos_a_vencer",
+    "type": "string"
+  },
+{
+    "name": "val_score",
+    "type": "string"
+  },
+{
+    "name": "fecha_ultima_acc",
+    "type": "string"
+  },
+{
+    "name": "fecha_ultima_inc",
+    "type": "string"
+  }
+  ],
+ "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

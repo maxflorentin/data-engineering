@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_ventas_ddjj_clientes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_venta","id_adm_ddjj","cod_adm_penumper"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_venta","id_adm_ddjj","cod_adm_penumper","fc_adm_venta","dt_adm_venta"],
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_venta"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

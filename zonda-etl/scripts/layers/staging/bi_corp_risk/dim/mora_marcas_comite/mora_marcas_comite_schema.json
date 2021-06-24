@@ -1,0 +1,42 @@
+{
+    "file": "mora_marcas_comite",
+    "location": "/santander/bi-corp/landing/sql5/dim/mora_marcas_comite/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/sql5/dim/mora_marcas_comite",
+    "createTable": "bi_corp_staging.risksql5_mora_marcas_comite",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "marca",
+        "type": "string"
+      },
+      {
+        "name": "submarca",
+        "type": "string"
+      },
+      {
+        "name": "equivalencia",
+        "type": "string"
+      },
+      {
+        "name": "equivalencia_para_matcheo",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,133 @@
+{
+  "file": "origen_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/origen/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/origen",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+ {
+    "name": "codigo",
+    "type": "string"
+  },
+ {
+    "name": "descri",
+    "type": "string"
+  },
+ {
+    "name": "activo",
+    "type": "string"
+  },
+ {
+    "name": "agenda",
+    "type": "string"
+  },
+ {
+    "name": "producto",
+    "type": "string"
+  },
+ {
+    "name": "appsource",
+    "type": "string"
+  },
+ {
+    "name": "cantcontactos",
+    "type": "string"
+  },
+ {
+    "name": "prioridad",
+    "type": "string"
+  },
+ {
+    "name": "cantoperaciones",
+    "type": "string"
+  },
+ {
+    "name": "fecdesde",
+    "type": "string"
+  },
+ {
+    "name": "fechasta",
+    "type": "string"
+  },
+ {
+    "name": "canal",
+    "type": "string"
+  },
+ {
+    "name": "fecdesde_crm",
+    "type": "string"
+  },
+ {
+    "name": "id_camp_buc",
+    "type": "string"
+  },
+ {
+    "name": "tipo_campania",
+    "type": "string"
+  },
+ {
+    "name": "cant_op_agente",
+    "type": "string"
+  },
+ {
+    "name": "nroshot",
+    "type": "string"
+  },
+ {
+    "name": "modelo_contacto",
+    "type": "string"
+  },
+ {
+    "name": "modalidad_outxorigen",
+    "type": "string"
+  },
+ {
+    "name": "fec_pri_vigencia",
+    "type": "string"
+  },
+ {
+    "name": "usuario_modif",
+    "type": "string"
+  },
+ {
+    "name": "fecha_modif",
+    "type": "string"
+  },
+ {
+    "name": "pais",
+    "type": "string"
+  },
+ {
+    "name": "porcentaje_cont_contactar",
+    "type": "string"
+  },
+ {
+    "name": "setgestion",
+    "type": "string"
+  },
+ {
+    "name": "listallamado",
+    "type": "string"
+  },
+ {
+    "name": "fec_ult_vigencia",
+    "type": "string"
+  },
+ {
+    "name": "blanquear_origen_discador",
+    "type": "string"
+  }
+  ],
+ "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+        }]
+}

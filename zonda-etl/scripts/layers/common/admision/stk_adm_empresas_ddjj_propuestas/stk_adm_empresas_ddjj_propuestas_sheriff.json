@@ -1,0 +1,30 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_ddjj_propuestas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": [
+        "id_adm_ddjj",
+        "cod_adm_numero_propuesta"
+      ]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "id_adm_ddjj",
+        "cod_adm_numero_propuesta",
+        "dt_adm_fecha",
+        "ds_adm_periodo_ddjj",
+        "int_adm_orden"
+      ],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_fecha"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

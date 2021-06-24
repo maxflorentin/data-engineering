@@ -1,0 +1,194 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A288378"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "scoring_omdm",
+            "title": "Tabla referente a solicitudes procesadas por el motor de admision (OMDM).",
+            "schema": "bi_corp_staging",
+            "source": "OMDM",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla referente a solicitudes procesadas por el motor de admision (OMDM).",
+            "columns": [
+                {
+                    "name": "TIPO_TRAMITE",
+                    "title": "TIPO_TRAMITE",
+                    "description": "Identificacion del modulo asociado al procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_TRAMITE",
+                    "title": "COD_TRAMITE",
+                    "description": "Codigo de identificacion de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_PROCESO",
+                    "title": "FEC_PROCESO",
+                    "description": "Fecha de inicio de procesamiento de la solicitud.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_REQUEST",
+                    "title": "FEC_REQUEST",
+                    "description": "Fecha de envio de request al motor de admision (OMDM).",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_RESPONSE",
+                    "title": "FEC_RESPONSE",
+                    "description": "Fecha de recepcion del response del motor de admision (OMDM).",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_FIN_PROC",
+                    "title": "FEC_FIN_PROC",
+                    "description": "Fecha de fin de procesamiento de la solicitud.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_OBSERVACION",
+                    "title": "DES_OBSERVACION",
+                    "description": "Informacion asociada al procesamiento interno de la solicitud en el motor de admision (OMDM).",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_DECISION",
+                    "title": "COD_DECISION",
+                    "description": "Decision final resultante del procesamiento de la solicitud.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_DECISION",
+                    "title": "TIPO_DECISION",
+                    "description": "Decision final particular resultante del procesamiento de la solicitud.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_NOMBRE_FLUJO",
+                    "title": "DES_NOMBRE_FLUJO",
+                    "description": "Nombre del flujo interno asociado a la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_ULTIMO_PASO",
+                    "title": "DES_ULTIMO_PASO",
+                    "description": "Nombre del ultimo objeto y/o componente del procesamiento de la solicitud.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_CATEGORIA_PRODUCTO",
+                    "title": "DES_CATEGORIA_PRODUCTO",
+                    "description": "Identificacion de categoria asociada al modulo de procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_COD_PRODUCTO",
+                    "title": "DES_COD_PRODUCTO",
+                    "description": "Nombre del producto interno asociado a la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INDICADOR_ESTADO",
+                    "title": "INDICADOR_ESTADO",
+                    "description": "Estado interno de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_NOMBRE_ESTRATEGIA",
+                    "title": "DES_NOMBRE_ESTRATEGIA",
+                    "description": "Nombre de la estrategia interna asociada a la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "file": "asit_productos_segmentos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_productos_segmentos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_productos_segmentos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"asps_cd_producto",
+      "type": "string"
+    },
+    {
+      "name":"asps_cd_segmento",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,81 @@
+name: LOAD_STG_Alha9600-Daily
+description: 'alha9600'
+owner: BI-Corp
+active: true
+schedule_interval: '0 06 * * 1-6'
+start_date: '2021-02-12'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_send_sftp
+    operator: SSHOperator
+    config:
+      connection_id: "de_ssh"                
+      command: "cp /aplicaciones/bi/ftpsrv01_transmi/ALHA9600_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='LOAD_STG_Alha9600-Daily') }}.TXT /aplicaciones/bi/zonda/inbound/manual/contab/alha9600/ALHA9600_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_partition_date_filter', dag_id='LOAD_STG_Alha9600-Daily') }}.TXT"    
+  - name: WaitForFiles
+    operator: ZondaFileSensor
+    config:
+      path: "/aplicaciones/bi/zonda/inbound/manual/contab/alha9600"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+  - name: UploadFilesHDFS
+    operator: ZondaHDFSOperator
+    config:
+      operation: PUT
+      local_path: "{{ ti.xcom_pull(task_ids='WaitForFiles', key='return_value', dag_id='LOAD_STG_Alha9600-Daily') }}"
+      prefix: "$ZONDA_DIR/inbound"
+      replace_prefix: "/santander/bi-corp/landing"
+      skip_errors: true
+      partitioned_by_date: true
+      remove_local_path: true
+  - name: STAGING_ALHA9600_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ALHA9600_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 20
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/contab/alha9600/alha9600_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='previous_partition_date', dag_id='LOAD_STG_Alha9600-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_Alha9600-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['alha9600_schema.json']
+  - name: Repair_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/contab/alha9600/ETLV-Repair-partitions-Table.hql'     
+dependencies:
+  report_send_sftp: WaitForFiles
+  WaitForFiles: UploadFilesHDFS
+  UploadFilesHDFS: STAGING_ALHA9600_Parquetize
+  STAGING_ALHA9600_Parquetize: Repair_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar]
+

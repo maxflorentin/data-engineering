@@ -1,0 +1,70 @@
+{
+  "file": "rtg_calculos_det_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/rtg_calculos_det/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/rtg_calculos_det",
+  "createTable": "bi_corp_staging.sge_rtg_calculos_det",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_calculo",
+      "type": "string"
+    },
+    {
+      "name": "x_etiqueta",
+      "type": "string"
+    },
+    {
+      "name": "n_orden",
+      "type": "string"
+    },
+    {
+      "name": "x_sentencia",
+      "type": "string"
+    },
+    {
+      "name": "x_descripcion",
+      "type": "string"
+    },
+    {
+      "name": "x_msg_error",
+      "type": "string"
+    },
+    {
+      "name": "t_resultado",
+      "type": "string"
+    },
+    {
+      "name": "n_resultado_num",
+      "type": "string"
+    },
+    {
+      "name": "f_resultado_date",
+      "type": "string"
+    },
+    {
+      "name": "x_resultado_char",
+      "type": "string"
+    },
+    {
+      "name": "id_secuencia",
+      "type": "string"
+    },
+    {
+      "name": "x_sentencia_def",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

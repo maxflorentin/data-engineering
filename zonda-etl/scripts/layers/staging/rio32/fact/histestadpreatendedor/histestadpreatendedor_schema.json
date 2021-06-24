@@ -1,0 +1,47 @@
+{
+  "file": "histestadpreatendedor_schema",
+  "location": "/santander/bi-corp/landing/rio32/fact/histestadpreatendedor/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/fact/histestadpreatendedor",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "fecha",
+    "type": "string"
+  },
+    {
+      "name": "sesion",
+      "type": "string"
+    },
+    {
+      "name": "opcion_1",
+      "type": "string"
+    },
+    {
+      "name": "opcion_2",
+      "type": "string"
+    },
+    {
+      "name": "opcion_3",
+      "type": "string"
+    },
+    {
+      "name": "opcion_4",
+      "type": "string"
+    },
+    {
+      "name": "opcion_5",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

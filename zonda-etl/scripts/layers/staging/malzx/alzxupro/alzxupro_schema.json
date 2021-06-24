@@ -1,0 +1,146 @@
+{
+        "file": "alzxupro_cheques",
+        "location": "/santander/bi-corp/landing/malzx/dim/alzxupro/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzx/dim/alzxupro",
+		"createTable": "bi_corp_staging.malzx_alzxupro",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":  
+                        [
+                          {
+                            "name": "cod_producto",
+                            "type": "string",
+                            "width": 2
+                          },
+                          {
+                            "name": "cod_subproducto",
+                            "type": "string",
+                            "width": 2
+                          },
+                          {
+                            "name": "cod_programa",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "cod_divisa",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "des_corta",
+                            "type": "string",
+                            "width": 20
+                          },
+                          {
+                            "name": "des_detallada",
+                            "type": "string",
+                            "width": 50
+                          },
+                          {
+                            "name": "mar_tasa_adic_fer",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "dd_espera_cuadre",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "dd_aceleracion_can",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_grupo1",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_grupo2",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_grupo3",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_permi_res",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_permi_dif",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_max_cesio",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "can_dias_max_valid",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "mar_activo",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "mar_tasa_subsidiad",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "mar_cuenta_rie",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "tim_alta",
+                            "type": "string",
+                            "width": 26
+                          },
+                          {
+                            "name": "ide_user_alta",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "ide_term_alta",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "tim_ult_modf",
+                            "type": "string",
+                            "width": 26
+                          },
+                          {
+                            "name": "ide_user_ult_modf",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "ide_term_ult_modf",
+                            "type": "string",
+                            "width": 4
+                          }
+                        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

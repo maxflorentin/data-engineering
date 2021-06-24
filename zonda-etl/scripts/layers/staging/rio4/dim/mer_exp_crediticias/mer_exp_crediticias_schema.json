@@ -1,0 +1,79 @@
+{
+  "file": "mer_exp_crediticias_schema",
+  "location": "/santander/bi-corp/landing/rio4/dim/mer_exp_crediticias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio4/dim/mer_exp_crediticias",
+  "createTable": "bi_corp_staging.mer_exp_crediticias",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "fecha",
+                    "type": "string"
+                },
+                {
+                    "name": "nroperacion",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_real",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_potencial",
+                    "type": "string"
+                },
+                {
+                    "name": "valor_nocional",
+                    "type": "string"
+                },
+                {
+                    "name": "garantia",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_crediticia",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_carga",
+                    "type": "string"
+                },
+                {
+                    "name": "usuario_carga",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_modif",
+                    "type": "string"
+                },
+                {
+                    "name": "usuario_modif",
+                    "type": "string"
+                },
+                {
+                    "name": "rec_banco",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_rec_banco",
+                    "type": "string"
+                },
+                {
+                    "name": "nroperacion_mx",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

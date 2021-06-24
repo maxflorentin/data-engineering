@@ -1,0 +1,15 @@
+{
+    "name": "waftc600-STG-Daily",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Cupones_waftc310-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Tarjetas_Credito_Movimientos_Liq-Daily"
+                }
+    ]
+}

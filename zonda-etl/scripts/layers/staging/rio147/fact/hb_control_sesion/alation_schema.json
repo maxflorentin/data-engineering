@@ -1,0 +1,73 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A273003"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio147_hb_control_sesion",
+      "title": "CONTROL DE SESIONES",
+      "schema": "bi_corp_staging",
+      "source": "MOBP",
+      "query": "",
+      "type": "FACT",
+      "description": "CONTROL DE SESIONES",
+      "columns": [
+        {
+          "name": "NUP",
+          "title": "NUP                    ",
+          "description": "NUP DEL CLIENTE",
+          "type": "NUMBER(22)   ",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TOKEN",
+          "title": "TOKEN                  ",
+          "description": "TOKEN DE CONTROL PARA TENER UNA ÚNICA SESIÓN ACTIVA",
+          "type": "VARCHAR2(500)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 500.0,
+          "security": "Publico"
+        },
+        {
+          "name": "F_ALTA_REGISTRO",
+          "title": "F_ALTA_REGISTRO        ",
+          "description": "FECHA DE ALTA DEL REGISTRO EN LA TABLA",
+          "type": "TIMESTAMP(6) ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 6.0,
+          "security": "Publico"
+        },
+        {
+          "name": "F_MODIFICACION_REGISTRO",
+          "title": "F_MODIFICACION_REGISTRO",
+          "description": "FECHA DE MODIFICACIÓN DEL REGISTRO EN LA TABLA",
+          "type": "TIMESTAMP(6)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 6.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

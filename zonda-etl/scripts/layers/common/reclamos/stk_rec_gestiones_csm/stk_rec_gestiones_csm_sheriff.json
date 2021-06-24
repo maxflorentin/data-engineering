@@ -1,0 +1,43 @@
+{
+    "table": "bi_corp_common.stk_rec_gestiones_csm",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": ["cod_rec_gestion"]
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_gestion",
+                "cod_per_nup",
+                "cod_rec_casuistica",
+                "cod_rec_estado_actual",
+                "cod_rec_usuario_alta",
+                "ts_rec_alta"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_alta",
+                "ts_rec_modif",
+                "ts_rec_estado_actual",
+                "ts_rec_baja",
+                "ts_rec_operacion"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss",
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_resolucion",
+                "dt_rec_estado_max"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+    ]
+}

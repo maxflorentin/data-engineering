@@ -1,0 +1,27 @@
+{
+    "name": "Recuperaciones_CacsEmerix-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Emerix-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_CACS_Movimientos-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_CACS-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_BDR_Rosetta_Risk_tables",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_RECUPERACIONES_CacsEmerix-Daily"
+                }
+    ]
+}

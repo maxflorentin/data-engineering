@@ -1,0 +1,16 @@
+{
+    "name": "Rentabilidad_PrestamosYDepositos_Business_Monthly",
+    "shift": -2,
+    "conditions": [
+        {
+            "dag_id": "LOAD_CMN_Rentabilidad_Monthly",
+            "tasks": "all"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_BSN_Rentabilidad_PrestamosYDepositos_Monthly",
+            "tasks": "all"
+        }
+    ]
+}

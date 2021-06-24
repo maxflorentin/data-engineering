@@ -1,0 +1,89 @@
+name: LOAD_STG_Abae-Daily
+description: 'Load data from Abae (BANELCO)'
+owner: BI-Corp
+active: true
+start_date: '2020-02-01'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_MAESCRED_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAESCRED_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maescred/maescred_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Abae-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['maescred_schema.json']
+  - name: STAGING_MAESCTAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAESCTAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maesctas/maesctas_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Abae-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['maesctas_schema.json']
+  - name: STAGING_MAESTARJ_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAESTARJ_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maestarj/maestarj_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Abae-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['maestarj_schema.json']
+  - name: STAGING_MAESPERS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAESPERS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maespers/maespers_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Abae-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['maespers_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msuliano@santandertecnologia.com.ar]

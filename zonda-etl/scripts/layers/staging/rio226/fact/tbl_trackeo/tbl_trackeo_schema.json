@@ -1,0 +1,40 @@
+{
+  "file": "tbl_trackeo_schema",
+  "location": "/santander/bi-corp/landing/rio226/fact/tbl_trackeo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/fact/tbl_trackeo",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "interaccion",
+    "type": "string"
+  },
+    {
+      "name": "codigo_evento",
+      "type": "string"
+    },
+    {
+      "name": "fecha_evento",
+      "type": "string"
+    },
+    {
+      "name": "informacion_adicional",
+      "type": "string"
+    },
+    {
+      "name": "nro_llamado",
+      "type": "string"
+    },
+    {
+      "name": "id_trackeo_transaccion",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

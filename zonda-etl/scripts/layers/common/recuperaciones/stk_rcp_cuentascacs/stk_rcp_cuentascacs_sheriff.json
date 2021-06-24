@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_rcp_cuentascacs",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["ds_rcp_codigolocacion","ds_rcp_acctnum"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["ds_rcp_codigolocacion","ds_rcp_acctnum","cod_nro_cuenta","cod_suc_sucursal","cod_per_nup"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechaexpiracion","dt_rcp_fechachargeoff","dt_rcp_fechaaltacuenta","dt_rcp_fechaproximacuota","dt_rcp_fechareposicion","dt_rcp_fechaultimafacturacion","dt_rcp_fechasituacionirregular","dt_rcp_fechaultimopago","dt_rcp_fechaultimaactividad","dt_rcp_fechaentradacollection","dt_rcp_fechaestadocacs","dt_rcp_fechahold","dt_rcp_fechabloqueo"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+	"file": "cp_clientes_schema",
+	"location": "/santander/bi-corp/landing/rio258/fact/cp_clientes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/fact/rio258_cp_clientes",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_clientes",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_cliente",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "nombres",
+			"type": "string"
+		},
+{
+			"name": "apellidos",
+			"type": "string"
+		},
+{
+			"name": "cod_tipo_doc",
+			"type": "string"
+		},
+{
+			"name": "nro_documento",
+			"type": "string"
+		},
+{
+			"name": "fecha_nacimiento",
+			"type": "string"
+		},
+{
+			"name": "cod_genero",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "creado_por",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif_por",
+			"type": "string"
+		}
+	]
+}

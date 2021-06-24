@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_rating_operaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_vo"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_vo","cod_adm_nro_prop","cod_adm_secuencia","cod_adm_operacion","dec_adm_plazo","flag_adm_unidad_plazo","dec_adm_punt_plazo","dec_adm_punt_antiguedad","dec_adm_valoracion_operacion","cod_adm_peusualt","ts_adm_pefecalt"],
+      "threshold": 0.009
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_pefecalt"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

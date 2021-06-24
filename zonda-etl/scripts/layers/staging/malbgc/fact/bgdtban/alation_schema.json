@@ -1,0 +1,150 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A204202"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtban_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "ban_plan",
+                    "title": "ban_plan",
+                    "description": "CODIGO DE PLAN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_concepto",
+                    "title": "ban_concepto",
+                    "description": "CODIGO DE CONCEPTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_titularidad",
+                    "title": "ban_titularidad",
+                    "description": "TI(TITULAR) o CT(COTITULAR)",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0
+                },
+                {
+                    "name": "ban_red",
+                    "title": "ban_red",
+                    "description": "RED DE OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_fecha_desde",
+                    "title": "ban_fecha_desde",
+                    "description": "FECHA DESDE DE VIGENCIA DEL PLAN/COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "ban_fecha_hasta",
+                    "title": "ban_fecha_hasta",
+                    "description": "FECHA HASTA VIGENCIA DEL PLAN/COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "ban_comisión",
+                    "title": "ban_comisión",
+                    "description": "CODIGO DE LA COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_entidad_umo",
+                    "title": "ban_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_centro_umo",
+                    "title": "ban_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ban_userid_umo",
+                    "title": "ban_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "ban_netname_umo",
+                    "title": "ban_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "ban_timest_umo",
+                    "title": "ban_timest_umo",
+                    "description": "FECHA, HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

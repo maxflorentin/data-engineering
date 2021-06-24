@@ -1,0 +1,99 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "a308609"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio32_histestadpreatendedor",
+      "title": "Informacion historica detallada llamadas",
+      "schema": "bi_corp_staging",
+      "source": "SLAUTO - tel.HISTESTADPREATENDEDOR",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Informacion historica detallada llamadas",
+      "columns": [
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "Fecha de la interaccion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "SESION",
+          "title": "SESION",
+          "description": "Session",
+          "type": "NUMBER (10)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_1",
+          "title": "OPCION_1",
+          "description": "Opcion 1",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_2",
+          "title": "OPCION_2",
+          "description": "Opcion 2",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_3",
+          "title": "OPCION_3",
+          "description": "Opcion 3",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_4",
+          "title": "OPCION_4",
+          "description": "Opcion 4",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_5",
+          "title": "OPCION_5",
+          "description": "Opcion 5",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+          01 WACNL801.
+            10 TIPO_CLIENTE             PIC X(1).
+            10 SUCURSAL_CUENTA          PIC 9(3).
+            10 SUCURSAL_MAQUINA         PIC 9(3).
+            10 CANAL                    PIC X(5).
+            10 MAQUINA                  PIC X(5).
+            10 FECHA_AMD                PIC 9(8).
+            10 HORA                     PIC 9(6).
+            10 TRANSACCION              PIC 9(6).
+            10 SERVICIO_ADOM            PIC 9(3).
+            10 ORI_REV                  PIC X(1).
+            10 FECHA_AMD_PROCESO        PIC 9(8).
+            10 MARCA_PERSONA            PIC X(1).
+            10 NUP                      PIC X(8).
+            10 USUARIO                  PIC X(8).
+            10 IMPORTE                  PIC 9(12)V99.
+            10 DIVISA                   PIC X(3).
+            10 CANT_CHEQUES             PIC 9(3).
+            10 PRODUCTO                 PIC X(2).
+            10 SUBPRODUCTO              PIC X(4).
+            10 TIPO_OPERACION           PIC X.
+            10 DATOS                    PIC X(57).

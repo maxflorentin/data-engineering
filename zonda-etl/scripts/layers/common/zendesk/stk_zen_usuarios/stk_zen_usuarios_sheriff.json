@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.stk_zen_usuarios",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_zen_usuario"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_zen_usuario", "ds_zen_nombre"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_zen_creacion","ts_zen_actualizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.ffffff"
+    }
+  ]
+}

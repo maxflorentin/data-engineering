@@ -1,0 +1,191 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308640"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio256_crsc_producto",
+            "title": "Tabla que contiene los tipos de producto que se asginan a cada una de las solicitudes",
+            "schema": "bi_corp_staging|bi_corp_common|bi_corp_business",
+            "source": "ATENEA",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tabla que contiene los tipos de producto que se asginan a cada una de las solicitudes",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "Identificador del registro insertado. Pk de la tabla",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_PRODUCTO",
+                    "title": "COD_PRODUCTO",
+                    "description": "Código de producto asignado por el sistema ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBPRODUCTO",
+                    "title": "COD_SUBPRODUCTO",
+                    "description": "Código de sub producto asignado por el sistema ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_PAQUETE",
+                    "title": "COD_PAQUETE",
+                    "description": "Código de paquete asignado por el sistema ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIPCION",
+                    "title": "DESCRIPCION",
+                    "description": "Nombre de producto",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAF",
+                    "title": "CAF",
+                    "description": "",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BONIFICACION",
+                    "title": "BONIFICACION",
+                    "description": "Código de bonificación asignado por el sistema ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONVENIO",
+                    "title": "CONVENIO",
+                    "description": "Convenio asignado por el sistema ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACTIVO",
+                    "title": "ACTIVO",
+                    "description": "Indicador si se encuentra activo o no el producto en el sistema",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

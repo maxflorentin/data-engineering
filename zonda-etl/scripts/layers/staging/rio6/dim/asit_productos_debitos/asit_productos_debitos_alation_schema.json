@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_productos_debitos",
+            "title": "Debitos por productos de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Debitos por productos de asistencias",
+            "columns": [
+                {
+                    "name": "  ASMD_CD_PRODUCTO",
+                    "title": "  ASMD_CD_PRODUCTO",
+                    "description": "Codigo de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASMD_TP_DEBITO",
+                    "title": "  ASMD_TP_DEBITO",
+                    "description": "Tipo de debito",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

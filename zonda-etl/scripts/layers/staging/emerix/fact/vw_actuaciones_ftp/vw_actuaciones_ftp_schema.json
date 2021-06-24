@@ -1,0 +1,64 @@
+{
+	"file": "actuaciones_schema",
+	"location": "/santander/bi-corp/landing/emerix/fact/actuaciones/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/emerix/fact/emerix_actuaciones",
+	"tempDirectory": "/santander/bi-corp/temp/emerix_actuaciones",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "numero_proceso",
+			"type": "string"
+		},
+{
+			"name": "contrato",
+			"type": "string"
+		},
+{
+			"name": "fecha_actuacion",
+			"type": "string"
+		},
+{
+			"name": "tipo_actuacion",
+			"type": "string"
+		},
+{
+			"name": "codigo_estado",
+			"type": "string"
+		},
+{
+			"name": "nombre_estado",
+			"type": "string"
+		},
+{
+			"name": "codigo_escenario",
+			"type": "string"
+		},
+{
+			"name": "nombre_escenario",
+			"type": "string"
+		},
+{
+			"name": "usuario",
+			"type": "string"
+		},
+{
+			"name": "num_cliente",
+			"type": "string"
+		},
+{
+			"name": "bufette",
+			"type": "string"
+		}
+	],
+ "mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha_actuacion",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

@@ -1,0 +1,59 @@
+name: BDR_EXPORT_Tables_NDD_ANT
+description: 'Export BDR Tables for the New Default Desacoplado engine, in TXT format with fixed length (Monthly)'
+owner: BI-Corp
+active: true
+schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [JM_OUT_CTO_ND, JM_OUT_CLI_ND]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: ExportData
+    operator: SparkSubmitOperator
+    config:
+      name: 'ExportData-${e}'
+      connection_id: cloudera_spark2
+      num_executors: 2
+      executor_cores: 4
+      executor_memory: 4G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/unloader/unloader.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Send-File-NDD.hql'
+      conf: {
+        'spark.yarn.appMasterEnv.month_partition_bdr': "{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month-1_bdr', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}",
+        'spark.yarn.appMasterEnv.month': "{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}",
+        'spark.yarn.appMasterEnv.last_calendar_day': "{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month-1_date_to', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}"
+      }
+      application_args: ['--query', "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/${e}/Send-File-NDD.hql",
+                         '--output', "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_ANT_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}.txt",
+                         '--header', "false",
+                         '--delimiter', "|"]
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_ANT_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}.txt"
+      local_path: "/aplicaciones/bi/nd_desacoplado/input/${e}_ANT_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}.txt"
+      skip_errors: false
+  - name: CompressFiles
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/nd_desacoplado/input/${e}_ANT_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_month_to_arda', dag_id='BDR_EXPORT_Tables_NDD_ANT') }}.txt"
+dependencies:
+  ExportData: MoveFileToLocalServer
+  MoveFileToLocalServer: CompressFiles
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar]

@@ -1,0 +1,104 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_causas_anulacion_recibos",
+            "title": "Causas de Anulaciones",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Causas de Anulaciones",
+            "columns": [
+                {
+                    "name": "  CANA_CD_CAUSA_ANULACION",
+                    "title": "  CANA_CD_CAUSA_ANULACION",
+                    "description": "Codigo de causa de Anulacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_DE_CAUSA_ANULACION",
+                    "title": "  CANA_DE_CAUSA_ANULACION",
+                    "description": "Descripcion de causa de Anulacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_IN_RP",
+                    "title": "  CANA_IN_RP",
+                    "description": "Indicador RP",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_TP_CAUSA",
+                    "title": "  CANA_TP_CAUSA",
+                    "description": "Tipo de causa de Anulacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_CD_CAUSA_IMPR",
+                    "title": "  CANA_CD_CAUSA_IMPR",
+                    "description": "Codigo de causa de Anulacion a imprimir",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_DE_CAUSA_IMPR",
+                    "title": "  CANA_DE_CAUSA_IMPR",
+                    "description": "Descripcion de causa de Anulacion a imprimir",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  CANA_CD_FAMILIA",
+                    "title": "  CANA_CD_FAMILIA",
+                    "description": "Codigo de Familia de Bajas",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

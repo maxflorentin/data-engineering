@@ -1,0 +1,84 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A125117"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio6_autt_valores_vehiculos",
+      "title": "Valores de Vehiculos",
+      "schema": "bi_corp_staging",
+      "source": "RECTOR",
+      "query": "",
+      "type": "FACT",
+      "description": "Valores de Vehiculos",
+      "columns": [
+        {
+          "name": "AUVV_AUMA_CD_MARCA",
+          "title": "AUVV_AUMA_CD_MARCA",
+          "description": "Codigo de Marca",
+          "type": "Alfanumerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUVV_AUMO_CD_MODELO",
+          "title": "AUVV_AUMO_CD_MODELO",
+          "description": "Codigo de Modelo",
+          "type": "Alfanumerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUVV_VERSION ",
+          "title": "AUVV_VERSION ",
+          "description": "Version",
+          "type": "Numerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 5.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUVV_ANO",
+          "title": "AUVV_ANO",
+          "description": "Año de fabricacion",
+          "type": "Numerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUVV_VALOR ",
+          "title": "AUVV_VALOR ",
+          "description": "Valoracion del vehiculo",
+          "type": "Numerico",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": 14.2,
+          "security": "Secreto"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

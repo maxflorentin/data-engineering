@@ -1,0 +1,173 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio170_gec_mensajes",
+            "title": "Tabla de parametria de los mensajes de las notificaciones",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tabla de parametria de los mensajes de las notificaciones",
+            "columns": [
+                {
+                    "name": "ID_MENSAJE",
+                    "title": "ID_MENSAJE",
+                    "description": "PK de la tabla",
+                    "type": "NUMBER (27)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 27.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODIGO",
+                    "title": "CODIGO",
+                    "description": "FK a GEC_NOTIFICACIONES",
+                    "type": "VARCHAR2 (6 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUB_CODIGO",
+                    "title": "SUB_CODIGO",
+                    "description": "FK a GEC_NOTIFICACIONES",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MENSAJE",
+                    "title": "MENSAJE",
+                    "description": "Tesxto del mensaje amigable de la notificacion. Puede contener tags identificados por {}",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TITULO",
+                    "title": "TITULO",
+                    "description": "Titulo del mensaje",
+                    "type": "VARCHAR2 (128 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "URL_DESKTOP",
+                    "title": "URL_DESKTOP",
+                    "description": "URL de la imagen cuando el dispositivo es DESKTOP",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "URL_MOBILE",
+                    "title": "URL_MOBILE",
+                    "description": "URL de la imagen cuando el dispositivo es MOBILE",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LINK",
+                    "title": "LINK",
+                    "description": "LINK correspondiente al GOTO o ACTION del mensaje",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

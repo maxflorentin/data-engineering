@@ -1,0 +1,60 @@
+name: LOAD_STG_AAML-Sancionados-Daily
+description: 'Load data from AAML tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2020-05-27'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_sancionados_novedades_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_sancionados_novedades_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 2G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/advance_analytics/fact/sancionados_novedades/sancionados_novedades_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_AAML-Sancionados-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_AAML-Sancionados-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['sancionados_novedades_schema.json']
+  - name: STAGING_sancionados_full
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_sancionados_full
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 2G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/advance_analytics/fact/sancionados_full/sancionados_full_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_AAML-Sancionados-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_AAML-Sancionados-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['sancionados_full_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [irusconi@santandertecnologia.com.ar,maurogonzalez@santandertecnologia.com.ar]

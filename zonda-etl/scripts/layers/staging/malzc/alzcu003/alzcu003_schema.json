@@ -1,0 +1,90 @@
+{
+        "file": "Data_Ingestion_MALZC_ALZCU003",
+        "location": "/santander/bi-corp/landing/malzc/fact/alzcu003/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malzc/fact/alzcu003",
+		"createTable": "bi_corp_staging.malzc_alzcu003",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [
+            {
+                "name": "COD_ENTIDAD",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "COD_SUCURSAL",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "NRO_CUENTA",
+                "type": "string",
+                "width": 12
+            },
+            {
+                "name": "COD_DIVISA",
+                "type": "string",
+                "width": 3
+            },
+            {
+                "name": "TPO_DOCUMENTO",
+                "type": "string",
+                "width": 3
+            },
+            {
+                "name": "NRO_DOCUMENTO",
+                "type": "string",
+                "width": 11
+            },
+            {
+                "name": "IDE_VALOR",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_USER_ALTA",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ALTA",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "FEC_ALTA",
+                "type": "string",
+                "width": 10
+            },
+            {
+                "name": "IDE_NUP",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_USER_ULT_MODF",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ULT_MODF",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "TIM_ULT_MODF",
+                "type": "string",
+                "width": 26
+            }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

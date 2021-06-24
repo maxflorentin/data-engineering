@@ -1,0 +1,52 @@
+{
+	"file": "acse_tarifas_schema",
+	"location": "/santander/bi-corp/landing/acse/dim/tarifas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/dim/tarifas",
+    "createTable": "bi_corp_staging.acse_tarifas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "comision",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "zona",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "grupo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "tipo_persona",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "fec_vig_desde",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_vig_hasta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "imp_comsion",
+                        "type": "string",
+                        "width": 15
+                }
+    ],
+  "extraColumns": [{
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

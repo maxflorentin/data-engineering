@@ -1,0 +1,60 @@
+{
+    "file": "jm_out_cto_nd_schema",
+    "location": "/santander/bi-corp/landing/output_bdr/reproceso_bdr/jm_out_cto_nd/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/output_bdr/jm_out_cto_nd_repro_hist",
+    "createTable": "bi_corp_bdr.jm_out_cto_nd_repro_hist",
+    "extension": "csv",
+    "header": true,
+    "fixed": false,
+    "delimiter": ";",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [{
+        "name": "R9739_feoperac",
+        "type": "string"
+    }, {
+        "name": "R9739_s1emp",
+        "type": "string"
+    }, {
+        "name": "R9739_contra1",
+        "type": "string"
+    }, {
+        "name": "r9739_ind_def",
+        "type": "string"
+    }, {
+        "name": "r9739_dias_pp",
+        "type": "string"
+    }, {
+        "name": "r9739_dias_atr",
+        "type": "string"
+    }, {
+        "name": "r9739_fec_def",
+        "type": "string"
+    },{
+        "name": "r9739_fini_pp",
+        "type": "string"
+    },{
+        "name": "r9739_ffin_pp",
+        "type": "string"
+    },{
+        "name": "r9739_imp_atr",
+        "type": "string"
+    },{
+        "name": "r9739_sonbldef",
+        "type": "string"
+    }, {"name": "r9739_flgtecni",
+        "type": "string"
+    },{"name": "r9739_finalind",
+        "type": "string"
+    }],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}
+
+
+

@@ -1,0 +1,172 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307993"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "aprp_waprp038",
+      "title": "Tabla de Caracteristicas de Empresas",
+      "schema": "bi_corp_staging",
+      "source": "APRP",
+      "query": "",
+      "type": "FACT",
+      "description": "Tabla de Caracteristicas de Empresas",
+      "columns": [
+        {
+          "name": "WAPRP038_NRO_EMPR",
+          "title": "WAPRP038_NRO_EMPR   ",
+          "description": "Número de empresa",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WAPRP038_NRO_DIG_EMPR  ",
+          "title": "WAPRP038_NRO_DIG_EMPR  ",
+          "description": "Dígito verificador de la empresa",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WAPRP038_NRO_PROD    ",
+          "title": "WAPRP038_NRO_PROD    ",
+          "description": "Número de producto",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WAPRP038_NRO_INSTAN  ",
+          "title": "WAPRP038_NRO_INSTAN  ",
+          "description": "Número de instancia",
+          "type": "DECIMAL",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 2.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "WAPRP038_IDE_TAB_CARAC  ",
+          "title": "WAPRP038_IDE_TAB_CARAC  ",
+          "description": "Identificación de la característica ",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_NRO_LISTA   ",
+          "title": "WAPRP038_NRO_LISTA   ",
+          "description": "Lista que corresponde a la característica",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_NRO_NUE_LISTA  ",
+          "title": "WAPRP038_NRO_NUE_LISTA  ",
+          "description": "Nuevo número de lista de característica",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_FEC_VIGENCIA  ",
+          "title": "WAPRP038_FEC_VIGENCIA  ",
+          "description": "Fecha de vigencia",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_IDE_USER_ALTA ",
+          "title": "WAPRP038_IDE_USER_ALTA ",
+          "description": "Identificacion de usuario de alta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_IDE_TERM_ALTA  ",
+          "title": "WAPRP038_IDE_TERM_ALTA  ",
+          "description": "Identificación terminal de alta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_FEC_HRA_ULT_MODF ",
+          "title": "WAPRP038_FEC_HRA_ULT_MODF ",
+          "description": "Fecha y hora de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 26.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_IDE_USER_ULT_MODF",
+          "title": "WAPRP038_IDE_USER_ULT_MODF",
+          "description": "Identificación de usuario de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP038_IDE_TERM_ULT_MODF",
+          "title": "WAPRP038_IDE_TERM_ULT_MODF",
+          "description": "Identificación terminal de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

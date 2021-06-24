@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_promontorio_ficha",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_fichapromontorio","id_adm_promontorioestadoempresa"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_fichapromontorio","id_adm_promontorioestadoempresa","id_adm_promontorioestado","cod_per_nup","fc_adm_valorrating","ds_adm_razonsocial","ds_adm_feve","cod_adm_sucursal","ts_adm_fechavtocalifactual"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_bcrafecha","ts_adm_fechaentradafeve","ts_adm_fechaprevia","ts_adm_fechaultimacalificacion","ts_adm_fechainicio","ts_adm_fechafinalizacion","ts_adm_fechavtocalifactual","ts_adm_fecultimobalance"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

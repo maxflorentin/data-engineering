@@ -1,0 +1,76 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.bt_tcr_movimientos_facturados
+(
+    cod_tcr_operacion                   int,
+    cod_tcr_cuenta                      bigint,
+    cod_nro_cuenta          bigint,
+    cod_tcr_tarjeta                     string,
+    cod_tcr_evento_origen               int,
+    cod_tcr_autorizacion                string,
+    cod_div_divisa                      string,
+    dt_tcr_fecha_presentacion           string,
+    dt_tcr_fecha_pago                   string,
+    cod_tcr_tipo_cuenta                 int,
+    cod_per_nup_tarjeta                 int,
+    cod_tcr_marca_tarjeta               string,
+    cod_per_nup_cuenta                  int,
+    cod_tcr_documento                   string,
+    ds_tcr_tipo_documento               string,
+    cod_tcr_evento                      int,
+    ds_tcr_signo_evento                 string,
+    cod_tcr_evento_grupo                int,
+    cod_tcr_orden                       int,
+    cod_tcr_entidad                     string,
+    cod_suc_sucursal                    int,
+    cod_tcr_marca_limpio                string,
+    cod_tcr_entidad_destino_ei          int,
+    cod_suc_sucursal_destino_ei         int,
+    cod_tcr_cartera_ei                  int,
+    dt_tcr_fecha_cierre                 string,
+    ds_tcr_plan_cuotas                  int,
+    int_tcr_nro_cuota                   int,
+    cod_tcr_producto                    string,
+    cod_tcr_producto_conc               string,
+    cod_tcr_operacion_origen            int,
+    dt_tcr_fecha_evento                 string,
+    dt_tcr_fecha_presentacion_origen    string,
+    dt_tcr_fecha_pago_origen            string,
+    cod_tcr_comprobante                 string,
+    flag_tcr_debito_automatico          int,
+    cod_tcr_term_captura                string,
+    cod_tcr_atm                         string,
+    cod_tcr_establecimiento             bigint,
+    cod_tcr_comercio                    bigint,
+    cod_tcr_entidad_pagadora            string,
+    cod_tcr_entidad_est                 string,
+    cod_suc_sucursal_est                int,
+    cod_tcr_rubro                       int,
+    ds_tcr_geoestablecimiento           int,
+    ds_tcr_denominacion_establecimiento string,
+    ds_tcr_ciudad                       string,
+    ds_tcr_pais                         string,
+    cod_tcr_divisa_origen               string,
+    ds_tcr_cinta                        string,
+    ds_tcr_nro_recl_bco                 string,
+    ds_tna_emisor                       decimal(5, 2),
+    ds_tcr_cuit_establecimiento         string,
+    cod_tcr_campania_bco                string,
+    cod_tcr_cartera                     int,
+    fc_tcr_importe1                     decimal(15, 2),
+    fc_tcr_importe2                     decimal(15, 2),
+    fc_tcr_importe3                     decimal(15, 2),
+    fc_tcr_importe4                     decimal(15, 2),
+    fc_tcr_importe_origen               decimal(15, 2),
+    fc_tcr_importe_dto_usu              decimal(15, 2),
+    fc_tcr_importe_a_cargo_pag          decimal(15, 2),
+    dt_tcr_fecha_origen                 string
+)
+PARTITIONED BY (
+    partition_date string)
+ROW FORMAT SERDE
+    'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT
+    'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+    OUTPUTFORMAT
+        'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+    '${DATA_LAKE_SERVER}/santander/bi-corp/common/tarjetas/fact/bt_tcr_movimientos_facturados'

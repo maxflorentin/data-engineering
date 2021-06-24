@@ -1,0 +1,76 @@
+{
+    "file": "corresponsales",
+    "location": "/santander/bi-corp/landing/manual/contab/corresponsales/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/manual/contab/corresponsales",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                            "name": "nup",
+                            "type": "string"
+                        },
+                        {
+                            "name": "banco",
+                            "type": "string"
+                        },
+                        {
+                            "name": "pais",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cod_afip",
+                            "type": "string"
+                        },
+                        {
+                            "name": "sector_contable",
+                            "type": "string"
+                        },
+                        {
+                            "name": "tipo_segmento_local_1",
+                            "type": "string"
+                        },                        
+                        {
+                            "name": "tipo_segmento_local_2 ",
+                            "type": "string"
+                        },
+                        {
+                            "name": "segmento_cliente",
+                            "type": "string"
+                        },
+                        {
+                            "name": "moneda",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cargabal",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_altair",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_altair_ant",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_bcra",
+                            "type": "string"
+                        },
+                        {
+                            "name": "agrupador_producto",
+                            "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date_filter}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }

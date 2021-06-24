@@ -1,0 +1,30 @@
+{
+    "file": "param_rorwa_riesgo_operativo_schema",
+    "createTable": "bi_corp_staging.param_rorwa_riesgo_operativo",
+    "location": "/santander/bi-corp/landing/googledrive/dim/param_rorwa_riesgo_operativo/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/gdrive/param_rorwa_riesgo_operativo",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_adn_cg",
+            "type": "string"
+        },
+        {
+            "name": "porcentaje_rope",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

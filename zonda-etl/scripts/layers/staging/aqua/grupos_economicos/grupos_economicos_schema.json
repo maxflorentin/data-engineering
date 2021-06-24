@@ -1,0 +1,111 @@
+{
+  "file": "grupos_economicos",
+  "location": "/santander/bi-corp/landing/aqua/grupos_economicos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/aqua/grupos_economicos",
+  "extension": "csv",
+	"delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "createTable": "bi_corp_staging.grupos_economicos",
+  "columns":
+					[
+					   {
+					    "name": "entidad_legal",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "nombre_largo",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "fecha_informacion",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "facturacion",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "ingresos_de_intereses",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "otros_ingresos",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "primas_netas",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "margen_financiero",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "patrimonio_neto",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "total_activos",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "divisa",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "unidad_monetaria",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "auditores",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "numero_empleados",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "prioridad",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "sector_aqua",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "codigo_iso_del_pais",
+					    "type": "string"
+					    
+					  },
+ {
+					    "name": "codigo_kgr_de_la_matriz",
+					    "type": "string"
+					    
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

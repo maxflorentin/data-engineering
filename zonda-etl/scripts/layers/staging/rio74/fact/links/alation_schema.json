@@ -1,0 +1,95 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_links",
+      "title": "Regitra apertura de mails, se relaciona con subscriber por el id_subscriber y msg_id con tmya_message_log",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Regitra apertura de mails, se relaciona con subscriber por el id_subscriber y msg_id con tmya_message_log",
+      "columns": [
+        {
+          "name": "ID_SUBSCRIBER",
+          "title": "ID_SUBSCRIBER",
+          "description": "NUP del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 16.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ENTITLEMENT",
+          "title": "ENTITLEMENT",
+          "description": "id del mensaje",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 64.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ACCION",
+          "title": "ACCION",
+          "description": "identifica si es apertura - valor A",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESTINATION",
+          "title": "DESTINATION",
+          "description": "destino que realizo la apertura",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 256.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MSG_ID",
+          "title": "MSG_ID",
+          "description": "id del log del mensaje relacionado con tmya_message_log",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIMESTAMP",
+          "title": "TIMESTAMP",
+          "description": "fecha de registro de apertura de link",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

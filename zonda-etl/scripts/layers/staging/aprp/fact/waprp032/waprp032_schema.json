@@ -1,0 +1,17 @@
+{
+  "file": "waprp032_schema",
+  "location": "/santander/bi-corp/landing/aprp/fact/waprp032/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/aprp/fact/waprp032",
+  "createTable": "bi_corp_staging.aprp_waprp032",
+  "copybook": "waprp032.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

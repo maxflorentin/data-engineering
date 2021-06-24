@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_cc_genesysdiscador",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_cc_registro"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_cc_registro","cod_cc_accion","ts_cc_fecha"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_cc_fecha","ts_cc_llamada"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

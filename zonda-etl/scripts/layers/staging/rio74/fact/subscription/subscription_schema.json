@@ -1,0 +1,76 @@
+{
+  "file": "subscription_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/subscription/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/subscription",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_subscription",
+    "type": "string"
+  },
+    {
+      "name": "id_entitlement",
+      "type": "string"
+    },
+    {
+      "name": "id_subscriber",
+      "type": "string"
+    },
+    {
+      "name": "id_device",
+      "type": "string"
+    },
+    {
+      "name": "seqnum",
+      "type": "string"
+    },
+    {
+      "name": "id_timeframe",
+      "type": "string"
+
+    },
+    {
+      "name": "id_status",
+      "type": "string"
+    },
+    {
+      "name": "id_days_to_maturity",
+      "type": "string"
+    },
+    {
+      "name": "id_frequency",
+      "type": "string"
+    },
+    {
+      "name": "more_data",
+      "type": "string"
+    },
+    {
+      "name": "one_time",
+      "type": "string"
+    },
+    {
+      "name": "create_date",
+      "type": "string"
+    },
+    {
+      "name": "modify_date",
+      "type": "string"
+    },
+    {
+      "name": "id_operador",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

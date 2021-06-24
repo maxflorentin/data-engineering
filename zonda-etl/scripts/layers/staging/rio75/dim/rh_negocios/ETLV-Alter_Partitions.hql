@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio75_rh_negocios ;

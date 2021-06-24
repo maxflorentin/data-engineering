@@ -1,0 +1,82 @@
+{
+        "file": "boletos_sam_det_schema",
+        "location": "/santander/bi-corp/landing/rio39/fact/boletos_sam_det/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio39/fact/boletos_sam_det",
+        "tempDirectory": "/santander/bi-corp/temp/rio39",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "skipNotify": true,
+        "columns": [{
+                        "name": "id_bol",
+                        "type": "string"
+                },
+                {
+                        "name": "importe",
+                        "type": "string"
+                },
+                {
+                        "name": "conceptobcra",
+                        "type": "string"
+                },
+                {
+                        "name": "permiso_embarque",
+                        "type": "string"
+                },
+                {
+                        "name": "id_det",
+                        "type": "string"
+                },
+                {
+                        "name": "fecha_embarque",
+                        "type": "string"
+                },
+                {
+                        "name": "acumula_saldo",
+                        "type": "string"
+                },
+                {
+                        "name": "djai",
+                        "type": "string"
+                },
+                {
+                        "name": "djai_excep",
+                        "type": "string"
+                },
+                {
+                        "name": "tipo_dec",
+                        "type": "string"
+                },
+                {
+                        "name": "cod_observacion",
+                        "type": "string"
+                },
+                {
+                        "name": "observacion",
+                        "type": "string"
+                },
+                {
+                        "name": "fecha_venc",
+                        "type": "string"
+                },
+				 {
+                        "name": "gestion_cobro",
+                        "type": "string"
+                },
+                {
+                        "name": "bs_pos_aranc",
+                        "type": "string"
+                }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

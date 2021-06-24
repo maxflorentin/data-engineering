@@ -1,0 +1,437 @@
+{
+  "tables" :[
+       {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_OPS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/opp_ops",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.COD_OPS,A.MONCOD,A.COD_TIPO,A.COD_DESTINO,A.COD_ESTADO,A.LIQ_BKT,A.NRO_BANKTRADE,A.IMPORTE,REPLACE(A.BENEFICIARIO,'|',' ') as BENEFICIARIO,A.TPOCTA,A.SUCURSAL,A.CUENTA,A.NUMERO,A.OBSERVA,REPLACE(A.ORDENANTE,'|',' ') AS ORDENANTE,A.FECHA_VALOR,A.FECHA_MT,A.ACCT_NO,A.FECHA_LIQ,A.FECHA_MODIF,A.USUARIO,A.ENVIO_MAIL,A.F_ENVIO_MAIL,A.NUEVO_RUBRO,A.ASIENTO_CONTABLE,A.CON_FONDOS,A.F_ASIENTO_CONTABLE,A.COD_PRODUCTO,A.USUARIO_VERIFICA,A.FECHA_VERIFICA,A.VISTA,A.PLAZO,A.F_VENCIMIENTO,A.SUMA_PAGOS,A.SALDO_PAGO,A.LIQUIDA_PARCIALES,A.OPP_MAX_SEQ,A.ESTADO_MAIL,A.PAIS_ORIGEN,A.PAIS_BENEF,A.CUENTA_BP,A.NUP,A.COD_SWIFT_R,A.DETALLE_SWIFT,A.MOTIVO_OBSERVA,A.TIPO_CTA_FONDO,A.NRO_FONDO,A.TIPO_CLIENTE,A.TIPO_DOC,A.NRO_DOC,A.TIPO_PERSONA,A.TIPO_IVA,A.EMPLEADO,A.ID_SWIFT_CORRE,A.OBSERVA_ELIMINA,A.TIMESTAMP,A.FECHA_VUELCO72,A.F_AVISO_SINLIQ,A.ES_COM_A5655,A.COD_OPS_REL,A.SECUENCIA_REL,A.COD_PROD_ALTAIR,A.ACREDIT_AUTOM,A.INFORMA_F2040,A.NRO_DOC_70,A.NRO_LEGAJO_CITI,A.NRO_CUENTA_CITI,A.RAZON_SOCIAL_CITI,A.OP_CITY,A.TIPO_DOC_CITY,A.NRO_DOC_CITY,A.NRO_LEGAJO_CITI_ANT,A.DOMICILIO_ORD,A.ACREDIT_AUTOM_CTRL,A.CUADRANTE,A.SUBSEGMENTO,A.ID_ICS,A.FECHA_NAC,A.CAPITAL_CANCELADO,A.CAPITAL_PENDIENTE,A.INTERESES_BKT,A.ULT_SECUENCIA_BKT,A.ID_BOL_CA,A.ID_BOL_NORMAL,A.ID_BOLETO_CITI,A.ID_SWIFT_GPII,A.SRP,A.TASA_TNA,A.TASA_CFT,A.LIQ_BKT_PASIVO,A.TRF_ASOCIADAS,A.TASA_TEA,A.GENERA_COMPROB,A.LOCALIDAD_ORD,A.SUBPROD_ALTAIR,A.ES_SML,A.CONDICION_CORRE,A.FECHA, to_char(B.F_VERIF, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS B JOIN {environment}.{table} A ON A.COD_OPS = B.COD_OPS WHERE to_char(B.F_VERIF, 'YYYY-MM-DD') >= to_char(to_date('{partition_date}','YYYY-MM-DD')-10,'YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_OPS_PAGOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/opp_ops_pagos",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT COD_OPS,SECUENCIA,IMPORTE,LIQ_BKT,MONEDA,FECHA_LIQ,USU_CARGA,USU_VERIF,COD_EST_PAGO,ESTADO_MAIL,ESTADO_VINC,MONTO_PEND_VINC,COD_OPS_VINC,SECUENCIA_VINC,DESC_ERROR,ID_BOLETO,F_VALOR,ACCOUNTNO,COD_DESTINO,F_CONTABLE,ENVIO_MAIL,F_ENVIO_MAIL,ASIENTO_CONTABLE,CANCELA_PREFI,ORIGEN_PAGO,USU_MODIF,COBRA_COMISION,COD_PRODUCTO,COD_EVENTO,SEC_VINC,OBSERVACIONES,F_MODIF,TIPO_CLIENTE,TIPO_DOC,NRO_DOC,TIPO_PERSONA,TIPO_IVA,EMPLEADO,NUP,FUERZA_DB_DUPLI,FUERZA_LIMITE,USU_FUERZA_LIMITE,LUGAR_FUERZA_LIMITE,TIMESTAMP,MOTIVO_ANULACION,ES_FACTURA_E,CONCEPTOBCRA,NIF,F_INGRESO_FONDO,F_VENCIMIENTO_LIQ,ID_NIF,FECHA_EST_EMBARQUE,POS_ARANC,METODO,ENT_ENCARGADA_SEGUI,TIPO_ACRED,TASA,CXD,APLICACION_VERSION,EXENTOIVA,ACUMULA_SALDO,CLI_FEC_NAC,ACCOUNTNO_MONEDA,ACCOUNTNO_DESTINO,ACCOUNTNO2,ACCOUNTNO2_MONEDA,ACCOUNTNO2_DESTINO,COD_PROD_ALTAIR,COD_PROD_ALTAIR2,MOV_CUENTA,INFORMA_F2040,ID_BOLETO_CITY,NRO_FORM,FECHA_NAC,EXEP_GTO_CORRE,FECHA_VENC,PLAZO,TASA_TNA,TASA_CFT,MONTO_PENALTY,INTERESES,AGENCIA,AUTOGESTION,CBU,DESC_ERROR_CHECKLIST,EJECUTO_WS_CHECKLIST,ID_PCC,NRO_DOC_INSC,NRO_PAGO_BKT,NRO_VERSION,SECUENCIA_BKT,TIPO_DOC_INSC,CUIT_ORD,SALDO_PMO_ORIGEN_CANC,ES_FI_DE_IMPO,FI_DE_IMPO,TASA_TEA,MONTO_FIJO,PORC_COMISION,INTERESES_DBTO_CUENTA,USERCONTROL,TIMESTAMPCONTROL,REFERENCIA_BCRA,CONDICION_CLIENTE,CUADRANTE,TITULARAPODERADO,RUBRO_BENEF,NRO_FORM_INVERSION,OP_PREVIA,EMP_VINCULADA,ID_SWIFT199,COTIZACION,ISP_ENTIDAD_EXT,CNP,NOMBRE_EXPORTADOR,CUI,RUT,CODIGO_CUENTA,CEDULA_IDENTIDAD,TRIBUTA_PAIS,F_CARGA,F_VERIF,ID_CELULA,to_char(F_VERIF, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table} WHERE to_char(F_VERIF ,'YYYY-MM-DD') >= to_char(to_date('{partition_date}','YYYY-MM-DD')-10,'YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "BOLETOS_SAM",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/boletos_sam",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.ID_BOL,A.ORIGEN,A.NRO_ORIGEN,A.NRO_PROPUESTA,A.NRO_BOLETO,A.COMPRA_VENTA,A.ESPECIE,A.CLIENTE,A.TIPO_DOC,A.NRO_DOC,A.RAZONSOCIAL_CLIENTE,A.PAIS_RESIDENCIA,A.MERCADO,A.TIPO,A.PLAZO,A.PUESTO,A.PRECIO_MOSTRADOR,A.SECTOR,A.CIERRE_COT,A.CORR_OBS,A.PAIS,A.INSTRUMENTO_BCRA,A.INSTRUMENTO_RECI,A.CORRESP_MAE,A.PAGADOR_BENEF,A.FECHA_EMBARQUE,A.FECHA_LIQ_MON,A.FECHA_LIQ_MON_PAGO,A.COTIZACION,A.ESTADO,A.DESC_ERROR,A.USU_CARGA,A.USU_MODIF,A.FECHA_MODIF,A.FECHA_ACREDI,A.SECUENCIA_ORIGEN,A.ORIGEN_VINC,A.COD_OPS_VINC,A.SECUENCIA_VINC,A.TASA,A.ESAPODERADO,A.TIPO_DOC_APODERADO,A.NRO_DOC_APODERADO,A.CODIGO_PAIS_APODERADO,A.RAZONSOCIAL_NO_RESIDENTE,A.TIPO_DOC_INSC,A.NRO_DOC_INSC,A.FECHA_LIQ_SAM,A.BOLETO_ANTICIPO,A.ENT_FIN_ANTICIPO,A.FECHA_LIQ_ANTICIPO,A.FECHA_NAC,A.DJAI,A.DJAI_EXCEP,A.DJAS,A.DJAS_EXCEP,A.ES_SML,A.DEVOLUCION,A.MOTIVO_ELIMINACION,A.OBSERVACION_ELIMINACION,A.FECHA_REF_BCRA,A.F_INGRESO_FONDO,A.APLICACION_VERSION,A.DESC_ERROR_TECNICO,A.ACUMULA_SALDO,A.NRO_OPERACION,A.CONCEPTOBCRA_SALIDA,A.TIPO_OPERACION,A.ACREDIT_AUTOM,A.ID_PCC,A.FECHA_VENC_FONDOS,A.OP_PREVIA,A.NRO_FORM_INVERSION,A.EMP_VINCULADA,A.MONTOME,A.MONTOMN,A.FECHA_CARGA,  to_char(B.F_VERIF, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS B JOIN {environment}.{table} A ON B.ID_BOLETO = A.ID_BOL  WHERE to_char(B.F_VERIF,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "BOLETOS_SAM_DET",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/boletos_sam_det",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT DISTINCT A.ID_BOL, A.IMPORTE, A.CONCEPTOBCRA, A.PERMISO_EMBARQUE, A.ID_DET, A.FECHA_EMBARQUE, A.ACUMULA_SALDO, A.DJAI, A.DJAI_EXCEP, A.TIPO_DEC, A.COD_OBSERVACION, A.OBSERVACION, A.FECHA_VENC, A.GESTION_COBRO, A.BS_POS_ARANC, to_char(B.F_VERIF, 'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS B JOIN {environment}.BOLETOS_SAM C ON B.ID_BOLETO = C.ID_BOL JOIN {environment}.{table} A ON A.ID_BOL = C.ID_BOL WHERE to_char(B.F_VERIF,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_OPS_PAGOS_DET",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/opp_ops_pagos_det",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+			"command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT A.COD_OPS,A.SECUENCIA,A.CONCEPTO,A.DBTO_CDTO,A.PORCENTAJE,A.COD_MONEDA,A.COTIZACION,A.IMPORTE_ORIGEN,A.IMPORTE_PESOS,A.MOVIM_CTA_REF,A.SEC_MOV_CTA,A.IMPORTE_DOLAR, to_char(B.F_VERIF, 'yyyy-MM-dd') as PARTITION_DATE FROM {environment}.{table} A JOIN {environment}.OPP_OPS_PAGOS B ON A.COD_OPS = B.COD_OPS WHERE to_char(B.F_VERIF, 'yyyy-MM-dd') >= to_char(to_date('{partition_date}','YYYY-MM-DD')-10,'YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --split-by '{split_field}'  --password '{password}' --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_TRF",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/opp_trf",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.COD_OPS,A.TIPO,A.ID_SWIFT,A.NRO_FORM,A.IVA,A.ALICUOTA_IVA,A.GANANCIAS,A.MOTIVO_GAN,A.ALICUOTA_GAN,A.ACARGO_GAN,A.DOBLE_IMPOSICION,A.BANCO_DOMIC,A.BENEFICIARIO,A.BENEF_DOMIC,A.BENEF_CTA,A.SIS_ORIGEN,A.BCO_PAGADOR_CORRE,A.CTA_BCO_INT,A.GASTOS_CORRE,A.IMPORTE_GASTOS_CORRE,A.ES_BCO_BENEF,A.CAMPO70,A.TIPO_PERSONA,A.BANCO_RECEPTOR,A.TIPO_BANCO_RECEPTOR,A.BANCO_INTERMEDIARIO,A.TIPO_BANCO_INTERMEDIARIO,A.BANCO_BENEFICIARIO,A.TIPO_BANCO_BENEFICIARIO,A.ENVIO_MAIL,A.F_ENVIO_MAIL,A.DESC_GAN,A.BASEIMPO_IVA,A.BASEIMPO_GAN,A.FECHA_SWIFT,A.COD_GAN,A.BENEF_LOCALIDAD,A.SECUENCIA,A.TIPO_ANTERIOR,A.ALICUOTA_RUBRO,A.REF_CT,A.ID_ALICUOTA,A.EXENCION_GANANCIAS,A.INVERTIR_ACARGO_GAN,A.ID_NIF_GANANCIA,A.GAN_YA_EFECTUADA,A.GUID,A.SRP,A.INPI,A.ID_REGIMEN,A.CUIT_BENEF,A.ID_SWIFT199,A.FECHA_FACT, to_char(B.F_VERIF,'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.{table} A JOIN {environment}.OPP_OPS_PAGOS B ON A.COD_OPS = B.COD_OPS WHERE to_char(B.F_VERIF,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/fecha_fact={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "SWIFT_IN",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/swift_in",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(F_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT DISTINCT C.ID_SWIFT,C.BENEF,C.MONEDA,C.MONTO,C.ESTADO,C.NRO_OP,C.USUARIO,C.FMODIF,C.REFERENCIA,C.NRO_OPR,C.NROSWIFT,C.BANCO,C.FVALOR,C.TIPO_INGRESO,C.GPI,C.SRP,C.CUENTA,C.CON_FONDOS,C.FINGRESO_FONDOS,C.FECHA_FONDOS,C.FINGRESO,to_char(A.F_VERIF, 'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS A JOIN {environment}.OPP_OPS B ON A.COD_OPS = B.COD_OPS JOIN {environment}.{table} C ON B.NRO_BANKTRADE = C.NRO_OP WHERE to_char(A.F_VERIF ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	        {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CW_FORMULARIOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/cw_formularios",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(FECHA_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT NRO_FORM, TIPO_FORM, SUCURSAL, ACCT_NO, CUIT, COD_CONCEP, MONEDA, MONTO, BANCO_RECEPT, BANCO_DOMIC, BANCO_INTERM, BENEFICIARIO, BENEF_DOMIC, BENEF_CTA, OBSERVACIONES, NRO_OPER_REL, FECHA_FACT, IVA, MOTIVO_IVA, GANANCIAS, MOTIVO_GAN, ACARGO_GAN, ESTADO, MOTIVO_RECHAZO, USER_CARGA, USER_VERIF, FECHA_VERIF, USER_APROB, FECHA_APROB, TIPO_CIERRE, TIPO_OPCALZ, OP_PARCIAL, DOBLE_IMPOSICION, ALICUOTA_IVA, ALICUOTA_GAN, MONTO_FOB, MONTO_FLETE, MONTO_SEG, ACREEDOR, TASA, PLAZO, C_NOMBRE, FECHA_GUIA, POSICION, VER_FORM, TIENE_ADJUNTOS, LOG_IMAGENES, CANAL, PAIS_ORIGEN, PAIS_BENEF, BCO_PAGADOR_CORRE, DESC_GAN, BASEIMPO_IVA, BASEIMPO_GAN, FECHA_SWIFT, BCO_CORRE_AKON, COD_OPS, LIQ_BKT, SECUENCIA, INT_CTA, TIPO_DOC, NRO_DOC, TIPO_PERSONA, TIPO_IVA, TIPO_CLIENTE, EMPLEADO, NUP, ES_FACTURA_E, COD_DDJJ, RESP_CLIE, REF_CLIENTE, CARGO_GASTOS, INTERM_CTA, INST_VENDIDO, INST_RECIBIDO, FECHA_EMB, DDJJ_ADIC, DDJJ_OK, APLICA_GAN, DOBLE_IMP_PAIS, DOBLE_IMP_ART, INPI, F_INTEREST, F_INTEREST_OPCION, F_INTEREST_OTRO, F_INTEREST_NO, NO_RET_OPCION, NO_RET_ART14, NO_RET_MOTIVO, NO_RET_PAIS, NO_RET_ARTICULO, APLICA_IVA, NO_APLICA_IVA_OP, OTROS_NO_IVA, COM_4834_OP, COM_4834_TEXTO, EMPVI_OP1, EMPVI_OP2, EMPVI_OP3, EMPVI_OP4, EMPVI_OP5, NRO_SOLICITUD, TIPO_TRF, COM_RECHAZO, VIGENTE, MONTO_RET_IVA, MONTO_RET_GAN, ID_CT, CTA_ALTAIR_CLIENTE, FECHA_EMB_EST, ID_ALICUOTA, ID_COND_VTA, RAZON_SOCIAL, ESTADO_EJECUCION, USUARIO_EJECUCION, USUARIO_ASIGNADO, FECHA_ASIGNADO, SUBSEGMENTO, NRO_FORM_REL, CORREGIDA, VINCULO, NOM_BENEF, COD_DESTINO, CUADRANTE, CON_5751, OP_5751, FECHA_FIRMA, AUTOGESTION, ACEPTA_DDJJ, ACEPTA_DDJJ_FI, ASOLA_FIRMA, CANCELA_INTERESES, CAPITAL_A_CANCELAR, CAPITAL_A_PRORROGAR, CESION_GARANTIA, COD_CONCEP_PENALTY, COD_ESTADO, COD_MOT_RECHAZO, COD_PRODUCTO, FECHA_VENCIMIENTO, FIANZA_ESPECIFICA, FIANZA_GENERICA, HIPOTECA, ID_GRUPO_BOLETO, IMPORTE_PRESTAMO, INSTANCIA, INTERESES, METODO_CANCELACION, MODALIDAD, MONTO_FIJO, MONTO_PENALTY, NRO_LIQ_SGE, NRO_PRESTAMO_REL, NRO_SECUENCIA_BKT, NRO_SECUENCIA_PRESTAMO_BKT, OBSERVACIONES_GTIA, OTROS, PENALTY, PORC_COMISION, PRENDA_FIJA_FLOT, PRENDA_REGISTRO, STANDBY, TASA_CFT, TASA_TNA, TIPO_AMORTIZACION, TIPO_DOC_CLI, TIPO_OPERACION, TIPO_PRESTAMO, TOTAL_A_CANCELAR, TOTAL_CANC_DEBITO_CTA, TOTAL_CANC_ORD_PAGO, ID_AGENDA, ID_NIF, INV_ACRE, NIF_GAN, CUIT_BENEF, OP_GAN, MOTIVO_RECHAZO_PCC, NOMBRE_OFICIAL_COMERCIAL, SALDO_PMO_ORIGEN_CANC, TASA_TEA, APELLIDO_OFICIAL_COMERCIAL, MAIL_OFICIAL_COMERCIAL, USERCONTROL, TIMESTAMP, RUBRO_BENEF, GENERA_COMPROB, MAIL_SUC, NRO_FORM_INVERSION, CARGO_GASTOS_IMPORTE, TIPO_BANCO_RECEPTOR, TIPO_BANCO_INTERMEDIARIO, USU_RETRO, FECHA_RETRO, FECHA_ORIG_RECHAZO, USU_ORIG_RECHAZO, NRO_BOLETO_DEV, FECHA_CARGA, ID_CELULA, to_char(FECHA_VERIF, 'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.{table} WHERE to_char(FECHA_VERIF ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	        {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CW_FORM_DESPACHOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/cw_form_despachos",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(FECHA_VERIF, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.NRO_FORM,A.SECUENCIA,A.NRO_DOC,A.IMPORTE,A.IMP_APLIC,A.BANCO,A.TIPO_DECLARACION,A.NRO_DJ,A.MOT_EXCEP,A.COD_MONEDA,A.CARGA_MANUAL,A.POSICION_ARANC,A.ESPERA_CERTIF,A.FECHA_EMBARQUE,to_char(B.FECHA_VERIF, 'YYYY-MM-DD') AS PARTITION_DAE FROM {environment}.{table} A JOIN {environment}.CW_FORMULARIOS B ON A.NRO_FORM = B.NRO_FORM WHERE to_char(B.FECHA_VERIF,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	        {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "LFT01",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/lft01",
+            "partition_field": "FECHA",
+			"split_field": "to_char(F_VERIF,'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT T.XLFT01_KEY,T.LFT01_LOCATION,T.LFT01_GR_PREFIX,T.LFT01_GR_NO,T.LFT01_REC_TYPE,T.LFT01_SEQ,T.LFT01_CUR_CD,T.LFT01_EXCH_RT_DISP,T.LFT01_EXCH_RT_IND,T.LFT01_PY_AMT,T.LFT01_PY_AMT_BS_CU,T.LFT01_PY_TOT_DB,T.LFT01_PY_TOT_DBT_A,T.LFT01_PY_TOT_DBT_C,T.LFT01_PY_TOT_CG_DB,T.LFT01_PY_DBT_ACT_N,T.LFT01_PY_DBT_MNEM,T.LFT01_PY_DBT_CUR_C,T.LFT01_PY_DBT_RT_DS,T.LFT01_PY_DBT_RTIND,T.LFT01_PY_TOT_CRDT,T.LFT01_PY_TOT_CR_AM,T.LFT01_PY_TOT_CR_CU,T.LFT01_PY_TOT_CG_CR,T.LFT01_PY_CR_ACT_NO,T.LFT01_PY_CR_MNEM,T.LFT01_PY_CR_CUR_CD,T.LFT01_PY_CR_RT_DIS,T.LFT01_PY_CR_RT_IND,T.LFT01_DOC1_NAME,T.LFT01_DOC1_CAS,T.LFT01_DOC2_NAME,T.LFT01_DOC2_CAS,T.LFT01_DOC3_NAME,T.LFT01_DOC3_CAS,T.LFT01_CHRG1_MNEM,T.LFT01_CHRG1_AMT,T.LFT01_CHRG1_CUR,T.LFT01_CHRG1_RT_DIS,T.LFT01_CHRG1_TAKE,T.LFT01_CHRG1_RT_IND,T.LFT01_CHRG2_MNEM,T.LFT01_CHRG2_AMT,T.LFT01_CHRG2_CUR,T.LFT01_CHRG2_RT_DIS,T.LFT01_CHRG2_TAKE,T.LFT01_CHRG2_RT_IND,T.LFT01_CHRG3_MNEM,T.LFT01_CHRG3_AMT,T.LFT01_CHRG3_CUR,T.LFT01_CHRG3_RT_DIS,T.LFT01_CHRG3_TAKE,T.LFT01_CHRG3_RT_IND,T.LFT01_CHRG4_MNEM,T.LFT01_CHRG4_AMT,T.LFT01_CHRG4_CUR,T.LFT01_CHRG4_RT_DIS,T.LFT01_CHRG4_TAKE,T.LFT01_CHRG4_RT_IND,T.LFT01_COMM_MNEM,T.LFT01_COMM_AMT,T.LFT01_COMM_CURR,T.LFT01_COMM_RT_DISP,T.LFT01_COMM_TAKE,T.LFT01_COMM_RT_IND,T.LFT01_RLS_DATE1,T.LFT01_RLS_DATE2,T.LFT01_RLS_TIME1,T.LFT01_RLS_TIME2,T.LFT01_RLS_CODE1,T.LFT01_RLS_CODE2,T.LFT01_AUTH1,T.LFT01_AUTH2,T.LFT01_PYMT_HOLD_DT,T.LFT01_LAST_PYMT_DT,T.LFT01_PY_VAL_DT,T.LFT01_PY_CRT_DT,T.LFT01_PY_CRT_TM,T.LFT01_PRT_DT_LR_IN,T.LFT01_TX_C1_MNEM,T.LFT01_TX_C1_AT,T.LFT01_TX_C1_AT_DRC,T.LFT01_TX_C2_MNEM,T.LFT01_TX_C2_AT,T.LFT01_TX_C2_AT_DRC,T.LFT01_TX_C3_MNEM,T.LFT01_TX_C3_AT,T.LFT01_TX_C3_AT_DRC,T.LFT01_TX_C4_MNEM,T.LFT01_TX_C4_AT,T.LFT01_TX_C4_AT_DRC,T.LFT01_TX_CM_MNEM,T.LFT01_TX_CM_AT,T.LFT01_TX_CM_AT_DRC,T.LFT01_CRG1_AT_DRCR,T.LFT01_CRG2_AT_DRCR,T.LFT01_CRG3_AT_DRCR,T.LFT01_CRG4_AT_DRCR,T.LFT01_CM_AT_DRCR,T.LFT01_PRDCT_CODE,T.XFTS1_PY_CONTRACT,T.XFT1_PY_DBT_CHR_AC,T.XFT1_PY_DBT_CHR_MN,T.XFT1_PY_DBT_CHR_CR,T.XF1_PY_DB_CH_RT_DS,T.XF1_PY_DB_CH_RT_IN,T.LFT01_PY_AMT_ORIG,T.LFT01_OPER_CODE,T.LFT01_INSTR_CODE,T.LFT01_INSTR_TEXT,T.LFT01_TRANS_TYPE_CODE,T.LFT01_RINST_ACCT,T.LFT01_RINST_CITY,T.LFT01_RINST_ACRN,T.LFT01_RINST_SW_ID,T.LFT01_RINST_CNTRY,T.LFT01_RINST_NADD_1,T.LFT01_RINST_NADD_2,T.LFT01_RINST_NADD_3,T.LFT01_RINST_NADD_4,T.LFT01_RINST_BIC_TYPE,T.LFT01_RINST_ROUTE_NUMBER,T.LFT01_REGUL_REPORTING_1,T.LFT01_REGUL_REPORTING_2,T.LFT01_REGUL_REPORTING_3,T.LFT01_INSTRUCTED_CURR_CODE,T.LFT01_INSTRUCTED_AMT,T.LFT01_INSTR_EXCHANGE_RATE,T.LFT01_SEND_CHGES_CURR_CODE,T.LFT01_SEND_CHGES_AMT,T.LFT01_RECV_CHGES_CURR_CODE,T.LFT01_RECV_CHGES_AMT,T.LFT01_SWIFT_MSG_NO,T.LFT01_13C_DETAILS,T.LFT01_ADDIT_INST_CODE_1,T.LFT01_ADDIT_INST_CODE_2,T.LFT01_ADDIT_INST_CODE_3,T.LFT01_ADDIT_INST_CODE_4,T.LFT01_ADDIT_INST_CODE_5,T.LFT01_ADDIT_INST_CODE_6,T.LFT01_ADDIT_INST_CODE_7,T.LFT01_ADDIT_INST_CODE_8,T.LFT01_ADDIT_INST_CODE_9,T.LFT01_ADDIT_INST_CODE_10,T.LFT01_ADDIT_INST_CODE_11,T.LFT01_ADDIT_INST_CODE_12,T.LFT01_ADDIT_INST_TEXT_1,T.LFT01_ADDIT_INST_TEXT_2,T.LFT01_ADDIT_INST_TEXT_3,T.LFT01_ADDIT_INST_TEXT_4,T.LFT01_ADDIT_INST_TEXT_5,T.LFT01_ADDIT_INST_TEXT_6,T.LFT01_ADDIT_INST_TEXT_7,T.LFT01_ADDIT_INST_TEXT_8,T.LFT01_ADDIT_INST_TEXT_9,T.LFT01_ADDIT_INST_TEXT_10,T.LFT01_ADDIT_INST_TEXT_11,T.LFT01_ADDIT_INST_TEXT_12,T.LFT01_ADDIT_INSTR_IND,T.LFT01_ADDIT_SEND_IND,T.LFT01_ADDIT_SEND_CURR_1,T.LFT01_ADDIT_SEND_CURR_2,T.LFT01_ADDIT_SEND_CURR_3,T.LFT01_ADDIT_SEND_CURR_4,T.LFT01_ADDIT_SEND_CURR_5,T.LFT01_ADDIT_SEND_AMT_1,T.LFT01_ADDIT_SEND_AMT_2,T.LFT01_ADDIT_SEND_AMT_3,T.LFT01_ADDIT_SEND_AMT_4,T.LFT01_ADDIT_SEND_AMT_5,T.LFT01_TAX1_COMM_MNEM,T.LFT01_TAX1_COMM_AMT,T.LFT01_TAX1_COMM_AMT_DR_CUR,T.LFT01_TAX2_COMM_MNEM,T.LFT01_TAX2_COMM_AMT,T.LFT01_TAX2_COMM_AMT_DR_CUR,T.LFT01_TAX3_COMM_MNEM,T.LFT01_TAX3_COMM_AMT,T.LFT01_TAX3_COMM_AMT_DR_CUR,T.LFT01_TAX4_COMM_MNEM,T.LFT01_TAX4_COMM_AMT,T.LFT01_TAX4_COMM_AMT_DR_CUR,T.LFT01_TAX5_COMM_MNEM,T.LFT01_TAX5_COMM_AMT,T.LFT01_TAX5_COMM_AMT_DR_CUR,to_char(P.F_VERIF,'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS P JOIN {environment}.{table} T ON T.LFT01_GR_NO = SUBSTR(TRIM(P.LIQ_BKT), 2) WHERE TO_CHAR(P.F_VERIF,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "LFT00",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/lft00",
+			"partition_field": "FECHA",
+			"split_field": "to_char(F_VERIF,'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT L.XLFT00_KEY,L.LFT0_LOCATION,L.LFT0_GR_PREFIX,L.LFT0_GR_NO,L.LFT0_REC_TYPE,L.LFT0_SEQ,L.LFT0_TYPE,L.LFT0_SUFFIX,L.LFT0_BN_RCV_RFR,L.LFT0_BN_RCV_ACCT_N,L.LFT0_BN_RV_NM_ADL1,L.LFT0_BN_RV_NM_ADL2,L.LFT0_BN_RV_NM_ADL3,L.LFT0_BN_RV_NM_ADL4,L.LFT0_BN_RV_CT_CD,L.LFT0_BN_RV_ACRN,L.LFT0_BN_RV_CNTR,L.LFT0_CS_SD_RFRN,L.LFT0_CS_SD_AC_NO,L.LFT0_CS_SD_NM_ADL1,L.LFT0_CS_SD_NM_ADL2,L.LFT0_CS_SD_NM_ADL3,L.LFT0_CS_SD_NM_ADL4,L.LFT0_CS_SD_CT_CD,L.LFT0_CS_SD_ACRN,L.LFT0_CS_SD_CNTR,L.LFT0_WRKR_NO,L.LFT0_WRKR_PASSWORD,L.LFT0_TRN_FRM_INC_S,L.LFT0_TRN_FRM_CST_B,L.LFT0_LOG_MODE_IND,L.LFT0_TMPL_NUM,L.LFT0_BENE_RCV_SWID,L.LFT0_CUST_SND_SWID,L.LFT0_BEN_RCV_ID_IN,L.LFT0_BEN_RCV_ID_TY,L.LFT0_BEN_RCV_ID,L.LFT0_CST_SND_ID_IN,L.LFT0_CST_SND_ID_TY,L.LFT0_CST_SND_ID,L.LFT0_SEND_ID_IND,L.LFT0_SEND_ID_TYPE,L.LFT0_SEND_ID,L.LFT0_RECV_ID_IND,L.LFT0_RECV_ID_TYPE,L.LFT0_RECV_ID,L.LFT0_BNC_ORD_ID_IN,L.LFT0_BNC_ORD_ID_TY,L.LFT0_BNC_ORD_ID,L.LFT0_ORD_INS_ID_IN,L.LFT0_ORD_INS_ID_TY,L.LFT0_ORD_INS_ID,L.LFT0_INTRM_ID_IND,L.LFT0_INTRM_ID_TYPE,L.LFT0_INTRM_ID,L.LFT0_COVER_ID_IND,L.LFT0_COVER_ID_TYPE,L.LFT0_COVER_ID,L.XFT0_BEN_INS_ID_IN,L.XFT0_BEN_INS_ID_TP,L.XFTS0_BENE_INST_ID,L.LFT0_AC_INS_ID_IND,L.LFT0_AC_INS_ID_TYP,L.LFT0_AC_INS_ID,L.XFTS0_LIAB_SUB_NMB,L.LFT0_PROTOTYPE_NUMBER,to_char(P.F_VERIF,'YYYY-MM-DD') AS PARTITION_DATE FROM EXT.OPP_OPS_PAGOS P JOIN {environment}.{table} L ON L.LFT0_GR_NO = SUBSTR(TRIM(P.LIQ_BKT), 2) WHERE TO_CHAR(P.F_VERIF,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "LFT02",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/lft02",
+			"partition_field": "FECHA",
+			"split_field": "to_char(F_VERIF,'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.XLFT02_KEY,A.LFT02_LOCATION,A.LFT02_GR_PREFIX,A.LFT02_GR_NO,A.LFT02_REC_TYPE,A.LFT02_SEQ,A.LFT02_DET_OF_CHG,A.LFT02_OTHER_DETLS,A.LFT02_SEND_ACCT,A.LFT02_SEND_CITY,A.LFT02_SEND_ACRN,A.LFT02_SEND_SW_ID,A.LFT02_SEND_NADD_1,A.LFT02_SEND_NADD_2,A.LFT02_SEND_NADD_3,A.LFT02_SEND_NADD_4,A.LFT02_RECV_ACCT,A.LFT02_RECV_CITY,A.LFT02_RECV_ACRN,A.LFT02_RECV_SW_ID,A.LFT02_RECV_NADD_1,A.LFT02_RECV_NADD_2,A.LFT02_RECV_NADD_3,A.LFT02_RECV_NADD_4,A.LFT02_BN_ORD_ACCT,A.LFT02_BN_ORD_CITY,A.LFT02_BN_ORD_ACRN,A.LFT02_BN_ORD_NADD1,A.LFT02_BN_ORD_NADD2,A.LFT02_BN_ORD_NADD3,A.LFT02_BN_ORD_NADD4,A.LFT02_DT_PMNT_LN_1,A.LFT02_DT_PMNT_LN_2,A.LFT02_DT_PMNT_LN_3,A.LFT02_DT_PMNT_LN_4,A.LFT02_SND_RV_INF_1,A.LFT02_SND_RV_INF_2,A.LFT02_SND_RV_INF_3,A.LFT02_SND_RV_INF_4,A.LFT02_SND_RV_INF_5,A.LFT02_SND_RV_INF_6,A.LFT02_ORD_INT_ACCT,A.LFT02_ORD_INT_CITY,A.LFT02_ORD_INT_ACRN,A.LFT02_ORD_INT_SW_I,A.LFT02_ORD_INT_NAD1,A.LFT02_ORD_INT_NAD2,A.LFT02_ORD_INT_NAD3,A.LFT02_ORD_INT_NAD4,A.LFT02_INTRM_ACCT,A.LFT02_INTRM_CITY,A.LFT02_INTRM_ACRN,A.LFT02_INTRM_SW_ID,A.LFT02_INTRM_NAD_1,A.LFT02_INTRM_NAD_2,A.LFT02_INTRM_NAD_3,A.LFT02_INTRM_NAD_4,A.LFT02_CVR_ACCT,A.LFT02_CVR_CITY,A.LFT02_CVR_ACRN,A.LFT02_CVR_SW_ID,A.LFT02_CVR_NAD_1,A.LFT02_CVR_NAD_2,A.LFT02_CVR_NAD_3,A.LFT02_CVR_NAD_4,A.XFTS2_BENE_INS_ACC,A.XFTS2_BENE_INS_CIT,A.XFTS2_BENE_INS_ACR,A.XFT2_BEN_INS_SW_ID,A.XFTS2_BEN_INS_NDD1,A.XFTS2_BEN_INS_NDD2,A.XFTS2_BEN_INS_NDD3,A.XFTS2_BEN_INS_NDD4,A.LFT02_AC_INT_ACT,A.LFT02_AC_INT_CITY,A.LFT02_AC_INT_ACRN,A.LFT02_AC_INT_SW_ID,A.LFT02_AC_INT_NAD_1,A.LFT02_AC_INT_NAD_2,A.LFT02_AC_INT_NAD_3,A.LFT02_AC_INT_NAD_4,A.LFT02_SEND_NAD_INC,A.LFT02_RECV_NAD_INC,A.LFT02_ACCT_SW_ID,A.LFT02_BENC_SW_ID,to_char(B.F_VERIF,'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.OPP_OPS_PAGOS B JOIN {environment}.{table} A ON A.LFT02_GR_NO = SUBSTR(TRIM(B.LIQ_BKT), 2) WHERE TO_CHAR(B.F_VERIF,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+            {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "PAISES",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/paises",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_MONEDAS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_monedas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "SWF_BANCOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/swf_bancos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "INTERFACES_TIPO_MOV",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/interfaces_tipo_mov",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "INFO_TABLA_CODIGOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/info_tabla_codigos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "C4605_OPERACIONES",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/c4605_operaciones",
+            "partition_field": "FECHA_ALTA",
+            "split_field": "to_char(FECHA_ALTA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT COD_OPS, ORDENANTE, TIPO_DOC, NRO_DOC, NRO_BANKTRADE, IMPORTE, MONCOD, FECHA_LIQ, CONCEPTO_BCRA, NRO_BOLETO, FECHA_VENC, ESTADO, DENUNCIADO, FECHA_DENU, ENVIADO_DENU, REGULARIZADO, FECHA_REGU, ENVIADO_REGU, OBSERVACIONES, USU_ALTA, to_char(FECHA_ALTA, 'yyyy-MM-dd') as FECHA_ALTA, USU_MODIF, FECHA_MODIF, USU_BAJA, FECHA_BAJA, USU_VERIF, FECHA_VERIF, FECHA_PARA_DENU, RANGO_COMI, RANGO_MONTO, VALIDADOBCRA, ENSEGUIMIENTO, FECHA_VALIDACION_BCRA, FECHA_TOMADO FROM {environment}.{table} WHERE to_char(FECHA_ALTA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "C4605_DESPACHOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/c4605_despachos",
+            "partition_field": "FECHA_ALTA",
+            "split_field": "to_char(FECHA_ALTA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NRO_DESPACHO, FECHA_EMB, FECHA_NAC, FECHA_OFICIALIZACION, POS_ARANC, MONCOD, IMPORTE, MONTO_FOB, MONTO_FLETES, MONTO_SEGURO, MONTO_AJUSTE, MONTO_TOTAL, TIPO_DOC, NRO_DOC, USU_ALTA,to_char(FECHA_ALTA, 'yyyy-MM-dd') as FECHA_ALTA ,USU_MODIF, FECHA_MODIF, USU_BAJA, FECHA_BAJA, USU_VERIF, FECHA_VERIF, FECHA_TOMADO, MONTO_AJUSTE_DEDUCIR, ORIGEN, COND_VTA, COD_BANCO_EMI, FK_ID_SWIFT_DESP, CERTIFICACION_CLIENTE FROM {environment}.{table} WHERE to_char(FECHA_ALTA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "COMCOB",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/comcob",
+			"partition_field": "CARGA_FECHA",
+            "split_field": "to_char(CARGA_FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT COMNUM, TIPO_COM, NRO_DESTINACION, CUIT, CUENTA_OPER, MONTO_USD, ACCOUNTNUM, COTIZA, MONTO_ARG, IVA1, TIPO_IVA2, IVA2, NETO, FECHA_PROC, FECHA_VALOR, ESTADO, CONTAB, COMPROB, OBSERVACIONES, LEYENDACOMPROB, CARGA_USU, VERIF_USU, VERIF_FECHA, INFNUM_INF_BCRA, FECHA_PRES_3602, COD_AGRUPA, COD_3602, COD_4237, ID_CID, ID_CID_OP, CORRIDA, COB_DEV, MARCA_IVA, to_char(CARGA_FECHA, 'YYYY-MM-DD') CARGA_FECHA FROM {environment}.{table} WHERE to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+	  },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "C4605_DESPACHOS_AFECTS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/c4605_despachos_afects",
+            "partition_field": "FECHA_ALTA",
+            "split_field": "to_char(FECHA_ALTA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NRO_DESPACHO, COD_OPS, NRO_SEQUENCIA, IMPORTE_MONEDA_OPERACION, IMPORTE_MONEDA_DESPACHO, COTIZACION_PASE, FECHA_AFECT, OBSERVACIONES, USU_ALTA, to_char(FECHA_ALTA, 'yyyy-MM-dd') as FECHA_ALTA ,USU_MODIF, FECHA_MODIF, USU_BAJA, FECHA_BAJA, USU_VERIF, FECHA_VERIF, FECHA_TOMADO, SEC_BCRA_DESP, SEC_BCRA_ANT, INFORME_ALTA, FECHA_INFORME_ALTA, INFORME_BAJA, FECHA_INFORME_BAJA, COD_TIPO, ID_DET, MONTO_C5060, TIPO_CERTIFICACION, TIPO_REPORTE, SEC_AFECT, POS_ARANC FROM {environment}.{table} WHERE to_char(FECHA_ALTA ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "C3493_OPER_BOLETOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/c3493_oper_boletos",
+            "partition_field": "FECHA_ALTA",
+            "split_field": "to_char(FECHA_ALTA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NRO_DESTINACION, NROPERACION, NRO_SECUENCIA, MONTO_OPERACION, FECHA_ENVIO, ENVIADO, FECHA_MODIF, USUARIO, FECHA_NEG, FLAG, ULT_NEG, SECUENCIA, NROOP, NROSEQ, TIPO_APLIC, OBSERVACIONES, IDCONCEPTOBOLTEC, USUARIO_ALTA,to_char(FECHA_ALTA, 'yyyy-MM-dd') as FECHA_ALTA,ORIGEN, COD_BANCO, EMP_VINCULADAS, LIMITE_CAMBIO, COTIZACION_PASE, MONTO_BOLETO, ENVIO_KAE, FECHA_ENVIO_KAE, NRO_SECUENCIA_KAE, CONCEPTO_KAE, FECHA_ACCION_KAE, INFO_ADICIONAL_KAE_1, INFO_ADICIONAL_KAE_2, ID_MECANISMO, ULT_INFNUM_KAE, M_SEC_KAE_MANUAL, FECHA_LIQ_ANTICIPO, CUMPLE_PARCIAL, FECHA_CANCEL_DEUDA, CONCEPTO_BOL FROM {environment}.{table} WHERE to_char(FECHA_ALTA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "C3493_OPER",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/c3493_oper",
+            "partition_field": "FECHA_CARGA",
+            "split_field": "to_char(FECHA_CARGA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NRO_DESTINACION, CUIT, RAZON_SOCIAL, DIRECCION, FECHA_OFICIALIZ, MONTO_FOB, FECHA_EMBARQUE, MONEDA, COND_VENTA, FECHA_NEGOC, CUMPLIMIENTO, ENVIADO_CUMP, RESOL562002, FECHA_ENVIO_CUMP, INCUMPLIMIENTO, OBSERV, MONTO_FLETES, ESTADO,to_char(FECHA_CARGA, 'yyyy-MM-dd') as FECHA_CARGA,ENVIADO_INCUMP, FECHA_ENVIO_INCUMP, FECHA_VENC, FECHA_MODIF, USUARIO, POSIC_ARANCEL, FECHA_ANULACION, DESC_ANULACION, NOMINADA, COMNUM, APLICA_3848, COD_ALADI, F_ENVIO_3848, ENVIADO_3848, MONTO_SEGURO, ID_PEDIDO_EJECUCION, INSUMOS_IMP_TEMP, AJUSTES, USUARIO_MODIF, VENTAJA, SECUENCIA, MONTO_EXIGIDO, DIFERENCIA_ITEM_FOB, AVISO_30, GESTIONCOBRO, FECHAGESTION, USUARIOGESTION, GESTIONCONDICION, FECHA_TRASPASO_NOSECOEXPO, ENVIADO_GESTION, FECHA_ENVIO_GESTION, ORIGEN, REF_SWIFT, NUP, TIPO_DOCUMENTO, NUMERO_DOCUMENTO, COD_BANCO, EXIG_MODIF_POR_USU, ENVIADO_KAB, PAIS, EMP_VINCULADAS, EXP_MONTO_INFERIOR, CONTR_EXISTENTES, RESOLUCION, DIAS_PLAZO_RES, MONTO_EXCEDENTE, NRO_REVERTBCRA, NRO_DESTINACION_CANCEL, NRO_DESTINACION_DEF, DISCREPANCIA, FECHA_DISCREPANCIA FROM {environment}.{table} WHERE to_char(FECHA_CARGA ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CONFIG_CONCEPTOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/config_conceptos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_PRODUCTOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_productos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_DESTINOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_destinos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_ESTADOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_estados",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_TIPOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_tipos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "RECHAZOS_FORMULARIO",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/rechazos_formulario",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CODIGOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/codigos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "V_FORMULARIOS",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/v_formularios",
+            "partition_field": "PARTITION_DATE",
+            "split_field": "to_char(FECHA_VERIF, 'YYYY-MM-DD')",
+			"command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT COD_CONCEP, COD_OPS, SECUENCIA, NRO_FORM, NRO_FORM_REL, TIPO_FORM, NRO_OPER_REL, ESTADO, FECHA_CARGA, FECHA_FIRMA, FECHA_VERIF, TIEMPO_CLIENTE, LVL_RECTIFICACION, NRO_FORM_ORIGINAL, PRIMER_FECHA_CARGA, PRIMER_FECHA_FIRMA, to_char(FECHA_VERIF, 'YYYY-MM-DD') AS PARTITION_DATE FROM {environment}.{table} WHERE to_char(FECHA_VERIF ,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPP_ESTADOS_PAGOS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/opp_estados_pagos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CELULAS",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/celulas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "TIPO_CELULA",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/tipo_celula",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "CANAL_POR_CELULA",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/canal_por_celula",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "NUP_POR_CELULA",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/nup_por_celula",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "ZONAS_POR_CELULA",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/zonas_por_celula",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+    {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "OPERACIONES_COMI",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/operaciones_comi",
+            "partition_field": "CARGA_FECHA",
+            "split_field": "to_char(CARGA_FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT cod_ops,secuencia,comnum,carga_fecha,estado,estado_tmp,cuit,com_tipo,monto_oper,cotizacion,usuario,cuenta,monto_comi_usd,monto_comi_ars,swift_usd,swift_ars,idboleto,excepto_our FROM {environment}.{table} WHERE to_char(CARGA_FECHA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "COMCOB_IMP_DET",
+            "table_type": "fact",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/fact/comcob_imp_det",
+            "partition_field": "CARGA_FECHA",
+            "split_field": "to_char(CARGA_FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT a.comnum,a.concepto,a.dbto_cdto,a.porcentaje,a.cod_moneda,a.cotizacion,a.importe_origen,a.importe_pesos,a.concepto_desc,a.modif_usu,a.modif_fec,a.verif_usu,a.verif_fec,a.fecha_proc,a.fecha_valor,a.estado,a.contab,a.comprob,a.cod_agrupa,a.cob_dev,a.marca_iva,c.carga_fecha FROM {environment}.{table} a INNER JOIN {environment}.COMCOB c on c.comnum=a.comnum WHERE to_char(c.CARGA_FECHA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "MOTIVOS_RECHAZO",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/motivos_rechazo",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "RIO39",
+            "table": "HIST_AREA_TEC",
+            "table_type": "dim",
+			"environment": "EXT",
+            "landing_path": "/santander/bi-corp/landing/rio39/dim/hist_area_tec",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --hive-delims-replacement ' ' --split-by \"{split_field}\" --verbose\n"
+
+	  }
+  ]
+}

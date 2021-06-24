@@ -1,0 +1,34 @@
+name: LOAD_CMN_Flattener_OMDM-Daily
+description: 'Load OMDM Daily Flat Tables Using Flattener'
+owner: BI-Corp
+active: true
+start_date: '2021-05-01'
+#schedule_interval: '0 5 * * *'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Exec_Flattener_OMDM
+    operator: SparkSubmitOperator
+    config:
+      name: 'flattener_omdm_daily'
+      connection_id: cloudera_spark2
+      num_executors: 10
+      executor_cores: 5
+      executor_memory: 16G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/flattener/flattener.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/shared/flattener/config/omdm_daily_config.json']
+      conf: {
+            'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Flattener_OMDM-Daily') }}",
+            'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['omdm_daily_config.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, mjourdan@santandertecnologia.com.ar, mlevisrossi@santandertecnologia.com.ar, fscagnettibrusatori@santandertecnologia.com.ar]

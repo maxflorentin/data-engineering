@@ -1,0 +1,1 @@
+GRANT SELECT (partition_date) ON TABLE bi_corp_staging.fm_rescates TO ROLE grpdlbicorpstagingro;

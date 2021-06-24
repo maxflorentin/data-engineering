@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_ind_participantes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tramite","cod_adm_participante"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_adm_participante"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_fecaltinh","dt_adm_fecvtoinh","dt_adm_fecnacimiento","dt_adm_fecaltaprodcb","dt_adm_fecmarjuanito","dt_adm_fecingreso"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

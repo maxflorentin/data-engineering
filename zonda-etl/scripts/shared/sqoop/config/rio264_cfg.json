@@ -1,0 +1,38 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "RIO264db.ar.bsch",
+      "database": "FONFEE",
+      "table": "VW_COMMISSIONS",
+      "table_type": "fact",
+      "environment": "RIO264",
+      "landing_path": "/santander/bi-corp/landing/rio264/fact/vw_commissions",
+      "partition_field": "TO_CHAR(date_process,'YYYY-MM-DD')",
+      "split_field": "date_process",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select person,account,case when shares = 0 then '0' when shares < 1 then '0'||replace(shares,',','.') else replace(shares,',','.') end shares,manager_id,fund_code,case when patrimony = 0 then '0' when patrimony < 1 then '0'||replace(patrimony,',','.') else replace(patrimony,',','.') end patrimony,TO_CHAR(date_process,'YYYYMMDD') AS date_process,TO_CHAR(calc_date,'YYYYMMDD') AS calc_date,destination,accounting_center,accounting_account,case when percentage = 0 then '0' when percentage < 1 then '0'||replace(percentage,',','.') else replace(percentage,',','.') end percentage,case when commission = 0 then '0' when commission < 1 then '0'||replace(commission,',','.') else replace(commission,',','.') end commission,TO_CHAR(date_process,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2020-10-01' AND {partition_field} <= '2021-05-10' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio264/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by ';' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "RIO264db.ar.bsch",
+      "database": "FONLAKE",
+      "table": "VW_DLAKE_SUBSCRIPTION",
+      "table_type": "fact",
+      "environment": "RIO264",
+      "landing_path": "/santander/bi-corp/landing/rio264/fact/vw_lake_subscription",
+      "partition_field": "TO_CHAR(dtinput,'YYYY-MM-DD')",
+      "split_field": "dtinput",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cod_fdo,cod_cliente,certificado,cod_fdo_orig,cod_cli_orig,nr_oper_orig,nr_resg_orig,cod_ctod_orig,cod_can_liq,cod_agte_solic,cod_canal_solic,cod_agte_dg,cod_can_dg,cod_oper_dg,cod_agte_cd,cod_can_cd,cod_oper_cd,TO_CHAR(dtinput,'YYYYMMDD') dtinput,hora,TO_CHAR(dtsolic,'YYYYMMDD') dtsolic,to_char(to_date(dtconver,'DD/mm/rrrr'),'YYYYMMDD') dtconver,to_char(to_date(dtultrgt,'DD/mm/rrrr'),'YYYYMMDD') dtultrgt,to_char(to_date(dtestorno,'DD/mm/rrrr'),'YYYYMMDD') dtestorno,to_char(to_date(dtbloqueio,'DD/mm/rrrr'),'YYYYMMDD') dtbloqueio,cod_bloqueio,dias_ut_dec,forma_pagto,tipo_cta,moeda_cta,nr_cta_tip,nr_cta_num,val_cota_base,val_apl_liq,qt_cot_apl,qt_cot_rgt,sd_cot_atu,val_cota_liq_d0,num_cancel,moeda_cambio,cotacao_pact,vl_conv_pact,dtcomprom,apl_transf,nr_oper,cliente_ac ,null as filler, TO_CHAR(dtinput,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-01-28' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio264/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by ';' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "RIO264db.ar.bsch",
+      "database": "FONLAKE",
+      "table": "VW_DLAKE_REDEMPTION",
+      "table_type": "fact",
+      "environment": "RIO264",
+      "landing_path": "/santander/bi-corp/landing/rio264/fact/vw_lake_redemption",
+      "partition_field": "TO_CHAR(dtinput,'YYYY-MM-DD')",
+      "split_field": "dtinput",
+      "command":  "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cod_fdo,cod_cliente,certificado,nr_rgt,cod_fdo_dest,cod_cli_dest,nr_cert_dest,cod_agte_solic,cod_canal_solic,cod_agte_dg,cod_can_dg,cod_oper_dg,cod_agte_cd,cod_can_cd,cod_oper_cd,TO_CHAR(dtinput,'YYYYMMDD') dtinput,hora,TO_CHAR(dtsolic,'YYYYMMDD') dtsolic,TO_CHAR(dtconver,'YYYYMMDD') dtconver,TO_CHAR(dtpagto,'YYYYMMDD') dtpagto,TO_CHAR(dtestorno,'YYYYMMDD') dtestorno,forma_pagto,tipo_cta,moeda_cta,nr_cta_tip,nr_cta_num,perc_comis,val_rgt_brt,val_rgt_liq,val_cust_rgt,qt_cot_rgt, val_cota_rgt,num_cancel,moeda_cambio,cotacao_indi, vl_conv_pact,cod_can_liq,nr_oper,liqu_rgt,cliente_ac,null as filler, TO_CHAR(dtinput,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-01-24' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio264/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by ';' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+
+  ]
+}

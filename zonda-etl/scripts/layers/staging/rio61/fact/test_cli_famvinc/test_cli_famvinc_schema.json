@@ -1,0 +1,40 @@
+{
+    "file": "test_cli_famvinc_schema",
+    "location": "/santander/bi-corp/landing/rio61/fact/test_cli_famvinc/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio61/fact/test_cli_famvinc",
+    "createTable": "bi_corp_staging.rio61_test_cli_famvinc",
+    "extension":"csv",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "delimiter":"^",
+    "fixed": false,
+    "columns": [
+      {
+        "name":"fecha_proceso",
+        "type": "string"
+      },
+      {
+        "name":"nup",
+        "type":"string"
+      },
+      {
+        "name":"area_negocio",
+        "type":"string"
+      },
+      {
+        "name":"cod_famvinc",
+        "type":"string"
+      },
+      {
+        "name":"ponderacion",
+        "type":"string"
+      }
+    ],
+    "extraColumns": [{
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+  }

@@ -1,0 +1,94 @@
+{
+  "file": "day_schema",
+  "location": "/santander/bi-corp/landing/rio265/dim/rio265_day/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/dim/rio265_day",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_day",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "user",
+      "type": "string"
+    },
+    {
+      "name": "datefrom",
+      "type": "string"
+    },
+    {
+      "name": "dateto",
+      "type": "string"
+    },
+    {
+      "name": "authorizationuser",
+      "type": "string"
+    },
+    {
+      "name": "modificationuser",
+      "type": "string"
+    },
+    {
+      "name": "hasautomaticrenewal",
+      "type": "string"
+    },
+    {
+      "name": "hasretroactiveedition",
+      "type": "string"
+    },
+    {
+      "name": "image",
+      "type": "string"
+    },
+    {
+      "name": "termsandconditions",
+      "type": "string"
+    },
+    {
+      "name": "originaldatefrom",
+      "type": "string"
+    },
+    {
+      "name": "originaldateto",
+      "type": "string"
+    },
+    {
+      "name": "investment",
+      "type": "string"
+    },
+    {
+      "name": "id_award",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitstate",
+      "type": "string"
+    },
+    {
+      "name": "pausedate",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

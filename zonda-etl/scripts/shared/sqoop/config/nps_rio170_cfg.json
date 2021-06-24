@@ -1,0 +1,166 @@
+{
+  "tables" :[
+        {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_ENC_CLIENTES",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/clientes",
+            "partition_field": "FECHA",
+            "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename=clientes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_ENCUESTAS",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/encuestas",
+            "split_field": "ID_ENCUESTA",
+            "command": "sqoop import -Dmapreduce.output.basename=encuestas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_ENC_PREGUNTAS",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/preguntas",
+            "split_field": "ID_ENCUESTA",
+            "command": "sqoop import -Dmapreduce.output.basename=preguntas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_ENC_RESPUESTAS",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/respuestas",
+            "partition_field": "FECHA",
+            "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename=respuestas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_NOTIFICACIONES",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/gec_notificaciones",
+            "command": "sqoop import -Dmapreduce.output.basename=gec_notificaciones -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF'  --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "V_NOTIF_CANAL_CLIENTE",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/v_notif_canal_cliente",
+            "partition_field": "FECHA_ESTADO",
+            "command": "sqoop import -Dmapreduce.output.basename=v_notif_canal_cliente -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_MENSAJES",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/gec_mensajes",
+            "command": "sqoop import -Dmapreduce.output.basename=gec_mensajes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_GRUPO_MENSAJES",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/gec_grupo_mensajes",
+            "split_field": "ID_GRUPO",
+            "command": "sqoop import -Dmapreduce.output.basename=gec_grupo_mensajes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "GEC_CANALES",
+            "table_type": "dim",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/dim/gec_canales",
+            "command": "sqoop import -Dmapreduce.output.basename=gec_mensajes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+              "serverConfig" : "DBLXORAFRONT07",
+              "database": "GEC",
+              "table": "AC_CONTENIDOS",
+              "table_type": "dim",
+              "environment": "rio170",
+              "landing_path": "/santander/bi-corp/landing/rio170/dim/ac_contenidos",
+              "command": "sqoop import -Dmapreduce.output.basename=ac_contenidos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+              "serverConfig" : "DBLXORAFRONT07",
+              "database": "GEC",
+              "table": "AC_CONTENIDOS_DESTINOS",
+              "table_type": "dim",
+              "environment": "rio170",
+              "landing_path": "/santander/bi-corp/landing/rio170/dim/ac_contenidos_destinos",
+              "command": "sqoop import -Dmapreduce.output.basename=ac_contenidos_destinos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+              "serverConfig" : "DBLXORAFRONT07",
+              "database": "GEC",
+              "table": "ACCION_COMERCIAL",
+              "table_type": "dim",
+              "environment": "rio170",
+              "landing_path": "/santander/bi-corp/landing/rio170/dim/accion_comercial",
+              "command": "sqoop import -Dmapreduce.output.basename=accion_comercial -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "AC_TX_PRESENTADAS",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/ac_tx_presentadas",
+            "partition_field": "FE_PROCESO",
+            "split_field": "to_char(FE_PROCESO, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename=ac_tx_presentadas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "AC_CLIENTES",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/ac_clientes",
+            "command": "sqoop import -Dmapreduce.output.basename=ac_clientes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "AC_CLIENTES_DESTINOS",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/ac_clientes_destinos",
+            "command": "sqoop import -Dmapreduce.output.basename=ac_clientes_destinos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverAka": "rio170",
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "GEC",
+            "table": "AC_CONTENIDOS_CLIENTES",
+            "table_type": "fact",
+            "environment": "rio170",
+            "landing_path": "/santander/bi-corp/landing/rio170/fact/ac_contenidos_clientes",
+            "command": "sqoop import -Dmapreduce.output.basename=ac_contenidos_clientes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO170' --username 'srvcengineerlake' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'HRbd_4bGDU783cF' --split-by \"{split_field}\" --verbose\n"
+      }
+  ]
+}

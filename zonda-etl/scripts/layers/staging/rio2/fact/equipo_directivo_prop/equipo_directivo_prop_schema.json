@@ -1,0 +1,90 @@
+{
+  "file": "equipo_directivo_prop_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/equipo_directivo_prop/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/equipo_directivo_prop",
+  "createTable": "bi_corp_staging.sge_equipo_directivo_prop",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "nro_prop",
+      "type": "string"
+    },
+    {
+      "name": "secuencia",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "cargo",
+      "type": "string"
+    },
+    {
+      "name": "cliente",
+      "type": "string"
+    },
+    {
+      "name": "peusualt",
+      "type": "string"
+    },
+    {
+      "name": "peusumod",
+      "type": "string"
+    },
+    {
+      "name": "pefecalt",
+      "type": "string"
+    },
+    {
+      "name": "pefecmod",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "cuit",
+      "type": "string"
+    },
+    {
+      "name": "tipo_doc",
+      "type": "string"
+    },
+    {
+      "name": "nro_doc",
+      "type": "string"
+    },
+    {
+      "name": "anio_nacimiento",
+      "type": "string"
+    },
+    {
+      "name": "des_titulo_prof",
+      "type": "string"
+    },
+    {
+      "name": "mar_inmuebles_propios",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

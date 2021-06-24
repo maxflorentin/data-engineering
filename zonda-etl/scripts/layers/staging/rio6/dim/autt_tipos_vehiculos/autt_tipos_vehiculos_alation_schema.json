@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "autt_tipos_vehiculos",
+            "title": "Tipos de Vehiculos",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tipos de Vehiculos",
+            "columns": [
+                {
+                    "name": "AUTH_CD_TIPO_VEHICULO ",
+                    "title": "AUTH_CD_TIPO_VEHICULO ",
+                    "description": "Tipo de Vehiculo",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "AUTH_DE_TIPO_VEHICULO",
+                    "title": "AUTH_DE_TIPO_VEHICULO",
+                    "description": "Descripcion de Tipo de Vehiculo",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

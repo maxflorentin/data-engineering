@@ -1,0 +1,155 @@
+{
+    "file": "gest_movimientos_cuenta",
+    "location": "/santander/bi-corp/landing/csm/fact/gest_movimientos_cuenta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/gest_movimientos_cuenta",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_gest_movimientos_cuenta",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "nro_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "divisa_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_comprobante",
+            "type": "string"
+        },
+        {
+            "name": "cod_operativo",
+            "type": "string"
+        },
+        {
+            "name": "fecha_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "monto_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "ind_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "fecha_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "monto_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "cod_rubro",
+            "type": "string"
+        },
+        {
+            "name": "nro_establecimiento",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "nombre_establecimiento",
+            "type": "string"
+        },
+        {
+            "name": "cod_autorizacion",
+            "type": "string"
+        },
+        {
+            "name": "nro_cupon",
+            "type": "string"
+        },
+        {
+            "name": "nombre_empresa",
+            "type": "string"
+        },
+        {
+            "name": "empresa_b24",
+            "type": "string"
+        },
+        {
+            "name": "monto_reclamado",
+            "type": "string"
+        },
+        {
+            "name": "tasa_promedio",
+            "type": "string"
+        },
+        {
+            "name": "monto_interes",
+            "type": "string"
+        },
+        {
+            "name": "monto_comision",
+            "type": "string"
+        },
+        {
+            "name": "id_motivo",
+            "type": "string"
+        },
+        {
+            "name": "cod_op_brio_grupo",
+            "type": "string"
+        },
+        {
+            "name": "cod_op_brio_subgrupo",
+            "type": "string"
+        },
+        {
+            "name": "nro_tarjeta_debito",
+            "type": "string"
+        },
+        {
+            "name": "id_atm",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

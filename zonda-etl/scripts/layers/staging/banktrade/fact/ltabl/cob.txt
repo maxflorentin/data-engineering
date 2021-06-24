@@ -1,0 +1,155 @@
+ 01  LP-ADV-PAY-RECORD.
+     05  LP-KEY-20.
+         10  LP-LOCATION                PIC X(6).
+         10  LP-LOAN-KEY-FILLER         PIC X.
+         10  LP-LOAN-PAY-GROUP          PIC X(6).
+         10  LP-LOAN-PAY-SEQ            PIC 9(3).
+         10  LP-RECORD-TYPE-20          PIC X(2).
+         10  FILLER                     PIC X(17).
+     05  LP-LOAN-NUMBER                 PIC X(7).
+     05  LP-LOAN-SEQUENCE               PIC 9(3).
+     05  LP-LOAN-TYPE                   PIC X.
+     05  LP-TRN-NO                      PIC X(7).
+     05  LP-TRN-PAY-SEQ                 PIC X(3).
+     05  LP-ACCEPTANCE-NUMBER           PIC X(3).
+     05  LP-ADVANCE-NUMBER              PIC X(3).
+     05  LP-LIQ-SEQ-NO                  PIC X(3).
+     05  LP-LAST-PAY-NO-IN-GROUP        PIC 9(3).
+     05  LP-LOAN-CURRENCY               PIC X(3).
+     05  LP-PRINCIPAL-PAID-LC           PIC S9(11)V99  COMP-3.
+     05  LP-INTEREST-PAID-LC            PIC S9(11)V99  COMP-3.
+     05  LP-COMM-CHRG-PAID-LC           PIC S9(11)V99  COMP-3.
+     05  LP-PAST-DUE-INTEREST-PAID  REDEFINES
+           LP-COMM-CHRG-PAID-LC         PIC S9(11)V99  COMP-3.
+     05  LP-INTER-ON-PAY-AMT-LC         PIC S9(11)V99  COMP-3.
+     05  LP-INT-ACCRUED-PENALTY     REDEFINES
+           LP-INTER-ON-PAY-AMT-LC       PIC S9(11)V99  COMP-3.
+     05  LP-PAYMENT-CURRENCY            PIC X(3).
+     05  LP-TOT-AMT-APPLIED             PIC S9(11)V99   COMP-3.
+     05  LP-CORR-BK-CHARGES             PIC S9(11)V99   COMP-3.
+     05  LP-PRINCIPAL-PAID-PC           PIC S9(11)V99  COMP-3.
+     05  LP-INTEREST-PAID-PC            PIC S9(11)V99  COMP-3.
+     05  LP-COMM-CHRG-PAID-PC           PIC S9(11)V99  COMP-3.
+     05  LP-COMPOUND-INTEREST-PAID  REDEFINES
+           LP-COMM-CHRG-PAID-PC         PIC S9(11)V99  COMP-3.
+     05  LP-BASE-CURRENCY               PIC X(3).
+     05  LP-PRINCIPAL-PAID-BC           PIC S9(11)V99  COMP-3.
+     05  LP-INTEREST-PAID-BC            PIC S9(11)V99  COMP-3.
+     05  LP-COMM-CHRG-PAID-BC           PIC S9(11)V9(2) COMP-3.
+     05  LP-PENALTY-INTEREST-PAID  REDEFINES
+           LP-COMM-CHRG-PAID-BC         PIC S9(11)V99  COMP-3.
+     05  LP-UNUSED-AMOUNT-BC            PIC S9(11)V99   COMP-3.
+     05  LP-LIQUIDATION-AMT-BC          PIC S9(11)V99   COMP-3.
+     05  LP-FX-RATE-PRINCIPAL           PIC S9(6)V9(9)  COMP-3.
+     05  LP-FX-RATE-PRINCIPAL-DISPL     PIC S9(6)V9(9)  COMP-3.
+     05  LP-INTEREST-FX-RATE            PIC S9(6)V9(9)  COMP-3.
+     05  LP-INTEREST-FX-RATE-DISPL      PIC S9(6)V9(9)  COMP-3.
+     05  LP-FX-RATE-CHARGES             PIC S9(6)V9(9)  COMP-3.
+     05  LP-FX-RATE-CHARGES-DISPL       PIC S9(6)V9(9)  COMP-3.
+     05  LP-DOC-NAME-1                  PIC X(8).
+     05  LP-DOC-CODE-1                  PIC X(1).
+     05  LP-DOC-NAME-2                  PIC X(8).
+     05  LP-DOC-CODE-2                  PIC X(1).
+     05  LP-DOC-NAME-3                  PIC X(8).
+     05  LP-DOC-CODE-3                  PIC X(1).
+     05  LP-REFERENCE-1                 PIC X(60).
+     05  LP-REFERENCE-2                 PIC X(60).
+     05  LP-EXCHANGE-RATE               PIC S9(6)V9(9) COMP-3.
+     05  LP-EXCHANGE-RATE-DISPL         PIC S9(6)V9(9) COMP-3.
+     05  LP-VALUE-DATE                  PIC S9(7)      COMP-3.
+     05  LP-CUSTOMER-ACCOUNT-NO         PIC X(15).
+     05  LP-CUSTOMER-CITY-CODE          PIC X(4).
+     05  LP-DEBIT-CODE                  PIC X(5).
+     05  LP-DR-ACCT-NO                  PIC X(15).
+     05  LP-DR-CURRENCY                 PIC X(03).
+     05  LP-FX-RATE-DEBIT               PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-DEBIT-DISPL         PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-CONTRACT-NO              PIC X(15).
+     05  LP-REFERENCE-NO                PIC X(15).
+     05  LP-MULT-CONTRACTS-IND          PIC X.
+     05  LP-LOAN-AMOUNT-IN-BASE-CUR     PIC S9(11)V99  COMP-3.
+     05  LP-BASE-CUR                    PIC X(3).
+     05  LP-INTEREST-RATE               PIC S99V9(7)   COMP-3.
+     05  LP-FX-RATE-BOOK                PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-BOOK-DISPL          PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-SETTLE              PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-SETTLE-DISPL        PIC S9(6)V9(9) COMP-3.
+     05  LP-TOTAL-PRINCIPAL             PIC S9(11)V99  COMP-3.
+     05  LP-TOTAL-INTER-BILLED          PIC S9(11)V99  COMP-3.
+     05  LP-OUTSTANDING-BALANCE         PIC S9(11)V99  COMP-3.
+     05  LP-DATE-OF-LAST-BILL           PIC S9(7)      COMP-3.
+     05  LP-INTEREST-TO-DATE            PIC S9(7)      COMP-3.
+     05  LP-INTEREST-PAID               PIC S9(11)V99  COMP-3.
+     05  LP-TOTAL-COMM-CHRG             PIC S9(11)V99  COMP-3.
+     05  LP-PAST-DUE-INT-BILLED REDEFINES LP-TOTAL-COMM-CHRG
+                                        PIC S9(11)V99  COMP-3.
+     05  LP-INTEREST-ACCRUED            PIC S9(11)V99  COMP-3.
+     05  LP-OUTSTAND-CHARGES            PIC S9(11)V99  COMP-3.
+     05  LP-INT-ACCRUED-COMPOUND    REDEFINES
+           LP-OUTSTAND-CHARGES          PIC S9(11)V99  COMP-3.
+     05  LP-OUTSTAND-INTEREST           PIC S9(11)V99  COMP-3.
+     05  LP-CHRG-CODE-1                 PIC X(05).
+     05  LP-CHRG-AMT-1                  PIC S9(11)V99  COMP-3.
+     05  LP-CHRG-CODE-2                 PIC X(05).
+     05  LP-CHRG-AMT-2                  PIC S9(11)V99  COMP-3.
+     05  LP-TRACE-CODE                  PIC X(05).
+     05  LP-TRACE-AMT                   PIC S9(11)V99  COMP-3.
+     05  LP-CREDIT-CODE                 PIC X(5).
+     05  LP-AC-NO-CR                    PIC X(15).
+     05  LP-CR-CURRENCY                 PIC X(03).
+     05  LP-FX-RATE-CREDIT              PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-CREDIT-DISPL        PIC S9(6)V9(9) COMP-3.
+     05  LP-DR-DIF-CODE                 PIC X(5).
+     05  LP-AC-NO-DR-DIF                PIC X(15).
+     05  LP-DR-DIF-CURRENCY             PIC X(03).
+     05  LP-FX-RATE-DR-DIF              PIC S9(6)V9(9) COMP-3.
+     05  LP-FX-RATE-DR-DIF-DISPL        PIC S9(6)V9(9) COMP-3.
+     05  LP-FINAL-PAYM-IND              PIC X.
+     05  LP-EMPLOYEE-ID.
+         10 LP-EMP-ID OCCURS  10 TIMES  PIC X(3).
+     05  LP-DATE-OF-EMPLOYEE.
+         10 LP-DATE-OF-EMP OCCURS 10 TIMES  PIC S9(7)  COMP-3.
+     05  LP-RELEASED-CODE-1               PIC 9(3).
+     05  LP-RELEASED-CODE-2               PIC 9(3).
+     05  LP-RELEASED-DATE-1               PIC S9(7)  COMP-3.
+     05  LP-RELEASED-DATE-2               PIC S9(7)  COMP-3.
+     05  LP-RELEASED-NAME-1               PIC X(4).
+     05  LP-RELEASED-NAME-2               PIC X(4).
+     05  LP-STAND-ALONE-IND               PIC X.
+     05  LP-FREE-FORM-CTR                 PIC S9(3).
+     05  LP-LOAN-ISS-LOCATION             PIC X(6).
+     05  LP-OUTSTAND-PAST-DUE           PIC S9(11)V99  COMP-3.
+     05  LP-INT-ACCRUED-PASTDUE REDEFINES
+                 LP-OUTSTAND-PAST-DUE   PIC S9(11)V99  COMP-3.
+     05  LP-LIAB-SUB-NUMBER               PIC X(3).
+     05  LP-ADDL-CHARGES-IND              PIC X(01).
+     05  LP-INCOME-INFORM.
+         10  LP-PY-SETTLEM-FX-RATE  PIC S9(6)V9(9) COMP-3.
+         10  LP-PY-SETTLEM-FX-RATE-IND   PIC X.
+         10  LP-SETT-DATE                PIC S9(7) COMP-3.
+         10  LP-GRACE-PERIOD             PIC X.
+         10  LP-CONSIDER-MARGIN          PIC X.
+         10  LP-DELAY-DAYS               PIC S9(06) COMP-3.
+         10  LP-COMM-FX-RATE        PIC S9(6)V9(9) COMP-3.
+         10  LP-COMM-FX-RATE-IND    PIC X.
+         10  LP-COMM-AMT            PIC S9(11)V9(2) COMP-3.
+         10  LP-DB-MNEMONIC         PIC X(5).
+         10  LP-DB-ACCT             PIC X(15).
+         10  LP-DB-CURR             PIC X(3).
+         10  LP-DB-FX-RATE          PIC S9(6)V9(9) COMP-3.
+         10  LP-DB-FX-RATE-IND      PIC X.
+     05  LP-UNUSED-AMT-LC                 PIC S9(11)V99 COMP-3.
+     05  LP-REBATE-INFORM.
+         10  LP-REBATE-AMT                PIC S9(11)V9(2) COMP-3.
+         10  LP-REBATE-MNEMONIC           PIC X(5).
+         10  LP-REBATE-ACCT               PIC X(15).
+         10  LP-REBATE-CURR               PIC X(3).
+         10  LP-REBATE-EX-RATE            PIC S9(6)V9(9) COMP-3.
+         10  LP-REBATE-EX-RATE-IND        PIC X.
+     05  LP-PRINT-DRAFT-LTR-IND           PIC X(01).
+     05  LP-LOG-MODE-IND                  PIC X.
+     05  LP-SUSPENSE-AMOUNT-PAID          PIC S9(11)V9(2) COMP-3.
+     05  LP-EXPONENT-INTEREST-PREV        PIC S9(11)V9(02) COMP-3.
+     05  LP-EXPONENT-INTEREST-POST        PIC S9(11)V9(02) COMP-3.
+     05  LP-EXPONENT-INTEREST-PAID        PIC S9(11)V9(02) COMP-3.
+     05  FILLER                           PIC X(39).

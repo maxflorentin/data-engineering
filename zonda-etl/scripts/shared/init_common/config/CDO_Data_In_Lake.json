@@ -1,0 +1,16 @@
+{
+    "name": "CDO_Data_In_Lake_Week",
+    "shift": 0,
+    "conditions" : [
+                {
+                    "dag_id": "REPORT_HIVE_METASTORE",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id": "GENERATE_CDO_CRQ",
+                    "tasks": "all"
+                }
+    ]
+}

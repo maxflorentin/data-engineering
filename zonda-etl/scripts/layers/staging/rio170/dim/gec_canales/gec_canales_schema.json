@@ -1,0 +1,47 @@
+{
+    "file": "gec_canales_schema",
+    "createTable": "bi_corp_staging.rio170_gec_canales",
+    "location": "/santander/bi-corp/landing/rio170/dim/gec_canales/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio170/dim/gec_canales",
+    "tempDirectory": "/santander/bi-corp/temp/rio170",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "canal",
+            "type": "string"
+        },
+        {
+            "name": "subcanal",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "activo",
+            "type": "string"
+        },
+        {
+            "name": "keystore",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

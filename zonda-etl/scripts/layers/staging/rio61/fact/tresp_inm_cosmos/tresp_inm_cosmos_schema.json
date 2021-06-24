@@ -1,0 +1,245 @@
+{
+	"file": "cosmos_schema",
+	"location": "/santander/bi-corp/landing/rio61/fact/cosmos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/cosmos",
+	"createTable": "bi_corp_staging.rio61_nps_cosmos",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "momento_critico",
+			"type": "string"
+		},
+		{
+			"name": "id_respuesta",
+			"type": "string"
+		},
+		{
+			"name": "fecha_encuesta",
+			"type": "string"
+		},
+		{
+			"name": "nombre",
+			"type": "string"
+		},
+		{
+			"name": "nup",
+			"type": "string"
+		},
+		{
+			"name": "tipo_doc",
+			"type": "string"
+		},
+		{
+			"name": "nro_doc",
+			"type": "string"
+		},
+		{
+			"name": "renta",
+			"type": "string"
+		},
+		{
+			"name": "color",
+			"type": "string"
+		},
+		{
+			"name": "telefono_fijo1",
+			"type": "string"
+		},
+		{
+			"name": "telefono_fijo2",
+			"type": "string"
+		},
+		{
+			"name": "telefono_celular1",
+			"type": "string"
+		},
+		{
+			"name": "telefono_celular2",
+			"type": "string"
+		},
+		{
+			"name": "ide_gestion_nro",
+			"type": "string"
+		},
+		{
+			"name": "casuistica",
+			"type": "string"
+		},
+		{
+			"name": "casuistica_cliente",
+			"type": "string"
+		},
+		{
+			"name": "motivo_visita",
+			"type": "string"
+		},
+		{
+			"name": "desc_motivo",
+			"type": "string"
+		},
+		{
+			"name": "producto",
+			"type": "string"
+		},
+		{
+			"name": "categoria_descripcion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_alta",
+			"type": "string"
+		},
+		{
+			"name": "fecha_estado",
+			"type": "string"
+		},
+		{
+			"name": "dias_resolucion",
+			"type": "string"
+		},
+		{
+			"name": "monto_reclamado_ars",
+			"type": "string"
+		},
+		{
+			"name": "monto_reclamado_usd",
+			"type": "string"
+		},
+		{
+			"name": "favorabilidad",
+			"type": "string"
+		},
+		{
+			"name": "acciones_resolucion",
+			"type": "string"
+		},
+		{
+			"name": "etapa_resolucion",
+			"type": "string"
+		},
+		{
+			"name": "comentario",
+			"type": "string"
+		},
+		{
+			"name": "email_enviado",
+			"type": "string"
+		},
+		{
+			"name": "legajo",
+			"type": "string"
+		},
+		{
+			"name": "apellido",
+			"type": "string"
+		},
+		{
+			"name": "canal",
+			"type": "string"
+		},
+		{
+			"name": "categoria",
+			"type": "string"
+		},
+		{
+			"name": "centro_costo",
+			"type": "string"
+		},
+		{
+			"name": "estado",
+			"type": "string"
+		},
+		{
+			"name": "ubicacion",
+			"type": "string"
+		},
+		{
+			"name": "cd_sucursal_cliente",
+			"type": "string"
+		},
+		{
+			"name": "nombre_sucursal",
+			"type": "string"
+		},
+		{
+			"name": "zona",
+			"type": "string"
+		},
+		{
+			"name": "antiguedad_en_meses",
+			"type": "string"
+		},
+		{
+			"name": "edad",
+			"type": "string"
+		},
+		{
+			"name": "sexo",
+			"type": "string"
+		},
+		{
+			"name": "rentabilidad",
+			"type": "string"
+		},
+		{
+			"name": "cuadrante",
+			"type": "string"
+		},
+		{
+			"name": "subsegmento",
+			"type": "string"
+		},
+		{
+			"name": "region",
+			"type": "string"
+		},
+		{
+			"name": "marca_ges_remoto",
+			"type": "string"
+		},
+		{
+			"name": "gateway_alias",
+			"type": "string"
+		},
+		{
+			"name": "direcc_correo_electronico",
+			"type": "string"
+		},
+		{
+			"name": "nps",
+			"type": "string"
+		},
+		{
+			"name": "comentarios_cosmos",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		},
+		{
+			"name": "marca_women",
+			"type": "string"
+		},
+		{
+			"name": "marca_univ",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

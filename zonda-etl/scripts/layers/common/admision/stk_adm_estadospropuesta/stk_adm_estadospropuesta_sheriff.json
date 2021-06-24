@@ -1,0 +1,40 @@
+{
+   "table":"bi_corp_common.stk_adm_estadospropuesta",
+   "partition_date":"${partition_date}",
+   "controls":[
+      {
+         "control_id":"duplicates",
+         "field_to_check":[
+            "cod_adm_tramite",
+            "dt_adm_fec_log",
+            "ds_adm_log"
+         ]
+      },
+      {
+         "control_id":"null_values",
+         "field_to_check":[
+            "cod_adm_tramite",
+            "cod_adm_nro_prop",
+            "dt_adm_fec_log",
+            "ds_adm_log",
+            "cod_adm_usuario",
+            "ds_adm_estado_prop",
+            "cod_adm_estado_accion",
+            "cod_adm_estado_origen",
+            "ds_adm_sector_estado",
+            "ds_adm_tipo_estado",
+            "ds_adm_origen",
+            "cod_adm_penumper"
+         ],
+         "threshold":0.00
+      },
+      {
+         "control_id":"date_format",
+         "field_to_check":[
+            "dt_adm_fec_log"
+         ],
+         "pattern":"yyyy-MM-dd HH:mm:ss.SSS",
+         "threshold":0.00
+      }
+   ]
+}

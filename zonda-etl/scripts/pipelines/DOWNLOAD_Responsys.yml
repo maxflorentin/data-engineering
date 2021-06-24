@@ -1,0 +1,28 @@
+name: DOWNLOAD_Responsys
+description: 'DOWNLOAD_Responsys'
+owner: BI-Corp
+active: true
+schedule_interval: '10 15 * * *'
+start_date: '2020-10-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: GetResponsysFiles
+    operator: SSHOperator
+    config:
+      connection_id: "de_ssh"
+      command: "sftp -b $ZONDA_DIR/outbound/responsys/sftp_resp.sh -o 'ProxyCommand /usr/bin/nc --proxy-type socks5 --proxy 180.166.55.62:1080 %h %p' bancosant_scp@sftp.rsys8.net"

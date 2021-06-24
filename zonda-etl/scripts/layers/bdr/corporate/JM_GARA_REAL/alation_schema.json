@@ -1,0 +1,1162 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual ",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_gara_real",
+         "title":"Garantia Real BIS",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contendrá los datos de todas las garantías reales que han sido asociados  como coberturas de algún contrato y que, por tanto, están referenciadas en la tabla ‘Garantias contratos’",
+         "columns":[
+            {
+               "name":"g4091_bco_cust",
+               "title":"Banco Custodio",
+               "description":"Código identificativo de la entidad (banco u otra entidad) dónde se encuentra depositada la garantía (cuenta vista/ahorro, ipf, depósito dinerario, fondo inversión, acciones, renta fija privada, futuros, otros activos cotizados, resto activos financieros).. en caso de no existir banco custodio este campo se informará con espacios",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_biengar1",
+               "title":"Identificador de la garantía",
+               "description":"Clave única de identificación de la garantía dentro de la entidad.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae_cod_entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae_num_garantia"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_bsindi1",
+               "title":"Indicador de Índice Principal",
+               "description":"Indicador de índice principal indicador de si el bien constituyente de la garantia en el caso de acciones u otros activos cotizados forma parte de algún índice principal (ibex 35,ftse 100,...)en caso de que forme parte de un indice principal este campo se informará con ‘s’, en cualquier otro caso se informará con ‘n’",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_cla_bien",
+               "title":"Clase Bien",
+               "description":"Código indicativo de la clase del bien en garantía. supone un mayor desglose de información en relación al tipo de bien. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar las distintas clases de bienes",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_cod_bien",
+               "title":"Código Tipo Bien",
+               "description":"Tipo de bien en garantía (terreno, finca, inmueble, para la hipoteca inmobiliaria; bienes no identificables: obras de arte, mobiliaria, etc; inmuebles, vehículos u otros para leasing; vehículos u otros para la reserva de dominio). este campo se informa solo cuando el tipo de garantía es un bien. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los distintos tipos de bienes.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtbie",
+                     "column":"bie_cod_bien"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_codcompa",
+               "title":"Compañía Aseguradora",
+               "description":"Código de la entidad aseguradora a la que pertenece la póliza de seguro que constituye la garantía. en caso de no aplicar se informará con espacios",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_codidper",
+               "title":"Código de identificación de emisiones",
+               "description":"Código de identificación asociado al contrato que constituye la garantía (deuda pública, acciones, rf privada, futuros, otros activos financieros, resto activos financieros) que garantiza el contrato con riesgo.. si no aplica, entonces se colocarán espacios",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_codivisa",
+               "title":"Divisa Original",
+               "description":"Identificador de la moneda origen del importe correspondiente asociado a la garantía cuando fue establecida la relación de contrato.. moneda local",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"cod_divisa"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_codmercd",
+               "title":"Mercado",
+               "description":"Código del mercado/ bolsa en el que cotiza el bien que constituye la garantía (fondo de inversión, acciones, renta fija privada, futuros, otros activos financieros). en caso de no aplicar se informará con el valor correspondiente a ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_codposgr",
+               "title":"Código postal",
+               "description":"Código postal de la garantía real.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdthip",
+                     "column":"hip_cod_postal"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_contra1",
+               "title":"Identificador del contrato",
+               "description":"Clave única de identificación del contrato que sirve como garantía. este campo estará informado solo si el contrato está dado de alta en la tabla de contratos. es decir, si la garantía real identificada es a su vez un contrato que está dado de alta en la tabla de ‘contratos’ se informará este campo con su identificador, en caso contrario este campo se informará con ‘0’. básicamente se refiere a operaciones de mercados financieros utilizados como garantías",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_cod_subprod"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_cod_producto"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_cod_entcont"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_cod_oficont"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_cod_divcont"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_num_ctacont "
+                  }
+               ]
+            },
+            {
+               "name":"g4091_deudapub",
+               "title":"Tipo Deuda Pública",
+               "description":"Tipo deuda pública: gobierno, regional, local.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_dkafecto",
+               "title":"Indicador de Afecto explotación",
+               "description":"Marca indicativa de que el bien en garantía, de una hipoteca inmobiliaria o leasing, está afecto a la explotación.. ‘s’: afecto a la explotación sino ‘n’",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_emis_pzo",
+               "title":"Plazo Emisión",
+               "description":"Plazo de la emisión. . si no aplica: ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_fchavcto",
+               "title":"Fecha vencimiento contrato garantizador",
+               "description":"Fecha de vencimiento del contrato que constituye la garantía: ipf, depósito dinerario, deuda pública, fondo inversión.. si no existe fecha de vencimiento o no aplica: valor 9999-12-31. formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae_fec_vcto"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro. la fecha se informará en formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_frecplaz",
+               "title":"Plazo de frecuencia de cotización o valoración",
+               "description":"Número asociado al tipo de frecuencia anteriormente referido (‘1’, ‘2’,...).",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_gradocob",
+               "title":"Volatilidad",
+               "description":"Indica el grado de volatilidad asociado al instrumento financiero utilizado como garantía",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_id_pais",
+               "title":"País",
+               "description":"País donde las garantías inmobiliarias están ubicadas. en garantías activos financieros, país de residencia del depositario. se informará el código iso",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_pedt001",
+                     "column":"pais_residencia"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_id_prod",
+               "title":"Agrupador de Producto",
+               "description":"Código de producto agrupado según baremo, asociado al contrato. en caso de que la garantía no sea un contrato este campo se informará con el valor correspondiente a ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_idemis",
+               "title":"Tipo de identificación de emisiones",
+               "description":"Tipo de identificación asociado al contrato que es una emisión (p.e: isin, cusip,…). . si no aplica: ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_idnumcli",
+               "title":"Identificador de persona",
+               "description":"Para los emisores se informará en este campo la clave única de su identificación como cliente dentro de la entidad siempre que se pueda realizar la identificación del emisor dentro de la tabla de clientes por estar ya dado de alta.. en caso de no aplicar, o de no poderse relacionar con ningún cliente dado de alta en la tabla de ‘clientes’ este campo se informará con ‘0’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_imcarg",
+               "title":"Cargas Asociadas a las Garantías",
+               "description":"Importe global de otras cargas asociadas a la hipoteca inmobiliaria o leasing. en caso de no aplicar se informará con ‘0’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_inayudpb",
+               "title":"Indicador de ayuda publica",
+               "description":"Indicador s/n que informa si el titular de la vivienda recibió ayuda de alguna entidad pública para su adquisición",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_indacept",
+               "title":"Indicador de Documento Aceptado",
+               "description":"Marca identificativa de si el documento constitutivo del efecto comercial o derecho de cobro está o no aceptado. se informará con ‘s’ si está aceptado y con ‘n’ en cualquier otro caso",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_indblo",
+               "title":"Indicador de Bloqueado",
+               "description":"Bloqueado / no bloqueado. cuando un objeto ya está actuando como garantía queda bloqueado.. ‘s’: bloqueado y ‘n’: en cualquier otro caso",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_indcotiz",
+               "title":"Marca cotización",
+               "description":"Marca identificativa de si el contrato que constituye la garantía (deuda pública, fondos de inversión, otros bienes identificables, reserva de dominio...) cotiza o no en un mercado secundario.. si cotiza en mercado secundario: ‘s’ sino con ‘n’",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_indddomi",
+               "title":"Indicador de Documento Domiciliado",
+               "description":"Marca identificativa de si el documento constitutivo del efecto comercial o derecho de cobro está o no domiciliado. se informará con ‘s’ si está domiciliado y con ‘n’ en cualquier otro caso",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_inddeuda",
+               "title":"Indicador de deuda pública",
+               "description":"Consideración de la deuda pública (senior, subordinada).",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_indicea1",
+               "title":"Índice Referencia",
+               "description":"Índice al que se encuentran referenciadas las acciones que constituyen la garantía. en caso de no aplicar se informará con el código correspondiente al valor ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_inf_regi",
+               "title":"Identificación registral",
+               "description":"Identificación registral / catastral del bien en garantía de una hipoteca inmobiliaria o leasing. en caso de no aplicar este campo se informará con espacios",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_num_doc",
+               "title":"Número de documento",
+               "description":"Número de documento del bien que constituye la garantía (efectos comerciales o derechos de cobro). en caso de no aplicar se informará con espacios",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_num_titu",
+               "title":"Número de Títulos",
+               "description":"Número de títulos. en caso de no aplicar se informará con ‘0’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_ord_hipo",
+               "title":"Orden Hipoteca",
+               "description":"Código indicativo del número de orden de la hipoteca actual (primera, segunda...) para hipoteca inmobiliaria o leasing.. se informará con ‘1’, ‘2’... y así sucesivamente",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_tip_hipo",
+               "title":"Tipo de hipoteca",
+               "description":"Es la clasificación contable del tipo de vivienda, según circular contable. baremo global.. toma valores b1, b2, b3 o b4.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtbie ",
+                     "column":"bie_cod_bien"
+                  }
+               ]
+            },
+            {
+               "name":"g4091_tip_inte",
+               "title":"Tipo Interés",
+               "description":"Tipo de interés (fijo o variable) asociado al contrato de renta fija privada que constituye la garantía. en caso de no aplicar se informará con el valor correspondiente a ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4091_tipfrecu",
+               "title":"Tipo de frecuencia de Cotización o valoración",
+               "description":"Frecuencia (diaria, semanal...) con la que se produce la cotización del bien que constituye la garantía (acciones, renta fija privada, futuros, otros activos financieros).",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

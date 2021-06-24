@@ -1,0 +1,58 @@
+{
+  "file": "corresponsalias",
+  "location": "/santander/bi-corp/landing/corresponsalias/fact/corresponsalias/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/corresponsalias/fact/corresponsalias",
+  "createTable": "bi_corp_staging.corresponsalias_nps",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "cor_correspondent",
+      "type": "string"
+    },
+    {
+      "name": "cor_serviceName",
+      "type": "string"
+    },
+    {
+      "name": "cor_accountNumber",
+      "type": "string"
+    },
+    {
+      "name": "cor_nup",
+      "type": "string"
+    },
+    {
+      "name": "cor_operationDate",
+      "type": "string"
+    },
+    {
+      "name": "cor_creditCardNumber",
+      "type": "string"
+    },
+    {
+      "name": "cor_amount",
+      "type": "string"
+    },
+    {
+      "name": "cor_subsidiaryId",
+      "type": "string"
+    },
+    {
+      "name": "cor_subsidiaryName",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

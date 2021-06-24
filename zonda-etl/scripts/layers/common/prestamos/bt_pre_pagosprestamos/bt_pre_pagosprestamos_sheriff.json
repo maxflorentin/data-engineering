@@ -1,0 +1,25 @@
+{
+  "table": "bi_corp_common.bt_pre_pagosprestamos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_entidad","cod_prod_producto","cod_prod_subproducto","cod_pre_numrec","cod_per_nup","dt_pre_feoper","dt_pre_feliq"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_entidad","cod_prod_producto","cod_prod_subproducto","cod_pre_numrec","cod_per_nup","dt_pre_feoper","dt_pre_feliq"],
+      "threshold": 0.00
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["dt_pre_feconta","dt_pre_fevalor","fc_pre_capinire","flag_pre_inddesgcapi","cod_pre_conlicap","flag_pre_inddesgreajcap","flag_pre_inddesgreajseg","fc_pre_intinire","flag_pre_inddesginte","cod_pre_conliint","flag_pre_inddesgcomi","fc_pre_cominire","flag_pre_inddesggast","fc_pre_gasinire","flag_pre_inddesgsegu","fc_pre_seginire","flag_pre_inddesgimpu","fc_pre_impinire","fc_pre_poralicuota","flag_pre_indliqimpue","fc_pre_impbase","dt_pre_fecalmora","flag_pre_inddesgmora","cod_pre_conlimor","fc_pre_impmora","fc_pre_impconcobex","flag_pre_inddesgcobe","flag_pre_inddesgcps","cod_pre_conlicps","fc_pre_impcps","fc_pre_salreal","flag_pre_indformpago","fc_pre_imppago","cod_pre_divipago","cod_pre_numdocchequ","cod_pre_tipdocchequ","cod_pre_entidadpag","cod_suc_sucursalpag","cod_nro_cuentapag","cod_div_divisa","fc_pre_impcambdivi","cod_pre_sitdeuct","cod_pre_evento","cod_pre_numcobctso","flag_pre_indretro","cod_pre_entidadumo","cod_pre_centroumo","cod_pre_useridumo","cod_pre_netnameumo","ts_pre_timestampumo","flag_pre_cobroparcialcentinela"],
+      "threshold": 0.001
+    },{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_feliq","dt_pre_feoper","dt_pre_feconta","dt_pre_fevalor","dt_pre_fecalmora","dt_pre_fecdispchequ","dt_pre_fecretro"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

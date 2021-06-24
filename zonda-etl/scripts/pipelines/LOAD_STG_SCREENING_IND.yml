@@ -1,0 +1,47 @@
+name: LOAD_STG_SCREENING_IND
+description: 'Load data from SCREENING IND '
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 * * *'
+start_date: '2019-12-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+
+  - name: STAGING_SCREENING_PYM_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_SCREENING_PYM_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/screening/fact/wacam500/wacam500_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/screening/fact/wacam500/wacam500.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_SCREENING_IND') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['wacam500_schema.json']
+
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

@@ -1,0 +1,184 @@
+{
+	   "file":"pacha_schema",
+	   "location":"/santander/bi-corp/landing/pacha/fact/historial_riesgos/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/acle/fact/pacha/historial_riesgos",
+       "createTable": "bi_corp_staging.acle_pacha_historial_riesgos",
+	   "extension":"txt",
+	   "header":false,
+	   "fixed":true,
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "fecha_e",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "suc_rio",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "cta_rio",
+                        "type": "string",
+                        "width": 7
+                },
+                {
+                        "name": "cod_banca",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "nom_titular",
+                        "type": "string",
+                        "width": 20
+                },
+                {
+                        "name": "cod_nup",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "cod_seg",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "cod_prod",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "cod_subprod",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cmc7_nro_chq",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "imp_cheque",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "cod_moneda",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "tipo_camara",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "nivel_workf",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "ind_pag_rech_chq",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ind_pag_rech_rech",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "saldo_deudor",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "sdo_deudor_signo",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "sdo_disponible",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "sdo_disp_signo",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "imp_mto_acuerdo",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "imp_mto_calific",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "cod_mot_rech",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "cod_just_pago",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "leg_gestion_n1",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "hora_gestion_n1",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "leg_gestion_n2",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "hora_gestion_n2",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "leg_gestion_n3",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "hora_gestion_n3",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "leg_aprob",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "hora_aprob",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "cmc7",
+                        "type": "string",
+                        "width": 29
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

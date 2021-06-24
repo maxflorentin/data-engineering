@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_ficha_feve",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_fichafeve"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_fichafeve","int_adm_nup","ds_adm_razon_social","int_adm_idsucursal","id_adm_zona","int_adm_cuit","ds_adm_grado_feve_ficha","ts_adm_fecha_mensaje","ts_adm_fecha_entrada","ts_adm_fecha_creacion","ds_adm_estadofeve","ds_adm_tipomensaje","ds_adm_es_ultima_salida_feve","ds_adm_es_ultima_entrada_normal","ds_adm_es_ultima_salida_automatica"],
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecha_mensaje","ts_adm_fecha_revision","ts_adm_fecha_prox_revision","ts_adm_fecha_entrada","ts_adm_fecha_salida","ts_adm_fecha_objetivo","ts_adm_actividad_empresa","ts_adm_fecha_vencimiento","ts_adm_fecha_creacion","ts_adm_fecha_modificacion","ts_adm_fecha_balance_anterior","ts_adm_fecha_balance_actual","ts_adm_fecha_baja"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+  ]
+}
+

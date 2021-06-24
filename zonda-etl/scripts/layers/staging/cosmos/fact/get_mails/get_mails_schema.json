@@ -1,0 +1,83 @@
+{
+    "file": "get_mails",
+    "location": "/santander/bi-corp/landing/csm/fact/get_mails/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/get_mails",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_get_mails",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "orden_estado",
+            "type": "string"
+        },
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "asunto_mail",
+            "type": "string"
+        },
+        {
+            "name": "texto_mail",
+            "type": "string"
+        },
+        {
+            "name": "estado_mail",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_envio",
+            "type": "string"
+        },
+        {
+            "name": "tipo_mail",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "nro_envio",
+            "type": "string"
+        },
+        {
+            "name": "m_automatico",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

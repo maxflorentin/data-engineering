@@ -1,0 +1,115 @@
+{
+  "file": "tpreseleccion_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tpreseleccion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tpreseleccion",
+  "createTable": "bi_corp_staging.alcen_tpreseleccion",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_promocion",
+    "type": "string"
+  },
+  {
+    "name": "tpo_doc",
+    "type": "string"
+  },
+  {
+    "name": "nro_doc",
+    "type": "string"
+  },
+  {
+    "name": "fec_vigencia",
+    "type": "string"
+  },
+  {
+    "name": "mar_sexo",
+    "type": "string"
+  },
+  {
+    "name": "mon_ingresos",
+    "type": "string"
+  },
+  {
+    "name": "cod_prod_ofertado",
+    "type": "string"
+  },
+  {
+    "name": "cui_batch",
+    "type": "string"
+  },
+  {
+    "name": "score_veraz_preseleccion",
+    "type": "string"
+  },
+  {
+    "name": "score_triad",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_visa",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_amex",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_ac",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_pp",
+    "type": "string"
+  },
+  {
+    "name": "debt_burden",
+    "type": "string"
+  },
+  {
+    "name": "afectacion",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_master",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_visabusiness",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_pmomono",
+    "type": "string"
+  },
+  {
+    "name": "asistencia_cesionch",
+    "type": "string"
+  },
+  {
+    "name": "cuota_prestamo",
+    "type": "string"
+  },
+  {
+    "name": "valor_cuotas_prestamo",
+    "type": "string"
+  },
+  {
+    "name": "cod_prod",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

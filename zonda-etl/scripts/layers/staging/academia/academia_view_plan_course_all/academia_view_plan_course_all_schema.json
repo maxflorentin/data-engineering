@@ -1,0 +1,74 @@
+{
+        "file": "academia_view_plan_course_all",
+        "location": "/santander/bi-corp/landing/academia/academia_view_plan_course_all/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/academia/academia_view_plan_course_all",
+        "extension": "csv",
+        "header": true,
+        "delimiter": "\t",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "user_id",
+                        "type": "string"
+                },
+                {
+                        "name": "career_plan",
+                        "type": "string"
+                },
+                {
+                        "name": "course",
+                        "type": "string"
+                },
+                {
+                        "name": "career_plan_id",
+                        "type": "string"
+                },
+                {
+                        "name": "course_id",
+                        "type": "string"
+                },
+                {
+                        "name": "plan_duration_mandatory",
+                        "type": "string"
+                },
+                {
+                        "name": "plan_duration_optional",
+                        "type": "string"
+                },
+                {
+                        "name": "plan_duration",
+                        "type": "string"
+                },
+                {
+                        "name": "progress_hours_mandatory",
+                        "type": "string"
+                },
+                {
+                        "name": "progress_hours_optional",
+                        "type": "string"
+                },
+                {
+                        "name": "progress_hours",
+                        "type": "string"
+                },
+                {
+                        "name": "progress_mandatory",
+                        "type": "string"
+                },
+                {
+                        "name": "progress",
+                        "type": "string"
+                },
+                {
+                        "name": "legajo",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

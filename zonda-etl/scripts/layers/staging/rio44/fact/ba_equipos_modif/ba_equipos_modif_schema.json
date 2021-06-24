@@ -1,0 +1,35 @@
+{
+    "file": "ba_equipos_modif_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos_modif",
+    "location": "/santander/bi-corp/landing/rio44/fact/ba_equipos_modif/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/fact/ba_equipos_modif",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_posicion",
+            "type": "string"
+        },
+        {
+            "name": "f_modif",
+            "type": "string"
+        },
+        {
+            "name": "detalle",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

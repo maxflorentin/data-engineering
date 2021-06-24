@@ -1,0 +1,20 @@
+{
+  "file": "bgdtppr_updates",
+  "createTable": "bi_corp_staging.malbgc_bgdtppr_updates",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtppr/updates/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtppr/updates",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgdtppr.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

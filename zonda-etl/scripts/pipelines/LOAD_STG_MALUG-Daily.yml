@@ -1,0 +1,468 @@
+name: LOAD_STG_MALUG-Daily
+description: 'Load data from MALUG tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2019-10-29'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_UGEC1306_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGEC1306_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugec1306/ugec1306_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugec1306_schema.json']
+  - name: STAGING_UGDTAUX_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTAUX_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtaux/ugdtaux_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtaux_schema.json']
+  - name: STAGING_UGDTAUX_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtaux/DDLT-Create_Staging_Table_ugdtaux.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtaux/ETLV-Alter_Partitions_ugdtaux.hql'
+  - name: STAGING_UGDTDRB_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTDRB_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtdrb/ugdtdrb_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtdrb_schema.json']
+  - name: STAGING_UGDTDRB_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtdrb/DDLT-Create_Staging_Table_ugdtdrb.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtdrb/ETLV-Alter_Partitions_ugdtdrb.hql'
+  - name: STAGING_UGDTMAE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTMAE_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmae/ugdtmae_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtmae_schema.json']
+  - name: STAGING_UGDTMAE_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmae/DDLT-Create_Staging_Table_ugdtmae.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmae/ETLV-Alter_Partitions_ugdtmae.hql'
+  - name: STAGING_UGTCREC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugtcrec_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugtcrec/ugtcrec_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugtcrec/ugtcrec.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugtcrec_schema.json']
+  - name: STAGING_UGDTPRO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTPRO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtpro/ugdtpro_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtpro/ugdtpro.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtpro_schema.json']
+  - name: STAGING_UGTCRCD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugtcrcd_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugtcrcd/ugtcrcd_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugtcrcd/ugtcrcd.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugtcrcd_schema.json']
+  - name: STAGING_UGDTNCN_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtncn_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtncn/ugdtncn_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtncn/ugdtncn.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtncn_schema.json']
+  - name: STAGING_UGDTUVA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtuva_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtuva/ugdtuva_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtuva/ugdtuva.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtuva_schema.json']
+  - name: STAGING_UGDTMOV_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtmov_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmov/ugdtmov_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmov/ugdtmov.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtmov_schema.json']
+  - name: STAGING_UGDTMRC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtmrc_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmrc/ugdtmrc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmrc/ugdtmrc.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtmrc_schema.json']
+  - name: STAGING_UGDTMVR_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtmvr_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmvr/ugdtmvr_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtmvr/ugdtmvr.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtmvr_schema.json']
+  - name: STAGING_SALDOS_DIARIOS_PRESTAMOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_SALDOS_DIARIOS_PRESTAMOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/saldos_diarios_prestamos/saldos_diarios_prestamos_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['saldos_diarios_prestamos_schema.json']
+  - name: STAGING_SALDOS_DIARIOS_LEASING_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_SALDOS_DIARIOS_LEASING_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/saldos_diarios_leasing/saldos_diarios_leasing_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['saldos_diarios_leasing_schema.json']
+  - name: STAGING_PTMOSQ_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PTMOSQ_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ptmosq/ptmosq_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ptmosq/ptmosq.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ptmosq_schema.json']
+  - name: STAGING_ugdtagt_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtagt_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtagt/ugdtagt_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtagt/ugdtagt.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtagt_schema.json']
+  - name: STAGING_UGDTNMA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtnma_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtnma/ugdtnma_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtnma/ugdtnma.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtnma_schema.json']
+  - name: STAGING_UGDTNCC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ugdtncc_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 16G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtncc/ugdtncc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtncc/ugdtncc.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtncc_schema.json']
+  - name: STAGING_CUOTASQ_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_CUOTASQ_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/cuotasq/cuotasq_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/cuotasq/cuotasq.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['cuotasq_schema.json']
+  - name: STAGING_UGDTRFR_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTRFR_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtrfr/ugdtrfr_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtrfr/ugdtrfr.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtrfr_schema.json']
+  - name: STAGING_PTCOSQ_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_PTCOSQ_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ptcosq/ptcosq_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ptcosq/ptcosq.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ptcosq_schema.json']
+  - name: STAGING_MOVTOSQ_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MOVTOSQ_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/movtosq/movtosq_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/movtosq/movtosq.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['movtosq_schema.json']
+
+
+  - name: STAGING_UGDTRVC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTRVC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtrvc/ugdtrvc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtrvc/ugdtrvc.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtrvc_schema.json']
+
+  - name: STAGING_UGDTADE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_UGDTADE_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtade/ugdtade_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malug/ugdtade/ugdtade.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALUG-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ugdtade_schema.json']
+
+
+dependencies:
+  STAGING_UGDTAUX_Parquetize:  STAGING_UGDTAUX_AddPartition
+  STAGING_UGDTDRB_Parquetize:  STAGING_UGDTDRB_AddPartition
+  STAGING_UGDTMAE_Parquetize:  STAGING_UGDTMAE_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

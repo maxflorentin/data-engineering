@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.bt_cue_movimientos_cuenta",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_cue_cuenta","cod_suc_sucursal","cod_cue_producto","cod_cue_subproducto","cod_cue_divisa","cod_cue_codigo", "cod_cue_num_movimiento"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cue_cuenta","cod_per_nup","cod_suc_sucursal","cod_cue_producto","cod_cue_subproducto","cod_cue_divisa", "dt_cue_operacion", "cod_cue_codigo","cod_cue_num_movimiento", "fc_cue_importe" ,"dt_cue_valor"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cue_operacion", "dt_cue_proceso","dt_cue_valor"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

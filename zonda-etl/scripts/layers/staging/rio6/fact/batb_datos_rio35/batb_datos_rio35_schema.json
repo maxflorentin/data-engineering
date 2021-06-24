@@ -1,0 +1,158 @@
+{
+  "file": "batb_datos_rio35_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/batb_datos_rio35/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/batb_datos_rio35",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"rio35_cli_nup",
+      "type": "string"
+    },
+    {
+      "name":"rio35_cli_petipdoc",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_penumdoc",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_cuadrante",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_color",
+      "type":"string"
+    },
+    {
+      "name":"rio35_eje_user_id",
+      "type":"string"
+    },
+    {
+      "name":"rio35_eje_apenom",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_nu_nup",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_cd_nacionalidad",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_nu_cedula_rif",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_nm_apellido_razon",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_color",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_penomfan",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pepriape",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pesegape",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_penomper",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pefecing",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pesucadm",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_peestciv",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pesexper",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_petipper",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pefecnac",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pecdgent",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pebancap",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pedivisi",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_petealea",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_peejecue",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pejefare",
+      "type":"string"
+    },
+    {
+      "name":"rio35_cli_pegerent",
+      "type":"string"
+    },
+    {
+      "name":"rio35_eje_sucadmact",
+      "type":"string"
+    },
+    {
+      "name":"rio35_eje_sucadmant",
+      "type":"string"
+    },
+    {
+      "name":"rio35_eje_feciniciogestion",
+      "type":"string"
+    },
+    {
+      "name":"rio_fe_ult_actualizacion",
+      "type":"string"
+    },
+    {
+      "name":"rio_in_procesada",
+      "type":"string"
+    },
+    {
+      "name":"rio6_cacn_fe_nacimiento",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

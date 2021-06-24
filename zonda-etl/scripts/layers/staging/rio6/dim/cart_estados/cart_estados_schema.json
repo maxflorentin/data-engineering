@@ -1,0 +1,34 @@
+{
+  "file": "cart_estados_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_estados/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_estados",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"caes_cd_estado",
+      "type": "string"
+    },
+    {
+      "name":"caes_de_estado",
+      "type":"string"
+    },
+    {
+      "name":"caes_po_ingresos_brutos",
+      "type":"string"
+    },
+    {
+      "name":"caes_mt_minimo_imponible",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

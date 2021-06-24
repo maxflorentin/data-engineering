@@ -1,0 +1,56 @@
+{
+    "file": "canales",
+    "location": "/santander/bi-corp/landing/csm/dim/canales/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/dim/canales",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_canales",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+      {
+        "name": "id_canal",
+        "type": "string"
+      },
+      {
+        "name": "cod_canal",
+        "type": "string"
+      },
+      {
+        "name": "desc_canal",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_alta",
+        "type": "string"
+      },
+      {
+        "name": "fecha_alta",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_modif",
+        "type": "string"
+      },
+      {
+        "name": "fecha_modif",
+        "type": "string"
+      },
+      {
+        "name": "fecha_baja",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+      {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+      }
+    ]
+  }
+  

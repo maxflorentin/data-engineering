@@ -1,0 +1,51 @@
+{
+     "file": "nup_por_celula_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/nup_por_celula/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/nup_por_celula",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [
+            {
+             "name": "id_celula",
+             "type": "string"
+            },
+            {
+             "name": "nup",
+             "type": "string"
+            },
+            {
+             "name": "uso_modif",
+             "type": "string"
+            },
+            {
+             "name": "fecha_modif",
+             "type": "string"
+            },
+            {
+             "name": "razon_social",
+             "type": "string"
+            },
+            {
+             "name": "tipo_doc",
+             "type": "string"
+            },
+            {
+             "name": "nro_doc",
+             "type": "string"
+            }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,187 @@
+{
+  "file": "rescates",
+  "location": "/santander/bi-corp/landing/fm/fact/rescates/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/fact/rescates",
+  "parquetFiles": 1,
+  "createTable": "bi_corp_staging.fm_rescates",
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "cobolTypes": true,
+  "compression": "gzip",
+  "columns": [
+    {
+          "name": "cod_fdo",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_cliente",
+          "type": "9(11)"
+    },
+{
+          "name": "certificado",
+          "type": "9(10)"
+    },
+{
+          "name": "nr_rgt",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_fdo_dest",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_cli_dest",
+          "type": "9(11)"
+    },
+{
+          "name": "nr_cert_dest",
+          "type": "9(10)"
+    },
+{
+          "name": "cod_agte_solic",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_canal_solic",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_agte_dg",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_can_dg",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_oper_dg",
+          "type": "X(08)"
+    },
+{
+          "name": "cod_agte_cd",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_can_cd",
+          "type": "9(03)"
+    },
+{
+          "name": "cod_oper_cd",
+          "type": "X(08)"
+    },
+{
+          "name": "dtinput",
+          "type": "9(08)"
+    },
+{
+          "name": "hora",
+          "type": "9(06)"
+    },
+{
+          "name": "dtsolic",
+          "type": "9(08)"
+    },
+{
+          "name": "dtconver",
+          "type": "9(08)"
+    },
+{
+          "name": "dtpagto",
+          "type": "9(08)"
+    },
+{
+          "name": "dtestorno",
+          "type": "9(08)"
+    },
+{
+          "name": "forma_pagto",
+          "type": "9(02)"
+    },
+{
+          "name": "tipo_cta",
+          "type": "9(01)"
+    },
+{
+          "name": "moeda_cta",
+          "type": "9(01)"
+    },
+{
+          "name": "nr_cta_tip",
+          "type": "X(04)"
+    },
+{
+          "name": "nr_cta_num",
+          "type": "9(10)"
+    },
+{
+          "name": "perc_comis",
+          "type": "9(02)V99"
+    },
+{
+          "name": "val_rgt_brt",
+          "type": "9(15)V99"
+    },
+{
+          "name": "val_rgt_liq",
+          "type": "9(15)V99"
+    },
+{
+          "name": "val_cust_rgt",
+          "type": "9(15)V99"
+    },
+{
+          "name": "qt_cot_rgt",
+          "type": "9(13)V9(04)"
+    },
+{
+          "name": "val_cota_rgt",
+          "type": "9(09)V9(08)"
+    },
+{
+          "name": "num_cancel",
+          "type": "X(01)"
+    },
+{
+          "name": "moeda_cambio",
+          "type": "9(02)"
+    },
+{
+          "name": "cotacao_indi",
+          "type": "9(09)V9(08)"
+    },
+{
+          "name": "vl_conv_pact",
+          "type": "9(15)V9(02)"
+    },
+{
+          "name": "cod_can_liq",
+          "type": "9(03)"
+    },
+{
+          "name": "nr_oper",
+          "type": "9(10)"
+    },
+{
+          "name": "liqu_rgt",
+          "type": "9(09)"
+    },
+{
+          "name": "cliente_ac",
+          "type": "9(11)"
+    },
+{
+          "name": "filler",
+          "type": "X(94)"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

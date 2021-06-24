@@ -1,0 +1,66 @@
+{
+  "file": "t_form_select_eventos_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_select_eventos//partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_select_eventos",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "cod_area_celular",
+      "type": "string"
+    },
+    {
+      "name": "nro_celular",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "eventos_participar",
+      "type": "string"
+    },
+    {
+      "name": "localidad",
+      "type": "string"
+    },
+    {
+      "name": "fechaalta",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "tipodni",
+      "type": "string"
+    },
+    {
+      "name": "nrodni",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fechaalta",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

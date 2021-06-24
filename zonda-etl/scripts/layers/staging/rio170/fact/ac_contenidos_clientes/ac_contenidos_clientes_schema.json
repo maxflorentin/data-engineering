@@ -1,0 +1,38 @@
+{
+	"file": "ac_contenidos_clientes_schema",
+	"location": "/santander/bi-corp/landing/rio170/fact/ac_contenidos_clientes/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/fact/ac_contenidos_clientes",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_ac_contenidos_clientes",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "ID_AC_CLIENTE",
+			"type": "string"
+		},
+        {
+			"name": "COD_ORIGEN",
+			"type": "string"
+		},
+        {
+			"name": "COD_CLAVE",
+			"type": "string"
+		},
+        {
+			"name": "VALOR",
+			"type": "string"
+		}
+	],
+	"extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio157_ms0_dt_plan_agrp_func ADD IF NOT EXISTS PARTITION (partition_date ='{partition_date}');

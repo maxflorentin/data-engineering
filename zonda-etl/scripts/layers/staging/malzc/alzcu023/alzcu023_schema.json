@@ -1,0 +1,70 @@
+{
+        "file": "Data_Ingestion_MALZC_ALZCU023",
+        "location": "/santander/bi-corp/landing/malzc/fact/alzcu023/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malzc/fact/alzcu023",
+		"createTable": "bi_corp_staging.malzc_alzcu023",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [
+            {
+                "name": "COD_PROD_CUST",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "COD_ENTIDAD",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "COD_SUCURSAL",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "NRO_CUENTA",
+                "type": "string",
+                "width": 12
+            },
+            {
+                "name": "COD_DIVISA",
+                "type": "string",
+                "width": 3
+            },
+            {
+                "name": "CAN_TOT_CHEQ_STK",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IMP_TOT_CHEQ_STK",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "CAN_TOT_CHEQ_DEPO",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IMP_TOT_CHEQ_DEPO",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "IDE_CBU",
+                "type": "string",
+                "width": 26
+            }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

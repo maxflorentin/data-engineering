@@ -1,0 +1,51 @@
+set hive.merge.mapfiles=true;
+set hive.merge.mapredfiles=true;
+set hive.merge.size.per.task=4000000;
+set hive.merge.smallfiles.avgsize=16000000;
+set hive.exec.dynamic.partition.mode=nonstrict;
+set mapred.job.queue.name=root.dataeng;
+
+insert overwrite table bi_corp_common.stk_rcp_pagosmoria
+partition(partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_RECUPERACIONES_GarraMoria-Daily') }}')
+
+
+SELECT
+cast(co.mdec160r_cod_centro as int) as cod_suc_sucursal,
+cast(co.mdec160r_num_contrato as bigint) as cod_nro_cuenta,
+co.mdec160r_cod_producto  as cod_prod_producto,
+co.mdec160r_cod_subprodu as cod_prod_subproducto,
+co.mdec160r_cod_divisa as cod_div_divisa,
+case when to_date(ca.mdec160n_fec_can_oper) in ('9999-12-31', '0001-01-01') then NULL else to_date(ca.mdec160n_fec_can_oper) end as dt_rcp_fechacanceoperacion,
+ca.mdec160n_idf_cancelac as cod_rcp_cancelacion,
+co.mdec160r_num_recibo as cod_rcp_numrecibo,
+ca.mdec160n_imp_totcanco as fc_rcp_cont_imptotcanco,
+co.mdec160r_total_contable as fc_rcp_cont_imptotdevg,
+co.mdec160r_total_no_contable as fc_rcp_nocont_imptotndevg,
+co.mdec160r_conceptos_contables_concepto_base_impdev_capital as fc_rcp_cont_impdevcapital,
+co.mdec160r_conceptos_contables_concepto_base_impdev_interes as fc_rcp_cont_impdevinteres,
+co.mdec160r_conceptos_contables_concepto_base_impdev_ajuste_1 as fc_rcp_cont_impdevajuste1,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_total as fc_rcp_cont_impudevtotal,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_iva1 as fc_rcp_cont_impudeviva1,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_iva2 as fc_rcp_cont_impudeviva2,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_ing_b as fc_rcp_cont_impudevingb,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_imp_e as fc_rcp_cont_impudevimpe,
+co.mdec160r_conceptos_contables_impuestos_contables_impudev_otro as fc_rcp_cont_impudevotro,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_comision as fc_rcp_nocont_imperccomision,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_seg_vida as fc_rcp_nocont_impercsegvida,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_seg_ince as fc_rcp_nocont_impercsegince,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_seg_total as fc_rcp_nocont_impercsegtotal,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_gastos_md_ug as fc_rcp_nocont_impercgastosmdug,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_int_cps as fc_rcp_nocont_impercintcps,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_int_mor as fc_rcp_nocont_impercintmor,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_ajuste as fc_rcp_nocont_impercajuste,
+co.mdec160r_sobre_percibido_concepto_nocontables_imperc_interes as fc_rcp_nocont_impercinteres,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_total as fc_rcp_nocont_impuperctotal,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_iva1 as fc_rcp_nocont_impuperciva1,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_iva2 as fc_rcp_nocont_impuperciva2,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_ing_b as fc_rcp_nocont_impupercingb,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_imp_e as fc_rcp_nocont_impupercinge,
+co.mdec160r_sobre_percibido_impuestos_nocontables_impuperc_otro as fc_rcp_nocont_impupercotro
+FROM bi_corp_staging.moria_consolidados_cobros_md co
+LEFT JOIN bi_corp_staging.moria_cancelaciones_md ca ON ca.mdec160n_idf_cancelac = co.mdec160r_idf_cancelac AND ca.partition_date = '{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_RECUPERACIONES_GarraMoria-Daily') }}'
+WHERE co.partition_date = '{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_RECUPERACIONES_GarraMoria-Daily') }}'
+;

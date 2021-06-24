@@ -1,0 +1,83 @@
+name: LOAD_CMN_Zendesk_Hist3
+description: 'Load Accounts Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '0 9 * * *'
+start_date: '2020-05-01'
+#end_date: '2019-02-01'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_common.stk_zen_usuarios, bi_corp_staging.zendesk_brands_santander_ar, bi_corp_staging.zendesk_brands_puc_santander,bi_corp_staging.zendesk_brands_comex_santander, bi_corp_staging.zendesk_tk_fields_santander_ar, bi_corp_staging.zendesk_tk_fields_puc_santander, bi_corp_staging.zendesk_tk_fields_comex_santander, bi_corp_staging.zendesk_tk_forms_santander_ar, bi_corp_staging.zendesk_tk_forms_puc_santander, bi_corp_staging.zendesk_tk_forms_comex_santander, bi_corp_staging.zendesk_gr_santander_ar, bi_corp_staging.zendesk_gr_puc_santander, bi_corp_staging.zendesk_gr_comex_santander, bi_corp_staging.zendesk_usr_santander_ar, bi_corp_staging.zendesk_usr_puc_santander, bi_corp_staging.zendesk_usr_comex_santander
+tasks:
+  - name: bt_zen_ticket
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/zendesk/bt_zen_ticket/ETLV-Load_Common_Table_Hist.hql'
+  - name: stk_zen_usuarios
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/zendesk/stk_zen_usuarios/ETLV-Load_Common_Table_Hist.hql'
+  - name: SHERIFF_bt_zen_ticket
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_bt_zen_ticket
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/zendesk/bt_zen_ticket/bt_zen_ticket_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Zendesk_Hist3') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_zen_ticket_sheriff.json']
+
+  - name: SHERIFF_stk_zen_usuarios
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_stk_zen_usuarios
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/zendesk/stk_zen_usuarios/stk_zen_usuarios_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Zendesk_Hist3') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_zen_usuarios_sheriff.json']
+dependencies:
+  stk_zen_usuarios: SHERIFF_stk_zen_usuarios
+  SHERIFF_stk_zen_usuarios: bt_zen_ticket
+  bt_zen_ticket: SHERIFF_bt_zen_ticket
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

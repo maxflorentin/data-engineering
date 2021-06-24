@@ -1,0 +1,59 @@
+{
+    "file": "rel_contrato_otro_bco_schema",
+    "createTable": "bi_corp_staging.rio125_rel_contrato_otro_bco",
+    "location": "/santander/bi-corp/landing/rio125/fact/rel_contrato_otro_bco/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio125/fact/rel_contrato_otro_bco",
+    "tempDirectory": "/santander/bi-corp/temp/rio125",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "entidad",
+            "type": "string"
+        },
+        {
+            "name": "centro",
+            "type": "string"
+        },
+        {
+            "name": "contrato",
+            "type": "string"
+        },
+        {
+            "name": "producto",
+            "type": "string"
+        },
+        {
+            "name": "subproducto",
+            "type": "string"
+        },
+        {
+            "name": "divisa",
+            "type": "string"
+        },
+        {
+            "name": "centro_otro_bco",
+            "type": "string"
+        },
+        {
+            "name": "contrato_otro_bco",
+            "type": "string"
+        },
+        {
+            "name": "entidad_origen",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

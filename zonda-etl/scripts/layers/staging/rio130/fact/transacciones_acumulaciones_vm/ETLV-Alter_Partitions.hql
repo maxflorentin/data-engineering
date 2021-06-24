@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio130_txn_acum_loy;

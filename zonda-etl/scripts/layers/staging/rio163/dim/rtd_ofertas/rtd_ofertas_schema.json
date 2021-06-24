@@ -1,0 +1,115 @@
+{
+    "file": "rtd_ofertas_schema",
+    "createTable": "bi_corp_staging.rio163_rtd_ofertas",
+    "location": "/santander/bi-corp/landing/rio163/dim/rtd_ofertas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio163/dim/rtd_ofertas",
+    "tempDirectory": "/santander/bi-corp/temp/rio163",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_oferta_rtd",
+            "type": "string"
+        },
+        {
+            "name": "id_oferta_interno",
+            "type": "string"
+        },
+        {
+            "name": "categoria_oferta",
+            "type": "string"
+        },
+        {
+            "name": "tipo_oferta",
+            "type": "string"
+        },
+        {
+            "name": "segmento_aplica",
+            "type": "string"
+        },
+        {
+            "name": "nombre_oferta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_inicio",
+            "type": "string"
+        },
+        {
+            "name": "fecha_finalizacion",
+            "type": "string"
+        },
+        {
+            "name": "pg_1_score",
+            "type": "string"
+        },
+        {
+            "name": "pg_2_score",
+            "type": "string"
+        },
+        {
+            "name": "pg_3_score",
+            "type": "string"
+        },
+        {
+            "name": "pg_4_score",
+            "type": "string"
+        },
+        {
+            "name": "localidad",
+            "type": "string"
+        },
+        {
+            "name": "provincia",
+            "type": "string"
+        },
+        {
+            "name": "cant_puntos_base",
+            "type": "string"
+        },
+        {
+            "name": "url",
+            "type": "string"
+        },
+        {
+            "name": "dia_sem_aplica_beneficio",
+            "type": "string"
+        },
+        {
+            "name": "fecha_carga",
+            "type": "string"
+        },
+        {
+            "name": "seccion",
+            "type": "string"
+        },
+        {
+            "name": "id_loyalty",
+            "type": "string"
+        },
+        {
+            "name": "producto",
+            "type": "string"
+        },
+        {
+            "name": "familia",
+            "type": "string"
+        },
+        {
+            "name": "valida_producto_familia",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

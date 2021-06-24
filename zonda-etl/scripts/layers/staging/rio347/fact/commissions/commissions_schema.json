@@ -1,0 +1,85 @@
+{
+  "file": "commissions_schema",
+  "location": "/santander/bi-corp/landing/rio347/fact/commissions/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio347/fact/commissions",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"customerid",
+      "type": "string"
+    },
+    {
+      "name":"securities_contract_code",
+      "type":"string"
+    },
+    {
+      "name":"office_code",
+      "type":"string"
+    },
+    {
+      "name":"origin",
+      "type":"string"
+    },
+    {
+      "name":"actionid",
+      "type":"string"
+    },
+    {
+      "name":"period",
+      "type":"string"
+    },
+    {
+      "name":"periodicity",
+      "type":"string"
+    },
+    {
+      "name":"transaction_type",
+      "type":"string"
+    },
+    {
+      "name":"nominal_holding",
+      "type":"string"
+    },
+    {
+      "name":"valuated_holding",
+      "type":"string"
+    },
+    {
+      "name":"percentage",
+      "type":"string"
+    },
+    {
+      "name":"count_movements",
+      "type":"string"
+    },
+    {
+      "name":"fixed_price_movement",
+      "type":"string"
+    },
+    {
+      "name":"ammount",
+      "type":"string"
+    },
+    {
+      "name":"bonus",
+      "type":"string"
+    },
+    {
+      "name":"creation_date",
+      "type":"string"
+    },
+    {
+      "name":"update_date",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

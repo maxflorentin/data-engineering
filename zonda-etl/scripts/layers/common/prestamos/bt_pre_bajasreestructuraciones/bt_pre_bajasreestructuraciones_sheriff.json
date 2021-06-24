@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.bt_pre_bajasreestructuraciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["dt_pre_fechaaltaproducto","ds_pre_tiporeestructuracion","cod_pre_segmento","flag_pre_normalizado","ds_pre_bucket","cod_pre_tipoclasificacion","fc_pre_diasatraso","fc_pre_importeriesgo","dt_pre_fechaaltaproducto"],
+      "threshold": 0.001
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fechaaltaproducto","dt_pre_fechabaja"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

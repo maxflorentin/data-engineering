@@ -1,0 +1,194 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_interaccion",
+      "title": "Interaccion entre ejecutivo y cliente (se crea un registro cada vez q se abre una ficha de un cliente)",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Interaccion entre ejecutivo y cliente (se crea un registro cada vez q se abre una ficha de un cliente)",
+      "columns": [
+        {
+          "name": "CD_INTERACCION",
+          "title": "CD_INTERACCION",
+          "description": "PK de la tabla. Secuencia numerica.",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "nup del cliente",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "CD_EJECUTIVO",
+          "title": "CD_EJECUTIVO",
+          "description": "legajo del ejecutivo",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DT_INICIO",
+          "title": "DT_INICIO",
+          "description": "fecha de inicio",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "DT_CIERRE",
+          "title": "DT_CIERRE",
+          "description": "fecha de cierre",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "CD_CANAL_COMUNICACION",
+          "title": "CD_CANAL_COMUNICACION",
+          "description": "codigo canal de comunicación (suele ser TE)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CD_CANAL_VENTA",
+          "title": "CD_CANAL_VENTA",
+          "description": "codigo canal de venta (suele ser TK)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CD_SUCURSAL",
+          "title": "CD_SUCURSAL",
+          "description": "identificador sucursal",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DS_COMENTARIO",
+          "title": "DS_COMENTARIO",
+          "description": "algun comentario del ejecutivo",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 2500.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MOTIVO",
+          "title": "MOTIVO",
+          "description": "codigo motivo de cierre de la interaccion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NRO_LLAMADO",
+          "title": "NRO_LLAMADO",
+          "description": "numero sesion del ivr",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CD_INTERACCION_SUCURSAL",
+          "title": "CD_INTERACCION_SUCURSAL",
+          "description": "codigo de interaccion en MASCHE SUC (hoy en dia se le informan las interacciones a masche sucursal)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "ORIGEN",
+          "title": "ORIGEN",
+          "description": "codigo de origen de la interaccion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CD_INTERACCION_PADRE",
+          "title": "CD_INTERACCION_PADRE",
+          "description": "(FK cd_interaccion) si se abre una ficha de cliente secundaria dentro de la misma sesion se relacionan por este campo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "NUMERO_TICKET",
+          "title": "NUMERO_TICKET",
+          "description": "cuando se abre maschecc y la ficha del cliente desde aplicativo NESR/OCULUS se envia el numero de ticket para tener la relacion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

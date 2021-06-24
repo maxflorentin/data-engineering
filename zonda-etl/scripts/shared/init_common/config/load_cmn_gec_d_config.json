@@ -1,0 +1,19 @@
+{
+  "name": "GEC-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_RIO163-GEC-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_RIO170-GEC-Daily",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_GEC"
+    }
+  ]
+}

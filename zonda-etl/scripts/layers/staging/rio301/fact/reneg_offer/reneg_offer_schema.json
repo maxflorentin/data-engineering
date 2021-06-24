@@ -1,0 +1,103 @@
+{
+    "file": "reneg_offer_schema",
+    "createTable": "bi_corp_staging.rio301_reneg_offer",
+    "location": "/santander/bi-corp/landing/rio301/fact/reneg_offer/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio301/fact/reneg_offer",
+    "tempDirectory": "/santander/bi-corp/temp/rio301",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "offer_id",
+            "type": "string"
+        },
+        {
+            "name": "cft",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_brand",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_limit_adjustment",
+            "type": "string"
+        },
+        {
+            "name": "credit_card_number",
+            "type": "string"
+        },
+        {
+            "name": "first_quota_value",
+            "type": "string"
+        },
+        {
+            "name": "insurance",
+            "type": "string"
+        },
+        {
+            "name": "interest",
+            "type": "string"
+        },
+        {
+            "name": "iva",
+            "type": "string"
+        },
+        {
+            "name": "max_amount",
+            "type": "string"
+        },
+        {
+            "name": "other_charges",
+            "type": "string"
+        },
+        {
+            "name": "pure_quota_value",
+            "type": "string"
+        },
+        {
+            "name": "validity_date",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "refinancing_id",
+            "type": "string"
+        },
+        {
+            "name": "offer_state_id",
+            "type": "string"
+        },
+        {
+            "name": "tna",
+            "type": "string"
+        },
+        {
+            "name": "term",
+            "type": "string"
+        },
+        {
+            "name": "total_due_amount",
+            "type": "string"
+        },
+        {
+            "name": "creation_date",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

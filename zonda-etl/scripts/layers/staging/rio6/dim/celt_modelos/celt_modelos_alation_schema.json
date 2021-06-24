@@ -1,0 +1,115 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "celt_modelos",
+            "title": "Modelos de celulares",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Modelos de celulares",
+            "columns": [
+                {
+                    "name": "CEMO_CEMA_CD_MARCA",
+                    "title": "CEMO_CEMA_CD_MARCA",
+                    "description": "Código de la marca",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_CD_MODELO",
+                    "title": "CEMO_CD_MODELO",
+                    "description": "Código del modelo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_DE_MODELO",
+                    "title": "CEMO_DE_MODELO",
+                    "description": "Descripción del modelo",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_PR_MERCADO",
+                    "title": "CEMO_PR_MERCADO",
+                    "description": "Valor de mercado",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_FE_VIGENCIA",
+                    "title": "CEMO_FE_VIGENCIA",
+                    "description": "Fecha de vigencia",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_FE_ALTA",
+                    "title": "CEMO_FE_ALTA",
+                    "description": "Fecha de alta del modelo",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_ST_MODELO",
+                    "title": "CEMO_ST_MODELO",
+                    "description": "Estado del modelo",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMO_CD_MODELO_COMERCIAL",
+                    "title": "CEMO_CD_MODELO_COMERCIAL",
+                    "description": "Código comercial del modelo",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

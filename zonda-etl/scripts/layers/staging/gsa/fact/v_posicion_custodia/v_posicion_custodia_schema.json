@@ -1,0 +1,60 @@
+{
+  "file": "v_posicion_custodia_schema",
+  "location": "/santander/bi-corp/landing/gsa/fact/v_posicion_custodia/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/gsa/fact/v_posicion_custodia",
+  "tempDirectory": "/santander/bi-corp/temp/gsa",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "branch",
+    "type": "string"
+  },
+    {
+      "name": "fechapos",
+      "type": "string"
+    },
+    {
+      "name": "cno",
+      "type": "string"
+    },
+    {
+      "name": "num_atit",
+      "type": "string"
+    },
+    {
+      "name": "secid",
+      "type": "string"
+    },
+    {
+      "name": "lugar",
+      "type": "string"
+
+    },
+    {
+      "name": "estado",
+      "type": "string"
+    },
+    {
+      "name": "subestado",
+      "type": "string"
+    },
+    {
+      "name": "subestado2",
+      "type": "string"
+    },
+    {
+      "name": "nominales",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

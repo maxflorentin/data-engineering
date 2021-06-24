@@ -1,0 +1,86 @@
+{
+  "file": "seg_derivacion_inteligente_na_schema",
+  "location": "/santander/bi-corp/landing/rio32/dim/seg_derivacion_inteligente_na/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/dim/seg_derivacion_inteligente_na",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "tipo_vdn_entrada",
+    "type": "string"
+  },
+    {
+      "name": "aplicacion",
+      "type": "string"
+    },
+    {
+      "name": "tipo_renta",
+      "type": "string"
+    },
+    {
+      "name": "nombre_producto",
+      "type": "string"
+    },
+    {
+      "name": "opcion_ivr",
+      "type": "string"
+    },
+    {
+      "name": "tipo_persona",
+      "type": "string"
+    },
+    {
+      "name": "nombre_vdn_salida",
+      "type": "string"
+    },
+    {
+      "name": "nombre_vq_salida",
+      "type": "string"
+    },
+    {
+      "name": "grupo_agentes",
+      "type": "string"
+    },
+    {
+      "name": "grupo_agentes_desborde",
+      "type": "string"
+    },
+    {
+      "name": "nombre_vq_estadistica",
+      "type": "string"
+    },
+    {
+      "name": "habilidad_req_1",
+      "type": "string"
+    },
+    {
+      "name": "habilidad_req_2",
+      "type": "string"
+    },
+    {
+      "name": "cod_cartera",
+      "type": "string"
+    },
+    {
+      "name": "audio",
+      "type": "string"
+    },
+    {
+      "name": "accion",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

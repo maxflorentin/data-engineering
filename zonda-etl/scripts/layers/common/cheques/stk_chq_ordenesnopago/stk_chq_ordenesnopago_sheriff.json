@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.stk_chq_ordenesnopago",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal","cod_chq_secuencia"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal","cod_chq_secuencia"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_source","flag_chq_active","dt_chq_fechaalta","cod_chq_divisa","cod_chq_contonp","ds_chq_motivo","ds_chq_denunciante","cod_chq_estado","cod_suc_sucursalumo","fc_chq_importe"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_chq_fechaalta","dt_chq_fechabaja","dt_chq_fechaconfirm"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

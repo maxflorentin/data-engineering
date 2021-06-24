@@ -1,0 +1,24 @@
+{
+  "table": "bi_corp_common.stk_seg_seguros",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_seg_ramo", "cod_seg_producto", "cod_seg_plan"],
+    "threshold": 0.01
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_seg_poliza", "cod_seg_certificado", "ds_seg_tipo_seguro"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_seg_ramo", "cod_seg_producto", "cod_seg_plan", "cod_seg_poliza", "cod_seg_certificado"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_seg_fecha_alta_poliza_original", "dt_seg_fecha_suscripcion", "dt_seg_fecha_desde_vigencia", "dt_seg_fecha_hasta_vigencia", "dt_seg_fecha_proxima_facturacion"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "file": "nb_desc_trx_schema",
+  "location": "/santander/bi-corp/landing/rio15/dim/nb_desc_trx/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio15/dim/nb_desc_trx",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"transaccion",
+      "type": "string"
+    },
+    {
+      "name":"descripcion",
+      "type":"string"
+    },
+    {
+      "name":"modulo",
+      "type":"string"
+    },
+    {
+      "name":"tipo_trx",
+      "type":"string"
+    },
+    {
+      "name":"submodulo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

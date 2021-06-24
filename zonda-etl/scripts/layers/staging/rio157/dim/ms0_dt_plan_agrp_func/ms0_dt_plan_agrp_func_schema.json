@@ -1,0 +1,87 @@
+{
+    "file": "ms0_dt_plan_agrp_func_schema",
+    "createTable": "bi_corp_staging.rio157_ms0_dt_plan_agrp_func",
+    "location": "/santander/bi-corp/landing/rio157/dim/ms0_dt_plan_agrp_func/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio157/dim/ms0_dt_plan_agrp_func",
+    "tempDirectory": "/santander/bi-corp/temp/rio157",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "cod_agrp_func",
+            "type": "string"
+        },
+        {
+            "name": "des_agrp_func",
+            "type": "string"
+        },
+        {
+            "name": "tip_concepto_ctb",
+            "type": "string"
+        },
+        {
+            "name": "tip_malla",
+            "type": "string"
+        },
+        {
+            "name": "fec_alta",
+            "type": "string"
+        },
+        {
+            "name": "fec_baja",
+            "type": "string"
+        },
+        {
+            "name": "userid_umo",
+            "type": "string"
+        },
+        {
+            "name": "timest_umo",
+            "type": "string"
+        },
+        {
+            "name": "ind_insolvencia",
+            "type": "string"
+        },
+        {
+            "name": "ind_comision",
+            "type": "string"
+        },
+        {
+            "name": "cod_est_sdo",
+            "type": "string"
+        },
+        {
+            "name": "cod_sis_origen",
+            "type": "string"
+        },
+        {
+            "name": "cod_contenido_prev",
+            "type": "string"
+        },
+        {
+            "name": "ind_costes",
+            "type": "string"
+        },
+        {
+            "name": "cod_posicion_valor",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

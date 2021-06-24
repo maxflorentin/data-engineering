@@ -1,0 +1,59 @@
+{
+    "file": "tbl_interaccion_hist_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_interaccion",
+    "location": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/fact/tbl_interaccion",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_interaccion",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "cd_ejecutivo",
+            "type": "string"
+        },
+        {
+            "name": "dt_inicio",
+            "type": "string"
+        },
+        {
+            "name": "dt_cierre",
+            "type": "string"
+        },
+        {
+            "name": "cd_canal_comunicacion",
+            "type": "string"
+        },
+        {
+            "name": "cd_canal_venta",
+            "type": "string"
+        },
+        {
+            "name": "cd_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "ds_comentario",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

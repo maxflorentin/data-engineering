@@ -1,0 +1,116 @@
+{
+  "file": "responsys_campanias_schema",
+  "location": "/santander/bi-corp/landing/responsys/fact/campanias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/responsys/fact/campanias",
+  "createTable": "bi_corp_staging.responsys_campanias",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [  {
+    "name": "id",
+    "type": "string"
+  },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "folder",
+      "type": "string"
+    },
+    {
+      "name": "vista",
+      "type": "string"
+    },
+    {
+      "name": "extid",
+      "type": "string"
+    },
+    {
+      "name": "types",
+      "type": "string"
+    },
+    {
+      "name": "purpose",
+      "type": "string"
+    },
+    {
+      "name": "listname",
+      "type": "string"
+    },
+    {
+      "name": "htmlmgepath",
+      "type": "string"
+    },
+    {
+      "name": "enablelinktrack",
+      "type": "string"
+    },
+    {
+      "name": "enableexterntrack",
+      "type": "string"
+    },
+    {
+      "name": "subject",
+      "type": "string"
+    },
+    {
+      "name": "fromname",
+      "type": "string"
+    },
+    {
+      "name": "useutf8",
+      "type": "string"
+    },
+    {
+      "name": "locale",
+      "type": "string"
+    },
+    {
+      "name": "trackhtmlopens",
+      "type": "string"
+    },
+    {
+      "name": "tipotrackconvers",
+      "type": "string"
+    },
+    {
+      "name": "sendtextifhtmlunknown",
+      "type": "string"
+    },
+    {
+      "name": "unsubscroptn",
+      "type": "string"
+    },
+    {
+      "name": "autocloseopt",
+      "type": "string"
+    },
+    {
+      "name": "mktstrategy",
+      "type": "string"
+    },
+    {
+      "name": "mktprogram",
+      "type": "string"
+    },
+    {
+      "name": "fromemail",
+      "type": "string"
+    },
+    {
+      "name": "replytoemail",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

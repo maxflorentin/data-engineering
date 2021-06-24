@@ -1,0 +1,17 @@
+{
+  "table": "bi_corp_common.bt_tcr_movimientos_liquidados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_tcr_tarjeta","cod_tcr_operacion","cod_tcr_cuenta","cod_tcr_marca_tarjeta","cod_div_divisa","fc_tcr_importe"],
+      "threshold": 0.1
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_tcr_fecha_presentacion","dt_tcr_fecha_origen"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

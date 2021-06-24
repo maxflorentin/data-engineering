@@ -1,0 +1,16 @@
+{
+  "file": "contragarantias",
+  "location": "/santander/bi-corp/landing/abkt/contragarantias/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/abkt/contragarantias",
+  "createTable": "bi_corp_staging.abkt_contragarantias",
+  "copybook": "contragarantias.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

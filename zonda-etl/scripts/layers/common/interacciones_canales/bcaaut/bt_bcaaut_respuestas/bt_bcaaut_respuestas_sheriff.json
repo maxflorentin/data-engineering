@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_bcaaut_respuestas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cue_Tarjeta","cod_per_nup","id_bcaaut_mensaje"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_bcaaut_oferta"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

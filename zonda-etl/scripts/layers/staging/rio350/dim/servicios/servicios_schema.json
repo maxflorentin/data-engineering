@@ -1,0 +1,31 @@
+{
+    "file": "servicios_schema",
+    "createTable": "bi_corp_staging.rio350_servicios",
+    "location": "/santander/bi-corp/landing/rio350/dim/servicios/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/servicios",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "servicio_id",
+            "type": "string"
+        },
+        {
+            "name": "servicio_nombre",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

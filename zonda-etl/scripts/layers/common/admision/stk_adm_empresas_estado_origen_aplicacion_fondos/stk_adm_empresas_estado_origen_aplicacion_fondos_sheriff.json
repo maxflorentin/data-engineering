@@ -1,0 +1,27 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_estado_origen_aplicacion_fondos",
+"partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_eoaf"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_eoaf","flag_adm_consolidado","cod_adm_penumper","dt_adm_eoaf"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_pefecmod","ts_adm_pefecalt"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_eoaf","dt_adm_blc"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+	  ]
+}

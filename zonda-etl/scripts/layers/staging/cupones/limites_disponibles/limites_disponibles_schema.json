@@ -1,0 +1,89 @@
+{
+	"file": "limites_disponibles_schema",
+	"location": "/santander/bi-corp/landing/cupones/limites_disponibles/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/cupones/limites_disponibles",
+	"extension": "csv",
+    "createTable": "bi_corp_staging.prisma_limites_disponibles",
+	"delimiter": "\t",
+	"header": true,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "cod_banco",
+		"type": "string"
+		},
+		{
+		"name": "nro_cuenta",
+		"type": "long"
+		},
+		{
+		"name": "monto_disponible_compra_1_pago",
+		"type": "decimal"
+		},
+		{
+		"name": "monto_disponible_compra_cuotas",
+		"type": "decimal"
+		},
+		{
+		"name": "monto_disponible_adelanto",
+		"type": "decimal"
+		},
+		{
+		"name": "marca_limite_unificado",
+		"type": "string"
+		},
+		{
+		"name": "marca_excepcion_limite",
+		"type": "string"
+		},
+		{
+		"name": "fecha_liquidacion_cuenta",
+		"type": "string"
+		},
+		{
+		"name": "canal_venta",
+		"type": "string"
+		},
+		{
+		"name": "cod_modelo_liquidacion",
+		"type": "string"
+		},
+		{
+		"name": "cod_grupo_afinidad",
+		"type": "string"
+		},
+		{
+		"name": "limite_compra",
+		"type": "decimal"
+		},
+		{
+		"name": "limite_actual_compra_cuotas",
+		"type": "decimal"
+		},
+		{
+		"name": "ciclo_liquidacion",
+		"type": "string"
+		},
+		{
+		"name": "cantidad_dias_mora",
+		"type": "int"
+		},
+		{
+		"name": "saldo",
+		"type": "decimal"
+		},
+		{
+		"name": "monto_pesos_cuotas_pendientes",
+		"type": "decimal"
+		}
+	],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

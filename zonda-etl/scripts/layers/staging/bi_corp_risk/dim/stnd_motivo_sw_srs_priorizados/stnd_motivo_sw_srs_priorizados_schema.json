@@ -1,0 +1,44 @@
+{
+	"file": "stnd_motivo_sw_srs_priorizados_schema",
+	"location": "/santander/bi-corp/landing/sql5/dim/stnd_motivo_sw_srs_priorizados/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_stnd_motivo_sw_srs_priorizados",
+	"tempDirectory": "/santander/bi-corp/temp/stnd_motivo_sw_srs_priorizados",
+	"createTable": "bi_corp_staging.risksql5_stnd_motivo_sw_srs_priorizados",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "tipo_tramite",
+			"type": "string"
+		},
+{
+			"name": "cod_decision",
+			"type": "string"
+		},
+{
+			"name": "cod_motivo",
+			"type": "string"
+		},
+{
+			"name": "nro_prioridad",
+			"type": "string"
+		},
+{
+			"name": "des_motivo",
+			"type": "string"
+		},
+{
+			"name": "tipo_motivo",
+			"type": "string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

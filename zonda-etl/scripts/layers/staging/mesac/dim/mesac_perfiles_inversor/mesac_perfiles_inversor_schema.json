@@ -1,0 +1,31 @@
+{
+  "file": "mesac_perfiles_inversor_schema",
+  "location": "/santander/bi-corp/landing/mesac/dim/mesac_perfiles_inversor/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/mesac/dim/mesac_perfiles_inversor",
+  "createTable": "bi_corp_staging.mesac_perfiles_inversor",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "columns": [{
+    "name": "cod_perfil",
+    "type": "string"
+  },
+    {
+      "name": "desc_perfil",
+      "type": "string"
+    },
+    {
+      "name": "desc_completa",
+      "type": "string"
+    }],
+    "extraColumns": [{
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+
+}

@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_tcr_tarjetas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_tcr_tipo_cuenta","cod_tcr_cuenta","cod_tcr_tarjeta","cod_tcr_marca"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_tcr_fecha_incluye_boletin","dt_tcr_fecha_alta","dt_tcr_fecha_baja","dt_tcr_fecha_no_renovacion","dt_tcr_fecha_promo"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

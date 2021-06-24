@@ -1,0 +1,25 @@
+{
+  "table": "bi_corp_common.bt_pre_cancelacionesprestamos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_entidad","cod_div_divisa","dt_pre_fechaoper","dt_pre_fechavalor","cod_pre_evento","cod_prod_producto","cod_prod_subproducto","cod_pre_codides","cod_per_nup","fc_pre_imppago"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_pre_entidad","cod_div_divisa","dt_pre_fechaoper","dt_pre_fechavalor","cod_pre_evento","cod_prod_producto","cod_prod_subproducto","cod_pre_codides","cod_per_nup","fc_pre_imppago"],
+      "threshold": 0.00
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["fc_pre_capinire","fc_pre_salreal","cod_pre_useridumo","ds_pre_evento"],
+      "threshold": 0.001
+    },{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fechaoper","dt_pre_fechavalor"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

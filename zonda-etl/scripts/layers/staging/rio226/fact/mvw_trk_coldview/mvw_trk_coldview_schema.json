@@ -1,0 +1,59 @@
+{
+        "file": "mvw_trk_coldview_schema",
+        "location": "/santander/bi-corp/landing/rio226/fact/mvw_trk_coldview/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/fact/mvw_trk_coldview",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "createTable": "bi_corp_staging.rio226_trk_coldview",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "ID",
+                        "type": "string"
+                },
+                {
+                        "name": "LEGAJO",
+                        "type": "string"
+                },
+                {
+                        "name": "SUCURSAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ID_EVENTO",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA",
+                        "type": "string"
+                },
+                {
+                        "name": "CODIGO_REPORTE",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA_REPORTE",
+                        "type": "string"
+                },
+                {
+                        "name": "CODIGO_EMISION",
+                        "type": "string"
+                },
+                {
+                        "name": "OBSERVACION",
+                        "type": "string"
+                },
+                {
+                        "name": "ROL_USUARIO",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

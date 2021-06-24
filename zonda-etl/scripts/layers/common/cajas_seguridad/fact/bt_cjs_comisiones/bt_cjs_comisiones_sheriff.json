@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_cjs_comisiones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cjs_comision","cod_cjs_contrato","cod_cjs_suc_contrato"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cjs_fecha_liq","dt_cjs_fecha_pago"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

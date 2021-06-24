@@ -1,0 +1,99 @@
+{
+  "file": "tlinea_prendario_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tlinea_prendario/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tlinea_prendario",
+  "createTable": "bi_corp_staging.sge_tlinea_prendario",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+             {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cod_operacion",
+                    "type": "string"
+                },
+{
+                    "name": "secuencia",
+                    "type": "string"
+                },
+{
+                    "name": "marca_bien",
+                    "type": "string"
+                },
+{
+                    "name": "modelo_bien",
+                    "type": "string"
+                },
+{
+                    "name": "valor_bien",
+                    "type": "string"
+                },
+{
+                    "name": "antiguedad",
+                    "type": "string"
+                },
+{
+                    "name": "marca_nuevo",
+                    "type": "string"
+                },
+{
+                    "name": "cuotas",
+                    "type": "string"
+                },
+{
+                    "name": "mar_pesado_utilitario",
+                    "type": "string"
+                },
+{
+                    "name": "mar_gnc",
+                    "type": "string"
+                },
+{
+                    "name": "val_gnc",
+                    "type": "string"
+                },
+{
+                    "name": "comp_seguro",
+                    "type": "string"
+                },
+{
+                    "name": "val_cotizacion",
+                    "type": "string"
+                },
+{
+                    "name": "monto_solicitado",
+                    "type": "string"
+                },
+{
+                    "name": "plazo",
+                    "type": "string"
+                },
+{
+                    "name": "can_bien",
+                    "type": "string"
+                },
+{
+                    "name": "monto_aprobado_sw",
+                    "type": "string"
+                },
+{
+                    "name": "monto_cuota",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

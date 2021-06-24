@@ -1,0 +1,107 @@
+*
+      ***** ARCHIVO DE CONTRATOS ACSE         ********
+      *-----------------------------------------------*
+      ******* TIPO.REG...= FIJO               *********
+      ******* LONGITUD   = 200                *********
+      *
+      ******************************************************************
+      *                 MODIFICACIONES                                 *00002000
+      *                 --------------                                 *00002100
+      *                                                                *00002200
+      *  USUARIO   FECHA           DESCRIPCION                         *00002300
+      *  -------- -------- -----------------------------------------   *00002400
+      *  B021983  28-08-09 se agrega anio-mes desde / hasta de         *00002500
+      *                    liquidacion (se usa filler del final)       *00003100
+      *                    REF: ID-1956                                *00002600
+      ******************************************************************
+      *                                                    Desde  Hasta
+       01  WACSE300.
+      *        Sucursal y Numero de contrato                   1     16
+           05  WACSE300-CLAVE.
+      *              Sucursal contrato ACSE                    1      4
+                  10 WACSE300-SUCURSAL             PIC X(04).
+      *              Numero de cuenta contrato ACSE            5     16
+                  10 WACSE300-CONTRATO             PIC X(12).
+      *
+      *        Datos de ubicacion de la caja                  17     28
+           05  WACSE300-UBICACION-CAJA.
+      *              Sucursal de la caja fisica               17     20
+                 10  WACSE300-SUCURSAL-CAJA        PIC X(04).
+      *              Sector de la caja  fisica                21     23
+                 10  WACSE300-SECTOR-CAJA          PIC X(03).
+      *              Numero de la caja fisica                 24     28
+                 10  WACSE300-NUMERO-CAJA          PIC 9(05).
+      *
+      *        Estado de la relacion contrato ACSE con caja   29     29
+           05  WACSE300-ESTADO                     PIC X(01).
+      *        Forma de operar del contrato                   30     30
+           05  WACSE300-FORMA-OPERAR               PIC X(01).
+      *        Fecha de locacion de la caja (AAAAMMDD)        31     38
+           05  WACSE300-FEC-LOCACION               PIC 9(08).
+      *        Fecha de vencimiento del contrato (AAAAMMDD)   39     46
+           05  WACSE300-FEC-VENCIMIENTO            PIC 9(08).
+      *        Fecha de Baja del contrato   (AAAAMMDD)        47     54
+           05  WACSE300-FEC-BAJA                   PIC 9(08).
+      *        Forma de Pago del alquiler                     55     55
+           05  WACSE300-FORMA-PAGO                 PIC X(01).
+      *        Identificacion de la cuenta de debito          56     78
+      *
+           05  WACSE300-ID-CTA-DEBITO.
+                  10 WACSE300-CCC.
+      *                  Entidad de la cuenta de debito       56     59
+                      15 WACSE300-ENTIDAD-DEBITO   PIC X(04).
+      *                  Sucursal de la cuenta de debito      60     63
+                      15 WACSE300-SUCURSAL-DEBITO  PIC X(04).
+      *                  Numero de cuenta de debito           64     75
+                      15 WACSE300-CUENTA-DEBITO    PIC X(12).
+      *              Divisa de la cuenta de debito            76     78
+                  10 WACSE300-DIVISA-DEBITO        PIC X(03).
+      *
+      *        Frecuencia de cobro de comision                79     79
+           05  WACSE300-FRECUENCIA                 PIC 9(01).
+      *        Codigo de bonificacion de comision             80     80
+           05  WACSE300-COD-BONIFICACION           PIC X(01).
+      *        Tamaão de la caja fisica                       81     82
+           05  WACSE300-TIPO-CAJA                  PIC 9(02).
+      *        Indicador de existencia de deuda               83     83
+           05  WACSE300-ID-DEUDA-PENDIENTE         PIC X(01).
+      *        Fecha de Alta del contrato   (AAAAMMDD)        84     91
+           05  WACSE300-FEC-ALTA                   PIC 9(08).
+      *        Indicador Caja Bancio Rio                      92     92
+           05  WACSE300-IND-BRIO                   PIC X(01).
+      *        Usuario Alta del Contrato                      93    100
+           05  WACSE300-USUARIO-ALTA               PIC X(08).
+      *        Usuario Ult Modificacion                      101    108
+           05  WACSE300-USUARIO-ULT-ACT            PIC X(08).
+      *        Fecha Ult Modificacion                        109    116
+           05  WACSE300-FECHA-ULT-ACT              PIC 9(08).
+      *        Ultimo periodo liquidado                      117    122
+           05  WACSE300-ULT-PERIODO-LIQ            PIC 9(06).
+      *        Codigo de campaãa                             123    126
+           05  WACSE300-CAMPANIA                   PIC X(04).
+      *        Fecha de venc de la campaãa                   127    134
+           05  WACSE300-FEC-VTO-CAMP               PIC 9(08).
+      *
+      * FECHA PROXIMA LIQUIDACION AGREGADO MODIF X CAP, VER SOURCEFORGE
+      *                                                      135    144
+           05  WACSE300-FEC-PROXIMA-LIQ            PIC X(10).
+      *        RELLENO                                       145    200
+      *  ID-1956 - INI
+      *    05  WACSE300-FILLER                     PIC X(56).
+      *  anio/mes desde ultima liquidacion                   145    150
+           05  WACSE300-ULT-ANIOMES-DESDE-LIQ      PIC 9(06).
+      *  anio/mes hasta ultima liquidacion                   151    156
+           05  WACSE300-ULT-ANIOMES-HASTA-LIQ      PIC 9(06).
+      *  Contrato de la tarjeta de crédito                   157    168
+           05  WACSE300-CONTRATO-TC                PIC 9(12).
+      *  Sucursal de la tarjeta de crédito                   169    172
+           05  WACSE300-COD-OFI-TC                 PIC 9(04).
+      *  Calidad participativa de la tarjeta de crédito      173    174
+           05  WACSE300-CAL-PARTI-TC               PIC X(02).
+      *  Código de producto de la tarjeta de crédito         175    176
+           05  WACSE300-COD-PROD-TC                PIC X(02).
+      *  Código de sub-producto de la tarjeta de crédito     177    180
+           05  WACSE300-COD-PROD-TC                PIC X(02).
+      *        relleno                                       181    200
+           05  WACSE300-FILLER                     PIC X(44).
+      *  ID-1956 - FIN

@@ -1,0 +1,70 @@
+{
+  "file": "t_form_cooperativa_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_cooperativa/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_cooperativa",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "nombre_apellido_rte",
+      "type": "string"
+    },
+    {
+      "name": "nup_referente",
+      "type": "string"
+    },
+    {
+      "name": "cod_area_tel_rte",
+      "type": "string"
+    },
+    {
+      "name": "numero_tel_rte",
+      "type": "string"
+    },
+    {
+      "name": "email_referente",
+      "type": "string"
+    },
+    {
+      "name": "nombre_apellido_rdo",
+      "type": "string"
+    },
+    {
+      "name": "dni_referido",
+      "type": "string"
+    },
+    {
+      "name": "cod_area_tel_rdo",
+      "type": "string"
+    },
+    {
+      "name": "numero_tel_rdo",
+      "type": "string"
+    },
+    {
+      "name": "email_referido",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fecha",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

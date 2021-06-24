@@ -1,0 +1,102 @@
+{
+    "file": "pago_retencion",
+    "location": "/santander/bi-corp/landing/pap/fact/pago_retencion/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/pap/fact/pago_retencion",
+    "createTable": "bi_corp_staging.pap_pago_retencion",
+    "extension": "csv",
+    "delimiter": "\t",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+{
+            "name": "id_pago",
+            "type": "string"
+        },
+{
+            "name": "nif_proveedor",
+            "type": "string"
+        },
+{
+            "name": "proveedor_nombre",
+            "type": "string"
+        },
+{
+            "name": "tipo_retencion",
+            "type": "string"
+        },
+{
+            "name": "descripcion_tipo_retencion",
+            "type": "string"
+        },
+{
+            "name": "codigo_retencion",
+            "type": "string"
+        },
+{
+            "name": "descripcion_codigo_retencion",
+            "type": "string"
+        },
+{
+            "name": "codigo_actividad",
+            "type": "string"
+        },
+{
+            "name": "descripcion_codigo_actividad",
+            "type": "string"
+        },
+{
+            "name": "numero_certificado",
+            "type": "string"
+        },
+{
+            "name": "compania_nro_agente_retencion",
+            "type": "string"
+        },
+{
+            "name": "compania_nro_inscripcion_IIBB",
+            "type": "string"
+        },
+{
+            "name": "proveedor_nro_inscripcion_IIBB",
+            "type": "string"
+        },
+{
+            "name": "base_imponible",
+            "type": "string"
+        },
+{
+            "name": "importe_retenido",
+            "type": "string"
+        },
+{
+            "name": "alicuota_retencion",
+            "type": "string"
+        },
+{
+            "name": "importe_reduccion",
+            "type": "string"
+        },
+{
+            "name": "porc_exencion_liberacion",
+            "type": "string"
+        },
+{
+            "name": "adicional_retenido",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

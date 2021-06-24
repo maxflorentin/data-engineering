@@ -1,0 +1,15 @@
+{
+    "tables": [
+        {
+            "serverConfig": "dblxorafront05",
+            "database": "DSF",
+            "table": "CLIENTES",
+            "table_type": "fact",
+            "environment": "rio5",
+            "landing_path": "/santander/bi-corp/landing/rio5/fact/clientes",
+            "partition_field": "PERIODO",
+            "split_field": "PERIODO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Doraoop.import.partitions='CLIENTES_{partition_date_month}' -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@rio342db.ar.bsch:7365/RIO342'  --username 'SRVCBI' --query \"SELECT * FROM {database}.{table} PARTITION(CLIENTES_{partition_date_month}) WHERE PERIODO = {partition_date_month} and \\$CONDITIONS \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir {zonda_dir}/sqoop/{environment}/{table} --password 'YdL8B3XvfoWlLqna'  --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        }
+    ]
+}

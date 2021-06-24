@@ -1,0 +1,72 @@
+{
+	"file": "acciones_schema",
+	"location": "/santander/bi-corp/landing/emerix/fact/acciones/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/emerix/fact/emerix_acciones",
+	"tempDirectory": "/santander/bi-corp/temp/emerix_acciones",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "nombre_accion",
+			"type": "string"
+		},
+{
+			"name": "nombre_respuesta",
+			"type": "string"
+		},
+{
+			"name": "fecha_accion",
+			"type": "string"
+		},
+{
+			"name": "fecha_respuesta",
+			"type": "string"
+		},
+{
+			"name": "num_cliente",
+			"type": "string"
+		},
+{
+			"name": "contrato",
+			"type": "string"
+		},
+{
+			"name": "codigo_estado",
+			"type": "string"
+		},
+{
+			"name": "nombre_estado",
+			"type": "string"
+		},
+{
+			"name": "codigo_escenario",
+			"type": "string"
+		},
+{
+			"name": "nombre_escenario",
+			"type": "string"
+		},
+{
+			"name": "usuario",
+			"type": "string"
+		},
+{
+			"name": "buffete",
+			"type": "string"
+		},
+{
+			"name": "tipo_reg",
+			"type": "string"
+		}
+	],
+ "mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha_accion",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

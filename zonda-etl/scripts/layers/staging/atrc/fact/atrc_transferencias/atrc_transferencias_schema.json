@@ -1,0 +1,169 @@
+{
+	"file": "atrc_transferencias_schema",
+	"location": "/santander/bi-corp/landing/atrc/fact/atrc_transferencias/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/atrc/fact/atrc_transferencias",
+	"createTable": "bi_corp_staging.atrc_transferencias",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "entidad_origen",
+			"type": "string"
+		},
+		{
+			"name": "sucursal_origen",
+			"type": "string"
+		},
+		{
+			"name": "cuenta_origen",
+			"type": "string"
+		},
+		{
+			"name": "cuit_origen",
+			"type": "string"
+		},
+		{
+			"name": "cbu_origen",
+			"type": "string"
+		},
+		{
+			"name": "razon_social_origen",
+			"type": "string"
+		},
+		{
+			"name": "entidad_destino",
+			"type": "string"
+		},
+		{
+			"name": "sucursal_destino",
+			"type": "string"
+		},
+		{
+			"name": "cuenta_destino",
+			"type": "string"
+		},
+		{
+			"name": "cuit_destino",
+			"type": "string"
+		},
+		{
+			"name": "cbu_destino",
+			"type": "string"
+		},
+		{
+			"name": "razon_social_destino",
+			"type": "string"
+		},
+		{
+			"name": "fecha_alta",
+			"type": "string"
+		},
+		{
+			"name": "hora_alta",
+			"type": "string"
+		},
+		{
+			"name": "fecha_debito",
+			"type": "string"
+		},
+		{
+			"name": "hora_debito",
+			"type": "string"
+		},
+		{
+			"name": "fecha_envio_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "hora_envio_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "fecha_rta_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "hora_rta_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "fecha_credito",
+			"type": "string"
+		},
+		{
+			"name": "hora_credito",
+			"type": "string"
+		},
+		{
+			"name": "fecha_envio_camara",
+			"type": "string"
+		},
+		{
+			"name": "hora_envio_camara",
+			"type": "string"
+		},
+		{
+			"name": "fecha_rta_camara",
+			"type": "string"
+		},
+		{
+			"name": "hora_rta_camara",
+			"type": "string"
+		},
+		{
+			"name": "concepto",
+			"type": "string"
+		},
+		{
+			"name": "referencia",
+			"type": "string"
+		},
+		{
+			"name": "importe",
+			"type": "string"
+		},
+		{
+			"name": "moneda",
+			"type": "string"
+		},
+		{
+			"name": "producto",
+			"type": "string"
+		},
+		{
+			"name": "camara",
+			"type": "string"
+		},
+		{
+			"name": "canal",
+			"type": "string"
+		},
+		{
+			"name": "tipo_transf",
+			"type": "string"
+		},
+		{
+			"name": "id_transf_camara",
+			"type": "string"
+		},
+		{
+			"name": "estado",
+			"type": "string"
+		},
+		{
+			"name": "motivo_rechazo",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

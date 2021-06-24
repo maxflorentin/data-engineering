@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_gar_autos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_gar_marca","cod_gar_modelo","cod_gar_anio"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_gar_marca","cod_gar_modelo","cod_gar_anio"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_gar_marca","ds_gar_modelo","ds_gar_tipo_vehiculo","flag_gar_importado","fc_gar_valor"],
+      "threshold": 0.001
+    }
+  ]
+}

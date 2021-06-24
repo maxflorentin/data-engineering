@@ -1,0 +1,137 @@
+{
+  "tables" :[
+    {
+  "serverConfig" : "dblxdbcsrv01",
+  "serverAka": "rio35",
+  "table": "tb_dominios_reemplazar",
+  "table_type": "dim",
+  "environment": "rio35",
+  "landing_path": "/santander/bi-corp/landing/rio35/dim/tb_dominios_reemplazar",
+  "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT DOMINIO_ERROR ,DOMINIO_OK  FROM {table} where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+}
+,
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "tb_mails_erroneos",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/tb_mails_erroneos",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT EMAIL FROM {table} where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^'  --num-mappers 1 --password '{password}' --verbose\n"
+},
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "tb_ddns_codpostal",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/tb_ddns_codpostal",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT DDN,CODPOSTAL FROM {table}  WHERE \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^'  --num-mappers 1 --password '{password}' --verbose\n"
+},
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "nrm_normal_telefonos",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/nrm_normal_telefonos",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT ID ,INTER_CIF_ID  ,PREFIJO_INTERURBANO     ,TELEFONO ,XPREFIJO_INTERNACIONAL ,XPREFIJO_INTERURBANO ,XNUMERO_TELEFONO ,ULTIMO ,VUELTAS ,EXISTE_GUIA ,XFECHA_BAJA ,MODIFICADO  ,XTIPO_TELEFONO  ,XLOCALIDAD  ,XCODIGO_POSTAL ,XAPELLIDO ,EXISTE_PERSONAGUIA ,INSERTO_TELEFONO ,CARACTERISTICA,NORMALIZADO ,STATUS ,XNUMERO_PUERTA ,XPISO ,XDEPTO ,BUSQUEDA_GUIA ,ORD_TEL  ,ERRONEO  ,ORIGEN  ,PESECTEL ,FALTA ,FMODIFICACION , FILLER1  , FILLER2,COMPANIA  FROM {table}  where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+},
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "nrm_localidad_normalizada",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/nrm_localidad_normalizada",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT LOCALIDAD_OK, LOCALIDAD_MAL FROM {table}  where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+},
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "nrm_ddn_postal",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/nrm_ddn_postal",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT DDN, CODPOSTAL FROM {table}  where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+},
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "nrm_tel_lista_negra",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/nrm_tel_lista_negra",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT TELEFONO_COMPLETO FROM {table}  where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+},
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "RIES_MOTOR_INFINITY",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/ries_motor_infinity",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT PENUMPER ,CODIGO_RECHAZO ,MOTIVO_RECHAZO ,APELLIDO, NOMBRE, PRODUCTO_PAQ,SUBPRODU_PAQ,LINEA_PESOS,LINEA_DOLARES, PRES_PESOS_DISPONIBLE, PRES_DOLARES_DISPONIBLE,CUOTA_PESOS,CUOTA_DOLARES, TO_CHAR(FECHA_PROCESO,'YYYY-MM-DD') AS PARTITION_DATE     FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "adc_sucursales_ingresos",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/adc_sucursales_ingresos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT SUC, SUCURSAL FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "integracion_sucursales",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/integracion_sucursales",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT SUC_ANT, SUC_NVA, FECHA, CAJA, NOMBRE_SUC, DIRE_SUC, NSUC_ANT, F_ACSE, RESTO, SUC_DEFAULT FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "BASE_NOMINAS_ANSES",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/base_nominas_anses",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT FECHA, CUIT, PENUMPER, CAPITAS_BRIO, CAPITAS_ANSES, IND_BAJA, TITULAR, TIENE_PAS, MASA_SALARIAL, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE     FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "base_de_negativos",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/base_de_negativos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT PENUMPER, FECHA_CARGA FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "responsys_riid_hist",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/responsys_riid_hist",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT ID_COMPUESTO, PERSONA_ID, RIID, PENUMPER FROM {table} where  \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+{
+"serverConfig" : "dblxdbcsrv01",
+"serverAka": "rio35",
+"table": "nrm_codigos_postales",
+"table_type": "dim",
+"environment": "rio35",
+"landing_path": "/santander/bi-corp/landing/rio35/dim/nrm_codigos_postales",
+"command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT LOCALIDAD, PREFIJO_INTERURBANO, CODIGO_POSTAL FROM {table}  where \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio35/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+}
+  ]
+}

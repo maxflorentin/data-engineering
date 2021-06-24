@@ -1,0 +1,172 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308731","A304935"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "normalizacion",
+            "title": "EVOLUCIÓN DE CARTERA DE PRÉSTAMOS REFINANCIADOS",
+            "schema": "bi_corp_staging",
+            "source": "GARRA",
+            "query": "",
+            "type": "",
+            "description": "EVOLUCIÓN DE CARTERA DE PRÉSTAMOS REFINANCIADOS",
+            "columns": [
+                {
+                    "name": "NUM_SEC",
+                    "title": "NUM_SEC",
+                    "description": "Número de secuencia",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENTIDAD",
+                    "title": "ENTIDAD",
+                    "description": "Código de entidad",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO",
+                    "title": "CENTRO",
+                    "description": "Código de centro del contrato",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRATO",
+                    "title": "CONTRATO",
+                    "description": "Número de contrato",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRODUCTO",
+                    "title": "PRODUCTO",
+                    "description": "Código de producto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUBPRODUCTO",
+                    "title": "SUBPRODUCTO",
+                    "description": "Código de subproducto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIVISA",
+                    "title": "DIVISA",
+                    "description": "Código de divisa",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_APERTURA",
+                    "title": "FEC_APERTURA",
+                    "description": "Fecha de apertura del producto",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "MARCA_SEG_ACT",
+                    "title": "MARCA_SEG_ACT",
+                    "description": "Marca de clasificación de la política de reconducción",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_CAMBIO_SEG",
+                    "title": "FEC_CAMBIO_SEG",
+                    "description": "Fecha de cambio de la marca de clasificación",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_CURA",
+                    "title": "FEC_CURA",
+                    "description": "Fecha de cura del contrato",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_NORMALIZACION",
+                    "title": "FEC_NORMALIZACION",
+                    "description": "Fecha de normalización del contrato",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM_REE",
+                    "title": "NUM_REE",
+                    "description": "Número de reconducción sucesiva",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

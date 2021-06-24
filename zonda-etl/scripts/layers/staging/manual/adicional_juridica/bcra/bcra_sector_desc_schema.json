@@ -1,0 +1,28 @@
+{
+  "file": "bcra_sector_desc",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/bcra_sector_desc/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/bcra_sector_desc",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "sector",
+					    "type": "string"
+            },
+            {
+					    "name": "limite",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

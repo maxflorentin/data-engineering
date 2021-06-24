@@ -1,0 +1,155 @@
+{
+    "file": "gestiones",
+    "location": "/santander/bi-corp/landing/rio56/fact/gestiones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/fact/gestiones",
+    "tempDirectory": "/santander/bi-corp/temp/gestiones",
+    "createTable": "bi_corp_staging.rio56_gestiones",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_sector",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_nro",
+            "type": "string"
+        },
+        {
+            "name": "ide_circuito",
+            "type": "string"
+        },
+        {
+            "name": "indi_tipo_circ",
+            "type": "string"
+        },
+        {
+            "name": "indi_decision_comer",
+            "type": "string"
+        },
+        {
+            "name": "indi_replteo",
+            "type": "string"
+        },
+        {
+            "name": "indi_rta_inmed",
+            "type": "string"
+        },
+        {
+            "name": "indi_impre_cart",
+            "type": "string"
+        },
+        {
+            "name": "imp_autz_solicitado",
+            "type": "string"
+        },
+        {
+            "name": "cod_mone_solicitado",
+            "type": "string"
+        },
+        {
+            "name": "imp_autz_autorizado",
+            "type": "string"
+        },
+        {
+            "name": "cod_mone_autorizado",
+            "type": "string"
+        },
+        {
+            "name": "imp_autz_resolucion",
+            "type": "string"
+        },
+        {
+            "name": "cod_mone_resolucion",
+            "type": "string"
+        },
+        {
+            "name": "tpo_pers",
+            "type": "string"
+        },
+        {
+            "name": "cod_crm",
+            "type": "string"
+        },
+        {
+            "name": "comen_cliente",
+            "type": "string"
+        },
+        {
+            "name": "ide_gest_sector_relac",
+            "type": "string"
+        },
+        {
+            "name": "ide_gest_nro_relac",
+            "type": "string"
+        },
+        {
+            "name": "fec_gestion_alta",
+            "type": "string"
+        },
+        {
+            "name": "cod_bandeja_actual",
+            "type": "string"
+        },
+        {
+            "name": "fec_bandeja_actual",
+            "type": "string"
+        },
+        {
+            "name": "cod_sector_actual",
+            "type": "string"
+        },
+        {
+            "name": "inic_user_alta",
+            "type": "string"
+        },
+        {
+            "name": "indi_mail",
+            "type": "string"
+        },
+        {
+            "name": "indi_prioridad",
+            "type": "string"
+        },
+        {
+            "name": "fec_max_resol",
+            "type": "string"
+        },
+        {
+            "name": "cod_conforme",
+            "type": "string"
+        },
+        {
+            "name": "cod_user_actual",
+            "type": "string"
+        },
+        {
+            "name": "cod_grupo_empresa",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "fec_aviso_venc",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

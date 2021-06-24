@@ -1,0 +1,55 @@
+{
+  "file": "estados_propuesta_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/estados_propuesta/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/estados_propuesta",
+  "createTable": "bi_corp_staging.sge_estados_propuesta",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "fecha",
+                    "type": "string"
+                },
+{
+                    "name": "estado",
+                    "type": "string"
+                },
+{
+                    "name": "usuario",
+                    "type": "string"
+                },
+{
+                    "name": "obs_estado",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_accion",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_origen",
+                    "type": "string"
+                },
+{
+                    "name": "mar_formalizada",
+                    "type": "string"
+                }
+       ] ,
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

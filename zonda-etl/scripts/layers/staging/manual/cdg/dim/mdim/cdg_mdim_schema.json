@@ -1,0 +1,40 @@
+{
+  "file": "cdg_mdim",
+  "location": "/santander/bi-corp/landing/manual/cdg/dim/mdim/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/cdg/dim/mdim",
+  "extension": "csv",
+  "delimiter": ",",
+  "header": true ,
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "attribute_code",
+					    "type": "string"
+					  },
+					  {
+					    "name": "name",
+					    "type": "string"
+					  },
+					  {
+					    "name": "second_name",
+					    "type": "string"
+					  },
+					  {
+					    "name": "hierarchical_level",
+					    "type": "string"
+					  },
+					  {
+					    "name": "end_date",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

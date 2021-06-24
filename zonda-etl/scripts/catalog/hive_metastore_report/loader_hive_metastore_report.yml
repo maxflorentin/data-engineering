@@ -1,0 +1,86 @@
+name: REPORT_HIVE_METASTORE
+description: 'HIVE_METASTORE_REPORT'
+owner: BI-Corp
+active: true
+# schedule_interval: '0 21 * * 1-6'
+# start_date: '2019-11-02'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/hive_metastore_report_{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}.txt"
+      show_header: 'true'
+      output_format: dsv
+      empty_file: False
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/hive_metastore_report/hive_metastore_report.hql'
+  - name: GENERTE_FILE_crq
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/cdo/actualizacion_permisos.py"
+  - name: instruction_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado_instrucciones.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/HIVE_METASTORE/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado_instrucciones.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: crq_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado.xlsx"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/HIVE_METASTORE/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado.xlsx"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/hive_metastore_report_{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/HIVE_METASTORE/hive_metastore_report_{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_Report
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/hive_metastore_report_{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}.txt"
+  - name: EXECUTE_Remove_CRQ
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado.xlsx"
+  - name: EXECUTE_Remove_Instrictuion
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='REPORT_HIVE_METASTORE') }}_actualizacion_perfilado_instrucciones.txt"
+dependencies:
+  report_execution: GENERTE_FILE_crq
+  GENERTE_FILE_crq: [ instruction_send_sftp,crq_send_sftp,report_send_sftp ]
+  instruction_send_sftp: EXECUTE_Remove_Instrictuion
+  crq_send_sftp: EXECUTE_Remove_CRQ
+  report_send_sftp: EXECUTE_Remove_Report
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jcifuentesduran@santandertecnologia.com.ar, nbucardo@santandertecnologia.com.ar]

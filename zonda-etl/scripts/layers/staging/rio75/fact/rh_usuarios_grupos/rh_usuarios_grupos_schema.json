@@ -1,0 +1,47 @@
+{
+  "file": "rh_usuarios_grupos_schema",
+  "location": "/santander/bi-corp/landing/rio75/fact/rh_usuarios_grupos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio75/fact/rh_usuarios_grupos",
+  "tempDirectory": "/santander/bi-corp/temp/rio75",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "n_ug_id",
+      "type": "string"
+    },
+    {
+      "name": "c_usuariorh",
+      "type": "string"
+    },
+    {
+      "name": "c_gruporh",
+      "type": "string"
+    },
+    {
+      "name": "f_alta",
+      "type": "string"
+    },
+    {
+      "name": "f_baja",
+      "type": "string"
+    },
+    {
+      "name": "i_activo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

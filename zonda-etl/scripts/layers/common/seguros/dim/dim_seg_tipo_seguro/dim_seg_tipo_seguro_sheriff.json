@@ -1,0 +1,14 @@
+{
+  "table": "bi_corp_common.dim_seg_tipo_seguro",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_seg_ramo", "cod_seg_producto", "cod_seg_plan"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_seg_ramo", "cod_seg_producto", "cod_seg_plan"]
+    }
+  ]
+}

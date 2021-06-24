@@ -1,0 +1,44 @@
+{
+	"file": "benefitcustomer_schema",
+	"location": "/santander/bi-corp/landing/rio265/fact/benefitcustomer/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio265/fact/rio265_benefitcustomer",
+	"tempDirectory": "/santander/bi-corp/temp/rio265_benefitcustomer",
+	"createTable": "bi_corp_staging.rio265_benefitcustomer",
+	"extension": "csv",
+	"delimiter": "^",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "id",
+			"type": "string"
+		},
+{
+			"name": "id_benefit",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "dateused",
+			"type": "string"
+		},
+{
+			"name": "id_level",
+			"type": "string"
+		},
+{
+			"name": "id_request",
+			"type": "string"
+		}
+	],
+ "mirrorColumns": [{
+  "name": "partition_date",
+  "target": "dateused",
+  "type": "date",
+  "partitionColumn": true,
+  "partitionOrder": 1}]
+}

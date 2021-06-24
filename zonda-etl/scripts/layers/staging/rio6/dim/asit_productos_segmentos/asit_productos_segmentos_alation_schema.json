@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_productos_segmentos",
+            "title": "Segmentos por productos de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Segmentos por productos de asistencias",
+            "columns": [
+                {
+                    "name": "  ASPS_CD_PRODUCTO",
+                    "title": "  ASPS_CD_PRODUCTO",
+                    "description": "Codigo de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPS_CD_SEGMENTO",
+                    "title": "  ASPS_CD_SEGMENTO",
+                    "description": "Codigo de Segmento",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

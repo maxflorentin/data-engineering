@@ -1,0 +1,140 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307913"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "gtdthis",
+      "title": "HISTORIAL DE LA GARANTIA",
+      "schema": "bi_corp_staging",
+      "source": "MALGT.ALTAIR",
+      "query": "",
+      "type": "FACT",
+      "description": "HISTORIAL DE LA GARANTIA",
+      "columns": [
+        {
+          "name": "GTTCHIS_HIS_COD_ENTIDAD ",
+          "title": "COD_ENTIDAD ",
+          "description": "ENTIDAD                       ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_NUM_GARANTIA",
+          "title": "NUM_GARANTIA",
+          "description": "NUMERO DE GARANTIA            ",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 9.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_NUM_SECHISTO",
+          "title": "NUM_SECHISTO",
+          "description": "NUMERO DE SECUENCIA DENTRO DEL HISTORIAL DE LA GARANTIA",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 9.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_TIP_EVENTO",
+          "title": "TIP_EVENTO  ",
+          "description": "TIPO DE EVENTO",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_DES_HISTORIA",
+          "title": "DES_HISTORIA",
+          "description": "DESCRIPCION   ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_ENTIDAD_UMO ",
+          "title": "ENTIDAD_UMO ",
+          "description": "ENTIDAD ULTIMA MODIFICACION                 ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_CENTRO_UMO",
+          "title": "CENTRO_UMO  ",
+          "description": "CENTRO ULTIMA MODIFICACION                  ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_USERID_UMO",
+          "title": "USERID_UMO  ",
+          "description": "USERID ULTIMA MODIFICACION                  ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_NETNAME_UMO",
+          "title": "NETNAME_UMO ",
+          "description": "TERMINAL ULTIMA MODIFICACION                ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCHIS_HIS_TIMEST_UMO",
+          "title": "TIMEST_UMO  ",
+          "description": "TIMESTAMP                                   ",
+          "type": "TIMESTAMP",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

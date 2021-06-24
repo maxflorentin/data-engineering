@@ -1,0 +1,260 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "a308609"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "infomart_detallado",
+      "title": "Informacion detallada de las interaaciones Contact Center",
+      "schema": "bi_corp_staging",
+      "source": "SLAUTO - INFOMART",
+      "query": "HQL del ETL",
+      "type": "Fact",
+      "description": "Informacion detallada de las interaaciones Contact Center",
+      "columns": [
+        {
+          "name": "fecha",
+          "title": "Fecha",
+          "description": "Fecha de la Interacción",
+          "type": "AAAA-MM-DD",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "intervalo",
+          "title": "Intervalo",
+          "description": "Intervalo de 15 minutos desde hasta",
+          "type": "HH:MM-HH:MM",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 11.0,
+
+          "security": "Publico"                },
+        {
+          "name": "tipo_interaccion",
+          "title": "Tipo Interacción",
+          "description": "Tipo de interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "canal",
+          "title": "Canal",
+          "description": "Canal de la interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "asunto",
+          "title": "Asunto",
+          "description": "Asunto de la interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "last_queue",
+          "title": "Last Queue",
+          "description": "Ultima cola de espera",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "last_vqueue",
+          "title": "Last VQueue",
+          "description": "Ultima cola virtual",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "from",
+          "title": "From",
+          "description": "ANI o From de email",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "apellido",
+          "title": "Apellido",
+          "description": "Apellido del cliente",
+          "type": "String",
+          "personIdentifier": true,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Confidencial"                },
+        {
+          "name": "nombre",
+          "title": "Nombre",
+          "description": "Nombre del Cliente",
+          "type": "String",
+          "personIdentifier": true,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Confidencial"                },
+        {
+          "name": "nup",
+          "title": "NUP",
+          "description": "Nup del cliente",
+          "type": "String",
+          "personIdentifier": true,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "documento",
+          "title": "Documento",
+          "description": "Documento del cliente",
+          "type": "String",
+          "personIdentifier": true,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Confidencial"                },
+        {
+          "name": "disposition_code",
+          "title": "DispositionCode",
+          "description": "Codigo de dsposicion de la interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "motivo_cierre",
+          "title": "Motivo de Cierre",
+          "description": "Motivo del cierre de la interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "inicio_gestion_interaccion",
+          "title": "Inicio Gestión Interacción",
+          "description": "Dia y hora que comenzo la gestion",
+          "type": "DD/MM/AAAA HH:MM:SS",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 19.0,
+
+          "security": "Publico"                },
+        {
+          "name": "fin_gestion_interaccion",
+          "title": "Fin Gestión Interacción",
+          "description": "Dia y hora que finalizó la gestion",
+          "type": "DD/MM/AAAA HH:MM:SS",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 19.0,
+
+          "security": "Publico"                },
+        {
+          "name": "agente",
+          "title": "Agente",
+          "description": "Apellido y Nombre del agente que interactuo en la gestion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "employee_id",
+          "title": "Employee ID",
+          "description": "Legajo del agente",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "interaction_id",
+          "title": "Interaction ID",
+          "description": "ID de la interaccion",
+          "type": "String",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "fin_interaccion",
+          "title": "Fin Interacción",
+          "description": "Fecha y hora de finalizar la interaccion",
+          "type": "DD Mmm AAAA HH:MM:SS",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "inicio_interaccion",
+          "title": "Inicio Interacción",
+          "description": "Fecha y hora de inicio de la interaccion",
+          "type": "DD Mmm AAAA HH:MM:SS",
+          "personIdentifier": false,
+          "decimalSeparator": "no",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

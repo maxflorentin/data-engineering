@@ -1,0 +1,28 @@
+{
+    "table": "bi_corp_common.stk_cys_solicitudcontrato",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "partition_date","cod_suc_sucursal","cod_cys_nrosolicitud","cod_suc_sucursalcuenta","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto"
+            ],
+            "threshold": 0
+        },
+		{
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_per_nup"
+            ],
+            "threshold": 0.1
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_cys_processdate","dt_cys_fechalta"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0
+        }
+    ]
+}

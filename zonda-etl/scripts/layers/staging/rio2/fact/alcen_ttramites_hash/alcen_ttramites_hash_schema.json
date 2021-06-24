@@ -1,0 +1,39 @@
+{
+  "file": "ttramites_hash_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/ttramites_hash/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/ttramites_hash",
+  "createTable": "bi_corp_staging.alcen_ttramites_hash",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+            {
+                    "name": "tipo_tramite",
+                    "type": "string"
+                },
+{
+                    "name": "cod_tramite",
+                    "type": "string"
+                },
+{
+                    "name": "codigo_hash",
+                    "type": "string"
+                },
+{
+                    "name": "valor",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

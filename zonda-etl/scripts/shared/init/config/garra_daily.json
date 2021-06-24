@@ -1,0 +1,38 @@
+{
+  "tables": [
+    {
+      "source": "GARRA",
+      "type": "FACT",
+      "name": "CLIENTES_DI",
+      "filePrefix": "CLIENTES_DI_"
+    },
+    {
+      "source": "GARRA",
+      "type": "FACT",
+      "name": "CONTRATOS_REF",
+      "filePrefix": "CONTRATOS_REF_"
+    },
+    {
+      "source": "GARRA",
+      "type": "FACT",
+      "name": "PROCEDIMIENTOS",
+      "filePrefix": "PROCEDIMIENTOS_"
+    },
+    {
+      "source": "GARRA",
+      "type": "FACT",
+      "name": "REL_CONTRATO_PRJ",
+      "filePrefix": "REL_CONTRATO_PRJ_"
+    },
+    {
+      "source": "GARRA",
+      "type": "FACT",
+      "name": "LOG_CUOTAPHONE",
+      "filePrefix": "LOG_CUOTAPHONE_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Garra-Daily"
+  }
+}

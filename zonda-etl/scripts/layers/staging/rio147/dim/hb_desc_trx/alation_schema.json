@@ -1,0 +1,73 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A273003"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio147_hb_desc_trx",
+      "title": "DESCRIPCIONES DE LAS TRANSACCIONES QUE REALIZA EL CLIENTE MIENTRAS NAVEGA LA APLICACIÓN OBP",
+      "schema": "bi_corp_staging",
+      "source": "MOBP",
+      "query": "",
+      "type": "DIM",
+      "description": "DESCRIPCIONES DE LAS TRANSACCIONES QUE REALIZA EL CLIENTE MIENTRAS NAVEGA LA APLICACIÓN OBP",
+      "columns": [
+        {
+          "name": "TRANSACCION",
+          "title": "TRANSACCION",
+          "description": "ID DE LA TRANSACCIÓN",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "DESCRIPCIÓN DE LA TRANSACCIÓN",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 150.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODULO",
+          "title": "MODULO",
+          "description": "MÓDULO EN QUE SE EJECUTA",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_TRX",
+          "title": "TIPO_TRX",
+          "description": "TIPO DE TRANSACCIÓN",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

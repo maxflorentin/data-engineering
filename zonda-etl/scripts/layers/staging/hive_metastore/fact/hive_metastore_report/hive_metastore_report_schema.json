@@ -1,0 +1,63 @@
+{
+  "file": "hive_metastore_report",
+  "location": "/santander/bi-corp/landing/hive_metastore/fact/hive_metastore_report/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/hive_metastore/fact/hive_metastore_report",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "createTable":"bi_corp_staging.hive_metastore_report",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "DB_ID",
+    "type": "string"
+  },
+    {
+      "name": "NAME",
+      "type": "string"
+    },
+    {
+      "name": "OWNER_NAME",
+      "type": "string"
+    },
+    {
+      "name": "TBL_ID",
+      "type": "string"
+    },
+    {
+      "name": "TBL_NAME",
+      "type": "string"
+    },
+    {
+      "name": "TBL_TYPE",
+      "type": "string"
+
+    },
+    {
+      "name": "COLUMN_NAME",
+      "type": "string"
+    },
+    {
+      "name": "TYPE_NAME",
+      "type": "string"
+    },
+    {
+      "name": "PARAM_KEY",
+      "type": "string"
+    },
+    {
+      "name": "PARAM_VALUE",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

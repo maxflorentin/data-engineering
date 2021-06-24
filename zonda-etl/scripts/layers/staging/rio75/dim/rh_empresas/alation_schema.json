@@ -1,0 +1,139 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_empresas",
+      "title": "Maestro de empresas. Para empleados del Banco Santader indica el tipo de contrato",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Maestro de empresas. Para empleados del Banco Santader indica el tipo de contrato",
+      "columns": [
+        {
+          "name": "C_EMPRESA",
+          "title": "C_EMPRESA",
+          "description": "Código de empresa",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_EMPRESA",
+          "title": "D_EMPRESA",
+          "description": "Descripción de la empresa",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 30.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_ALTA",
+          "title": "F_ALTA",
+          "description": "Fecha de alta",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "F_BAJA",
+          "title": "F_BAJA",
+          "description": "Fecha de baja",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "I_ACTIVO",
+          "title": "I_ACTIVO",
+          "description": "Indicador de empresa activa",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_DOMICILIO",
+          "title": "D_DOMICILIO",
+          "description": "Domicilio de la empresa",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USU_RESP",
+          "title": "C_USU_RESP",
+          "description": "Código del usuario responsable de la empresa",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "I_LIQUIDABLE",
+          "title": "I_LIQUIDABLE",
+          "description": "Indicador de empresa/contrato liquidable (comisiones)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_HORAS_LABORALES",
+          "title": "C_HORAS_LABORALES",
+          "description": "Horas laborales del contrato",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": 10.2,
+
+          "security": "Publico"                },
+        {
+          "name": "C_HORAS_LACTANCIA",
+          "title": "C_HORAS_LACTANCIA",
+          "description": "Horas de lactancia del contrato",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": 10.2,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

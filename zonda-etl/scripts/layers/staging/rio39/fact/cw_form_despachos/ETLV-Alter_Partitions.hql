@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.comex_rio39_cw_form_despachos;

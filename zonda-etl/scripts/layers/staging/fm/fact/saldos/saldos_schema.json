@@ -1,0 +1,111 @@
+{
+  "file": "saldos",
+  "location": "/santander/bi-corp/landing/fm/fact/suscripciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/fact/saldos",
+  "createTable": "bi_corp_staging.fm_saldos",
+  "parquetFiles": 1,
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "cobolTypes": true,
+  "compression": "gzip",
+  "columns": [
+    {
+          "name": "cta",
+          "type": "9(08)"
+    },
+    {
+          "name": "razon",
+          "type": "X(30)"
+    },
+    {
+          "name": "canal",
+          "type": "9(03)"
+    },
+    {
+          "name": "cod_fondo",
+          "type": "9(03)"
+    },
+    {
+          "name": "saldo_cuotas",
+          "type": "9(13)V9999"
+    },
+    {
+          "name": "saldo",
+          "type": "9(15)V99"
+    },
+    {
+          "name": "sal_cuot_bloq",
+          "type": "9(13)V9999"
+    },
+    {
+          "name": "pesegcla",
+          "type": "X(03)"
+    },
+    {
+          "name": "cotiz_me",
+          "type": "9(05)V9(04)"
+    },
+    {
+          "name": "impo_moneda_local",
+          "type": "9(15)V99"
+    },
+    {
+          "name": "impo_moneda_origen",
+          "type": "9(15)V99"
+    },
+    {
+          "name": "fec_proc",
+          "type": "X(08)"
+    },
+    {
+          "name": "divi",
+          "type": "X(02)"
+    },
+    {
+          "name": "teaml",
+          "type": "X(02)"
+    },
+    {
+          "name": "ejcta",
+          "type": "X(02)"
+    },
+    {
+          "name": "jeare",
+          "type": "X(02)"
+    },
+    {
+          "name": "geren",
+          "type": "X(02)"
+    },
+    {
+          "name": "penumper",
+          "type": "X(08)"
+    },
+    {
+          "name": "subsegme",
+          "type": "X(03)"
+    },
+    {
+          "name": "pesucadm",
+          "type": "X(04)"
+    },
+    {
+          "name": "pebancap",
+          "type": "X(02)"
+    },
+    {
+          "name": "filler",
+          "type": "X(25)"
+}
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

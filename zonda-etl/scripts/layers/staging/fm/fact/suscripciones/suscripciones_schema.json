@@ -1,0 +1,208 @@
+{
+  "file": "suscripciones",
+  "location": "/santander/bi-corp/landing/fm/fact/saldos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/fact/suscripciones",
+  "parquetFiles": 1,
+  "createTable": "bi_corp_staging.fm_suscripciones",
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "cobolTypes": true,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "cod_fdo",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_cliente",
+      "type": "9(11)"
+    },
+    {
+      "name": "certificado",
+      "type": "9(10)"
+    },
+    {
+      "name": "cod_fdo_orig",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_cli_orig",
+      "type": "9(11)"
+    },
+    {
+      "name": "nr_oper_orig",
+      "type": "9(10)"
+    },
+    {
+      "name": "nr_resg_orig",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_ctod_orig",
+      "type": "9(01)"
+    },
+    {
+      "name": "cod_can_liq",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_agte_solic",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_canal_solic",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_agte_dg",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_can_dg",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_oper_dg",
+      "type": "X(08)"
+    },
+    {
+      "name": "cod_agte_cd",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_can_cd",
+      "type": "9(03)"
+    },
+    {
+      "name": "cod_oper_cd",
+      "type": "X(08)"
+    },
+    {
+      "name": "dtinput",
+      "type": "9(08)"
+    },
+    {
+      "name": "hora",
+      "type": "9(06)"
+    },
+    {
+      "name": "dtsolic",
+      "type": "9(08)"
+    },
+    {
+      "name": "dtconver",
+      "type": "9(08)"
+    },
+    {
+      "name": "dtultrgt",
+      "type": "9(08)"
+    },
+    {
+      "name": "dtestorno",
+      "type": "9(08)"
+    },
+    {
+      "name": "dtbloqueio",
+      "type": "9(08)"
+    },
+    {
+      "name": "cod_bloqueio",
+      "type": "9(01)"
+    },
+    {
+      "name": "dias_ut_dec",
+      "type": "9(03)"
+    },
+    {
+      "name": "forma_pagto",
+      "type": "9(02)"
+    },
+    {
+      "name": "tipo_cta",
+      "type": "9(01)"
+    },
+    {
+      "name": "moeda_cta",
+      "type": "9(01)"
+    },
+    {
+      "name": "nr_cta_tip",
+      "type": "X(04)"
+    },
+    {
+      "name": "nr_cta_num",
+      "type": "9(10)"
+    },
+    {
+      "name": "val_cota_base",
+      "type": "9(09)V9(08)"
+    },
+    {
+      "name": "val_apl_liq",
+      "type": "9(15)V99"
+    },
+    {
+      "name": "qt_cot_apl",
+      "type": "9(13)V9(04)"
+    },
+    {
+      "name": "qt_cot_rgt",
+      "type": "9(13)V9(04)"
+    },
+    {
+      "name": "sd_cot_atu",
+      "type": "9(13)V9(04)"
+    },
+    {
+      "name": "val_cota_liq_d0",
+      "type": "9(09)V9(09)"
+    },
+    {
+      "name": "num_cancel",
+      "type": "X(01)"
+    },
+    {
+      "name": "moeda_cambio",
+      "type": "9(02)"
+    },
+    {
+      "name": "cotacao_pact",
+      "type": "9(09)V9(08)"
+    },
+    {
+      "name": "vl_conv_pact",
+      "type": "9(15)V9(02)"
+    },
+    {
+      "name": "dtcomprom",
+      "type": "9(08)"
+    },
+    {
+      "name": "apl_transf",
+      "type": "X(01)"
+    },
+    {
+      "name": "nr_oper",
+      "type": "9(09)"
+    },
+    {
+      "name": "cliente_ac",
+      "type": "9(11)"
+    },
+    {
+      "name": "filler",
+      "type": "X(68)"
+}
+
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

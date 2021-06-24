@@ -1,0 +1,16 @@
+{
+    "name": "Rentabilidad_PrestamosYDepositos_Tasas_Business_Daily",
+    "shift": -2,
+    "conditions": [
+        {
+            "dag_id": "LOAD_CMN_Rentabilidad_Daily",
+            "tasks": "InsertPartition_bt_ren_result_dia"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_BSN_Rentabilidad_PrestamosYDepositos_Tasas_Daily",
+            "tasks": "all"
+        }
+    ]
+}

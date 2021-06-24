@@ -1,0 +1,423 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"David Mermelstein",
+         "businessSteward":[
+            "a307461"
+         ],
+         "businessReference":"Carla Venossi <cvenosi@santander.com.ar>,Pablo Hernan Beistegui <pbeistegui@santander.com.ar>",
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_prov_esotr",
+         "title":"Provisiones Específicas y Otras",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Contiene las provisiones específicas generadas en IFRS9.",
+         "columns":[
+            {
+               "name":"n0625_agrctacb",
+               "title":"Agrupador de cuenta contable local",
+               "description":"Agrupador contable local de grupos cuentas, por ejemplo la rúbrica. se informará el agrupador de cuenta contable local correspondiente al tipo de importe que se está informando en el registro.",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"n0625_centctbl",
+               "title":"Centro Contable",
+               "description":"Información del centro contable asociado al importe, a nivel saldo. este dato facilita la segmentación y análisis de la información.",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"n0625_coddiv",
+               "title":"Divisa",
+               "description":"Código de divisa asociada al contrato, en este campo se almacenará el código correspondiente a la divisa asociada al contrato",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_divisa"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_contra1",
+               "title":"Identificador de contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_entidad"
+                  },
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_centro"
+                  },
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_num_cuenta"
+                  },
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_producto"
+                  },
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_subprodu_altair"
+                  },
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"t_cod_divisa"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_cta_cont",
+               "title":"Cuenta contable local",
+               "description":"Número de cuenta contable afectada por el contrato.",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"n0625_ctacgbal",
+               "title":"Cuenta Cargabal",
+               "description":"Número de cuenta contable cargabal afectada por el contrato",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"s_rubro_cargabal_provision"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_feoperac",
+               "title":"Fecha mes",
+               "description":"Fecha desde la que tiene validez la información.",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"e_data_date_part"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_importh",
+               "title":"Importe",
+               "description":"Saldo actual correspondiente al tipo de importe que se está informando. en caso de que no lo estuviese este importe habría de contravalorarse a la divisa local",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"s_provision_amount"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"n0625_stage",
+               "title":"Stage",
+               "description":"Segmentación de activos según ifrs9 en tres stages en función de si se encuentran en situación normal al corriente de pago, hayan experimentado un incremento significativo del riesgo desde el momento de la concesión (por razones distintas a la mora), o se encuentren ya deteriorados o en situación de impago.",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"s_final_stage"
+                  }
+               ]
+            },
+            {
+               "name":"n0625_tip_impt",
+               "title":"Tipo de Importe2",
+               "description":"Tipo de importe que contiene el registro. se informará con uno de los valores definidos en el maestro ‘tipo de importe en provisión contratos’",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"David Mermelstein",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_ifrs9",
+                     "table":"ifrs9_tablon",
+                     "column":"s_provision_amount"
+                  }
+               ]
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de particion del dato",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"NO",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

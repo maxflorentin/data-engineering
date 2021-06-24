@@ -1,0 +1,38 @@
+{
+  "file": "politicas_seguir_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/politicas_seguir/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/politicas_seguir",
+  "createTable": "bi_corp_staging.sge_politicas_seguir",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "id_politica_seguir",
+      "type": "string"
+    },
+    {
+      "name": "cod_politica",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

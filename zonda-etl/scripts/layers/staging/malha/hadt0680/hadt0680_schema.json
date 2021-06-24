@@ -1,0 +1,16 @@
+{
+  "file": "hadt0680_schema",
+  "location": "/santander/bi-corp/landing/malha/fact/hadt068/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malha/fact/hadt068",
+  "createTable": "bi_corp_staging.malha_hadt068",
+  "copybook": "hadt0680.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

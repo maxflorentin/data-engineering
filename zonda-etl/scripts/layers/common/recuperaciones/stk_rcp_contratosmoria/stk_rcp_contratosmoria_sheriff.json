@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_rcp_contratosmoria",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_per_nup"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_per_nup","ds_rcp_categoriaproducto","ds_rcp_descripcionsegmento"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechaingreso","dt_rcp_fechainisituacionirregular","dt_rcp_fechacastigo","dt_rcp_fechaabseguimiento","dt_rcp_fechaabtotal","dt_rcp_fechaapertura","dt_rcp_ultimaliquidacionintereses","dt_rcp_ultimaliquidacionespecial","dt_rcp_fechaultimaamortizacion","dt_rcp_fechavencimiento","dt_rcp_fechaultimafactura","dt_rcp_fechaprevision","dt_rcp_fechainformeveraz","dt_rcp_fechabaja"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

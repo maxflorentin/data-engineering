@@ -1,0 +1,110 @@
+{
+  "jobs": [
+
+        {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/fact/maescred"
+      "file": "MAESCRED_${partition_date}.DAT"
+      "control": true
+      "landing_dates": [23456]
+      "landing_time": 9
+    }
+        {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/cupones/wabaetlx"
+      "file": "WABAETLX_CUPONES_D${partition_date}.DAT"
+      "control": true
+      "today": true
+      "landing_dates": [0123456]
+      "landing_time": 20
+    }
+        {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/dim/abae_conceptos"
+      "file": "ABAE_CONCEPTOS_D{partition_date}.TXT"
+      "control": true
+      "landing_dates": [1234567]
+      "landing_time": 9
+    }    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/dim/abae_ent_virtuales"
+      "file": "ABAE_ENT_VIRTUALES_D{partition_date}.TXT"
+      "control": true
+      "landing_dates": [1234567]
+      "landing_time": 9
+    }
+    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/dim/abae_rechazos"
+      "file": "ABAE_RECHAZOS_D{partition_date}.TXT"
+      "control": true
+      "landing_dates": [1234567]
+      "landing_time": 9
+    }
+    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/dim/abae_canales"
+      "file": "ABAE_CANALES_D{partition_date}.TXT"
+      "control": true
+      "landing_dates": [1234567]
+      "landing_time": 9
+    }
+    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/fact/abae_transferencias"
+      "file": "ABAE_TRANSFERENCIAS_D{partition_date}.TXT"
+      "control": true
+      "landing_dates": [1234567]
+      "landing_time": 9
+    }
+        {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/fact/maesctas"
+      "file": "MAESCTAS_${partition_date}.DAT"
+      "control": true
+      "landing_dates": [23456]
+      "landing_time": 9
+    }
+    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/fact/maestarj"
+      "file": "MAESTARJ_${partition_date}.DAT"
+      "control": true
+      "landing_dates": [23456]
+      "landing_time": 9
+    }
+    {
+      "application": "ABAE"
+      "data_master": ["grecchia@santandertecnologia.com.ar""martarias@santandertecnologia.com.ar"]
+      "data_master_it": ["pabnunez@santandertecnologia.com.ar"]
+      "path": "/aplicaciones/bi/zonda/inbound/abae/fact/maespers"
+      "file": "MAESPERS_${partition_date}.DAT"
+      "control": true
+      "landing_dates": [23456]
+      "landing_time": 9
+    }
+  ]
+}
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date_filter=2021-05-12 --conf spark.yarn.appMasterEnv.file_date_filter=20210512 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/enri/fact/factiva_nombres_terr_full/factiva_nombres_terr_full_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 5 --executor-cores 5 --executor-memory 4G --name STAGING_Factiva_nombres_terr_full_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py factiva_nombres_terr_full_schema.json
+
+
+spark2-submit --master yarn --conf spark.yarn.appMasterEnv.partition_date_filter=2021-05-12 --conf spark.yarn.appMasterEnv.file_date_filter=20210512 --conf spark.sql.sources.partitionOverwriteMode=dynamic --files /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/layers/staging/pap/fact/comprobante/comprobante_schema.json --py-files /aplicaciones/bi/zonda/repositories/guyra/src/config_file.py --num-executors 1 --executor-cores 2 --executor-memory 2G --name STAGING_comprobante_Parquetize --verbose --queue root.dataeng --deploy-mode cluster /aplicaciones/bi/zonda/repositories/guyra/src/guyra.py comprobante_schema.json

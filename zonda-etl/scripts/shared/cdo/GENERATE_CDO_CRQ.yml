@@ -1,0 +1,23 @@
+name: GENERATE_CDO_CRQ
+description: 'Generate files to CRQ'
+owner: CDO
+active: true
+depends_on_past: False
+wait_for_downstream: False
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: Create_view
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql: '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/hive_metastore_report/hive_privilage_report.hql'
+      #$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio258/fact/croupier_shipping_vista/DDLT-Create_Staging_View.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jcifuentesduran@santandertecnologia.com.ar]

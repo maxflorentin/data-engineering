@@ -1,0 +1,290 @@
+name: LOAD_CMN_SGC-Daily_scheduled
+description: 'Load in Common Data From RIO56-SGC'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 6 * * *'
+start_date: '2019-01-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_clasif_crm/DDLT-dim_rec_clasif_crm.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_medio/DDLT-dim_rec_tipo_medio.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_sector/DDLT-dim_rec_sector.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_producto/DDLT-dim_rec_producto.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_subproducto/DDLT-dim_rec_subproducto.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto/DDLT-dim_rec_concepto.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_sac/DDLT-dim_rec_concepto_sac.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_bcra/DDLT-dim_rec_concepto_bcra.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_espana/DDLT-dim_rec_concepto_espana.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_circuito/DDLT-dim_rec_circuito.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_sac_circ/DDLT-dim_rec_concepto_sac_circ.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_bcra_circ/DDLT-dim_rec_concepto_bcra_circ.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_espana_circ/DDLT-dim_rec_concepto_espana_circ.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_sgc/DDLT-bt_rec_gest_estados_sgc.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_gest_empresas/DDLT-dim_rec_gest_empresas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_gest_individuos/DDLT-dim_rec_gest_individuos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_informacion_requerida/DDLT-dim_rec_informacion_requerida.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_info_requerida_valores_hijos/DDLT-dim_rec_info_requerida_valores_hijos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_informacion_adjunta/DDLT-bt_rec_informacion_adjunta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_favorabilidad/DDLT-dim_rec_tipo_favorabilidad.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_respuesta_resol_predef/DDLT-dim_rec_respuesta_resol_predef.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_circ_resolutor/DDLT-dim_rec_circ_resolutor.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_subconcepto/DDLT-dim_rec_subconcepto.hql'
+  - name: InsertPartition_dim_rec_clasif_crm
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_clasif_crm/ETLV_LOAD-dim_rec_clasif_crm.hql'
+  - name: InsertPartition_dim_rec_tipo_medio
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_medio/ETLV_LOAD-dim_rec_tipo_medio.hql'
+  - name: InsertPartition_dim_rec_sector
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_sector/ETLV_LOAD-dim_rec_sector.hql'
+  - name: InsertPartition_dim_rec_producto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_producto/ETLV_LOAD-dim_rec_producto.hql'
+  - name: InsertPartition_dim_rec_subproducto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_subproducto/ETLV_LOAD-dim_rec_subproducto.hql'
+  - name: InsertPartition_dim_rec_concepto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto/ETLV_LOAD-dim_rec_concepto.hql'
+  - name: InsertPartition_dim_rec_subconcepto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_subconcepto/ETLV_LOAD-dim_rec_subconcepto.hql'
+  - name: InsertPartition_dim_rec_concepto_sac
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_sac/ETLV_LOAD-dim_rec_concepto_sac.hql'
+  - name: InsertPartition_dim_rec_concepto_bcra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_bcra/ETLV_LOAD-dim_rec_concepto_bcra.hql'
+  - name: InsertPartition_dim_rec_concepto_espana
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_espana/ETLV_LOAD-dim_rec_concepto_espana.hql'
+  - name: InsertPartition_dim_rec_circuito
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_circuito/ETLV_LOAD-dim_rec_circuito.hql'
+  - name: InsertPartition_dim_rec_concepto_sac_circ
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_sac_circ/ETLV_LOAD-dim_rec_concepto_sac_circ.hql'
+  - name: InsertPartition_dim_rec_concepto_bcra_circ
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_bcra_circ/ETLV_LOAD-dim_rec_concepto_bcra_circ.hql'
+  - name: InsertPartition_dim_rec_concepto_espana_circ
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_concepto_espana_circ/ETLV_LOAD-dim_rec_concepto_espana_circ.hql'
+  - name: InsertPartition_bt_rec_gest_estados_sgc
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_sgc/ETLV_LOAD-bt_rec_gest_estados_sgc.hql'
+  - name: InsertPartition_dim_rec_gest_empresas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_gest_empresas/ETLV_LOAD-dim_rec_gest_empresas.hql'
+  - name: InsertPartition_dim_rec_gest_individuos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_gest_individuos/ETLV_LOAD-dim_rec_gest_individuos.hql'
+  - name: InsertPartition_dim_rec_informacion_requerida
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_informacion_requerida/ETLV_LOAD-dim_rec_informacion_requerida.hql'
+  - name: InsertPartition_dim_rec_info_requerida_valores_hijos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_info_requerida_valores_hijos/ETLV_LOAD-dim_rec_info_requerida_valores_hijos.hql'
+  - name: InsertPartition_bt_rec_informacion_adjunta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_informacion_adjunta/ETLV_LOAD-bt_rec_informacion_adjunta.hql'
+  - name: InsertPartition_dim_rec_tipo_favorabilidad
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_favorabilidad/ETLV_LOAD-dim_rec_tipo_favorabilidad.hql'
+  - name: InsertPartition_dim_rec_respuesta_resol_predef
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_respuesta_resol_predef/ETLV_LOAD-dim_rec_respuesta_resol_predef.hql'
+  - name: InsertPartition_dim_rec_circ_resolutor
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_circ_resolutor/ETLV_LOAD-dim_rec_circ_resolutor.hql'
+  - name: InsertPartition_stk_rec_gestiones_sgc
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gestiones_sgc/ETLV_LOAD-stk_rec_gestiones_sgc.hql'
+  - name: SHERIFF_Control_bt_rec_gest_estados_sgc
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_rec_gest_estados_sgc
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_sgc/bt_rec_gest_estados_sgc_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_SGC-Daily_scheduled') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_rec_gest_estados_sgc_sheriff.json']
+  - name: SHERIFF_Control_stk_rec_gestiones_sgc
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_stk_rec_gestiones_sgc
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gestiones_sgc/stk_rec_gestiones_sgc_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_SGC-Daily_scheduled') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_rec_gestiones_sgc_sheriff.json']
+dependencies:
+  CreateTables: [InsertPartition_dim_rec_circuito, InsertPartition_dim_rec_concepto, InsertPartition_dim_rec_subproducto, InsertPartition_dim_rec_producto, InsertPartition_dim_rec_sector, InsertPartition_dim_rec_clasif_crm, InsertPartition_dim_rec_tipo_medio, InsertPartition_dim_rec_subconcepto]
+  InsertPartition_dim_rec_circuito: [InsertPartition_dim_rec_concepto_espana_circ, InsertPartition_dim_rec_concepto_bcra_circ, InsertPartition_dim_rec_concepto_sac_circ, InsertPartition_dim_rec_concepto_espana, InsertPartition_dim_rec_concepto_sac, InsertPartition_dim_rec_concepto_bcra]
+  InsertPartition_dim_rec_concepto_sac: [InsertPartition_dim_rec_informacion_requerida, InsertPartition_dim_rec_info_requerida_valores_hijos]
+  InsertPartition_dim_rec_informacion_requerida: [InsertPartition_bt_rec_informacion_adjunta, InsertPartition_bt_rec_gest_estados_sgc, InsertPartition_dim_rec_gest_empresas, InsertPartition_dim_rec_gest_individuos]
+  InsertPartition_dim_rec_gest_individuos: InsertPartition_stk_rec_gestiones_sgc
+  InsertPartition_dim_rec_gest_empresas: InsertPartition_stk_rec_gestiones_sgc
+  InsertPartition_stk_rec_gestiones_sgc: SHERIFF_Control_stk_rec_gestiones_sgc
+  InsertPartition_bt_rec_gest_estados_sgc: SHERIFF_Control_bt_rec_gest_estados_sgc
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar ]

@@ -1,0 +1,59 @@
+      *----------------------------------------------------------------*
+      *  Archivo de cheques rechazados para inteface TRIAD             *
+      *  LONG:          ORG: SAM                                       *
+      *----------------------------------------------------------------*
+       01  WAMUC560.
+           05 WAMUC560-CLAVE.
+              10 WAMUC560_ENTIDAD                     PIC X(04).
+      *          Entidad de la cuenta
+              10 WAMUC560SUCURSAL                    PIC X(04).
+      *          Sucursal de la cuenta
+              10 WAMUC560-CUENTA                      PIC X(12).
+      *          Numero de cuenta
+           05 WAMUC560-PRODUCTO                       PIC X(02).
+      *          Producto
+           05 WAMUC560-SUBPRODUCTO                    PIC X(04).
+      *          Subproducto
+           05 WAMUC560-DIVISA                         PIC X(03).
+      *          Divisa
+           05 WAMUC560-COMPROBANTE                    PIC 9(08).
+      *          Numero de Comprobante
+           05 WAMUC560-MOTIVO                         PIC 9(02).
+      *          Motivo de Rechazo
+           05 WAMUC560-FECHA-RECHAZO                  PIC X(10).
+      *          Fecha de Rechazo en formato AAAAMMDD
+           05 WAMUC560-FEC-PAG                        PIC X(10).
+      *          Fecha de Rechazo en formato AAAAMMDD
+           05 WAMUC560-PERSONA-EMPRESA                PIC X(01).
+      *          Tipo de Persona
+           05 WAMUC560-TABLA-FIRMANTES.
+      *          Vector de Firmantes
+                 10 WAMUC560-TAB-FIRMA   OCCURS 05 TIMES.
+                    15 WAMUC560-FIRMANTE              PIC 9(02).
+           05 WAMUC560-CODIGO                         PIC 9(02).
+      *          Cdigo de operacin
+           05 WAMUC560-SUBCODI                        PIC 9(02).
+      *          Subcdigo de Operacin
+           05 WAMUC560-INDICADOR-COMPUTABLE           PIC X(02).
+      *          Marca de Rechazado Sin Fondo Computable
+           05 WAMUC560-IMPORTE                        PIC 9(15).
+      *          Importe Cheque
+           05 WAMUC560-FEC-CIERRE                     PIC X(10).
+      *          Fecha de Cierre en formato  AAAA-MM-DD
+           05 WAMUC560-NRO-PERSONA                    PIC X(08).
+      *          Nmero de Persona
+           05 WAMUC560-M-SIN-FONDO-NRES            PIC 9(01).
+      *          Marca de Rechazado Sin Fondo No Rescatado
+           05 WAMUC560-M-SIN-FONDO-FTER            PIC 9(01).
+      *          Marca de Rechazado por Sin Fondos Rescatado
+      *          fuera de termino
+           05 WAMUC560-M-SIN-FONDO-RES             PIC 9(01).
+      *          Marca de Rechazado Sin Fondo rescatado
+           05 WAMUC560-M-FORMALES-NRES             PIC 9(01).
+      *          Marca de Rechazado Formales No Rescatado
+           05 WAMUC560-M-FORMALES-FTER             PIC 9(01).
+      *          Marca de Rechazado Formales Rescatado
+      *          fuera de termino
+           05 WAMUC560-M-FORMALES-RES              PIC 9(01).
+      *          Marca de Rechazado Formales Rescatados
+           05 FILLER                                  PIC X(35).

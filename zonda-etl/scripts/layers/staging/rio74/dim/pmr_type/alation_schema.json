@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_pmr_type",
+      "title": "Descripciones de los Tipos",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Descripciones de los Tipos",
+      "columns": [
+        {
+          "name": "ID_TYPE",
+          "title": "ID_TYPE",
+          "description": "ID de la tabla",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESC_TYPE",
+          "title": "DESC_TYPE",
+          "description": "descripción del tipo",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 128.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

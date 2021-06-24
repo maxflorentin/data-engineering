@@ -1,0 +1,71 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "celt_marcas",
+            "title": "Marcas de celulares",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Marcas de celulares",
+            "columns": [
+                {
+                    "name": "CEMA_CD_MARCA",
+                    "title": "CEMA_CD_MARCA",
+                    "description": "Código de la marca",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMA_DE_MARCA",
+                    "title": "CEMA_DE_MARCA",
+                    "description": "Descripción de la marca",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMA_FE_ALTA",
+                    "title": "CEMA_FE_ALTA",
+                    "description": "Fecha de alta en la tabla",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CEMA_ST_MARCA",
+                    "title": "CEMA_ST_MARCA",
+                    "description": "Estado de la marca",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,26 @@
+name: BDR_LOAD_jm_interv_cto-eventual-2018-03_2019-11
+description: 'Eventual jm_interv_cto reproceso'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Load_Eventual_jm_interv_cto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/Reproceso BDR/ETLV-Load_Table_201803_201911-eventual.hql'
+notifications:
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, jhungramos@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

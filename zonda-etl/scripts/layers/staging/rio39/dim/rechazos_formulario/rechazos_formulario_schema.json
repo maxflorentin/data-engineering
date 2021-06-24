@@ -1,0 +1,42 @@
+{
+     "file": "rechazos_formulario_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/rechazos_formulario/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/rechazos_formulario",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [       {
+              "name": "nro_form",
+              "type": "string"
+             },
+             {
+              "name": "motivo_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "observaciones",
+              "type": "string"
+             },
+             {
+              "name": "fecha_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "activo",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,179 @@
+{
+    "file": "gest_tarjeta",
+    "location": "/santander/bi-corp/landing/csm/fact/gest_tarjeta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/gest_tarjeta",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_gest_tarjeta",
+    "skipNotify": true,
+    "compression": "snappy",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "orden_estado",
+            "type": "string"
+        },
+        {
+            "name": "cod_producto_altair",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "cod_estado_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_tarjeta",
+            "type": "string"
+        },
+        {
+            "name": "meta_consumo_anual",
+            "type": "string"
+        },
+        {
+            "name": "consumo_acum_periodo_act",
+            "type": "string"
+        },
+        {
+            "name": "ind_titularidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_producto_amas",
+            "type": "string"
+        },
+        {
+            "name": "digito_verificador",
+            "type": "string"
+        },
+        {
+            "name": "prod_paquete_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "subprod_paquete_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_cartera",
+            "type": "string"
+        },
+        {
+            "name": "monto_saldo_acreedor",
+            "type": "string"
+        },
+        {
+            "name": "ind_dev_acreedor",
+            "type": "string"
+        },
+        {
+            "name": "fecha_dev_acreedor",
+            "type": "string"
+        },
+        {
+            "name": "monto_dev_acreedor",
+            "type": "string"
+        },
+        {
+            "name": "asdo",
+            "type": "string"
+        },
+        {
+            "name": "pago_minimo",
+            "type": "string"
+        },
+        {
+            "name": "monto_maximo_dev",
+            "type": "string"
+        },
+        {
+            "name": "monto_parcial_dev",
+            "type": "string"
+        },
+        {
+            "name": "cod_motivo_baja_cta",
+            "type": "string"
+        },
+        {
+            "name": "monto_dev_acreedor_usd",
+            "type": "string"
+        },
+        {
+            "name": "monto_saldo_acreedor_usd",
+            "type": "string"
+        },
+        {
+            "name": "fecha_dev_acreedor_usd",
+            "type": "string"
+        },
+        {
+            "name": "ind_dev_acreedor_usd",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "fecha_ultimo_cierre",
+            "type": "string"
+        },
+        {
+            "name": "ind_trj_denunciante",
+            "type": "string"
+        },
+        {
+            "name": "ind_chip",
+            "type": "string"
+        },
+        {
+            "name": "nup_titular_tarjeta",
+            "type": "string"
+        },
+        {
+            "name": "ind_contacto_comercio",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_seg_siniestros",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_seg_orden", "cod_seg_siniestro", "cod_seg_ramo", "cod_seg_poliza", "cod_seg_certificado", "ds_seg_tipo_seguro"],
+    "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_seg_fecha_registracion", "dt_seg_fecha_comunicacion", "dt_seg_fecha_desde_vigencia", "dt_seg_fecha_hasta_vigencia","dt_seg_fecha_siniestro"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

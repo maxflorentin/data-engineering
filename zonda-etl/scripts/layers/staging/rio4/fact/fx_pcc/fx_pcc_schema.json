@@ -1,0 +1,242 @@
+{
+     "file": "fx_pcc_schema",
+     "location": "/santander/bi-corp/landing/rio4/fact/fx_pcc/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio4/fact/fx_pcc",
+     "tempDirectory": "/santander/bi-corp/temp/rio4",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [			{
+                 "name": "id_pcc",
+                 "type": "string"
+                },
+                {
+                 "name": "id_mesa",
+                 "type": "string"
+                },
+                {
+                 "name": "id_estado",
+                 "type": "string"
+                },
+                {
+                 "name": "id_sistema_externo",
+                 "type": "string"
+                },
+                {
+                 "name": "secuencia",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_pcc",
+                 "type": "string"
+                },
+                {
+                 "name": "compra_venta",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_operatoria",
+                 "type": "string"
+                },
+                {
+                 "name": "cod_moneda",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_moneda",
+                 "type": "string"
+                },
+                {
+                 "name": "cod_contramoneda",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_contramoneda",
+                 "type": "string"
+                },
+                {
+                 "name": "monto_me",
+                 "type": "string"
+                },
+                {
+                 "name": "concepto_bcra",
+                 "type": "string"
+                },
+                {
+                 "name": "canal",
+                 "type": "string"
+                },
+                {
+                 "name": "sistema_invocador",
+                 "type": "string"
+                },
+                {
+                 "name": "nup",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_doc_insc",
+                 "type": "string"
+                },
+                {
+                 "name": "nro_doc_insc",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_doc_princ",
+                 "type": "string"
+                },
+                {
+                 "name": "nro_doc_princ",
+                 "type": "string"
+                },
+                {
+                 "name": "razon_social",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_nacimiento",
+                 "type": "string"
+                },
+                {
+                 "name": "plazo",
+                 "type": "string"
+                },
+                {
+                 "name": "puesto",
+                 "type": "string"
+                },
+                {
+                 "name": "sector",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_liq_me",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_liq_mn",
+                 "type": "string"
+                },
+                {
+                 "name": "pais_residencia",
+                 "type": "string"
+                },
+                {
+                 "name": "instrumento_me",
+                 "type": "string"
+                },
+                {
+                 "name": "instrumento_mn",
+                 "type": "string"
+                },
+                {
+                 "name": "acred_directa",
+                 "type": "string"
+                },
+                {
+                 "name": "autogestion",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_cierre",
+                 "type": "string"
+                },
+                {
+                 "name": "usuario_alta",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_alta",
+                 "type": "string"
+                },
+                {
+                 "name": "corredor",
+                 "type": "string"
+                },
+                {
+                 "name": "cotizacion",
+                 "type": "string"
+                },
+                {
+                 "name": "precio_interno",
+                 "type": "string"
+                },
+                {
+                 "name": "pais_nacionalidad",
+                 "type": "string"
+                },
+                {
+                 "name": "pais_origen",
+                 "type": "string"
+                },
+                {
+                 "name": "sucursal",
+                 "type": "string"
+                },
+                {
+                 "name": "origen_oper",
+                 "type": "string"
+                },
+                {
+                 "name": "destino_oper",
+                 "type": "string"
+                },
+                {
+                 "name": "id_prestamo",
+                 "type": "string"
+                },
+                {
+                 "name": "id_ref_canal",
+                 "type": "string"
+                },
+                {
+                 "name": "jurisdiccion",
+                 "type": "string"
+                },
+                {
+                 "name": "llave_supervicion",
+                 "type": "string"
+                },
+                {
+                 "name": "subcanal",
+                 "type": "string"
+                },
+                {
+                 "name": "nro_formulario_obcm",
+                 "type": "string"
+                },
+                {
+                 "name": "canal_autogestion",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_operacion",
+                 "type": "string"
+                },
+                {
+                 "name": "corresponsal",
+                 "type": "string"
+                },
+                {
+                 "name": "beneficiario",
+                 "type": "string"
+                },
+                {
+                 "name": "pais_beneficiario",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "fechaop",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

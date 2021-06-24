@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.malbgc_bgdtmo1 ADD IF NOT EXISTS PARTITION (partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='') }}');

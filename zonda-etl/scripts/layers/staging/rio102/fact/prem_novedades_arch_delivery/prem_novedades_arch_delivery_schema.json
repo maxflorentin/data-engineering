@@ -1,0 +1,75 @@
+{
+	"file": "prem_novedades_arch_delivery_schema",
+	"location": "/santander/bi-corp/landing/rio102/fact/prem_novedades_arch_delivery/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/fact/rio102_prem_novedades_arch_delivery",
+	"tempDirectory": "/santander/bi-corp/temp/prem_novedades_arch_delivery",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "dni",
+			"type": "string"
+		},
+{
+			"name": "sexo",
+			"type": "string"
+		},
+{
+			"name": "nro_cuenta",
+			"type": "string"
+		},
+{
+			"name": "sucursal",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "fecha_proc",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "nombre",
+			"type": "string"
+		},
+{
+			"name": "apellido",
+			"type": "string"
+		},
+{
+			"name": "suscriptor",
+			"type": "string"
+		},
+{
+			"name": "producto",
+			"type": "string"
+		},
+{
+			"name": "marca_upgr",
+			"type": "string"
+		},
+{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "fecha_impacto",
+			"type": "string"
+		},
+{
+			"name": "estado_impacto",
+			"type": "string"
+		}
+	]
+}

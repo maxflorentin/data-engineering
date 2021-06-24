@@ -1,0 +1,221 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "DESTINATION",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/destination",
+      "split_field": "to_char(create_date, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=destination -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_SUBSCRIBER,ID_DEVICE,SEQNUM,ID_CHANNEL,DESTINATION,CREATE_DATE,MODIFY_DATE,ID_STATUS,ESTADO,REJECT_COUNT,REJECT_DATE1,REJECT_DATE2,SOLUCION_FECHA,ID_OPERADOR,VALIDADO,CHANNEL_BANK,SUB_CHANNEL_BANK,VALIDATE_DATE FROM {environment}.{table} WHERE  \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "SUBSCRIPTION",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/subscription",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(create_date, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=subscription -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_SUBSCRIPTION,ID_ENTITLEMENT,ID_SUBSCRIBER,ID_DEVICE,SEQNUM,ID_TIMEFRAME,ID_STATUS,ID_DAYS_TO_MATURITY,ID_FREQUENCY,MORE_DATA,ONE_TIME,CREATE_DATE,MODIFY_DATE,ID_OPERADOR, to_char(CREATE_DATE, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(CREATE_DATE,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "SUBSCRIBER",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/subscriber",
+      "split_field": "to_char(create_date, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=subscriber -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_SUBSCRIBER,ID_STATUS,IDTYPE,IDNUMBER,GIVENNAME,SURNAME,TELNUMBER,LEGALTYPE,BIRTHDATE,ID_CHANNELBANK,ID_SUBCHANNELBANK,PRIVATEBANK,PERSONALBANK,CREATE_DATE,MODIFY_DATE,ID_CHANNELBANK_INI,ID_SUBCHANNELBANK_INI,ID_OPERADOR,TYC_WHATSAPP FROM {environment}.{table}  WHERE  \\$CONDITIONS\"  --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE_REQUEST_DATA_CD",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message_request_data_cd",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(CREATE_TIMESTAMP, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message_request_data_cd -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT MSG_REQ_ID,ID_ENTITLEMENT,CREATE_TIMESTAMP,MANUAL,PROCESSED, replace(replace(replace(DATA,chr(10),' '),chr(13),' '),'^',' ') AS DATA,TIMESTAMP_INICIO_PROCESAMIENTO, to_char(CREATE_TIMESTAMP, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(CREATE_TIMESTAMP,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}'  --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE_REQUEST_DATA",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message_request_data",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(CREATE_TIMESTAMP, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message_request_data -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT MSG_REQ_ID,ID_ENTITLEMENT,CREATE_TIMESTAMP,MANUAL,PROCESSED,  replace(replace(replace(DATA,chr(10),' '),chr(13),' '),'^',' ') AS DATA,TIMESTAMP_INICIO_PROCESAMIENTO , to_char(CREATE_TIMESTAMP, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(CREATE_TIMESTAMP,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}'   --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE_LOG",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message_log",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message_log -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT MSG_ID,NUP,ID_CLIENTE,FECHA,ID_ENTITLEMENT,DESTINATION,ID_ESTADO,ID_DEVICE,ID_NOTIFICACION, to_char(FECHA, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(FECHA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE_LOG_CD",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message_log_cd",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message_log_cd -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT MSG_ID,NUP,IDCLIENTE,FECHA,ID_ENTITLEMENT,DESTINATION,ID_ESTADO,ID_DEVICE, to_char(FECHA, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(FECHA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "ENTITLEMENT",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/entitlement",
+      "command": "sqoop import -Dmapreduce.output.basename=entitlement -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT ID_ENTITLEMENT,ENTITLEMENT,DESCRIPTION, LONG_DESCRIPTION,LABEL,DEFAULT_FREQUENCY,DEFAULT_TIMEFRAME,DEFAULT_DAYS_TO_MATURITY,ID_STATUS,VISIBLE,VISIBLE_SEARCH,DESCRIPTION_SEARCH,NULL AS FORMAT_INPUT,PRIORITY,ID_SUBCHANNELBANK_DEFAULT,ID_CHANNELBANK_DEFAULT,SAMPLE_INPUT,ID_RULE,ID_PROVIDER,TTL,PAGE_SHOW,NEWSLETTER,ID_FILTER,TIPO_ESPECIAL,ACNL,URL FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}'  --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "CORRESPONDENCIA_DIGITAL",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/correspondencia_digital",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(CREATE_DATE, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=correspondencia_digital -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_CORRESPONDENCIA,TIPO_CARTA,NOMBRE_APELLIDO,RAZON_SOCIAL,TELEFONO,TIPO_DOCUMENTO,NUMERO_DOCUMENTO,VALIDA_DIRECCION,CALLE,NUMERO_DIRECCION,PISO,DEPTO,BARRIO,LOCALIDAD,CODIGO_POSTAL,PROVINCIA,PAIS,LUGAR_FECHA,NUP,MARCA_TARJETA,TIPO_PRESTAMO,TARJETA_CUENTA,NUMERO_SUCURSAL,NOMBRE_SUCURSAL,DOMICILIO_SUCURSAL,MONTO,MONEDA,FECHA_CIERRE,CANTIDAD_PRODUCTO,PRODUCTO1,MONTO1,PRODUCTO2,MONTO2,PRODUCTO3,MONTO3,MSG_REQ_ID, CREATE_DATE,MODIFY_DATE,TT_STS,FECHA_IMPOSICION,ULTIMO_RESULTADO,FECHA_RESULTADO ,to_char(CREATE_DATE, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(CREATE_DATE,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "CORRESPONDENCIA_DIGITAL_CHEQUE",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/correspondencia_digital_cheque",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(B.CREATE_DATE, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=correspondencia_digital_cheque -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT A.ID_CORRESPONDENCIA,A.NUMERO_CHEQUE,A.IMPORTE,to_char(B.CREATE_DATE, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table} A  JOIN  {environment}.CORRESPONDENCIA_DIGITAL B  ON A.ID_CORRESPONDENCIA=B.ID_CORRESPONDENCIA WHERE to_char(B.CREATE_DATE,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "LINKS",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/links",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(CREATE_DATE, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=links -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_SUBSCRIBER,ENTITLEMENT,ACCION,DESTINATION,MSG_ID,TIMESTAMP,to_char(TIMESTAMP, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(TIMESTAMP,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "MYA_SEGUIMIENTOS",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/mya_seguimientos",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(FECHA_LOG, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=mya_seguimientos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT NUP,MSG_ID,LINK,ENTITLEMENT,DESTINATION,FECHA_ENVIO,FECHA_LOG,COND1,COND2,COND3,COND4 , to_char(FECHA_LOG, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table}  WHERE to_char(FECHA_LOG,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE_CD",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message_cd",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(B.FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message_cd -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT distinct A.MSG_REQ_ID,A.MSG_ID, to_char(B.FECHA, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.TMYA_MESSAGE_CD A JOIN  {environment}.TMYA_MESSAGE_LOG_CD B ON A.MSG_ID= B.MSG_ID  WHERE to_char(B.FECHA, 'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS\"   --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_MESSAGE",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/tmya_message",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(B.FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_message -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT distinct A.MSG_REQ_ID,A.MSG_ID, to_char(B.FECHA, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.TMYA_MESSAGE A JOIN  {environment}.TMYA_MESSAGE_LOG B ON A.MSG_ID=B.MSG_ID  WHERE to_char(B.FECHA, 'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS\"  --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TMYA_STATUS_LOG",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/tmya_status_log",
+      "command": "sqoop import -Dmapreduce.output.basename=tmya_status_log -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT ID_ESTADO,DESCRIPCION FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "PMR_REASON",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/pmr_reason",
+      "command": "sqoop import -Dmapreduce.output.basename=pmr_reason -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT ID_REASON,ID_TYPE,DESC_REASON,CANTIDAD_MAX FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "PMR_TYPE",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/pmr_type",
+      "command": "sqoop import -Dmapreduce.output.basename=pmr_type -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT ID_TYPE,DESC_TYPE FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "PMR_MAIL",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/pmr_mail",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(DATE_REJECT, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename=pmr_mail -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT ID_MAIL,ID_REASON,DATE_REJECT,E_MAIL,ID_SIGNATURE, to_char(DATE_REJECT, 'YYYY-MM-DD') PARTITION_DATE FROM {environment}.{table} WHERE  to_char(DATE_REJECT, 'YYYY-MM-DD')='{partition_date}' AND \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "PROVINCIA",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/provincia",
+      "command": "sqoop import -Dmapreduce.output.basename=provincia -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT CODIGO_PROVINCIA,DESCRIPCION,CODIGO_ALFA_PROVINCIA FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "TIPO_DOCUMENTO",
+      "table_type": "dim",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/dim/tipo_documento",
+      "command": "sqoop import -Dmapreduce.output.basename=tipo_documento -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \" SELECT CODIGO_DOCUMENTO,DESCRIPCION,CODIGO_CORREO FROM {environment}.{table} WHERE  \\$CONDITIONS\"    --bindir '/aplicaciones/bi/zonda/sqoop/{database}/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorazero01",
+      "database": "RIO74",
+      "table": "PUSH_SUBSCRIPTIONS",
+      "table_type": "fact",
+      "environment": "mya02",
+      "landing_path": "/santander/bi-corp/landing/rio74/fact/push_subscriptions",
+      "partition_field": "PARTITION_DATE",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{environment}.{table}\" --columns \"ID,ACTIVE,APP_VERSION,DEVICE_ID, MANUFACTURER,MODEL,MODEL_CODE,NUP,OS_VERSION,PLATFORM,REGISTERED_AT,LAST_REGISTER,TOKEN \"  --bindir '/aplicaciones/bi/zonda/sqoop/rio74/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+
+    }
+  ]
+}

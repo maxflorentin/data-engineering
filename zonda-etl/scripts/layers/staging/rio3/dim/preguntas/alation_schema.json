@@ -1,0 +1,99 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_preguntas",
+      "title": "PREGUNTAS DE LA ENCUESTA",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "PREGUNTAS DE LA ENCUESTA",
+      "columns": [
+        {
+          "name": "ENCUESTA",
+          "title": "ENCUESTA",
+          "description": "codigo de la encuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "PREGUNTA",
+          "title": "PREGUNTA",
+          "description": "codigo de la pregunta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "DESCRI",
+          "title": "DESCRI",
+          "description": "descripcion de la pregunta",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 250.0,
+          "security": "Publico"                },
+        {
+          "name": "RESPUESTA_MULTIPLE",
+          "title": "RESPUESTA_MULTIPLE",
+          "description": "S si permite respuesta multiple, N, espacios o null caso contrario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"                },
+        {
+          "name": "ACTIVO",
+          "title": "ACTIVO",
+          "description": "S si esta activo, N caso contrario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"                },
+        {
+          "name": "ORDEN",
+          "title": "ORDEN",
+          "description": "orden de aparicion de la pregunta en la encuesta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "CONTABILIZAR",
+          "title": "CONTABILIZAR",
+          "description": "codigo de contabilizacion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

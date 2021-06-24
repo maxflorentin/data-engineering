@@ -1,0 +1,38 @@
+{
+     "file": "info_tabla_codigos_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/info_tabla_codigos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/info_tabla_codigos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [       {
+              "name": "codigo",
+              "type": "string"
+             },
+             {
+              "name": "descripcion",
+              "type": "string"
+             },
+             {
+              "name": "sector",
+              "type": "string"
+             },
+             {
+              "name": "subproducto",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

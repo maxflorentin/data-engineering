@@ -1,0 +1,205 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A279014"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "responsys_bounce",
+      "title": "Tabla con mails enviados por acciones comerciales",
+      "schema": "bi_corp_staging",
+      "source": "FDM",
+      "query": "",
+      "type": "fact",
+      "description": "Tabla con mails enviados por acciones comerciales",
+      "columns": [
+        {
+          "name": "EVENT_TYPE_ID",
+          "title": "EVENT_TYPE_ID",
+          "description": "valor constante = 2",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ACCOUNT_ID",
+          "title": "ACCOUNT_ID",
+          "description": "valor constante = 80441",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LIST_ID",
+          "title": "LIST_ID",
+          "description": "identificador de lista",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "RIID",
+          "title": "RIID",
+          "description": "id del cliente interno en responsys",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CUSTOMER_ID",
+          "title": "CUSTOMER_ID",
+          "description": "id del cliente interno en modelo de campañas de IC (SDC)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 255.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EVENT_CAPTURED_DT",
+          "title": "EVENT_CAPTURED_DT",
+          "description": "fecha de envio",
+          "type": "TIMESTAMP(6)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 11.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EVENT_STORED_DT",
+          "title": "EVENT_STORED_DT",
+          "description": "fecha de almacenamiento",
+          "type": "TIMESTAMP(6)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 11.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CAMPAIGN_ID",
+          "title": "CAMPAIGN_ID",
+          "description": "identificador de campaña",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LAUNCH_ID",
+          "title": "LAUNCH_ID",
+          "description": "identificador de lote de envio de la campaña",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EMAIL",
+          "title": "EMAIL",
+          "description": "email del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 255.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "EMAIL_FORMAT",
+          "title": "EMAIL_FORMAT",
+          "description": "Formato del mail",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "BOUNCE_TYPE",
+          "title": "BOUNCE_TYPE",
+          "description": "tipo de rebote (Hard Soft)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "REASON",
+          "title": "REASON",
+          "description": "motivo del rebote",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 500.0,
+          "security": "Publico"
+        },
+        {
+          "name": "REASON_CODE",
+          "title": "REASON_CODE",
+          "description": "codigo del motivo",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 500.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SUBJECT",
+          "title": "SUBJECT",
+          "description": "asunto del mail",
+          "type": "NVARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 510.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CONTACT_INFO",
+          "title": "CONTACT_INFO",
+          "description": "mail del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1000.0,
+          "security": "Confidencial"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

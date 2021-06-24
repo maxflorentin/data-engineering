@@ -1,0 +1,118 @@
+{
+  "tables" :[
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_clientes",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_clientes",
+      "table_type": "dim",
+      "environment": "rio4",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.CLIENTES WHERE  \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_especies",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_especies",
+      "table_type": "dim",
+      "environment": "rio4",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.ESPECIES WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_exp_crediticias",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_exp_crediticias",
+      "table_type": "dim",
+      "environment": "rio4",
+      "partition_field": "FECHA",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.EXP_CREDITICIAS WHERE to_char({partition_field} ,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_fx_solicitudes_cotizadas",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_fx_solicitudes_cotizadas",
+      "table_type": "dim",
+      "environment": "rio4",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.FX_SOLICITUDES_COTIZADAS WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_vw_exposicion_crediticia_bp",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_vw_exposicion_crediticia_bp",
+      "table_type": "dim",
+      "environment": "rio4",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.VW_EXPOSICION_CREDITICIA_BP WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_vw_aire_swaps",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_vw_aire_swaps",
+      "table_type": "dim",
+      "environment": "rio4",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.VW_AIRE_SWAPS WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_operaciones_audit",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_operaciones_audit",
+      "table_type": "dim",
+      "environment": "rio4",
+      "partition_field": "FECHA",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.OPERACIONES_AUDIT WHERE to_char({partition_field} ,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_operaciones",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_operaciones",
+      "table_type": "dim",
+      "environment": "rio4",
+      "partition_field": "FECHACARGA",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.OPERACIONES WHERE to_char({partition_field} ,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO4",
+      "serverConfig": "DBLXORABMG03",
+      "database": "RIO4",
+      "table": "mer_boperaciones",
+      "landing_path": "/santander/bi-corp/landing/rio4/dim/mer_boperaciones",
+      "table_type": "dim",
+      "environment": "rio4",
+      "partition_field": "FECHACARGA",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SAM.BOPERACIONES WHERE to_char({partition_field} ,'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO286",
+      "serverConfig": "dblxbmgsrv07",
+      "database": "SRV_RIO286_AP",
+      "table": "mer_fx_clientes_autogestion",
+      "landing_path": "/santander/bi-corp/landing/rio286/dim/mer_fx_clientes_autogestion",
+      "table_type": "dim",
+      "environment": "rio286",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SIMVAT.FX_CLIENTES_AUTOGESTION WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO286",
+      "serverConfig": "dblxbmgsrv07",
+      "database": "SRV_RIO286_AP",
+      "table": "mer_fx_categorias",
+      "landing_path": "/santander/bi-corp/landing/rio286/dim/mer_fx_categorias",
+      "table_type": "dim",
+      "environment": "rio286",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM SIMVAT.FX_CATEGORIAS WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

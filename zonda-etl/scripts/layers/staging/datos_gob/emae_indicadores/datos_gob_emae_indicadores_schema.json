@@ -1,0 +1,49 @@
+{
+  "file": "datos_gob_emae_indicadores",
+  "location": "/santander/bi-corp/landing/datos_gob/emae_indicadores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/datos_gob/emae_indicadores",
+  "createTable": "bi_corp_staging.datos_gob_emae_indicadores",
+  "header": true,
+  "extension": "csv",
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "original",
+      "type": "string"
+    },
+    {
+      "name": "desestacionalizada",
+      "type": "string"
+    },
+    {
+      "name": "tendencia_ciclo",
+      "type": "string"
+    },
+    {
+      "name": "original_via",
+      "type": "string"
+    },
+    {
+      "name": "desestacionalizada_vm",
+      "type": "string"
+    },
+    {
+      "name": "tendencia_ciclo_vm",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

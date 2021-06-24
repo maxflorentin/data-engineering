@@ -1,0 +1,61 @@
+{
+  "file": "cart_zonas_postales_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_zonas_postales/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_zonas_postales",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cazp_caes_cd_estado",
+      "type": "string"
+    },
+    {
+      "name":"cazp_cd_poblacion",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cd_colonia",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cd_postal",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cd_zona_sismica",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cd_zona_huracan",
+      "type":"string"
+    },{
+      "name":"cazp_caci_cd_ciudad",
+      "type": "string"
+    },
+    {
+      "name":"cazp_cazz_cd_cumulo",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cnir_cd_nivel_riesgo",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cnir_cd_nivel_riesgo_22",
+      "type":"string"
+    },
+    {
+      "name":"cazp_cnir_cd_nivel_riesgo_23",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "hogt_tp_vivienda",
+            "title": "Tipos de vivienda",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tipos de vivienda",
+            "columns": [
+                {
+                    "name": "HOTV_TP_VIVIENDA",
+                    "title": "HOTV_TP_VIVIENDA",
+                    "description": "Código del tipo de vivienda",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HOTV_DE_VIVIENDA",
+                    "title": "HOTV_DE_VIVIENDA",
+                    "description": "Descripcion del tipo de vivienda",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 40.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

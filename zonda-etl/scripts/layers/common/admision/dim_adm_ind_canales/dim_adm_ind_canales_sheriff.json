@@ -1,0 +1,26 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_canales",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_canal","ds_adm_descripcion"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_canal","ds_adm_descripcion"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["ds_adm_tipo","flag_adm_activo","ts_adm_fechaalta"],
+        "threshold": 0.2
+      },
+     {
+        "control_id": "date_format",
+        "field_to_check": ["ts_adm_fechaalta"],
+        "pattern": "yyyy-MM-dd",
+        "threshold": 0.01
+      }
+    ]
+  }

@@ -1,0 +1,59 @@
+{
+    "file": "tipo_favorabilidad_schema",
+    "createTable": "bi_corp_staging.rio56_tipo_favorabilidad",
+    "location": "/santander/bi-corp/landing/rio56/dim/tipo_favorabilidad/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/tipo_favorabilidad",
+    "tempDirectory": "/santander/bi-corp/temp/rio56",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "desc_tipo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "est_tipo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_tpo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_tpo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_tpo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_tpo_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

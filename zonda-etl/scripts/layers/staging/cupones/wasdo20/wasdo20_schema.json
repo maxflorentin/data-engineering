@@ -1,0 +1,18 @@
+{
+  "file": "wasdo20",
+  "location": "/santander/bi-corp/landing/cupones/maestro_saldos/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/cupones/wasdo20",
+  "createTable": "bi_corp_staging.afma_wasdo20",
+  "copybook": "wasdo20.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder":1
+    }
+  ]
+}

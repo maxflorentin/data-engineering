@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_ren_result",
+  "partition_date": "${partition_date}",
+  "controls": [
+   // {
+   //   "control_id": "duplicates",
+   //   "field_to_check": ["cod_per_nup","ds_per_secuencia"]
+   // },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_ren_contrato","dt_ren_fechadata","cod_ren_pais","cod_ren_pers_ods","cod_ren_entidad_espana","cod_ren_producto_gest", "cod_ren_cont_gestion","cod_ren_centro_cont"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_ren_fechadata", "dt_ren_altacontrato", "dt_ren_vencontrato", "dt_ren_reestruccontrato"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

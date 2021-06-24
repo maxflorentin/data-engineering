@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.bt_rec_gest_estados_sgc",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": []
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_rec_entidad","cod_rec_sector","cod_rec_gestion_nro","cod_rec_estado_gest","ts_rec_estado_gest","cod_rec_user_estado","int_rec_orden_estado","cod_rec_ide_gestion_sec","flag_rec_modf_fec_resol" ],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_rec_estado_gest","ts_rec_imp_gest_estado"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+      "threshold": 0.01
+    }
+  ]
+}

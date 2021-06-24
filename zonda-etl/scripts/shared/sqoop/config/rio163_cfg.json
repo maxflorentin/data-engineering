@@ -1,0 +1,32 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "RTD_DATA",
+            "table": "RTD_OFERTAS_PRESENTADAS",
+            "table_type": "fact",
+            "environment": "rio163",
+            "landing_path": "/santander/bi-corp/landing/rio163/fact/rtd_ofertas_presentadas",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO163' --username 'srvcbi' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'ZB0PzAx##0e4Kcc2Bmr' --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "RTD_DATA",
+            "table": "RTD_OFERTAS",
+            "table_type": "dim",
+            "environment": "rio163",
+            "landing_path": "/santander/bi-corp/landing/rio163/dim/rtd_ofertas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO163' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'ZB0PzAx##0e4Kcc2Bmr' --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAFRONT07",
+            "database": "RTD_DATA",
+            "table": "RTD_CONTENIDO_CANAL",
+            "table_type": "dim",
+            "environment": "rio163",
+            "landing_path": "/santander/bi-corp/landing/rio163/dim/rtd_contenido_canal",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@DBLXORAFRONT07:7365/RIO163' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password 'ZB0PzAx##0e4Kcc2Bmr' --verbose\n"
+      }
+  ]
+}

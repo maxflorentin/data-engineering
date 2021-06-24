@@ -1,0 +1,105 @@
+{
+  "file": "transaction_log_schema",
+  "location": "/santander/bi-corp/landing/rio147/fact/transaction_log/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio147/fact/transaction_log",
+  "tempDirectory": "/santander/bi-corp/temp/rio147",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "documento",
+      "type": "string"
+    },
+    {
+      "name": "fecha_de_nacimiento",
+      "type": "string"
+    },
+    {
+      "name": "canal_acceso",
+      "type": "string"
+    },
+    {
+      "name": "transaccion",
+      "type": "string"
+
+    },
+    {
+      "name": "cod_error",
+      "type": "string"
+    },
+    {
+      "name": "pid",
+      "type": "string"
+    },
+    {
+      "name": "tipo",
+      "type": "string"
+    },
+    {
+      "name": "procesado",
+      "type": "string"
+    },
+    {
+      "name": "comprobante",
+      "type": "string"
+    },
+    {
+      "name": "importe",
+      "type": "string"
+    },
+    {
+      "name": "moneda",
+      "type": "string"
+    },
+    {
+      "name": "f_alta_registro",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "tipo_teclado",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "nom_server",
+      "type": "string"
+    },
+    {
+      "name": "num_log",
+      "type": "string"
+    },
+    {
+      "name": "cuenta_origen",
+      "type": "string"
+    },
+    {
+      "name": "cuenta_destino",
+      "type": "string"
+    },
+    {
+      "name": "dispositivo",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

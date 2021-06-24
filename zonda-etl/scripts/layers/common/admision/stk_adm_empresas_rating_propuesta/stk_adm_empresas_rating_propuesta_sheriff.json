@@ -1,0 +1,23 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_rating_propuesta",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "dt_adm_pefecalt",
+        "dt_adm_pefecmod",
+        "dt_adm_fecha_valoracion",
+        "dt_adm_fecha_valoracion_ant",
+        "dt_adm_fecha_valoracion_garra"
+      ],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}
+

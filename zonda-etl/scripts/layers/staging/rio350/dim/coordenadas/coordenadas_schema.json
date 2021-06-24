@@ -1,0 +1,39 @@
+{
+    "file": "coordenadas_schema",
+    "createTable": "bi_corp_staging.rio350_coordenadas",
+    "location": "/santander/bi-corp/landing/rio350/dim/coordenadas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/coordenadas",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "coordenada_id",
+            "type": "string"
+        },
+        {
+            "name": "latitud",
+            "type": "string"
+        },
+        {
+            "name": "longitud",
+            "type": "string"
+        },
+        {
+            "name": "direccion_id",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

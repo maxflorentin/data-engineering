@@ -1,0 +1,50 @@
+{
+  "file": "celt_modelos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/celt_modelos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/celt_modelos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cemo_cema_cd_marca",
+      "type": "string"
+    },
+    {
+      "name":"cemo_cd_modelo",
+      "type":"string"
+    },
+    {
+      "name":"cemo_de_modelo",
+      "type":"string"
+    },
+    {
+      "name":"cemo_pr_mercado",
+      "type":"string"
+    },
+    {
+      "name":"cemo_fe_vigencia",
+      "type":"string"
+    },
+    {
+      "name":"cemo_fe_alta",
+      "type":"string"
+    },
+    {
+      "name":"cemo_st_modelo",
+      "type":"string"
+    },
+    {
+      "name":"cemo_cd_modelo_comercial",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,24 @@
+{
+  "table": "bi_corp_common.bt_suc_interaccionalerta",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_interaccionalerta","cod_suc_interaccion"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_interaccionalerta"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_suc_gestion"],
+      "pattern": "yyyy-MM-dd"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_suc_gestion"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

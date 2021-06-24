@@ -1,0 +1,1 @@
+msck repair table bi_corp_bdr.saldos_tarjetas_covid;

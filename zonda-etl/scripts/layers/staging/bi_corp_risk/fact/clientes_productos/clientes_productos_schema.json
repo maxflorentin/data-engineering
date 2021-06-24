@@ -1,0 +1,70 @@
+{
+	"file": "clientes_productos_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/clientes_productos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/clientes_productos",
+	"tempDirectory": "/santander/bi-corp/temp/clientes_productos",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "fecha_informacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+		{
+			"name": "nup",
+			"type": "double"
+		},
+		{
+			"name": "nro_cuenta",
+			"type": "double"
+		},
+		{
+			"name": "sucursal",
+			"type": "double"
+		},
+		{
+			"name": "tipo_participante",
+			"type": "string"
+		},
+		{
+			"name": "orden_participante",
+			"type": "double"
+		},
+		{
+			"name": "codigo_producto",
+			"type": "string"
+		},
+		{
+			"name": "codigo_subproducto",
+			"type": "string"
+		},
+		{
+			"name": "fecha_cierre",
+			"type": "string"
+		},
+		{
+			"name": "estado",
+			"type": "string"
+		},
+		{
+			"name": "marca_paquete",
+			"type": "string"
+		},
+		{
+			"name": "motivo_baja",
+			"type": "string"
+		},
+		{
+			"name": "fecha_alta",
+			"type": "string"
+		},
+		{
+			"name": "nro_cuenta_",
+			"type": "double"
+		}
+	]
+}

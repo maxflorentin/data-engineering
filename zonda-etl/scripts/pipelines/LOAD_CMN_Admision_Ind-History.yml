@@ -1,0 +1,64 @@
+name: LOAD_CMN_Admision_Ind-History
+description: 'Load Admision Ind data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '00 13 * * *'
+start_date: '2021-03-25'
+catchup: true
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [stk_adm_ind_participantes,stk_adm_ind_estadossolicitud,stk_adm_ind_tramiteshash,stk_adm_ind_solicitudes]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/DDLT-${e}.hql'
+  - name: COMMON_LoadTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/ETL-LOAD-${e}_h.hql'
+  - name: SHERIFF_Control
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/${e}_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Ind-History') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['${e}_sheriff.json']
+dependencies:
+  COMMON_CreateTable: COMMON_LoadTable
+  COMMON_LoadTable: SHERIFF_Control
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar]

@@ -1,0 +1,51 @@
+name: LOAD_STG_MORIA_VC_Ventas
+description: 'Load data from Moria Venta de Cartera'
+owner: BI-Corp
+active: true
+# schedule_interval: '*/30 13-22 * * 1-5'
+start_date: '2020-02-19'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: STAGING_MORIA_VC_VENTA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MORIA_VC_VENTA_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/moria/fact/vc_venta/vc_venta_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MORIA_VC_Ventas') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vc_venta_schema.json']
+  - name: STAGING_MORIA_VC_HISTORICO_VENTA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MORIA_VC_HISTORICO_VENTA_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/moria/fact/vc_historico_venta/vc_historico_venta_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MORIA_VC_Ventas') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vc_historico_venta_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maflorentin@santandertecnologia.com.ar]

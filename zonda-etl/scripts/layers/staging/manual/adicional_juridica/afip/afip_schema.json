@@ -1,0 +1,58 @@
+{
+  "file": "afip",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/afip/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/afip",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "cuit",
+					    "type": "string",
+					    "width": 11
+					  },
+					  {
+					    "name": "denominacion",
+					    "type": "string",
+					    "width": 30
+					  },
+					  {
+					    "name": "imp_ganancias",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "imp_iva",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "monotributo",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "integrante_soc",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "empleador",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "actividad_monotributo",
+					    "type": "string",
+					    "width": 2
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

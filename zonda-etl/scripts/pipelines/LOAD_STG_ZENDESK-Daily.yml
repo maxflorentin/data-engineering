@@ -1,0 +1,616 @@
+name: LOAD_STG_ZENDESK-Daily
+description: 'Load data from Zendesk'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 5 * * *'
+start_date: '2019-10-27'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_Zendesk_TK_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_TK_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/comex_santander/tickets_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['tickets_schema.json']
+
+  - name: STAGING_Zendesk_TK_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/comex_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_TK_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_TK_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/puc_santander/tickets_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['tickets_schema.json']
+
+  - name: STAGING_Zendesk_TK_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_TK_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_TK_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/santander_ar/tickets_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['tickets_schema.json']
+
+  - name: STAGING_Zendesk_TK_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/santander_ar/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_TK_Getnet_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_TK_Getnet_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/globalgetnet/tickets_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['tickets_schema.json']
+
+  - name: STAGING_Zendesk_TK_Getnet_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/globalgetnet/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/tickets/globalgetnet/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_USR_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_USR_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/comex_santander/users_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['users_schema.json']
+
+  - name: STAGING_Zendesk_USR_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/comex_santander/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_USR_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_USR_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/puc_santander/users_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['users_schema.json']
+
+  - name: STAGING_Zendesk_USR_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_USR_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_USR_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/santander_ar/users_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['users_schema.json']
+
+  - name: STAGING_Zendesk_USR_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/santander_ar/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_USR_Getnet_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_USR_Getnet_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/globalgetnet/users_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['users_schema.json']
+
+  - name: STAGING_Zendesk_USR_Getnet_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/globalgetnet/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/fact/users/globalgetnet/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_Brands_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Brands_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/comex_santander/brands_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['brands_schema.json']
+
+  - name: STAGING_Zendesk_Brands_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/comex_santander/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_Brands_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Brands_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/puc_santander/brands_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['brands_schema.json']
+
+  - name: STAGING_Zendesk_Brands_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_Brands_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Brands_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/santander_ar/brands_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['brands_schema.json']
+
+  - name: STAGING_Zendesk_Brands_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/brands/santander_ar/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_Groups_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Groups_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/comex_santander/groups_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['groups_schema.json']
+
+  - name: STAGING_Zendesk_Groups_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/comex_santander/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_Groups_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Groups_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/puc_santander/groups_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['groups_schema.json']
+
+  - name: STAGING_Zendesk_Groups_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_Groups_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_Groups_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/santander_ar/groups_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['groups_schema.json']
+
+  - name: STAGING_Zendesk_Groups_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/groups/santander_ar/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_ticket_fields_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_fields_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/comex_santander/ticket_fields_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_fields_schema.json']
+
+  - name: STAGING_Zendesk_ticket_fields_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/comex_santander/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_ticket_fields_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_fields_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/puc_santander/ticket_fields_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_fields_schema.json']
+
+  - name: STAGING_Zendesk_ticket_fields_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_ticket_fields_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_fields_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/santander_ar/ticket_fields_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_fields_schema.json']
+
+  - name: STAGING_Zendesk_ticket_fields_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_fields/santander_ar/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_ticket_forms_Comex_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_forms_Comex_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/comex_santander/ticket_forms_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_forms_schema.json']
+
+  - name: STAGING_Zendesk_ticket_forms_Comex_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/comex_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/comex_santander/ETLV-Alter_Partitions.hql'
+
+
+  - name: STAGING_Zendesk_ticket_forms_PUC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_forms_PUC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/puc_santander/ticket_forms_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_forms_schema.json']
+
+  - name: STAGING_Zendesk_ticket_forms_PUC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/puc_santander/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/puc_santander/ETLV-Alter_Partitions.hql'
+
+  - name: STAGING_Zendesk_ticket_forms_Santander_Ar_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Zendesk_ticket_forms_Santander_Ar_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/santander_ar/ticket_forms_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ZENDESK-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['ticket_forms_schema.json']
+
+  - name: STAGING_Zendesk_ticket_forms_Santander_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/santander_ar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/zendesk/dim/ticket_forms/santander_ar/ETLV-Alter_Partitions.hql'
+
+dependencies:
+  STAGING_Zendesk_TK_Comex_Parquetize: STAGING_Zendesk_TK_Comex_AddPartition
+  STAGING_Zendesk_TK_PUC_Parquetize: STAGING_Zendesk_TK_PUC_AddPartition
+  STAGING_Zendesk_TK_Santander_Ar_Parquetize: STAGING_Zendesk_TK_Santander_AddPartition
+  STAGING_Zendesk_TK_Getnet_Parquetize: STAGING_Zendesk_TK_Getnet_AddPartition
+  STAGING_Zendesk_USR_Comex_Parquetize: STAGING_Zendesk_USR_Comex_AddPartition
+  STAGING_Zendesk_USR_PUC_Parquetize: STAGING_Zendesk_USR_PUC_AddPartition
+  STAGING_Zendesk_USR_Santander_Ar_Parquetize: STAGING_Zendesk_USR_Santander_AddPartition
+  STAGING_Zendesk_USR_Getnet_Parquetize: STAGING_Zendesk_USR_Getnet_AddPartition
+  STAGING_Zendesk_Brands_Comex_Parquetize: STAGING_Zendesk_Brands_Comex_AddPartition
+  STAGING_Zendesk_Brands_PUC_Parquetize: STAGING_Zendesk_Brands_PUC_AddPartition
+  STAGING_Zendesk_Brands_Santander_Ar_Parquetize: STAGING_Zendesk_Brands_Santander_AddPartition
+  STAGING_Zendesk_Groups_Comex_Parquetize: STAGING_Zendesk_Groups_Comex_AddPartition
+  STAGING_Zendesk_Groups_PUC_Parquetize: STAGING_Zendesk_Groups_PUC_AddPartition
+  STAGING_Zendesk_Groups_Santander_Ar_Parquetize: STAGING_Zendesk_Groups_Santander_AddPartition
+  STAGING_Zendesk_ticket_fields_Comex_Parquetize: STAGING_Zendesk_ticket_fields_Comex_AddPartition
+  STAGING_Zendesk_ticket_fields_PUC_Parquetize: STAGING_Zendesk_ticket_fields_PUC_AddPartition
+  STAGING_Zendesk_ticket_fields_Santander_Ar_Parquetize: STAGING_Zendesk_ticket_fields_Santander_AddPartition
+  STAGING_Zendesk_ticket_forms_Comex_Parquetize: STAGING_Zendesk_ticket_forms_Comex_AddPartition
+  STAGING_Zendesk_ticket_forms_PUC_Parquetize: STAGING_Zendesk_ticket_forms_PUC_AddPartition
+  STAGING_Zendesk_ticket_forms_Santander_Ar_Parquetize: STAGING_Zendesk_ticket_forms_Santander_AddPartition
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [gbernardini@santandertecnologia.com.ar, nlask@santandertecnologia.com.ar, msuliano@santandertecnologia.com.ar]

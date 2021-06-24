@@ -1,0 +1,107 @@
+{
+	   "file":"bgdtrpp_updates",
+        "createTable": "bi_corp_staging.malbgc_bgdtrpp_updates",
+        "location": "/santander/bi-corp/landing/malbgc/fact/bgdtrpp/updates/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtrpp/updates",
+       "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+	   "compression":"gzip",
+        "columns": [
+                {
+                    "name": "ENTIDAD",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "CENTRO_ALTA",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "PAQUETE",
+                    "type": "string",
+                    "width": 12
+                },
+                {
+                    "name": "ENTIDAD2",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "CENTRO_ALTA2",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "CUENTA",
+                    "type": "string",
+                    "width": 12
+                },
+                {
+                    "name": "PRODUCTO",
+                    "type": "string",
+                    "width": 2
+                },
+                {
+                    "name": "SUBPRODU",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "DIVISA1",
+                    "type": "string",
+                    "width": 3
+                },
+                {
+                    "name": "DIVISA2",
+                    "type": "string",
+                    "width": 3
+                },
+                {
+                    "name": "IND_CTA_PIV",
+                    "type": "string",
+                    "width": 1
+                },
+                {
+                    "name": "ESTAREL",
+                    "type": "string",
+                    "width": 1
+                },
+                {
+                    "name": "ENTIDAD_UMO",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "CENTRO_UMO",
+                    "type": "string",
+                    "width": 4
+                },
+                {
+                    "name": "USERID_UMO",
+                    "type": "string",
+                    "width": 8
+                },
+                {
+                    "name": "NETNAME_UMO",
+                    "type": "string",
+                    "width": 8
+                },
+                {
+                    "name": "TIMEST_UMO",
+                    "type": "string",
+                    "width": 26
+                }
+            ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

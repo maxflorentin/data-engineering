@@ -1,0 +1,38 @@
+{
+  "file": "pmr_reason_schema",
+  "location": "/santander/bi-corp/landing/rio74/dim/pmr_reason/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/dim/pmr_reason",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_reason",
+    "type": "string"
+  },
+    {
+      "name": "id_type",
+      "type": "string"
+    },
+    {
+      "name": "desc_reason",
+      "type": "string"
+    },
+    {
+      "name": "cantidad_max",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

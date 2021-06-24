@@ -1,0 +1,30 @@
+{
+  "file": "inferencia_ingreso",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/inferencia_ingreso/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/inferencia_ingreso",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "nup",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "ingreso",
+					    "type": "string",
+					    "width": 20
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

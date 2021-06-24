@@ -1,0 +1,392 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A146157","A305515"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "acle_pacha_historial_riesgos",
+            "title": "Interfaz de cheques rechazados por motivo Sin Fondos que fueron pagados por la sucursal, por la regla de pago automático o elevados a Riesgos durante la operatoria de la aplicación PACHA",
+            "schema": "bi_corp_staging",
+            "source": "ACLE",
+            "query": "",
+            "type": "fact",
+            "description": "Interfaz de cheques rechazados por motivo Sin Fondos que fueron pagados por la sucursal, por la regla de pago automático o elevados a Riesgos durante la operatoria de la aplicación PACHA",
+            "columns": [
+                {
+                    "name": "fecha_e",
+                    "title": "WACLE011-FECHA-E",
+                    "description": "Fecha de gestión (formato aaaa-mm-dd)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "suc_rio",
+                    "title": "WACLE011-SUC-RIO",
+                    "description": "Sucursal de la cuenta girada en formato RIO",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cta_rio",
+                    "title": "WACLE011-CTA-RIO",
+                    "description": "Número de la cuenta girada en formato RIO",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_banca",
+                    "title": "WACLE011-COD-BANCA",
+                    "description": "Código de banca. 01: banca comercial; 02: banca corporativa",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "nom_titular ",
+                    "title": "WACLE011-NOM-TITULAR ",
+                    "description": "Nombre del titular de la cuenta",
+                    "type": "String",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "cod_nup",
+                    "title": "WACLE011-COD-NUP",
+                    "description": "Código de NUP (número único de persona) del titular de la cuenta",
+                    "type": "String",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_seg",
+                    "title": "WACLE011-COD-SEG",
+                    "description": "Código de segmento",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_prod",
+                    "title": "WACLE011-COD-PROD",
+                    "description": "Código de producto contable de la cuenta",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_subprod",
+                    "title": "WACLE011-COD-SUBPROD",
+                    "description": "Código de subproducto contable de la cuenta",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cmc7_nro_chq",
+                    "title": "WACLE011-CMC7-NRO-CHQ  ",
+                    "description": "Número de cheque",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "imp_cheque",
+                    "title": "WACLE011-IMP-CHEQUE",
+                    "description": "Importe del cheque",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_moneda",
+                    "title": "WACLE011-COD-MONEDA",
+                    "description": "Moneda. ARS: Pesos; USD: Dólar",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "tipo_camara",
+                    "title": "WACLE011-TIPO-CAMARA",
+                    "description": "Tipo de cámara. CI24: canje interno 24 hs; CI48: canje interno 48 hs; CR: cámara recibida",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "nivel_workf",
+                    "title": "WACLE011-NIVEL-WORKF",
+                    "description": "Nivel de gestión. N1: nivel 1 (oficial/OES/OGS); N2: nivel 2 (gerente/TLZ/UGE); N3: nivel 3 (riesgos)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ind_pag_rech_chq",
+                    "title": "WACLE011-IND-PAGRECH-CHQ  ",
+                    "description": "Indicador de pago o rechazo del cheque. P: pagado; R: rechazado",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ind_pag_rech_rech",
+                    "title": "WACLE011-IND-PAGRECH-RECH",
+                    "description": "Indicador de pago o rechazo del motivo de rechazo. P: pagado; R: rechazado",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "saldo_deudor",
+                    "title": "WACLE011-SALDO-DEUDOR",
+                    "description": "Saldo al incio del día",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "sdo_deudor_signo",
+                    "title": "WACLE011-SDO-DEUDOR-SIGNO",
+                    "description": "Signo del saldo al inicio del día. +: acreedor; -: deudor",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "sdo_disponible",
+                    "title": "WACLE011-SDO-DISPONIBLE",
+                    "description": "Saldo disponible al momento del pago",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "sdo_disp_signo",
+                    "title": "WACLE011-SDO-DISP-SIGNO  ",
+                    "description": "Signo del saldo disponible al momento del pago. +: acreedor; -: deudor",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "imp_mto_acuerdo",
+                    "title": "WACLE011-IMP-MTO-ACUERDO",
+                    "description": "Monto del acuerdo",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "imp_mto_calific",
+                    "title": "WACLE011-IMP-MTO-CALIFIC",
+                    "description": "Monto de la calificación",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_mot_rech",
+                    "title": "WACLE011-COD-MOT-RECH",
+                    "description": "Código de motivo interno de rechazo",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cod_just_pago",
+                    "title": "WACLE011-COD-JUST-PAGO",
+                    "description": "Código de justificación de pago",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "leg_gestion_n1",
+                    "title": "WACLE011-LEG-GESTION-N1",
+                    "description": "Legajo de gestión de nivel 1",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "hora_gestion_n1",
+                    "title": "WACLE011-HORA-GESTION-N1 ",
+                    "description": "Hora de gestión de nivel 1  (formato hhmmss)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "leg_gestion_n2",
+                    "title": "WACLE011-LEG-GESTION-N2",
+                    "description": "Legajo de gestión de nivel 2",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "hora_gestion_n2",
+                    "title": "WACLE011-HORA-GESTION-N2",
+                    "description": "Hora de gestión de nivel 2 (formato hhmmss)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "leg_gestion_n3",
+                    "title": "WACLE011-LEG-GESTION-N3",
+                    "description": "Legajo de gestión de nivel 3",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "hora_gestion_n3",
+                    "title": "WACLE011-HORA-GESTION-N3",
+                    "description": "Hora de gestión de nivel 3 (formato hhmmss)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "leg_aprob",
+                    "title": "WACLE011-LEG-APROB",
+                    "description": "Legajo de aprobación",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "hora_aprob",
+                    "title": "WACLE011-HORA-APROB",
+                    "description": "Hora de aprobación (formato hhmmss)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cmc7",
+                    "title": "WACLE011-CMC7-COMPLETO",
+                    "description": "CMC7",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 29.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Incremental",
+                "delta": "D+1"
+            }
+        }
+    }
+}

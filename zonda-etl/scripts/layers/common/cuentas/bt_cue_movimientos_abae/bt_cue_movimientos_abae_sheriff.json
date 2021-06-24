@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.bt_cue_movimientos_abae",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": []
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["dt_cue_transaccion","cod_cue_tarjeta","cod_cue_tipo_movimiento","fc_cue_importe_cuenta","cod_per_nup_tarjeta"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cue_transaccion", "dt_cue_banco","dt_cue_neg_coel"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

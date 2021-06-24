@@ -1,0 +1,41 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS  bi_corp_business.agg_cdg_prestamosdepositos_daily (
+  cod_ren_divisa STRING,
+  cod_ren_cta_cont_gestion STRING,
+  cod_ren_entidad_espana STRING,
+  dt_ren_altacontrato STRING,
+  dt_ren_vencontrato STRING,
+  fc_ren_tasint DECIMAL(8,5),
+  fc_ren_plazcontractual INT,
+  flag_ren_tasa0 INT,
+  flag_ren_ind_pool INT, 
+  cod_ren_area_negocio_niv_2 STRING,
+  cod_ren_area_negocio_niv_3 STRING,
+  ds_ren_area_negocio_niv_2 STRING,
+  ds_ren_area_negocio_niv_3 STRING,
+  ds_ren_producto_niv_3 STRING,
+  ds_ren_producto_niv_4 STRING,
+  ds_ren_producto_niv_5 STRING,
+  ds_ren_producto_niv_6 STRING,
+  ds_ren_producto_niv_7 STRING,
+  ds_ren_producto_niv_8 STRING,
+  cod_ren_producto_niv_3 STRING,
+  cod_ren_producto_niv_4 STRING,
+  cod_ren_producto_niv_5 STRING,
+  cod_ren_producto_niv_6 STRING,
+  cod_ren_producto_niv_7 STRING,
+  cod_ren_producto_niv_8 STRING,
+  cod_ren_balance_niv_7 STRING,
+  ds_ren_balance_niv_7 STRING,
+  flag_ren_agro STRING,
+  ds_ren_adn_n1 STRING,
+  ds_ren_adn_n2 STRING,
+  fc_ren_saldo_puntual_ml DECIMAL(20,4),
+  fc_ren_saldo_puntual_mo DECIMAL(20,4),
+  fc_ren_saldo_medio_ml DECIMAL(20,4),
+  fc_ren_saldo_medio_mo DECIMAL(20,4),
+  fc_ren_contratos INT
+)
+PARTITIONED BY(partition_date string)
+STORED AS PARQUET
+LOCATION
+    '${DATA_LAKE_SERVER}/santander/bi-corp/business/rentabilidad/agg_cdg_prestamosdepositos_daily'

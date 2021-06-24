@@ -1,0 +1,80 @@
+{
+  "file": "tmk_telefono_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/tmk_telefono/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/tmk_telefono",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [{
+    "name": "id ",
+    "type": "string"
+    },
+    {
+    "name": "tipo",
+    "type": "string"
+    },
+    {
+    "name": "ddi",
+    "type": "string"
+    },
+    {
+      "name": "telediscado",
+      "type": "string"
+    },
+    {
+      "name": "numero",
+      "type": "string"
+    },
+    {
+      "name": "interno",
+      "type": "string"
+    },
+    {
+      "name": "postal",
+      "type": "string"
+    },
+    {
+      "name": "semaforo",
+      "type": "string"
+    },
+    {
+      "name": "contacto",
+      "type": "string"
+    },
+    {
+      "name": "fechaalta",
+      "type": "string"
+    },
+    {
+      "name": "usuarioalta",
+      "type": "string"
+    },
+    {
+      "name": "fechamodificacion",
+      "type": "string"
+    },
+    {
+      "name": "usuariomodificacion",
+      "type": "string"
+    },
+    {
+      "name": "prioridadoutbound",
+      "type": "string"
+    },
+    {
+      "name": "empresacelular",
+      "type": "string"
+    }
+  ]
+, "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

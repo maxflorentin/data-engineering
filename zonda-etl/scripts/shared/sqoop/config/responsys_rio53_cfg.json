@@ -1,0 +1,75 @@
+{
+  "tables" :[
+
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_SKIPPED",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/skipped",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id , email , email_isp ,email_format, offer_signature_id , dynamic_content_signature_id  , message_size  , segment_info , contact_info  , reason \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_OPT_OUT",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/opt_out",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id,account_id,list_id ,riid  ,customer_id ,event_captured_dt,event_stored_dt  ,campaign_id,launch_id,email_format,source,reason,email,contact_info  \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_OPEN",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/open",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id ,email_format \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_FAIL",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/fail",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id , email , email_isp ,email_format, offer_signature_id , dynamic_content_signature_id  , message_size  , segment_info , contact_info  , reason  \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_CLICK",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/click",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id , email_format, offer_name , offer_number  , offer_category  , offer_url    \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_BOUNCE",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/bounce",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id , email  ,email_format, bounce_type ,reason  ,reason_code,subject,contact_info \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "RESPONSYS_SENT",
+      "table_type": "fact",
+      "environment": "responsys",
+      "landing_path": "/santander/bi-corp/landing/responsys/fact/sent",
+      "partition_field": "TO_CHAR(EVENT_CAPTURED_DT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" event_type_id ,account_id, list_id, riid ,customer_id  , event_captured_dt  , event_stored_dt , campaign_id  ,launch_id , email  ,email_isp,email_format, offer_signature_id ,dynamic_content_signature_id  ,message_size,segment_info,contact_info \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/responsys/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    }
+  ]
+}

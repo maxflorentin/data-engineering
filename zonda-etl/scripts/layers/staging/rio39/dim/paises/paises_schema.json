@@ -1,0 +1,71 @@
+{
+     "file": "paises_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/paises/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/paises",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [
+             {
+              "name": "COD_BCRA",
+              "type": "string"
+             },
+             {
+              "name": "DESCRIPCION",
+              "type": "string"
+             },
+             {
+              "name": "CUIT_PERSONA_FISICA",
+              "type": "string"
+             },
+             {
+              "name": "CUIT_PERSONA_JURIDICA",
+              "type": "string"
+             },
+             {
+              "name": "AFIP",
+              "type": "string"
+             },
+             {
+              "name": "CONVENIO",
+              "type": "string"
+             },
+             {
+              "name": "ALERTA",
+              "type": "string"
+             },
+             {
+              "name": "CON_ACRED",
+              "type": "string"
+             },
+             {
+              "name": "PROHIBIDO",
+              "type": "string"
+             },
+             {
+              "name": "FECHA_BAJA_PAIS",
+              "type": "string"
+             },
+             {
+              "name": "USU_MOD",
+              "type": "string"
+             },
+             {
+              "name": "FECHA_MOD",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

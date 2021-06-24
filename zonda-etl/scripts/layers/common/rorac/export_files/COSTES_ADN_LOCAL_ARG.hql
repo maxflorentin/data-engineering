@@ -1,0 +1,1 @@
+SELECT DISTINCT 'ARG' cod_ren_unidad, RE.cod_area_negocio FROM bi_corp_staging.rio157_ms0_ft_dwh_blce_result RE WHERE RE.partition_date = '$month_to' ;

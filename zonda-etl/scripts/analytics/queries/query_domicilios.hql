@@ -1,0 +1,4 @@
+SET mapred.job.queue.name=root.dataeng;
+SELECT PENUMPER, PECODPRO
+FROM MALP.PEDT003
+WHERE PESECDOM = 1 AND PETIPDOM = 'PRI'

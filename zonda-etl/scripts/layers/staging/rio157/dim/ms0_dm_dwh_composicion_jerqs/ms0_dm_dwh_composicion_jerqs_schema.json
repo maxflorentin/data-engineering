@@ -1,0 +1,83 @@
+{
+    "file": "ms0_dm_dwh_composicion_jerqs",
+    "location": "/santander/bi-corp/landing/rio157/dim/ms0_dm_dwh_composicion_jerqs/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio157/dim/ms0_dm_dwh_composicion_jerqs",
+    "tempDirectory": "/santander/bi-corp/temp/ms0_dm_dwh_composicion_jerqs",
+    "createTable": "bi_corp_staging.rio157_ms0_dm_dwh_composicion_jerqs",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_dimension",
+            "type": "string"
+        },
+        {
+            "name": "cod_jerarquia",
+            "type": "string"
+        },
+        {
+            "name": "cod_valor",
+            "type": "string"
+        },
+        {
+            "name": "cod_valor_padre",
+            "type": "string"
+        },
+        {
+            "name": "num_orden_despliegue",
+            "type": "string"
+        },
+        {
+            "name": "num_nivel",
+            "type": "string"
+        },
+        {
+            "name": "fec_baja",
+            "type": "string"
+        },
+        {
+            "name": "fec_alta",
+            "type": "string"
+        },
+        {
+            "name": "userid_umo",
+            "type": "string"
+        },
+        {
+            "name": "timest_umo",
+            "type": "string"
+        },
+        {
+            "name": "tip_elemento",
+            "type": "string"
+        },
+        {
+            "name": "val_signo_agreg",
+            "type": "string"
+        },
+        {
+            "name": "cod_correlativo",
+            "type": "string"
+        },
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "primer_padre_corp",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

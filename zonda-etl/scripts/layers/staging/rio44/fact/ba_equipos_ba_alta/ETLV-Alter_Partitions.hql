@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio44_ba_equipos_ba_alta ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

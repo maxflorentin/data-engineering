@@ -1,0 +1,59 @@
+{
+    "file": "crsc_producto_schema",
+    "createTable": "bi_corp_staging.rio256_crsc_producto",
+    "location": "/santander/bi-corp/landing/rio256/dim/crsc_producto/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio256/dim/crsc_producto",
+    "tempDirectory": "/santander/bi-corp/temp/rio256",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "cod_producto",
+            "type": "string"
+        },
+        {
+            "name": "cod_subproducto",
+            "type": "string"
+        },
+        {
+            "name": "cod_paquete",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "caf",
+            "type": "string"
+        },
+        {
+            "name": "bonificacion",
+            "type": "string"
+        },
+        {
+            "name": "convenio",
+            "type": "string"
+        },
+        {
+            "name": "activo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

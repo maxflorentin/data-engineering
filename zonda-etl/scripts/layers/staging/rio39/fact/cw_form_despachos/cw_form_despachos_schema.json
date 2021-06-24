@@ -1,0 +1,79 @@
+{
+     "file": "cw_form_despachos_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/cw_form_despachos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/cw_form_despachos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [		 {
+                     "name": "nro_form",
+                     "type": "string"
+             },
+             {
+                     "name": "secuencia",
+                     "type": "string"
+             },
+             {
+                     "name": "nro_doc",
+                     "type": "string"
+             },
+             {
+                     "name": "importe",
+                     "type": "string"
+             },
+             {
+                     "name": "imp_aplic",
+                     "type": "string"
+             },
+             {
+                     "name": "banco",
+                     "type": "string"
+             },
+             {
+                     "name": "tipo_declaracion",
+                     "type": "string"
+             },
+             {
+                     "name": "nro_dj",
+                     "type": "string"
+             },
+             {
+                     "name": "mot_excep",
+                     "type": "string"
+             },
+             {
+                     "name": "cod_moneda",
+                     "type": "string"
+             },
+             {
+                     "name": "carga_manual",
+                     "type": "string"
+             },
+             {
+                     "name": "posicion_aranc",
+                     "type": "string"
+             },
+             {
+                     "name": "espera_certif",
+                     "type": "string"
+             },
+             {
+                     "name": "fecha_embarque",
+                     "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,69 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio32_reg_elect_datos_hist",
+      "title": "DETALLE DE REGISTRO ELECTRONICO",
+      "schema": "bi_corp_staging",
+      "source": "SLHUMA",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "DETALLE DE REGISTRO ELECTRONICO",
+      "columns": [
+        {
+          "name": "OPERACIONDATOSID",
+          "title": "OPERACIONDATOSID",
+          "description": "ID del registro",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 9.0,
+          "security": "Publico"                },
+        {
+          "name": "ENTRADA",
+          "title": "ENTRADA",
+          "description": "Datos enviados al backend",
+          "type": "BLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "SALIDA",
+          "title": "SALIDA",
+          "description": "Datos devuelto por el backend",
+          "type": "BLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "CUSTOM",
+          "title": "CUSTOM",
+          "description": "Datos variables",
+          "type": "BLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

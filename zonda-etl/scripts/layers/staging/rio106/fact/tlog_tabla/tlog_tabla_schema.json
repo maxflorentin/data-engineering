@@ -1,0 +1,72 @@
+{
+  "file": "tlog_tabla_schema",
+  "location": "/santander/bi-corp/landing/rio106/fact/tlog_tabla/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio106/fact/tlog_tabla",
+  "tempDirectory": "/santander/bi-corp/temp/rio106",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "ide_empresa",
+    "type": "string"
+  },
+    {
+      "name": "ide_usuario",
+      "type": "string"
+    },
+    {
+      "name": "ide_transaccion",
+      "type": "string"
+    },
+    {
+      "name": "nom_operacion",
+      "type": "string"
+    },
+    {
+      "name": "nom_producto",
+      "type": "string"
+    },
+    {
+      "name": "nom_req_frontend",
+      "type": "string"
+
+    },
+    {
+      "name": "cod_estado_trn",
+      "type": "string"
+    },
+    {
+      "name": "tim_ini_trn",
+      "type": "string"
+    },
+    {
+      "name": "tim_fin_trn",
+      "type": "string"
+    },
+    {
+      "name": "mon_transaccion",
+      "type": "string"
+    },
+    {
+      "name": "nro_nup_empresa",
+      "type": "string"
+    },
+    {
+      "name": "nro_nup_individuo",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "target": "tim_fin_trn",
+      "dateFormat": "yyyy-MM-dd HH:mm:ss",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

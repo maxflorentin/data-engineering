@@ -1,0 +1,47 @@
+{
+        "file": "mvw_trk_usabilidad_schema",
+        "location": "/santander/bi-corp/landing/rio226/fact/mvw_trk_usabilidad/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/fact/mvw_trk_usabilidad",
+        "extension": "csv",
+        "delimiter": ";",
+        "createTable": "bi_corp_staging.orde_operativo_mvw_trk_usabilidad",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "LEGAJO",
+                        "type": "string"
+                },
+                {
+                        "name": "SUCURSAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ID_EVENTO",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA",
+                        "type": "string"
+                },
+                {
+                        "name": "INFORMACION_ADICIONAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ID",
+                        "type": "string"
+                },
+                {
+                        "name": "ROL",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

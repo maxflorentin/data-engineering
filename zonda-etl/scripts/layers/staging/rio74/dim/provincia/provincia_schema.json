@@ -1,0 +1,34 @@
+{
+  "file": "provincia_schema",
+  "location": "/santander/bi-corp/landing/rio74/dim/provincia/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/dim/provincia",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "codigo_provincia",
+    "type": "string"
+  },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "codigo_alfa_provincia",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

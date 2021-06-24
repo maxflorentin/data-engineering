@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio102_prem_maes_filtro;

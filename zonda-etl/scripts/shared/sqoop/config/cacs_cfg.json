@@ -1,0 +1,28 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "DBLXOPERSRV03",
+            "database": "CACS",
+            "table": "CUENTAS",
+            "table_type": "fact",
+            "environment": "cacs",
+            "landing_path": "/santander/bi-corp/landing/cacs/fact/cuentas_diaria",
+            "partition_field": "POSTED",
+            "partition_field_value": "2019-12-03",
+            "split_field": "OPERATION_ID",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" LOCATION_CODE,ACCT_NUM,CREDIT_LIMIT_AMT,EXPIRATION_DATE,BALANCE_AMT,OVERLIMIT_AMT,TOTAL_DUE_AMT,COLL_ASGN_UD_1,TOTAL_DELINQ_AMT,CYCLES_DELINQ_CNT,LAST_PAYMENT_AMT,CHARGE_OFF_DATE,ACCT_OPEN_DATE,NEXT_DUE_DATE,OTH_DELQ_AMT,REPOSSESSION_DATE,PAYMENT_AMT,PRINCIPAL_DELQ_AMT,CYCLE_ID,LAST_BILLING_DATE,NUMBER_OF_CARDS,WARN_BULLETIN_DATE,WARN_BULLETIN_ZONE,OTHER_ACCT_NUM,LAST_PAYMENT_DATE,LAST_MONETARY_TYPE,NEW_CLIENT_DATE,FLAG_INFINITY,PRINCIPAL_AMT,OTHER_AMT,ORIG_BALANCE_AMT,OFFICER_NUM,BRANCH_NUM,ORIGINAL_TERM,ACCOUNT_TYPE,SERVICE_TYPE,CUSTOMER_INFO_NUM,STATE_FLAG,LAST_ACTIVITY_DATE,COLLCTN_ENTRY_DATE,BOC_RESP_COLL,BOC_DELINQUENT_AMT,RETURN_TO_STE_CODE,LAST_COLLECTOR_ID,RESP_COLL_ID,CACS_STATE_CODE,STATE_ENTRY_DATE,CHARGE_OFF_AMT,NUM_NUP,TIME_ZONE,COLL_ASGN_UD_2,VALUE_CODE,CUSTOMER_NAME,RECOMMENDED_ACT_CD,RISK_CODE,SOCIAL_SEC_NUM,PLACE_CALLED,PARTY_CNTCT_CODE,COLL_ACTIVITY_CODE,NONPAY_EXCUSE_CODE,HOLD_DATE\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir {zonda_dir}/sqoop/cacs/cuentas_diaria --fields-terminated-by '|' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXOPERSRV03",
+            "database": "CACS",
+            "table": "MOVIMIENTOS",
+            "table_type": "fact",
+            "environment": "cacs",
+            "landing_path": "/santander/bi-corp/landing/cacs/fact/movimientos",
+            "partition_field": "activity_date",
+            "partition_field_value": "2019-12-03",
+            "split_field": "CHEQUE_ID",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"location_code,acct_num,pay_amt,letter_code,activity_date,coll_activity_code,party_cntct_code,place_called,promise_amt_1,promise_date_1,promise_amt_2,promise_date_2,state_act,state_ant,total_delinq_amt,balance_amt,branch_num,resp_coll_id,collector_id,coded_hist_seq_num,charge_off_amt,customer_info_num,num_nup,customer_name,social_sec_num,cycles,cycles_old,warn_bulletin_date,hold_date,nonpay_excuse_code,time_zone,value_code,account_type,recommended_act_cd,risk_code,credit_score,zona,letra_score,numero_score,escenario,desc_escenario,fixed_action_1,fixed_action_2,timed_action_1,timed_action_2,timed_action_3,timed_action_4,timed_action_5,mora_404,veraz_behavior,marca_bnp,dato_renta,cli_select,pago_min_impg_tc_1,pago_min_impg_tc_2,pago_min_impg_tc_3,pago_min_impg_tc_4,pago_min_impg_tc_5,pago_min_impg_tc_6,cuota_original_prestamo,letter_user_def_6,ina_actg_sys_id,cut_off_code,ext_cust_id_type,warn_bulletin_zone,original_term,score_alineado,balance_risk_total,balance_risk_unsecured,balance_risk_secured,scorecard\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir {zonda_dir}/sqoop/cacs/movimientos   --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --fields-terminated-by '|' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+      }
+  ]
+}

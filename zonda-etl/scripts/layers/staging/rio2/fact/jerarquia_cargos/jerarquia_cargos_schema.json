@@ -1,0 +1,79 @@
+{
+  "file": "jerarquia_cargos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/jerarquia_cargos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/jerarquia_cargos",
+  "createTable": "bi_corp_staging.sge_jerarquia_cargos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "id",
+                    "type": "string"
+                },
+{
+                    "name": "ecr_id",
+                    "type": "string"
+                },
+{
+                    "name": "id_depende",
+                    "type": "string"
+                },
+{
+                    "name": "id_atiende",
+                    "type": "string"
+                },
+{
+                    "name": "cod_usuario",
+                    "type": "string"
+                },
+{
+                    "name": "descripcion",
+                    "type": "string"
+                },
+{
+                    "name": "observaciones",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "generico_cpp",
+                    "type": "string"
+                },
+{
+                    "name": "pecdgent",
+                    "type": "string"
+                },
+{
+                    "name": "orden",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

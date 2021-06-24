@@ -1,0 +1,115 @@
+{
+  "file": "lineas_garantias_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/lineas_garantias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/lineas_garantias",
+  "createTable": "bi_corp_staging.sge_lineas_garantias",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cod_operacion",
+                    "type": "string"
+                },
+{
+                    "name": "seq_lin_garan",
+                    "type": "string"
+                },
+{
+                    "name": "cod_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "porc_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "monto_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "detalle_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "secuencia",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "valoracion",
+                    "type": "string"
+                },
+{
+                    "name": "patrim_neto",
+                    "type": "string"
+                },
+{
+                    "name": "marca_garantia_default",
+                    "type": "string"
+                },
+{
+                    "name": "moneda_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "fec_vencimiento",
+                    "type": "string"
+                },
+{
+                    "name": "opcion",
+                    "type": "string"
+                },
+{
+                    "name": "ltv",
+                    "type": "string"
+                },
+{
+                    "name": "vencimiento",
+                    "type": "string"
+                },
+{
+                    "name": "porcentaje_cobertura",
+                    "type": "string"
+                },
+{
+                    "name": "codigo",
+                    "type": "string"
+                },
+{
+                    "name": "monto_limite",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

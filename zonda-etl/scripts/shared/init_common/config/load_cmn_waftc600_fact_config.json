@@ -1,0 +1,15 @@
+{
+    "name": "waftc600-STG-Daily",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Cupones_waftc600_fact-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Partition_Loader_Tarjetas_Mov_Fact"
+                }
+    ]
+}

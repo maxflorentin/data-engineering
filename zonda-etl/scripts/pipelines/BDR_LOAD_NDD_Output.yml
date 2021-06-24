@@ -1,0 +1,124 @@
+name: BDR_LOAD_NDD_Output
+description: 'Load data from NDD Output'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 * * *'
+start_date: '2021-04-06'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: STAGING_JM_CONTR_NDD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_JM_CONTR_NDD_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_contr_ndd/jm_contr_ndd_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_NDD_Output') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['jm_contr_ndd_schema.json']
+  - name: Repair_Table_JM_CONTR_NDD
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_contr_ndd/ETLV-Repair-partitions-Table.hql'        
+  - name: STAGING_JM_OUT_CLI_NDD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+        name: STAGING_JM_OUT_CLI_NDD_Parquetize
+        connection_id: cloudera_spark2
+        executor_cores: 4
+        executor_memory: 8G
+        num_executors: 5
+        files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_out_cli_ndd/jm_out_cli_ndd_schema.json']
+        application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+        py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+        conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_NDD_Output') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+        application_args: ['jm_out_cli_ndd_schema.json']
+  - name: Repair_Table_JM_OUT_CLI_NDD
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_out_cli_ndd/ETLV-Repair-partitions-Table.hql'           
+  - name: STAGING_JM_OUT_CTO_NDD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+        name: STAGING_JM_OUT_CTO_NDD_Parquetize
+        connection_id: cloudera_spark2
+        executor_cores: 4
+        executor_memory: 8G
+        num_executors: 5
+        files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_out_cto_ndd/jm_out_cto_ndd_schema.json']
+        application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+        py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+        conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_NDD_Output') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+        application_args: ['jm_out_cto_ndd_schema.json']
+  - name: Repair_Table_JM_OUT_CTO_NDD
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_out_cto_ndd/ETLV-Repair-partitions-Table.hql'           
+  - name: STAGING_JM_FILTROS_NDD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+        name: STAGING_JM_FILTROS_NDD_Parquetize
+        connection_id: cloudera_spark2
+        executor_cores: 4
+        executor_memory: 8G
+        num_executors: 5
+        files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_filtros_ndd/jm_filtros_ndd_schema.json']
+        application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+        py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+        conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_NDD_Output') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+        }
+        application_args: ['jm_filtros_ndd_schema.json'] 
+  - name: Repair_Table_JM_FILTROS_NDD
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/ndd/jm_filtros_ndd/ETLV-Repair-partitions-Table.hql'     
+dependencies:
+  STAGING_JM_CONTR_NDD_Parquetize: Repair_Table_JM_CONTR_NDD
+  STAGING_JM_OUT_CLI_NDD_Parquetize: Repair_Table_JM_OUT_CLI_NDD
+  STAGING_JM_OUT_CTO_NDD_Parquetize: Repair_Table_JM_OUT_CTO_NDD
+  STAGING_JM_FILTROS_NDD_Parquetize: Repair_Table_JM_FILTROS_NDD                   
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar]

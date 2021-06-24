@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "googledrive",
+      "type": "dim",
+      "name": "param_bsn_marcas_productos",
+      "filePrefix": "param_bsn_marcas_productos_"
+    },
+    {
+      "source": "googledrive",
+      "type": "dim",
+      "name": "param_bsn_marcas_resultado",
+      "filePrefix": "param_bsn_marcas_resultado_"
+    },
+    {
+      "source": "googledrive",
+      "type": "dim",
+      "name": "param_marcas_area_negocio",
+      "filePrefix": "param_marcas_area_negocio_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_CDG_MARCAS_Inputs-Monthly"
+  }
+}

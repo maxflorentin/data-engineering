@@ -1,0 +1,25 @@
+             02  086.
+               10  COD-ENTIDAD    PIC X(4).
+               10  COD-CENTRO     PIC X(4).
+               10  NUM-CONTRATO   PIC X(12).
+               10  COD-PRODUCTO   PIC X(2).
+               10  COD-SUBPRODU   PIC X(4).
+               10  COD-DIVISA     PIC X(3).
+               10  COD-CENTROD    PIC X(4).
+               10  NUM-CONTRATD   PIC X(12).
+               10  COD-PRODUCTD   PIC X(2).
+               10  COD-SUBPRODD   PIC X(4).
+               10  COD-DIVISAD    PIC X(3).
+               10  IMP-REFNACDO   PIC S9(13)V9(4).
+               10  IMP-REFNACDL   PIC S9(13)V9(4).
+               10  IMP-CBIOMORG   PIC S9(13)V9(4).
+               10  FEC-REFINANC   PIC X(10).
+               10  COD-REESCTR    PIC X(01).
+               10  IND-ANTCONINT  PIC X(1).
+               10  IMP-ANTICIPO   PIC S9(11)V9(2).
+               10  COD-MARCA-SEG-ESP PIC X(02).
+               10  COD-MARCA       PIC X(02).
+               10  COD-SUBMARCA    PIC X(03).
+               10  FEC-PRIMER-IMP  PIC X(10).
+               10  NUM-PERSONA     PIC X(08).
+               10  WS-MARCA_REESTRUC        PIC X(02).

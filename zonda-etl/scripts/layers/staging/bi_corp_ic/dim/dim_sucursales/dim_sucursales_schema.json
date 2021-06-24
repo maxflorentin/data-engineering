@@ -1,0 +1,156 @@
+{
+	"file": "dim_sucursales_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_sucursales/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_sucursales",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_sucursales",
+	"createTable": "bi_corp_staging.exa_dim_sucursales",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "zona",
+			"type":"string"
+		},
+{
+			"name": "suc",
+			"type":"string"
+		},
+{
+			"name": "estado",
+			"type":"string"
+		},
+{
+			"name": "descrip",
+			"type":"string"
+		},
+{
+			"name": "apellido",
+			"type":"string"
+		},
+{
+			"name": "nombre",
+			"type":"string"
+		},
+{
+			"name": "domicilio",
+			"type":"string"
+		},
+{
+			"name": "localidad",
+			"type":"string"
+		},
+{
+			"name": "provincia",
+			"type":"string"
+		},
+{
+			"name": "cp",
+			"type":"string"
+		},
+{
+			"name": "telefono",
+			"type":"string"
+		},
+{
+			"name": "suc_orig",
+			"type":"string"
+		},
+{
+			"name": "fec_baja",
+			"type":"string"
+		},
+{
+			"name": "hh_desde",
+			"type":"string"
+		},
+{
+			"name": "hh_hasta",
+			"type":"string"
+		},
+{
+			"name": "hv_desde",
+			"type":"string"
+		},
+{
+			"name": "hv_hasta",
+			"type":"string"
+		},
+{
+			"name": "orden",
+			"type":"string"
+		},
+{
+			"name": "fecha_apertura",
+			"type":"string"
+		},
+{
+			"name": "tec",
+			"type":"string"
+		},
+{
+			"name": "alta_tec",
+			"type":"string"
+		},
+{
+			"name": "tipo_tec",
+			"type":"string"
+		},
+{
+			"name": "tec_caba",
+			"type":"string"
+		},
+{
+			"name": "x",
+			"type":"string"
+		},
+{
+			"name": "y",
+			"type":"string"
+		},
+{
+			"name": "mod_aten_select",
+			"type":"string"
+		},
+{
+			"name": "bc_fecha_apertura",
+			"type":"string"
+		},
+{
+			"name": "bc_valor",
+			"type":"string"
+		},
+{
+			"name": "ce_valor",
+			"type":"string"
+		},
+{
+			"name": "suc_citi",
+			"type":"string"
+		},
+{
+			"name": "pba_pevalind",
+			"type":"string"
+		},
+{
+			"name": "sc1_prc_dig",
+			"type":"string"
+		},
+{
+			"name": "tipo",
+			"type":"string"
+		},
+{
+			"name": "cpa",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

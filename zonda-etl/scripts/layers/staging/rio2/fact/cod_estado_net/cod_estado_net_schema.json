@@ -1,0 +1,50 @@
+{
+  "file": "cod_estado_net_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/cod_estado_net/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/cod_estado_net",
+  "createTable": "bi_corp_staging.sge_cod_estado_net",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "cod_tramite",
+      "type": "string"
+    },
+    {
+      "name": "cod_estado",
+      "type": "string"
+    },
+    {
+      "name": "des_estado",
+      "type": "string"
+    },
+    {
+      "name": "mar_final",
+      "type": "string"
+    },
+    {
+      "name": "cod_estado_accion",
+      "type": "string"
+    },
+    {
+      "name": "cod_estado_origen",
+      "type": "string"
+    },
+    {
+      "name": "cod_cargo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

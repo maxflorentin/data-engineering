@@ -1,0 +1,95 @@
+{
+  "file": "garantias_operacion_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/garantias_operacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/garantias_operacion",
+  "createTable": "bi_corp_staging.sge_garantias_operacion",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "secu_f487",
+                    "type": "string"
+                },
+{
+                    "name": "secu_garan_ope",
+                    "type": "string"
+                },
+{
+                    "name": "cod_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "tipo",
+                    "type": "string"
+                },
+{
+                    "name": "porc_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "monto_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "detalle_garantia",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "id_garantia_altair",
+                    "type": "string"
+                },
+{
+                    "name": "porc_gtia",
+                    "type": "string"
+                },
+{
+                    "name": "secuencia",
+                    "type": "string"
+                },
+{
+                    "name": "fecha_vigencia",
+                    "type": "string"
+                },
+{
+                    "name": "moneda_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "monto_limite",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

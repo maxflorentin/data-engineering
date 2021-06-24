@@ -1,0 +1,34 @@
+{
+  "file": "cajt_categorias_iva_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cajt_categorias_iva/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cajt_categorias_iva",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cjiv_cd_categoria_iva",
+      "type": "string"
+    },
+    {
+      "name":"cjiv_de_categoria_iva",
+      "type":"string"
+    },
+    {
+      "name":"cjiv_tp_factura",
+      "type":"string"
+    },
+    {
+      "name":"cjiv_categoria_afip",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

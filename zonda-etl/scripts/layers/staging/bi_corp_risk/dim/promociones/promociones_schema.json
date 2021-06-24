@@ -1,0 +1,53 @@
+{
+	"file": "admision_promociones",
+	"location": "/santander/bi-corp/landing/sql5/dim/admision_promociones/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_admision_promociones",
+	"createTable": "bi_corp_staging.risksql5_admision_promociones",
+	"extension": "csv",
+	"delimiter": ";",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns":
+[
+  {
+    "name": "promocion",
+    "type": "string"
+  },
+  {
+    "name": "descripcion",
+    "type": "string"
+  },
+  {
+    "name": "grupo",
+    "type": "string"
+  },
+  {
+    "name": "activa",
+    "type": "string"
+  },
+  {
+    "name": "fecha_alta",
+    "type": "string"
+  },
+  {
+    "name": "fecha_baja",
+    "type": "string"
+  },
+  {
+    "name": "descripcion2",
+    "type": "string"
+  },
+  {
+    "name": "tramite",
+    "type": "string"
+  }
+],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

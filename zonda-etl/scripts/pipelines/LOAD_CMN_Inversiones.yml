@@ -1,0 +1,158 @@
+name: LOAD_CMN_Inversiones
+description: 'Load Inversiones data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 * * *'
+start_date: '2020-11-01'
+#catchup: true
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: CreateInsertBtInvSuscripcionRescateFondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/bt_inv_suscripcion_rescate_fondos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/bt_inv_suscripcion_rescate_fondos/ETL-Load_Common_Table.hql'
+  - name: CreateInsertBtInvMercados
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/bt_inv_mercados/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/bt_inv_mercados/ETL-Load_Common_Table.hql'
+  - name: CreateInsertDimInvCanalesFondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_canales_fondos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_canales_fondos/ETL-Load_Common_Table.hql'
+  - name: CreateInsertDimInvCodigosFondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_codigos_fondos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_codigos_fondos/ETL-Load_Common_Table.hql'
+  - name: CreateInsertDimInvEspeciesTitulos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_especies_titulos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_especies_titulos/ETL-Load_Common_Table.hql'
+  - name: CreateInsertStkInvFondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/stk_inv_fondos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/stk_inv_fondos/ETL-Load_Common_Table.hql'
+  - name: CreateInsertStkInvTitulos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/stk_inv_titulos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/stk_inv_titulos/ETL-Load_Common_Table.hql'
+  - name: SHERIFFControl_DimInvCanalesFondos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_canales_fondos/dim_inv_canales_fondos_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Inversiones') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'dim_inv_canales_fondos_sheriff.json' ]
+  - name: SHERIFFControl_DimInvCodigosFondos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_codigos_fondos/dim_inv_codigos_fondos_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Inversiones') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'dim_inv_codigos_fondos_sheriff.json' ]
+  - name: SHERIFFControl_DimInvEspeciesTitulos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/dim/dim_inv_especies_titulos/dim_inv_especies_titulos_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Inversiones') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'dim_inv_especies_titulos_sheriff.json' ]
+  - name: SHERIFFControl_StkInvFondos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/inversiones/fact/stk_inv_fondos/stk_inv_fondos_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Inversiones') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_inv_fondos_sheriff.json' ]
+dependencies:
+  CreateInsertDimInvCanalesFondos: [CreateInsertBtInvSuscripcionRescateFondos, SHERIFFControl_DimInvCanalesFondos]
+  CreateInsertDimInvCodigosFondos: [CreateInsertBtInvSuscripcionRescateFondos, CreateInsertStkInvFondos, SHERIFFControl_DimInvCodigosFondos]
+  CreateInsertDimInvEspeciesTitulos: [CreateInsertStkInvTitulos, CreateInsertBtInvMercados, SHERIFFControl_DimInvEspeciesTitulos]
+  CreateInsertStkInvFondos: SHERIFFControl_StkInvFondos
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msanguinetti@santandertecnologia.com.ar, mlevisrossi@santandertecnologia.com.ar]

@@ -1,0 +1,95 @@
+{
+  "file": "hb_creditos_preaprobados_mono_schema",
+  "location": "/santander/bi-corp/landing/rio147/fact/hb_creditos_preaprobados_mono/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio147/fact/hb_creditos_preaprobados_mono",
+  "tempDirectory": "/santander/bi-corp/temp/rio147",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id",
+    "type": "string"
+  },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "fecha_inicio_vig",
+      "type": "string"
+    },
+    {
+      "name": "fecha_fin_vig",
+      "type": "string"
+    },
+    {
+      "name": "divisa",
+      "type": "string"
+    },
+    {
+      "name": "cant_cuotas_min",
+      "type": "string"
+    },
+    {
+      "name": "cant_cuotas_max",
+      "type": "string"
+    },
+    {
+      "name": "importe_min",
+      "type": "string"
+    },
+    {
+      "name": "importe_max",
+      "type": "string"
+    },
+    {
+      "name": "tipo_tasa",
+      "type": "string"
+    },
+    {
+      "name": "tna",
+      "type": "string"
+    },
+    {
+      "name": "cfta_sin_imp",
+      "type": "string"
+    },
+    {
+      "name": "cfta_con_imp",
+      "type": "string"
+    },
+    {
+      "name": "entidad_ug",
+      "type": "string"
+    },
+    {
+      "name": "producto_ug",
+      "type": "string"
+    },
+    {
+      "name": "subproducto_ug",
+      "type": "string"
+    },
+    {
+      "name": "habilitado",
+      "type": "string"
+    },
+    {
+      "name": "solicitado",
+      "type": "string"
+    },
+    {
+      "name": "fecha_alta_registro",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

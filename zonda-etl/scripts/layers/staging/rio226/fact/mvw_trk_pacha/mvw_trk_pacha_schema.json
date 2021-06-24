@@ -1,0 +1,67 @@
+{
+        "file": "mvw_trk_pacha_schema",
+        "location": "/santander/bi-corp/landing/rio226/fact/mvw_trk_pacha/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/fact/mvw_trk_pacha",
+        "extension": "csv",
+        "delimiter": ";",
+        "createTable": "bi_corp_staging.orde_operativo_mvw_trk_pacha",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "LEGAJO",
+                        "type": "string"
+                },
+                {
+                        "name": "SUCURSAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ID_EVENTO",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA",
+                        "type": "string"
+                },
+                {
+                        "name": "NUMERO_CUENTA",
+                        "type": "string"
+                },
+                {
+                        "name": "NUMERO_CHEQUE",
+                        "type": "string"
+                },
+                {
+                        "name": "MOTIVO",
+                        "type": "string"
+                },
+                {
+                        "name": "TIPO_CAMARA",
+                        "type": "string"
+                },
+                {
+                        "name": "ESTADO_INICIAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ESTADO_SIGUIENTE",
+                        "type": "string"
+                },
+                {
+                        "name": "INFORMACION_ADICIONAL",
+                        "type": "string"
+                },
+                {
+                        "name": "ROL_USUARIO",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,27 @@
+{
+  "table": "bi_corp_common.stk_adm_pyme_personas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_penumper"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_pecdgent","cod_adm_penumper","ds_adm_penomper","dt_adm_pefecing","flag_adm_petipper","dt_adm_pefecini","cod_adm_pecodact","cod_adm_peestper","cod_adm_peusualt","dt_adm_pefecalt","cod_adm_peusumod","int_adm_cuit_cliente","cod_adm_petipemp","cod_adm_segmento","flag_adm_perubro","cod_per_nup","dt_adm_pefecmod","cod_adm_situacion","cod_adm_resp_comercial","cod_adm_resp_riesgos","cod_adm_iva","cod_adm_iibb","cod_adm_pecodpai_nac","segmento_riesgo"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_PEFECALT","dt_adm_PEFECMOD","dt_adm_FEC_INACTIVACION"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_pefecing","dt_adm_pefecini","dt_adm_FEC_CARGA_CENSO","dt_adm_FEC_VENC_CENSO","dt_adm_FECHA_AFIP_OK"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+	  ]
+}

@@ -1,0 +1,44 @@
+{
+  "file": "mrg_grupo_relacion",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/mrg_grupo_relacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/mrg_grupo_relacion",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "fecha",
+					    "type": "string"
+            },
+            {
+					    "name": "empresa",
+					    "type": "string"
+					  },
+            {
+					    "name": "nombre_grupo",
+					    "type": "string"
+					  },
+            {
+					    "name": "identificador_grupo_economico",
+					    "type": "string"
+					  },
+            {
+					    "name": "identificador_cliente",
+					    "type": "string"
+					  },
+            {
+					    "name": "rol_jerarquico",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,144 @@
+{
+  "file": "ugdtaux",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtaux/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtaux",
+  "extension": "csv",
+  "delimiter": ";",
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "ENTIDAD",
+      "type": "string"
+    },
+    {
+      "name": "OFICINA",
+      "type": "string"
+    },
+    {
+      "name": "CUENTA",
+      "type": "string"
+    },
+    {
+      "name": "PAIS_RE",
+      "type": "string"
+    },
+    {
+      "name": "INT_DOCUMENT",
+      "type": "string"
+    },
+    {
+      "name": "INT_DOCUMENT_SAL",
+      "type": "string"
+    },
+    {
+      "name": "TIPOGAR_INDEX_INI",
+      "type": "string"
+    },
+    {
+      "name": "COEFICI_VISUAL",
+      "type": "string"
+    },
+    {
+      "name": "FECCAL_INDEX_INI",
+      "type": "string"
+    },
+    {
+      "name": "VALCOEF1_INDEX_INI",
+      "type": "string"
+    },
+    {
+      "name": "VALCOEF2_INDEX_INI",
+      "type": "string"
+    },
+    {
+      "name": "FACTOR_INDEX_INI",
+      "type": "string"
+    },
+    {
+      "name": "FECCAL_INDEX_ULT",
+      "type": "string"
+    },
+    {
+      "name": "VALCOEF1_INDEX_ULT",
+      "type": "string"
+    },
+    {
+      "name": "VALCOEF2_INDEX_ULT",
+      "type": "string"
+    },
+    {
+      "name": "FACTOR_INDEX_ULT",
+      "type": "string"
+    },
+    {
+      "name": "IMPAJUST_SAL_ULT",
+      "type": "string"
+    },
+    {
+      "name": "IMPAJUST_SAL_ACUM",
+      "type": "string"
+    },
+    {
+      "name": "CODCONLI_AJUSAL",
+      "type": "string"
+    },
+    {
+      "name": "COEFICI_INDEX_ACT",
+      "type": "string"
+    },
+    {
+      "name": "SALDO_AJUSTE",
+      "type": "string"
+    },
+    {
+      "name": "ENTIDAD_UMO",
+      "type": "string"
+    },
+    {
+      "name": "CENTRO_UMO",
+      "type": "string"
+    },
+    {
+      "name": "USERID_UMO",
+      "type": "string"
+    },
+    {
+      "name": "NETNAME_UMO",
+      "type": "string"
+    },
+    {
+      "name": "TIMEST_UMO",
+      "type": "string"
+    },
+    {
+      "name": "POR_CFT_ORI",
+      "type": "string"
+    },
+    {
+      "name": "POR_CFT_ACT",
+      "type": "string"
+    },
+    {
+      "name": "IND_MIPYME",
+      "type": "string"
+    },
+    {
+      "name": "CFTNA_SIMP_ORI",
+      "type": "string"
+    },
+    {
+      "name": "CFTNA_SIMP_ACT",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

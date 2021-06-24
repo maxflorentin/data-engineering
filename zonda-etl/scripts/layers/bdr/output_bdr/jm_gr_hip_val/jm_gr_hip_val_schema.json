@@ -1,0 +1,65 @@
+{
+    "file": "jm_gr_hip_val_schema",
+    "location": "/santander/bi-corp/landing/output_bdr/jm_gr_hip_val/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/output_bdr/jm_gr_hip_val",
+    "createTable": "bi_corp_bdr.jm_gr_hip_val",
+    "extension": "csv",
+    "header": true,
+    "fixed": false,
+    "delimiter": "|",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [{
+        "name": "r9425_feoperac",
+        "type": "string"
+    }, {
+        "name": "r9425_s1emp",
+        "type": "string"
+    }, {
+        "name": "r9425_contra1",
+        "type": "string"
+    }, {
+        "name": "r9425_biengar1",
+        "type": "string"
+    }, {
+        "name": "r9425_fecvaact",
+        "type": "string"
+    }, {
+        "name": "r9425_imgaract",
+        "type": "string"
+    }, {
+        "name": "r9425_sdbala",
+        "type": "string"
+    },{
+        "name": "r9425_sfbala",
+        "type": "string"
+    },{
+        "name": "r9425_ltv",
+        "type": "string"
+    },{
+        "name": "r9425_indhipga",
+        "type": "string"
+    },{
+        "name": "r9425_val_apli",
+        "type": "string"
+    },{
+        "name": "r9425_val_repa",
+        "type": "string"
+    },{
+        "name": "r9425_val_agre",
+        "type": "string"
+    },{
+        "name": "r9425_val_acre",
+        "type": "string"
+    },{
+        "name": "r9425_flg_util",
+        "type": "string"
+    }],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}

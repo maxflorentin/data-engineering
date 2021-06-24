@@ -1,0 +1,47 @@
+{
+     "file": "celulas_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/celulas/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/celulas",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [
+            {
+             "name": "id",
+             "type": "string"
+            },
+            {
+             "name": "descripcion",
+             "type": "string"
+            },
+            {
+             "name": "tipo_celula",
+             "type": "string"
+            },
+            {
+             "name": "uso_modif",
+             "type": "string"
+            },
+            {
+             "name": "fecha_modif",
+             "type": "string"
+            },
+            {
+             "name": "activo",
+             "type": "string"
+            }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

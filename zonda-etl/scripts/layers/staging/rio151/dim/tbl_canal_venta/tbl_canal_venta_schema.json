@@ -1,0 +1,35 @@
+{
+    "file": "tbl_canal_venta_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_canal_venta",
+    "location": "/santander/bi-corp/landing/rio151/dim/tbl_canal_venta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/dim/tbl_canal_venta",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_canal_venta",
+            "type": "string"
+        },
+        {
+            "name": "ds_canal_venta",
+            "type": "string"
+        },
+        {
+            "name": "mc_activo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

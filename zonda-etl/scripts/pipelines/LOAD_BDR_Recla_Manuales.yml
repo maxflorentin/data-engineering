@@ -1,0 +1,50 @@
+name: LOAD_BDR_Recla_Manuales
+description: 'LOAD Reclasificaciones Manuales'
+owner: BI-Corp
+active: true
+start_date: '2020-11-01'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: BDR_Recla_Manuales_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: BDR_Recla_Manuales_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/contab/recla_adicional_cargabal/recla_adicional_cargabal_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Recla_Manuales') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['recla_adicional_cargabal_schema.json']
+  - name: Repair_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/contab/recla_adicional_cargabal/ETLV-Repair-partitions-Table.hql'
+dependencies:
+  BDR_Recla_Manuales_Parquetize: Repair_Table           
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar]
+
+

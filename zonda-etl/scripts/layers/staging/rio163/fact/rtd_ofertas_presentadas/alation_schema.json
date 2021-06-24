@@ -1,0 +1,353 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio163_rtd_ofertas_presentadas",
+            "title": "Contiene todas las ofertas presentadas a los clientes",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Contiene todas las ofertas presentadas a los clientes",
+            "columns": [
+                {
+                    "name": "ID_OFERTA_RTD",
+                    "title": "ID_OFERTA_RTD",
+                    "description": "Identificador único de RTD (sin caracteres especiales)",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_OFERTA_INTERNO",
+                    "title": "ID_OFERTA_INTERNO",
+                    "description": "Si la oferta tuviese un identificador en otro sistema del banco debería ser usado en este campo",
+                    "type": "VARCHAR2 (50 Char)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_CANAL",
+                    "title": "ID_CANAL",
+                    "description": "identificador del canal",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUP",
+                    "title": "NUP",
+                    "description": "identificador del cliente",
+                    "type": "VARCHAR2 (8 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCION",
+                    "title": "ACCION",
+                    "description": "Accion de la oferta ( SENT, CLICKED, REJECTED, DONE )",
+                    "type": "VARCHAR2 (8 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA",
+                    "title": "FECHA",
+                    "description": "Fecha de la accion",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_OFERTA",
+                    "title": "TIPO_OFERTA",
+                    "description": "Indica el tipo de oferta.  Ver RTD_OFERTAS",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CATEGORIA_OFERTA",
+                    "title": "CATEGORIA_OFERTA",
+                    "description": "Categoría a la que pertenece la oferta. Ver RTD_OFERTAS",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "GRUPO_CONTROL",
+                    "title": "GRUPO_CONTROL",
+                    "description": "Indica si pertenece o no al grupo de control de RTD",
+                    "type": "VARCHAR2 (1 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CARGA",
+                    "title": "FECHA_CARGA",
+                    "description": "Fecha en que se realiza la carga",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PROBABILIDAD",
+                    "title": "PROBABILIDAD",
+                    "description": "Probabilidad calculada por RTD",
+                    "type": "NUMBER (22,6)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "UBICACION_CARRUSEL",
+                    "title": "UBICACION_CARRUSEL",
+                    "description": "Valores posibles: S: la oferta se mostró en carrusel; N: la oferta no se mostró en carrusel",
+                    "type": "VARCHAR2 (1 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "UBICACION_SECCION",
+                    "title": "UBICACION_SECCION",
+                    "description": "Indica el nombre de la sección donde se mostró la oferta. Valores posibles: TARJETAS/CUENTAS/PAGOS/CREDITOS",
+                    "type": "VARCHAR2 (30 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_RTD",
+                    "title": "ID_RTD",
+                    "description": "ID completo que utiliza RTD para el aprendizaje. Por ejemplo: Global$VIA094",
+                    "type": "VARCHAR2 (100 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ULT_ACTUALIZACION",
+                    "title": "FECHA_ULT_ACTUALIZACION",
+                    "description": "Fecha de actualizacion para el batch de ofertas presentadas (desde Tealium)",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORDEN_PRIORIDAD",
+                    "title": "ORDEN_PRIORIDAD",
+                    "description": "orden de priorizacion en el carrusel de tbanco",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_OFRECIMIENTO",
+                    "title": "TIPO_OFRECIMIENTO",
+                    "description": "",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 20.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGEN",
+                    "title": "ORIGEN",
+                    "description": "Origen de la accion (GEC) o Google analytics (GA)",
+                    "type": "VARCHAR2 (5 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "file": "warce057_schema",
+  "location": "/santander/bi-corp/landing/arce/fact/warce057/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/arce/fact/warce057",
+  "createTable": "bi_corp_staging.arce_warce057",
+  "copybook": "warce057.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_gc_empresa_gestiones",
+            "title": "Relacion cliente empresa - Gestiones",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "S",
+            "description": "Relacion cliente empresa - Gestiones",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_GESTION_SECTOR",
+                    "title": "IDE_GESTION_SECTOR",
+                    "description": "Sector ID de Gestion",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_GESTION_NRO",
+                    "title": "IDE_GESTION_NRO",
+                    "description": "Nro ID de Gestion",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TPO_DOC_EMPR",
+                    "title": "TPO_DOC_EMPR",
+                    "description": "Tipo de documento ",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_DOC_EMPR",
+                    "title": "NRO_DOC_EMPR",
+                    "description": "Numero de documento cliente",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SEC_DOC_EMPR",
+                    "title": "SEC_DOC_EMPR",
+                    "description": "                                ",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

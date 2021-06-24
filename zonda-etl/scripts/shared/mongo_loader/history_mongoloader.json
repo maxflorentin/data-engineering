@@ -1,0 +1,74 @@
+{
+   "executes":[
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20190930  AND a.data_timestamp_part =20191003003436  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20191031  AND a.data_timestamp_part =20191102222206  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20191129  AND a.data_timestamp_part =20191203194843  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20191230  AND a.data_timestamp_part =20200104020348  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200131  AND a.data_timestamp_part =20200205034542  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200228  AND a.data_timestamp_part =20200303224357  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200330  AND a.data_timestamp_part =20200403043355  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200430  AND a.data_timestamp_part =20200505233306  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200529  AND a.data_timestamp_part =20200603013928  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200630  AND a.data_timestamp_part =20200703070711  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200731  AND a.data_timestamp_part =20200804170748  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200831  AND a.data_timestamp_part =20200902212550  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20200930  AND a.data_timestamp_part =20201003043708  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      },
+      {
+         "query":"SELECT b.num_documento as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN santander_business_risk_arda.clientes b ON(a.num_persona=b.num_persona AND (a.data_date_part=b.data_date_part)) where a.data_date_part=20201030  AND a.data_timestamp_part =20201103224101  AND b.cod_tip_documento='T' group by b.num_documento",
+         "database":"metrics",
+         "collection":"customer_behaviour_score"
+      }
+   ]
+}

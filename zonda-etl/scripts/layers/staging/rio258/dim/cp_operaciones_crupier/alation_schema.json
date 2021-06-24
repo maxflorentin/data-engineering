@@ -1,0 +1,83 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_cp_operaciones_crupier",
+            "title": "POSEE LAS DESCRIPCIONES DE LAS OPERACIONES DE LOS ENVÍOS  ",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "POSEE LAS DESCRIPCIONES DE LAS OPERACIONES DE LOS ENVÍOS  ",
+            "columns": [
+                {
+                    "name": "COD_OPERACION",
+                    "title": "COD_OPERACION",
+                    "description": "CÓDIGO DE LA OPERACIÓN",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_OPERACION",
+                    "title": "DESC_OPERACION",
+                    "description": "DESCRIPCIÓN DE LA OPERACIÓN",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF",
+                    "title": "ULTIMA_MODIF",
+                    "description": "FECHA DE ULTIMA MODIFICACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

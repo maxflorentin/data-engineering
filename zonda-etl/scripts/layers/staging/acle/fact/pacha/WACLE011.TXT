@@ -1,0 +1,77 @@
+      ******************************************************************        
+      **********           C O P Y    W A C L E 0 1 1          *********        
+      ******************************************************************        
+      *                                                                *        
+      * DESCRIPCION: DISE¬O DE INTERFASES CON RECHAZOS PAGADOS AL      *        
+      * FRONTEND - PARA HISTORICO DE ULTIMOS 90 DIAS.                  *        
+      *                                                                *        
+      * LONGITUD TOTAL: 234                                            *        
+      *                                                                *        
+      ******************************************************************        
+       02 WACLE011.                                                             
+      * FECHA DE LA CAMARA                                                      
+           10 WACLE011-FECHA-E             PIC X(10).                           
+      * CODIGO DE SUCURSAL                                                      
+           10 WACLE011-SUC-RIO             PIC 9(03).                           
+      * NRO DE CUENTA                                                           
+           10 WACLE011-CTA-RIO             PIC 9(07).                           
+      * CODIGO DE BANCA                                                         
+           10 WACLE011-COD-BANCA           PIC X(02).                           
+      * NOMBRE DEL TITULAR DE LA CUENTA                                         
+           10 WACLE011-NOM-TITULAR         PIC X(20).                           
+      * CODIGO DE NUP                                                           
+           10 WACLE011-COD-NUP             PIC X(08).                           
+      * CODIGO DE SEGMENTO                                                      
+           10 WACLE011-COD-SEG             PIC X(03).                           
+      * TIPO DE PRODUCTO                                                        
+           10 WACLE011-COD-PROD            PIC X(02).                           
+      * SUBTIPO DE PRODUCTO                                                     
+           10 WACLE011-COD-SUBPROD         PIC X(04).                           
+      * NUMERO DE CHEQUE                                                        
+           10 WACLE011-CMC7-NRO-CHQ        PIC 9(08).                           
+      * IMPORTE DEL CHEQUE                                                      
+           10 WACLE011-IMP-CHEQUE          PIC 9(11)V9(02).                     
+      * MONEDA DE LA CUENTA                                                     
+           10 WACLE011-COD-MONEDA          PIC X(03).                           
+      * TIPO CAMARA (CI24, CI48, CR)                                            
+           10 WACLE011-TIPO-CAMARA         PIC X(04).                           
+      * NIVEL DE WORKFLOW (N1, N2, N3)                                          
+           10 WACLE011-NIVEL-WORKF         PIC X(02).                           
+      * INDICADOR DE PAGO/RECHAZO DEL CHEQUE                                    
+           10 WACLE011-IND-PAGRECH-CHQ     PIC X(01).                           
+      * INDICADOR DE PAGO/RECHAZO DEL MOTIVO DE RECHAZO                         
+           10 WACLE011-IND-PAGRECH-RECH    PIC X(01).                           
+      * SALDO DEUDOR                                                            
+           10 WACLE011-SALDO-DEUDOR        PIC 9(11)V9(02).                     
+      * SIGNO DEL SALDO DEUDOR                                                  
+           10 WACLE011-SDO-DEUDOR-SIGNO    PIC X(01).                           
+      * SALDO DISPONIBLE AL PAGO                                                
+           10 WACLE011-SDO-DISPONIBLE      PIC 9(11)V9(02).                     
+      * SIGNO DEL SALDO DISPONIBLE AL PAGO                                      
+           10 WACLE011-SDO-DISP-SIGNO      PIC X(01).                           
+      * MONTO DEL ACUERDO                                                       
+           10 WACLE011-IMP-MTO-ACUERDO     PIC 9(11)V9(02).                     
+      * MONTO DE LA CALIFICACION                                                
+           10 WACLE011-IMP-MTO-CALIFIC     PIC 9(11)V9(02).                     
+      * CODIGO DE MOTIVO DE RECHAZO                                             
+           10 WACLE011-COD-MOT-RECH        PIC X(02).                           
+      * CODIGO DE JUSTIFICACION DE PAGO                                         
+           10 WACLE011-COD-JUST-PAGO       PIC X(02).                           
+      * LEGAJO DE GESTION N1                                                    
+           10 WACLE011-LEG-GESTION-N1      PIC X(08).                           
+      * HORA DE GESTION N1                                                      
+           10 WACLE011-HORA-GESTION-N1     PIC X(06).                           
+      * LEGAJO DE GESTION N2                                                    
+           10 WACLE011-LEG-GESTION-N2      PIC X(08).                           
+      * HORA DE GESTION N2                                                      
+           10 WACLE011-HORA-GESTION-N2     PIC X(06).                           
+      * LEGAJO DE GESTION N3                                                    
+           10 WACLE011-LEG-GESTION-N3      PIC X(08).                           
+      * HORA DE GESTION N3                                                      
+           10 WACLE011-HORA-GESTION-N3     PIC X(06).                           
+      * LEGAJO QUE APROBACION                                                   
+           10 WACLE011-LEG-APROB           PIC X(08).                           
+      * HORA DE APROBACION                                                      
+           10 WACLE011-HORA-APROB          PIC X(06).                           
+C01179* CMC7 DEL CHEQUE                                                         
+C01179     10 WACLE011-CMC7-COMPLETO       PIC X(29).                           

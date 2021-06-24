@@ -1,0 +1,222 @@
+{
+  "file": "transactions",
+  "location": "/santander/bi-corp/landing/getnet/fact/transactions/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/getnet/fact/transactions",
+  "createTable": "bi_corp_staging.getnet_transactions",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "trx_account_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_account_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_authorization_code",
+      "type": "string"
+    },
+    {
+      "name": "trx_balance_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_card_holder_document",
+      "type": "string"
+    },
+    {
+      "name": "trx_card_holder_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_chargeback_date",
+      "type": "string"
+    },
+    {
+      "name": "trx_commission_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_commission_tax_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_conciliated",
+      "type": "string"
+    },
+    {
+      "name": "trx_cuit",
+      "type": "string"
+    },
+    {
+      "name": "trx_cupon",
+      "type": "string"
+    },
+    {
+      "name": "trx_currency_code",
+      "type": "string"
+    },
+    {
+      "name": "trx_customer_email",
+      "type": "string"
+    },
+    {
+      "name": "trx_deposit_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_fecha_disponibilidad",
+      "type": "string"
+    },
+    {
+      "name": "trx_financial_cost_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_financial_cost_tax_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_income_tax_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_input_mode",
+      "type": "string"
+    },
+    {
+      "name": "trx_installments",
+      "type": "string"
+    },
+    {
+      "name": "trx_latitude",
+      "type": "string"
+    },
+    {
+      "name": "trx_longitude",
+      "type": "string"
+    },
+    {
+      "name": "trx_pan",
+      "type": "string"
+    },
+    {
+      "name": "trx_payment_days",
+      "type": "string"
+    },
+    {
+      "name": "trx_payment_method_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_product_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_product_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_province_id",
+      "type": "string"
+    },
+        {
+      "name": "trx_reader_serial_number",
+      "type": "string"
+    },
+    {
+      "name": "trx_reference_number",
+      "type": "string"
+    },
+    {
+      "name": "trx_refund_transaction_quantity",
+      "type": "string"
+    },
+    {
+      "name": "trx_response",
+      "type": "string"
+    },
+    {
+      "name": "trx_sales_transaction_quantity",
+      "type": "string"
+    },
+    {
+      "name": "trx_sequence_number",
+      "type": "string"
+    },
+    {
+      "name": "trx_site_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_subsidiary_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_subsidiary_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_subsidiary_province",
+      "type": "string"
+    },
+    {
+      "name": "trx_tax_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_tip_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_transaction_date",
+      "type": "string"
+    },
+    {
+      "name": "trx_transaction_id",
+      "type": "string"
+    },
+    {
+      "name": "trx_transaction_status",
+      "type": "string"
+    },
+    {
+      "name": "trx_transferred_at",
+      "type": "string"
+    },
+    {
+      "name": "trx_type",
+      "type": "string"
+    },
+    {
+      "name": "trx_user_name",
+      "type": "string"
+    },
+    {
+      "name": "trx_vat_amount",
+      "type": "string"
+    },
+    {
+      "name": "trx_voucher_emails",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

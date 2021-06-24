@@ -1,0 +1,41 @@
+{
+        "file": "wlm_no_cli_dia",
+        "location": "/santander/bi-corp/landing/enri/fact/wlm_no_cli_dia/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/enri/fact/wlm_no_cli_dia",
+        "tempDirectory": "/santander/bi-corp/temp/wlm_no_cli_dia",
+        "createTable": "bi_corp_staging.enri_wlm_no_cli_dia",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "delimiter": ";",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "id_no_cliente",
+                        "type": "string"
+                },
+{
+                        "name": "origen",
+                        "type": "string"
+                },
+{
+                        "name": "tipo_persona",
+                        "type": "string"
+                },
+{
+                        "name": "nombre_completo",
+                        "type": "string"
+                },
+{
+                        "name": "fecha_ejecucion",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,63 @@
+{
+    "file": "jm_contr_nd",
+    "location": "/santander/bi-corp/landing/ndd/jm_contr_ndd/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/ndd/jm_contr_ndd",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns": [{
+                    "name": "feoperac",
+                    "type": "string"
+                }, {
+                    "name": "s1emp", 
+                    "type": "string"
+                }, {
+                    "name": "contra1", 
+                    "type": "string"
+                }, {
+                    "name": "idnumcli", 
+                    "type": "string"
+                }, {
+                    "name": "nivelapl", 
+                    "type": "string"
+                }, {
+                    "name": "idumbral", 
+                    "type": "string"
+                }, {
+                    "name": "salonbal", 
+                    "type": "string"
+                }, {
+                    "name": "umbrabs", 
+                    "type": "string"
+                }, {
+                    "name": "umbrrel", 
+                    "type": "string"
+                }, {
+                    "name": "umbrpul", 
+                    "type": "string"
+                }, {
+                    "name": "diaprper", 
+                    "type": "string"
+                }, {
+                    "name": "flgperim", 
+                    "type": "string"
+                }, {
+                    "name": "procecto", 
+                    "type": "string"
+                }, {
+                    "name": "umbpuls3", 
+                    "type": "string"
+                }, {
+                    "name": "flgpers3", 
+                    "type": "string" 
+                }],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}

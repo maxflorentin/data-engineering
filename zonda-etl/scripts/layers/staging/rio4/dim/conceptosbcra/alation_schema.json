@@ -1,0 +1,305 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "rio4_conceptosbcra",
+      "title": "Conceptos BCRA",
+      "schema": "bi_corp_staging",
+      "source": "rio4",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio4/fact/conceptosbcra/",
+      "type": "dim",
+      "description": "La tabla contiene todos los conceptos que se pueden operar en cambios",
+      "columns":
+              [
+               {
+                 "name": "codigo",
+                 "title": "CODIGO",
+                 "description": "Código de concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": false,
+                 "length": 6,
+                 "security": "Público"
+               },
+               {
+                 "name": "descripcion",
+                 "title": "DESCRIPCION",
+                 "description": "Descripción del código de concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 40,
+                 "security": "Público"
+               },
+               {
+                 "name": "alias1",
+                 "title": "ALIAS1",
+                 "description": "Identifica el sentido de la operación",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 15,
+                 "security": "Público"
+               },
+               {
+                 "name": "alias2",
+                 "title": "ALIAS2",
+                 "description": "Campo no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 15,
+                 "security": "Público"
+               },
+               {
+                 "name": "alias3",
+                 "title": "ALIAS3",
+                 "description": "Campo no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 15,
+                 "security": "Público"
+               },
+               {
+                 "name": "extendido",
+                 "title": "EXTENDIDO",
+                 "description": "Descripción extendida del código de concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1000,
+                 "security": "Público"
+               },
+               {
+                 "name": "impuesto",
+                 "title": "IMPUESTO",
+                 "description": "Campo no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 3,
+                 "security": "Público"
+               },
+               {
+                 "name": "tasa",
+                 "title": "TASA",
+                 "description": "Campo no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": ".",
+                 "nullable": true,
+                 "length": 22,
+                 "security": "Público"
+               },
+               {
+                 "name": "fecha_alta",
+                 "title": "FECHA_ALTA",
+                 "description": "Fecha de alta del concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 7,
+                 "security": "Público"
+               },
+               {
+                 "name": "fecha_baja",
+                 "title": "FECHA_BAJA",
+                 "description": "Fecha de baja del concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 7,
+                 "security": "Público"
+               },
+               {
+                 "name": "utiliza_cuota",
+                 "title": "UTILIZA_CUOTA",
+                 "description": "Indica si el concepto permite múltiples cuotas",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "cod_afip",
+                 "title": "COD_AFIP",
+                 "description": "Campo ya no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 22,
+                 "security": "Público"
+               },
+               {
+                 "name": "valida_afip",
+                 "title": "VALIDA_AFIP",
+                 "description": "Campo ya no utilizado, indicaba si el concepto validaba contra el servicio de AFIP",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "multiple_dejai",
+                 "title": "MULTIPLE_DEJAI",
+                 "description": "Campo ya no utilizado, indicaba si el concepto podia tener múltiples DJAI",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "tipo_referencia_afip",
+                 "title": "TIPO_REFERENCIA_AFIP",
+                 "description": "Campo ya no utilizado, indicaba si el concepto generaba DJAI o DJAS o DJAS",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 4,
+                 "security": "Público"
+               },
+               {
+                 "name": "tipo_registracion_afip",
+                 "title": "TIPO_REGISTRACION_AFIP",
+                 "description": "Campo ya no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 16,
+                 "security": "Público"
+               },
+               {
+                 "name": "permiso_embarque",
+                 "title": "PERMISO_EMBARQUE",
+                 "description": "Indica si el concepto genera MSD o APX o Permiso de embarque",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "fecha_embarque",
+                 "title": "FECHA_EMBARQUE",
+                 "description": "Campo ya no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "turismo",
+                 "title": "TURISMO",
+                 "description": "Campo ya no utilizado, identificaba a los conceptos que correspondían a DÓLAR TURISTA",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "archivo_turismo",
+                 "title": "ARCHIVO_TURISMO",
+                 "description": "Campo ya no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "grupo",
+                 "title": "GRUPO",
+                 "description": "Agrupación para controles por concepto",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 6,
+                 "security": "Público"
+               },
+               {
+                 "name": "grupom",
+                 "title": "GRUPOM",
+                 "description": "Campo ya no utilizado",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 6,
+                 "security": "Público"
+               },
+               {
+                 "name": "rg3421",
+                 "title": "RG3421",
+                 "description": "Regimen 3421",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 3,
+                 "security": "Público"
+               },
+               {
+                 "name": "cxd",
+                 "title": "CXD",
+                 "description": "El concepto permite cierre por delante",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               },
+               {
+                 "name": "infbcra",
+                 "title": "INFBCRA",
+                 "description": "El concepto se informa al BCRA",
+                 "type": "string",
+                 "personIdentifier": false,
+                 "decimalSeparator": "NA",
+                 "nullable": true,
+                 "length": 1,
+                 "security": "Público"
+               }
+              ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

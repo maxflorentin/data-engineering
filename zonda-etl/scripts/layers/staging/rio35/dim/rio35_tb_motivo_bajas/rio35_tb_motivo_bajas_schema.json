@@ -1,0 +1,39 @@
+{
+  "file": "rio35_tb_motivo_bajas_schema",
+  "location": "/santander/bi-corp/landing/rio35/dim/rio35_tb_motivo_bajas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/dim/rio35_tb_motivo_bajas",
+  "createTable": "bi_corp_staging.rio35_tb_motivo_bajas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "estado_cuenta",
+                    "type": "string"
+                },
+                {
+                    "name": "motivo_baja",
+                    "type": "string"
+                },
+                {
+                    "name": "descripcion",
+                    "type": "string"
+                },
+                {
+                    "name": "agrupacion",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

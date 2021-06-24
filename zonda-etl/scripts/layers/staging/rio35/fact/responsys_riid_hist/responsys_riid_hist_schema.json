@@ -1,0 +1,38 @@
+{
+  "file": "responsys_riid_hist_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/responsys_riid_hist/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/campanias/fact/responsys_riid_hist",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "id_compuesto",
+    "type": "string"
+  },
+    {
+      "name": "persona_id",
+      "type": "string"
+    },
+    {
+      "name": "riid",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    }
+  ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

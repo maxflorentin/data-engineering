@@ -1,0 +1,20 @@
+{
+  "file": "wasdo12_updates",
+  "createTable": "bi_corp_staging.afma_wasdo12_updates",
+  "location": "/santander/bi-corp/landing/cupones/wasdo12/updates/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/afma/fact/wasdo12/updates",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "wasdo12.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

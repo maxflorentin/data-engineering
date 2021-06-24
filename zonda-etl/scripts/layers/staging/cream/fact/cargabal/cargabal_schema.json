@@ -1,0 +1,38 @@
+{
+  "file": "cargabal_rtra",
+  "location": "/santander/bi-corp/landing/cream/fact/cargabal/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/cream/fact/cargabal",
+  "createTable": "bi_corp_staging.cargabal_rtra",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ";",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+      {
+        "name": "bsr",
+        "type": "string"
+      },
+      {
+        "name": "bcra",
+        "type": "string"
+      },
+      {
+        "name": "cuenta",
+        "type": "string"
+      },
+      {
+        "name": "dealstamp",
+        "type": "string"
+      }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

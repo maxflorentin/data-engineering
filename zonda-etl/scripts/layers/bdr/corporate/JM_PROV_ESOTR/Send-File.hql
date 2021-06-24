@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(n0625_feoperac, n0625_s1emp, n0625_contra1, n0625_tip_impt, n0625_importh, n0625_coddiv, n0625_cta_cont, n0625_agrctacb, n0625_centctbl, n0625_ctacgbal, n0625_stage) AS line FROM bi_corp_bdr.jm_prov_esotr WHERE partition_date = '$month_partition_bdr';

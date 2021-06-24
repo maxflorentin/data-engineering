@@ -1,0 +1,34 @@
+name: LOAD_BDR_UPGRADE_TARJETAS
+description: 'LOAD TEST Upgrade Tarjetas Table for the BDR model'
+owner: BI-Corp
+active: true
+start_date: "2019-04-01"
+schedule_interval: '15 12 * * *'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: Load_Stg_Upgrade_Tarjetas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/upgrade_tarjetas/ETLV-Load_Table.hql'
+notifications:
+  on_start: true
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, jhungramos@santandertecnologia.com.ar]
+
+

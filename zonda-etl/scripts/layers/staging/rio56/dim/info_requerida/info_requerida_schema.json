@@ -1,0 +1,115 @@
+{
+    "file": "info_requerida",
+    "location": "/santander/bi-corp/landing/rio56/dim/info_requerida/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/info_requerida",
+    "tempDirectory": "/santander/bi-corp/temp/info_requerida",
+    "createTable": "bi_corp_staging.rio56_info_requerida",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "desc_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "cod_tpo_dat",
+            "type": "string"
+        },
+        {
+            "name": "long_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "cant_dec_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "rang_dde_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "rang_hta_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_dde_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_hta_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "est_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "cod_tpo_campo",
+            "type": "string"
+        },
+        {
+            "name": "cod_funcion_asoc",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_relac",
+            "type": "string"
+        },
+        {
+            "name": "tpo_info_especial",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        },
+        {
+            "name": "texto_ayuda",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_condic",
+            "type": "string"
+        },
+        {
+            "name": "cod_valor_condic",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

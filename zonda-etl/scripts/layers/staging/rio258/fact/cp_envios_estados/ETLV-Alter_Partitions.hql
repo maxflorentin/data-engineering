@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio258_cp_envios_estados ;

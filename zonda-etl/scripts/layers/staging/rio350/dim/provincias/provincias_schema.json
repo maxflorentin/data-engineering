@@ -1,0 +1,35 @@
+{
+    "file": "provincias_schema",
+    "createTable": "bi_corp_staging.rio350_provincias",
+    "location": "/santander/bi-corp/landing/rio350/dim/provincias/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/provincias",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "provincia_id",
+            "type": "string"
+        },
+        {
+            "name": "code",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

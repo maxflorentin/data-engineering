@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "GETNET",
+      "type": "FACT",
+      "name": "MERCHANTS",
+      "filePrefix": "getnet_merchants_"
+    },
+    {
+      "source": "GETNET",
+      "type": "FACT",
+      "name": "TRANSACTIONS",
+      "filePrefix": "getnet_transactions_"
+    },
+    {
+      "source": "GETNET",
+      "type": "FACT",
+      "name": "DONGLES",
+      "filePrefix": "getnet_dongles_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Getnet-Daily"
+  }
+}

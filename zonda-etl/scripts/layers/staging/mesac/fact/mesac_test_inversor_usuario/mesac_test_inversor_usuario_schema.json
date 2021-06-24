@@ -1,0 +1,51 @@
+{
+  "file": "mesac_test_inversor_usuario_schema",
+  "location": "/santander/bi-corp/landing/mesac/fact/mesac_test_inversor_usuario/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/mesac/fact/mesac_test_inversor_usuario",
+  "createTable": "bi_corp_staging.mesac_test_inversor_usuario",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_test",
+      "type": "string"
+    },
+    {
+      "name": "nup_cliente",
+      "type": "string"
+    },
+    {
+      "name": "nup_realiza",
+      "type": "string"
+    },
+    {
+      "name": "fecha_test",
+      "type": "string"
+    },
+    {
+      "name": "resultado_test",
+      "type": "string"
+
+    },
+    {
+      "name": "id_perfil",
+      "type": "string"
+    },
+    {
+      "name": "cod_canal",
+      "type": "string"
+    }
+  ],
+
+  "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+  }]
+
+}

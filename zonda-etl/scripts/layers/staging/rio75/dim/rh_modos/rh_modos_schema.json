@@ -1,0 +1,35 @@
+{
+  "file": "rh_modos_schema",
+  "location": "/santander/bi-corp/landing/rio75/dim/rh_modos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio75/dim/rh_modos",
+  "tempDirectory": "/santander/bi-corp/temp/rio75",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "c_modo",
+      "type": "string"
+    },
+    {
+      "name": "d_modo",
+      "type": "string"
+    },
+    {
+      "name": "i_activo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

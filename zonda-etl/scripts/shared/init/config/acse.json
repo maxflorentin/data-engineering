@@ -1,0 +1,62 @@
+{
+  "tables": [
+    {
+      "source": "ACSE",
+      "type": "DIM",
+      "name": "TARIFAS",
+      "filePrefix": "WACSE400_"
+    },
+    {
+      "source": "ACSE",
+      "type": "DIM",
+      "name": "TIPOS_CAJA",
+      "filePrefix": "WACSE450_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "CAMPANAS_MENSUAL",
+      "filePrefix": "WACSE590_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "COMISIONES_COBRADAS",
+      "filePrefix": "WACSE500_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "COMISIONES_PENDIENTES",
+      "filePrefix": "WACSE501_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "CONTRATOS",
+      "filePrefix": "WACSE300_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "MAESTRO_CAMPANAS",
+      "filePrefix": "WACSE550_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "MODULOS_FISICOS",
+      "filePrefix": "WACSE900_"
+    },
+    {
+      "source": "ACSE",
+      "type": "FACT",
+      "name": "REL_CONTRATO_CAMPANA",
+      "filePrefix": "WACSE570_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_WACSE-Daily"
+  }
+}

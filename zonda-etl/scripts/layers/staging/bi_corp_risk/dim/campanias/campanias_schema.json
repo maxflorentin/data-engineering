@@ -1,0 +1,52 @@
+{
+	"file": "campanias_schema",
+	"location": "/santander/bi-corp/landing/sql5/dim/campanias/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_campanias",
+	"tempDirectory": "/santander/bi-corp/temp/campanias",
+	"createTable": "bi_corp_staging.risksql5_campanias",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "nombre",
+			"type": "string"
+		},
+{
+			"name": "fecha",
+			"type": "string"
+		},
+{
+			"name": "nombre_com",
+			"type": "string"
+		},
+{
+			"name": "codigo",
+			"type": "string"
+		},
+{
+			"name": "tipo",
+			"type": "string"
+		},
+{
+			"name": "esquema",
+			"type": "string"
+		},
+{
+			"name": "codigo_clasificacion",
+			"type": "string"
+		},
+{
+			"name": "clasificacion",
+			"type": "string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

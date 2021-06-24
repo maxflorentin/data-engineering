@@ -1,0 +1,46 @@
+name: LOAD_STG_Garra-Daily
+description: 'Load data from GARRA tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2019-12-09'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [clientes_di, contratos_ref, procedimientos, rel_contrato_prj, log_cuotaphone]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_Table_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 10
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garra/fact/${e}/${e}.cob','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garra/fact/${e}/${e}_schema.json']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Garra-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['${e}_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, mjourdan@santandertecnologia.com.ar, gbrizzio@santandertecnologia.com.ar]

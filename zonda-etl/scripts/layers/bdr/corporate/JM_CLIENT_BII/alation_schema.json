@@ -1,0 +1,1119 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "businessReference":"Julio Sager\nNicolás Intrieri\nChristian Fregosi",
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_client_bii",
+         "title":"Información de Clientes",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contendrá toda la información básica de identificación de los clientes/contrapartes relacionados con todas las operaciones dadas de alta en la tabla Contratos BIS. ",
+         "columns":[
+            {
+               "name":"g4093_apnomper",
+               "title":"Nombre o razón social",
+               "description":"Nombre del cliente o contrapartida. en el caso de una persona física este campo contendrá el nombre, iniciales intermedias (en caso de existir) y apellidos",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":80,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"petipper"
+                  },
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pepriape"
+                  },
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pesegape"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_carter",
+               "title":"Marca carterizado",
+               "description":"Código para identificar si el cliente está carterizado o no. ",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_cdpostal",
+               "title":"Código Postal",
+               "description":"Código postal del cliente",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_clie_glo",
+               "title":"Código cliente global",
+               "description":"Código para identificar unívocamente al cliente en todas las entidades del grupo. la lista de clientes calificados como ‘clientes globales’ y su código será determinado desde el ámbito corporativo. para el caso de clientes no ‘globales’ este campo se informará con ‘0’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_clisegl1",
+               "title":"Codigo segmento local1",
+               "description":"Código de segmento local. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar las diferentes segmentos asociados al cliente",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_clisegl2",
+               "title":"Código segmento local2",
+               "description":"Código alternativo de segmento local. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar las diferentes segmentos asociados al cliente.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_clisegm",
+               "title":"Código segmento cliente",
+               "description":"Código identificativo del segmento asociado al cliente",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_cod_sec2",
+               "title":"Código Sector Actividad Local",
+               "description":"Código de actividad productiva local asociada al cliente. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los diferentes sectores de actividad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_cod_sec3",
+               "title":"Código Sector Contable",
+               "description":"Marca que debe permitir clasificar clientes de acuerdo con determinadas características institucionales y del tipo  que entran en la clasificación de soberanos, bancos, empresas corporate, bancos multilaterales de desarrollo, sociedad de valores... el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los diferentes sectores contables",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessSteward":[
+                     "A121702",
+                     " A012029"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_cod_sect",
+               "title":"Código Sector Actividad",
+               "description":"Actividad productiva asociada al cliente (p. ej. cnae)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>\nLeonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "A121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_codidper",
+               "title":"Código de identificación nacional",
+               "description":"Código de identificación del cliente a nivel nacional. como ejemplos este campo podría contener el número del documento nacional de identidad, el número de pasaporte, ...",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"penumdoc"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_datexto1",
+               "title":"Localizador  búsqueda 1",
+               "description":"Campo en el que se incluirá si se desea aquella parte del nombre que pueda ser mas determinante de cara a realizar búsquedas posteriormente, por ejemplo el primer apellido. queda a criterio de cada entidad la determinación de la información que se incluirá en este campo. en caso de no querer utilizarse se completará con espacios",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_datexto2",
+               "title":"Localizador  búsqueda 2",
+               "description":"Campo en el que se incluirá si se desea un segundo criterio de búsqueda, por ejemplo el segundo apellido. queda a criterio de cada entidad la determinación de la información que se incluirá en este campo. en caso de no querer utilizarse se completará con espacios",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_exclcli",
+               "title":"Exclusión Cliente IRB",
+               "description":"Marca de exclusión del cliente para el cálculo en irb. es un baremo local que permitirá identificar aquellos clientes que no se incluirán en el cálculo de capital, lo que permite eliminar las listas cerradas por este motivo.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_fchfin",
+               "title":"Fecha Fin  Relación",
+               "description":"Fecha de baja del cliente.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_fchini",
+               "title":"Fecha Inicio Relación",
+               "description":"Fecha de inicio de relación con el cliente (fecha de alta del cliente/contraparte en la entidad).",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pefecing"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_fecnacim",
+               "title":"Fecha de nacimiento",
+               "description":"Fecha de nacimiento del cliente",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pefecini"
+                  },
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pefecnac"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pehstamp"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_ffinutcl",
+               "title":"Fecha Fin UTP Cliente",
+               "description":"Fecha fin del utp",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_finiutcl",
+               "title":"Fecha Inicio UTP Cliente",
+               "description":"Fecha inicio del utp",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_gra_vinc",
+               "title":"Grado de vinculación del cliente",
+               "description":"Definición de negocio sobre “cliente vinculado” o “vinculado transaccional” (en función del volumen de negocio, productos y servicios contratados, etc…).",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc052",
+                     "column":"pevalind"
+                  },
+                  {
+                     "schema":"malpe",
+                     "table":"petc052",
+                     "column":"peindica"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_id_pais",
+               "title":"País Residencia",
+               "description":"País de residencia del cliente. este campo se informará con el código iso",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"pepaires"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_identper",
+               "title":"Tipo de identificador nacional",
+               "description":"Tipo de identificador nacional (dni, pasaporte...). en este campo se identificara el tipo de documento que se está utilizando como identificador",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"petipdoc"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_idnumcli",
+               "title":"Identificador de cliente",
+               "description":"Clave única de identificación del cliente dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"penumper"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_idsucur",
+               "title":"Sucursal",
+               "description":"Código de centro o sucursal de referencia a la que pertenece el cliente",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_indbcart",
+               "title":"Indicador de Bancarrota",
+               "description":"La bancarrota es una situación jurídica de una persona insolvente o de una organización. es decir, no puede pagar las deudas contraídas con los acreedores.permite separar la información de bancorrota actualmente en situación de gestión a un campo propio.se tiene que separar de la situación de gestión para distinguir entre las los contratos  que están en bancarrota pero no están en impago para no tratarlos como morosos. los valores a informar en el atributo son: ‘s’ en caso afirmativo y ‘n’ en caso negativo.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>\nVeronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"ibec3070",
+                     "column":"cod_submarcl"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_industry",
+               "title":"Industry",
+               "description":"Código que indica la tipología de cliente asociado. se usa para hacer una segmentación de kgr para clientes de banca mayorista, y tanto para el cálculo de capital regulatorio como económico. baremo global. ",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>\nVeronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"aqua_clientes_asoc_geconomicos",
+                     "column":"sector interno 1"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_paisneg",
+               "title":"País de negocio",
+               "description":"Es el país donde el cliente tiene ubicado el negocio (puede ser diferente del país en el que está dado de alta el contrato).",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_tip_pers",
+               "title":"Tipo Persona",
+               "description":"Código de tipo de persona (física o jurídica)",
+               "type":"numeric",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc001",
+                     "column":"petipper"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_tipsegl1",
+               "title":"Tipo segmento local 1",
+               "description":"Descripción del tipo de segmento local 1",
+               "type":"string",
+               "personIdentifier":"Yes",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>\"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc030",
+                     "column":"pesegcla"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_tipsegl2",
+               "title":"Tipo segmento local 2",
+               "description":"Descripción del tipo de segmento local 2.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager, Nicolás Intrieri, Christian Fregosi",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc030",
+                     "column":"pesegcal"
+                  }
+               ]
+            },
+            {
+               "name":"g4093_tto_espe",
+               "title":"Tratamiento Especial",
+               "description":" campo que define el tratamiento a aplicar a un cliente en función de su clasificación como administración regional, ente del sector público, banco multilateral, organización internacional o bce.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4093_utp_cli",
+               "title":"Indicador UTP Cliente",
+               "description":"Clientes marcados por el indicador de probable impago (utp)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"malpe",
+                     "table":"petc052",
+                     "column":"construcción en bdr"
+                  }
+               ]
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

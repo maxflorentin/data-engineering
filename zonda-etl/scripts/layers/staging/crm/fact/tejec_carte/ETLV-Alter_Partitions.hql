@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.crm_tejec_carte ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

@@ -1,0 +1,695 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A304726"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "zendesk_tk_getnet",
+            "title": "Posee todos los tickets de getnet creados en la herramienta zendesk",
+            "schema": "bi_corp_staging",
+            "source": "ZENDSK",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Posee todos los tickets creados en la herramienta zendesk",
+            "columns": [
+                {
+                    "name": "allow_channelback ",
+                    "title": "allow_channelback ",
+                    "description": "\tPermiso para que los agentes agreguen archivos adjuntos a un comentario. Por defecto es verdadero",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "assignee_id ",
+                    "title": "assignee_id ",
+                    "description": "El agente actualmente asignado al ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "brand_id ",
+                    "title": "brand_id ",
+                    "description": "Solo Enterprise. El ID de la marca a la que está asociado este ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "collaborator_ids ",
+                    "title": "collaborator_ids ",
+                    "description": "\tLos ID de los usuarios actualmente incluidos en el CC del ticket",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "created_at ",
+                    "title": "created_at ",
+                    "description": "Cuando se creó este registro",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "custom_fields ",
+                    "title": "custom_fields ",
+                    "description": "Campos personalizados para el ticket.",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "description ",
+                    "title": "description ",
+                    "description": "\tPrimer comentario de solo lectura en el ticket.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "due_at ",
+                    "title": "due_at ",
+                    "description": "Si se trata de un ticket de tipo \"tarea\" tiene fecha de vencimiento. ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "email_cc_ids ",
+                    "title": "email_cc_ids ",
+                    "description": "\tLos identificadores de agentes o usuarios finales que se encuentran actualmente en CC en el ticket. ",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "external_id ",
+                    "title": "external_id ",
+                    "description": "Una identificación que puede usar para vincular los tickets de Zendesk Support a los registros locales",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "fields ",
+                    "title": "fields ",
+                    "description": "Campos personalizados para el ticket.",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "follower_ids ",
+                    "title": "follower_ids ",
+                    "description": "Los ID de los agentes que siguen actualmente el ticket",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "followup_ids ",
+                    "title": "followup_ids ",
+                    "description": "\tLos ID de los seguimientos creados a partir de este ticket. Los identificadores solo son visibles una vez que el ticket está cerrado",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "forum_topic_id ",
+                    "title": "forum_topic_id ",
+                    "description": "El tema del portal web de Zendesk desde el que se originó este ticket, si lo hubiera. El portal web está en desuso",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "group_id ",
+                    "title": "group_id ",
+                    "description": "El grupo al que está asignado este ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "has_incidents ",
+                    "title": "has_incidents ",
+                    "description": "Es verdadero si un ticket es un tipo de problema y tiene uno o más incidentes vinculados a él. De lo contrario, el valor es falso.",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "id ",
+                    "title": "id ",
+                    "description": "Asignado automáticamente cuando se crea el ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "is_public ",
+                    "title": "is_public ",
+                    "description": "\tEs verdadero si los comentarios son públicos, falso en caso contrario",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "organization_id ",
+                    "title": "organization_id ",
+                    "description": "La organización del solicitante. Solo puede especificar el ID de una organización asociada con el solicitante",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "priority ",
+                    "title": "priority ",
+                    "description": "La urgencia con la que se debe atender el ticket. Los valores permitidos son \"urgente\", \"alto\", \"normal\" o \"bajo\".",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "problem_id ",
+                    "title": "problem_id ",
+                    "description": "\tPara tickets de tipo \"incidente\", el ID del problema al que está vinculado el incidente",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "raw_subject ",
+                    "title": "raw_subject ",
+                    "description": "\tEl marcador de posición de contenido dinámico, si está presente, o el valor \"asunto\", si no lo está",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "recipient ",
+                    "title": "recipient ",
+                    "description": "\tLa dirección de correo electrónico del destinatario original del ticket.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "requester_id ",
+                    "title": "requester_id ",
+                    "description": "El usuario que solicitó este ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "result_type ",
+                    "title": "result_type ",
+                    "description": "-",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "satisfaction_probability ",
+                    "title": "satisfaction_probability ",
+                    "description": "Probabilidad de satisfacción del cliente",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "satisfaction_rating ",
+                    "title": "satisfaction_rating ",
+                    "description": "La calificación de satisfacción del boleto, si existe, o el estado de satisfacción, \"ofrecido\" o \"no ofrecido\".",
+                    "type": "object",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "sharing_agreement_ids ",
+                    "title": "sharing_agreement_ids ",
+                    "description": "Los ID de los acuerdos de uso compartido utilizados para este ticket",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "status ",
+                    "title": "status ",
+                    "description": "El estado del billete. Los valores permitidos son \"nuevo\", \"abierto\", \"pendiente\", \"en espera\", \"resuelto\" o \"cerrado\".",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "subject ",
+                    "title": "subject ",
+                    "description": "\tEl valor del campo de asunto para este ticket",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "submitter_id ",
+                    "title": "submitter_id ",
+                    "description": "\tEl usuario que envió el ticket. El remitente siempre se convierte en el autor del primer comentario en el ticket.",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "tags ",
+                    "title": "tags ",
+                    "description": "La matriz de etiquetas aplicadas a este ticket",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ticket_form_id ",
+                    "title": "ticket_form_id ",
+                    "description": "Solo Enterprise. La identificación del formulario de ticket para renderizar el ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "type ",
+                    "title": "type ",
+                    "description": "El tipo de este boleto. Los valores permitidos son \"problema\", \"incidente\", \"pregunta\" o \"tarea\".",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "updated_at ",
+                    "title": "updated_at ",
+                    "description": "Cuando este registro se actualizó por última vez",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "url ",
+                    "title": "url ",
+                    "description": "La URL de la API de este ticket",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "via ",
+                    "title": "via ",
+                    "description": "El objeto via le dice cómo o por qué se creó una acción o evento",
+                    "type": "object",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

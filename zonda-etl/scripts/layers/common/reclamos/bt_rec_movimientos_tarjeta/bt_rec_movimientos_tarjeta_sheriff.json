@@ -1,0 +1,53 @@
+{
+    "table": "bi_corp_common.bt_rec_movimientos_tarjeta",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_gestion",
+                "cod_rec_nro_movimiento",
+                "cod_rec_producto_altair",
+                "cod_cue_cuenta",
+                "cod_tcr_tarjeta",
+                "dt_rec_fecha_movimiento",
+                "cod_rec_nro_comprobante",
+                "cod_rec_cod_autorizacion",
+                "cod_rec_nro_establecimiento",
+                "ds_rec_movimiento",
+                "ds_rec_operativo",
+                "cod_rec_divisa_tarjeta",
+                "fc_rec_monto_movimiento",
+                "flag_rec_ind_devolucion"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_fecha_movimiento",
+                "dt_rec_cierre_cartera"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_fecha_devolucion",
+                "ts_rec_fecha_exportacion",
+                "ts_rec_fecha_cierre_resumen",
+                "ts_rec_alta",
+                "ts_rec_modif",
+                "ts_rec_baja"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+            "threshold": 0.01
+        }
+
+    ]
+}

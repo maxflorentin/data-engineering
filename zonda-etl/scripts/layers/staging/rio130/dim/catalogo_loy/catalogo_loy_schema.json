@@ -1,0 +1,132 @@
+{
+	"file": "catalogo_loy_schema",
+	"location": "/santander/bi-corp/landing/rio130/dim/catalogo_loy/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio130/dim/rio130_catalogo_loy",
+	"tempDirectory": "/santander/bi-corp/temp/catalogo_loy",
+	"extension": "csv",
+  	"delimiter": "^",
+  	"header": false,
+  	"parquetFiles": 1,
+  	"compression": "gzip",
+	"columns": [
+		 {
+			"name": "id_catalogo",
+			"type": "string"
+		},
+ {
+			"name": "cod_catalogo",
+			"type": "string"
+		},
+ {
+			"name": "catalogo",
+			"type": "string"
+		},
+ {
+			"name": "partnum",
+			"type": "string"
+		},
+ {
+			"name": "producto",
+			"type": "string"
+		},
+ {
+			"name": "descripcion",
+			"type": "string"
+		},
+ {
+			"name": "id_categoria",
+			"type": "string"
+		},
+ {
+			"name": "linea_prodcuto",
+			"type": "string"
+		},
+ {
+			"name": "categoria",
+			"type": "string"
+		},
+ {
+			"name": "id_producto",
+			"type": "string"
+		},
+ {
+			"name": "puntos",
+			"type": "string"
+		},
+ {
+			"name": "linea_producto",
+			"type": "string"
+		},
+ {
+			"name": "costo_punto",
+			"type": "string"
+		},
+ {
+			"name": "nombre_categoria",
+			"type": "string"
+		},
+ {
+			"name": "nombre_visible_cat",
+			"type": "string"
+		},
+ {
+			"name": "fecha_vig_ini_prod",
+			"type": "string"
+		},
+ {
+			"name": "fecha_vig_fin_prod",
+			"type": "string"
+		},
+ {
+			"name": "medio_de_pago",
+			"type": "string"
+		},
+ {
+			"name": "producto_agrupador",
+			"type": "string"
+		},
+ {
+			"name": "porcentaje_desc",
+			"type": "string"
+		},
+ {
+			"name": "fecha_show",
+			"type": "string"
+		},
+ {
+			"name": "ubicacion_show",
+			"type": "string"
+		},
+ {
+			"name": "origen",
+			"type": "string"
+		},
+ {
+			"name": "stock_inicial",
+			"type": "string"
+		},
+ {
+			"name": "flujo_canje",
+			"type": "string"
+		},
+ {
+			"name": "id_prod_par",
+			"type": "string"
+		},
+ {
+			"name": "id_cate_par",
+			"type": "string"
+		},
+ {
+			"name": "tipo_prod_loy",
+			"type": "string"
+		}
+	],"extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,60 @@
+{
+  "file": "zendesk_tk_events_santander_ar",
+  "location": "/santander/bi-corp/landing/zendesk_tk_events/fact/santander-ar/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/zendesk/fact/tk_events/santander-ar",
+  "extension": "csv",
+  "header": true,
+  "delimiter": "^",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "child_events",
+      "type": "string"
+    },
+    {
+      "name": "ticket_id",
+      "type": "string"
+    },
+
+    {
+      "name": "timestamp",
+      "type": "string"
+    },
+    {
+      "name": "created_at",
+      "type": "string"
+    },
+    {
+      "name": "updater_id",
+      "type": "string"
+    },
+    {
+      "name": "via",
+      "type": "string"
+    },
+
+    {
+      "name": "system",
+      "type": "string"
+    },
+    {
+      "name": "event_type",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "target": "created_at",
+      "dateFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

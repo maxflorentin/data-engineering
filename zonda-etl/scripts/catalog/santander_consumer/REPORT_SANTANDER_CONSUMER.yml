@@ -1,0 +1,109 @@
+name: REPORT_SANTANDER_CONSUMER
+description: 'EXPORT DATA PRESTAMOS y Garantias :PTMOSQ  UGDTAGT stk_gar_garantias '
+owner: BI-Corp
+active: true
+# schedule_interval: '0 21 * * 1-6'
+# start_date: '2019-11-02'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution_PTMOSQ
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/PTMOSQ_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/santander_consumer/PTMOSQ.hql'
+  - name: report_execution_UGDTAGT
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/UGDTAGT_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/santander_consumer/UGDTAGT.hql'
+  - name: report_execution_stk_gar_garantias
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/stk_gar_garantias_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/santander_consumer/stk_gar_garantias.hql'
+  - name: report_send_sftp_PTMOSQ
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/PTMOSQ_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/SANTANDER_CONSUMER/STG/PTMOSQ/PTMOSQ_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: report_send_sftp_UGDTAGT
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/UGDTAGT_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/SANTANDER_CONSUMER/STG/UGDTAGT/UGDTAGT_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: report_send_sftp_stk_gar_garantias
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/stk_gar_garantias_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/SANTANDER_CONSUMER/CMN/stk_gar_garantias/stk_gar_garantias_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_PTMOSQ
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/PTMOSQ_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+  - name: EXECUTE_Remove_FILE_UGDTAGT
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/UGDTAGT_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+  - name: EXECUTE_Remove_FILE_stk_gar_garantias
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/stk_gar_garantias_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_SANTANDER_CONSUMER') }}.txt"
+dependencies:
+  report_execution_PTMOSQ: report_send_sftp_PTMOSQ
+  report_send_sftp_PTMOSQ : EXECUTE_Remove_FILE_PTMOSQ
+  report_execution_UGDTAGT: report_send_sftp_UGDTAGT
+  report_send_sftp_UGDTAGT: EXECUTE_Remove_FILE_UGDTAGT
+  report_execution_stk_gar_garantias: report_send_sftp_stk_gar_garantias
+  report_send_sftp_stk_gar_garantias: EXECUTE_Remove_FILE_stk_gar_garantias
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maurogonzalez@santandertecnologia.com.ar]

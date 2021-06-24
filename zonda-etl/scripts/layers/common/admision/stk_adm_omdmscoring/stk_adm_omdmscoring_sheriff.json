@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.stk_adm_omdmscoring",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tramite","cod_adm_nrosecscoring","ds_adm_nroscorecard","fc_adm_finalscore","ds_adm_scorerecomend","fc_cortefinal","fc_cortemax","ts_adm_fecproceso"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_adm_nrosecscoring","ds_adm_nroscorecard","fc_adm_finalscore","ds_adm_scorerecomend","fc_cortefinal","fc_cortemax","ts_adm_fecproceso"],
+      "threshold": 0.00
+    }
+  ]
+}

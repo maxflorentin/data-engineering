@@ -1,0 +1,230 @@
+{
+  "file": "gnl_datos_complem_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/gnl_datos_complem/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/gnl_datos_complem",
+  "createTable": "bi_corp_staging.sge_gnl_datos_complem",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+         {
+              "name": "nro_tramite_zx",
+              "type": "string"
+         },
+         {
+              "name": "nup",
+              "type": "string"
+         },
+         {
+              "name": "cliente_nuevo",
+              "type": "string"
+         },
+         {
+              "name": "banca",
+              "type": "string"
+         },
+         {
+              "name": "segm_origen",
+              "type": "string"
+         },
+         {
+              "name": "tipo_per",
+              "type": "string"
+         },
+         {
+              "name": "tipo_emp",
+              "type": "string"
+         },{
+              "name": "tipo_linea",
+              "type": "string"
+         },
+         {
+              "name": "nro_prop",
+              "type": "string"
+         },
+         {
+              "name": "fec_vigencia",
+              "type": "string"
+         },
+         {
+              "name": "mca_vigencia",
+              "type": "string"
+         },
+         {
+              "name": "obs_vigencia",
+              "type": "string"
+         },
+         {
+              "name": "mca_calificacion",
+              "type": "string"
+         },
+         {
+              "name": "mon_lin_otorgada",
+              "type": "string"
+         },
+         {
+              "name": "mon_lin_otorgada_no_cesion",
+              "type": "string"
+         },
+         {
+              "name": "real_calificacion",
+              "type": "string"
+         },
+         {
+              "name": "obs_calificacion",
+              "type": "string"
+         },
+         {
+              "name": "mca_disponible",
+              "type": "string"
+         },
+         {
+              "name": "real_disponible",
+              "type": "string"
+         },
+         {
+              "name": "mon_disponible",
+              "type": "string"
+         },
+         {
+              "name": "obs_disponible",
+              "type": "string"
+         },
+         {
+              "name": "mca_garantia",
+              "type": "string"
+         },
+         {
+              "name": "real_garantia",
+              "type": "string"
+         },
+         {
+              "name": "obs_garantia",
+              "type": "string"
+         },
+         {
+              "name": "mca_cli_vin",
+              "type": "string"
+         },
+         {
+              "name": "real_cli_vin",
+              "type": "string"
+         },
+         {
+              "name": "obs_cli_vin",
+              "type": "string"
+         },
+         {
+              "name": "mca_afip",
+              "type": "string"
+         },
+         {
+              "name": "real_afip",
+              "type": "string"
+         },
+         {
+              "name": "obs_afip",
+              "type": "string"
+         },
+         {
+              "name": "mca_bcra",
+              "type": "string"
+         },
+         {
+              "name": "real_bcra",
+              "type": "string"
+         },
+         {
+              "name": "obs_bcra",
+              "type": "string"
+         },
+         {
+              "name": "form_487",
+              "type": "string"
+         },
+         {
+              "name": "mca_opera",
+              "type": "string"
+         },
+         {
+              "name": "obs_opera",
+              "type": "string"
+         },
+         {
+              "name": "mca_especial_granel",
+              "type": "string"
+         },
+         {
+              "name": "obs_especial_granel",
+              "type": "string"
+         },
+         {
+              "name": "mca_especial_f487",
+              "type": "string"
+         },
+         {
+              "name": "obs_especial_f487",
+              "type": "string"
+         },
+         {
+              "name": "motiv_nopera",
+              "type": "string"
+         },
+         {
+              "name": "cod_pevalind",
+              "type": "string"
+         },
+         {
+              "name": "cod_peindica",
+              "type": "string"
+         },
+         {
+              "name": "tasa_min",
+              "type": "string"
+         },
+         {
+              "name": "cta_cte",
+              "type": "string"
+         },
+         {
+              "name": "prod_cta_cte",
+              "type": "string"
+         },
+         {
+              "name": "subp_cta_cte",
+              "type": "string"
+         },
+         {
+              "name": "fec_alta",
+              "type": "string"
+         },
+         {
+              "name": "usu_alta",
+              "type": "string"
+         },
+         {
+              "name": "fec_modif",
+              "type": "string"
+         },
+         {
+              "name": "usu_modif",
+              "type": "string"
+         },
+         {
+              "name": "rechazo_antecedentes_int",
+              "type": "string"
+         }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

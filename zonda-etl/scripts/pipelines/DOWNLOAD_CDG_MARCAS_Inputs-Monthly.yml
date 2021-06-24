@@ -1,0 +1,31 @@
+name: DOWNLOAD_CDG_MARCAS_Inputs-Monthly
+description: 'Download Data of Google Drive for CDG Marcas inputs'
+owner: BI-Corp
+active: true
+start_date: '2020-11-01'
+schedule_interval: '0 5 * * *'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_Gdrive
+    operator: BashOperator
+    config:
+      bash_command: "python3 /aplicaciones/bi/zonda/repositories/zonda-etl/scripts/shared/gdrive/SheetDownloader.py --spreadsheet_name marcas --sheet_name param_marcas_producto_general param_marcas_resultado_general param_marcas_area_negocio param_marcas_area_negocio_mp --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_CDG_MARCAS_Inputs-Monthly') }} --partition_date {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='DOWNLOAD_CDG_MARCAS_Inputs-Monthly') }}"
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

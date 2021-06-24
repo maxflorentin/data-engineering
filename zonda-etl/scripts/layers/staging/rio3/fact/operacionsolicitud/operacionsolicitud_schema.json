@@ -1,0 +1,34 @@
+{
+  "file": "operacionsolicitud_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/operacionsolicitud/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/operacionsolicitud",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+       {
+    "name": "operacion ",
+    "type": "string"
+  },
+ {
+    "name": "solicitud",
+    "type": "string"
+  },
+    {
+    "name": "fecha",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha",
+   "type": "date",
+   "dateFormat": "yyyyMMdd",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

@@ -1,0 +1,71 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_estados",
+            "title": "Provincias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Provincias",
+            "columns": [
+                {
+                    "name": "CAES_CD_ESTADO",
+                    "title": "CAES_CD_ESTADO",
+                    "description": "Código de la provincia",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAES_DE_ESTADO",
+                    "title": "CAES_DE_ESTADO",
+                    "description": "Descripción de la provincia",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAES_PO_INGRESOS_BRUTOS",
+                    "title": "CAES_PO_INGRESOS_BRUTOS",
+                    "description": "Porcentaje de Ingresos Brutos",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAES_MT_MINIMO_IMPONIBLE",
+                    "title": "CAES_MT_MINIMO_IMPONIBLE",
+                    "description": "Monto Minimo imponible",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 12.2,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

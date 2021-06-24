@@ -1,0 +1,48 @@
+name: LOAD_CMN_Rentabilidad_Monthly
+description: 'Load in Common Data from Rentabilidad'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+start_date: '2020-06-30'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: bi_corp_staging.rio157_ms0_dm_je_dwh_entidades_ctr
+tasks:
+  - name: CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/bt_ren_result/DDLT-bt_ren_result.hql'
+  - name: InsertPartition_bt_ren_result
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/bt_ren_result/ETLV-bt_ren_result.hql'
+dependencies:
+  CreateTables: InsertPartition_bt_ren_result
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maurogonzalez@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar, aleivajacquelin@santandertecnologia.com.ar, itroisi@santandertecnologia.com.ar]  

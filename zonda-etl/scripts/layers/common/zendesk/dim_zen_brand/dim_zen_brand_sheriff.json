@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.dim_zen_brand",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_zen_brand"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_zen_brand", "ds_zen_brand"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_zen_creacion","ts_zen_actualizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "threshold": 0.01
+    }
+  ]
+}

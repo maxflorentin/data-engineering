@@ -1,0 +1,62 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307319"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "abae_conceptos",
+            "title": "Parametria + Descripcion de conceptos",
+            "schema": "bi_corp_staging",
+            "source": "ABAE",
+            "query": "",
+            "type": "DIM",
+            "description": "Parametria + Descripcion de conceptos",
+            "columns": [
+                {
+                    "name": "concepto",
+                    "title": "concepto",
+                    "description": "Parametria del concepto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "abreviacion",
+                    "title": "abreviacion",
+                    "description": "Abreviacion de la descripcion del concepto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                     "security": "Publico"
+                },
+                {
+                    "name": "Descripcion",
+                    "title": "Descripcion",
+                    "description": "Descripcion del concepto",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

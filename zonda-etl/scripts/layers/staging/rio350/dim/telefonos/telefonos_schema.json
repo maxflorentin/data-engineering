@@ -1,0 +1,51 @@
+{
+    "file": "telefonos_schema",
+    "createTable": "bi_corp_staging.rio350_telefonos",
+    "location": "/santander/bi-corp/landing/rio350/dim/telefonos/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/telefonos",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "telefono_id",
+            "type": "string"
+        },
+        {
+            "name": "tipo",
+            "type": "string"
+        },
+        {
+            "name": "cod_area",
+            "type": "string"
+        },
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "numero",
+            "type": "string"
+        },
+        {
+            "name": "extension",
+            "type": "string"
+        },
+        {
+            "name": "sucu_id",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

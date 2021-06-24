@@ -1,0 +1,60 @@
+{
+	"file": "admision_usuarios",
+	"location": "/santander/bi-corp/landing/sql5/dim/admision_usuarios/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_admision_usuarios",
+	"createTable": "bi_corp_staging.risksql5_admision_usuarios",
+	"extension": "csv",
+	"delimiter": ";",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+  {
+    "name": "legajo",
+    "type": "string"
+  },
+  {
+    "name": "usuario_srs",
+    "type": "string"
+  },
+  {
+    "name": "usuario",
+    "type": "string"
+  },
+  {
+    "name": "rol",
+    "type": "string"
+  },
+  {
+    "name": "equipo",
+    "type": "string"
+  },
+  {
+    "name": "activo",
+    "type": "string"
+  },
+  {
+    "name": "fecha_alta",
+    "type": "string"
+  },
+  {
+    "name": "fecha_baja",
+    "type": "string"
+  },
+  {
+    "name": "seniority",
+    "type": "string"
+  },
+  {
+    "name": "cpi",
+    "type": "string"
+  }
+],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

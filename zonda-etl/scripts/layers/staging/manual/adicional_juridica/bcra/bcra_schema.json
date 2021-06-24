@@ -1,0 +1,25 @@
+{
+  "file": "bcra",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/bcra/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/bcra",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "salida_072",
+					    "type": "string",
+					    "width": 10
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

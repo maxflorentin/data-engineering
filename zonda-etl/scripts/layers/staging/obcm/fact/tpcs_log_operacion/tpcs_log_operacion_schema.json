@@ -1,0 +1,58 @@
+{
+  "file": "tpcs_log_operacion_schema",
+  "location": "/santander/bi-corp/landing/obcm/fact/tpcs_log_operacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/obcm/fact/tpcs_log_operacion/",
+  "createTable": "bi_corp_staging.obcm_tpcs_log_operacion",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "columns": [{
+    "name": "ide_transaccion",
+    "type": "string"
+  },
+    {
+      "name": "ide_solicitud",
+      "type": "string"
+    },
+    {
+      "name": "cod_operacion",
+      "type": "string"
+    },
+    {
+      "name": "cod_estado_sol",
+      "type": "string"
+    },
+    {
+      "name": "mon_importe1",
+      "type": "string"
+    },
+    {
+      "name": "cod_moneda1",
+      "type": "string"
+    },{
+      "name": "can_items1",
+      "type": "string"
+    },
+    {
+      "name": "mon_importe2",
+      "type": "string"
+    },
+    {
+      "name": "cod_moneda2",
+      "type": "string"
+    },{
+      "name": "can_items2",
+      "type": "string"
+    }
+  ],
+    "extraColumns": [{
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+
+}

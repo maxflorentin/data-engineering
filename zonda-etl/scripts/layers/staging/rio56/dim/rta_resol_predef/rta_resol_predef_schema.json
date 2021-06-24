@@ -1,0 +1,75 @@
+{
+    "file": "rta_resol_predef_schema",
+    "createTable": "bi_corp_staging.rio56_rta_resol_predef",
+    "location": "/santander/bi-corp/landing/rio56/dim/rta_resol_predef/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/rta_resol_predef",
+    "tempDirectory": "/santander/bi-corp/temp/rio56",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "desc_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "desc_detall_rta_resol",
+            "type": "string"
+        },
+        {
+            "name": "indi_tpo_rta",
+            "type": "string"
+        },
+        {
+            "name": "est_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipo_resolucion",
+            "type": "string"
+        },
+        {
+            "name": "indi_opcion_acm",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,1 @@
+REFRESH bi_corp_staging.control_ars PARTITION (partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Control_ARS-Daily') }}');

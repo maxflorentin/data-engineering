@@ -1,0 +1,173 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "malpe_pedt036",
+      "title": "Ingresos declarados",
+      "schema": "bi_corp_staging",
+      "source": "MALPE",
+      "query": "",
+      "type": "fact",
+      "description": "Ingresos declarados",
+      "columns": [
+        {
+          "name": "PEDT036_PECDGENT",
+          "title": "PECDGENT",
+          "description": "Código de la entidad",
+          "type": "A ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PENUMPER",
+          "title": "PENUMPER",
+          "description": "Número de cliente",
+          "type": "A",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PETIPING",
+          "title": "PETIPING",
+          "description": "Tipo de ingreso",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEFECING",
+          "title": "PEFECING",
+          "description": "Fecha de actualización del ingreso",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PECODMON",
+          "title": "PECODMON",
+          "description": "Codigo de moneda",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEIMPING",
+          "title": "PEIMPING",
+          "description": "Importe de ingreso",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEIMPHAS",
+          "title": "PEIMPHAS",
+          "description": "Importe hasta",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEUSUALT",
+          "title": "PEUSUALT",
+          "description": "Usuario de alta",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEFECALT",
+          "title": "PEFECALT",
+          "description": "Fecha de alta del registro",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEUSUMOD",
+          "title": "PEUSUMOD",
+          "description": "Usuario de ultima modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PETERMOD",
+          "title": "PETERMOD",
+          "description": "Número de terminal ultima modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PESUCMOD",
+          "title": "PESUCMOD",
+          "description": "Sucursal ultima modificación del registro",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEDT036_PEHSTAMP",
+          "title": "PEHSTAMP",
+          "description": "Timestamp ultima modificación del registro",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

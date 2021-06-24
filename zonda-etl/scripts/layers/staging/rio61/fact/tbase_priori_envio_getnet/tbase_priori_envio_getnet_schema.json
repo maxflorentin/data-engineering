@@ -1,0 +1,41 @@
+{
+	"file": "priori_envio_getnet",
+	"location": "/santander/bi-corp/landing/rio61/fact/priori_envio_getnet/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/priori_envio_getnet",
+	"createTable": "bi_corp_staging.rio61_priori_envio_getnet",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "cuit",
+			"type": "string"
+		},
+		{
+			"name": "evento",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		},
+		{
+			"name": "sub_evento",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

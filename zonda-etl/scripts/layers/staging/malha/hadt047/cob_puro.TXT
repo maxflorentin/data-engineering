@@ -1,0 +1,52 @@
+      ******************************************************************00000010
+      * DCLGEN TABLE(OPIGD1.HADV0470)                                  *00000020
+      *        LIBRARY(OPI.HAF.DCLGEN(HAGV0470))                       *00000030
+      *        ACTION(REPLACE)                                         *00000040
+      *        APOST                                                   *00000050
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *00000060
+      ******************************************************************00000070
+           EXEC SQL DECLARE HADV0470 TABLE                              00000080
+           ( EMPRESA                        DECIMAL(4, 0) NOT NULL,     00000090
+             HAPLAN                         CHAR(3) NOT NULL,           00000100
+             NUMCTARE                       CHAR(15) NOT NULL,          00000110
+             DECTAREL                       CHAR(65) NOT NULL,          00000120
+             DECTARER                       CHAR(35) NOT NULL,          00000130
+             INDIC                          CHAR(1) NOT NULL,           00000160
+             FEALT                          DATE,                       00000160
+             FEULMOD                        DATE,                       00000160
+             USULMOD                        CHAR(8) NOT NULL,           00000160
+             TERULMOD                       CHAR(4) NOT NULL,           00000160
+             HORULMOD                       TIME                        00000160
+           ) END-EXEC.                                                  00001090
+      ******************************************************************00001100
+      * COBOL DECLARATION FOR TABLE OPIGD1.HADV0470                    *00001110
+      ******************************************************************00001120
+       01  HAGV0470.                                                    00001130
+           10 EMPRESA              PIC S9999V USAGE COMP-3.             00001140
+           10 HAPLAN               PIC X(3).                            00001150
+           10 NUMCTARE             PIC X(15).                           00001160
+           10 DECTAREL             PIC X(65).                           00001170
+           10 DECTARER             PIC X(35).                           00001180
+           10 INDIC                PIC X(1).                            00001210
+           10 FEALT                PIC X(10).                           00000160
+           10 FEULMOD              PIC X(10).                           00000160
+           10 USULMOD              PIC X(8).                            00000160
+           10 TERULMOD             PIC X(4).                            00000160
+           10 HORULMOD             PIC X(8).                            00000160
+      ******************************************************************00002140
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 11      *00002150
+      ******************************************************************00002160
+       01  IND-HAGV0470.                                                00002170
+           10 IND-EMPRESA              PIC S9999V USAGE COMP.           00002180
+           10 IND-HAPLAN               PIC S9999V USAGE COMP.           00002190
+           10 IND-NUMCTARE             PIC S9999V USAGE COMP.           00002200
+           10 IND-DECTAREL             PIC S9999V USAGE COMP.           00002210
+           10 IND-DECTARER             PIC S9999V USAGE COMP.           00002220
+           10 IND-INDIC                PIC S9999V USAGE COMP.           00002250
+           10 IND-FEALT                PIC S9999V USAGE COMP.           00002250
+           10 IND-FEULMOD              PIC S9999V USAGE COMP.           00002250
+           10 IND-USULMOD              PIC S9999V USAGE COMP.           00002250
+           10 IND-TERULMOD             PIC S9999V USAGE COMP.           00002250
+           10 IND-HORULMOD             PIC S9999V USAGE COMP.           00002250
+       01  IND-HAGV0470-W REDEFINES IND-HAGV0470.                       00003180
+           10 HAGV0470-IND-OCC     PIC S9(4) COMP OCCURS 11.            00003190

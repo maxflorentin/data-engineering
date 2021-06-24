@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_chq_rechazadosbcra",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_nrocheque","dt_chq_fecharechazo","dt_chq_fechalevantamiento","ds_chq_pagomulta","ds_chq_cuit","cod_chq_judicial","ds_chq_judicial","cod_chq_revision","ds_chq_revision","cod_chq_causal","ds_chq_causal","ds_chq_cuitrelacionado","fc_chq_monto"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_chq_fecharechazo","dt_chq_fechalevantamiento"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

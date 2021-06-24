@@ -1,0 +1,48 @@
+{
+    "file": "jm_filtros_nd",
+    "location": "/santander/bi-corp/landing/ndd/jm_filtros_ndd/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/ndd/jm_filtros_ndd",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns": [{
+                "name": "feoperac",
+                "type": "string"
+                } , {
+                "name": "s1emp", 
+                "type": "string"
+                } , {
+                "name": "contra1", 
+                "type": "string"
+                } , {
+                "name": "cta_cont", 
+                "type": "string"
+                } , {
+                "name": "tip_impt", 
+                "type": "string"
+                } , {
+                "name": "centctbl", 
+                "type": "string"
+                } , {
+                "name": "agrctacb", 
+                "type": "string"
+                } , {
+                "name": "ctacgbal", 
+                "type": "string"
+                } , {
+                "name": "importh", 
+                "type": "string"
+                } , {
+                "name": "filtroex", 
+                "type": "string"
+                } ],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}

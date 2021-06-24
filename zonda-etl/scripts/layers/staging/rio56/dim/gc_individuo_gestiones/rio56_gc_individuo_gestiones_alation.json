@@ -1,0 +1,108 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_gc_individuo_gestiones",
+            "title": "Relacion cliente Individuo  - Gestiones",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "S",
+            "description": "Relacion cliente Individuo  - Gestiones",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_GESTION_SECTOR",
+                    "title": "IDE_GESTION_SECTOR",
+                    "description": "Sector ID de Gestion",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_GESTION_NRO",
+                    "title": "IDE_GESTION_NRO",
+                    "description": "Nro ID de Gestion",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TPO_DOC_INDI",
+                    "title": "TPO_DOC_INDI",
+                    "description": "Tipo de documento ",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "NRO_DOC_INDI",
+                    "title": "NRO_DOC_INDI",
+                    "description": "Numero de documento cliente",
+                    "type": "NUMBER",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FEC_NACI_INDI",
+                    "title": "FEC_NACI_INDI",
+                    "description": "Fecha de Nacimiento de cliente",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "MAR_SEX_INDI",
+                    "title": "MAR_SEX_INDI",
+                    "description": "Marca de Sexo del cliente",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Confidencial"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

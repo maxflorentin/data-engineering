@@ -1,0 +1,166 @@
+{
+        "file": "alzxuimp_cheques",
+        "location": "/santander/bi-corp/landing/malzx/fact/alzxuimp/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzx/fact/alzxuimp",
+		"createTable": "bi_corp_staging.malzx_alzxuimp",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":  
+                        [
+                          {
+                            "name": "bco_girado",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "suc_girada",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "cod_postal",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "nro_cheque",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "cta_girada",
+                            "type": "string",
+                            "width": 11
+                          },
+                          {
+                            "name": "cod_evento",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "cod_divisa",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "cod_concepto",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "mar_comi_inte",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "fec_imputacion",
+                            "type": "string",
+                            "width": 10
+                          },
+                          {
+                            "name": "nro_secuencia",
+                            "type": "string",
+                            "width": 2
+                          },
+                          {
+                            "name": "suc_lote",
+                            "type": "string",
+                            "width": 3
+                          },
+                          {
+                            "name": "nro_lote",
+                            "type": "string",
+                            "width": 6
+                          },
+                          {
+                            "name": "imp_impuesto",
+                            "type": "string",
+                            "width": 13
+                          },
+                          {
+                            "name": "imp_conc_imp",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "porc_alicuota",
+                            "type": "string",
+                            "width": 18
+                          },
+                          {
+                            "name": "mar_tpo_comp",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "cod_operativo",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "cod_signo",
+                            "type": "string",
+                            "width": 1
+                          },
+                          {
+                            "name": "cod_orden_liq",
+                            "type": "string",
+                            "width": 2
+                          },
+                          {
+                            "name": "tpo_movimiento",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "tim_alta",
+                            "type": "string",
+                            "width": 26
+                          },
+                          {
+                            "name": "ide_user_alta",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "ide_term_alta",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "tim_ult_modf",
+                            "type": "string",
+                            "width": 26
+                          },
+                          {
+                            "name": "ide_user_ult_modf",
+                            "type": "string",
+                            "width": 8
+                          },
+                          {
+                            "name": "ide_term_ult_modf",
+                            "type": "string",
+                            "width": 4
+                          },
+                          {
+                            "name": "imp_base_imponible",
+                            "type": "string",
+                            "width": 13
+                          },
+                          {
+                            "name": "porc_exencion",
+                            "type": "string",
+                            "width": 18
+                          }
+                        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

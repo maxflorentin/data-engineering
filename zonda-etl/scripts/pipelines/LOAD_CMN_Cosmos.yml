@@ -1,0 +1,202 @@
+name: LOAD_CMN_Cosmos
+description: 'Load Cosmos Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 9 * * *'
+start_date: '2020-09-15'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_staging.rio187_actores, bi_corp_staging.rio187_casuisticas, bi_corp_staging.rio187_tipos_gestion, bi_corp_staging.rio187_canales, bi_corp_staging.rio187_gest_motdes_acciones, bi_corp_staging.rio187_motdes_arbol_resultados, bi_corp_staging.rio187_gest_resol_acciones, bi_corp_staging.rio187_usuarios, bi_corp_staging.rio187_gest_estados, bi_corp_staging.rio187_clientes, bi_corp_staging.rio187_casuistica_motivos
+tasks:
+  - name: COMMON_stk_rec_gest_motdes_acciones
+    operator: ZondaHiveOperator
+    config:
+        connection_id: cloudera_hive_beeline
+        schema: default
+        is_hql_file: true
+        hql:
+          - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gest_motdes_acciones/ETLV_LOAD-stk_rec_gest_motdes_acciones.hql'
+  - name: COMMON_stk_rec_gest_resol_acciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gest_resol_acciones/ETLV_LOAD-stk_rec_gest_resol_acciones.hql'
+  - name: COMMON_bt_rec_gestiones_mails
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_mails/ETLV_LOAD-bt_rec_gestiones_mails.hql'
+  - name: COMMON_dim_rec_canal
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_canal/ETLV_LOAD-dim_rec_canal.hql'
+  - name: COMMON_dim_rec_actor
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_actor/ETLV_LOAD-dim_rec_actor.hql'
+  - name: COMMON_dim_rec_casuistica
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_casuistica/ETLV_LOAD-dim_rec_casuistica.hql'
+  - name: COMMON_dim_rec_tipo_gestion
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_gestion/ETLV_LOAD-dim_rec_tipo_gestion.hql'
+  - name: COMMON_dim_rec_usuario
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_usuario/ETLV_LOAD-dim_rec_usuario.hql'
+  - name: COMMON_bt_rec_movimientos_tarjeta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_tarjeta/ETLV_LOAD-bt_rec_movimientos_tarjeta.hql'
+  - name: COMMON_bt_rec_gest_estados_csm
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_csm/ETLV_LOAD-bt_rec_gest_estados_csm.hql'
+  - name: COMMON_bt_rec_movimientos_cuenta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_cuenta/ETLV_LOAD-bt_rec_movimientos_cuenta.hql'
+  - name: COMMON_dim_rec_motdes_arbol_resultado
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_motdes_arbol_resultado/ETLV_LOAD-dim_rec_motdes_arbol_resultado.hql'
+  - name: COMMON_bt_rec_gestiones_cuenta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_cuenta/ETLV_LOAD-bt_rec_gestiones_cuenta.hql'
+  - name: COMMON_bt_rec_gestiones_tarjeta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_tarjeta/ETLV_LOAD-bt_rec_gestiones_tarjeta.hql'
+  - name: COMMON_dim_rec_centro_costo
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_centro_costo/ETLV_LOAD-dim_rec_centro_costo.hql'
+  - name: COMMON_dim_rec_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_clientes/ETLV_LOAD-dim_rec_clientes.hql'
+  - name: COMMON_dim_rec_casuistica_motivos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_casuistica_motivos/ETLV_LOAD-dim_rec_casuistica_motivos.hql'
+  - name: COMMON_stk_rec_gestiones_csm
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gestiones_csm/ETLV_LOAD-stk_rec_gestiones_csm.hql'
+  - name: SHERIFF_Control_stk_rec_gestiones_csm
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_stk_rec_gestiones_csm
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gestiones_csm/stk_rec_gestiones_csm_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Cosmos') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_rec_gestiones_csm_sheriff.json']
+dependencies:
+  COMMON_dim_rec_clientes: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_centro_costo: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_motdes_arbol_resultado: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_tipo_gestion: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_casuistica: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_actor: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_canal: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_casuistica_motivos: COMMON_stk_rec_gestiones_csm
+  COMMON_stk_rec_gest_motdes_acciones: COMMON_stk_rec_gestiones_csm
+  COMMON_stk_rec_gest_resol_acciones: COMMON_stk_rec_gestiones_csm
+  COMMON_dim_rec_usuario: [COMMON_stk_rec_gestiones_csm, COMMON_bt_rec_gestiones_tarjeta, COMMON_bt_rec_gestiones_cuenta, COMMON_bt_rec_gestiones_mails ]
+  COMMON_stk_rec_gestiones_csm: SHERIFF_Control_stk_rec_gestiones_csm
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar ]

@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio102_mvw_prem_nov_ptos_superclub ADD IF NOT EXISTS PARTITION (fecha_proc='{partition_date}');

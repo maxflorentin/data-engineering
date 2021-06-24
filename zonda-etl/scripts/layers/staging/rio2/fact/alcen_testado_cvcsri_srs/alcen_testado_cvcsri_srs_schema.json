@@ -1,0 +1,87 @@
+{
+  "file": "testado_cvcsri_srs_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/testado_cvcsri_srs/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/testado_cvcsri_srs",
+  "createTable": "bi_corp_staging.alcen_testado_cvcsri_srs",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_sector",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol1",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol2",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol3",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol4",
+    "type": "string"
+  },
+  {
+    "name": "nro_sec",
+    "type": "string"
+  },
+  {
+    "name": "fec_estado",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol5",
+    "type": "string"
+  },
+  {
+    "name": "analista",
+    "type": "string"
+  },
+  {
+    "name": "fec_ingreso",
+    "type": "string"
+  },
+  {
+    "name": "fec_inicio_resol",
+    "type": "string"
+  },
+  {
+    "name": "fec_fin_resol",
+    "type": "string"
+  },
+  {
+    "name": "fec_res_prendario",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

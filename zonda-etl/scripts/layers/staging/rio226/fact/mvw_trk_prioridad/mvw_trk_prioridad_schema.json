@@ -1,0 +1,39 @@
+{
+        "file": "mvw_trk_prioridad_schema",
+        "location": "/santander/bi-corp/landing/rio226/fact/mvw_trk_prioridad/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/fact/mvw_trk_prioridad",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "createTable": "bi_corp_staging.rio226_trk_prioridad",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "ID",
+                        "type": "string"
+                },
+                {
+                        "name": "ID_TRKUSABILIDAD",
+                        "type": "string"
+                },
+                {
+                        "name": "SECCION",
+                        "type": "string"
+                },
+                {
+                        "name": "PRIORIDAD",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

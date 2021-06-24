@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio102_prem_clientes_campania ADD IF NOT EXISTS PARTITION (periodo='{partition_date}');

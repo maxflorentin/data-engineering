@@ -1,0 +1,111 @@
+{
+  "file": "tsol_estado_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tsol_estado/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tsol_estado",
+  "createTable": "bi_corp_staging.cvc_tsol_estado",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_legajo",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "fecha",
+    "type": "string"
+  },
+  {
+    "name": "hora",
+    "type": "string"
+  },
+  {
+    "name": "cod_usuario",
+    "type": "string"
+  },
+  {
+    "name": "des_obs_estado",
+    "type": "string"
+  },
+  {
+    "name": "fec_ini_resol",
+    "type": "string"
+  },
+  {
+    "name": "fec_fin_resol",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol1",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol2",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol3",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol4",
+    "type": "string"
+  },
+  {
+    "name": "mot_resol5",
+    "type": "string"
+  },
+  {
+    "name": "mot_ingreso_sup1",
+    "type": "string"
+  },
+  {
+    "name": "mot_ingreso_sup2",
+    "type": "string"
+  },
+  {
+    "name": "mot_ingreso_sup3",
+    "type": "string"
+  },
+  {
+    "name": "mot_ingreso_sup4",
+    "type": "string"
+  },
+  {
+    "name": "mot_ingreso_sup5",
+    "type": "string"
+  },
+  {
+    "name": "mot_recalificacion",
+    "type": "string"
+  },
+  {
+    "name": "sec_estado",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

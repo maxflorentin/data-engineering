@@ -1,0 +1,36 @@
+{
+  "file": "challengecustomeragree_schema",
+  "location": "/santander/bi-corp/landing/rio265/fact/challengecustomeragree/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/fact/rio265_challengecustomeragree",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_challengecustomeragree",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "id_challenge",
+      "type": "string"
+    },
+    {
+      "name": "datefrom",
+      "type": "string"
+    },
+    {
+      "name": "dateto",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [{
+    "name": "partition_date",
+    "target": "datefrom",
+    "type": "date",
+    "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+    "partitionColumn": true,
+    "partitionOrder": 1}]
+}

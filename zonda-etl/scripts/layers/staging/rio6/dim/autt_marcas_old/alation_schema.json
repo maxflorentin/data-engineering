@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A125117"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio6_autt_marcas",
+      "title": "Marcas de Vehiculos",
+      "schema": "bi_corp_staging",
+      "source": "RECTOR",
+      "query": "",
+      "type": "DIM",
+      "description": "Marcas de Vehiculos",
+      "columns": [
+        {
+          "name": "AUMA_CD_MARCA",
+          "title": "AUMA_CD_MARCA",
+          "description": "Codigo de Marca",
+          "type": "Alfanumerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUMA_DE_MARCA",
+          "title": "AUMA_DE_MARCA",
+          "description": "Descripcion de Marca",
+          "type": "Alfanumerico",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

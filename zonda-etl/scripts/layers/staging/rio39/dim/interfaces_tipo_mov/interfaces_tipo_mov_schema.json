@@ -1,0 +1,46 @@
+{
+     "file": "interfaces_tipo_mov_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/interfaces_tipo_mov/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/interfaces_tipo_mov",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [       {
+              "name": "tipo_mov",
+              "type": "string"
+             },
+             {
+              "name": "descripcion",
+              "type": "string"
+             },
+             {
+              "name": "tipo_transaccion",
+              "type": "string"
+             },
+             {
+              "name": "interface",
+              "type": "string"
+             },
+             {
+              "name": "customer_rpt",
+              "type": "string"
+             },
+             {
+              "name": "int_pcios_transf",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

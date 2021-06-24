@@ -1,0 +1,90 @@
+{
+  "file": "alta_reset_schema",
+  "location": "/santander/bi-corp/landing/asgi/fact/alta_reset/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/asgi/fact/alta_reset",
+  "createTable": "bi_corp_staging.asgi_alta_reset",
+  "extension": "csv",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "funcion_esp",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "funcion",
+      "type": "string",
+      "width": 5
+    },
+    {
+      "name": "autorizacion_1_esp",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "autorizacion_1",
+      "type": "string",
+      "width": 7
+
+    },
+    {
+      "name": "autorizacion_2_esp",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "autorizacion_2",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "nup_esp",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "nup",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "fecha_esp",
+      "type": "string",
+      "width": 5
+    },
+    {
+      "name": "fecha",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "hora_esp",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "hora",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "retorno_esp",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "retorno",
+      "type": "string",
+      "width": 2
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

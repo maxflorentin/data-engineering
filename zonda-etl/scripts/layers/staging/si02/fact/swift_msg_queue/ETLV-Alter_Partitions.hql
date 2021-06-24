@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.si02_swift_msg_queue;

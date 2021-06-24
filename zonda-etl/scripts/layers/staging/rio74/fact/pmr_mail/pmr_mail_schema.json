@@ -1,0 +1,39 @@
+{
+  "file": "pmr_mail_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/pmr_mail/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/pmr_mail",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_mail",
+    "type": "string"
+  },
+    {
+      "name": "id_reason",
+      "type": "string"
+    },
+    {
+      "name": "date_reject",
+      "type": "string"
+    },
+    {
+      "name": "e_mail",
+      "type": "string"
+    },
+    {
+      "name": "id_signature",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

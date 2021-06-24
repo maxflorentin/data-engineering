@@ -1,0 +1,74 @@
+{
+    "file": "in00_schema",
+    "location": "/santander/bi-corp/landing/in00/fact/in00/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/afir/fact/in00",
+    "createTable": "bi_corp_staging.afir_in00",
+    "extension": "csv",
+    "header": false,
+    "delimiter": ";",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "nro_inh",
+            "type": "string"
+        },
+        {
+            "name": "tpo_pers",
+            "type": "string"
+        },
+        {
+            "name": "ape_pers",
+            "type": "string"
+        },
+        {
+            "name": "nom_pers",
+            "type": "string"
+        },
+        {
+            "name": "cod_sex_pers",
+            "type": "string"
+        },
+        {
+            "name": "fec_naci",
+            "type": "string"
+        },
+        {
+            "name": "tpo_doc",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc",
+            "type": "string"
+        },
+        {
+            "name": "cod_caus",
+            "type": "string"
+        },
+        {
+            "name": "sec_caus",
+            "type": "string"
+        },
+        {
+            "name": "fec_inh",
+            "type": "string"
+        },
+        {
+            "name": "fec_rehb",
+            "type": "string"
+        },
+        {
+            "name": "vigencia",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

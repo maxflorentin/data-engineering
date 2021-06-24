@@ -1,0 +1,18 @@
+{
+  "file": "ugdtaux",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtaux/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtaux/history",
+  "createTable": "bi_corp_staging.malug_ugdtaux_history",
+  "copybook": "ugdtaux.cob",
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

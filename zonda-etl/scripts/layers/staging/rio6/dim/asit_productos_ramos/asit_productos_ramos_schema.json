@@ -1,0 +1,26 @@
+{
+  "file": "asit_productos_ramos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_productos_ramos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_productos_ramos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"aspm_cd_producto",
+      "type": "string"
+    },
+    {
+      "name":"aspm_cd_ramo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

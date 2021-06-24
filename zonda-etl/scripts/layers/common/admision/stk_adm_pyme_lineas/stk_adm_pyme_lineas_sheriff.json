@@ -1,0 +1,40 @@
+{
+  "table": "bi_corp_common.stk_adm_pyme_lineas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": [
+        "cod_adm_tramite",
+        "cod_adm_nro_prop",
+        "fc_adm_monto_linea",
+        "cod_adm_operacion",
+        "int_adm_secuencia"
+      ]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "cod_adm_tramite",
+        "cod_adm_nro_prop",
+        "cod_adm_operacion",
+        "cod_adm_peusualt",
+        "dt_adm_pefecalt",
+        "int_adm_secuencia",
+        "cod_adm_peusualt",
+        "dt_adm_pefecalt_f485",
+        "dt_adm_fecha"
+      ]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "dt_adm_pefecalt",
+        "dt_adm_pefecmod",
+        "dt_adm_pefecalt_f485"
+      ],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+  ]
+}

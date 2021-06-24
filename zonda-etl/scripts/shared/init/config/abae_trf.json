@@ -1,0 +1,38 @@
+{
+  "tables": [
+    {
+      "source": "ABAE",
+      "type": "DIM",
+      "name": "ABAE_CONCEPTOS",
+      "filePrefix": "ABAE_CONCEPTOS_D"
+    },
+    {
+      "source": "ABAE",
+      "type": "DIM",
+      "name": "ABAE_ENT_VIRTUALES",
+      "filePrefix": "ABAE_ENT_VIRTUALES_D"
+    },
+    {
+      "source": "ABAE",
+      "type": "DIM",
+      "name": "ABAE_RECHAZOS",
+      "filePrefix": "ABAE_RECHAZOS_D"
+    },
+    {
+      "source": "ABAE",
+      "type": "DIM",
+      "name": "ABAE_CANALES",
+      "filePrefix": "ABAE_CANALES_D"
+    },
+    {
+      "source": "ABAE",
+      "type": "FACT",
+      "name": "ABAE_TRANSFERENCIAS",
+      "filePrefix": "ABAE_TRANSFERENCIAS_D"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_ABAE_Trf-Daily"
+  }
+}

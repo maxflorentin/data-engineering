@@ -1,0 +1,37 @@
+name: LOAD_BSN_REC_RDA_TablonReclamaciones-Daily
+description: 'Load Daily RDA Tablon Reclamaciones'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 12 * * * *'
+start_date: '2021-04-13'
+#catchup: true
+retries: 2
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Create_RDA_Reclamaciones_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/tbl/reclamaciones/DDLT-Create_business_tbl_reclamaciones.hql'
+  - name: Load_RDA_Reclamaciones_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/tbl/reclamaciones/ETL_LOAD_tbl_reclamaciones.hql'
+dependencies:
+  Create_RDA_Reclamaciones_Table: Load_RDA_Reclamaciones_Table
+#notifications:
+  #on_error: true
+  #channels: [$DEFAULT_SLACK_CHANNEL]
+  #users: [jtroncha@santandertecnologia.com.ar]

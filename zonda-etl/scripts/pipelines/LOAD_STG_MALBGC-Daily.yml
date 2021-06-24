@@ -1,0 +1,225 @@
+name: LOAD_STG_MALBGC-Daily
+description: 'Load data from MALBGC tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+# start_date: '2020-01-24'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_BGDTMSO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BGDTMSO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmso/bgdtmso_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmso/bgdtmso.cob']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtmso_schema.json']
+  - name: STAGING_BGDTMSO_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmso/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtmso/ETLV-Alter_Partitions.hql'
+  - name: STAGING_ZBDTPPC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ZBDTPPC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtppc/zbdtppc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdtppc/zbdtppc.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['zbdtppc_schema.json']
+  - name: STAGING_bgdtsdo_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgdtsdo_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtsdo/bgdtsdo_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtsdo/bgdtsdo.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bgdtsdo_schema.json']
+  - name: STAGING_bgdtcoe_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgdtcoe_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtcoe/malbgc_bgdtcoe.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtcoe/bgdtcoe.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgdtcoe.json']
+  - name: STAGING_bgeclco_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgeclco_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgeclco/malbgc_bgeclco.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgeclco/bgeclco.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgeclco.json']
+  - name: STAGING_bgeccdep_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgeccdep_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgeccdep/malbgc_bgeccdep.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgeccdep/bgeccdep.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgeccdep.json']
+  - name: STAGING_bgecmocl_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgecmocl_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgecmocl/malbgc_bgecmocl.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgecmocl/bgecmocl.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgecmocl.json']
+  - name: STAGING_zbdttra_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_zbdttra_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/zbdttra/zbdttra_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['zbdttra_schema.json']
+  - name: STAGING_bgdtcob_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgdtcob_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtcob/malbgc_bgdtcob.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtcob/bgdtcob.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgdtcob.json']
+
+  - name: STAGING_bgdtbil_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_bgdtbil_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 1
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtbil/malbgc_bgdtbil.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malbgc/fact/bgdtbil/bgdtbil.cob']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALBGC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['malbgc_bgdtbil.json']
+
+
+dependencies:
+  STAGING_BGDTMSO_Parquetize: STAGING_BGDTMSO_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, pabnunez@santandertecnologia.com.ar]

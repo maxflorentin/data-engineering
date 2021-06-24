@@ -1,0 +1,35 @@
+{
+	"file": "cp_paquetes_crupier_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_paquetes_crupier/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_paquetes_crupier",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_paquetes_crupier",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_paquete",
+			"type": "string"
+		},
+{
+			"name": "desc_paquete",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+		{
+			"name": "tipo_paquete",
+			"type": "string"
+		},
+		{
+			"name": "desc_comercial",
+			"type": "string"
+		}
+	]
+}

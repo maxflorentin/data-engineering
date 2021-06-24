@@ -1,0 +1,200 @@
+name: LOAD_BDR-Garantias_Contratos-Monthly_div
+description: 'LOAD Tables for Garantias-Contratos_div'
+owner: BI-Corp
+active: true
+start_date: '2020-04-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: DDLT_GARANTIA_CONTRATO_div
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/DDLT_GARANTIA_CONTRATO.hql'
+  - name: ETLV_01_insert_aux_garant_calif_empresa
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_calif_empresa.hql'
+  - name: ETLV_01_insert_aux_garant_calif_pais
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_calif_pais.hql'
+  - name: ETLV_02_insert_aux_garant_garantias_genericas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_02_insert_aux_garant_garantias_genericas.hql'
+  - name: ETLV_01_insert_aux_garant_contratos_div
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_contratos.hql'
+  - name: ETLV_01_insert_aux_garant_garantias_especificas_div
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_01_insert_aux_garant_garantias_especificas.hql'
+
+  - name: ETLV_04_insert_garant_contratos_garantias_st_ini
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_ini.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop1
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop2
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop3
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop4
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop5
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop6
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop7
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop8
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_loop9
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_loop.hql'
+  - name: ETLV_04_insert_garant_contratos_garantias_st_fin
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_04_insert_garant_contratos_garantias_st_fin.hql'
+  - name: ETLV_05_insert_garant_contratos_garantias_inicial_div
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/ETLV_05_insert_garant_contratos_garantias_inicial.hql'
+  - name: ETLV_05_insert_jm_garant_cto_div
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARANT_CTO/ETLV-Load_Table.hql'
+  - name: ETVL_06_insert_jm_gara_real
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARA_REAL/ETLV-Load_Table.hql'
+dependencies:
+  DDLT_GARANTIA_CONTRATO_div: [ETLV_01_insert_aux_garant_calif_pais, ETLV_01_insert_aux_garant_calif_empresa, ETLV_01_insert_aux_garant_garantias_especificas_div]
+  ETLV_01_insert_aux_garant_calif_pais: [ETLV_02_insert_aux_garant_garantias_genericas, ETLV_01_insert_aux_garant_contratos_div]
+  ETLV_01_insert_aux_garant_calif_empresa: [ETLV_02_insert_aux_garant_garantias_genericas, ETLV_01_insert_aux_garant_contratos_div]
+  ETLV_01_insert_aux_garant_contratos_div: [ETLV_04_insert_garant_contratos_garantias_st_ini]
+  ETLV_02_insert_aux_garant_garantias_genericas: ETLV_04_insert_garant_contratos_garantias_st_ini
+  ETLV_01_insert_aux_garant_garantias_especificas_div: [ETLV_04_insert_garant_contratos_garantias_st_ini]
+  ETLV_04_insert_garant_contratos_garantias_st_ini: [ETLV_04_insert_garant_contratos_garantias_st_loop1]
+  ETLV_04_insert_garant_contratos_garantias_st_loop1: [ETLV_04_insert_garant_contratos_garantias_st_loop2]
+  ETLV_04_insert_garant_contratos_garantias_st_loop2: [ETLV_04_insert_garant_contratos_garantias_st_loop3]
+  ETLV_04_insert_garant_contratos_garantias_st_loop3: [ETLV_04_insert_garant_contratos_garantias_st_loop4]
+  ETLV_04_insert_garant_contratos_garantias_st_loop4: [ETLV_04_insert_garant_contratos_garantias_st_loop5]
+  ETLV_04_insert_garant_contratos_garantias_st_loop5: [ETLV_04_insert_garant_contratos_garantias_st_loop6]
+  ETLV_04_insert_garant_contratos_garantias_st_loop6: [ETLV_04_insert_garant_contratos_garantias_st_loop7]
+  ETLV_04_insert_garant_contratos_garantias_st_loop7: [ETLV_04_insert_garant_contratos_garantias_st_loop8]
+  ETLV_04_insert_garant_contratos_garantias_st_loop8: [ETLV_04_insert_garant_contratos_garantias_st_loop9]
+  ETLV_04_insert_garant_contratos_garantias_st_loop9: [ETLV_04_insert_garant_contratos_garantias_st_fin]
+  ETLV_04_insert_garant_contratos_garantias_st_fin: [ETLV_05_insert_garant_contratos_garantias_inicial_div,ETLV_05_insert_jm_garant_cto_div,ETVL_06_insert_jm_gara_real]
+notifications:
+  channels: [$DEFAULT_SLACK_CHANNEL]

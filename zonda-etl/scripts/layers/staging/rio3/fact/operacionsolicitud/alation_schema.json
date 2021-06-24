@@ -1,0 +1,49 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_operacionsolicitud",
+      "title": "RELACION SOLICITUD-OPERACIÓN",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "RELACION SOLICITUD-OPERACIÓN",
+      "columns": [
+        {
+          "name": "OPERACION",
+          "title": "OPERACION",
+          "description": "codigo de operación",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "SOLICITUD",
+          "title": "SOLICITUD",
+          "description": "codigo de solicitud",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,2 @@
+"SET mapred.job.queue.name=root.dataeng;
+SELECT cal.laborable_anterior_yyyymmdd FROM  santander_business_risk_arda.calendario cal inner join (SELECT MAX(data_date_part) as max_partition from santander_business_risk_arda.calendario) maxi ON maxi.max_partition = cal.data_date_part WHERE cal.fec_yyyymmdd = '{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ARDA_Previous_Working_Day') }}';"

@@ -1,0 +1,101 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_tracking_event_component",
+            "title": "CONTIENE TODOS LOS COMPONENTES DE LOS ENVIOS PROCESADOS POR EL COURIER",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE TODOS LOS COMPONENTES DE LOS ENVIOS PROCESADOS POR EL COURIER",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "CÓDIGO DE ENVÍO INTERNO DEL COMPONENTE",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRACKING_EVENT_ID",
+                    "title": "TRACKING_EVENT_ID",
+                    "description": "CÓDIGO DE ENVÍO INTERNO DE COURIER ",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODE",
+                    "title": "CODE",
+                    "description": "CÓDIGO DE SECUENCIA DEL COMPONENTE",
+                    "type": "VARCHAR2(100)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TYPE",
+                    "title": "TYPE",
+                    "description": "TIPO DE COMPONENTE",
+                    "type": "VARCHAR2(15)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

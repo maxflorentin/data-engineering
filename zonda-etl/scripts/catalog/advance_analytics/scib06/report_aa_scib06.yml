@@ -1,0 +1,61 @@
+name: REPORT_AA_SCIB06
+description: 'REPORT_AA_SCIB06'
+owner: BI-Corp
+active: true
+schedule_interval: '0 23 * * 1-5'
+#start_date: '2018-03-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/mlops_aml_scib06_{{ ti.xcom_pull(task_ids='InputConfig', key='next_partition_date_filter', dag_id='REPORT_AA_SCIB06') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/advance_analytics/scib06/scib06.hql'
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/mlops_aml_scib06_{{ ti.xcom_pull(task_ids='InputConfig', key='next_partition_date_filter', dag_id='REPORT_AA_SCIB06') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/NORMATIVOS/AAML/scib06/mlops_aml_scib06_{{ ti.xcom_pull(task_ids='InputConfig', key='next_partition_date_filter', dag_id='REPORT_AA_SCIB06') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/mlops_aml_scib06_{{ ti.xcom_pull(task_ids='InputConfig', key='next_partition_date_filter', dag_id='REPORT_AA_SCIB06') }}.txt"
+  - name: ControlM_Executor_e
+    operator: SSHOperator
+    config:
+      connection_id: de_ssh
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/controlm/controlm_executor.py --job_name RIO-GALA-Dummy164"
+dependencies:
+  report_execution: report_send_sftp
+  report_send_sftp : ControlM_Executor_e
+  ControlM_Executor_e: EXECUTE_Remove_FILE
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [irusconi@santandertecnologia.com.ar]

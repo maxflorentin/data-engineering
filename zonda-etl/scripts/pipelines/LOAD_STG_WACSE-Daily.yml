@@ -1,0 +1,181 @@
+name: LOAD_STG_WACSE-Daily
+description: 'Load data from Acse source to STG (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '30 7 * * *'
+start_date: '2020-08-15'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_TARIFAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_TARIFAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/dim/tarifas/acse_tarifas_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_tarifas_schema.json']
+  - name: STAGING_TIPOS_CAJA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_TIPOS_CAJA_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/dim/tipos_caja/acse_tipos_caja_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_tipos_caja_schema.json']
+  - name: STAGING_CAMPANAS_MENSUAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_CAMPANAS_MENSUAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/campanas_mensual/acse_campanas_mensual_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_campanas_mensual_schema.json']
+  - name: STAGING_COMISIONES_COBRADAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_COMISIONES_COBRADAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/comisiones_cobradas/acse_comisiones_cobradas_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_comisiones_cobradas_schema.json']
+  - name: STAGING_COMISIONES_PENDIENTES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_COMISIONES_PENDIENTES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/comisiones_pendientes/acse_comisiones_pendientes_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_comisiones_pendientes_schema.json']
+  - name: STAGING_CONTRATOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_CONTRATOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/contratos/acse_contratos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_contratos_schema.json']
+  - name: STAGING_MAESTRO_CAMPANAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAESTRO_CAMPANAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/maestro_campanas/acse_maestro_campanas_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_maestro_campanas_schema.json']
+  - name: STAGING_MODULOS_FISICOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MODULOS_FISICOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/modulos_fisicos/acse_modulos_fisicos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_modulos_fisicos_schema.json']
+  - name: STAGING_REL_CONTRATO_CAMPANA_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_REL_CONTRATO_CAMPANA_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/acse/fact/rel_contrato_campana/acse_rel_contrato_campana_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_WACSE-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['acse_rel_contrato_campana_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msanguinetti@santandertecnologia.com.ar]
+

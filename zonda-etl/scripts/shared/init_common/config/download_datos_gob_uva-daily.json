@@ -1,0 +1,16 @@
+{
+    "name": "DOWNLOAD_DATOS_GOB-Daily",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "DOWNLOAD_DATOS_GOB-Daily",
+            "tasks": "all"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_STG_DATOS_GOB-Daily",
+            "tasks": "all"
+        }
+    ]
+}

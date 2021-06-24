@@ -1,0 +1,42 @@
+      *
+      ***** ARCHIVO DE RELACION CONTRATO CAMPANIA  ********
+      *---------------------------------------------------*
+      ******* TIPO.REG...= FIJO                   *********
+      ******* LONGITUD   = 150                    *********
+      *
+      *                                                    Desde  Hasta
+       01  WACSE570.
+      *        Sucursal , Numero de contrato , Fecha Desde     1     24
+           05  WACSE570-CLAVE.
+              07  WACSE570-CLAVE-ALTERNA.
+      *              Sucursal contrato ACSE                    1      4
+                  10 WACSE570-SUCURSAL             PIC X(04).
+      *              Numero de cuenta contrato ACSE            5     16
+                  10 WACSE570-CONTRATO             PIC X(12).
+              07  WACSE570-CLAVE-RESTO.
+      *              Fecha de Vigencia Desde                  17     24
+                  10 WACSE570-FEC-DESDE            PIC 9(08).
+      *              Campa‹a                                  25     28
+                  10 WACSE570-CAMPANIA             PIC X(04).
+      *
+      *        Datos restantes
+           05  WACSE570-RESTO.
+      *              Fecha de Vigencia Hasta                  29     36
+                  10 WACSE570-FEC-HASTA            PIC 9(08).
+      *              Estado de la relacion contrato/campa‹a   37     37
+                  10 WACSE570-ESTADO               PIC X(01).
+      *              Usuario Alta del Contrato                38     45
+                  10 WACSE570-USUARIO-ALTA         PIC X(08).
+      *              Fecha Alta                               46     53
+                  10 WACSE570-FEC-ALTA             PIC 9(08).
+      *              Usuario Ult Modificacion                 54     61
+                  10 WACSE570-USUARIO-ULT-ACT      PIC X(08).
+      *              Fecha Ult Modificacion                   62     69
+                  10 WACSE570-FEC-ULT-ACT          PIC 9(08).
+      *              Programa que lo genera                   70     77
+                  10 WACSE570-PGM-ORIGEN           PIC X(08).
+      *              Programa que lo genera                   78     78
+                  10 WACSE570-MARCA-RELIQ          PIC X(01).
+      *
+      *        Relleno                                        79    150
+                  10 WACSE570-FILLER               PIC X(72).

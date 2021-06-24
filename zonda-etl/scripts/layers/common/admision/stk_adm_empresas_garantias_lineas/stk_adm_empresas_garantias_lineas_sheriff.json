@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_garantias_lineas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_nro_prop","cod_adm_operacion","cod_adm_seq_lin_garan","cod_adm_gartia","cod_adm_secuencia"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_nro_prop","cod_adm_operacion","cod_adm_seq_lin_garan","cod_adm_gartia","cod_adm_peusualt","dt_adm_pefecalt","cod_adm_secuencia"],
+      "threshold": 0.009
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_pefecalt","dt_adm_pefecmod","dt_adm_vencimiento"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}
+

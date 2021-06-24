@@ -1,0 +1,60 @@
+name: LOAD_STG_Control_USD-Daily
+description: 'Load data from MALBGC Control USD'
+owner: BI-Corp
+active: true
+# schedule_interval: '*/30 13-22 * * 1-5'
+start_date: '2019-10-27'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_CONTROL_USD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_CONTROL_USD_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/controlusd/control_usd_schema.json' ]
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Control_USD-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_Control_USD-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['control_usd_schema.json']
+  - name: STAGING_CONTROL_USD_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/controlusd/ETLV-Alter_Partitions.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/controlusd/DDLT-Create_Staging_Table.hql'
+  - name: UPDATE_Tableau_Extract
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: 'LabData'
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/021B9E9B-51E6-4291-A0D3-77166F5DD83B/refresh'
+dependencies:
+    STAGING_CONTROL_USD_Parquetize: STAGING_CONTROL_USD_AddPartition
+    STAGING_CONTROL_USD_AddPartition: UPDATE_Tableau_Extract
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maurogonzalez@santandertecnologia.com.ar,sbruzatoriharper@santandertecnologia.com.ar]

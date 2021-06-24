@@ -1,0 +1,89 @@
+{
+  "file": "datos_gob_emae_actividades",
+  "location": "/santander/bi-corp/landing/datos_gob/emae_actividades/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/datos_gob/emae_actividades",
+  "createTable": "bi_corp_staging.datos_gob_emae_actividades",
+  "header": true,
+  "extension": "csv",
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "agricultura_ganaderia_caza_silvicultura",
+      "type": "string"
+    },
+    {
+      "name": "pesca",
+      "type": "string"
+    },
+    {
+      "name": "explotacion_minas_canteras",
+      "type": "string"
+    },
+    {
+      "name": "industria_manufacturera",
+      "type": "string"
+    },
+    {
+      "name": "electricidad_gas_agua",
+      "type": "string"
+    },
+    {
+      "name": "construccion",
+      "type": "string"
+    },
+    {
+      "name": "comercio_mayorista_minorista_reparaciones",
+      "type": "string"
+    },
+    {
+      "name": "hoteles_restaurantes",
+      "type": "string"
+    },
+    {
+      "name": "transporte_comunicaciones",
+      "type": "string"
+    },
+    {
+      "name": "intermediacion_financiera",
+      "type": "string"
+    },
+    {
+      "name": "actividades_inmobiliarias_empresariales_alquiler",
+      "type": "string"
+    },
+    {
+      "name": "admin_publica_planes_seguridad_social_afiliacion_obligatoria",
+      "type": "string"
+    },
+    {
+      "name": "ensenianza",
+      "type": "string"
+    },
+    {
+      "name": "servicios_sociales_salud",
+      "type": "string"
+    },
+    {
+      "name": "otras_actividades_servicios_comunitarias_sociales_personales",
+      "type": "string"
+    },
+    {
+      "name": "impuestos_netos_subsidios",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

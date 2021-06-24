@@ -1,0 +1,99 @@
+ 01  LC-RECORD-TYPE40.
+     05  L40-KEY.
+         10  L40-LC-NUMBER.
+             15  L40-GROUP                  PIC X.
+             15  L40-NUMBER                 PIC X(6).
+         10  L40-RECORD-TYPE                PIC X(2).
+         10  L40-TYPE-SEQUENCE              PIC X(3).
+         10  L40-RECORD-SEQUENCE            PIC X(6).
+     05  L40-LOC-CODE                       PIC X(6).
+     05  L40-CSI-DATA-1.
+         10  L40-CSI-DISPL-EX-RATES.
+             15  L40-BOOK-EXCHG-RATE        PIC S9(6)V9(9) COMP-3.
+             15  L40-COMM-SPOT-RATE         PIC S9(6)V9(9) COMP-3.
+             15  L40-COMM-DR-EX-RATE        PIC S9(6)V9(9) COMP-3.
+             15  L40-CASH-COLL-FIXED-EXCH   PIC S9(6)V9(9) COMP-3.
+             15  L40-CASH-COLL-SPOT-RATE    PIC S9(6)V9(9) COMP-3.
+         10  L40-CSI-EX-RATES-MULT-DIV-IND.
+             15  L40-BOOK-EXCHG-RATE-IND    PIC X.
+             15  L40-COMM-SPOT-RATE-IND     PIC X.
+             15  L40-COMM-DR-EX-RATE-IND    PIC X.
+             15  L40-CASH-COLL-FIX-EX-IND   PIC X.
+             15  L40-CASH-COLL-SPOT-EX-IND  PIC X.
+         10  L40-ORIG-ISSUE-DATE            PIC 9(7) COMP-3.
+         10  FILLER                         PIC X(3).
+         10  L40-FACILITY-ID                PIC X(13).
+         10  L40-POST-FACILITY-IND          PIC X(01).
+         10  L40-LATEST-FACILITY-ID         PIC X(13).
+         10  L40-CASH-COLL-FIELDS.
+             15  L40-CR-CASH-ORIG-CURR      PIC X(03).
+             15  L40-CR-CASH-LATE-CURR      PIC X(03).
+             15  L40-CASH-CR-SPOT-EX-IND    PIC X.
+             15  L40-CASH-CR-SPOT-RATE      PIC S9(6)V9(9).
+         10  FILLER                         PIC X(03).
+     05  L40-CUSTOMER-AREA.
+         10  L40-PARTICIPATIONS-SEQ         PIC 9(06).
+         10  L40-PARTIC-ORIG-PCT            PIC S9(3)V9(9) COMP-3.
+         10  L40-PARTIC-CURR-PCT            PIC S9(3)V9(9) COMP-3.
+         10  L40-PARTIC-ORIG-BAL            PIC S9(11)V99.
+         10  L40-PARTIC-CURR-BAL            PIC S9(11)V99.
+         10  L40-LOANS-PROCESSED-CTR        PIC  9(3).
+         10  L40-LOANS-RELEASED-CTR         PIC  9(3).
+         10  L40-AMT-PACK-CREDITS           PIC S9(11)V99  COMP-3.
+         10  L40-AMT-SHIP-GUARANTEES        PIC S9(11)V99  COMP-3.
+     05  L40-AUTO-EXT-PROC.
+         10  L40-AUTO-EXT-PERIODS.
+             15  L40-EXT-PERIOD-NUMBER          PIC 9(3).
+             15  L40-EXT-NOTICE-PERIOD          PIC 99.
+             15  L40-EXT-LEAD-TIME              PIC 99.
+             15  L40-EXT-REMINDER-PERIOD        PIC 99.
+         10  L40-AUTO-EXT-DATES.
+             15  L40-EXTENSION-DATE-ORIG        PIC S9(7) COMP-3.
+             15  L40-EXTENSION-DATE-LATEST      PIC S9(7) COMP-3.
+             15  L40-NOTICE-DATE-ORIG           PIC S9(7) COMP-3.
+             15  L40-NOTICE-DATE-LATEST         PIC S9(7) COMP-3.
+             15  L40-REMINDER-DATE-ORIG         PIC S9(7) COMP-3.
+             15  L40-REMINDER-DATE-LATEST       PIC S9(7) COMP-3.
+             15  L40-NEW-EXPIRY-DATE            PIC S9(7) COMP-3.
+             15  L40-EXT-PERIOD-TYPE            PIC X.
+             15  L40-NOTICE-PERIOD-TYPE         PIC X.
+         10  L40-SHIP-TO                        PIC X(65).
+         10  L40-SHIP-FROM                      PIC X(65).
+         10  L40-ORIG-LIABILITY-AMT         PIC S9(11)V99  COMP-3.
+         10  L40-CANC-SBY-REFUND-FEE        PIC S9(11)V99  COMP-3.
+         10  L40-ORIG-PLAN-CODE                 PIC X(01).
+         10  L40-CURRENT-AS-OF-DATE             PIC S9(7) COMP-3.
+         10  FILLER                             PIC X(02).
+     05  L40-CSI-DATA-2.
+         10  L40-THIRD-CURR-ACCOUNTING.
+             15  L40-THIRD-CURR-CODE        PIC X(03).
+             15  L40-THIRD-CURR-IND         PIC X.
+             15  L40-THIRD-CURR-EX-RATE     PIC S9(6)V9(9) COMP-3.
+             15  L40-THIRD-CURR-BALANCE     PIC S9(11)V99  COMP-3.
+         10  L40-NATIVE-LANGUAGE-DETAIL     PIC X(601).
+         10  FILLER REDEFINES L40-NATIVE-LANGUAGE-DETAIL.
+             15  L40-NL-QUANTITY            PIC 9(08).
+             15  L40-NL-STANDARD-UNIT       PIC X(10).
+             15  L40-NL-PORT-OF-ARRIVAL     PIC X(30).
+             15  L40-NL-PURPOSE-PROJECT     PIC X(30).
+             15  L40-NL-ENG-PURPOSE-ARRAY.
+                 20  L40-NL-ENG-PURPOSE OCCURS 4
+                                            PIC X(65).
+             15  L40-NL-NAT-PURPOSE-ARRAY.
+                 20  L40-NL-NAT-PURPOSE OCCURS 4
+                                            PIC X(65).
+             15  L40-NL-PCT-OF-CONTRACT     PIC S9(3)V9(2)
+                                            COMP-3.
+         10  L40-RECEIPT-DATE               PIC S9(7) COMP-3.
+         10  L40-LIAB-SUB-NUMBER            PIC X(3).
+         10  L40-TSC-RELEASED-CNT           PIC S9(3) COMP-3.
+         10  L40-TSC-UNRELEASED-CNT         PIC S9(3) COMP-3.
+         10  L40-INSURANCE-NEXT-TRACE-DTE   PIC S9(7) COMP-3.
+         10  L40-TIME-STAMP-REF             PIC X(24).
+         10  L40-EXPIRY-AT                  PIC X(29).
+         10  L40-ISS-TAX-RATE-PCT            PIC S9(2)V99.
+         10  L40-DISC-FIN-ACCEPT-COMM        PIC X.
+         10  L40-CONFIRM-CHARGES             PIC X.
+         10  L40-OTHER-CHARGES               PIC X.
+         10  L40-MULTICUR-IND                PIC X.
+         10  L40-EXT-NOTICE-PERIOD-EXTENDED  PIC 9(4).

@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE  bi_corp_staging.orde_operativo_mvw_trk_pacha ;

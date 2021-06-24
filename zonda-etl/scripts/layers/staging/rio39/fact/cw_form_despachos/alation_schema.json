@@ -1,0 +1,184 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_cw_form_despachos",
+      "title": "formularios despachos",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/cw_form_despachos/",
+      "type": "fact",
+      "description": "Relación Despacho-Formulario",
+      "columns":
+               [
+                {
+                  "name": "nro_form",
+                  "title": "nro_form",
+                  "description": "nro de formulario",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "secuencia",
+                  "title": "secuencia",
+                  "description": "secuencia  ",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "nro_doc",
+                  "title": "nro_doc",
+                  "description": "nro de documento ",
+                  "type": "varchar2",
+                  "personidentifier": true,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Confidencial"
+                },
+                {
+                  "name": "importe",
+                  "title": "importe",
+                  "description": "importe",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_embarque",
+                  "title": "fecha_embarque",
+                  "description": "fecha de embarque",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "imp_aplic",
+                  "title": "imp_aplic",
+                  "description": "imp_aplic",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "banco",
+                  "title": "banco",
+                  "description": "banco",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_declaracion",
+                  "title": "tipo_declaracion",
+                  "description": "tipo de declaracion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "nro_dj",
+                  "title": "nro_dj",
+                  "description": "nro de dj",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "mot_excep",
+                  "title": "mot_excep",
+                  "description": "motivo de excepcion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_moneda",
+                  "title": "cod_moneda",
+                  "description": "codigo moneda",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "carga_manual",
+                  "title": "carga_manual",
+                  "description": "carga manual",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "posicion_aranc",
+                  "title": "posicion_aranc",
+                  "description": "posicion arancelaria",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 15,
+                  "security": "Público"
+                },
+                {
+                  "name": "espera_certif",
+                  "title": "espera_certif",
+                  "description": "espera certificacion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

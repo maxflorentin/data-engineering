@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(g7025_s1emp, g7025_contra1, g7025_emp_ant, g7025_cont_ant, g7025_motrenu, g7025_fealtrel, g7025_fec_mod, g7025_imprestr, g7025_coddiv, g7025_motrenug, g7025_fec_baja) AS line FROM bi_corp_bdr.jm_trz_cont_ren WHERE partition_date = '$month_partition_bdr';

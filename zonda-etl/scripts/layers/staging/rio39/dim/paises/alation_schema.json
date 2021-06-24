@@ -1,0 +1,162 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_paises",
+      "title": "tabla de códigos de paises",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/paises/",
+      "type": "dim",
+      "description": "Información de Paises",
+      "columns":
+               [
+                {
+                  "name": "cod_bcra",
+                  "title": "cod_bcra",
+                  "description": "cod bcra",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 2,
+                  "security": "Público"
+                },
+                {
+                  "name": "descripcion",
+                  "title": "descripcion",
+                  "description": "descripcion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "cuit_persona_fisica",
+                  "title": "cuit_persona_fisica",
+                  "description": "cuit persona fisica",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 15,
+                  "security": "Público"
+                },
+                {
+                  "name": "cuit_persona_juridica",
+                  "title": "cuit_persona_juridica",
+                  "description": "cuit persona juridica",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 15,
+                  "security": "Público"
+                },
+                {
+                  "name": "afip",
+                  "title": "afip",
+                  "description": "afip",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "convenio",
+                  "title": "convenio",
+                  "description": "convenio",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "alerta",
+                  "title": "alerta",
+                  "description": "alerta",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_baja_pais",
+                  "title": "fecha_baja_pais",
+                  "description": "fecha baja pais",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "con_acred",
+                  "title": "con_acred",
+                  "description": "con acred",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "prohibido",
+                  "title": "prohibido",
+                  "description": "prohibido",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "usu_mod",
+                  "title": "usu_mod",
+                  "description": "usu mod",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 20,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_mod",
+                  "title": "fecha_mod",
+                  "description": "fecha mod",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

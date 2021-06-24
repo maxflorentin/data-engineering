@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_pyme_estadosoperacion",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_secu_f487","dt_adm_fec_log","ds_adm_log"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_secu_f487","dt_adm_fec_log","ds_adm_log","cod_adm_usuario","ds_adm_estado","cod_adm_estado","cod_adm_estado_accion","cod_adm_estado_origen","ds_adm_sector"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_fec_log"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

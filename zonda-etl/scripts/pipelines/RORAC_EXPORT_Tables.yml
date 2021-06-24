@@ -1,0 +1,272 @@
+name: RORAC_EXPORT_Tables
+description: 'Export RORAC Tables in delimited text file'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 15 * * *'
+start_date: '2020-06-30'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: bi_corp_staging.rio157_ms0_dm_dwh_area_negocio_ctr, bi_corp_staging.rio157_ms0_dm_je_dwh_centros_ctr
+tasks:
+  - name: EXPORT_INPUT_LOCAL_PARAM_RORAC
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/PAR_RORAC_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/local_input_params.hql'
+  - name: EXPORT_COSTES_ADN_LOCAL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/COSTES_ADN_LOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/costes_adn_local.hql'
+  - name: EXPORT_COSTES_LOCAL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/COSTES_LOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/costes_local.hql'
+  - name: EXPORT_CENTRO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/CENTRO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/centro.hql'
+  - name: EXPORT_DIVISION
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/DIVISION_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/division.hql'
+  - name: EXPORT_AREANEGOCIOLOCAL
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/AREANEGOCIOLOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/areanegociolocal.hql'
+  - name: EXPORT_PRODUCTO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/PRODUCTO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/producto.hql'
+  - name: EXPORT_SEGMENTO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/SEGMENTO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/segmento.hql'
+  - name: EXPORT_JERARQUIA_ADN
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/JERARQUIA_ADN_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/jerarquia_adn.hql'
+  - name: EXPORT_JERARQUIA_PYS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/JERARQUIA_PYS_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/dim/export_dim/jerarquia_pys.hql'
+  - name: EXPORT_INPUT_ACTIVO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/ACTIVO_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/fact/export_fact/input_activo.hql'
+  - name: EXPORT_INPUT_PASIVO
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/rorac/PASIVO_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+      show_header: 'False'
+      output_format: dsv
+      delimiter: '|'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/fact/export_fact/input_pasivo.hql'
+  - name: Compress_PAR_RORAC
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/PAR_RORAC_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_COSTES_ADN_LOCAL
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/COSTES_ADN_LOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_COSTES_LOCAL
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/COSTES_LOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"   
+  - name: Compress_CENTRO
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/CENTRO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_DIVISION
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/DIVISION_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_AREANEGOCIOLOCAL
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/AREANEGOCIOLOCAL_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_PRODUCTO
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/PRODUCTO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_SEGMENTO
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/SEGMENTO_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_JERARQUIA_ADN
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/JERARQUIA_ADN_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_JERARQUIA_PYS
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/JERARQUIA_PYS_ARG_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_ACTIVO
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/ACTIVO_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: Compress_PASIVO
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/PASIVO_ARG_1_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='RORAC_EXPORT_Tables') }}.txt"
+  - name: emptyFile_CENTRO
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_CENTRO.txt"
+  - name: emptyFile_DIVISION
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_DIVISION.txt"
+  - name: emptyFile_AREANEGOCIOLOCAL
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_ADNLOCAL.txt"
+  - name: emptyFile_PRODUCTO
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_PRODUCTO.txt"
+  - name: emptyFile_SEGMENTO
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_SEGMENTO.txt"
+  - name: emptyFile_JERARQUIA_ADN
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_JERARADN.txt"
+  - name: emptyFile_JERARQUIA_PYS
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_JERARPYS.txt"
+  - name: emptyFile_ACTIVO
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_ACTIVO.txt"
+  - name: emptyFile_PASIVO
+    operator: BashOperator
+    config:
+      bash_command: "touch /aplicaciones/bi/rorac/INGESTA_PASIVO.txt"
+dependencies:
+  EXPORT_INPUT_LOCAL_PARAM_RORAC: Compress_PAR_RORAC
+  EXPORT_COSTES_ADN_LOCAL: Compress_COSTES_ADN_LOCAL
+  EXPORT_COSTES_LOCAL: Compress_COSTES_LOCAL
+  EXPORT_CENTRO: Compress_CENTRO
+  EXPORT_DIVISION: Compress_DIVISION
+  EXPORT_AREANEGOCIOLOCAL: Compress_AREANEGOCIOLOCAL
+  EXPORT_PRODUCTO: Compress_PRODUCTO
+  EXPORT_SEGMENTO: Compress_SEGMENTO
+  EXPORT_JERARQUIA_ADN: Compress_JERARQUIA_ADN
+  EXPORT_JERARQUIA_PYS: Compress_JERARQUIA_PYS
+  EXPORT_INPUT_ACTIVO: Compress_ACTIVO
+  EXPORT_INPUT_PASIVO: Compress_PASIVO
+  Compress_CENTRO: emptyFile_CENTRO
+  Compress_DIVISION: emptyFile_DIVISION
+  Compress_AREANEGOCIOLOCAL: emptyFile_AREANEGOCIOLOCAL
+  Compress_PRODUCTO: emptyFile_PRODUCTO
+  Compress_SEGMENTO: emptyFile_SEGMENTO
+  Compress_JERARQUIA_ADN: emptyFile_JERARQUIA_ADN
+  Compress_JERARQUIA_PYS: emptyFile_JERARQUIA_PYS
+  Compress_ACTIVO: emptyFile_ACTIVO
+  Compress_PASIVO: emptyFile_PASIVO
+notifications:
+  on_start: False
+  on_error: True
+  channels: [$DEFAULT_SLACK_CHANNEL]

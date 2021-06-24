@@ -1,0 +1,75 @@
+{
+    "file": "tipo_medios",
+    "location": "/santander/bi-corp/landing/rio56/dim/tipo_medios/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/tipo_medios",
+    "tempDirectory": "/santander/bi-corp/temp/tipo_medios",
+    "createTable": "bi_corp_staging.rio56_tipo_medios",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "tpo_medio",
+            "type": "string"
+        },
+        {
+            "name": "desc_medio",
+            "type": "string"
+        },
+        {
+            "name": "desc_detall_medio",
+            "type": "string"
+        },
+        {
+            "name": "indi_tpo_medio",
+            "type": "string"
+        },
+        {
+            "name": "est_medio",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_med",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_med",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_med",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_med",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        },
+        {
+            "name": "indi_visible",
+            "type": "string"
+        },
+        {
+            "name": "indi_msj_asoc",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

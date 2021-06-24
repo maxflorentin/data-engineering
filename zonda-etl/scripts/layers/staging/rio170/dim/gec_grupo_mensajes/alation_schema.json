@@ -1,0 +1,101 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio170_gec_grupo_mensajes",
+            "title": "Agrupa los mensajes para los canales de acuerdo a logica de carga, y sirve para versionar la mensajeria",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Agrupa los mensajes para los canales de acuerdo a logica de carga, y sirve para versionar la mensajeria",
+            "columns": [
+                {
+                    "name": "ID_GRUPO",
+                    "title": "ID_GRUPO",
+                    "description": "Primary Key",
+                    "type": "NUMBER (27)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 27.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CANAL",
+                    "title": "COD_CANAL",
+                    "description": "codigo de canal",
+                    "type": "VARCHAR2 (2 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBCANAL",
+                    "title": "COD_SUBCANAL",
+                    "description": "codigo de subcanal",
+                    "type": "VARCHAR2 (2 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_MENSAJE",
+                    "title": "ID_MENSAJE",
+                    "description": "Foreign Key a GEC_MENSAJES",
+                    "type": "NUMBER (27)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 27.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

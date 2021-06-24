@@ -1,0 +1,63 @@
+{
+  "file": "mer_fx_solicitudes_cotizadas_schema",
+  "location": "/santander/bi-corp/landing/rio4/dim/mer_fx_solicitudes_cotizadas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio4/dim/mer_fx_solicitudes_cotizadas",
+  "createTable": "bi_corp_staging.mer_fx_solicitudes_cotizadas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nup",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_sam",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_obcm",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_comex",
+                    "type": "string"
+                },
+                {
+                    "name": "id_cotizacion",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_cambio_base",
+                    "type": "string"
+                },
+                {
+                    "name": "contingencia_activada",
+                    "type": "string"
+                },
+                {
+                    "name": "confirmada",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_cotizacion",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_confirmacion",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

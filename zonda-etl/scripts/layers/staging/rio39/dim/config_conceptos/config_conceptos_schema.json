@@ -1,0 +1,147 @@
+{
+     "file": "config_conceptos_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/config_conceptos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/config_conceptos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [
+            {
+             "name": "id_concepto",
+             "type": "string"
+            },
+            {
+             "name": "cod_concepto",
+             "type": "string"
+            },
+            {
+             "name": "desc_concepto",
+             "type": "string"
+            },
+            {
+             "name": "tipo_concepto",
+             "type": "string"
+            },
+            {
+             "name": "con_desp",
+             "type": "string"
+            },
+            {
+             "name": "con_nif",
+             "type": "string"
+            },
+            {
+             "name": "con_impu",
+             "type": "string"
+            },
+            {
+             "name": "con_femb",
+             "type": "string"
+            },
+            {
+             "name": "activo",
+             "type": "string"
+            },
+            {
+             "name": "con_4834",
+             "type": "string"
+            },
+            {
+             "name": "monto_4834",
+             "type": "string"
+            },
+            {
+             "name": "con_empvi",
+             "type": "string"
+            },
+            {
+             "name": "monto_empvi",
+             "type": "string"
+            },
+            {
+             "name": "cod_ddjj",
+             "type": "string"
+            },
+            {
+             "name": "ayu_docu",
+             "type": "string"
+            },
+            {
+             "name": "con_femb_est",
+             "type": "string"
+            },
+            {
+             "name": "usu_modif",
+             "type": "string"
+            },
+            {
+             "name": "fecha_modif",
+             "type": "string"
+            },
+            {
+             "name": "cod_canal",
+             "type": "string"
+            },
+            {
+             "name": "cod_producto",
+             "type": "string"
+            },
+            {
+             "name": "con_4237",
+             "type": "string"
+            },
+            {
+             "name": "con_nif_gan",
+             "type": "string"
+            },
+            {
+             "name": "inv_acre",
+             "type": "string"
+            },
+            {
+             "name": "con_pos_aranc",
+             "type": "string"
+            },
+            {
+             "name": "edita_impo",
+             "type": "string"
+            },
+            {
+             "name": "con_trf",
+             "type": "string"
+            },
+            {
+             "name": "con_5751",
+             "type": "string"
+            },
+            {
+             "name": "con_cuit_benef",
+             "type": "string"
+            },
+            {
+             "name": "con_form_inv",
+             "type": "string"
+            },
+            {
+             "name": "moneda_cuenta",
+             "type": "string"
+            },
+            {
+             "name": "avanza_vinculada",
+             "type": "string"
+            }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

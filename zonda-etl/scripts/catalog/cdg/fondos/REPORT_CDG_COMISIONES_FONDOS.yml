@@ -1,0 +1,83 @@
+name: REPORT_CDG_COMISIONES_FONDOS
+description: 'REPORT_CDG_COMISIONES_FONDOS'
+owner: BI-Corp
+active: true
+schedule_interval: '0 12 * * 1-5'
+start_date: '2020-05-12'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_comisiones_fondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      #delimiter: ','
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/cdg/fondos/REPORT_CDG_COMISIONES_FONDOS.hql'
+  - name: report_send_sftp_full
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/APUODS/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_full
+    operator: BashOperator
+    config:
+      bash_command: "$ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.txt"
+  - name: report_control_comisiones_fondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.CTR"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: False
+      #delimiter: ','
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/cdg/fondos/REPORT_CDG_CONTROL_COMISIONES_FONDOS.hql'
+  - name: report_send_sftp_control
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.CTR"
+      remote_filepath: "/aplicaciones/toWindows03/APUODS/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.CTR"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_control
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/BARP_FON_ODSDEP_D{{ ti.xcom_pull(task_ids='InputConfig', key='previous_short_date', dag_id='REPORT_CDG_COMISIONES_FONDOS') }}.CTR"
+dependencies:
+  report_comisiones_fondos: report_send_sftp_full
+  report_send_sftp_full: EXECUTE_Remove_FILE_full
+  report_control_comisiones_fondos: report_send_sftp_control
+  report_send_sftp_control: EXECUTE_Remove_FILE_control
+notifications:
+  on_start: true
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [myeza@santandertecnologia.com.ar]

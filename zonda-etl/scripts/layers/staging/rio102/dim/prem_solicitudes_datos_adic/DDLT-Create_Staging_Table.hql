@@ -1,0 +1,68 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.rio102_prem_solicitudes_datos_adic(
+        id_solicitud string,
+        signo_spclub string,
+        ptos_spclub string,
+        cod_bono_spclub string,
+        desc_bono_spclub string,
+        tipo_interfaz string,
+        codigo_camp string,
+        desc_camp string,
+        fec_vig_desde_tc string,
+        fec_vig_hasta_tc string,
+        porc_tope_tc string,
+        monto_tope_tc string,
+        accion_ra string,
+        m_gestion string,
+        premio string,
+        monto_promedio string,
+        monto_minimo string,
+        cant_meses string,
+        imp_mto_cta string,
+        porc_mto_cta string,
+        tope_mto_cta string,
+        modelo_plan_v string,
+        fec_vig_desde_gral string,
+        fec_vig_hasta_gral string,
+        codigo_mov_cta string,
+        fecha_desmarcacion string,
+        importe_gral string,
+        cod_concepto_gral string,
+        cod_subcon_gral string,
+        cod_subcon_seg string,
+        tipo_acred string,
+        concepto_gral string,
+        cant_min_acre string,
+        motivo string,
+        multi_spclub string,
+        signo_millas string,
+        millas_aa string,
+        cod_bono_millas string,
+        desc_bono_millas string,
+        porc_bonif string,
+        tipo_suma_tc string,
+        link_brief_camp string,
+        comentario_brief_camp string,
+        multi_millas string,
+        envio_mail string,
+        id_template string,
+        cant_cargos string,
+        cant_cierres string,
+        monto_min_acre string,
+        monto_min_consumo_tc string,
+        monto_min_consumo_td string,
+        id_solicitud_ctx string,
+        imp_premio string,
+        prioridad_camp string,
+        subject_mya string,
+        cant_est_clientes string,
+        monto_premio_est string
+)
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE
+    'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+ STORED AS INPUTFORMAT
+    'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+ OUTPUTFORMAT
+    'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+ LOCATION
+    '${DATA_LAKE_SERVER}/santander/bi-corp/staging/rio102/dim/rio102_prem_solicitudes_datos_adic';

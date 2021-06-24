@@ -1,0 +1,20 @@
+{
+  "file": "bgdtacu_stock",
+  "createTable": "bi_corp_staging.malbgc_bgdtacu_stock",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtacu/stock/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtacu/stock",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgdtacu.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

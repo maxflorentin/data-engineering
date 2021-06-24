@@ -1,0 +1,99 @@
+{
+  "file": "cfg_calling_list_schema",
+  "location": "/santander/bi-corp/landing/rio46/dim/cfg_calling_list/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio46/dim/cfg_calling_list",
+  "tempDirectory": "/santander/bi-corp/temp/rio46",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "dbid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_dbid",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "tabl_acc_dbid",
+      "type": "string"
+
+    },
+    {
+      "name": "filter_dbid",
+      "type": "string"
+    },
+    {
+      "name": "log_tabl_acc_dbid",
+      "type": "string"
+    },
+    {
+      "name": "time_from",
+      "type": "string"
+    },
+    {
+      "name": "time_until",
+      "type": "string"
+    },
+    {
+      "name": "max_attempts",
+      "type": "string"
+    },
+    {
+      "name": "script_dbid",
+      "type": "string"
+
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "csid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_csid",
+      "type": "string"
+    },
+    {
+      "name": "tabl_acc_csid",
+      "type": "string"
+    },
+    {
+      "name": "filter_csid",
+      "type": "string"
+    },
+    {
+      "name": "log_tabl_acc_csid",
+      "type": "string"
+
+    },
+    {
+      "name": "script_csid",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+
+
+}

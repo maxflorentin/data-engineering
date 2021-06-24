@@ -1,0 +1,255 @@
+{
+	"file": "relacional_pj_schema",
+	"location": "/santander/bi-corp/landing/nps/fact/relacional_pj/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/nps/fact/relacional_pj",
+	"createTable": "bi_corp_staging.qualtrics_nps_relacional_pj",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": "^",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "response_id",
+		"type": "string"
+	},
+	{
+		"name": "variable",
+		"type": "string"
+	},
+	{
+		"name": "respuesta",
+		"type": "string"
+	},
+	{
+		"name": "question_id",
+		"type": "string"
+	},
+	{
+		"name": "question_desc",
+		"type": "string"
+	},
+    {
+		"name": "start_date",
+		"type": "string"
+	},
+	{
+		"name": "end_date",
+		"type": "string"
+	},
+	{
+		"name": "status",
+		"type": "string"
+	},
+	{
+		"name": "ip_address",
+		"type": "string"
+	},
+	{
+		"name": "progress",
+		"type": "string"
+	},
+	{
+		"name": "duration",
+		"type": "string"
+	},
+	{
+		"name": "finished",
+		"type": "string"
+	},
+	{
+		"name": "recorded_date",
+		"type": "string"
+	},
+	{
+		"name": "recipient_last_name",
+		"type": "string"
+	},
+	{
+		"name": "recipient_first_name",
+		"type": "string"
+	},
+	{
+		"name": "recipient_email",
+		"type": "string"
+	},
+	{
+		"name": "external_reference",
+		"type": "string"
+	},
+	{
+		"name": "location_latitude",
+		"type": "string"
+	},
+	{
+		"name": "location_longitude",
+		"type": "string"
+	},
+	{
+		"name": "distribution_channel",
+		"type": "string"
+	},
+	{
+		"name": "user_language",
+		"type": "string"
+	},
+	{
+		"name": "q1_nps_group",
+		"type": "string"
+	},
+	{
+		"name": "responseid",
+		"type": "string"
+	},
+	{
+		"name": "id_respuesta",
+		"type": "string"
+	},
+	{
+		"name": "tipo_doc",
+		"type": "string"
+	},
+	{
+		"name": "nro_doc",
+		"type": "string"
+	},
+	{
+		"name": "nombre",
+		"type": "string"
+	},
+	{
+		"name": "color",
+		"type": "string"
+	},
+	{
+		"name": "renta",
+		"type": "string"
+	},
+	{
+		"name": "telefono_fijo1",
+		"type": "string"
+	},
+	{
+		"name": "telefono_fijo2",
+		"type": "string"
+	},
+	{
+		"name": "antiguedad",
+		"type": "string"
+	},
+	{
+		"name": "provincia",
+		"type": "string"
+	},
+	{
+		"name": "cod_suc_uc",
+		"type": "string"
+	},
+	{
+		"name": "nup",
+		"type": "string"
+	},
+	{
+		"name": "telefono_celular1",
+		"type": "string"
+	},
+	{
+		"name": "telefono_celular2",
+		"type": "string"
+	},
+	{
+		"name": "marca_ges_remoto",
+		"type": "string"
+	},
+	{
+		"name": "fecha_envio",
+		"type": "string"
+	},
+	{
+		"name": "gateway_alias",
+		"type": "string"
+	},
+	{
+		"name": "recipientid",
+		"type": "string"
+	},
+	{
+		"name": "device",
+		"type": "string"
+	},
+	{
+		"name": "cant_cap",
+		"type": "string"
+	},
+	{
+		"name": "cli_ant",
+		"type": "string"
+	},
+	{
+		"name": "cli_conv",
+		"type": "string"
+	},
+	{
+		"name": "cli_dig",
+		"type": "string"
+	},
+	{
+		"name": "cli_vis_suc",
+		"type": "string"
+	},
+	{
+		"name": "email",
+		"type": "string"
+	},
+	{
+		"name": "grado_vinc",
+		"type": "string"
+	},
+	{
+		"name": "rango_emp",
+		"type": "string"
+	},
+	{
+		"name": "rango_fact",
+		"type": "string"
+	},
+	{
+		"name": "tipo_actividad",
+		"type": "string"
+	},
+	{
+		"name": "momento_critico",
+		"type": "string"
+	},
+	{
+		"name": "fecha_encuesta",
+		"type": "string"
+	},
+	{
+		"name": "transactiondate",
+		"type": "string"
+	},
+	{
+		"name": "com_nps_rel",
+		"type": "string"
+	},
+	{
+		"name": "nps_ban_rel",
+		"type": "string"
+	},
+	{
+		"name": "direcc_correo_electronico",
+		"type": "string"
+	},
+	{
+		"name": "usuarioqualtrics",
+		"type": "string"
+	}],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

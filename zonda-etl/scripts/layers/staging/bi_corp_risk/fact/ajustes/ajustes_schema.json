@@ -1,0 +1,81 @@
+{
+    "file": "cartera_ajustes_schema",
+    "location": "/santander/bi-corp/landing/sql5/dim/cartera_ajustes/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_cartera_ajustes",
+    "tempDirectory": "/santander/bi-corp/temp/cartera_ajustes",
+    "createTable": "bi_corp_risk.cartera_ajustes",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "periodo",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "segmento",
+            "type": "string"
+        },
+        {
+            "name": "renta",
+            "type": "string"
+        },
+        {
+            "name": "producto",
+            "type": "string"
+        },
+        {
+            "name": "subproducto",
+            "type": "string"
+        },
+        {
+            "name": "descripcion_producto",
+            "type": "string"
+        },
+        {
+            "name": "contingencia",
+            "type": "string"
+        },
+        {
+            "name": "divisa",
+            "type": "string"
+        },
+        {
+            "name": "tipo",
+            "type": "string"
+        },
+        {
+            "name": "importe",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "origen",
+            "type": "string"
+        },
+        {
+            "name": "redistribuido",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}

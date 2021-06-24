@@ -1,0 +1,19 @@
+{
+    "name": "CajaSeg-Daily-Common",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_WACSE-Daily",
+            "tasks": "all"
+        },
+        {
+            "dag_id": "LOAD_STG_Malpe-Daily",
+            "tasks": "STAGING_PEDT008_Parquetize"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_CMN_CajaSeg"
+        }
+    ]
+}

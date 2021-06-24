@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.cacs_cuentas_diaria ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

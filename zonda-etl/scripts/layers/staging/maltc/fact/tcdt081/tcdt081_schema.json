@@ -1,0 +1,17 @@
+{
+  "file": "tcdt081_schema",
+  "location": "/santander/bi-corp/landing/maltc/fact/tcdt081/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/maltc/fact/tcdt081",
+  "createTable": "bi_corp_staging.maltc_tcdt081",
+  "copybook": "tcdt081.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308562"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio15_nb_tipo_trx",
+      "title": "Descripciones de los tipos de transacciones",
+      "schema": "bi_corp_staging",
+      "source": "RIOPIF",
+      "query": "",
+      "type": "DIM",
+      "description": "Descripciones de los tipos de transacciones",
+      "columns": [
+        {
+          "name": "tipo_trx",
+          "title": "tipo_trx",
+          "description": "Id de tipo de transaccion (Relacion Tabla NB_DESC_TRX)",
+          "type": "NUMBER(8)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "descripcion_tipo",
+          "title": "descripcion_tipo",
+          "description": "Descripcion del ID",
+          "type": "VARCHAR2(60 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 60.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

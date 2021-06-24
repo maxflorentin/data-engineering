@@ -1,0 +1,17 @@
+{
+  "file": "rel_contrato_integ_suc_schema",
+  "location": "/santander/bi-corp/landing/garra/fact/rel_contrato_integ_suc/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garra/fact/rel_contrato_integ_suc",
+  "createTable": "bi_corp_staging.garra_rel_contrato_integ_suc",
+  "copybook": "rel_contrato_integ_suc.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

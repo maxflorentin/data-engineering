@@ -1,0 +1,191 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_croupier_shipping_log",
+            "title": "CONTIENE LOS ESTADOS POR LOS CUALES PASÓ UN ENVÍO EN LA SUCURSAL",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE LOS ESTADOS POR LOS CUALES PASÓ UN ENVÍO EN LA SUCURSAL",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHIPPING_ID",
+                    "title": "SHIPPING_ID",
+                    "description": "CÓDIGO DE ENVÍO INTERNO DE STOCK",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NEW_SHIPPING_STATUS",
+                    "title": "NEW_SHIPPING_STATUS",
+                    "description": "DESCRIPCIÓN DEL ESTADO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "OLD_SHIPPING_STATUS",
+                    "title": "OLD_SHIPPING_STATUS",
+                    "description": "DESCRIPCIÓN DEL ESTADO ANTERIOR",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATED_DATE",
+                    "title": "CREATED_DATE",
+                    "description": "FECHA CUANDO SE REALIZÓ EL CAMBIO DE ESTADO",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVE",
+                    "title": "MOTIVE",
+                    "description": "MOTIVO POR EL CUAL SE REALIZÓ EL CAMBIO DE ESTADO",
+                    "type": "VARCHAR2(300)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 300.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_CODE",
+                    "title": "BRANCH_CODE",
+                    "description": "CÓDIGO DE SUCURSAL",
+                    "type": "VARCHAR2(16)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "OFFICE_USER",
+                    "title": "OFFICE_USER",
+                    "description": "LEGAJO DE LA PERSONA QUE HIZO EL CAMBIO DE ESTADO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DERIVED_BRANCH_CODE",
+                    "title": "DERIVED_BRANCH_CODE",
+                    "description": "CÓDIGO DE LA SUCURSAL A LA CUAL SE DERIVO EL ENVÍO SI ES QUE FUE DERIVADO",
+                    "type": "VARCHAR2(16)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

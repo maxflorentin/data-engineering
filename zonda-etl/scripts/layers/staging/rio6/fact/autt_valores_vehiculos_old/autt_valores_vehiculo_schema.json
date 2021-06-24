@@ -1,0 +1,39 @@
+{
+  "file": "autt_valores_vehiculos_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/autt_valores_vehiculos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/autt_valores_vehiculos",
+  "createTable": "bi_corp_staging.rio6_autt_valores_vehiculos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"|",
+  "columns": [
+    {
+      "name":"auvv_auma_cd_marca",
+      "type": "string"
+    },
+    {
+      "name":"auvv_aumo_cd_modelo",
+      "type":"string"
+    },
+    {
+      "name":"auvv_version",
+      "type":"int"
+    },
+    {
+      "name":"auvv_ano",
+      "type":"int"
+    },
+    {
+      "name":"auvv_valor",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

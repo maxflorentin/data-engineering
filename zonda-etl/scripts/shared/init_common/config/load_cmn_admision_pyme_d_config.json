@@ -1,0 +1,19 @@
+{
+  "name": "Admision_Pyme-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_SCORING_SGE-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_STG_Risk_Parametria-Daily",
+      "tasks": ["STAGING_TABLE_Parquetize_campanias"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Admision_Pyme-Daily"
+    }
+  ]
+}

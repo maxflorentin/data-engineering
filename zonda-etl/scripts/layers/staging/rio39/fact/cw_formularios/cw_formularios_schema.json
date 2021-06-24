@@ -1,0 +1,817 @@
+{
+     "file": "cw_formularios_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/cw_formularios/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/cw_formularios",
+     "tempdirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetfiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [
+             {
+              "name": "nro_form",
+              "type": "string"
+             },
+             {
+              "name": "tipo_form",
+              "type": "string"
+             },
+             {
+              "name": "sucursal",
+              "type": "string"
+             },
+             {
+              "name": "acct_no",
+              "type": "string"
+             },
+             {
+              "name": "cuit",
+              "type": "string"
+             },
+             {
+              "name": "cod_concep",
+              "type": "string"
+             },
+             {
+              "name": "moneda",
+              "type": "string"
+             },
+             {
+              "name": "monto",
+              "type": "string"
+             },
+             {
+              "name": "banco_recept",
+              "type": "string"
+             },
+             {
+              "name": "banco_domic",
+              "type": "string"
+             },
+             {
+              "name": "banco_interm",
+              "type": "string"
+             },
+             {
+              "name": "beneficiario",
+              "type": "string"
+             },
+             {
+              "name": "benef_domic",
+              "type": "string"
+             },
+             {
+              "name": "benef_cta",
+              "type": "string"
+             },
+             {
+              "name": "observaciones",
+              "type": "string"
+             },
+             {
+              "name": "nro_oper_rel",
+              "type": "string"
+             },
+             {
+              "name": "fecha_fact",
+              "type": "string"
+             },
+             {
+              "name": "iva",
+              "type": "string"
+             },
+             {
+              "name": "motivo_iva",
+              "type": "string"
+             },
+             {
+              "name": "ganancias",
+              "type": "string"
+             },
+             {
+              "name": "motivo_gan",
+              "type": "string"
+             },
+             {
+              "name": "acargo_gan",
+              "type": "string"
+             },
+             {
+              "name": "estado",
+              "type": "string"
+             },
+             {
+              "name": "motivo_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "user_carga",
+              "type": "string"
+             },
+             {
+              "name": "user_verif",
+              "type": "string"
+             },
+             {
+              "name": "fecha_verif",
+              "type": "string"
+             },
+             {
+              "name": "user_aprob",
+              "type": "string"
+             },
+             {
+              "name": "fecha_aprob",
+              "type": "string"
+             },
+             {
+              "name": "tipo_cierre",
+              "type": "string"
+             },
+             {
+              "name": "tipo_opcalz",
+              "type": "string"
+             },
+             {
+              "name": "op_parcial",
+              "type": "string"
+             },
+             {
+              "name": "doble_imposicion",
+              "type": "string"
+             },
+             {
+              "name": "alicuota_iva",
+              "type": "string"
+             },
+             {
+              "name": "alicuota_gan",
+              "type": "string"
+             },
+             {
+              "name": "monto_fob",
+              "type": "string"
+             },
+             {
+              "name": "monto_flete",
+              "type": "string"
+             },
+             {
+              "name": "monto_seg",
+              "type": "string"
+             },
+             {
+              "name": "acreedor",
+              "type": "string"
+             },
+             {
+              "name": "tasa",
+              "type": "string"
+             },
+             {
+              "name": "plazo",
+              "type": "string"
+             },
+             {
+              "name": "c_nombre",
+              "type": "string"
+             },
+             {
+              "name": "fecha_guia",
+              "type": "string"
+             },
+             {
+              "name": "posicion",
+              "type": "string"
+             },
+             {
+              "name": "ver_form",
+              "type": "string"
+             },
+             {
+              "name": "tiene_adjuntos",
+              "type": "string"
+             },
+             {
+              "name": "log_imagenes",
+              "type": "string"
+             },
+             {
+              "name": "canal",
+              "type": "string"
+             },
+             {
+              "name": "pais_origen",
+              "type": "string"
+             },
+             {
+              "name": "pais_benef",
+              "type": "string"
+             },
+             {
+              "name": "bco_pagador_corre",
+              "type": "string"
+             },
+             {
+              "name": "desc_gan",
+              "type": "string"
+             },
+             {
+              "name": "baseimpo_iva",
+              "type": "string"
+             },
+             {
+              "name": "baseimpo_gan",
+              "type": "string"
+             },
+             {
+              "name": "fecha_swift",
+              "type": "string"
+             },
+             {
+              "name": "bco_corre_akon",
+              "type": "string"
+             },
+             {
+              "name": "cod_ops",
+              "type": "string"
+             },
+             {
+              "name": "liq_bkt",
+              "type": "string"
+             },
+             {
+              "name": "secuencia",
+              "type": "string"
+             },
+             {
+              "name": "int_cta",
+              "type": "string"
+             },
+             {
+              "name": "tipo_doc",
+              "type": "string"
+             },
+             {
+              "name": "nro_doc",
+              "type": "string"
+             },
+             {
+              "name": "tipo_persona",
+              "type": "string"
+             },
+             {
+              "name": "tipo_iva",
+              "type": "string"
+             },
+             {
+              "name": "tipo_cliente",
+              "type": "string"
+             },
+             {
+              "name": "empleado",
+              "type": "string"
+             },
+             {
+              "name": "nup",
+              "type": "string"
+             },
+             {
+              "name": "es_factura_e",
+              "type": "string"
+             },
+             {
+              "name": "cod_ddjj",
+              "type": "string"
+             },
+             {
+              "name": "resp_clie",
+              "type": "string"
+             },
+             {
+              "name": "ref_cliente",
+              "type": "string"
+             },
+             {
+              "name": "cargo_gastos",
+              "type": "string"
+             },
+             {
+              "name": "interm_cta",
+              "type": "string"
+             },
+             {
+              "name": "inst_vendido",
+              "type": "string"
+             },
+             {
+              "name": "inst_recibido",
+              "type": "string"
+             },
+             {
+              "name": "fecha_emb",
+              "type": "string"
+             },
+             {
+              "name": "ddjj_adic",
+              "type": "string"
+             },
+             {
+              "name": "ddjj_ok",
+              "type": "string"
+             },
+             {
+              "name": "aplica_gan",
+              "type": "string"
+             },
+             {
+              "name": "doble_imp_pais",
+              "type": "string"
+             },
+             {
+              "name": "doble_imp_art",
+              "type": "string"
+             },
+             {
+              "name": "inpi",
+              "type": "string"
+             },
+             {
+              "name": "f_interest",
+              "type": "string"
+             },
+             {
+              "name": "f_interest_opcion",
+              "type": "string"
+             },
+             {
+              "name": "f_interest_otro",
+              "type": "string"
+             },
+             {
+              "name": "f_interest_no",
+              "type": "string"
+             },
+             {
+              "name": "no_ret_opcion",
+              "type": "string"
+             },
+             {
+              "name": "no_ret_art14",
+              "type": "string"
+             },
+             {
+              "name": "no_ret_motivo",
+              "type": "string"
+             },
+             {
+              "name": "no_ret_pais",
+              "type": "string"
+             },
+             {
+              "name": "no_ret_articulo",
+              "type": "string"
+             },
+             {
+              "name": "aplica_iva",
+              "type": "string"
+             },
+             {
+              "name": "no_aplica_iva_op",
+              "type": "string"
+             },
+             {
+              "name": "otros_no_iva",
+              "type": "string"
+             },
+             {
+              "name": "com_4834_op",
+              "type": "string"
+             },
+             {
+              "name": "com_4834_texto",
+              "type": "string"
+             },
+             {
+              "name": "empvi_op1",
+              "type": "string"
+             },
+             {
+              "name": "empvi_op2",
+              "type": "string"
+             },
+             {
+              "name": "empvi_op3",
+              "type": "string"
+             },
+             {
+              "name": "empvi_op4",
+              "type": "string"
+             },
+             {
+              "name": "empvi_op5",
+              "type": "string"
+             },
+             {
+              "name": "nro_solicitud",
+              "type": "string"
+             },
+             {
+              "name": "tipo_trf",
+              "type": "string"
+             },
+             {
+              "name": "com_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "vigente",
+              "type": "string"
+             },
+             {
+              "name": "monto_ret_iva",
+              "type": "string"
+             },
+             {
+              "name": "monto_ret_gan",
+              "type": "string"
+             },
+             {
+              "name": "id_ct",
+              "type": "string"
+             },
+             {
+              "name": "cta_altair_cliente",
+              "type": "string"
+             },
+             {
+              "name": "fecha_emb_est",
+              "type": "string"
+             },
+             {
+              "name": "id_alicuota",
+              "type": "string"
+             },
+             {
+              "name": "id_cond_vta",
+              "type": "string"
+             },
+             {
+              "name": "razon_social",
+              "type": "string"
+             },
+             {
+              "name": "estado_ejecucion",
+              "type": "string"
+             },
+             {
+              "name": "usuario_ejecucion",
+              "type": "string"
+             },
+             {
+              "name": "usuario_asignado",
+              "type": "string"
+             },
+             {
+              "name": "fecha_asignado",
+              "type": "string"
+             },
+             {
+              "name": "subsegmento",
+              "type": "string"
+             },
+             {
+              "name": "nro_form_rel",
+              "type": "string"
+             },
+             {
+              "name": "corregida",
+              "type": "string"
+             },
+             {
+              "name": "vinculo",
+              "type": "string"
+             },
+             {
+              "name": "nom_benef",
+              "type": "string"
+             },
+             {
+              "name": "cod_destino",
+              "type": "string"
+             },
+             {
+              "name": "cuadrante",
+              "type": "string"
+             },
+             {
+              "name": "con_5751",
+              "type": "string"
+             },
+             {
+              "name": "op_5751",
+              "type": "string"
+             },
+             {
+              "name": "fecha_firma",
+              "type": "string"
+             },
+             {
+              "name": "autogestion",
+              "type": "string"
+             },
+             {
+              "name": "acepta_ddjj",
+              "type": "string"
+             },
+             {
+              "name": "acepta_ddjj_fi",
+              "type": "string"
+             },
+             {
+              "name": "asola_firma",
+              "type": "string"
+             },
+             {
+              "name": "cancela_intereses",
+              "type": "string"
+             },
+             {
+              "name": "capital_a_cancelar",
+              "type": "string"
+             },
+             {
+              "name": "capital_a_prorrogar",
+              "type": "string"
+             },
+             {
+              "name": "cesion_garantia",
+              "type": "string"
+             },
+             {
+              "name": "cod_concep_penalty",
+              "type": "string"
+             },
+             {
+              "name": "cod_estado",
+              "type": "string"
+             },
+             {
+              "name": "cod_mot_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "cod_producto",
+              "type": "string"
+             },
+             {
+              "name": "fecha_vencimiento",
+              "type": "string"
+             },
+             {
+              "name": "fianza_especifica",
+              "type": "string"
+             },
+             {
+              "name": "fianza_generica",
+              "type": "string"
+             },
+             {
+              "name": "hipoteca",
+              "type": "string"
+             },
+             {
+              "name": "id_grupo_boleto",
+              "type": "string"
+             },
+             {
+              "name": "importe_prestamo",
+              "type": "string"
+             },
+             {
+              "name": "instancia",
+              "type": "string"
+             },
+             {
+              "name": "intereses",
+              "type": "string"
+             },
+             {
+              "name": "metodo_cancelacion",
+              "type": "string"
+             },
+             {
+              "name": "modalidad",
+              "type": "string"
+             },
+             {
+              "name": "monto_fijo",
+              "type": "string"
+             },
+             {
+              "name": "monto_penalty",
+              "type": "string"
+             },
+             {
+              "name": "nro_liq_sge",
+              "type": "string"
+             },
+             {
+              "name": "nro_prestamo_rel",
+              "type": "string"
+             },
+             {
+              "name": "nro_secuencia_bkt",
+              "type": "string"
+             },
+             {
+              "name": "nro_secuencia_prestamo_bkt",
+              "type": "string"
+             },
+             {
+              "name": "observaciones_gtia",
+              "type": "string"
+             },
+             {
+              "name": "otros",
+              "type": "string"
+             },
+             {
+              "name": "penalty",
+              "type": "string"
+             },
+             {
+              "name": "porc_comision",
+              "type": "string"
+             },
+             {
+              "name": "prenda_fija_flot",
+              "type": "string"
+             },
+             {
+              "name": "prenda_registro",
+              "type": "string"
+             },
+             {
+              "name": "standby",
+              "type": "string"
+             },
+             {
+              "name": "tasa_cft",
+              "type": "string"
+             },
+             {
+              "name": "tasa_tna",
+              "type": "string"
+             },
+             {
+              "name": "tipo_amortizacion",
+              "type": "string"
+             },
+             {
+              "name": "tipo_doc_cli",
+              "type": "string"
+             },
+             {
+              "name": "tipo_operacion",
+              "type": "string"
+             },
+             {
+              "name": "tipo_prestamo",
+              "type": "string"
+             },
+             {
+              "name": "total_a_cancelar",
+              "type": "string"
+             },
+             {
+              "name": "total_canc_debito_cta",
+              "type": "string"
+             },
+             {
+              "name": "total_canc_ord_pago",
+              "type": "string"
+             },
+             {
+              "name": "id_agenda",
+              "type": "string"
+             },
+             {
+              "name": "id_nif",
+              "type": "string"
+             },
+             {
+              "name": "inv_acre",
+              "type": "string"
+             },
+             {
+              "name": "nif_gan",
+              "type": "string"
+             },
+             {
+              "name": "cuit_benef",
+              "type": "string"
+             },
+             {
+              "name": "op_gan",
+              "type": "string"
+             },
+             {
+              "name": "motivo_rechazo_pcc",
+              "type": "string"
+             },
+             {
+              "name": "nombre_oficial_comercial",
+              "type": "string"
+             },
+             {
+              "name": "saldo_pmo_origen_canc",
+              "type": "string"
+             },
+             {
+              "name": "tasa_tea",
+              "type": "string"
+             },
+             {
+              "name": "apellido_oficial_comercial",
+              "type": "string"
+             },
+             {
+              "name": "mail_oficial_comercial",
+              "type": "string"
+             },
+             {
+              "name": "usercontrol",
+              "type": "string"
+             },
+             {
+              "name": "timestamp",
+              "type": "string"
+             },
+             {
+              "name": "rubro_benef",
+              "type": "string"
+             },
+             {
+              "name": "genera_comprob",
+              "type": "string"
+             },
+             {
+              "name": "mail_suc",
+              "type": "string"
+             },
+             {
+              "name": "nro_form_inversion",
+              "type": "string"
+             },
+             {
+              "name": "cargo_gastos_importe",
+              "type": "string"
+             },
+             {
+              "name": "tipo_banco_receptor",
+              "type": "string"
+             },
+             {
+              "name": "tipo_banco_intermediario",
+              "type": "string"
+             },
+             {
+              "name": "usu_retro",
+              "type": "string"
+             },
+             {
+              "name": "fecha_retro",
+              "type": "string"
+             },
+             {
+              "name": "fecha_orig_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "usu_orig_rechazo",
+              "type": "string"
+             },
+             {
+              "name": "nro_boleto_dev",
+              "type": "string"
+             },
+             {
+              "name": "fecha_carga",
+              "type": "string"
+             },
+             {
+              "name": "id_celula",
+              "type": "string"
+             },
+			 {
+			  "name": "partition_date",
+			  "type": "string",
+			  "partitionColumn": true,
+			  "partitionOrder": 1
+			 }
+	 ]
+}

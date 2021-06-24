@@ -1,0 +1,26 @@
+{
+  "file": "cg_ref_codes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/hogt_tp_vivienda/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/hogt_tp_vivienda",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"hotv_tp_vivienda",
+      "type": "string"
+    },
+    {
+      "name":"hotv_de_vivienda",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

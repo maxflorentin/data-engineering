@@ -1,0 +1,171 @@
+{
+  "file": "benefitcustomerbrandrefund_schema",
+  "location": "/santander/bi-corp/landing/rio265/fact/benefitcustomerbrandrefund/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/fact/rio265_benefitcustomerbrandrefund",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_benefitcustomerbrandrefund",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "as_of_date",
+      "type": "string"
+    },
+    {
+      "name": "v_idbenefitcustomerrefund",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitbrandrefund",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitrefund",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "id_level",
+      "type": "string"
+    },
+    {
+      "name": "operationalcode",
+      "type": "string"
+    },
+    {
+      "name": "amount",
+      "type": "string"
+    },
+    {
+      "name": "discount",
+      "type": "string"
+    },
+    {
+      "name": "id_transactiontype",
+      "type": "string"
+    },
+    {
+      "name": "receiptnumber",
+      "type": "string"
+    },
+    {
+      "name": "id_atm",
+      "type": "string"
+    },
+    {
+      "name": "id_establishment",
+      "type": "string"
+    },
+    {
+      "name": "category",
+      "type": "string"
+    },
+    {
+      "name": "entity",
+      "type": "string"
+    },
+    {
+      "name": "office",
+      "type": "string"
+    },
+    {
+      "name": "coin",
+      "type": "string"
+    },
+    {
+      "name": "observations",
+      "type": "string"
+    },
+    {
+      "name": "paymentmethod",
+      "type": "string"
+    },
+    {
+      "name": "paymentmethodcard",
+      "type": "string"
+    },
+    {
+      "name": "account",
+      "type": "string"
+    },
+    {
+      "name": "cardnumber",
+      "type": "string"
+    },
+    {
+      "name": "campaigncode",
+      "type": "string"
+    },
+    {
+      "name": "accreditationpercentage",
+      "type": "string"
+    },
+    {
+      "name": "commercepercentage",
+      "type": "string"
+    },
+    {
+      "name": "bankpercentage",
+      "type": "string"
+    },
+    {
+      "name": "topamount",
+      "type": "string"
+    },
+    {
+      "name": "transactiondate",
+      "type": "string"
+    },
+    {
+      "name": "monday",
+      "type": "string"
+    },
+    {
+      "name": "tuesday",
+      "type": "string"
+    },
+    {
+      "name": "wednesday",
+      "type": "string"
+    },
+    {
+      "name": "thursday",
+      "type": "string"
+    },
+    {
+      "name": "friday",
+      "type": "string"
+    },
+    {
+      "name": "saturday",
+      "type": "string"
+    },
+    {
+      "name": "sunday",
+      "type": "string"
+    },
+    {
+      "name": "expiry",
+      "type": "string"
+    },
+    {
+      "name": "toptransactions",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [{
+    "name": "partition_date",
+    "target": "transactiondate",
+    "type": "date",
+    "partitionColumn": true,
+    "partitionOrder": 1}]
+}

@@ -1,0 +1,39 @@
+name: BDR_Create_Table_Tactico_Mitre
+description: 'Creacion de la tabla Tactico Mitre'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [clientes,contratos,rubros,garantias,intervinientes_contratos]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: DDLT-Create_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tactico_mitre/${e}/DDLT-Create_Table.hql'
+  - name: ETLV-Load_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/tactico_mitre/${e}/ETLV-Load_Table.hql'
+dependencies:
+  DDLT-Create_Table: ETLV-Load_Table
+notifications:
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mamarmo@santandertecnologia.com.ar]

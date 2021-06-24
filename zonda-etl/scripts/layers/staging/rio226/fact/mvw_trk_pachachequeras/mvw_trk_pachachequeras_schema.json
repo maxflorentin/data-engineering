@@ -1,0 +1,51 @@
+{
+        "file": "mvw_trk_pachachequeras_schema",
+        "location": "/santander/bi-corp/landing/rio226/fact/mvw_trk_pachachequeras/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio226/fact/mvw_trk_pachachequeras",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "createTable": "bi_corp_staging.rio226_trk_pachachequeras",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "ID",
+                        "type": "string"
+                },
+                {
+                        "name": "LEGAJO",
+                        "type": "string"
+                },
+                {
+                        "name": "SUCURSAL",
+                        "type": "string"
+                },
+                {
+                        "name": "FECHA",
+                        "type": "string"
+                },
+                {
+                        "name": "TIPO_CAMARA",
+                        "type": "string"
+                },
+                {
+                        "name": "CUENTA",
+                        "type": "string"
+                },
+                {
+                        "name": "CHEQUE",
+                        "type": "string"
+                },
+                {
+                        "name": "ROL_USUARIO",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

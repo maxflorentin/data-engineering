@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_canal_comunicacion",
+      "title": "tabla de descripciones del canal de comunicacion",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "tabla de descripciones del canal de comunicacion",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO                       ",
+          "description": "Codigo del canal de comunicacion ",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DESCRIPCION                         ",
+          "title": "DESCRIPCION                         ",
+          "description": "Descripcion del canal de comunicacion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

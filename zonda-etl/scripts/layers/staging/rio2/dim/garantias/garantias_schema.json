@@ -1,0 +1,83 @@
+{
+  "file": "garantias_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/garantias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/garantias",
+  "createTable": "bi_corp_staging.sge_garantias",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "pecdgent",
+                    "type": "string"
+                },
+{
+                    "name": "peidioma",
+                    "type": "string"
+                },
+{
+                    "name": "cod_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "des_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "porc_max",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "puntaje",
+                    "type": "string"
+                },
+{
+                    "name": "categoria",
+                    "type": "string"
+                },
+{
+                    "name": "tipo",
+                    "type": "string"
+                },
+{
+                    "name": "grupo_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "des_garantia_bma",
+                    "type": "string"
+                },
+{
+                    "name": "gtia_clean",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

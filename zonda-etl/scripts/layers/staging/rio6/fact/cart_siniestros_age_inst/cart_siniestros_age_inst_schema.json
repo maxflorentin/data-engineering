@@ -1,0 +1,102 @@
+{
+  "file": "cart_siniestros_age_inst_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_siniestros_age_inst/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_siniestros_age_inst",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"csai_nu_orden",
+      "type": "string"
+    },
+    {
+      "name":"csai_fe_registracion",
+      "type":"string"
+    },
+    {
+      "name":"csai_fe_siniestro",
+      "type":"string"
+    },
+    {
+      "name":"csai_st_siniestro",
+      "type":"string"
+    },
+    {
+      "name":"csai_cd_compania",
+      "type":"string"
+    },
+    {
+      "name":"csai_fe_comunicacion",
+      "type":"string"
+    },
+    {
+      "name":"csai_carp_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"csai_capo_nu_poliza",
+      "type":"string"
+    },
+    {
+      "name":"csai_cace_nu_certificado",
+      "type":"string"
+    },
+    {
+      "name":"csai_cace_fe_desde",
+      "type":"string"
+    },
+    {
+      "name":"csai_cace_fe_hasta",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_aseg",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_beneficiario1",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_beneficiario2",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_beneficiario3",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_beneficiario4",
+      "type":"string"
+    },
+    {
+      "name":"csai_nm_beneficiario5",
+      "type":"string"
+    },
+    {
+      "name":"csai_de_siniestro",
+      "type":"string"
+    },
+    {
+      "name":"csai_nu_siniestro",
+      "type":"string"
+    },
+    {
+      "name":"csai_tp_documento",
+      "type":"string"
+    },
+    {
+      "name":"csai_nu_documento",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

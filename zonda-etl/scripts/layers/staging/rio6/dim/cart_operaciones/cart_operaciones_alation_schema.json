@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_operaciones",
+            "title": "Operaciones de Seguros",
+            "schema": "bi_corp_staging|bi_corp_common|bi_corp_business",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Operaciones de Seguros",
+            "columns": [
+                {
+                    "name": "CAOP_CD_OPERACION",
+                    "title": "CAOP_CD_OPERACION",
+                    "description": "Codigo de Operación",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAOP_CD_SUB_OPERACION",
+                    "title": "CAOP_CD_SUB_OPERACION",
+                    "description": "Codigo de SubOperación",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAOP_DE_OPERACION",
+                    "title": "CAOP_DE_OPERACION",
+                    "description": "Descripcion de Operación",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

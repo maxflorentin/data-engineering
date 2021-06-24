@@ -1,0 +1,93 @@
+{
+  "file": "mdr_contrapartes",
+  "location": "/santander/bi-corp/landing/mdr/mdr_contrapartes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/mdr/mdr_contrapartes",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true ,
+  "createTable": "bi_corp_staging.mdr_contrapartes",
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "COD_SIS_ORIGEN",
+      "type": "string"
+    },
+    {
+      "name": "FECHA_GENERACION",
+      "type": "string"
+    },
+    {
+      "name": "PK_ENTIDAD",
+      "type": "string"
+    },
+    {
+      "name": "SHORTNAME",
+      "type": "string"
+    },
+    {
+      "name": "RAZON_SOCIAL",
+      "type": "string"
+    },
+    {
+      "name": "STATUS",
+      "type": "string"
+    },
+    {
+      "name": "TIPO_ENTIDAD",
+      "type": "string"
+    },
+    {
+      "name": "SECTOR_DE_RIESGO",
+      "type": "string"
+    },
+    {
+      "name": "GRUPO_ECONOMICO",
+      "type": "string"
+    },
+    {
+      "name": "RAZON_SOCIAL_GE",
+      "type": "string"
+    },
+    {
+      "name": "GRUPO_FINANCIERO",
+      "type": "string"
+    },
+    {
+      "name": "RAZON_SOCIAL_GF",
+      "type": "string"
+    },
+    {
+      "name": "PAIS_ORIGEN",
+      "type": "string"
+    },
+    {
+      "name": "FECHA_ALTA",
+      "type": "string"
+    },
+    {
+      "name": "ALIAS_NUP",
+      "type": "string"
+    },
+    {
+      "name": "ALIAS_SAM",
+      "type": "string"
+    },
+    {
+      "name": "ALIAS_MUREX3",
+      "type": "string"
+    },
+    {
+      "name": "ALIAS_FENERGO",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

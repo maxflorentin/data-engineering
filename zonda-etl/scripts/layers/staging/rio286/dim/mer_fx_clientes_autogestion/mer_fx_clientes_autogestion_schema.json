@@ -1,0 +1,67 @@
+{
+  "file": "mer_fx_clientes_autogestion_schema",
+  "location": "/santander/bi-corp/landing/rio286/dim/mer_fx_clientes_autogestion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio286/dim/mer_fx_clientes_autogestion",
+  "createTable": "bi_corp_staging.mer_fx_clientes_autogestion",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "id_cliente_autogestion",
+                    "type": "string"
+                },
+                {
+                    "name": "id_categoria",
+                    "type": "string"
+                },
+                {
+                    "name": "id_mesa",
+                    "type": "string"
+                },
+                {
+                    "name": "id_sucursal",
+                    "type": "string"
+                },
+                {
+                    "name": "nup",
+                    "type": "string"
+                },
+                {
+                    "name": "razon_social",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_doc_insc",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_doc_insc",
+                    "type": "string"
+                },
+                {
+                    "name": "habilitado",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_ult_act",
+                    "type": "string"
+                },
+                {
+                    "name": "usuario_ult_act",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

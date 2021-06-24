@@ -1,0 +1,16 @@
+{
+  "name": "CROUPIER_REPORT",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_CMN_Delivery-Daily",
+      "tasks": ["bt_deli_envios_estados","bt_deli_envios"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"CROUPIER_REPORT",
+      "tasks": "all"
+    }
+  ]
+}

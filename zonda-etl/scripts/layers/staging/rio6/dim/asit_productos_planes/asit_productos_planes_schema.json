@@ -1,0 +1,30 @@
+{
+  "file": "asit_productos_planes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_productos_planes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_productos_planes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"aspp_cd_producto",
+      "type": "string"
+    },
+    {
+      "name":"aspp_cd_plan",
+      "type":"string"
+    },
+    {
+      "name":"aspp_prioridad",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

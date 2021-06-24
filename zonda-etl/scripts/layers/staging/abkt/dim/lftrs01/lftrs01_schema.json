@@ -1,0 +1,16 @@
+{
+    "file": "lft00_schema",
+    "location": "/santander/bi-corp/landing/abkt/dim/lftrs01/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/abkt/dim/lftrs01",
+    "createTable": "bi_corp_staging.abkt_lftrs01",
+    "copybook": "lftrs01.cob",
+    "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

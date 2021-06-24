@@ -1,0 +1,52 @@
+name: LOAD_BDR-ConfigVariables-Table
+description: 'Load the Variables for the BDR Monthly Process'
+owner: BI-Corp
+active: true
+start_date: "2020-01-01"
+# schedule_interval: '30 4 * * *'
+catchup: false
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: LOAD_BDR-ConfigVariables
+    operator: SparkSubmitOperator
+    config:
+      name: 'LOAD_BDR-ConfigVariables'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/config/tables/config_bdr_variables/config_bdr_variables_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR-ConfigVariables-Table') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+        }
+      application_args: ['config_bdr_variables_schema.json']
+  - name: Repair_Table_ConfigVariables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/config/tables/config_bdr_variables/ETLV-Repair-partitions-Table.hql'
+dependencies:
+  LOAD_BDR-ConfigVariables: Repair_Table_ConfigVariables
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar, hpolitano@santandertecnologia.com.ar, lmirandagonzalez@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

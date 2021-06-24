@@ -1,0 +1,511 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_maestro_flota",
+            "title": "Flotas",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Flotas",
+            "columns": [
+                {
+                    "name": "CAMF_CAPJ_CD_SUCURSAL",
+                    "title": "CAMF_CAPJ_CD_SUCURSAL",
+                    "description": "Código de la sucursal de la flota",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NU_FLOTA",
+                    "title": "CAMF_NU_FLOTA",
+                    "description": "Número de flota",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_COTIZACION",
+                    "title": "CAMF_FE_COTIZACION",
+                    "description": "Fecha de cotización",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACN_CD_NACIONALIDAD",
+                    "title": "CAMF_CACN_CD_NACIONALIDAD",
+                    "description": "Tipo de documento",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACN_NU_CEDULA_RIF",
+                    "title": "CAMF_CACN_NU_CEDULA_RIF",
+                    "description": "Número de documento",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NOMBRE_CLIENTE",
+                    "title": "CAMF_NOMBRE_CLIENTE",
+                    "description": "Nombre del cliente",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_APELLIDO_CLIENTE",
+                    "title": "CAMF_APELLIDO_CLIENTE",
+                    "description": "Apellido del cliente",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_NAC",
+                    "title": "CAMF_FE_NAC",
+                    "description": "Fecha de nacimiento",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACN_DIREC",
+                    "title": "CAMF_CACN_DIREC",
+                    "description": "Domicilio",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CJIV_CD_CATEGORIA",
+                    "title": "CAMF_CJIV_CD_CATEGORIA",
+                    "description": "Categoría de IVA",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_MT_PREMIO",
+                    "title": "CAMF_MT_PREMIO",
+                    "description": "Monto del premio",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 13.2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAAE_CD_ACTIVIDAD",
+                    "title": "CAMF_CAAE_CD_ACTIVIDAD",
+                    "description": "Código de actividad",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAES_CD_ESTADO",
+                    "title": "CAMF_CAES_CD_ESTADO",
+                    "description": "Código de provincia",
+                    "type": "NUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACI_CD_CIUDAD",
+                    "title": "CAMF_CACI_CD_CIUDAD",
+                    "description": "Código de localidad",
+                    "type": "NUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAZP_ZN_POSTAL",
+                    "title": "CAMF_CAZP_ZN_POSTAL",
+                    "description": "Código postal",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NU_TELEFONO",
+                    "title": "CAMF_NU_TELEFONO",
+                    "description": "Número de teléfono",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAUS_CD_USUARIO",
+                    "title": "CAMF_CAUS_CD_USUARIO",
+                    "description": "Código de usuario",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_DE_EMPRESA",
+                    "title": "CAMF_DE_EMPRESA",
+                    "description": "Descripción de la empresa",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CD_RELACIONAMIENTO",
+                    "title": "CAMF_CD_RELACIONAMIENTO",
+                    "description": "Código de relacionamiento",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAAE_CD_INDOLE_CATEGORIA",
+                    "title": "CAMF_CAAE_CD_INDOLE_CATEGORIA",
+                    "description": "Código de la indole de la categoria",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_STATUS",
+                    "title": "CAMF_FE_STATUS",
+                    "description": "Fecha del estado de la flota",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CARP_CD_RAMO",
+                    "title": "CAMF_CARP_CD_RAMO",
+                    "description": "Código de ramo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAMO_CD_MONEDA",
+                    "title": "CAMF_CAMO_CD_MONEDA",
+                    "description": "Código de moneda",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_DE_CUENTA_DEBITO",
+                    "title": "CAMF_DE_CUENTA_DEBITO",
+                    "description": "Descripción de la cuenta de debito",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_DE_SINIESTRALIDAD",
+                    "title": "CAMF_DE_SINIESTRALIDAD",
+                    "description": "Descripción de la siniestralidad",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_ST_FLOTA",
+                    "title": "CAMF_ST_FLOTA",
+                    "description": "Estado de la flota",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAPO_NU_POLIZA",
+                    "title": "CAMF_CAPO_NU_POLIZA",
+                    "description": "Número de póliza",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NM_CONTACTO",
+                    "title": "CAMF_NM_CONTACTO",
+                    "description": "Nombre del contacto",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACM_CD_COMPANIA",
+                    "title": "CAMF_CACM_CD_COMPANIA",
+                    "description": "Código de compañía",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CACE_CD_SUC_DEBITO",
+                    "title": "CAMF_CACE_CD_SUC_DEBITO",
+                    "description": "Código de la sucursal de la rentabilidad",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_ST_ORDEN",
+                    "title": "CAMF_ST_ORDEN",
+                    "description": "Estado de la orden",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CIA_ASEGURADORA",
+                    "title": "CAMF_CIA_ASEGURADORA",
+                    "description": "Descripción de la compañía aseguradora",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_ENVIO",
+                    "title": "CAMF_FE_ENVIO",
+                    "description": "Fecha de envío",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CAUSA_ANULACION",
+                    "title": "CAMF_CAUSA_ANULACION",
+                    "description": "Causa de anulación",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_DESDE",
+                    "title": "CAMF_FE_DESDE",
+                    "description": "Fecha desde",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_HASTA",
+                    "title": "CAMF_FE_HASTA",
+                    "description": "Fecha hasta",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NU_PRESTAMO",
+                    "title": "CAMF_NU_PRESTAMO",
+                    "description": "Número de préstamo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 16.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_FE_VIG_PRESTAMO",
+                    "title": "CAMF_FE_VIG_PRESTAMO",
+                    "description": "Fecha vigencia del préstamo",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_CUOTAS_PRESTAMO",
+                    "title": "CAMF_CUOTAS_PRESTAMO",
+                    "description": "Cantidad de cuotas del préstamo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NM_FIRMANTE",
+                    "title": "CAMF_NM_FIRMANTE",
+                    "description": "Nombre del firmante",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NU_DOC_FIRMANTE",
+                    "title": "CAMF_NU_DOC_FIRMANTE",
+                    "description": "Número de documento del firmante",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_NU_TEL_FIRMANTE",
+                    "title": "CAMF_NU_TEL_FIRMANTE",
+                    "description": "Número de teléfono del firmante",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_DIR_EMAIL_FIRMANTE",
+                    "title": "CAMF_DIR_EMAIL_FIRMANTE",
+                    "description": "Email del firmante",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMF_PERSONERIA_FIRMANTE",
+                    "title": "CAMF_PERSONERIA_FIRMANTE",
+                    "description": "Personería del firmante",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

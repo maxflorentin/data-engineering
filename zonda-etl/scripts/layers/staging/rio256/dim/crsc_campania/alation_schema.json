@@ -1,0 +1,119 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308640"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio256_crsc_campania",
+            "title": "Tabla que contiene los registros de las campañas por las cuales pudo acceder el cliente al flujo",
+            "schema": "bi_corp_staging",
+            "source": "ATENEA",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla que contiene los registros de las campañas por las cuales pudo acceder el cliente al flujo",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "Identificador del registro insertado. Pk de la tabla",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SOURCE",
+                    "title": "SOURCE",
+                    "description": "UTM Source de las campañas",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MEDIUM",
+                    "title": "MEDIUM",
+                    "description": "UTM Medium de las campañas",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMPAIGN",
+                    "title": "CAMPAIGN",
+                    "description": "UTM Campaing de las campañas",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_SOLICITUD",
+                    "title": "ID_SOLICITUD",
+                    "description": "FK a la tabla CRSC_SOLICITUD",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

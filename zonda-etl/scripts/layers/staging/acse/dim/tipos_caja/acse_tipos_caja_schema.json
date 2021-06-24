@@ -1,0 +1,34 @@
+{
+	"file": "acse_tipos_caja_schema",
+	"location": "/santander/bi-corp/landing/acse/dim/tipos_caja/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/dim/tipos_caja",
+    "createTable": "bi_corp_staging.acse_tipos_caja",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "tipo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "grupo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "medida_caja",
+                        "type": "string",
+                        "width": 11
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

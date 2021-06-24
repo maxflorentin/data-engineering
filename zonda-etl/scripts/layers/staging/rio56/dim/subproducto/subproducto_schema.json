@@ -1,0 +1,55 @@
+{
+    "file": "subproducto",
+    "location": "/santander/bi-corp/landing/rio56/dim/subproducto/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/subproducto",
+    "tempDirectory": "/santander/bi-corp/temp/subproducto",
+    "createTable": "bi_corp_staging.rio56_subproducto",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_subprod",
+            "type": "string"
+        },
+        {
+            "name": "desc_subprod",
+            "type": "string"
+        },
+        {
+            "name": "est_subprod",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_subprod",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_subprod",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_subprod",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_subprod",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

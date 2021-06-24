@@ -1,0 +1,38 @@
+{
+  "file": "gradofeve_sge_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/gradofeve_sge/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/gradofeve_sge",
+  "createTable": "bi_corp_staging.sge_gradofeve_sge",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "cant_dias",
+      "type": "string"
+    },
+    {
+      "name": "cod_grado_garra",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

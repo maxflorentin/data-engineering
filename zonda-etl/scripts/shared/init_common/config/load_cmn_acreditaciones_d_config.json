@@ -1,0 +1,27 @@
+{
+    "name": "Acreditaciones-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": ["STAGING_PEDT008_Parquetize","STAGING_PEDT015_Parquetize","STAGING_PEDT001_Parquetiz"]
+                },
+                {
+                    "dag_id":"LOAD_STG_Malbgc_Updates",
+                    "tasks": ["STG_LoadTable_bgdtmco","STG_LoadTable_bgdtpab","STG_LoadTable_tbgb001","STG_LoadTable_bgdtrpp","STG_LoadTable_bgdtmpa"]
+                },
+                {
+                    "dag_id":"LOAD_STG_Contratos-Daily",
+                    "tasks": ["STAGING_BGDTMAE_AddPartition"]
+                },
+                {
+                    "dag_id":"LOAD_STG_RIO53_PAS-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Acreditaciones"
+                }
+    ]
+}

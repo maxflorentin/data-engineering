@@ -1,0 +1,27 @@
+{
+  "table": "bi_corp_common.stk_adm_omdm",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tipotramite","cod_adm_tramite","cod_adm_decision"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tipotramite","cod_adm_tramite","ts_adm_fecproceso"],
+      "threshold": 0.00
+    },
+	    {
+      "control_id": "null_values",
+      "field_to_check": ["ts_adm_fecrequest","ts_adm_fecresponse","ts_adm_fecfinproc","ds_adm_desobservacion","cod_adm_decision","ds_adm_tipodecision","ds_adm_desnombreflujo","ds_adm_desultimopaso","ds_adm_descategoriaproducto","ds_adm_descodproducto","ds_adm_indicadorestado"],
+      "threshold": 0.005
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecproceso","ts_adm_fecrequest","ts_adm_fecresponse","ts_adm_fecfinproc"],
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "threshold": 0.00
+    }
+  ]
+}
+

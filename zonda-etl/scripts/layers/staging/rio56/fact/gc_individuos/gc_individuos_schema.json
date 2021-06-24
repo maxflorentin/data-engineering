@@ -1,0 +1,91 @@
+{
+    "file": "gc_individuos",
+    "location": "/santander/bi-corp/landing/rio56/fact/gc_individuos/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/fact/gc_individuos",
+    "tempDirectory": "/santander/bi-corp/temp/gc_individuos",
+    "createTable": "bi_corp_staging.rio56_gc_individuos",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "tpo_doc_indi",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc_indi",
+            "type": "string"
+        },
+        {
+            "name": "fec_naci_indi",
+            "type": "string"
+        },
+        {
+            "name": "mar_sex_indi",
+            "type": "string"
+        },
+        {
+            "name": "ape_indi",
+            "type": "string"
+        },
+        {
+            "name": "nom_indi",
+            "type": "string"
+        },
+        {
+            "name": "ide_nup_indi",
+            "type": "string"
+        },
+        {
+            "name": "cod_suc_indi",
+            "type": "string"
+        },
+        {
+            "name": "cod_segm_indi",
+            "type": "string"
+        },
+        {
+            "name": "cod_crm_indi",
+            "type": "string"
+        },
+        {
+            "name": "semf_ingreso_crm",
+            "type": "string"
+        },
+        {
+            "name": "semf_renta_crm",
+            "type": "string"
+        },
+        {
+            "name": "semf_riesgo_crm",
+            "type": "string"
+        },
+        {
+            "name": "rentabilidad_promedio",
+            "type": "string"
+        },
+        {
+            "name": "color_semaforo",
+            "type": "string"
+        },
+        {
+            "name": "color_semaf_riesgo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

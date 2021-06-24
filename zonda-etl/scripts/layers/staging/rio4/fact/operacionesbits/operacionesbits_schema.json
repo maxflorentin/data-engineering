@@ -1,0 +1,35 @@
+{
+     "file": "operacionesbits_schema",
+     "location": "/santander/bi-corp/landing/rio4/fact/operacionesbits/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio4/fact/operacionesbits",
+     "tempDirectory": "/santander/bi-corp/temp/rio4",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [          {
+                 "name": "nroperacion",
+                 "type": "string"
+                },
+                {
+                 "name": "nrbit",
+                 "type": "string"
+                },
+                {
+                 "name": "valor",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "fechaop",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,19 @@
+{
+  "file": "acreditaciones_schema",
+  "location": "/santander/bi-corp/landing/malbgc/fact/acreditaciones/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/acreditaciones",
+  "header": false,
+  "createTable": "bi_corp_staging.malbgc_acreditaciones",
+  "copybook": "wabgi311.txt",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

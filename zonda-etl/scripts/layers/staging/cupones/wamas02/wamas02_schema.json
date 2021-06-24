@@ -1,0 +1,18 @@
+{
+  "file": "wamas02",
+  "location": "/santander/bi-corp/landing/cupones/twamas02/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/cupones/wamas02",
+  "createTable": "bi_corp_staging.amas_wamas02",
+  "copybook": "wamas02.cob",
+  "parquetFiles": 4,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder":1
+    }
+  ]
+}

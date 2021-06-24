@@ -1,0 +1,52 @@
+{
+  "file": "enacom_numeracion_geografica",
+  "location": "/santander/bi-corp/landing/enacom/fact/numgeo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/enacom/fact/numgeo/",
+  "header": true,
+  "extension": "csv",
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "operador",
+      "type": "string"
+    },
+    {
+      "name": "servicio",
+      "type": "string"
+    },
+    {
+      "name": "modalidad",
+      "type": "string"
+    },
+    {
+      "name": "localidad",
+      "type": "string"
+    },
+    {
+      "name": "indicativo",
+      "type": "string"
+    },
+    {
+      "name": "bloque",
+      "type": "string"
+    },
+    {
+      "name": "resolucion",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

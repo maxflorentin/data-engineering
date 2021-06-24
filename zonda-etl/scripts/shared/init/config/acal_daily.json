@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "ACAL",
+      "type": "FACT",
+      "name": "tcalif_paquete",
+      "filePrefix": "TCALIF_PAQUETE_"
+    },
+    {
+      "source": "ACAL",
+      "type": "FACT",
+      "name": "tcalif_persona",
+      "filePrefix": "tcalif_persona_"
+    },
+    {
+      "source": "ACAL",
+      "type": "FACT",
+      "name": "ptmo_preacordado",
+      "filePrefix": "PTMO_PREACORDADO_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Acal-Daily"
+  }
+}

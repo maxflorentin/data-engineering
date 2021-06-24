@@ -1,0 +1,80 @@
+{
+	"file": "dim_movimientos_cuenta_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_movimientos_cta/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_movimientos_cuenta",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_movimientos_cuenta",
+	"createTable": "bi_corp_staging.exa_dim_movimientos_cuenta",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo",
+			"type":"string"
+		},
+{
+			"name": "alfa_chica",
+			"type":"string"
+		},
+{
+			"name": "alfa_grande",
+			"type":"string"
+		},
+{
+			"name": "cod_anulacion",
+			"type":"string"
+		},
+{
+			"name": "ind_tipo",
+			"type":"string"
+		},
+{
+			"name": "ind_cliente",
+			"type":"string"
+		},
+{
+			"name": "cls_mov",
+			"type":"string"
+		},
+{
+			"name": "agrup_nivel1",
+			"type":"string"
+		},
+{
+			"name": "agrup_nivel2",
+			"type":"string"
+		},
+{
+			"name": "agrup_nivel3",
+			"type":"string"
+		},
+{
+			"name": "reversa",
+			"type":"string"
+		},
+{
+			"name": "analisis_mining",
+			"type":"string"
+		},
+{
+			"name": "condicion",
+			"type":"string"
+		},
+{
+			"name": "mov_genuino",
+			"type":"string"
+		},
+{
+			"name": "observacion",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

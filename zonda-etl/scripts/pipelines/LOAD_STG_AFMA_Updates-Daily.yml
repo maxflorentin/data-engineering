@@ -1,0 +1,47 @@
+name: LOAD_STG_AFMA_Updates-Daily
+description: 'Update AFMA tables with stock and daily updates'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 13 * * *'
+start_date: '2020-10-16'
+#catchup: true
+retries: 2
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [wasdo12]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STG_CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cupones/${e}/DDLT-Create_Staging_Table.hql'
+  - name: STG_LoadTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cupones/${e}/ETL-LOAD-stg_afma_${e}.hql'
+dependencies:
+  STG_CreateTable: STG_LoadTable
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

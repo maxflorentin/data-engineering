@@ -1,0 +1,47 @@
+{
+    "file": "gc_empresa_gestiones",
+    "location": "/santander/bi-corp/landing/rio56/dim/gc_empresa_gestiones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/gc_empresa_gestiones",
+    "tempDirectory": "/santander/bi-corp/temp/gc_empresa_gestiones",
+    "createTable": "bi_corp_staging.rio56_gc_empresa_gestiones",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_sector",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_nro",
+            "type": "string"
+        },
+        {
+            "name": "tpo_doc_empr",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc_empr",
+            "type": "string"
+        },
+        {
+            "name": "sec_doc_empr",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_productos_coberturas",
+            "title": "Coberturas por productos de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Coberturas por productos de asistencias",
+            "columns": [
+                {
+                    "name": "  ASPB_CD_PRODUCTO",
+                    "title": "  ASPB_CD_PRODUCTO",
+                    "description": "Codigo de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_CD_PLAN",
+                    "title": "  ASPB_CD_PLAN",
+                    "description": "Codigo de Plan",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_CD_COBERTURA",
+                    "title": "  ASPB_CD_COBERTURA",
+                    "description": "Codigo de Cobertura",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_CD_DETALLE",
+                    "title": "  ASPB_CD_DETALLE",
+                    "description": "Codigo de Detalle",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_NU_ORDEN",
+                    "title": "  ASPB_NU_ORDEN",
+                    "description": "Numero de Orden",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_ST_DETALLE",
+                    "title": "  ASPB_ST_DETALLE",
+                    "description": "Estado de detalle",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_NU_EVENTOS",
+                    "title": "  ASPB_NU_EVENTOS",
+                    "description": "Numero de eventos",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPB_MT_EVENTO",
+                    "title": "  ASPB_MT_EVENTO",
+                    "description": "Monto del evento",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

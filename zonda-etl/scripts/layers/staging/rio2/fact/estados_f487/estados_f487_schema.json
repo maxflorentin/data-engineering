@@ -1,0 +1,67 @@
+{
+  "file": "estados_f487_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/estados_f487/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/estados_f487",
+  "createTable": "bi_corp_staging.sge_estados_f487",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "secu_f487",
+                    "type": "string"
+                },
+{
+                    "name": "fecha",
+                    "type": "string"
+                },
+{
+                    "name": "estado",
+                    "type": "string"
+                },
+{
+                    "name": "usuario",
+                    "type": "string"
+                },
+{
+                    "name": "id_dev",
+                    "type": "string"
+                },
+{
+                    "name": "observaciones",
+                    "type": "string"
+                },
+{
+                    "name": "cod_cargo_autorizante",
+                    "type": "string"
+                },
+{
+                    "name": "cod_dentro_limite",
+                    "type": "string"
+                },
+{
+                    "name": "mar_dentro_limite",
+                    "type": "string"
+                },
+{
+                    "name": "mar_devolucion",
+                    "type": "string"
+                }
+       ],
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

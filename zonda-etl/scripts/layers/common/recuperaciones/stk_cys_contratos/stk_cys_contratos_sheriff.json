@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_cys_contratos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_per_nup","cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","ds_cys_categoriaproducto","ds_cys_descripcionsegmento"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cys_fechasituacionirregular","dt_cys_fechadudosidad","dt_cys_fechaaltaregistro","dt_cys_fechamarcasubmit","dt_cys_fechaltaproducto","dt_cys_fechavencproducto","dt_cys_fechacambioclasificacionreestructuracion","dt_cys_fechainiciogracia","dt_cys_fechafingracia"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

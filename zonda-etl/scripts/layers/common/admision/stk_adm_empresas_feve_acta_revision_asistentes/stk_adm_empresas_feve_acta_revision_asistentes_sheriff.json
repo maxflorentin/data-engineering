@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_feve_acta_revision_asistentes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_acta","ds_adm_nombrecompleto","cod_adm_dni","cod_adm_cargo","cod_per_nup"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_acta","ds_adm_nombrecompleto","cod_adm_dni","cod_adm_cargo","cod_per_nup"],
+      "threshold": 0.00005
+    }
+	  ]
+}
+

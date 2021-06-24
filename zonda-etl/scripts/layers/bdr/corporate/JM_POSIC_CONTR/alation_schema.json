@@ -1,0 +1,447 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_posic_contr",
+         "title":"Información de saldos contables de los contratos",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contiene en cada fila, un importe en una situación contable diferenciada, de un contrato en una fecha dada. La cuenta contable local de cada entidad será lo que identificará las situaciones contables por las que clasifica cada importe. En esta tabla es obligatorio que aparezcan las posiciones de todos los contratos cargados en la tabla Contratos BIS.",
+         "columns":[
+            {
+               "name":"e0621_agrctacb",
+               "title":"Agrupador Cta. Contable local",
+               "description":"Agrupador contable local de grupos cuentas, por ejemplo la rúbrica.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_bcra"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_bcra"
+                  }
+               ]
+            },
+            {
+               "name":"e0621_centctbl",
+               "title":"Centro Contable",
+               "description":"Información del centro contable asociado al importe, a nivel saldo. este dato facilita la segmentación y análisis de la información.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_coddiv",
+               "title":"Divisa",
+               "description":"Moneda en la que está denominado el importe. se informará siempre con la divisa local ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_contra1",
+               "title":"Identificador de contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_cta_cont",
+               "title":"Cta. Contable local",
+               "description":"Número de cuenta contable afectada por el contrato.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_altair"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_altair"
+                  }
+               ]
+            },
+            {
+               "name":"e0621_ctacgbal",
+               "title":"Cuenta Cargabal",
+               "description":"Número de cuenta contable cargabal afectada por el contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_cargabal"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"cod_rubro_cargabal"
+                  }
+               ]
+            },
+            {
+               "name":"e0621_fec_mes",
+               "title":"Fecha Mes",
+               "description":"Mes de proceso de información. se informará con la fecha del último día natural (31, 30 o 28) del més en el que se está reportando la información.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_importh",
+               "title":"Importe",
+               "description":"Saldo actual correspondiente al tipo de importe que se está informando.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"imp_deuda"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"imp_deuda"
+                  }
+               ]
+            },
+            {
+               "name":"e0621_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0621_tip_impt",
+               "title":"Tipo de Importe",
+               "description":"Tipo de importe que contiene el registro. es un dato deducido de las cuentas contables locales.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar>, Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"dia_atraso"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"isec4130",
+                     "column":"dia_atraso"
+                  }
+               ]
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

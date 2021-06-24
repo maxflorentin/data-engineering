@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.bt_deli_envios",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": []
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_deli_crupier","cod_per_nup","cod_deli_operacion"],
+      "threshold": 0.01
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_deli_registro","dt_deli_ultima_modificacion"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

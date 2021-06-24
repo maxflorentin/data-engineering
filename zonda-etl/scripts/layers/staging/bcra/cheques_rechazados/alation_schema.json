@@ -1,0 +1,139 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                ""
+            ],
+            "level": ""
+        },
+        "table": {
+            "name": "bcra_cheques_rechazados",
+            "title": "Interfaz pública provista por el Banco Central con información de cheques rechazados.",
+            "schema": "bi_corp_staging",
+            "source": "BCRA",
+            "query": "",
+            "type": "fact",
+            "description": "Interfaz pública provista por el Banco Central con información de cheques rechazados.",
+            "columns": [
+                {
+                    "name": "cuit",
+                    "title": "CUIT/CUIT/CDI",
+                    "description": "Nro. CUIT / CUIL o CDI ",
+                    "type": "Int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "nro_cheque",
+                    "title": "NRO. CHEQUE",
+                    "description": "Número del cheque",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_rechazo",
+                    "title": "FECHA RECHAZO",
+                    "description": "Fecha de Rechazo. En Formato AAAAMMDD",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "monto",
+                    "title": "MONTO",
+                    "description": "Monto del cheque. Las dos últimas posiciones\ncorresponden a decimales ",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "causal",
+                    "title": "CAUSAL",
+                    "description": "Causal de Rechazo. 1: Por vicios formales; 2: Sin fondos",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_levantamiento",
+                    "title": "FECHA DE LEVANTAMIENTO",
+                    "description": "Fecha de Pago Cheque. En Formato AAAAMMDD",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "revision",
+                    "title": "Ley 25.326, Art. 16, Inc. 6",
+                    "description": "E: En revisión; S: Fin de revisión ",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "judicial",
+                    "title": "Ley 25.326, Art. 38, Inc. 3",
+                    "description": "J: En proceso judicial; F: Fin de proceso judicial ",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cuit_relacionado",
+                    "title": "CUIT",
+                    "description": "Nro. CUIT de la persona jurídica relacionada. ",
+                    "type": "Int",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "pago_multa",
+                    "title": "Pago de multa",
+                    "description": "IMPAGA: No se registra pago de multa en el B.C.R.A.; DD/MM/AAAA: Fecha de pago multa; SUSPENDIDO: Ley 24.452, Art. 64.",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No Aplica",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Incremental",
+                "delta": "D+1"
+            }
+        }
+    }
+}

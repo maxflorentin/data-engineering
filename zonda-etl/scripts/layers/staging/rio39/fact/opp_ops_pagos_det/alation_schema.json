@@ -1,0 +1,162 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_opp_ops_pagos_det",
+      "title": "operaciones pagos detalle",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/opp_ops_pagos_det/",
+      "type": "fact",
+      "description": "Contiene informacion adicional de operaciones generadas en COMEX",
+      "columns":
+               [
+                {
+                  "name": "cod_ops",
+                  "title": "cod_ops",
+                  "description": "codigo operación",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "secuencia",
+                  "title": "secuencia",
+                  "description": "secuencia",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "concepto",
+                  "title": "concepto",
+                  "description": "concepto",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 5,
+                  "security": "Público"
+                },
+                {
+                  "name": "dbto_cdto",
+                  "title": "dbto_cdto",
+                  "description": "cuenta debito",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "porcentaje",
+                  "title": "porcentaje",
+                  "description": "porcentaje",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_moneda",
+                  "title": "cod_moneda",
+                  "description": "codigo moneda",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "cotizacion",
+                  "title": "cotizacion",
+                  "description": "cotización",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "importe_origen",
+                  "title": "importe_origen",
+                  "description": "importe origen",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "importe_pesos",
+                  "title": "importe_pesos",
+                  "description": "importe pesos",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "movim_cta_ref",
+                  "title": "movim_cta_ref",
+                  "description": "cuenta de ref",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 30,
+                  "security": "Público"
+                },
+                {
+                  "name": "sec_mov_cta",
+                  "title": "sec_mov_cta",
+                  "description": "cuenta sec mov",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "importe_dolar",
+                  "title": "importe_dolar",
+                  "description": "importe dólar",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

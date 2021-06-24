@@ -1,0 +1,87 @@
+{
+  "file": "cmrm_posiciones_schema",
+  "location": "/santander/bi-corp/landing/acfl/fact/cmrm_posiciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/acfl/fact/cmrm_posiciones",
+  "createTable": "bi_corp_staging.acfl_cmrm_posiciones",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "aplicativo",
+    "type": "string"
+  },
+{
+    "name": "empresa",
+    "type": "string"
+  },
+{
+    "name": "fechaal",
+    "type": "string"
+  },
+{
+    "name": "especie",
+    "type": "string"
+  },
+{
+    "name": "fechadiaria",
+    "type": "string"
+  },
+{
+    "name": "destino",
+    "type": "string"
+  },
+{
+    "name": "sgspos",
+    "type": "string"
+  },
+{
+    "name": "posicion",
+    "type": "string"
+  },
+{
+    "name": "moneda",
+    "type": "string"
+  },
+{
+    "name": "sgspac",
+    "type": "string"
+  },
+{
+    "name": "precio_assent_control",
+    "type": "string"
+  },
+{
+    "name": "sgsnomi",
+    "type": "string"
+  },
+{
+    "name": "nominal",
+    "type": "string"
+  },
+{
+    "name": "operatoria",
+    "type": "string"
+  },
+{
+    "name": "cod_rossi",
+    "type": "string"
+  },
+{
+    "name": "fecha_emision",
+    "type": "string"
+  },
+{
+    "name": "fecha_proceso",
+    "type": "string"
+  }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

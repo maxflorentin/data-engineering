@@ -1,0 +1,85 @@
+{
+  "file": "normalizacion",
+  "location": "/santander/bi-corp/landing/garra/fact/normalizacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/garra/fact/normalizacion",
+  "extension": "csv",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "NUM_SEC",
+      "type": "string",
+      "width": 6
+    },
+    {
+      "name": "ENTIDAD",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "CENTRO",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "CONTRATO",
+      "type": "string",
+      "width": 12
+    },
+    {
+      "name": "PRODUCTO",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "SUBPRODUCTO",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "DIVISA",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "FEC_APERTURA",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "MARCA_SEG_ACT",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "FEC_CAMBIO_SEG",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "FEC_CURA",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "FEC_NORMALIZACION",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "NUM_REE",
+      "type": "string",
+      "width": 3
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

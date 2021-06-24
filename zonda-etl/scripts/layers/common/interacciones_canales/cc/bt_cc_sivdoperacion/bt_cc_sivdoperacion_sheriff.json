@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_cc_sivdoperacion",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cc_operacion","cod_cc_contacto"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_cc_operacion"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_cc_operacion"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "file": "cancelaciones_md",
+  "location": "/santander/bi-corp/landing/moria/fact/cancelaciones_md/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/moria/fact/moria_cancelaciones_md/",
+  "tempDirectory": "/santander/bi-corp/temp/cancelaciones_md/",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "MDEC160N.cob",
+  "createTable":"bi_corp_staging.moria_cancelaciones_md",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

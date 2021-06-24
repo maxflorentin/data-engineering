@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_ind_estados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_sucursal","cod_adm_nrosolicitud"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_suc_sucursal","cod_adm_nrosolicitud","cod_adm_canal","ts_adm_fecestadoactual","ts_adm_fecingresorio2"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecingresorio2","ts_adm_fecenviosw1","ts_adm_fecenviosw2","ts_adm_fecdesicionsw","ts_adm_fecenvioveraz","ts_adm_fecrecepveraz","ts_adm_fecingresosrs","ts_adm_fecasiganasrs","ts_adm_feciniresolsrs","ts_adm_fecfinresolsrs","ts_adm_fecretrosrs","ts_adm_fecreasiganasrs","ts_adm_fecresolsuc","ts_adm_fecresolaltas","ts_adm_fecretro","ts_adm_fecestadoactual","ts_adm_fecestadoasol"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

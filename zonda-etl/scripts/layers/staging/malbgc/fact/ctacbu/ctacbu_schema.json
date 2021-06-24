@@ -1,0 +1,46 @@
+{
+        "file": "ctacbu_malbgc",
+        "location": "/santander/bi-corp/landing/malbgc/fact/ctacbu/updates/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malbgc/fact/ctacbu/updates",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "createTable": "bi_corp_staging.malbgc_ctacbu_updates",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":
+                  [
+                    {
+                      "name": "entidad",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "centro_alta",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "cuenta",
+                      "type": "string",
+                      "width": 12
+                    },
+                    {
+                      "name": "divisa",
+                      "type": "string",
+                      "width": 3
+                    },
+                    {
+                      "name": "numero_cbu",
+                      "type": "string",
+                      "width": 22
+                    }
+                  ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

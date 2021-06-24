@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_rcp_penddocuemerix",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_per_nup"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_per_nup"],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechaingreso","dt_rcp_fechaingresoescenario","dt_rcp_fechainicioestado","dt_rcp_fechaprimerimpago"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

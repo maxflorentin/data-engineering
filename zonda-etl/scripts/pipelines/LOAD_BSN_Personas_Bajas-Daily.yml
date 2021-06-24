@@ -1,0 +1,45 @@
+name: LOAD_BSN_Personas_Bajas-Daily
+description: 'Load Daily Personas Bajas Data'
+owner: BI-Corp
+active: true
+schedule_interval: '00 9 * * *'
+start_date: '2020-05-04'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: -1
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Create_personas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/personas/bt_personas_bajas/DDLT-Create_business_bt_personas_bajas.hql'
+  - name: Load_personas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/personas/bt_personas_bajas/ETL_LOAD_business_bt_personas_bajas.hql'
+dependencies:
+  Create_personas_Table: Load_personas_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [fscagnettibrusatori@santandertecnologia.com.ar]

@@ -1,0 +1,30 @@
+{
+  "file": "tb_ddns_codpostal_schema",
+  "location": "/santander/bi-corp/landing/rio35/dim/tb_ddns_codpostal/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/dim/tb_ddns_codpostal",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "ddn",
+    "type": "string"
+  },
+    {
+    "name": "codpostal",
+    "type": "string"
+   }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

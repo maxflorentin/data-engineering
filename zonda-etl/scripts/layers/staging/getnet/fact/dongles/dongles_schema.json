@@ -1,0 +1,94 @@
+{
+  "file": "dongles",
+  "location": "/santander/bi-corp/landing/getnet/fact/dongles/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/getnet/fact/dongles",
+  "createTable": "bi_corp_staging.getnet_dongles",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "dng_address",
+      "type": "string"
+    },
+    {
+      "name": "dng_category",
+      "type": "string"
+    },
+    {
+      "name": "dng_city",
+      "type": "string"
+    },
+    {
+      "name": "dng_codigo_canal",
+      "type": "string"
+    },
+    {
+      "name": "dng_created_at",
+      "type": "string"
+    },
+    {
+      "name": "dng_cuit",
+      "type": "string"
+    },
+    {
+      "name": "dng_document_number",
+      "type": "string"
+    },
+    {
+      "name": "dng_email",
+      "type": "string"
+    },
+    {
+      "name": "dng_first_name",
+      "type": "string"
+    },
+    {
+      "name": "dng_id_externo",
+      "type": "string"
+    },
+    {
+      "name": "dng_last_name",
+      "type": "string"
+    },
+    {
+      "name": "dng_legal_name",
+      "type": "string"
+    },
+    {
+      "name": "dng_name",
+      "type": "string"
+    },
+    {
+      "name": "dng_phone",
+      "type": "string"
+    },
+    {
+      "name": "dng_postal_code",
+      "type": "string"
+    },
+    {
+      "name": "dng_province",
+      "type": "string"
+    },
+    {
+      "name": "dng_transaction_date",
+      "type": "string"
+    },
+    {
+      "name": "dng_type",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

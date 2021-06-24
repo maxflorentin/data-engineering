@@ -1,0 +1,126 @@
+name: LOAD_STG_SCORING_SGE-Daily
+description: 'Load SGE/ALCEN data from RIO2'
+owner: BI-Corp
+active: true
+start_date: "2020-11-01"
+schedule_interval: '30 3 * * *'
+#catchup: true
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [accionariado_prop, balances_per, blc_act, blc_dadic, blc_eres, blc_pas, cat_grupos, ddjj_per, deudas_bancarias_prop, estados_f487, estados_propuesta, fechas_deudas_bancarias_prop, firmas_autorizadas, f485, f487, garantias_genericas, jerarquia_cargos, lineas_otorgadas, personas, prop_global, propuesta, ree_area_preguntas, ree_areas, ree_motivos_desacuerdo, ree_pregunta_respuestas, ree_tipos_rating, rpc, stnd_balances, stnd_datos_adicionales_f487, stnd_datos_adicionales_prop, stnd_log_f487, stnd_log_propuesta, tpo_operacion, usuarios, valoracion, valoracion_per, ddjj_prop, lineas_garantias, v_tpo_operacion_sge, stnd_motivo_sw_srs, stnd_cod_estado, tlinea_prendario, accionariado, garantias, garantias_operacion, act_bcra, resumen_crediticio , lineas_nominados, estados, balances_prop, blc_pas_prop, blc_act_prop, blc_dadic_prop, blc_eres_prop, proveedores_per, proveedores_prop, clientes, clientes_prop, ddjj_per, vtas_pos_blc, vtas_blc_per, vtas_ddjj_per, vtas_ddjj_prop, vtas_pos_blc_prop, vtas_blc_prop, feve_ficha, clasificacion_deudores, clasificacion_deudores_per, deudas_bancarias, eoaf, equipo_directivo, equipo_directivo_prop, valoracion_preguntas_per, valoracion_preguntas, valoracion_operaciones, valoracion_garantias, mercados_prop, actividades_santander_nace, rtg_calculos, rtg_calculos_respuestas, rtg_def_cuestionarios,rtg_calculos_det,rtg_def_cuest_preguntas,rtg_def_cuest_respuestas, cod_estado_net, feve_acta_revision, feve_acta_revision_asistentes, feve_acta_revision_clientes, feve_estado, gradofeve_sge, politicas_seguir, promontorio_estado, promontorio_estadoempresa, promontorio_ficha, revision_rating_ficha, rev_rat_conclusion, rev_rat_cuestionario_ree, rev_rat_estado, rev_rat_estado_financiero, rev_rat_informe_sectorial, rev_rat_opciones_item_revision, rev_rat_seguimiento, rev_rat_sist_opcional_feve, rev_rat_sistema_opcional, gnl_control_libradores, gnl_datos_complem, lineas_productos]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: 'SQOOP_INGESTION'
+    operator: PythonOperator
+    config:
+      function_name: 'loadTableCommands'
+      function_def: |
+        def loadTableCommands(*args, **kwargs):
+              from airflow.operators.bash_operator import BashOperator
+              import json
+              import os
+              print(kwargs)
+
+              # VARIABLES
+              extra_args= eval(kwargs.get('extra_args'))
+              partition_date_value = kwargs.get('partition_date')
+              table_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('table_file'))
+              server_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('server_file'))
+              table_prefix= kwargs.get('table_prefix')
+              data_lake_server= kwargs.get('data_lake_server')
+
+              ## Read if tables comes with a fixed execution
+              with  open(server_file, 'r') as serverfile:
+                servers = json.loads(serverfile.read())
+
+              ## Read Table-file
+              with open(table_file, 'r') as configfile:
+                data = json.loads(configfile.read())
+              for table in data['tables']:
+                if table['table'] == kwargs.get('table'):
+                  partition_date = partition_date_value
+                  command = table['command']
+                  for server in servers['servers']:
+                    if table['serverConfig'] == server['serverName']:
+                      serverCommand = server
+                  for eachServerCfg in serverCommand:
+                      command = command.replace('{' + eachServerCfg + '}', serverCommand.get(eachServerCfg))
+                  for eachTableCfg in table:
+                      command = command.replace('{' + eachTableCfg + '}', table.get(eachTableCfg))
+
+                  ## If the execution have an specific date to process in the table cfg
+                  if eachTableCfg == 'date_to_load':
+                    partition_date = extra_args.get(table.get(eachTableCfg))
+                    print('partition_date changes to {}'.format(partition_date))
+                  command = command.replace('{partition_date}', partition_date).replace('{data_lake_server}', data_lake_server)
+
+                  ## SQOOP EXECUTION
+                  conf = {'date_from': partition_date}
+
+                  ## EXEC SQOOP COMMAND
+                  t = BashOperator(task_id='internal_task', bash_command=command, retries=3)
+                  t.execute(context=kwargs)
+                  print("SUCCESFULL SQOOP COMMAND {} ".format(command))
+
+
+                  ## DECLARE VARIABLES
+                  json_file = table.get('table').lower() + '_schema.json'
+                  json_filepath = os.path.join(kwargs.get('zonda_dir'), "repositories/zonda-etl/scripts/layers/staging",table.get('environment'), table.get('table_type'), table.get('table').lower(), table.get('table').lower() + '_schema.json')
+                  kwargs['ti'].xcom_push(key='partition_date', value=partition_date)
+                  kwargs['ti'].xcom_push(key='json_file', value=json_file)
+                  kwargs['ti'].xcom_push(key='json_filepath', value=json_filepath)
+                  add_partition_script = 'msck repair table bi_corp_staging.' + table_prefix + '_' + kwargs.get('table').lower() + ';'
+                  kwargs['ti'].xcom_push(key='add_partition_script', value=add_partition_script)
+      provide_context: true
+      op_kwargs:
+        partition_date: "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_SCORING_SGE-Daily') }}"
+        zonda_dir: $ZONDA_DIR
+        data_lake_server: $DATA_LAKE_SERVER
+        extra_args: "{{ ti.xcom_pull(task_ids='InputConfig', key='all', dag_id='LOAD_STG_SCORING_SGE-Daily') }}"
+        table: ${e}
+        table_file: "repositories/zonda-etl/scripts/shared/sqoop/config/rio2_pyme_cfg.json"
+        server_file: "repositories/zonda-etl/scripts/shared/sqoop/config/server_properties.json"
+        table_prefix: "sge"
+  - name: STAGING_TABLE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ["{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='json_filepath', dag_id='LOAD_STG_SCORING_SGE-Daily') }}"]
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='partition_date', dag_id='LOAD_STG_SCORING_SGE-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+        }
+      application_args: ["{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='json_file', dag_id='LOAD_STG_SCORING_SGE-Daily') }}"]
+  - name: STAGING_HIVE_msck_repair
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql: "{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='add_partition_script', dag_id='LOAD_STG_SCORING_SGE-Daily') }}"
+dependencies:
+  SQOOP_INGESTION: STAGING_TABLE_Parquetize
+  STAGING_TABLE_Parquetize: STAGING_HIVE_msck_repair
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [Mmarrocchi@santandertecnologia.com.ar,fscagnettibrusatori@santandertecnologia.com.ar,mlevisrossi@santandertecnologia.com.ar]

@@ -1,0 +1,69 @@
+{
+  "file": "interface_refundaccount_schema",
+  "location": "/santander/bi-corp/landing/rio265/fact/interface_refundaccount/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/fact/rio265_interface_refundaccount",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_interface_refundaccount",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitcustomer",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "dateused",
+      "type": "string"
+    },
+    {
+      "name": "transactiondate",
+      "type": "string"
+    },
+    {
+      "name": "entity",
+      "type": "string"
+    },
+    {
+      "name": "office",
+      "type": "string"
+    },
+    {
+      "name": "account",
+      "type": "string"
+    },
+    {
+      "name": "coin",
+      "type": "string"
+    },
+    {
+      "name": "operationalcode",
+      "type": "string"
+    },
+    {
+      "name": "observations",
+      "type": "string"
+    },
+    {
+      "name": "amount",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [{
+    "name": "partition_date",
+    "target": "dateused",
+    "type": "date",
+    "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+    "partitionColumn": true,
+    "partitionOrder": 1}]
+}
+

@@ -1,0 +1,37 @@
+name: LOAD_CMN_Cuentas_Acuerdos
+description: 'Load Special Deals Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '0 9 * * *'
+start_date: '2020-09-15'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_staging.malpe_pedt008, bi_corp_staging.malpe_pedt042, bi_corp_staging.tcdtgen, bi_corp_staging.malbgc_bgdtrpp, bi_corp_staging.garra_wagucdex, bi_corp_staging.bgdtcoo, bi_corp_staging.malbgc_bgdtacu
+tasks:
+  - name: stk_cue_acuerdos_especiales
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/cuentas/stk_cue_acuerdos_especiales/ETLV-Load_Common_Table_Hist.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

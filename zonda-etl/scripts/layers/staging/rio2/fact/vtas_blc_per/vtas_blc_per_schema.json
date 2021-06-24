@@ -1,0 +1,43 @@
+{
+  "file": "vtas_blc_per_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/vtas_blc_per/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/vtas_blc_per",
+  "createTable": "bi_corp_staging.sge_vtas_blc_per",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+          {
+            "name": "id_balance",
+              "type": "string"
+          },
+          {
+            "name": "penumper",
+            "type": "string"
+          },
+          {
+            "name": "id_venta",
+            "type": "string"
+          },
+          {
+            "name": "mon_venta",
+            "type": "string"
+          },
+          {
+            "name": "fec_venta",
+            "type": "string"
+          }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_cyp_acuerdos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cyp_nro_empr"]
+    },
+    {
+      "control_id":  "date_format",
+      "field_to_check": ["dt_cyp_fec_altacdo", "dt_cyp_fec_bajacdo", "dt_cyp_fec_migracion", "dt_cyp_fec_vigencia"],
+      "pattern": "yyyy-MM-dd"
+
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "file": "tbl_corresponsal_schema",
+  "location": "/santander/bi-corp/landing/rio226/dim/tbl_corresponsal/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/dim/tbl_corresponsal",
+  "createTable": "bi_corp_staging.rio226_tbl_corresponsal",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+      "name": "subcanal",
+      "type": "string"
+    },
+{
+      "name": "id_corresponsal",
+      "type": "string"
+    },
+{
+      "name": "descripcion",
+      "type": "string"
+    },
+{
+      "name": "codigo_aplicacion",
+      "type": "string"
+    },
+{
+      "name": "usuario_ad_lds",
+      "type": "string"
+    },
+{
+      "name": "cuit",
+      "type": "string"
+    },
+{
+      "name": "nup",
+      "type": "string"
+    },
+{
+      "name": "codigo_univoco",
+      "type": "string"
+    },
+{
+      "name": "fin_relacion_comercial",
+      "type": "string"
+    },
+{
+      "name": "inicio_relacion_comercial",
+      "type": "string"
+    },
+{
+      "name": "usuario_iatx",
+      "type": "string"
+    },
+{
+      "name": "codigo_corresponsal",
+      "type": "string"
+    },
+{
+      "name": "terminales_logicas",
+      "type": "string"
+    },
+{
+      "name": "id_canal_venta",
+      "type": "string"
+    },
+{
+      "name": "image",
+      "type": "string"
+    },
+{
+      "name": "offset_terminal_logica",
+      "type": "string"
+    },
+{
+      "name": "url_notificaciones",
+      "type": "string"
+    },
+{
+      "name": "estrategia_autenticacion_webhooks",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

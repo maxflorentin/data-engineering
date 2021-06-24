@@ -1,0 +1,158 @@
+{
+  "file": "feve_acta_revision_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/feve_acta_revision",
+  "createTable": "bi_corp_staging.sge_feve_acta_revision",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "numero_acta",
+      "type": "string"
+    },
+    {
+      "name": "nombre_acta",
+      "type": "string"
+    },
+    {
+      "name": "estado_acta",
+      "type": "string"
+    },
+    {
+      "name": "codigo_banca",
+      "type": "string"
+    },
+    {
+      "name": "fecha_realizacion",
+      "type": "string"
+    },
+    {
+      "name": "nombre_centro",
+      "type": "string"
+    },
+    {
+      "name": "servicios_centrales_codigo",
+      "type": "string"
+    },
+    {
+      "name": "servicios_centrales_desc",
+      "type": "string"
+    },
+    {
+      "name": "gestor",
+      "type": "string"
+    },
+    {
+      "name": "idsucursal",
+      "type": "string"
+    },
+    {
+      "name": "tipo_comite",
+      "type": "string"
+    },
+    {
+      "name": "segmento_tutela",
+      "type": "string"
+    },
+    {
+      "name": "codigo_instancia",
+      "type": "string"
+    },
+    {
+      "name": "orden_del_dia",
+      "type": "string"
+    },
+    {
+      "name": "observaciones_generales",
+      "type": "string"
+    },
+    {
+      "name": "comentarios_acta",
+      "type": "string"
+    },
+    {
+      "name": "cant_empresas_analizadas",
+      "type": "string"
+    },
+    {
+      "name": "total_dispuesto",
+      "type": "string"
+    },
+    {
+      "name": "num_tot_clientes_analizados",
+      "type": "string"
+    },
+    {
+      "name": "num_clientes_afianzar",
+      "type": "string"
+    },
+    {
+      "name": "num_clientes_seguir",
+      "type": "string"
+    },
+    {
+      "name": "num_clientes_extinguir",
+      "type": "string"
+    },
+    {
+      "name": "num_clientes_reducir",
+      "type": "string"
+    },
+    {
+      "name": "limites",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_revisados",
+      "type": "string"
+    },
+    {
+      "name": "num_salidas",
+      "type": "string"
+    },
+    {
+      "name": "num_cliente_mej_grado",
+      "type": "string"
+    },
+    {
+      "name": "num_cleinte_mej_valoracion",
+      "type": "string"
+    },
+    {
+      "name": "num_cliente_deterioro",
+      "type": "string"
+    },
+    {
+      "name": "fecha_creacion",
+      "type": "string"
+    },
+    {
+      "name": "fecha_modificacion",
+      "type": "string"
+    },
+    {
+      "name": "usuario_creacion",
+      "type": "string"
+    },
+    {
+      "name": "usuario_modificacion",
+      "type": "string"
+    },
+    {
+      "name": "numero_acta_gys",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

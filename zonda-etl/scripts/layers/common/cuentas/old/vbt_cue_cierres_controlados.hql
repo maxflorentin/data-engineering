@@ -1,0 +1,20 @@
+CREATE VIEW `bi_corp_common.vbt_cue_cierres_controlados` AS select
+                                                                concat_ws('_', `relacion_contrato_cru`.`cod_entidad`, `relacion_contrato_cru`.`cod_centro`, `relacion_contrato_cru`.`num_contrato`, `relacion_contrato_cru`.`cod_producto`, `relacion_contrato_cru`.`cod_subprodu`, `relacion_contrato_cru`.`cod_divisa`) AS `cod_contrato`,
+                                                                concat_ws('_', `relacion_contrato_cru`.`cod_entidad_rel`, `relacion_contrato_cru`.`cod_centro_rel`, `relacion_contrato_cru`.`num_contrato_rel`, `relacion_contrato_cru`.`cod_producto_rel`, `relacion_contrato_cru`.`cod_subprodu_rel`, `relacion_contrato_cru`.`cod_divisa_rel`) AS `cod_contrato_rel`,
+                                                                `relacion_contrato_cru`.`partition_date` AS `partition_date`,
+                                                                `relacion_contrato_cru`.`num_persona` AS `nup`,
+                                                                `relacion_contrato_cru`.`nro_propuesta` AS `cod_cue_propuesta`,
+                                                                `relacion_contrato_cru`.`cod_centro` AS `cod_suc_sucursal`,
+                                                                `relacion_contrato_cru`.`num_contrato` AS `cod_cue_cuenta`,
+                                                                `relacion_contrato_cru`.`cod_producto` AS `cod_cue_producto`,
+                                                                `relacion_contrato_cru`.`cod_subprodu` AS `cod_cue_subproducto`,
+                                                                `relacion_contrato_cru`.`cod_divisa` AS `cod_cue_divisa`,
+                                                                `relacion_contrato_cru`.`cod_centro_rel` AS `cod_suc_sucursal_rel`,
+                                                                `relacion_contrato_cru`.`num_contrato_rel` AS `cod_cue_cuenta_rel`,
+                                                                `relacion_contrato_cru`.`cod_producto_rel` AS `cod_cue_producto_rel`,
+                                                                `relacion_contrato_cru`.`cod_subprodu_rel` AS `cod_cue_subproducto_rel`,
+                                                                `relacion_contrato_cru`.`cod_divisa_rel` AS `cod_cue_divisa_rel`,
+                                                                `relacion_contrato_cru`.`imp_saldo_cierre` AS `fc_saldo_cierre`,
+                                                                `relacion_contrato_cru`.`porc_deuda` AS `fc_porcentaje_deuda`,
+                                                                `relacion_contrato_cru`.`cod_tipo_rel` AS `cod_cue_tipo_relacion`
+                                                            from `bi_corp_staging`.`relacion_contrato_cru`

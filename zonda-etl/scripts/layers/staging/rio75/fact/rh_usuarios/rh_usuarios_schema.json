@@ -1,0 +1,163 @@
+{
+  "file": "rh_usuarios_schema",
+  "location": "/santander/bi-corp/landing/rio75/fact/rh_usuarios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio75/fact/rh_usuarios",
+  "tempDirectory": "/santander/bi-corp/temp/rio75",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "c_usuariorh",
+      "type": "string"
+    },
+    {
+      "name": "c_usuariont",
+      "type": "string"
+    },
+    {
+      "name": "c_usuario_rio3",
+      "type": "string"
+    },
+    {
+      "name": "n_legajo_bup",
+      "type": "string"
+    },
+    {
+      "name": "n_leg_admin",
+      "type": "string"
+    },
+    {
+      "name": "d_nombre",
+      "type": "string"
+    },
+    {
+      "name": "d_apellido",
+      "type": "string"
+    },
+    {
+      "name": "d_cuit_cuil",
+      "type": "string"
+    },
+    {
+      "name": "t_documento",
+      "type": "string"
+    },
+    {
+      "name": "n_documento",
+      "type": "string"
+    },
+    {
+      "name": "f_nacimiento",
+      "type": "string"
+    },
+    {
+      "name": "i_sexo",
+      "type": "string"
+    },
+    {
+      "name": "d_telefono1",
+      "type": "string"
+    },
+    {
+      "name": "d_telefono2",
+      "type": "string"
+    },
+    {
+      "name": "d_interno",
+      "type": "string"
+    },
+    {
+      "name": "d_email",
+      "type": "string"
+    },
+    {
+      "name": "d_calle",
+      "type": "string"
+    },
+    {
+      "name": "d_numero",
+      "type": "string"
+    },
+    {
+      "name": "d_piso",
+      "type": "string"
+    },
+    {
+      "name": "d_depto",
+      "type": "string"
+    },
+    {
+      "name": "d_localidad",
+      "type": "string"
+    },
+    {
+      "name": "d_cod_postal",
+      "type": "string"
+    },
+    {
+      "name": "d_provincia",
+      "type": "string"
+    },
+    {
+      "name": "d_tipo_empleado",
+      "type": "string"
+    },
+    {
+      "name": "v_hora_in",
+      "type": "string"
+    },
+    {
+      "name": "v_hora_out",
+      "type": "string"
+    },
+    {
+      "name": "f_ingreso",
+      "type": "string"
+    },
+    {
+      "name": "f_egreso",
+      "type": "string"
+    },
+    {
+      "name": "d_estado_bup",
+      "type": "string"
+    },
+    {
+      "name": "d_ccosto",
+      "type": "string"
+    },
+    {
+      "name": "c_motivo_baja",
+      "type": "string"
+    },
+    {
+      "name": "c_usu_bkp",
+      "type": "string"
+    },
+    {
+      "name": "f_carga_baja",
+      "type": "string"
+    },
+    {
+      "name": "n_usuario_racf",
+      "type": "string"
+    },
+    {
+      "name": "c_id_telefonico",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

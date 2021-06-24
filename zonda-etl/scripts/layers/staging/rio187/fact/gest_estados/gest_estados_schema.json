@@ -1,0 +1,71 @@
+{
+    "file": "gest_estados_schema",
+    "createTable": "bi_corp_staging.rio187_gest_estados",
+    "location": "/santander/bi-corp/landing/rio187/fact/gest_estados/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio187/fact/gest_estados",
+    "tempDirectory": "/santander/bi-corp/temp/rio187",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "orden_estado",
+            "type": "string"
+        },
+        {
+            "name": "id_estado",
+            "type": "string"
+        },
+        {
+            "name": "fecha_estado",
+            "type": "string"
+        },
+        {
+            "name": "id_actor",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario",
+            "type": "string"
+        },
+        {
+            "name": "comentario",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "cacs",
+      "type": "FACT",
+      "name": "cuentas",
+      "filePrefix": "CUENTAS_"
+    },
+    {
+      "source": "cacs",
+      "type": "FACT",
+      "name": "movimientos",
+      "filePrefix": "MOVIMIENTOS_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_CACS-Daily"
+  }
+}

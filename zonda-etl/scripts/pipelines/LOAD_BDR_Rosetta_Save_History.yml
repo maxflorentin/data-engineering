@@ -1,0 +1,33 @@
+name: LOAD_BDR_Rosetta_Save_History
+description: 'Save in historical tables all the ambits for the month of analysis NKEY_RNKD'
+owner: BI-Corp
+active: true
+start_date: '2020-07-01'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Save_NKEY
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rosetta/fact/nkey/history/ETL-LOAD-nkey_hist.hql'
+  - name: Save_RNKD
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rosetta/fact/rnkd/history/ETL-LOAD-rnkd_hist.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar]

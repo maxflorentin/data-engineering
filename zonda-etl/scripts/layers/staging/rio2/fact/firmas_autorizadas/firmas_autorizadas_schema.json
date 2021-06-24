@@ -1,0 +1,35 @@
+{
+  "file": "firmas_autorizadas_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/firmas_autorizadas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/firmas_autorizadas",
+  "createTable": "bi_corp_staging.sge_firmas_autorizadas",
+  "addPartition": false,
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "fecha",
+                    "type": "string"
+                },
+{
+                    "name": "cuit",
+                    "type": "string"
+                },
+{
+                    "name": "razonsocial",
+                    "type": "string"
+                }
+       ],
+  "mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fecha",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

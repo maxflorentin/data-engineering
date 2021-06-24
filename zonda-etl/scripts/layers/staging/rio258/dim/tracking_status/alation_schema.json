@@ -1,0 +1,155 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_tracking_status",
+            "title": "CONTIENE LA DESCRIPCION TODOS LOS ESTADOS POR LOS QUE PASÓ UN ENVÍO EN EL COURIER",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "CONTIENE LA DESCRIPCION TODOS LOS ESTADOS POR LOS QUE PASÓ UN ENVÍO EN EL COURIER",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "CÓDIGO DEL ESTADO",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODE",
+                    "title": "CODE",
+                    "description": "DESCRIPCIÓN DEL ESTADO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "REASON",
+                    "title": "REASON",
+                    "description": "DESCRIPCIÓN DEL MOTIVO",
+                    "type": "VARCHAR2(1000)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1000.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECONDARY_REASON",
+                    "title": "SECONDARY_REASON",
+                    "description": "DESCRIPCIÓN DEL MOTIVO SECUNDARIO",
+                    "type": "VARCHAR2(1000)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1000.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER_STATUS_CODE",
+                    "title": "COURIER_STATUS_CODE",
+                    "description": "CÓDIGO DEL ESTADO DEL COURIER",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER_STATUS_NAME",
+                    "title": "COURIER_STATUS_NAME",
+                    "description": "DESCRIPCIÓN DEL ESTADO COURIER",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER",
+                    "title": "COURIER",
+                    "description": "DESCRIPCIÓN DEL COURIER",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

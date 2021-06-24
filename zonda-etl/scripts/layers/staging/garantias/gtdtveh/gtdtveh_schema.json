@@ -1,0 +1,17 @@
+{
+  "file": "gtdtveh_schema",
+  "location": "/santander/bi-corp/landing/garantias/fact/gtdtveh/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garantias/fact/gtdtveh",
+  "createTable": "bi_corp_staging.gtdtveh",
+  "copybook": "gtdtveh.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

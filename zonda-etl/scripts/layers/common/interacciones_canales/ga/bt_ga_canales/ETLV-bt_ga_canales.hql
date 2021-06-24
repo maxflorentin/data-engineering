@@ -1,0 +1,93 @@
+"
+SET hive.exec.dynamic.partition.mode=nonstrict;
+SET mapred.job.queue.name=root.dataeng;
+
+--                                                   __           
+--     ____ _ ____ _     _____ ____ _ ____   ____ _ / /___   _____
+--    / __ `// __ `/    / ___// __ `// __ \ / __ `// // _ \ / ___/
+--   / /_/ // /_/ /    / /__ / /_/ // / / // /_/ // //  __/(__  ) 
+--   \__, / \__,_/     \___/ \__,_//_/ /_/ \__,_//_/ \___//____/
+--  /____/                                                        
+INSERT OVERWRITE TABLE bi_corp_common.bt_ga_canales
+PARTITION(partition_date)
+SELECT 
+	TRIM(full_visitor_id) 	cod_ga_fullvisitorid ,
+	TRIM(ga_client_id) 	cod_ga_gaclientid  ,
+	TRIM(tipo_cliente) 	ds_ga_tipocliente ,
+	IF(NUP = 'not set', NULL, CAST(NUP AS BIGINT)) cod_ga_nup ,
+	IF(TRIM(segmento_de_cliente) = 'not set', NULL, TRIM(segmento_de_cliente)) ds_ga_segmentocliente ,
+	TRIM(session_number) cod_ga_sessionnumber ,
+	TRIM(session_id)	cod_ga_sessionid ,
+	from_unixtime(unix_timestamp(session_starttime, 'dd/MM/yyyy HH:mm:ss'),'yyyy-MM-dd HH:mm:ss') ts_ga_sessionstarttime ,
+	TRIM(session_duration) 	cod_ga_sessionduration ,
+	TRIM(session_hits) 	cod_ga_sessionhits ,
+	TRIM(session_pageviews)	cod_ga_sessionpageviews ,
+	TRIM(session_bounces) cod_ga_sessionbounces ,
+	TRIM(session_transactions)	cod_ga_sessiontransactions ,
+	TRIM(session_with_events) cod_ga_sessionwithevents ,
+	TRIM(session_with_new_user) cod_ga_sessionwithnewuser ,
+	TRIM(tipo_de_identificacion) ds_ga_tipoidentificacion ,
+	TRIM(login_status) 	ds_ga_loginstatus ,
+	TRIM(trafficsource_channel) ds_ga_trafficsourcechannel ,
+	TRIM(trafficsource_referral) ds_ga_trafficsourcereferral ,
+	TRIM(trafficsource_campaign) ds_ga_trafficsourcecampaign ,
+	TRIM(trafficsource_source) ds_ga_trafficsourcesource ,
+	TRIM(trafficsource_medium) ds_ga_trafficsourcemedium ,
+	TRIM(trafficsource_keyword) ds_ga_trafficsourcekeyword ,
+	TRIM(trafficsource_adcontent) ds_ga_trafficsourceadcontent ,
+	TRIM(device_browser) ds_ga_devicebrowser ,
+	TRIM(device_browserversion) ds_ga_devicebrowserversion ,
+	TRIM(device_browsersize) ds_ga_devicebrowsersize ,
+	TRIM(device_operatingsystem) ds_ga_deviceoperatingsystem ,
+	TRIM(device_operatingsystemversion) ds_ga_deviceoperatingsystemversion ,
+	TRIM(device_mobiledevicebranding) ds_ga_devicemobiledevicebranding ,
+	TRIM(device_mobiledevicemodel) ds_ga_devicemobiledevicemodel ,
+	TRIM(device_mobileinputselector) ds_ga_devicemobileinputselector ,
+	IF(TRIM(device_mobiledeviceinfo) = '(not set)', NULL, TRIM(device_mobiledeviceinfo)) ds_ga_devicemobiledeviceinfo ,
+	IF(TRIM(device_javaenabled) = 'true', 1, 0) ds_ga_devicejavaenabled ,
+	TRIM(device_language) ds_ga_devicelanguage ,
+	TRIM(device_screencolors) ds_ga_devicescreencolors ,
+	TRIM(device_screenresolution) ds_ga_devicescreenresolution ,
+	TRIM(device_devicecategory) ds_ga_devicedevicecategory ,
+	TRIM(user_country) ds_ga_usercountry ,
+	TRIM(user_city) ds_ga_usercity ,
+	IF(TRIM(user_network) = '(not set)', NULL, TRIM(user_network)) ds_ga_usernetwork ,
+	IF(TRIM(user_network_location) = '(not set)', NULL, TRIM(user_network_location)) ds_ga_usernetworklocation ,
+	TRIM(hit_number) cod_ga_hitnumber ,
+	TRIM(hit_type) ds_ga_hittype ,
+	from_unixtime(unix_timestamp(hit_timestamp, 'dd/MM/yyyy HH:mm:ss'),'yyyy-MM-dd HH:mm:ss') ts_ga_hittimestamp ,
+	IF(TRIM(hit_entrance) = 'true', 1, 0) flag_ga_hitentrance ,
+	hit_exit 	ds_ga_hitexit ,
+	hit_referer 	ds_ga_hitreferer , 
+	IF(TRIM(content_group_1) = '(not set)', NULL, TRIM(content_group_1)) ds_ga_contentgroup1 ,
+	IF(TRIM(content_group_2) = '(not set)', NULL, TRIM(content_group_2)) ds_ga_contentgroup2 ,
+	IF(TRIM(content_group_3) = '(not set)', NULL, TRIM(content_group_3)) ds_ga_contentgroup3 ,
+	TRIM(hostname)	ds_ga_hostname ,
+	TRIM(screen)	ds_ga_screen ,
+	TRIM(uri) 	ds_ga_uri ,
+	TRIM(event_category) 	ds_ga_eventcategory ,
+	TRIM(event_action)	ds_ga_eventaction ,
+	TRIM(event_label)	ds_ga_eventlabel ,
+	TRIM(event_value)	cod_ga_eventvalue ,
+	TRIM(promo_id) 	ds_ga_promoid ,
+	TRIM(promo_name)	ds_ga_promoname ,
+	TRIM(promo_creative)	ds_ga_promocreative ,
+	TRIM(promo_position)	ds_ga_promoposition ,
+	TRIM(search_keyword)	ds_ga_searchkeyword ,
+	TRIM(search_category) 	ds_ga_searchcategory ,
+	TRIM(watson_tipo) ds_ga_watsontipo ,
+	TRIM(watson_intencion) ds_ga_watsonintencion ,
+	TRIM(watson_conversation_id) ds_ga_watsonconversationid ,
+	TRIM(watson_confianza) ds_ga_watsonconfianza ,
+	TRIM(watson_duracion) ds_ga_watsonduracion ,
+	TRIM(canal) ds_ga_canal ,
+	TRIM(coordenadas_latitude) ds_ga_coordenadaslatitude ,
+	TRIM(coordenadas_longitude) ds_ga_coordenadaslongitude ,
+	TRIM(tealium_visitor_id) ds_ga_tealiumvisitorid ,
+	TRIM(page_tittle) ds_ga_pagetittle ,
+	TRIM(custom_dimensions) ds_ga_customdimensions ,
+	TRIM(custom_metrics) ds_ga_custommetrics ,
+	partition_date
+FROM bi_corp_staging.ga_canales 
+WHERE partition_date = '{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GA_Canales') }}' ;
+"

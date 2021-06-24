@@ -1,0 +1,67 @@
+name: RORAC_EXPORT_Tables_Spark
+description: 'Export Rorac Tables in delimited TXT'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [ACTIVO_ARG_1,PASIVO_ARG_1,AREANEGOCIOLOCAL_ARG,CENTRO_ARG,COSTES_ADN_LOCAL_ARG,COSTES_LOCAL_ARG,DIVISION_ARG,JERARQUIA_ADN_ARG,JERARQUIA_PYS_ARG,PAR_RORAC_ARG_1,PRODUCTO_ARG,SEGMENTO_ARG]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: bi_corp_staging.rio157_ms0_dm_dwh_area_negocio_ctr, bi_corp_staging.rio157_ms0_dm_je_dwh_centros_ctr, bi_corp_staging.rio157_ms0_dm_je_dwh_prod_gestion_ctr, bi_corp_staging.rio157_ms0_dm_je_dwh_segmentos_ctr, bi_corp_staging.rio157_ms0_dm_je_dwh_area_negocio_ctr
+tasks:
+  - name: ExportData
+    operator: SparkSubmitOperator
+    config:
+      name: 'ExportData-${e}'
+      connection_id: cloudera_spark2
+      num_executors: 20
+      executor_cores: 5
+      executor_memory: 32G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/unloader/unloader.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/export_files/${e}.hql'
+      conf: {
+        'spark.yarn.appMasterEnv.month_to': "{{ ti.xcom_pull(task_ids='InputConfig', key='month_to', dag_id='RORAC_EXPORT_Tables_Spark') }}" ,
+        'spark.yarn.appMasterEnv.last_calendar_day_arda': "{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}" ,
+        'spark.yarn.appMasterEnv.max_partition_rio157_ms0_dm_je_dwh_area_negocio_ctr': "{{ ti.xcom_pull(task_ids='InputConfig', key='max_partition_rio157_ms0_dm_je_dwh_area_negocio_ctr', dag_id='RORAC_EXPORT_Tables_Spark') }}" , 
+        'spark.yarn.appMasterEnv.max_partition_rio157_ms0_dm_je_dwh_segmentos_ctr': "{{ ti.xcom_pull(task_ids='InputConfig', key='max_partition_rio157_ms0_dm_je_dwh_segmentos_ctr', dag_id='RORAC_EXPORT_Tables_Spark') }}" , 
+        'spark.yarn.appMasterEnv.max_partition_rio157_ms0_dm_je_dwh_prod_gestion_ctr': "{{ ti.xcom_pull(task_ids='InputConfig', key='max_partition_rio157_ms0_dm_je_dwh_prod_gestion_ctr', dag_id='RORAC_EXPORT_Tables_Spark') }}" , 
+        'spark.yarn.appMasterEnv.max_partition_rio157_ms0_dm_je_dwh_centros_ctr': "{{ ti.xcom_pull(task_ids='InputConfig', key='max_partition_rio157_ms0_dm_je_dwh_centros_ctr', dag_id='RORAC_EXPORT_Tables_Spark') }}" , 
+        'spark.yarn.appMasterEnv.max_partition_rio157_ms0_dm_dwh_area_negocio_ctr': "{{ ti.xcom_pull(task_ids='InputConfig', key='max_partition_rio157_ms0_dm_dwh_area_negocio_ctr', dag_id='RORAC_EXPORT_Tables_Spark') }}"
+
+      }
+      application_args: ['--query', "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rorac/export_files/${e}.hql",
+                         '--output', "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}.txt",
+                         '--header', "false",
+                         '--delimiter', "|"
+                         ]
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/user/$SERVICE_USER/.sparkStaging/tmp/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}.txt"
+      local_path: "/aplicaciones/bi/rorac/{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}.txt"
+      skip_errors: false
+  - name: CompressFiles
+    operator: BashOperator
+    config:
+      bash_command: "gzip -f /aplicaciones/bi/rorac/{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}/${e}_{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='RORAC_EXPORT_Tables_Spark') }}.txt"
+dependencies:
+  ExportData: MoveFileToLocalServer
+  MoveFileToLocalServer: CompressFiles
+notifications:
+  on_start: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

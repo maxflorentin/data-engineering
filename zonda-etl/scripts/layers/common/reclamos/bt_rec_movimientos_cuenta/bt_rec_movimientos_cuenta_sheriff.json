@@ -1,0 +1,45 @@
+{
+    "table": "bi_corp_common.bt_rec_movimientos_cuenta",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_gestion",
+                "cod_rec_nro_movimiento",
+                "cod_suc_sucursal_cuenta",
+                "cod_cue_cuenta",
+                "cod_rec_divisa_cuenta",
+                "cod_rec_nro_comprobante",
+                "dt_rec_fecha_movimiento",
+                "fc_rec_monto_movimiento",
+                "flag_rec_ind_devolucion"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_fecha_movimiento"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+        ,
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_fecha_devolucion",
+                "ts_rec_fecha_alta",
+                "ts_rec_fecha_modif",
+                "ts_rec_fecha_baja"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+            "threshold": 0.01
+        }
+    ]
+}

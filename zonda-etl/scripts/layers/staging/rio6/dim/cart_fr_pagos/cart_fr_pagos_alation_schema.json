@@ -1,0 +1,104 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_fr_pagos",
+            "title": "Frecuencias de pago",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Frecuencias de pago",
+            "columns": [
+                {
+                    "name": "CAFP_CD_FR_PAGO",
+                    "title": "CAFP_CD_FR_PAGO",
+                    "description": "Código de frecuenacia de pago",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_DE_FR_PAGO",
+                    "title": "CAFP_DE_FR_PAGO",
+                    "description": "Descripción de frecuenacia de pago",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_NU_PAGOS_ANO",
+                    "title": "CAFP_NU_PAGOS_ANO",
+                    "description": "Cantidad de pagos por año",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_TP_EMISION",
+                    "title": "CAFP_TP_EMISION",
+                    "description": "Código del tipo de emisión",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_NU_MESES_FR_COBRO",
+                    "title": "CAFP_NU_MESES_FR_COBRO",
+                    "description": "Cantidad de meses frecuencia de cobro",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_NU_MESES_VIG",
+                    "title": "CAFP_NU_MESES_VIG",
+                    "description": "Cantidad de meses de vigencia",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAFP_NU_CUOTAS_COBRAR",
+                    "title": "CAFP_NU_CUOTAS_COBRAR",
+                    "description": "Cantidad de cuotas a cobrar",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

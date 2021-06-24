@@ -1,0 +1,64 @@
+{
+  "file":"tcdtgen_schema",
+  "location":"/santander/bi-corp/landing/maltc/dim/tcdtgen/partition_date=${partition_date_filter}",
+  "destination":"/santander/bi-corp/staging/maltc/dim/tcdtgen",
+  "createTable": "bi_corp_staging.tcdtgen",
+  "extension":"txt",
+  "header":false,
+  "fixed":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [{
+    "name": "gentabla",
+    "type": "string",
+    "width": 4
+  },
+    {
+      "name": "gen_entidad",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "gen_idioma",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "gen_clave",
+      "type": "string",
+      "width": 19
+    },
+    {
+      "name": "gen_datos",
+      "type": "string",
+      "width": 250
+    },
+    {
+      "name": "gen_timest_alt",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "gen_usuario_alt",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "gen_timest_mod",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "gen_usuario_mod",
+      "type": "string",
+      "width": 8
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

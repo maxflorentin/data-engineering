@@ -1,0 +1,55 @@
+name: LOAD_STG_MORIA_relacion_contrato_cru
+description: 'Load data from MORIA contiene propuesta y relacion entre el nuevo prestamo Moria y contratos afectados al cierre controlado'
+owner: BI-Corp
+active: true
+start_date: '2019-12-16'
+# schedule_interval: '0 7 * * *'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_RELACION_CONTRATO_CRU_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_RELACION_CONTRATO_CRU_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/moria/fact/relacion_contrato_cru/relacion_contrato_cru_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MORIA_relacion_contrato_cru') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MORIA_relacion_contrato_cru') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['relacion_contrato_cru_schema.json']
+  - name: STAGING_RELACION_CONTRATO_CRU_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/moria/fact/relacion_contrato_cru/DDLT-create_staging_table_relacion_contrato_cru.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/moria/fact/relacion_contrato_cru/ETLV-alter_partitions_relacion_contrato_cru.hql'
+dependencies:
+  STAGING_RELACION_CONTRATO_CRU_Parquetize:  STAGING_RELACION_CONTRATO_CRU_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar]

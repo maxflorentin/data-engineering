@@ -1,0 +1,59 @@
+name: LOAD_STG_MALTC_tcdv0200
+description: 'Load data from maltc_tcdv0200  (Feriados)'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 15 * * *'
+start_date: '2020-03-20'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: STAGING_tcdv0200_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_tcdv0200_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 4G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/maltc/dim/tcdv0200/tcdv0200_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALTC_tcdv0200') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['tcdv0200_schema.json']
+  - name: EXPORT_tcdv0200
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: '$ZONDA_DIR/repositories/zonda-etl/services/airflow/plugins/zonda/params/tcdt020.csv'
+      show_header: 'True'
+      output_format: dsv
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/maltc/dim/tcdv0200/query_tcdt020.hql'
+  - name: LOAD_dim_tie_calendario
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/calendario/dim/ETLV-dim_tie_calendario.hql'
+dependencies:
+  STAGING_tcdv0200_Parquetize : EXPORT_tcdv0200
+  EXPORT_tcdv0200 : LOAD_dim_tie_calendario
+notifications:
+  on_start: false
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

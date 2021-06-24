@@ -1,0 +1,30 @@
+{
+  "file": "tmya_status_log_schema",
+  "location": "/santander/bi-corp/landing/rio74/dim/tmya_status_log/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/dim/tmya_status_log",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_estado",
+    "type": "string"
+  },
+    {
+      "name": "descripcion",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

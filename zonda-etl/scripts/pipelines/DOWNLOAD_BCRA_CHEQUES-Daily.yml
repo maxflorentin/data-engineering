@@ -1,0 +1,88 @@
+name: DOWNLOAD_BCRA_CHEQUES-Daily
+description: 'Download Data of cheques From BCRA'
+owner: BI-Corp
+active: true
+start_date: '2020-01-01'
+schedule_interval: '0 9 * * *'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: EXECUTE_BCRA_DOWNLOAD_Script
+    operator: BashOperator
+    config:
+      command: "
+              python3.6 $ZONDA_DIR/repositories/zonda-etl/scripts/BCRA_downloads.py
+              --path zips/cheques
+              --yearmonth {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_BCRA_CHEQUES-Daily') }}
+              --files al
+              --folder cheques
+              --wd_from $ZONDA_DIR/repositories/zonda-etl/scripts
+              --wd_to $ZONDA_DIR/inbound/bcra/cheques"
+  - name: WaitForFiles
+    operator: ZondaFileSensor
+    config:
+      path: "$ZONDA_DIR/inbound/bcra/cheques"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+  - name: UploadFilesHDFS
+    operator: ZondaHDFSOperator
+    config:
+      operation: PUT
+      local_path: "{{ ti.xcom_pull(task_ids='WaitForFiles', key='return_value', dag_id='DOWNLOAD_BCRA_CHEQUES-Daily') }}"
+      prefix: "$ZONDA_DIR/inbound"
+      replace_prefix: "/santander/bi-corp/landing"
+      skip_errors: true
+      partitioned_by_date: true
+      remove_local_path: true
+  - name: STAGING_BCRA_Cheques_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BCRA_Cheques_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/bcra/cheques_rechazados/bcra_cheques_rechazados_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cupones/wamas01/wamas01.cob' ]
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='DOWNLOAD_BCRA_CHEQUES-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_BCRA_CHEQUES-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['bcra_cheques_rechazados_schema.json']
+  - name: STAGING_BCRA_Cheques_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/bcra/cheques_rechazados/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/bcra/cheques_rechazados/ETLV-Alter_Partitions.hql'
+dependencies:
+  EXECUTE_BCRA_DOWNLOAD_Script: WaitForFiles
+  WaitForFiles: UploadFilesHDFS
+  UploadFilesHDFS: STAGING_BCRA_Cheques_Parquetize
+  STAGING_BCRA_Cheques_Parquetize: STAGING_BCRA_Cheques_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, mjourdan@santandertecnologia.com.ar]

@@ -1,0 +1,63 @@
+{
+	"file": "customer_schema",
+	"location": "/santander/bi-corp/landing/rio265/dim/customer/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio265/dim/rio265_customer",
+	"tempDirectory": "/santander/bi-corp/temp/rio265_customer",
+	"createTable": "bi_corp_staging.rio265_customer",
+	"extension": "csv",
+	"delimiter": "^",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "last_name",
+			"type": "string"
+		},
+{
+			"name": "first_name",
+			"type": "string"
+		},
+{
+			"name": "id_level",
+			"type": "string"
+		},
+{
+			"name": "points",
+			"type": "string"
+		},
+{
+			"name": "docnumber",
+			"type": "string"
+		},
+{
+			"name": "doctype",
+			"type": "string"
+		},
+{
+			"name": "birthdate",
+			"type": "string"
+		},
+{
+			"name": "id_audience",
+			"type": "string"
+		},
+{
+			"name": "accepted_tyc",
+			"type": "string"
+		}
+	],
+ "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

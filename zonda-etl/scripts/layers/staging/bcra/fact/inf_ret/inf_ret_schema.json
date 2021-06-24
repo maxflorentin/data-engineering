@@ -1,0 +1,55 @@
+{
+  "file": "inf_ret",
+  "location": "/santander/bi-corp/landing/bcra/fact/inf_ret/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/inf_ret",
+  "createTable": "bi_corp_staging.bcra_inf_ret",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "codigo_entidad",
+          "type": "string",
+          "width": 5
+        },
+        {
+          "name": "fecha_informacion",
+          "type": "string",
+          "width": 6
+        },
+        {
+          "name": "tipo_identificacon",
+          "type": "string",
+          "width": 2
+        },
+        {
+          "name": "n_identificacion",
+          "type": "string",
+          "width": 11
+        },
+        {
+          "name": "denominacion",
+          "type": "string",
+          "width": 55
+        },
+        {
+          "name": "situacion",
+          "type": "string",
+          "width": 2
+        },
+        {
+          "name": "monto",
+          "type": "string",
+          "width": 12
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

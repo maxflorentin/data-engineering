@@ -1,0 +1,35 @@
+{
+  "file": "ree_area_preguntas_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/ree_area_preguntas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/ree_area_preguntas",
+  "createTable": "bi_corp_staging.sge_ree_area_preguntas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+          {
+                    "name": "codigo",
+                    "type": "string"
+                },
+{
+                    "name": "cod_rating_area",
+                    "type": "string"
+                },
+{
+                    "name": "descripcion_pregunta",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

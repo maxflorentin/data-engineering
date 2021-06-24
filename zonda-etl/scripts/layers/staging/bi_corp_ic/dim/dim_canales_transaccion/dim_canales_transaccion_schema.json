@@ -1,0 +1,64 @@
+{
+	"file": "dim_canales_transaccion_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_canales_transaccion/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_canales_transaccion",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_canales_transaccion",
+	"createTable": "bi_corp_staging.exa_dim_canales_transaccion",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "operacion_id",
+			"type":"string"
+		},
+{
+			"name": "transaccion",
+			"type":"string"
+		},
+{
+			"name": "id_transaccion",
+			"type":"string"
+		},
+{
+			"name": "transaccion_desc",
+			"type":"string"
+		},
+{
+			"name": "grupo",
+			"type":"string"
+		},
+{
+			"name": "tipo",
+			"type":"string"
+		},
+{
+			"name": "canal_id",
+			"type":"string"
+		},
+{
+			"name": "canal",
+			"type":"string"
+		},
+{
+			"name": "canal_desc",
+			"type":"string"
+		},
+{
+			"name": "fecha_nueva_oper",
+			"type":"string"
+		},
+{
+			"name": "op_login",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

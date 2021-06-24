@@ -1,0 +1,62 @@
+{
+  "file": "t_form_referidos_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_referidos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_referidos",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "nrodni",
+      "type": "string"
+    },
+    {
+      "name": "genero",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "nro_celular",
+      "type": "string"
+    },
+    {
+      "name": "legajo",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "programa",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fecha",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

@@ -1,0 +1,28 @@
+{
+  "table": "bi_corp_common.stk_per_telefonos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_per_nup","ds_per_secuencia","ds_per_sec_dom"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_per_cod_area","ds_per_nro_telefono"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_per_fecha_alta"],
+      "pattern": "yyyy-MM-dd"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_per_fecha_modificacion"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

@@ -1,0 +1,641 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308640"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio256_crsc_prospecto",
+            "title": "Tabla que contiene la información de los clientes que ingresan al flujo",
+            "schema": "bi_corp_staging",
+            "source": "ATENEA",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla que contiene la información de los clientes que ingresan al flujo",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "Identificador del registro insertado. Pk de la tabla",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NOMBRE",
+                    "title": "NOMBRE",
+                    "description": "Nombre del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "APELLIDO",
+                    "title": "APELLIDO",
+                    "description": "Apellido del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_TRAMITE_RENAPER",
+                    "title": "ID_TRAMITE_RENAPER",
+                    "description": "Número de tramite RENAPER ",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_NACIONALIDAD",
+                    "title": "ID_NACIONALIDAD",
+                    "description": "Identificador del país de nacionalidad del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_PAIS_ORIGEN",
+                    "title": "ID_PAIS_ORIGEN",
+                    "description": "Identificador del país origen del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FECHA_NACIMIENTO",
+                    "title": "FECHA_NACIMIENTO",
+                    "description": "Fecha de nacimiento",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "SEXO",
+                    "title": "SEXO",
+                    "description": "Sexo",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ESTADO_CIVIL",
+                    "title": "ESTADO_CIVIL",
+                    "description": "Estado civil",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "MAIL",
+                    "title": "MAIL",
+                    "description": "E-mail del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CELULAR",
+                    "title": "CELULAR",
+                    "description": "Número celular del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "COMPANIA_CELULAR",
+                    "title": "COMPANIA_CELULAR",
+                    "description": "Compañia a la que pertenece el celular del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_DOMICILIO",
+                    "title": "ID_DOMICILIO",
+                    "description": "FK de la tabla CRSC_DOMICILIO",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CUIL",
+                    "title": "CUIL",
+                    "description": "Número CUIL del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "VINO_RENAPER",
+                    "title": "VINO_RENAPER",
+                    "description": "Indicador si viene de RENAPER el número CUIL",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "TIEMPO_RESIDENCIA",
+                    "title": "TIEMPO_RESIDENCIA",
+                    "description": "Tiempo de residencia para extranjeros",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "TIPO_LABORAL",
+                    "title": "TIPO_LABORAL",
+                    "description": "Tipo laboral",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "INGRESOS",
+                    "title": "INGRESOS",
+                    "description": "Nivel de ingresos del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "INDICO_ESUNIV",
+                    "title": "INDICO_ESUNIV",
+                    "description": "Marca en caso que el cliente indique que es universitario",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ACEPTO_TYC",
+                    "title": "ACEPTO_TYC",
+                    "description": "Indicador de que el cliente acepta los terminos y condiciones",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "GENERO_CLAVE",
+                    "title": "GENERO_CLAVE",
+                    "description": "Indicador si el cliente accedio al flujo de generación de clave",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FECHA_INICIO_ACTIVIDAD",
+                    "title": "FECHA_INICIO_ACTIVIDAD",
+                    "description": "Fecha de inicio actividad laboral",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "COD_TIPO_RESIDENCIA",
+                    "title": "COD_TIPO_RESIDENCIA",
+                    "description": "Tipo de residencia del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "EXPIRACION_DOC",
+                    "title": "EXPIRACION_DOC",
+                    "description": "Fecha de expiración del DNI",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "EJEMPLAR",
+                    "title": "EJEMPLAR",
+                    "description": "Ejemplar del DNI",
+                    "type": "VARCHAR2(10)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_ACTIVIDAD",
+                    "title": "ID_ACTIVIDAD",
+                    "description": "Identificador de la actividad laboral del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ALTA_MYA",
+                    "title": "ALTA_MYA",
+                    "description": "Indicador si el cliente fue dado de alta en MYA",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "SIMILITUD",
+                    "title": "SIMILITUD",
+                    "description": "Porcentaje de similitud entre la selfie y la foto del DNI",
+                    "type": "NUMBER(3)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CLIENTE_PREVIO",
+                    "title": "CLIENTE_PREVIO",
+                    "description": "Indicador si el cliente ya estaba suscripto a MYA al momento de iniciarl el alta",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "SANIDAD",
+                    "title": "SANIDAD",
+                    "description": "Marca en caso que el cliente indique que pertenece a Sanidad",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FECHA_EMISION",
+                    "title": "FECHA_EMISION",
+                    "description": "Fecha de emisión del DNI",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "VCTO_RESIDENCIA",
+                    "title": "VCTO_RESIDENCIA",
+                    "description": "Fecha de vencimiento de la residencia de extranajeros",
+                    "type": "DATE",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CLIENTE_CON_CUENTA",
+                    "title": "CLIENTE_CON_CUENTA",
+                    "description": "Marca en caso que el cliente ya este dado de alta en el sistema. Marca CLI",
+                    "type": "VARCHAR2(2)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "UPGRADE_UNIV",
+                    "title": "UPGRADE_UNIV",
+                    "description": "Indicador si se realiza upgrade de paquete a Universitario",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "file": "transacciones_schema",
+    "createTable": "bi_corp_staging.rio30_transacciones",
+    "location": "/santander/bi-corp/landing/rio30/dim/transacciones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio30/dim/transacciones",
+    "tempDirectory": "/santander/bi-corp/temp/rio30",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "tx_id",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "agrup_producto",
+            "type": "string"
+        },
+        {
+            "name": "grupo",
+            "type": "string"
+        },
+        {
+            "name": "itaca",
+            "type": "string"
+        },
+        {
+            "name": "svc_coordinador",
+            "type": "string"
+        },
+        {
+            "name": "categoria",
+            "type": "string"
+        },
+        {
+            "name": "grupo_plantilla",
+            "type": "string"
+        },
+        {
+            "name": "tipo_deriv",
+            "type": "string"
+        },
+        {
+            "name": "ind_automatiz",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

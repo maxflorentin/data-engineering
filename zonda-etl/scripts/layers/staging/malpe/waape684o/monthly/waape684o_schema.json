@@ -1,0 +1,19 @@
+{
+  "file": "waape684o_monthly_schema",
+  "location": "/santander/bi-corp/landing/malpe/fact/waape684o/monthly/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malpe/fact/waape684o/monthly",
+  "createTable": "bi_corp_staging.malpe_monthly_waape684o",
+  "header": false,
+  "copybook": "waape684o_monthly.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

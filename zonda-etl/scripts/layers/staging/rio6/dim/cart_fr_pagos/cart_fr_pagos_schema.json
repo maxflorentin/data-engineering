@@ -1,0 +1,46 @@
+{
+  "file": "cart_fr_pagos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_fr_pagos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_fr_pagos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cafp_cd_fr_pago",
+      "type": "string"
+    },
+    {
+      "name":"cafp_de_fr_pago",
+      "type":"string"
+    },
+    {
+      "name":"cafp_nu_pagos_ano",
+      "type":"string"
+    },
+    {
+      "name":"cafp_tp_emision",
+      "type":"string"
+    },
+    {
+      "name":"cafp_nu_meses_fr_cobro",
+      "type":"string"
+    },
+    {
+      "name":"cafp_nu_meses_vig",
+      "type":"string"
+    },
+    {
+      "name":"cafp_nu_cuotas_cobrar",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

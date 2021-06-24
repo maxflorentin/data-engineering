@@ -1,0 +1,181 @@
+{
+  "file": "LOAD_STG_Watson-Daily",
+  "location": "/santander/bi-corp/landing/watson/fact/web/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/watson/fact/web",
+  "createTable": "bi_corp_staging.watson_dialog",
+  "extension": "csv",
+  "delimiter": "~",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns":
+  [
+    {
+        "name": "header",
+        "type": "string"
+
+    },
+    {
+        "name": "id",
+        "type": "string"
+    },
+    {
+        "name": "fecha",
+        "type": "string",
+        "dateFormat": "ddmmyyyy hh:mm:ss"
+    },
+    {
+        "name": "canal",
+        "type": "string",
+        "dateFormat": "string"
+    },
+    {
+        "name": "nup",
+        "type": "string"
+    },
+    {
+        "name": "mora_temprana",
+        "type": "string"
+    },
+    {
+        "name": "mora_tardia",
+        "type": "string"
+    },
+    {
+        "name": "transferido_humano",
+        "type": "string"
+    },
+    {
+        "name": "intent_mora",
+        "type": "string"
+    },
+    {
+        "name": "jsessionid",
+        "type": "string"
+    },
+    {
+        "name": "pdfpsueldo",
+        "type": "string"
+    },
+    {
+        "name": "conversationid",
+        "type": "string"
+    },
+    {
+        "name": "pregunta",
+        "type": "string"
+    },
+    {
+        "name": "respuesta",
+        "type": "string"
+    },
+    {
+        "name": "final_intent",
+        "type": "string"
+    },
+    {
+        "name": "intent",
+        "type": "string"
+    },
+    {
+        "name": "confidence_intent",
+        "type": "string"
+    },
+    {
+        "name": "ask_answer_was_useful",
+        "type": "string"
+    },
+    {
+        "name": "possiblequestions",
+        "type": "string"
+    },
+    {
+        "name": "suggestiontopics",
+        "type": "string"
+    },
+    {
+        "name": "options",
+        "type": "string"
+    },
+    {
+        "name": "waspossiblequstions",
+        "type": "string"
+    },
+    {
+        "name": "was_suggestion_topics",
+        "type": "string"
+    },
+    {
+        "name": "wasoptions",
+        "type": "string"
+    },
+    {
+        "name": "fechainicio",
+        "type": "string"
+    },
+    {
+        "name": "fechafin",
+        "type": "string"
+    },
+    {
+        "name": "list_intent",
+        "type": "string"
+    },
+    {
+        "name": "finalintent_aux1",
+        "type": "string"
+    },
+    {
+        "name": "confidencefinalintent_aux1",
+        "type": "string"
+    },
+    {
+        "name": "finalintent_aux2",
+        "type": "string"
+    },
+    {
+        "name": "confidencefinalintent_aux2",
+        "type": "string"
+    },
+    {
+        "name": "telefono",
+        "type": "string"
+    },
+    {
+        "name": "espas",
+        "type": "string"
+    },
+    {
+        "name": "id_gec",
+        "type": "string"
+    },
+    {
+        "name": "from1",
+        "type": "string"
+    },
+    {
+        "name": "intecionderivacion",
+        "type": "string"
+    },
+    {
+        "name": "asesordisponible",
+        "type": "string"
+    },
+    {
+        "name": "ofreciomail",
+        "type": "string"
+    },
+    {
+        "name": "fuerahorario",
+        "type": "string"
+    }
+  ],
+  "extraColumns": [{
+          "name": "partition_date",
+          "type": "string",
+         "target": "fecha",
+          "value": "${partition_date}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,118 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307993"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "aprp_waprp062",
+      "title": "Tabla de Formas de Pago Habilitadas por Producto",
+      "schema": "bi_corp_staging",
+      "source": "APRP",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla de Formas de Pago Habilitadas por Producto",
+      "columns": [
+        {
+          "name": "WAPRP062_COD_TAB_FORM_PGO ",
+          "title": "WAPRP062_COD_TAB_FORM_PGO ",
+          "description": "Tabla de forma de pago",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_COD_MONE         ",
+          "title": "WAPRP062_COD_MONE         ",
+          "description": "Codigo de moneda de forma de pao",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_COD_PROD         ",
+          "title": "WAPRP062_COD_PROD         ",
+          "description": "Producto para el cual esta habilitado",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_DES_TAB_FORM_PGO ",
+          "title": "WAPRP062_DES_TAB_FORM_PGO ",
+          "description": "Descripcion de la tabla de la forma de pago",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_DES_FORM_PGO     ",
+          "title": "WAPRP062_DES_FORM_PGO     ",
+          "description": "Formas de pago habilitadas",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 90.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_FEC_HRA_ULT_MODF ",
+          "title": "WAPRP062_FEC_HRA_ULT_MODF ",
+          "description": "Fecha y hora de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 26.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_IDE_USER_ULT_MODF",
+          "title": "WAPRP062_IDE_USER_ULT_MODF",
+          "description": "Identificación de usuario de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP062_IDE_TERM_ULT_MODF",
+          "title": "WAPRP062_IDE_TERM_ULT_MODF",
+          "description": "Identificación terminal de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

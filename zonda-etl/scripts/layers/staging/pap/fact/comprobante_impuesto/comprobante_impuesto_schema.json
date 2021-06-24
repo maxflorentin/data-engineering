@@ -1,0 +1,58 @@
+{
+    "file": "comprobante_impuesto",
+    "location": "/santander/bi-corp/landing/pap/fact/comprobante_impuesto/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/pap/fact/comprobante_impuesto",
+    "createTable": "bi_corp_staging.pap_comprobante_impuesto",
+    "extension": "csv",
+    "delimiter": "\t",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+       {
+            "name": "id",
+            "type": "string"
+        },
+{
+            "name": "id_comprobante",
+            "type": "string"
+        },
+{
+            "name": "impuesto_nombre",
+            "type": "string"
+        },
+{
+            "name": "impuesto_descripcion",
+            "type": "string"
+        },
+{
+            "name": "base_imponible",
+            "type": "string"
+        },
+{
+            "name": "alicuota",
+            "type": "string"
+        },
+{
+            "name": "impuesto_total",
+            "type": "string"
+        },
+{
+            "name": "base_imponible_base",
+            "type": "string"
+        },
+{
+            "name": "impuesto_total_base",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

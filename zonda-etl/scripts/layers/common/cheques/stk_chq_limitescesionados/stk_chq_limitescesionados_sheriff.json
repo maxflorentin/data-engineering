@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_chq_limitescesionados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_per_nup","cod_chq_entidad","cod_chq_sucursal","cod_chq_paquete"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_chq_entidad","cod_chq_sucursal","cod_chq_paquete"],
+      "threshold": 0.00
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["fc_chq_limitecesion","fc_chq_montocesionado","fc_chq_montopendiente","fc_chq_montodisponible"],
+      "threshold": 0.005
+    }
+  ]
+}

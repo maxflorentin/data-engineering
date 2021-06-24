@@ -1,0 +1,162 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A305516"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "acse_contrato_campana",
+            "title": "Cajas de Seguridad",
+            "schema": "bi_corp_staging",
+            "source": "ACSE",
+            "query": "",
+            "type": "FACT",
+            "description": "Cajas de Seguridad",
+            "columns": [
+                {
+                    "name": "SUCURSAL",
+                    "title": "SUCURSAL",
+                    "description": "Sucursal contrato caja ",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRATO",
+                    "title": "CONTRATO",
+                    "description": "Numero de contrato Caja",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-DESDE",
+                    "title": "FEC-DESDE",
+                    "description": "Fecha de vigencia desde",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMPANIA",
+                    "title": "CAMPANIA",
+                    "description": "Codigo de campaña",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-HASTA",
+                    "title": "FEC-HASTA",
+                    "description": "Fecha de vigencia hasta",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESTADO",
+                    "title": "ESTADO",
+                    "description": "Estado de relacion contrato/campaña",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USUARIO-ALTA",
+                    "title": "USUARIO-ALTA",
+                    "description": "Usuario alta de contrato",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-ALTA",
+                    "title": "FEC-ALTA",
+                    "description": "Fecha de alta ",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USUARIO-ULT-ACT",
+                    "title": "USUARIO-ULT-ACT",
+                    "description": "Usuario quien realizo la ultima actualizacion",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-ULT-ACT",
+                    "title": "FEC-ULT-ACT",
+                    "description": "Fecha de ultima actualizacion",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PGM-ORIGEN",
+                    "title": "PGM-ORIGEN",
+                    "description": "Programa que lo genera",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MARCA-RELIQ",
+                    "title": "MARCA-RELIQ",
+                    "description": "Marca de re-liquidacion",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Diario",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

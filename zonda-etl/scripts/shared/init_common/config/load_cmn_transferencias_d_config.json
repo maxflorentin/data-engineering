@@ -1,0 +1,31 @@
+{
+    "name": "Transferencias-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Malpe-Daily",
+                    "tasks": ["STAGING_PEDT001_Parquetize","STAGING_PEDT008_Parquetize","STAGING_PEDT015_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_ABAE_Trf-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_ATRC-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALBGC-Daily",
+                    "tasks": ["STAGING_zbdttra_Parquetize"]
+                },
+                {
+                    "dag_id":"LOAD_STG_Sucursales-Daily",
+                    "tasks": ["STAGING_TCDTGEN_Parquetize"]
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Transferencias"
+                }
+    ]
+}

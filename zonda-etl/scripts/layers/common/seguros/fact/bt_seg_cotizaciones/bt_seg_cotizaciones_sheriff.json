@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.bt_seg_cotizaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_seg_ramo", "cod_seg_producto", "cod_seg_plan"],
+    "threshold": 0.05
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_seg_tipo_seguro"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_seg_fecha_cotizacion", "dt_seg_fecha_vigencia"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

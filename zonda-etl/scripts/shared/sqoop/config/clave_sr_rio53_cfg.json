@@ -1,0 +1,14 @@
+{
+  "tables" :[
+    {
+      "serverAka": "rio53",
+      "database": "OFSA40",
+      "table": "MARC_PIN",
+      "table_type": "fact",
+      "environment": "rio53",
+      "landing_path": "/santander/bi-corp/landing/rio53/fact/marc_pin",
+      "partition_field": "TO_CHAR(FECHA_CARGA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select penumper , tipo_clave, fecha_alta , fecha_cambio , fecha_acceso,marca_bloqueo,TO_CHAR(fecha_carga,'YYYY-MM-DD') as partition_date from {database}.{table} where {partition_field} > '2019-01-01' AND \\$CONDITIONS \"  --bindir '/aplicaciones/bi/zonda/sqoop/rio53/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_clientes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": [
+        "cod_adm_penumper",
+        "cod_adm_cliente"
+      ]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "cod_adm_penumper",
+        "ds_adm_nom_cliente",
+        "cod_adm_cliente",
+        "int_adm_plz_cobro",
+        "int_adm_porc_ventas",
+        "ds_adm_ref_obtenidas",
+        "cod_adm_nro_ultima_prop"
+      ],
+      "threshold": 0.00
+    }
+  ]
+}
+

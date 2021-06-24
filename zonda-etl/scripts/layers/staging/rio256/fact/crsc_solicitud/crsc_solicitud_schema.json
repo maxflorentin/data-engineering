@@ -1,0 +1,119 @@
+{
+    "file": "crsc_solicitud_schema",
+    "createTable": "bi_corp_staging.rio256_crsc_solicitud",
+    "location": "/santander/bi-corp/landing/rio256/fact/crsc_solicitud/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio256/fact/crsc_solicitud",
+    "tempDirectory": "/santander/bi-corp/temp/rio256",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "id_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "id_prospecto",
+            "type": "string"
+        },
+        {
+            "name": "id_prod",
+            "type": "string"
+        },
+        {
+            "name": "id_estado_solicitud",
+            "type": "string"
+        },
+        {
+            "name": "solicitante_ip",
+            "type": "string"
+        },
+        {
+            "name": "dispositivo",
+            "type": "string"
+        },
+        {
+            "name": "fecha_creacion",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "nro_asol",
+            "type": "string"
+        },
+        {
+            "name": "tipo_doc",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc",
+            "type": "string"
+        },
+        {
+            "name": "servidor_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_checklist",
+            "type": "string"
+        },
+        {
+            "name": "estado_asol",
+            "type": "string"
+        },
+        {
+            "name": "suc_embozado",
+            "type": "string"
+        },
+        {
+            "name": "embozado",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "canal",
+            "type": "string"
+        },
+        {
+            "name": "id_biometria",
+            "type": "string"
+        },
+        {
+            "name": "appid",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cr",
+            "type": "string"
+        },
+        {
+            "name": "cajero",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

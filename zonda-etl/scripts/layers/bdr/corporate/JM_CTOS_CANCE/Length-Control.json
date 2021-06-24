@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(H0711_FEOPERAC, H0711_S1EMP, H0711_CONTRA1, H0711_MOTVCANC, H0711_FECULTMO)) as longitud, CONCAT(H0711_FEOPERAC, H0711_S1EMP, H0711_CONTRA1, H0711_MOTVCANC, H0711_FECULTMO) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_ctos_cance r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_CTOS_CANCE' where partition_date = '$month_partition_bdr' and length(CONCAT(H0711_FEOPERAC, H0711_S1EMP, H0711_CONTRA1, H0711_MOTVCANC, H0711_FECULTMO)) != cast(d.longitud as int)"
+    ]
+}

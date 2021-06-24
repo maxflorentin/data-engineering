@@ -1,0 +1,28 @@
+{
+  "file": "afip_cat_monotributo",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/afip_cat_monotributo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/afip_cat_monotributo",
+  "extension": "csv",
+  "delimiter": ",",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "categoria",
+					    "type": "string"
+					  },
+					  {
+					    "name": "ingresos_brutos",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

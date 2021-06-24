@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio15_nb_tipo_trx ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

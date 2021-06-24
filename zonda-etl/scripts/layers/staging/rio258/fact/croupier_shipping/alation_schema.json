@@ -1,0 +1,443 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_croupier_shipping",
+            "title": "CONTIENE TODOS LOS ENVÍOS QUE SE ENCUENTRAN EN SUCURSALES.A PARTIR DE ELLA, SE PUEDE IDENTIFICAR QUE SUCURSAL ENTREGÓ EL ENVÍO O CUAL LO DESTRUYÓ.",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE TODOS LOS ENVÍOS QUE SE ENCUENTRAN EN SUCURSALES.A PARTIR DE ELLA, SE PUEDE IDENTIFICAR QUE SUCURSAL ENTREGÓ EL ENVÍO O CUAL LO DESTRUYÓ.",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "CÓDIGO DE ENVÍO INTERNO DE STOCK",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER_ID",
+                    "title": "COURIER_ID",
+                    "description": "CÓDIGO DE COURIER",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER_TRACKING_ID",
+                    "title": "COURIER_TRACKING_ID",
+                    "description": "CÓDIGO DE ENVÍO DEL COURIER",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATED_DATE",
+                    "title": "CREATED_DATE",
+                    "description": "FECHA DE CREACIÓN DEL REGISTRO",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "RECEIVED_USER",
+                    "title": "RECEIVED_USER",
+                    "description": "LEGAJO DE LA PERSONA QUE RECIBE EL ENVÍO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHIPPING_STATUS",
+                    "title": "SHIPPING_STATUS",
+                    "description": "DESCRIPCIÓN DEL ÚLTIMO ESTADO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRACT_CODE",
+                    "title": "CONTRACT_CODE",
+                    "description": "CÓDIGO DE CONTRATO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRACT_SERVICE_TYPE",
+                    "title": "CONTRACT_SERVICE_TYPE",
+                    "description": "TIPO DE CONTRATO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRACT_DESCRIPTION",
+                    "title": "CONTRACT_DESCRIPTION",
+                    "description": "DESCRIPCIÓN DEL CONTRATO",
+                    "type": "VARCHAR2(256)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 256.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_CODE",
+                    "title": "BRANCH_CODE",
+                    "description": "CÓDIGO DE SUCURSAL",
+                    "type": "VARCHAR2(16)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_NAME",
+                    "title": "BRANCH_NAME",
+                    "description": "DESCRIPCIÓN DE LA SUCURSAL",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_ADDRESS",
+                    "title": "BRANCH_ADDRESS",
+                    "description": "DIRECCIÓN DE LA SUCURSAL",
+                    "type": "VARCHAR2(256)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 256.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_CITY",
+                    "title": "BRANCH_CITY",
+                    "description": "CIUDAD DE LA SUCURSAL",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERSON_DOCUMENT",
+                    "title": "PERSON_DOCUMENT",
+                    "description": "NÚMERO DE DOCUMENTO DEL TITULAR DEL ENVÍO",
+                    "type": "VARCHAR2(64)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 64.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto"
+                },
+                {
+                    "name": "PERSON_NAME",
+                    "title": "PERSON_NAME",
+                    "description": "NOMBRE Y APELLIDO DEL TITULAR DEL ENVÍO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto"
+                },
+                {
+                    "name": "BRANCH_CODE_RECEIVED",
+                    "title": "BRANCH_CODE_RECEIVED",
+                    "description": "CÓDIGO DE LA SUCURSAL EN DONDE SE RECIBIO EL ENVÍO",
+                    "type": "VARCHAR2(16)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_UPDATE_DATE",
+                    "title": "LAST_UPDATE_DATE",
+                    "description": "FECHA DE ULTIMA MODIFICACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTENT",
+                    "title": "CONTENT",
+                    "description": "CONTENIDO DEL ENVÍO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LAST_UPDATE_USER",
+                    "title": "LAST_UPDATE_USER",
+                    "description": "LEGAJO DE LA PERSONA QUE MODIFICÓ POR ÚLTIMA VEZ",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TAG",
+                    "title": "TAG",
+                    "description": "ETIQUETA DEL ENVÍO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERSON_NUP",
+                    "title": "PERSON_NUP",
+                    "description": "NÚMERO ÚNICO DE LA PERSONA TITULAR DEL ENVÍO",
+                    "type": "VARCHAR2(128)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "RECEIVED_DATE",
+                    "title": "RECEIVED_DATE",
+                    "description": "FECHA DE RECEPCIÓN DEL ENVÍO EN LA SUCURSAL",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRACKING_SHIPPING_ID",
+                    "title": "TRACKING_SHIPPING_ID",
+                    "description": "CÓDIGO DE SHIPPING ",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+  "file": "tresolucion_srs_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/tresolucion_srs/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/tresolucion_srs",
+  "createTable": "bi_corp_staging.cvc_tresolucion_srs",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_resolucion",
+    "type": "string"
+  },
+  {
+    "name": "des_resolucion",
+    "type": "string"
+  },
+  {
+    "name": "cod_combo",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

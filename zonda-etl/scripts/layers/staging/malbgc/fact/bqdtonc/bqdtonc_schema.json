@@ -1,0 +1,224 @@
+{
+        "file": "bqdtonc_movimientos_cuentas",
+        "location": "/santander/bi-corp/landing/malbgc/fact/bqdtonc/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malbgc/fact/bqdtonc",
+        "tempDirectory": "/santander/bi-corp/temp/bqdtonc",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "ONC_ENTIDAD",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_CENTRO_ALTA",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_CUENTA",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "ONC_NUM_CHEQUE",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "ONC_SECUENCIA",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "ONC_CONT_ONP",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "ONC_COD_PERIODICO",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "ONC_MOTIVO",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_OBSERVACIONES",
+                        "type": "string",
+                        "width": 30
+                },
+                {
+                        "name": "ONC_DENUNCIANTE",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_NOMBRE_BENEF",
+                        "type": "string",
+                        "width": 40
+                },
+                {
+                        "name": "ONC_TIPO_ID_DENUN",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "ONC_ID_DENUN",
+                        "type": "string",
+                        "width": 11
+                },
+                {
+                        "name": "ONC_FECHA_ALTA",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "ONC_HORA_ALTA",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_USUARIO_ALTA",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_IMPORTE",
+                        "type": "string",
+                        "width": 16
+                },
+                {
+                        "name": "ONC_DIVISA",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "ONC_ESTADO",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_IND_PUBLIC",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_IND_BAJA_AUT",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_BAJA",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ONC_TIPO_ID_BAJA",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "ONC_ID_BAJA",
+                        "type": "string",
+                        "width": 11
+                },
+                {
+                        "name": "ONC_FECHA_BAJA",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "ONC_HORA_BAJA",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_USUARIO_BAJA",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_TIPO_ID_CONF",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "ONC_ID_CONF",
+                        "type": "string",
+                        "width": 11
+                },
+                {
+                        "name": "ONC_FECHA_CONFIRM",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "ONC_HORA_CONFIRM",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_USUARIO_CONFIR",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_ENTIDAD_UMO",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_CENTRO_UMO",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_USERID_UMO",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_NETNAME_UMO",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ONC_TIMEST_UMO",
+                        "type": "string",
+                        "width": 26
+                },
+                {
+                        "name": "ONC_ENTIDAD_OGL",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_CENTRO_OGL",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ONC_CUENTA_OGL",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "ONC_DIVISA_OGL",
+                        "type": "string",
+                        "width": 3
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

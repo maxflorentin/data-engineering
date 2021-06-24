@@ -1,0 +1,69 @@
+{
+    "file": "circ_resolutor",
+    "location": "/santander/bi-corp/landing/rio56/fact/circ_resolutor/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/fact/circ_resolutor",
+    "tempDirectory": "/santander/bi-corp/temp/circ_resolutor",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+       {
+            "name": "cod_entidad",
+            "type": "string"
+        }, 
+{
+            "name": "cod_prior_circ",
+            "type": "string"
+        }, 
+{
+            "name": "cod_sector",
+            "type": "string"
+        }, 
+{
+            "name": "est_circ_resol",
+            "type": "string"
+        }, 
+{
+            "name": "fec_alt_circ_resol",
+           "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+            "type": "string"
+        }, 
+{
+            "name": "fec_modf_circ_resol",
+            "type": "string"
+        }, 
+{
+            "name": "ide_circuito",
+            "type": "string"
+        }, 
+{
+            "name": "ind_obl_resp",
+            "type": "string"
+        }, 
+{
+            "name": "nro_ord_circ",
+            "type": "string"
+        }, 
+{
+            "name": "tmp_circ_resol",
+            "type": "string"
+        }, 
+{
+            "name": "user_alt_circ_resol",
+            "type": "string"
+        }, 
+{
+            "name": "user_modf_circ_resol",
+            "type": "string"
+        } 
+    ]
+    ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fec_alt_circ_resol",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

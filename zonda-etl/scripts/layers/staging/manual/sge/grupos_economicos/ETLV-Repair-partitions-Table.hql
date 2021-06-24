@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.sge_grupos_economicos;

@@ -1,0 +1,57 @@
+{
+    "file": "jm_out_cli_nd",
+    "location": "/santander/bi-corp/landing/ndd/jm_out_cli_ndd/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/ndd/jm_out_cli_ndd",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns": [{
+                "name": "feoperac",
+                "type": "string"
+                },{
+                "name": "s1emp", 
+                "type": "string"
+                },{
+                "name": "idnumcli", 
+                "type": "string"
+                },{
+                "name": "ind_def", 
+                "type": "string"
+                },{
+                "name": "dias_pp", 
+                "type": "string"
+                },{
+                "name": "dias_atr", 
+                "type": "string"
+                },{
+                "name": "fec_def", 
+                "type": "string"
+                },{
+                "name": "fini_pp", 
+                "type": "string"
+                },{
+                "name": "ffin_pp", 
+                "type": "string"
+                },{
+                "name": "imp_atr", 
+                "type": "string"
+                },{
+                "name": "sonbldef", 
+                "type": "string"
+                },{
+                "name": "flg_tecnico", 
+                "type": "string"
+                },{
+                "name": "finalind", 
+                "type": "string"
+                }],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}

@@ -1,0 +1,64 @@
+{
+	"file": "dim_tcod_visa_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_tcod_visa/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_tcod_visa",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_tcod_visa",
+	"createTable": "bi_corp_staging.exa_dim_tcod_visa",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "id_archivo",
+			"type":"string"
+		},
+{
+			"name": "codconci",
+			"type":"string"
+		},
+{
+			"name": "descripcion",
+			"type":"string"
+		},
+{
+			"name": "moneda",
+			"type":"string"
+		},
+{
+			"name": "marca_cf",
+			"type":"string"
+		},
+{
+			"name": "cc_costofin",
+			"type":"string"
+		},
+{
+			"name": "marca_rlimpio",
+			"type":"string"
+		},
+{
+			"name": "cc_reslimpio",
+			"type":"string"
+		},
+{
+			"name": "cc_cf_reslimpio",
+			"type":"string"
+		},
+{
+			"name": "clase",
+			"type":"string"
+		},
+{
+			"name": "resta",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

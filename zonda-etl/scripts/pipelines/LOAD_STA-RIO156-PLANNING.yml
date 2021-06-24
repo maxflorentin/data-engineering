@@ -1,0 +1,59 @@
+name: LOAD_STA-RIO156-PLANNING
+description: 'LOAD_STA-RIO156-PLANNING'
+owner: BI-Corp
+active: true
+schedule_interval: '*/30 * * * *'
+start_date: '2020-12-28'
+# catchup: true
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: 'RIO156_DT_PLANNING'
+    operator: PythonOperator
+    config:
+      function_name: 'get_planning_oracle'
+      function_def: |
+        def get_planning_oracle(*args, **kwargs):
+          import cx_Oracle
+          import datetime as dt
+          from airflow.operators.bash_operator import BashOperator
+          import json
+          import os
+          print(kwargs)
+          
+          #  VARIABLES
+          date_from = kwargs.get('date_from')
+
+          query = "SELECT CASE WHEN FEC_FIN_EJEC IS NULL THEN 0 ELSE 1 END BOOL_TRIGGER, FEC_DATA, TO_CHAR(FEC_FIN_EJEC, 'YYYY-MM-DD') FROM MISMTD.MS0_DT_PLANNING \
+              WHERE COD_PLANIFICACION = 'BATCH_D' AND TO_CHAR(FEC_FIN_EJEC, 'YYYY-MM-DD') = '{}' \
+              AND COD_ESTADO_PLANIFICACION = 'F' AND COD_ENTORNO = '54'".format(date_from)
+
+          conn_str = u'SRVCBI/_6_y6Y0tBsAK7aPTk#T2@dblxmissrv01:7366/RIO156' # user/password@host:port/service
+          conn = cx_Oracle.connect(conn_str)
+          c = conn.cursor()
+          c.execute(query)
+          partition = c.fetchall()
+          trigger_partition_date = partition[0][1] if partition else None
+          conn.close()
+
+          partition_date = (dt.datetime.strptime(date_from, '%Y-%m-%d') - dt.timedelta(days=2)).strftime("%Y-%m-%d")
+          partition_date = str(partition_date).replace("-", "")
+
+          if str(trigger_partition_date) == str(partition_date):
+            return True
+
+          else:
+            raise Exception('Partición no encontrada.')
+      
+      provide_context: true
+      op_kwargs:
+        date_from: "{{ ti.xcom_pull(task_ids='InputConfig', key='date_from', dag_id='LOAD_STA-RIO156-PLANNING') }}"
+      skip_errors: true
+notifications:
+  on_start: false
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]

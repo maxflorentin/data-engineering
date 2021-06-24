@@ -1,0 +1,38 @@
+{
+  "file": "cart_ciudades_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_ciudades/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_ciudades",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"caci_caes_cd_estado",
+      "type": "string"
+    },
+    {
+      "name":"caci_cd_ciudad",
+      "type":"string"
+    },
+    {
+      "name":"caci_de_ciudad",
+      "type":"string"
+    },
+    {
+      "name":"caci_cd_zona_sismica",
+      "type":"string"
+    },
+    {
+      "name":"caci_st_ciudad",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

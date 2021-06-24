@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.stk_chq_echeq",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_chq_cuentacheque","cod_chq_sucursalgirada","cod_chq_codigopostal"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["fc_chq_monto"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_chq_fechapago"],
+      "pattern": "yyyy-MM-dd",
+      "threshold":  0.00
+    }
+  ]
+}

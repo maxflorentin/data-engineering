@@ -1,0 +1,191 @@
+{
+  "file": "stnd_balances_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/stnd_balances/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/stnd_balances",
+  "createTable": "bi_corp_staging.sge_stnd_balances",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+            {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "id_balance",
+                    "type": "string"
+                },
+{
+                    "name": "fec_balance",
+                    "type": "string"
+                },
+{
+                    "name": "imp_act_credito_com",
+                    "type": "string"
+                },
+{
+                    "name": "imp_act_bienes_cambio",
+                    "type": "string"
+                },
+{
+                    "name": "imp_act_corriente",
+                    "type": "string"
+                },
+{
+                    "name": "imp_act_bienes_uso",
+                    "type": "string"
+                },
+{
+                    "name": "imp_act_total",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_deuda_fin_cp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_deuda_com_cp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_deuda_fis_cp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_corriente",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_deuda_fin_lp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_deuda_fis_lp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_otros_lp",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_total",
+                    "type": "string"
+                },
+{
+                    "name": "imp_pas_patrimonio",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_ventas",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_costos_ventas",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_gtos_admin",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_gtos_comer",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_gtos_finan",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_operativo",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_extraordinario",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_imp_ganancias",
+                    "type": "string"
+                },
+{
+                    "name": "imp_res_final",
+                    "type": "string"
+                },
+{
+                    "name": "imp_antic_accionistas",
+                    "type": "string"
+                },
+{
+                    "name": "imp_amortizaciones",
+                    "type": "string"
+                },
+{
+                    "name": "imp_compras",
+                    "type": "string"
+                },
+{
+                    "name": "imp_dividendos_ret",
+                    "type": "string"
+                },
+{
+                    "name": "imp_utilidad",
+                    "type": "string"
+                },
+{
+                    "name": "imp_ingresos",
+                    "type": "string"
+                },
+{
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "disponibilidades",
+                    "type": "string"
+                },
+{
+                    "name": "meses_abarca",
+                    "type": "string"
+                },
+{
+                    "name": "revision_balance",
+                    "type": "string"
+                },
+{
+                    "name": "canal",
+                    "type": "string"
+                },
+{
+                    "name": "imp_div_aprob_post_bal",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

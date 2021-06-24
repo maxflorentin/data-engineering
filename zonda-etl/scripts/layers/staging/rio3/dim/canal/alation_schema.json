@@ -1,0 +1,84 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_canal",
+      "title": "diccionario de canales",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "diccionario de canales",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO",
+          "description": "codigo de canal",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DESCRI",
+          "title": "DESCRI",
+          "description": "descripcion del canal",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 25.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ACTIVO",
+          "title": "ACTIVO",
+          "description": "S si canal activo, N caso contrario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "FORMA_OPER",
+          "title": "FORMA_OPER",
+          "description": "forma de operar",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MODALIDAD",
+          "title": "MODALIDAD",
+          "description": "modalidad",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

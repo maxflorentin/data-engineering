@@ -1,0 +1,60 @@
+name: LOAD_CMN_MORA-Daily
+description: 'Load Daily Mora in Common Layer'
+owner: BI-Corp
+active: true
+start_date: '2020-10-22'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: bi_corp_staging.garra_rel_contrato_integ_suc
+tasks:
+  - name: COMMON_LoadTable_stk_mora_404
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_404/ETL-LOAD-stk_mora_404.hql'
+  - name: Report_Execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/zonda/outbound/mora/stk_mora_404.txt"
+      show_header: 'true'
+      output_format: dsv
+      empty_file: True
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_404/Send_File.hql'
+  - name: SendDataFTP
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "/aplicaciones/bi/zonda/outbound/mora/stk_mora_404.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/mora/stk_mora_404.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: COMMON_LoadTable_stk_mora_flujos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_flujos/ETL-LOAD-stk_mora_flujos.hql'
+dependencies:
+  COMMON_LoadTable_stk_mora_404: [Report_Execution,COMMON_LoadTable_stk_mora_flujos]
+  Report_Execution: SendDataFTP
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar,lolivaressierra@santander.com.ar,hsesoldi@santander.com.ar,jcouso@santander.com.ar]

@@ -1,0 +1,126 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_cotiza_componentes",
+            "title": "",
+            "schema": "bi_corp_staging",
+            "source": "El tipo de carga deberá ser incremental, pero con un delay de 1 semana (por las emisiones de Aceptación Digital)",
+            "query": "HQL del ETL",
+            "type": "",
+            "description": "",
+            "columns": [
+                {
+                    "name": "CACX_CAPJ_CD_SUCURSAL",
+                    "title": "CACX_CAPJ_CD_SUCURSAL",
+                    "description": "Código de sucursal",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CAZB_NU_COTIZACION",
+                    "title": "CACX_CAZB_NU_COTIZACION",
+                    "description": "Número de cotización",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CARP_CD_RAMO",
+                    "title": "CACX_CARP_CD_RAMO",
+                    "description": "Código de ramo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CAPU_CD_PRODUCTO",
+                    "title": "CACX_CAPU_CD_PRODUCTO",
+                    "description": "Código de producto",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CAPB_CD_PLAN",
+                    "title": "CACX_CAPB_CD_PLAN",
+                    "description": "Código de plan",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CAFP_CD_FR_PAGO",
+                    "title": "CACX_CAFP_CD_FR_PAGO",
+                    "description": "Código de frecuencia de pago",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_CAPP_CD_COMPONENTE",
+                    "title": "CACX_CAPP_CD_COMPONENTE",
+                    "description": "Código de componente",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_MT_COMPONENTE",
+                    "title": "CACX_MT_COMPONENTE",
+                    "description": "Monto del componente",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 13.2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACX_TA_COMPONENTE",
+                    "title": "CACX_TA_COMPONENTE",
+                    "description": "Tasa del componente",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.4,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "",
+            "loading": {
+                "type": "",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,37 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dblxdbcsrv01",
+      "serverAka": "watson_rio143",
+      "database": "MCANAL",
+      "table": "BIG_ARCE_REND_COBRO_BAS",
+      "table_type": "fact",
+      "partition_field": "FECHA_PROCESO",
+      "environment": "rio143",
+      "landing_path": "/santander/bi-corp/landing/rio143/fact/big_arce_rend_cobro_bas",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT NRO_ORGANISMO ,NRO_REND   ,TPO_REG ,IDE_REG ,SEC_IDE_REG ,FEC_REND,RAZ_SOC  ,CTA_RECAUD ,COD_MONE_CR ,CBU1_CR  ,COD_SUC_CBU1_CR ,NRO_DV_CBU1_CR ,NRO_FIJ_CBU2_CR ,TPO_CTA_CBU2_CR ,COD_MONE_CBU2_CR ,NRO_CTA_CBU2_CR ,NRO_DV_CBU2_CR ,NRO_AREC ,CAN_REG ,CANT_PGOS_REND,TOT_IMP_REND,ACUM_COM_DEVG ,TOT_IMP_COM_COB,TOT_IMP_COM_DEVG ,NRO_CLTE,NOM_CLTE,NRO_CUIT_CLTE,FEC_PGO ,HRA_PGO ,NRO_BCO_CORRS,CAN_DOC,CAN_DOC_PDTES_ACR ,TOT_PGO,IMP_COM_EMPR ,IMP_COM_3RA,IMP_COTIZ_DL_VEND,IMP_COTIZ_DL_COMP,SUC_ORIG ,NRO_BOLETA ,COD_TRN ,MOTIVO_AJUSTE ,SIGNO_AJUSTE ,IMP_AJUSTE ,COD_CAPTU_CAJA ,NRO_SUC_ORIG_CANL ,COD_CANAL,COD_SUB_CANAL,DES_FORM_PGO,NRO_INSTRUMENTO,IMP ,FEC_ACRED,MAR_ACREDITACION ,FEC_VTO_CPD  ,COD_FORM_PGO ,COD_MOT_RECHAZO,COD_MOT_REND ,NRO_SEC_MOVIM ,CAN_OTR_IMPRE ,TPO_CPRB ,NRO_CPRB,NRO_CUO  ,FEC_VTO ,TSA_PUNI ,IMP_DEUDA ,IMP_PUNI  ,IMP_DTO ,IMP_PGO ,OBS_LIBR_1ER,OBS_LIBR_2DA ,OBS_LIBR_3RA,to_char(FECHA_PROCESO,'YYYY-MM-DD')   AS PARTITION_DATE FROM {database}.{table}  where to_char(FECHA_PROCESO ,'YYYY-MM-DD') >= '{partition_date}' AND \\$CONDITIONS \"  --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig": "dblxdbcsrv01",
+      "serverAka": "watson_rio143",
+      "database": "MCANAL",
+      "table": "BIG_ARCE_REND_COBRO_SICE",
+      "table_type": "fact",
+      "partition_field": "FECHA_PROCESO",
+      "environment": "rio143",
+      "landing_path": "/santander/bi-corp/landing/rio143/fact/big_arce_rend_cobro_sice",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT NRO_ORGANISMO ,NRO_REND   ,TPO_REG ,IDE_REG ,SEC_IDE_REG ,FEC_REND,RAZ_SOC  ,CTA_RECAUD ,COD_MONE_CR ,CBU1_CR  ,COD_SUC_CBU1_CR ,NRO_DV_CBU1_CR ,NRO_FIJ_CBU2_CR ,TPO_CTA_CBU2_CR ,COD_MONE_CBU2_CR ,NRO_CTA_CBU2_CR ,NRO_DV_CBU2_CR ,NRO_AREC ,CAN_REG ,CANT_PGOS_REND,TOT_IMP_REND,ACUM_COM_DEVG ,TOT_IMP_COM_COB,TOT_IMP_COM_DEVG ,NRO_CLTE,NOM_CLTE,NRO_CUIT_CLTE,FEC_PGO ,HRA_PGO ,NRO_BCO_CORRS,CAN_DOC,CAN_DOC_PDTES_ACR ,TOT_PGO,IMP_COM_EMPR ,IMP_COM_3RA,IMP_COTIZ_DL_VEND,IMP_COTIZ_DL_COMP,SUC_ORIG ,NRO_BOLETA ,COD_TRN ,MOTIVO_AJUSTE ,SIGNO_AJUSTE ,IMP_AJUSTE ,COD_CAPTU_CAJA ,NRO_SUC_ORIG_CANL ,COD_CANAL,COD_SUB_CANAL,DES_FORM_PGO,NRO_INSTRUMENTO,IMP ,FEC_ACRED,MAR_ACREDITACION ,FEC_VTO_CPD  ,COD_FORM_PGO ,COD_MOT_RECHAZO,COD_MOT_REND ,NRO_SEC_MOVIM ,CAN_OTR_IMPRE ,TPO_CPRB ,NRO_CPRB,NRO_CUO  ,FEC_VTO ,TSA_PUNI ,IMP_DEUDA ,IMP_PUNI  ,IMP_DTO ,IMP_PGO ,OBS_LIBR_1ER,OBS_LIBR_2DA ,OBS_LIBR_3RA,to_char(FECHA_PROCESO,'YYYY-MM-DD')   AS PARTITION_DATE FROM {database}.{table}  where to_char(FECHA_PROCESO ,'YYYY-MM-DD') >= '{partition_date}' AND \\$CONDITIONS \"  --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig": "dblxdbcsrv01",
+      "serverAka": "watson_rio143",
+      "database": "MCANAL",
+      "table": "BIG_TPRP_REND_PAGO",
+      "table_type": "fact",
+      "partition_field": "FECHA_PROCESO",
+      "environment": "rio143",
+      "landing_path": "/santander/bi-corp/landing/rio143/fact/big_tprp_rend_pago",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT NRO_ORGANISMO,NRO_REND ,TPO_REG ,IDE_REG ,SEC_IDE_REG ,FEC_REND ,RAZ_SOC ,CAN_REG,CANT_PGOS_REND,TOT_IMP_REND ,ACUM_COM_DEVG,TOT_IMP_COM_COB ,TOT_IMP_COM_DEVG ,NRO_CLTE ,NOM_CLTE ,NRO_CUIT_CLTE,FEC_PGO ,HRA_PGO,CAN_DOC,CAN_DOC_PDTES_ACR ,TOT_PGO ,IMP_COM_EMPR  ,IMP_COTIZ_DL_VEND ,IMP_COTIZ_DL_COMP ,CANT_RETENCION ,CANT_LIQUIDACION,FEC_ALTA_LOTE ,NRO_ENVIO ,NRO_ORIG_INF ,TOT_IMP_PUNI  ,TOT_BONF  ,COD_CANAL ,COD_SUB_CANAL ,DES_FORM_PGO ,NRO_INSTR ,IMP ,FEC_ACRED,MAR_ACREDITACION ,FEC_VTO_CPD ,COD_NO_A_LA_ORDEN ,MAR_CONFIRMING  ,MAR_FLOAT,COD_EST_INSTR ,FEC_EMISION ,NRO_EMISION,NRO_SUC_DIST,TPO_DIST,FEC_DEB,COD_PAIS_CD ,COD_MONE_CD ,COD_ENT_CBU1_CD ,COD_SUC_CBU1_CD,NRO_DV_CBU1_CD ,NRO_FIJ_CBU2_CD ,TPO_CTA_CBU2_CD,COD_MONE_CBU2_CD,NRO_CTA_CBU2_CD ,NRO_DV_CBU2_CD ,COD_FORM_PGO ,COD_MOT_RECHAZO,TPO_CPRB  ,NRO_CPRB  ,NRO_CUO,FEC_VTO ,TSA_PUNI,IMP_DEUDA ,IMP_PUNI ,IMP_DTO,IMP_PGO,OBS_LIBR_1ER ,OBS_LIBR_2DA,OBS_LIBR_3RA,COD_CPTO ,NRO_SEC_CPTO ,IMP_COTIZ_DL_V_CA,IMP_COTIZ_DL_C_CA ,IMP_CPTO,IMP_CPTO_DISCR ,IMP_IVA ,IMP_IVA_ADIC,IMP_ING_BRU,FEC_MOVIM ,TIPO_DOCU ,NRO_DOCU,TIPO_DOCU_1 ,NRO_DOCU_1,TIPO_DOCU_2,NRO_DOCU_2,SUC_DIST,TPO_RECIBO ,NRO_SECU_DOM, to_char(FECHA_PROCESO,'YYYY-MM-DD')   AS PARTITION_DATE FROM {database}.{table}  where to_char(FECHA_PROCESO ,'YYYY-MM-DD') >= '{partition_date}' AND \\$CONDITIONS \"  --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+      ]
+}

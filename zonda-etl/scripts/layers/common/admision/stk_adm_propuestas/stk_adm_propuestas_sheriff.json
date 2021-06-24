@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_propuestas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tramite"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_adm_nro_prop","ts_adm_fec_prop","cod_adm_origen","cod_adm_estado_prop","cod_adm_segmento"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fec_carga","ts_adm_fec_carga_censo","ts_adm_fec_cierre","ts_adm_fec_comite","ts_adm_fec_envio_sw","ts_adm_fec_envio_veraz","ts_adm_fec_est_prop","ts_adm_fec_fin_resol_cvc","ts_adm_fec_fin_resol_sup","ts_adm_fec_fin_resol_zg","ts_adm_fec_inactivacion","ts_adm_fec_ini_resol_cvc","ts_adm_fec_ini_resol_sup","ts_adm_fec_ini_resol_zg","ts_adm_fec_paso_ries","ts_adm_fec_pos_acre","ts_adm_fec_prop","ts_adm_fec_resol_cvc","ts_adm_fec_resol_scoring","ts_adm_fec_resol_scoring_zona_gris","ts_adm_fec_resol_sre","ts_adm_fec_resol_ultima_resolucion_riesgos","ts_adm_fec_resol_zona_gris","ts_adm_fec_respuesta_sw","ts_adm_fec_respuesta_veraz","ts_adm_fec_venc_censo","ts_adm_fec_vigencia_campania","ts_adm_fec_vto_prop","ts_adm_fecha_afip_ok","ts_adm_fecha_env_esp","ts_adm_fecha_recep_esp","ts_adm_fecha_ventas_est_1","ts_adm_fecha_ventas_est_2","ts_adm_fecha_ventas_hist_desde","ts_adm_fecha_ventas_hist_hasta","ts_adm_pefecalt","ts_adm_pefecing","ts_adm_pefecini","ts_adm_pefecmod","ts_adm_pefecnac","ts_adm_pefecrev"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

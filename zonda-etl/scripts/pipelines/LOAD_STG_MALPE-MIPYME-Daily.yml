@@ -1,0 +1,78 @@
+name: LOAD_STG_MALPE-MIPYME-Daily
+description: 'Load data from MALPE-MIPYME tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2020-10-01'
+# catchup: true
+# schedule_interval: '30 7 * * *'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_waape684o_daily_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_waape684o_daily_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/waape684o/daily/waape684o_daily_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['waape684o_daily_schema.json']
+  - name: STAGING_waape684d_daily_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_waape684d_daily_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/waape684d/daily/waape684d_daily_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['waape684d_daily_schema.json']
+  - name: STAGING_waape685_daily_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_waape685_daily_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malpe/waape685/daily/waape685_daily_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALPE-MIPYME-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['waape685_daily_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

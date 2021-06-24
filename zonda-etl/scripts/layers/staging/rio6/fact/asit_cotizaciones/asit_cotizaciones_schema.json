@@ -1,0 +1,41 @@
+{
+  "file": "asit_cotizaciones_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/asit_cotizaciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/asit_cotizaciones",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"asco_coti_json",
+      "type": "string"
+    },
+    {
+      "name":"asco_nu_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"asco_fe_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"asco_tp_documento",
+      "type":"string"
+    },
+    {
+      "name":"asco_nu_documento",
+      "type":"string"
+    },
+    {
+      "name":"asco_in_enviada",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

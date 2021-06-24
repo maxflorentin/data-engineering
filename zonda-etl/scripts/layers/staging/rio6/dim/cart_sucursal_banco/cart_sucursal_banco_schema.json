@@ -1,0 +1,104 @@
+{
+  "file": "cart_sucursal_banco_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_sucursal_banco/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_sucursal_banco",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"capj_cd_sucursal",
+      "type": "string"
+    },
+    {
+      "name":"capj_de_sucursal",
+      "type":"string"
+    },
+    {
+      "name":"capj_casu_cd_sucursal",
+      "type":"string"
+    },
+    {
+      "name":"capj_nu_prox_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"capj_nu_prox_declsalud",
+      "type":"string"
+    },
+    {
+      "name":"capj_cd_centro_emisor",
+      "type":"string"
+    },{
+      "name":"capj_casu_di_sucursal",
+      "type": "string"
+    },
+    {
+      "name":"capj_caes_cd_estado",
+      "type":"string"
+    },
+    {
+      "name":"capj_caci_cd_ciudad",
+      "type":"string"
+    },
+    {
+      "name":"capj_nu_telefono1",
+      "type":"string"
+    },{
+      "name":"capj_nu_telefono2",
+      "type": "string"
+    },
+    {
+      "name":"capj_nu_fax",
+      "type":"string"
+    },
+    {
+      "name":"capj_zn_postal",
+      "type":"string"
+    },
+    {
+      "name":"capj_nm_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"capj_nm_cargo_apoderado",
+      "type": "string"
+    },
+    {
+      "name":"capj_mail_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"capj_cd_apoderado",
+      "type":"string"
+    },
+    {
+      "name":"capj_canl_cd_canal",
+      "type":"string"
+    },
+    {
+      "name":"capj_in_incentivo",
+      "type": "string"
+    },
+    {
+      "name":"capj_cd_gestor",
+      "type":"string"
+    },
+    {
+      "name":"capj_st_sucursal",
+      "type":"string"
+    },
+    {
+      "name":"capj_fe_status",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

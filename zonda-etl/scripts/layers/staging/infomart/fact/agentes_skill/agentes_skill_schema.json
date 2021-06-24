@@ -1,0 +1,44 @@
+{
+  "file": "agentes_skill_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/agentes_skill/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/agentes_skill",
+  "createTable": "bi_corp_staging.infomart_agentes_skill",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "user_name",
+      "type": "string"
+    },
+    {
+      "name": "first_name",
+      "type": "string"
+    },
+    {
+      "name": "last_name",
+      "type": "string"
+    },
+    {
+      "name": "login_code",
+      "type": "string"
+    },
+    {
+      "name": "skill_name",
+      "type": "string"
+    },
+    {
+      "name": "level",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,47 @@
+{
+  "file": "rio6_planes_coberturas",
+  "location": "/santander/bi-corp/landing/rio6/dim/planes_coberturas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/planes_coberturas",
+  "extension":"csv",
+  "createTable": "bi_corp_staging.rio6_planes_coberturas",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"|",
+  "columns": [
+    {
+         "name":"codigo_ramo",
+         "type": "string"
+      },
+    {
+         "name":"codigo_producto",
+         "type":"string"
+      },
+    {
+         "name":"codigo_plan",
+         "type":"string"
+      },
+    {
+         "name":"codigo_cobertura",
+         "type":"string"
+      },
+    {
+         "name":"codigo_detalle",
+         "type":"string"
+      },
+    {
+         "name":"nro_orden",
+         "type":"string"
+      },
+    {
+         "name":"estado_detalle",
+         "type":"string"
+      }
+  ],
+  "extraColumns": [{
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+  }]
+}

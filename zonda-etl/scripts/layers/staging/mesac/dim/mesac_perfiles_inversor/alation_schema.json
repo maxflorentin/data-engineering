@@ -1,0 +1,62 @@
+{
+  "objectMetadata": {
+    "active": false,
+    "governance": {
+      "steward": [
+        "Legajos Responsables Tecnicos separados por ','"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "mesac_perfiles_inversor",
+      "title": "Sistema de cumplimiento normativo",
+      "schema": "bi_corp_staging",
+      "source": "MESAC",
+      "query": "",
+      "type": "DIM",
+      "description": "Sistema de cumplimiento normativo",
+      "columns": [
+        {
+          "name": "ID_PERFIL",
+          "title": "ID_PERFIL",
+          "description": "Codigo unico de identificaion del registro",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 2.0 ,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Muesta el nombre definido para el perfil",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TEXTO_PERFIL",
+          "title": "TEXTO_PERFIL",
+          "description": "Muestra la descripcion detallada de que tipo de inversor se asocia a este perfil",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": true,
+          "length": 1000.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "DIARIO",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

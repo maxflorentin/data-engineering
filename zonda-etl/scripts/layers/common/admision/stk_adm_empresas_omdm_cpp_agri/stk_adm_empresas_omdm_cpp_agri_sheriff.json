@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_omdm_cpp_agri",
+"partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tipotramite","cod_adm_tramite","ts_adm_fecproceso","cod_adm_tipoparticipante","ds_adm_variable","fc_adm_agrogastosestructura","int_adm_superficiealquiladaagriculturamasfrutales","int_adm_superficiealquiladacriainvernadatambo","int_adm_superficieaparceriaagriculturamasfrutales","int_adm_superficieaparceriacriainvernadatambo","int_adm_superficiepropiaagriculturamasfrutales","int_adm_superficiepropiacriainvernadatambo","fc_adm_agricostocomerccultivobsr","fc_adm_agricostodirectocultivo","fc_adm_agricostodirectocultivobsr","fc_adm_agrihectareascultivadas","fc_adm_agrihectareascultivadasalquiladas","fc_adm_agrihectareascultivadasaparceria","fc_adm_agrihectareascultivadaspropias","fc_adm_agripreciocultivotn","fc_adm_agripreciocultivotnbsr","fc_adm_agririndecultivo","fc_adm_agririndecultivobsr","fc_adm_agristockalinicio","cod_adm_agritipocultivo","ds_adm_cultivo","cod_adm_idcultivo","fc_adm_pctaparceria","ds_adm_zonacultivo","ds_adm_agrizona"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tipotramite","cod_adm_tramite","ts_adm_fecproceso","cod_adm_tipoparticipante","ds_adm_variable"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecproceso"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

@@ -1,0 +1,148 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_cuotas_contratos",
+            "title": "Plan de cuotas",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Plan de cuotas",
+            "columns": [
+                {
+                    "name": "  ASCC_CD_RAMO",
+                    "title": "  ASCC_CD_RAMO",
+                    "description": "Codigo de ramo",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_NU_CONTRATO",
+                    "title": "  ASCC_NU_CONTRATO",
+                    "description": "Numero de contrato",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_NU_CERTIFICADO",
+                    "title": "  ASCC_NU_CERTIFICADO",
+                    "description": "Numero de certificados",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_NU_ENDOSO  ",
+                    "title": "  ASCC_NU_ENDOSO  ",
+                    "description": "Numero de endoso",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_NU_CUOTA",
+                    "title": "  ASCC_NU_CUOTA",
+                    "description": "Numero de cuota",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_FE_DESDE",
+                    "title": "  ASCC_FE_DESDE",
+                    "description": "Fecha desde",
+                    "type": "Date",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_FE_HASTA",
+                    "title": "  ASCC_FE_HASTA",
+                    "description": "Fecha hasta",
+                    "type": "Date",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_MT_CUOTA",
+                    "title": "  ASCC_MT_CUOTA",
+                    "description": "Monto Cuota",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": false,
+                    "length": "(13,2)",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_MT_COMISION",
+                    "title": "  ASCC_MT_COMISION",
+                    "description": "Monto Comision",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": false,
+                    "length": "(11,2)",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_ST_CUOTA",
+                    "title": "  ASCC_ST_CUOTA",
+                    "description": "Estado de cuota",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASCC_FE_STATUS",
+                    "title": "  ASCC_FE_STATUS",
+                    "description": "Fecha ultimo cambio estado",
+                    "type": "Date",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+	"file": "mvw_cabecera_premiaciones_schema",
+	"location": "/santander/bi-corp/landing/rio102/fact/mvw_cabecera_premiaciones/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/fact/rio102_mvw_cabecera_premiaciones",
+	"tempDirectory": "/santander/bi-corp/temp/mvw_cabecera_premiaciones",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_evento",
+			"type": "string"
+		},
+{
+			"name": "interfaces",
+			"type": "string"
+		},
+{
+			"name": "descripcion",
+			"type": "string"
+		},
+{
+			"name": "descripcion_corta",
+			"type": "string"
+		},
+{
+			"name": "fecha_desde",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "fecha_hasta",
+			"type": "string"
+		},
+{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "id_interfaz",
+			"type": "string"
+		},
+{
+			"name": "maestro_descripcion",
+			"type": "string"
+		},
+{
+			"name": "maestro_fecha_desde",
+			"type": "string"
+		},
+{
+			"name": "maestro_fecha_hasta",
+			"type": "string"
+		},
+{
+			"name": "maestro_tabla_novedad",
+			"type": "string"
+		}
+	]
+}

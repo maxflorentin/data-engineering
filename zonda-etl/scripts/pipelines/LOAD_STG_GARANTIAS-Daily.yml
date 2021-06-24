@@ -1,0 +1,369 @@
+name: LOAD_STG_GARANTIAS-Daily
+description: 'Load data from Altair Garantias in all data layers (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2019-12-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_GTDTRGO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTRGO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgo/gttcrgo_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgo/copybook_gttcrgo_schema.txt']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcrgo_schema.json']
+  - name: STAGING_GTDTRGO_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgo/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgo/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTGAR_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTGAR_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtgar/gttcgar_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtgar/copybook_gttcgar_schema.txt']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcgar_schema.json']
+  - name: STAGING_GTDTGAR_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtgar/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtgar/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTMAE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTMAE_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtmae/gttcmae_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtmae/copybook_gttcmae_schema.txt']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcmae_schema.json']
+  - name: STAGING_GTDTMAE_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtmae/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtmae/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTRGC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTRGC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgc/gttcrgc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgc/copybook_gttcrgc_schema.txt']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcrgc_schema.json']
+  - name: STAGING_GTDTRGC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgc/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgc/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTRGB_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTRGB_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgb/gttcrgb_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgb/copybook_gttcrgb_schema.txt']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcrgb_schema.json']
+  - name: STAGING_GTDTRGB_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgb/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrgb/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTHIP_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTHIP_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthip/gtdthip_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthip/copybook_gttchip_schema.txt']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gtdthip_schema.json']
+  - name: STAGING_GTDTHIP_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthip/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthip/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTVAB_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTVAB_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtvab/gttcvab_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtvab/copybook_gttcvab_schema.txt']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcvab_schema.json']
+  - name: STAGING_GTDTVAB_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtvab/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtvab/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTBIE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTBIE_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtbie/gttcbie_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtbie/copybook_gttcbie_schema.txt']
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcbie_schema.json']
+  - name: STAGING_GTDTBIE_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtbie/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtbie/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTRBC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTRBC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrbc/gttcrbc_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrbc/copybook_gttcrbc_schema.txt']
+
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttcrbc_schema.json']
+  - name: STAGING_GTDTRBC_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrbc/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtrbc/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTTAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTTAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdttas/gttctas_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdttas/copybook_gttctas_schema.txt']
+      jars: '/aplicaciones/bi/zonda/repositories/guyra/jars/spark-cobol-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/cobol-parser-0.5.6.jar,/aplicaciones/bi/zonda/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gttctas_schema.json']
+  - name: STAGING_GTDTTAS_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdttas/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdttas/ETLV-Alter_Partitions.hql'
+  - name: STAGING_GTDTCOD_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTCOD_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtcod/gtdtcod_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtcod/gtdtcod.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gtdtcod_schema.json']
+
+  - name: STAGING_GTDTHIS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTHIS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthis/gtdthis_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdthis/gtdthis.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gtdthis_schema.json']
+
+  - name: STAGING_GTDTCBI_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTCBI_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtcbi/gtdtcbi_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtcbi/gtdtcbi.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gtdtcbi_schema.json']
+
+  - name: STAGING_GTDTVEH_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GTDTVEH_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtveh/gtdtveh_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/garantias/gtdtveh/gtdtveh.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_GARANTIAS-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['gtdtveh_schema.json']
+dependencies:
+  STAGING_GTDTRGO_Parquetize: STAGING_GTDTRGO_AddPartition
+  STAGING_GTDTGAR_Parquetize: STAGING_GTDTGAR_AddPartition
+  STAGING_GTDTMAE_Parquetize: STAGING_GTDTMAE_AddPartition
+  STAGING_GTDTRGC_Parquetize: STAGING_GTDTRGC_AddPartition
+  STAGING_GTDTRGB_Parquetize: STAGING_GTDTRGB_AddPartition
+  STAGING_GTDTRBC_Parquetize: STAGING_GTDTRBC_AddPartition
+  STAGING_GTDTHIP_Parquetize: STAGING_GTDTHIP_AddPartition
+  STAGING_GTDTBIE_Parquetize: STAGING_GTDTBIE_AddPartition
+  STAGING_GTDTVAB_Parquetize: STAGING_GTDTVAB_AddPartition
+  STAGING_GTDTTAS_Parquetize: STAGING_GTDTTAS_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

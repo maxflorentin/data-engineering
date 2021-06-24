@@ -1,0 +1,50 @@
+{
+  "file": "tbl_servicio_schema",
+  "location": "/santander/bi-corp/landing/rio226/dim/tbl_servicio/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/dim/tbl_servicio",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "ID",
+    "type": "string"
+  },
+    {
+      "name": "NOMBRE",
+      "type": "string"
+    },
+    {
+      "name": "DESCRIPCION",
+      "type": "string"
+    },
+    {
+      "name": "TIPO",
+      "type": "string"
+    },
+    {
+      "name": "MARCA_REVERSABLE",
+      "type": "string"
+    },
+    {
+      "name": "MARCA_VENTA",
+      "type": "string"
+    },
+    {
+      "name": "FECHA_MODIFICACION",
+      "type": "string"
+    },
+    {
+      "name": "GRUPO",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

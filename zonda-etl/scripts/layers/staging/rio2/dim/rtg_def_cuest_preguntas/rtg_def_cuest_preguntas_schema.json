@@ -1,0 +1,42 @@
+{
+  "file": "rtg_def_cuest_preguntas_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/rtg_def_cuest_preguntas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/rtg_def_cuest_preguntas",
+  "createTable": "bi_corp_staging.sge_rtg_def_cuest_preguntas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_pregunta",
+      "type": "string"
+    },
+    {
+      "name": "id_cuestionario",
+      "type": "string"
+    },
+    {
+      "name": "x_pregunta",
+      "type": "string"
+    },
+    {
+      "name": "cod_area",
+      "type": "string"
+    },
+    {
+      "name": "n_beta",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

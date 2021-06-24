@@ -1,0 +1,745 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A279014,A308949,A307821"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "qualtrics_nps_work_cafe_efic",
+            "title": "Encuesta de Satisfaccion Work Café Eficiencia",
+            "schema": "bi_corp_staging",
+            "source": "QUALTRICS",
+            "type": "FACT",
+            "description": "Encuesta de Satisfaccion Work Café Eficiencia",
+            "columns": [
+                {
+                    "name": "response_id",
+                    "title": "response_id",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "variable",
+                    "title": "variable",
+                    "description": "Orden de la Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "respuesta",
+                    "title": "respuesta",
+                    "description": "Respuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "question_id",
+                    "title": "question_id",
+                    "description": "Orden de la Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "question_desc",
+                    "title": "question_desc",
+                    "description": "Pregunta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "start_date",
+                    "title": "start_date",
+                    "description": "Dia y Hora de Inicio de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "end_date",
+                    "title": "end_date",
+                    "description": "Dia y Hora de Fin de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "status",
+                    "title": "status",
+                    "description": "Estado de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ip_address",
+                    "title": "ip_address",
+                    "description": "Direccion IP desde la cual fue respondida la encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "progress",
+                    "title": "progress",
+                    "description": "Progreso de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "duration",
+                    "title": "duration",
+                    "description": "Duracion de la Encuesta",
+                    "type": "INT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "finished",
+                    "title": "finished",
+                    "description": "Flag que indica si se finalizo la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recorded_date",
+                    "title": "recorded_date",
+                    "description": "Fecha de Respuesta de la Encuesta",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recipient_last_name",
+                    "title": "recipient_last_name",
+                    "description": "Apellido del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "recipient_first_name",
+                    "title": "recipient_first_name",
+                    "description": "Nombre del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "recipient_email",
+                    "title": "recipient_email",
+                    "description": "Mail del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "external_reference",
+                    "title": "external_reference",
+                    "description": "Referencia Externa",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "location_latitude",
+                    "title": "location_latitude",
+                    "description": "Dato de geolocalizacion del Encuestado - Latitud",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "location_longitude",
+                    "title": "location_longitude",
+                    "description": "Dato de geolocalizacion del Encuestado - Longitud",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "distribution_channel",
+                    "title": "distribution_channel",
+                    "description": "Canal de Distribucion de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "user_language",
+                    "title": "user_language",
+                    "description": "Idioma utilizado en la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "q1_nps_group",
+                    "title": "q1_nps_group",
+                    "description": "Indica si la respuesta nps pertenece al grupo detractor, neutro o promotor",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "responseid",
+                    "title": "responseid",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "momento_critico",
+                    "title": "momento_critico",
+                    "description": "Momento Critico",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fecha_encuesta",
+                    "title": "fecha_encuesta",
+                    "description": "Fecha de Envio de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "id_respuesta",
+                    "title": "id_respuesta",
+                    "description": "Id de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+
+
+                {
+                    "name": "workcafe_submot",
+                    "title": "workcafe_submot",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "nombre",
+                    "title": "nombre",
+                    "description": "Nombre del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "nup",
+                    "title": "nup",
+                    "description": "NUP del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "tipo_doc",
+                    "title": "tipo_doc",
+                    "description": "Tipo de Documento del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "nro_doc",
+                    "title": "nro_doc",
+                    "description": "Numero de Documento del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "renta",
+                    "title": "renta",
+                    "description": "Renta del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "color",
+                    "title": "color",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "telefono_fijo1",
+                    "title": "telefono_fijo1",
+                    "description": "Telefono 1 del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "telefono_fijo2",
+                    "title": "telefono_fijo2",
+                    "description": "Telefono 2 del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "telefono_celular1",
+                    "title": "telefono_celular1",
+                    "description": "Celular 1 del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "telefono_celular2",
+                    "title": "telefono_celular2",
+                    "description": "Celular 2 del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "direccion_correo_electronico",
+                    "title": "direccion_correo_electronico",
+                    "description": "Email del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "cod_oferta",
+                    "title": "cod_oferta",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "descripcion",
+                    "title": "descripcion",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "origen",
+                    "title": "origen",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "canal",
+                    "title": "canal",
+                    "description": "Canal de la Encuesta",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "fec_modificacion",
+                    "title": "fec_modificacion",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "hora_modificacion",
+                    "title": "hora_modificacion",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "legajo",
+                    "title": "legajo",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ejecutivo",
+                    "title": "ejecutivo",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "antiguedad_en_meses",
+                    "title": "antiguedad_en_meses",
+                    "description": "Antigüedad del Encuestado como cliente del banco",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "edad",
+                    "title": "edad",
+                    "description": "Edad del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "sexo",
+                    "title": "sexo",
+                    "description": "Sexo del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "rentabilidad",
+                    "title": "rentabilidad",
+                    "description": "Rentabilidad del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "cd_sucursal_cliente",
+                    "title": "cd_sucursal_cliente",
+                    "description": "Sucursal del Encuestado",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "region",
+                    "title": "region",
+                    "description": "Region de la Sucursal",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "zona",
+                    "title": "zona",
+                    "description": "Zona de la Sucursal",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "marca_ges_remoto",
+                    "title": "marca_ges_remoto",
+                    "description": "Flag qe indica si la gestion fue remota",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recomendar_banco",
+                    "title": "recomendar_banco",
+                    "description": "Flag que indica si el Encuestado recomendaria el banco",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "nps_workcafe",
+                    "title": "nps_workcafe",
+                    "description": "Respuesta NPS",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "comentario_alerta_nps",
+                    "title": "comentario_alerta_nps",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "comentario_mejora_nps",
+                    "title": "comentario_mejora_nps",
+                    "description": "Comentario Mejora NPS",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "comentario_recomendacion_nps",
+                    "title": "comentario_recomendacion_nps",
+                    "description": "Comentario de Recomendación",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "etiquetas",
+                    "title": "etiquetas",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "gateway_alias",
+                    "title": "gateway_alias",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "recipientid",
+                    "title": "recipientid",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "test",
+                    "title": "test",
+                    "description": "Sin Definir",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "transactiondate",
+                    "title": "transactiondate",
+                    "description": "Fecha de Transaccion",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "usuarioqualtrics",
+                    "title": "usuarioqualtrics",
+                    "description": "Usuario Qualtrics",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

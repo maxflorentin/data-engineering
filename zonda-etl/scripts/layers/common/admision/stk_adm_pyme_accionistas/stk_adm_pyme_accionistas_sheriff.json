@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_pyme_accionistas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["int_adm_secuencia"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["int_adm_secuencia","cod_adm_peusualt","dec_adm_porcentaje","ds_adm_nombre"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_pefecalt","dt_adm_pefecmod","dt_adm_fec_nac"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

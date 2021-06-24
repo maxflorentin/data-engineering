@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_rcp_triadkeys",
+  "partition_date": "${partition_date}",
+  "controls": [
+	 {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_per_nup","cod_nro_cuenta","cod_suc_sucursal","cod_prod_producto","cod_div_divisa"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_nro_cuenta","cod_suc_sucursal","cod_prod_producto","cod_div_divisa"],
+      "threshold": 0.01
+    }
+  ]
+}

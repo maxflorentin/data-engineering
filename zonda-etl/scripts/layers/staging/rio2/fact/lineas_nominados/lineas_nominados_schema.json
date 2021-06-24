@@ -1,0 +1,55 @@
+{
+  "file": "lineas_nominados_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/lineas_nominados/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/lineas_nominados",
+  "createTable": "bi_corp_staging.sge_lineas_nominados",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cod_operacion",
+                    "type": "string"
+                },
+{
+                    "name": "secuencia",
+                    "type": "string"
+                },
+{
+                    "name": "cuit_librador",
+                    "type": "string"
+                },
+{
+                    "name": "mon_librador",
+                    "type": "string"
+                },
+{
+                    "name": "plz_librador",
+                    "type": "string"
+                },
+{
+                    "name": "moneda",
+                    "type": "string"
+                },
+{
+                    "name": "razon_social",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

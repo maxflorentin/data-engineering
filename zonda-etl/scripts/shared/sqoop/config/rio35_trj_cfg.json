@@ -1,0 +1,14 @@
+{
+  "tables" :[
+    {
+      "serverAka": "rio35",
+      "serverConfig": "dbexap01-scan",
+      "database": "RIO35_APPS",
+      "table": "rio35_tb_motivo_bajas",
+      "landing_path": "/santander/bi-corp/landing/rio35/dim/rio35_tb_motivo_bajas",
+      "table_type": "dim",
+      "environment": "rio35",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM trj_01.tb_motivo_bajas WHERE  \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

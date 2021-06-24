@@ -1,0 +1,248 @@
+{
+  "file": "agente_estados_monthly_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/agente_estados/monthly/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/agente_estados/monthly/",
+  "createTable": "bi_corp_staging.infomart_agente_estados_monthly",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "mes",
+      "type": "string"
+    },
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "interaccion",
+      "type": "string"
+    },
+    {
+      "name": "grupo_de_agente",
+      "type": "string"
+    },
+    {
+      "name": "agent_name",
+      "type": "string"
+    },
+    {
+      "name": "person",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_staffeado",
+      "type": "string"
+    },
+    {
+      "name": "estado_del_agente",
+      "type": "string"
+    },
+    {
+      "name": "reason_code",
+      "type": "string"
+    },
+    {
+      "name": "reason_value",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_total_ring",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_ring",
+      "type": "string"
+    },
+    {
+      "name": "recibidas",
+      "type": "string"
+    },
+    {
+      "name": "aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "derivadas",
+      "type": "string"
+    },
+    {
+      "name": "talk_time_total",
+      "type": "string"
+    },
+    {
+      "name": "talk_time_porcentaje",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_occupancy",
+      "type": "string"
+    },
+    {
+      "name": "consultas_recibidas_totales",
+      "type": "string"
+    },
+    {
+      "name": "consultas_recibidas_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_consultas_recibidas_acw",
+      "type": "string"
+    },
+    {
+      "name": "consultas_recibidas_porc_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "ready_cantidad_total",
+      "type": "string"
+    },
+    {
+      "name": "ready_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_ready_time",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_cantidad_total",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_porcentaje_time",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_llamadas_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_tiempo_llamadas_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_porc_tiempo_llamadas_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_llamadas_salientes",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_tiempo_llamadas_out",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_porc_tiempo_llamadas_out",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_cantidad_reason_codes",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_tiempo_tot_reason_codes",
+      "type": "string"
+    },
+    {
+      "name": "not_ready_tiempo_tot_reason_codes2",
+      "type": "string"
+    },
+    {
+      "name": "hold_cantidad_total",
+      "type": "string"
+    },
+    {
+      "name": "hold_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "hold_porcentaje_total",
+      "type": "string"
+    },
+    {
+      "name": "acw_cantidad_total",
+      "type": "string"
+    },
+    {
+      "name": "acw_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "acw_porcentaje_total",
+      "type": "string"
+    },
+    {
+      "name": "inbound_acw",
+      "type": "string"
+    },
+    {
+      "name": "inbound_acw_time",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_inbound_acw_time",
+      "type": "string"
+    },
+    {
+      "name": "outbound_acw",
+      "type": "string"
+    },
+    {
+      "name": "outbound_acw_time",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_outbound_acw_time",
+      "type": "string"
+    },
+    {
+      "name": "busy_cantidad_total",
+      "type": "string"
+    },
+    {
+      "name": "busy_tiempo_total",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_busy_procesando_interacciones",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_busy_time",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_total_logueado_sin_estado",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_logueado_sin_estado",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

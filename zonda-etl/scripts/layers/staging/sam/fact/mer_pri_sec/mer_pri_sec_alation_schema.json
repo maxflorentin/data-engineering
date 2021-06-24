@@ -1,0 +1,556 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308895"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "MER_PRI_SEC",
+            "title": "Registra las operaciones creados por Rossi, Megara.VW_SAM_PREMIO_VARIABLE DB: SAM",
+            "schema": "bi_corp_staging",
+            "source": "SAM",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Registra las operaciones creados por Rossi, Megara.\nVista: VW_SAM_PREMIO_VARIABLE\nDB: SAM",
+            "columns": [
+                {
+                    "name": "S_PRODUCTO_NEGOCIADO",
+                    "title": "S_PRODUCTO_NEGOCIADO",
+                    "description": "Descripción del Producto Negociado",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 18.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_BOLETO",
+                    "title": "N_BOLETO",
+                    "description": "Numero de Boleto de la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_CNO",
+                    "title": "S_CNO",
+                    "description": "CNO de persona",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_CUENTA_TITULOS",
+                    "title": "N_CUENTA_TITULOS",
+                    "description": "Numero  de cuenta titulo de cliente",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_COMITENTE",
+                    "title": "S_COMITENTE",
+                    "description": "Cuenta titulo y nombre",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 81.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_DESC_COMITENTE",
+                    "title": "S_DESC_COMITENTE",
+                    "description": "Descipción del comitente",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_FECHA_ORDEN",
+                    "title": "S_FECHA_ORDEN",
+                    "description": "Fecha en que se ejecutó la Orden",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "NA",
+                    "security": "Publico"
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "S_FECHA_CONCERTACION",
+                    "title": "S_FECHA_CONCERTACION",
+                    "description": "Fecha en que se concertó la operación",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_FECHA_LIQ",
+                    "title": "S_FECHA_LIQ",
+                    "description": "Fecha en que se liquida la operación",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_TIPO_OPER",
+                    "title": "S_TIPO_OPER",
+                    "description": "Indica el tipo de operación (Compra /Venta)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_COD_ESPECIE",
+                    "title": "S_COD_ESPECIE",
+                    "description": "Indica el código de la especie que se operó",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_ESPECIE",
+                    "title": "S_ESPECIE",
+                    "description": "Identificador y descripción de la especie operada",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 90.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_DESC_ESPECIE",
+                    "title": "S_DESC_ESPECIE",
+                    "description": "Descripción de la especie operada",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 70.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_MONEDA",
+                    "title": "S_MONEDA",
+                    "description": "Descripción de la moneda operada",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "F_CANTIDAD",
+                    "title": "F_CANTIDAD",
+                    "description": "Cantidad de nominales operados",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 8.0,
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "F_PRECIO",
+                    "title": "F_PRECIO",
+                    "description": "Preció en que se concretó la operación",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 8.0,
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "F_IMPORTE",
+                    "title": "F_IMPORTE",
+                    "description": "Monto del importe de la operación ",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 8.0,
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_AGENTE",
+                    "title": "N_AGENTE",
+                    "description": "Contraparte de la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_COD_OPERACION",
+                    "title": "S_COD_OPERACION",
+                    "description": "Codigo de la operación que se ejecutó",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_OPERACION",
+                    "title": "N_OPERACION",
+                    "description": "Number de la operación asignada por SMC",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_ORDEN",
+                    "title": "N_ORDEN",
+                    "description": "Number de oferta asiganada a la operación ",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_PLAZO",
+                    "title": "S_PLAZO",
+                    "description": "Numero de orden ",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_CUIT",
+                    "title": "S_CUIT",
+                    "description": "Arancel de la operación",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 14.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_DOMICILIO",
+                    "title": "S_DOMICILIO",
+                    "description": "IVA arancel aplicado a la operación",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 24.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_LOCALIDAD",
+                    "title": "S_LOCALIDAD",
+                    "description": "IVA arancel aplicado a la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_PROVINCIA",
+                    "title": "S_PROVINCIA",
+                    "description": "Derechos de Mercado por la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_PAIS",
+                    "title": "S_PAIS",
+                    "description": "IVA arancel aplicado a los aranceles",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_CODIGO_POSTA",
+                    "title": "S_CODIGO_POSTA",
+                    "description": "IVA sobre los derechos de mercado",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_COMICANUM",
+                    "title": "N_COMICANUM",
+                    "description": "Importe Neto a Debitar/Acreditar de la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_PISO",
+                    "title": "N_PISO",
+                    "description": "Plazo de liquidación de la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_DEPTO",
+                    "title": "N_DEPTO",
+                    "description": "Indicador si el boleto es vigente o anulado",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_TIPO_MERCADO",
+                    "title": "S_TIPO_MERCADO",
+                    "description": "Relacion de boleto dado de baja",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_DESC_MERCADO",
+                    "title": "S_DESC_MERCADO",
+                    "description": "precio promedio en que se ejecutó la operación ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_OPER_HORA",
+                    "title": "S_OPER_HORA",
+                    "description": "Nro de Cuit ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_OFER_HORA",
+                    "title": "S_OFER_HORA",
+                    "description": "Dirección del domocilio",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_ORDE_HORA",
+                    "title": "S_ORDE_HORA",
+                    "description": "Localidad del domicilio del cliente",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_TIPO_OPER_DESCR",
+                    "title": "S_TIPO_OPER_DESCR",
+                    "description": "Codigo de la provincia del cliente",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_ESTADO",
+                    "title": "S_ESTADO",
+                    "description": "Descripción del nombre del pais del domicilio",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_YEAR",
+                    "title": "S_YEAR",
+                    "description": "Codigo postal del Domicilio",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_NRO_OFERTA_MERCADO",
+                    "title": "S_NRO_OFERTA_MERCADO",
+                    "description": "Numero de calle del Domicilio",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_SEGMENTO",
+                    "title": "S_SEGMENTO",
+                    "description": "Numero de piso del Domicilio",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_SUCURSAL",
+                    "title": "S_SUCURSAL",
+                    "description": "Numero del departamento",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "N_TIPO_CTA_OPER",
+                    "title": "N_TIPO_CTA_OPER",
+                    "description": "Cantidad del neto expresado en letras",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 0.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_NRO_CTA_OPER",
+                    "title": "S_NRO_CTA_OPER",
+                    "description": "Codigo del tipo de mercado donde se concretó la operación",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_NUP",
+                    "title": "S_NUP",
+                    "description": "Descripcion del tipo de mercado",
+                    "type": "CHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_SECUNIT",
+                    "title": "S_SECUNIT",
+                    "description": "Codigo de la moneda de operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_OPERADOR",
+                    "title": "S_OPERADOR",
+                    "description": "Porcentaje del arancel aplicado",
+                    "type": "CHAR ",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "S_PRECIO_CIERRE_MONEDA",
+                    "title": "S_PRECIO_CIERRE_MONEDA",
+                    "description": "Porcentaje de derechos",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

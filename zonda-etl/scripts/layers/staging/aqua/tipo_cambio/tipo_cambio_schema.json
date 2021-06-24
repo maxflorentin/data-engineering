@@ -1,0 +1,35 @@
+{
+  "file": "tipo_cambio",
+  "location": "/santander/bi-corp/landing/aqua/tipo_cambio/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/aqua/tipo_cambio",
+  "extension": "csv",
+	"delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "createTable": "bi_corp_staging.tipo_cambio",
+  "columns":
+					[
+					   {
+					    "name": "par_de_divisas",
+					    "type": "string"
+
+					  },
+ {
+					    "name": "fecha",
+					    "type": "string"
+
+					  },
+ {
+					    "name": "tipo_de_cambio",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

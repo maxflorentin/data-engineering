@@ -1,0 +1,59 @@
+{
+    "file": "gc_conceptos_espana",
+    "location": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_espana/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/gc_conceptos_espana",
+    "tempDirectory": "/santander/bi-corp/temp/gc_conceptos_espana",
+    "createTable": "bi_corp_staging.rio56_gc_conceptos_espana",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_cpto",
+            "type": "string"
+        },
+        {
+            "name": "desc_cpto",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipo_reclamo",
+            "type": "string"
+        },
+        {
+            "name": "user_alt",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt",
+            "type": "string"
+        },
+        {
+            "name": "user_modf",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf",
+            "type": "string"
+        },
+        {
+            "name": "estado",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

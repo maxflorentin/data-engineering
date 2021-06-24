@@ -1,0 +1,80 @@
+000100******************************************************************00000100
+000200* DCLGEN TABLE(OPIGD1.HADV0610)                                  *00000200
+000300*        LIBRARY(OPI.HAF.DCLGEN(HAGV0610))                       *00000300
+000400*        ACTION(REPLACE)                                         *00000400
+000500*        APOST                                                   *00000500
+000600* ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *00000600
+000700******************************************************************00000700
+000800***************************************************************** 00000800
+000900*PET 05-03047: SE AGREGA CAMPO INDREAJ.                         * 00000900
+001000*FECHA       : NOV 2005, WAL165                                 * 00001000
+001300******************************************************************00001100
+001400     EXEC SQL DECLARE HADV0610 TABLE                              00001200
+001500     ( EMPRESA                        DECIMAL(4, 0) NOT NULL,     00001300
+001600       NUCTA                          CHAR(15) NOT NULL,          00001400
+001700       INDREVAL                       CHAR(1) NOT NULL,           00001500
+001800       INDCTAREG                      CHAR(1) NOT NULL,           00001600
+001900       HACTADET                       CHAR(1) NOT NULL,           00001700
+002000       HACTARENT                      CHAR(1) NOT NULL,           00001800
+002100       HACTAINT                       CHAR(15) NOT NULL,          00001900
+002200       HACTAAJU                       CHAR(15) NOT NULL,          00002000
+002300       HACTARES                       CHAR(15) NOT NULL,          00002100
+002400       HACTAREG                       CHAR(15) NOT NULL,          00002200
+002500       HACTAIND                       CHAR(15) NOT NULL,          00002300
+002600       HACSD1                         CHAR(3) NOT NULL,           00002400
+002700       HACSD2                         CHAR(3) NOT NULL,           00002500
+002800       HACSD3                         CHAR(3) NOT NULL,           00002600
+002900       HACIA1                         CHAR(1) NOT NULL,           00002700
+003000       HACIA2                         CHAR(1) NOT NULL,           00002800
+003100       HACIA3                         CHAR(1) NOT NULL,           00002900
+003200       HAF4305                        DECIMAL(2,0) NOT NULL,      00003000
+003300       INDREAJ                        CHAR(2) NOT NULL            00003100
+003400     ) END-EXEC.                                                  00003200
+003500******************************************************************00003300
+003600* COBOL DECLARATION FOR TABLE OPIGD1.HADV0610                    *00003400
+003700******************************************************************00003500
+003800 01  HAGV0610.                                                    00003600
+003900     10 EMPRESA              PIC S9999V USAGE COMP-3.             00003700
+004000     10 NUCTA                PIC X(15).                           00003800
+004100     10 INDREVAL             PIC X(1).                            00003900
+004200     10 INDCTAREG            PIC X(1).                            00004000
+004300     10 HACTADET             PIC X(1).                            00004100
+004400     10 HACTARENT            PIC X(1).                            00004200
+004500     10 HACTAINT             PIC X(15).                           00004300
+004600     10 HACTAAJU             PIC X(15).                           00004400
+004700     10 HACTARES             PIC X(15).                           00004500
+004800     10 HACTAREG             PIC X(15).                           00004600
+004900     10 HACTAIND             PIC X(15).                           00004700
+005000     10 HACSD1               PIC X(3).                            00004800
+005100     10 HACSD2               PIC X(3).                            00004900
+005200     10 HACSD3               PIC X(3).                            00005000
+005300     10 HACIA1               PIC X(1).                            00005100
+005400     10 HACIA2               PIC X(1).                            00005200
+005500     10 HACIA3               PIC X(1).                            00005300
+005600     10 HAF4305              PIC S99    USAGE COMP-3.             00005400
+005700     10 INDREAJ              PIC X(2).                            00005500
+005800******************************************************************00005600
+005900* THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 28      *00005700
+006000******************************************************************00005800
+006100 01  IND-HAGV0610.                                                00005900
+006200     10 IND-EMPRESA              PIC S9999V USAGE COMP.           00006000
+006300     10 IND-NUCTA                PIC S9999V USAGE COMP.           00006100
+006400     10 IND-INDREVAL             PIC S9999V USAGE COMP.           00006200
+006500     10 IND-INDCTAREG            PIC S9999V USAGE COMP.           00006300
+006600     10 IND-HACTADET             PIC S9999V USAGE COMP.           00006400
+006700     10 IND-HACTARENT            PIC S9999V USAGE COMP.           00006500
+006800     10 IND-HACTAINT             PIC S9999V USAGE COMP.           00006600
+006900     10 IND-HACTAAJU             PIC S9999V USAGE COMP.           00006700
+007000     10 IND-HACTARES             PIC S9999V USAGE COMP.           00006800
+007100     10 IND-HACTAREG             PIC S9999V USAGE COMP.           00006900
+007200     10 IND-HACTAIND             PIC S9999V USAGE COMP.           00007000
+007300     10 IND-HACSD1               PIC S9999V USAGE COMP.           00007100
+007400     10 IND-HACSD2               PIC S9999V USAGE COMP.           00007200
+007500     10 IND-HACSD3               PIC S9999V USAGE COMP.           00007300
+007600     10 IND-HACIA1               PIC S9999V USAGE COMP.           00007400
+007700     10 IND-HACIA2               PIC S9999V USAGE COMP.           00007500
+007800     10 IND-HACIA3               PIC S9999V USAGE COMP.           00007600
+007900     10 IND-HAF4305              PIC S9999V USAGE COMP.           00007700
+008000     10 IND-INDREAJ              PIC S9999V USAGE COMP.           00007800
+008100 01  IND-HAGV0610-W REDEFINES IND-HAGV0610.                       00007900
+008200     10 HAGV0610-IND-OCC     PIC S9(4) COMP OCCURS 28.            00008000

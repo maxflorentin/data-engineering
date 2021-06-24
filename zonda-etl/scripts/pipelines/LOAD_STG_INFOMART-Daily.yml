@@ -1,0 +1,502 @@
+name: LOAD_STG_INFOMART-Daily
+description: 'Load data from INFOMART in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2020-01-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_VQ_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_VQ_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/vq/daily/vq_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vq_daily_schema.json']
+  - name: STAGING_VQ_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_VQ_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/vq/hours/vq_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vq_hours_schema.json']
+
+  - name: STAGING_VQ_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_VQ_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/vq/interval/vq_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vq_interval_schema.json']
+
+  - name: STAGING_VQ_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_VQ_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/vq/monthly/vq_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['vq_monthly_schema.json']
+
+  - name: STAGING_AGENTE_ACTIVIDAD_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ACTIVIDAD_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_actividad/daily/agente_actividad_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_actividad_daily_schema.json']
+
+  - name: STAGING_AGENTE_ACTIVIDAD_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ACTIVIDAD_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_actividad/hours/agente_actividad_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_actividad_hours_schema.json']
+
+  - name: STAGING_AGENTE_ACTIVIDAD_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ACTIVIDAD_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_actividad/interval/agente_actividad_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_actividad_interval_schema.json']
+
+  - name: STAGING_AGENTE_ACTIVIDAD_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ACTIVIDAD_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_actividad/monthly/agente_actividad_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_actividad_monthly_schema.json']
+
+  - name: STAGING_AGENTE_ESTADOS_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ESTADOS_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_estados/daily/agente_estados_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_estados_daily_schema.json']
+
+  - name: STAGING_AGENTE_ESTADOS_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ESTADOS_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_estados/hours/agente_estados_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_estados_hours_schema.json']
+
+  - name: STAGING_AGENTE_ESTADOS_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ESTADOS_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_estados/interval/agente_estados_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_estados_interval_schema.json']
+
+  - name: STAGING_AGENTE_ESTADOS_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_ESTADOS_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_estados/monthly/agente_estados_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_estados_monthly_schema.json']
+
+  - name: STAGING_AGENTE_VQ_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_VQ_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_vq/daily/agente_vq_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_vq_daily_schema.json']
+
+  - name: STAGING_AGENTE_VQ_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_VQ_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_vq/hours/agente_vq_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_vq_hours_schema.json']
+
+  - name: STAGING_AGENTE_VQ_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_VQ_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_vq/interval/agente_vq_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_vq_interval_schema.json']
+
+  - name: STAGING_AGENTE_VQ_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTE_VQ_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agente_vq/monthly/agente_vq_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agente_vq_monthly_schema.json']
+
+  - name: STAGING_AGENTES_GRUPO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTES_GRUPO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agentes_grupo/agentes_grupo_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agentes_grupo_schema.json']
+
+  - name: STAGING_AGENTES_SKILL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_AGENTES_SKILL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/agentes_skill/agentes_skill_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['agentes_skill_schema.json']
+
+  - name: STAGING_DETALLADO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_DETALLADO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/detallado/detallado_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['detallado_schema.json']
+
+  - name: STAGING_GRUPO_AGENTES_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_AGENTES_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_agentes/daily/grupo_agentes_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_agentes_daily_schema.json']
+
+  - name: STAGING_GRUPO_AGENTES_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_AGENTES_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_agentes/hours/grupo_agentes_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_agentes_hours_schema.json']
+
+  - name: STAGING_GRUPO_AGENTES_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_AGENTES_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_agentes/interval/grupo_agentes_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_agentes_interval_schema.json']
+
+  - name: STAGING_GRUPO_AGENTES_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_AGENTES_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_agentes/monthly/grupo_agentes_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_agentes_monthly_schema.json']
+
+  - name: STAGING_GRUPO_VQ_DAILY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_VQ_DAILY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_vq/daily/grupo_vq_daily_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_vq_daily_schema.json']
+
+  - name: STAGING_GRUPO_VQ_HOURS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_VQ_HOURS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_vq/hours/grupo_vq_hours_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_vq_hours_schema.json']
+
+  - name: STAGING_GRUPO_VQ_INTERVAL_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_VQ_INTERVAL_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_vq/interval/grupo_vq_interval_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_vq_interval_schema.json']
+
+  - name: STAGING_GRUPO_VQ_MONTHLY_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_GRUPO_VQ_MONTHLY_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/grupo_vq/monthly/grupo_vq_monthly_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['grupo_vq_monthly_schema.json']
+
+  - name: STAGING_LOGIN_LOGOUT_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_LOGIN_LOGOUT_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/infomart/fact/login_logout/login_logout_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_INFOMART-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['login_logout_schema.json']
+
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

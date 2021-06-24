@@ -1,0 +1,46 @@
+{
+  "file": "matriz_rating_calificacion",
+  "location": "/santander/bi-corp/landing/manual/garantias/matriz_rating_calificacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/bdr/matriz_rating_calificacion",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false ,
+  "createTable": "bi_corp_bdr.matriz_rating_calificacion",
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "categoria",
+					    "type": "string"
+					  },
+					  {
+					    "name": "moodys",
+					    "type": "string"
+					  },
+					  {
+					    "name": "sp",
+					    "type": "string"
+					  },
+					  {
+					    "name": "fitch",
+					    "type": "string"
+					  },
+					  {
+					    "name": "calificacion_empresa",
+					    "type": "tinyint"
+					  },
+					  {
+					    "name": "calificacion_pais",
+					    "type": "tinyint"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}
+

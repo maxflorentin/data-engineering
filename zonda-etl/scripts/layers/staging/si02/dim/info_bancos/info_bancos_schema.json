@@ -1,0 +1,43 @@
+{
+        "file": "info_bancos_schema",
+        "location": "/santander/bi-corp/landing/si02/dim/info_bancos/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/si02/dim/info_bancos",
+        "tempDirectory": "/santander/bi-corp/temp/si02",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":
+		[
+                {
+                "name": "cdcencon",
+                 "type": "string"
+                },
+                {
+                "name": "cdsucurs",
+                 "type": "string"
+                },
+                {
+                "name": "nucuenta",
+                 "type": "string"
+                },
+                {
+                "name": "cddivisa",
+                 "type": "string"
+                },
+                {
+                "name": "nup",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,55 @@
+name: ZENDESK_EJECUTIVO_REPORT
+description: 'ZENDESK_EJECUTIVO_REPORT'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 6 * * *'
+start_date: '2020-01-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution_d
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/zendesk_ejecutivo_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ZENDESK_EJECUTIVO_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/zendesk_ejecutivo_remoto/ejecutivo_remoto_report.hql'
+  - name: report_send_sftp_d
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio61"
+      local_filepath: "$ZONDA_DIR/outbound/zendesk_ejecutivo_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ZENDESK_EJECUTIVO_REPORT') }}.txt"
+      remote_filepath: "/RIO61/INTERFACE/zendesk_ejecutivo_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ZENDESK_EJECUTIVO_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_d
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/zendesk_ejecutivo_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ZENDESK_EJECUTIVO_REPORT') }}.txt"
+dependencies:
+  report_execution_d: report_send_sftp_d
+  report_send_sftp_d: EXECUTE_Remove_FILE_d
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [GC-SOPORTE-ENCUESTAS@santanderrio.com.ar]

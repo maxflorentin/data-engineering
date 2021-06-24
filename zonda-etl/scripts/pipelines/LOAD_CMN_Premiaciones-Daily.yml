@@ -1,0 +1,62 @@
+name: LOAD_CMN_Premiaciones-Daily
+description: 'Load Daily Premiaciones Data'
+owner: BI-Corp
+active: true
+schedule_interval: '0 12 * * 1-6'
+start_date: '2020-07-13'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Create_Dim_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/premiaciones/dim_prem_premiaciones/DDLT-Create_Common_Premiaciones_Dim.hql'
+  - name: Load_Dim_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/premiaciones/dim_prem_premiaciones/ETL_LOAD_Premiaciones_Dim.hql'
+  - name: Create_Bt_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/premiaciones/bt_prem_premiaciones/DDLT-Create_common_bt_prem_premiaciones.hql'
+  - name: LOAD_Bt_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/premiaciones/bt_prem_premiaciones/ETL-LOAD-bt_prem_premiaciones.hql'
+dependencies:
+  Create_Dim_Table: Load_Dim_Table
+  Load_Dim_Table: Create_Bt_Table
+  Create_Bt_Table: LOAD_Bt_Table
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [itroisi@santandertecnologia.com.ar]

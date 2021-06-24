@@ -1,0 +1,35 @@
+{
+  "file": "rio6_coberturas_detalle",
+  "location": "/santander/bi-corp/landing/rio6/dim/coberturas_detalle/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/coberturas_detalle",
+  "extension":"csv",
+  "createTable": "bi_corp_staging.rio6_coberturas_detalle",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"|",
+  "columns": [
+    {
+         "name":"codigo_ramo",
+         "type": "string"
+      },
+    {
+         "name":"codigo_cobertura",
+         "type":"string"
+      },
+    {
+         "name":"codigo_detalle",
+         "type":"string"
+      },
+    {
+         "name":"desc_detalle",
+         "type":"string"
+      }
+  ],
+  "extraColumns": [{
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+  }]
+}

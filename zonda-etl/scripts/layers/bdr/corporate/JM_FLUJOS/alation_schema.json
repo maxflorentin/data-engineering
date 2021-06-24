@@ -1,0 +1,266 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_flujos",
+         "title":"Contratos con importes impagados.",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"En esta tabla se aprovisionará con carácter diario y para un primer titular, todos sus contratos cuando alguno de ellos haya tenido algún importe impagado en el período de referencia.",
+         "columns":[
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_clasmvto",
+               "title":"Clasificación de Movimiento Importe ",
+               "description":"Baremo que indica el tipo de movimiento. ",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_contra1",
+               "title":"Identificador del contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_fecmvto",
+               "title":"Fecha movimiento",
+               "description":"Fecha efectiva del  movimiento que ha provocado un cambio en el saldo del contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando. ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_importe",
+               "title":"Importe",
+               "description":"Importe correspondiente al tipo/clasificación del movimiento que se está informando en la divisa de la entidad.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"wagucdex",
+                     "column":"imp_irremolo"
+                  }
+               ]
+            },
+            {
+               "name":"r9746_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"r9746_salonbal",
+               "title":"Saldo On Balance",
+               "description":"Saldo dentro de balance diario del contrato (foto fin de día) independientemente de que el contrato este impagado o no",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"wagucdex",
+                     "column":"imp_pendmolo"
+                  }
+               ]
+            }
+         ]
+      }
+   }
+}

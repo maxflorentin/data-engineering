@@ -1,0 +1,38 @@
+{
+     "file": "opp_productos_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/opp_productos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/opp_productos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [       {
+              "name": "cod_prod",
+              "type": "string"
+             },
+             {
+              "name": "desc_prod",
+              "type": "string"
+             },
+             {
+              "name": "liability_bkt",
+              "type": "string"
+             },
+             {
+              "name": "hab_canales",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,16 @@
+{
+  "file": "isec4060_schema",
+  "location": "/santander/bi-corp/landing/adsf/fact/isec4060/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/adsf/fact/isec4060",
+  "createTable": "bi_corp_staging.adsf_isec4060",
+  "copybook": "isec4060.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

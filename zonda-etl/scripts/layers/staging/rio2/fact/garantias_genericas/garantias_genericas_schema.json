@@ -1,0 +1,87 @@
+{
+  "file": "garantias_genericas_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/garantias_genericas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/garantias_genericas",
+  "createTable": "bi_corp_staging.sge_garantias_genericas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cod_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "detalle",
+                    "type": "string"
+                },
+{
+                    "name": "mon_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "seq_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "secuencia",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "valoracion",
+                    "type": "string"
+                },
+{
+                    "name": "patrim_neto",
+                    "type": "string"
+                },
+{
+                    "name": "porc_gtia",
+                    "type": "string"
+                },
+{
+                    "name": "moneda_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "fec_vencimiento",
+                    "type": "string"
+                },
+{
+                    "name": "monto_limite",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

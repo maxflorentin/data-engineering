@@ -1,0 +1,140 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "rio4_comex_estados_log",
+      "title": "COMEX_ESTADOS_LOG",
+      "schema": "bi_corp_staging",
+      "source": "rio4",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio4/fact/comex_estados_log/",
+      "type": "fact",
+      "description": "La tabla contiene los estados de las operaciones generadas por COMEX",
+      "columns":
+               [
+                {
+                  "name": "nro_propuesta",
+                  "title": "NRO_PROPUESTA",
+                  "description": "Número de propuesta",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 8,
+                  "security": "Público"
+                },
+                {
+                  "name": "nro_boleto",
+                  "title": "NRO_BOLETO",
+                  "description": "Número de boleto",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 8,
+                  "security": "Público"
+                },
+                {
+                  "name": "cotizacion",
+                  "title": "COTIZACION",
+                  "description": "Cotización del boleto",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "estado",
+                  "title": "ESTADO",
+                  "description": "Estado de la propuesta o el boleto. Los valores son: R: Rojo / T: Cargada / C: Cotizado / A: Anulada / L:Liquidada",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "procesado",
+                  "title": "PROCESADO",
+                  "description": "Indica si fue procesado en COMEX",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_log",
+                  "title": "ID_LOG",
+                  "description": "Identificación de la tabla para el LOG",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 26,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_carga",
+                  "title": "FECHA_CARGA",
+                  "description": "Fecha en que se cargue la novedad",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": false,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_proceso",
+                  "title": "FECHA_PROCESO",
+                  "description": "Fecha en que se procesa la operación",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_liq_mon",
+                  "title": "FECHA_LIQ_MON",
+                  "description": "Fecha de liquidación de moneda local",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_liq_mon_ext",
+                  "title": "FECHA_LIQ_MON_EXT",
+                  "description": "Fecha de liquidación de moneda extranjera",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_pre_cuotaspendientes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_pre_entidad","cod_suc_sucursal","cod_nro_cuenta","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_pre_plazo","cod_pre_estado","cod_pre_recibo","dt_pre_fechavencimiento"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_pre_entidad","cod_suc_sucursal","cod_nro_cuenta","cod_per_nup","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_pre_plazo","cod_pre_estado","cod_pre_recibo","dt_pre_fechavencimiento","cod_pre_tipoamortizacion","cod_pre_tipotasa"],
+      "threshold": 0.00
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fechavencimiento"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

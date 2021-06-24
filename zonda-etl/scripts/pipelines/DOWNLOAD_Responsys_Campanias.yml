@@ -1,0 +1,32 @@
+name: DOWNLOAD_Responsys_Campanias-Daily
+description: 'Download Data of API Responsys'
+owner: BI-Corp
+active: true
+start_date: '2020-08-20'
+schedule_interval: '0 4 * * *'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 1
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: GetResponsysCampanias
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/responsys/responsys_downloads.py
+      --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_Responsys_Campanias-Daily') }}"
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

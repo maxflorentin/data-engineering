@@ -1,0 +1,74 @@
+{
+  "file": "t_form_work_cafe_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_work_cafe//partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_work_cafe",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "nrodni",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "nro_celular",
+      "type": "string"
+    },
+    {
+      "name": "motivo",
+      "type": "string"
+    },
+    {
+      "name": "sucursal",
+      "type": "string"
+    },
+    {
+      "name": "fecha_op1",
+      "type": "string"
+    },
+    {
+      "name": "horario_op1",
+      "type": "string"
+    },
+    {
+      "name": "fecha_op2",
+      "type": "string"
+    },
+    {
+      "name": "horario_op2",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "fechaalta",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fechaalta",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

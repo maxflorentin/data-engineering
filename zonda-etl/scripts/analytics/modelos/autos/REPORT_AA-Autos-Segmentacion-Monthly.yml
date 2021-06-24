@@ -1,0 +1,42 @@
+name: REPORT_AA-Autos-Segmentacion-Monthly
+description: 'Send to Transmi Segmentacion Autos Report'
+owner: BI-Corp
+active: true
+start_date: '2020-09-01'
+# schedule_interval: '0 14 * * *'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: REPORT_OLB
+    operator: BashOperator
+    config:
+      bash_command: "spark2-submit --master yarn --num-executors 3 --executor-cores 5 --executor-memory 8G --name EXECUTE_Generate_File_Script --verbose --queue root.dataeng --deploy-mode client $ZONDA_DIR/repositories/zonda-etl/scripts/analytics/modelos/autos/generador_archivo_IC_persona_gama.py -f '{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='REPORT_AA-Autos-Segmentacion-Monthly') }}'"
+  - name: MOVE_To_Transmi
+    operator: SFTPOperator
+    config:
+      connection_id: sftp_transmi
+      local_filepath: "$ZONDA_DIR/outbound/archivo_segmentacion_autos_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_AA-Autos-Segmentacion-Monthly') }}.csv"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/analytics/seguros/archivo_segmentacion_autos_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_AA-Autos-Segmentacion-Monthly') }}.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: RemoveFile
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/archivo_segmentacion_autos_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_AA-Autos-Segmentacion-Monthly') }}.csv"
+dependencies:
+  REPORT_OLB: MOVE_To_Transmi
+  MOVE_To_Transmi: RemoveFile
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

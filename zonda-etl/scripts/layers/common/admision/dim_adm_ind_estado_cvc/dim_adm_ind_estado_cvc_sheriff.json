@@ -1,0 +1,20 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_estado_cvc",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_estado"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_estado"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["ds_adm_estado","cod_adm_sector","flag_adm_maregresadofinal"],
+        "threshold": 0.005
+      }
+    ]
+  }

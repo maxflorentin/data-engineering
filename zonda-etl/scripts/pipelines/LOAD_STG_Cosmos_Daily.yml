@@ -1,0 +1,801 @@
+name: LOAD_STG_Cosmos_Daily
+description: 'Load data from COSMOS daily'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 15 * * *'
+start_date: '2020-04-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: STAGING_actores_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_actores_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/dim/actores/actores_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['actores_schema.json']
+  - name: STAGING_canales_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_canales_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/dim/canales/canales_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['canales_schema.json']
+  - name: STAGING_casuisticas_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_casuisticas_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/dim/casuisticas/casuisticas_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['casuisticas_schema.json']
+  - name: STAGING_tipos_gestion_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_tipos_gestion_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/dim/tipos_gestion/tipos_gestion_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['tipos_gestion_schema.json']
+  - name: STAGING_casuistica_motivos_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_casuistica_motivos_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/casuistica_motivos/casuistica_motivos_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['casuistica_motivos_schema.json'] 
+  - name: STAGING_centro_costos_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_centro_costos_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/centro_costos/centro_costos_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['centro_costos_schema.json']
+  - name: STAGING_cliente_domicilios_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_cliente_domicilios_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/cliente_domicilios/cliente_domicilios_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['cliente_domicilios_schema.json']
+  - name: STAGING_clientes_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_clientes_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/clientes/clientes_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['clientes_schema.json']
+  - name: STAGING_codigos_operativos_cuenta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_codigos_operativos_cuenta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/codigos_operativos_cuenta/codigos_operativos_cuenta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['codigos_operativos_cuenta_schema.json']   
+  - name: STAGING_codigos_operativos_tarjeta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_codigos_operativos_tarjeta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/codigos_operativos_tarjeta/codigos_operativos_tarjeta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['codigos_operativos_tarjeta_schema.json']
+  - name: STAGING_gest_estados_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_estados_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_estados/gest_estados_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_estados_schema.json']  
+  - name: STAGING_gest_motdes_acciones_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_motdes_acciones_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_motdes_acciones/gest_motdes_acciones_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_motdes_acciones_schema.json']
+  - name: STAGING_gest_movimientos_cuenta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_movimientos_cuenta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_movimientos_cuenta/gest_movimientos_cuenta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_movimientos_cuenta_schema.json']
+  - name: STAGING_gest_movimientos_tarjeta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_movimientos_tarjeta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_movimientos_tarjeta/gest_movimientos_tarjeta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_movimientos_tarjeta_schema.json']
+  - name: STAGING_gest_resol_acciones_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_resol_acciones_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_resol_acciones/gest_resol_acciones_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_resol_acciones_schema.json']
+  - name: STAGING_gestiones_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gestiones_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gestiones/gestiones_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gestiones_schema.json']       
+  - name: STAGING_get_mails_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_get_mails_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/get_mails/get_mails_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['get_mails_schema.json']
+  - name: STAGING_motdes_arbol_resultados_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_motdes_arbol_resultados_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/motdes_arbol_resultados/motdes_arbol_resultados_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['motdes_arbol_resultados_schema.json'] 
+  - name: STAGING_usuarios_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_usuarios_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/usuarios/usuarios_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['usuarios_schema.json']    
+  - name: STAGING_gest_tarjeta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_tarjeta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_tarjeta/gest_tarjeta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_tarjeta_schema.json']
+  - name: STAGING_gest_cuenta_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_gest_cuenta_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cosmos/fact/gest_cuenta/gest_cuenta_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['gest_cuenta_schema.json']
+  #  - name: COMMON_bt_rec_gest_motdes_acciones
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_motdes_acciones/DDLT-bt_rec_gest_motdes_acciones.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_motdes_acciones/ETLV_LOAD-bt_rec_gest_motdes_acciones.hql'
+  #  - name: SHERIFF_Control_bt_rec_gest_motdes_acciones
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gest_motdes_acciones
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_motdes_acciones/bt_rec_gest_motdes_acciones_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gest_motdes_acciones_sheriff.json']
+  #  - name: COMMON_bt_rec_gest_resol_acciones
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_resol_acciones/DDLT-bt_rec_gest_resol_acciones.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_resol_acciones/ETLV_LOAD-bt_rec_gest_resol_acciones.hql'
+  #  - name: SHERIFF_Control_bt_rec_gest_resol_acciones
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gest_resol_acciones
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_resol_acciones/bt_rec_gest_resol_acciones_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gest_resol_acciones_sheriff.json']
+  #  - name: COMMON_bt_rec_gestiones_mails
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_mails/DDLT-bt_rec_gestiones_mails.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_mails/ETLV_LOAD-bt_rec_gestiones_mails.hql'
+  #  - name: SHERIFF_Control_bt_rec_gestiones_mails
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gestiones_mails
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_mails/bt_rec_gestiones_mails_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gestiones_mails_sheriff.json']
+  #  - name: COMMON_dim_rec_canal
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_canal/DDLT-dim_rec_casuistica_motivos.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_canal/ETLV_LOAD-dim_rec_casuistica_motivos.hql'
+  #  - name: SHERIFF_Control_dim_rec_canal
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_canal
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_canal/dim_rec_clientes_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_clientes_sheriff.json']
+  #  - name: COMMON_dim_rec_actor
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_actor/DDLT-dim_rec_actor.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_actor/ETLV_LOAD-dim_rec_actor.hql'
+  #  - name: SHERIFF_Control_dim_rec_actor
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_actor
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_actor/dim_rec_actor_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_actor_sheriff.json']
+  #  - name: COMMON_dim_rec_casuistica
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_casuistica/DDLT-dim_rec_casuistica.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_casuistica/ETLV_LOAD-dim_rec_casuistica.hql'
+  #  - name: SHERIFF_Control_dim_rec_casuistica
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_casuistica
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_casuistica/dim_rec_casuistica_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_casuistica_sheriff.json']
+  #  - name: COMMON_dim_rec_tipo_gestion
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_gestion/DDLT-dim_rec_tipo_gestion.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_gestion/ETLV_LOAD-dim_rec_tipo_gestion.hql'
+  #  - name: SHERIFF_Control_dim_rec_tipo_gestion
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_tipo_gestion
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_tipo_gestion/dim_rec_tipo_gestion_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_tipo_gestion_sheriff.json']
+  #  - name: COMMON_dim_rec_usuario
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_usuario/DDLT-dim_rec_usuario.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_usuario/ETLV_LOAD-dim_rec_usuario.hql'
+  #  - name: SHERIFF_Control_dim_rec_usuario
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_usuario
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_usuario/dim_rec_usuario_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_usuario_sheriff.json']
+  #  - name: COMMON_bt_rec_movimientos_tarjeta
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_tarjeta/DDLT-bt_rec_movimientos_tarjeta.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_tarjeta/ETLV_LOAD-bt_rec_movimientos_tarjeta.hql'
+  #  - name: SHERIFF_Control_bt_rec_movimientos_tarjeta
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_movimientos_tarjeta
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_tarjeta/bt_rec_movimientos_tarjeta_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_movimientos_tarjeta_sheriff.json']
+  #  - name: COMMON_bt_rec_gest_estados_csm
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_csm/DDLT-bt_rec_gest_estados_csm.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_csm/ETLV_LOAD-bt_rec_gest_estados_csm.hql'
+  #  - name: SHERIFF_Control_bt_rec_gest_estados_csm
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gest_estados_csm
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gest_estados_csm/bt_rec_gest_estados_csm_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gest_estados_csm_sheriff.json']
+  #  - name: COMMON_bt_rec_movimientos_cuenta
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_cuenta/DDLT-bt_rec_movimientos_cuenta.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_cuenta/ETLV_LOAD-bt_rec_movimientos_cuenta.hql'
+  #  - name: SHERIFF_Control_bt_rec_movimientos_cuenta
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_movimientos_cuenta
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_movimientos_cuenta/bt_rec_movimientos_cuenta_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_movimientos_cuenta_sheriff.json']
+  #  - name: COMMON_dim_rec_motdes_arbol_resultado
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_motdes_arbol_resultado/DDLT-dim_rec_motdes_arbol_resultado.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_motdes_arbol_resultado/ETLV_LOAD-dim_rec_motdes_arbol_resultado.hql'
+  #  - name: SHERIFF_Control_dim_rec_motdes_arbol_resultado
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_motdes_arbol_resultado
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_motdes_arbol_resultado/dim_rec_motdes_arbol_resultado_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_motdes_arbol_resultado_sheriff.json']
+  #  - name: COMMON_bt_rec_gestiones_cuenta
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_cuenta/DDLT-bt_rec_gestiones_cuenta.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_cuenta/ETLV_LOAD-bt_rec_gestiones_cuenta.hql'
+  #  - name: SHERIFF_Control_bt_rec_gestiones_cuenta
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gestiones_cuenta
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_cuenta/bt_rec_gestiones_cuenta_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gestiones_cuenta_sheriff.json']
+  #  - name: COMMON_bt_rec_gestiones_tarjeta
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_tarjeta/DDLT-bt_rec_gestiones_tarjeta.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_tarjeta/ETLV_LOAD-bt_rec_gestiones_tarjeta.hql'
+  #  - name: SHERIFF_Control_bt_rec_gestiones_tarjeta
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gestiones_tarjeta
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_tarjeta/bt_rec_gestiones_tarjeta_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gestiones_tarjeta_sheriff.json']
+  #  - name: COMMON_bt_rec_gestiones_csm
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_csm/DDLT-bt_rec_gestiones_csm.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_csm/ETLV_LOAD-bt_rec_gestiones_csm.hql'
+  #  - name: SHERIFF_Control_bt_rec_gestiones_csm
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_bt_rec_gestiones_csm
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/bt_rec_gestiones_csm/bt_rec_gestiones_csm_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['bt_rec_gestiones_csm_sheriff.json']
+  #  - name: COMMON_dim_rec_centro_costo
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_centro_costo/DDLT-dim_rec_centro_costo.hql'
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_centro_costo/ETLV_LOAD-dim_rec_centro_costo.hql'
+  #  - name: SHERIFF_Control_dim_rec_centro_costo
+  #    operator: SparkSubmitOperator
+  #    config:
+  #      name: SHERIFF_Control_dim_rec_centro_costo
+  #      connection_id: cloudera_spark2
+  #      executor_cores: 5
+  #      executor_memory: 8G
+  #      num_executors: 5
+  #      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/dim_rec_centro_costo/dim_rec_centro_costo_sheriff.json']
+  #      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+  #      conf: {
+  #        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_Cosmos_Daily') }}",
+  #        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+  #        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+  #      }
+  #      application_args: ['dim_rec_centro_costo_sheriff.json']
+  #  - name: COMMON_stk_rec_gestiones_csm
+  #    operator: ZondaHiveOperator
+  #    config:
+  #      connection_id: cloudera_hive_beeline
+  #      schema: default
+  #      is_hql_file: true
+  #      hql:
+  #        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/reclamos/stk_rec_gestiones_csm/ETLV_LOAD-stk_rec_gestiones_csm.hql'
+#dependencies:
+  #STAGING_usuarios_Parquetize: COMMON_dim_rec_usuario
+  #STAGING_actores_Parquetize: COMMON_dim_rec_actor
+  #STAGING_canales_Parquetize: COMMON_dim_rec_canal
+  #STAGING_casuisticas_Parquetize: COMMON_dim_rec_casuistica
+  #STAGING_centro_costos_Parquetize: COMMON_dim_rec_centro_costo
+  #STAGING_tipos_gestion_Parquetize: COMMON_dim_rec_tipo_gestion
+  #COMMON_dim_rec_usuario: [STAGING_gest_estados_Parquetize, STAGING_codigos_operativos_cuenta_Parquetize, STAGING_codigos_operativos_tarjeta_Parquetize, STAGING_gest_tarjeta_Parquetize, STAGING_gest_cuenta_Parquetize, STAGING_get_mails_Parquetize, STAGING_motdes_arbol_resultados_Parquetize]
+  #STAGING_gest_estados_Parquetize: COMMON_bt_rec_gest_estados_csm
+  #STAGING_codigos_operativos_cuenta_Parquetize: STAGING_gest_movimientos_cuenta_Parquetize
+  #STAGING_gest_movimientos_cuenta_Parquetize: COMMON_bt_rec_movimientos_cuenta
+  #STAGING_codigos_operativos_tarjeta_Parquetize: STAGING_gest_movimientos_tarjeta_Parquetize
+  #STAGING_gest_movimientos_tarjeta_Parquetize: COMMON_bt_rec_movimientos_tarjeta
+  #STAGING_gest_tarjeta_Parquetize: COMMON_bt_rec_gestiones_tarjeta
+  #STAGING_gest_cuenta_Parquetize: COMMON_bt_rec_gestiones_cuenta
+  #STAGING_get_mails_Parquetize: COMMON_bt_rec_gestiones_mails
+  #STAGING_gest_resol_acciones_Parquetize: COMMON_bt_rec_gest_resol_acciones
+  #STAGING_gest_motdes_acciones_Parquetize: COMMON_bt_rec_gest_motdes_acciones
+  #STAGING_motdes_arbol_resultados_Parquetize: COMMON_dim_rec_motdes_arbol_resultado
+  #COMMON_dim_rec_motdes_arbol_resultado: STAGING_gestiones_Parquetize
+  #STAGING_gestiones_Parquetize: COMMON_bt_rec_gestiones_csm
+  #STAGING_gestiones_Parquetize: COMMON_stk_rec_gestiones_csm
+  #COMMON_dim_rec_centro_costo: SHERIFF_Control_dim_rec_centro_costo
+  #COMMON_dim_rec_motdes_arbol_resultado: SHERIFF_Control_dim_rec_motdes_arbol_resultado
+  #COMMON_dim_rec_usuario: SHERIFF_Control_dim_rec_usuario
+  #COMMON_dim_rec_tipo_gestion: SHERIFF_Control_dim_rec_tipo_gestion
+  #COMMON_dim_rec_casuistica: SHERIFF_Control_dim_rec_casuistica
+  #COMMON_dim_rec_actor: SHERIFF_Control_dim_rec_actor
+  #COMMON_dim_rec_canal: SHERIFF_Control_dim_rec_canal
+  #COMMON_bt_rec_gest_motdes_acciones: SHERIFF_Control_bt_rec_gest_motdes_acciones
+  #COMMON_bt_rec_gest_resol_acciones: SHERIFF_Control_bt_rec_gest_resol_acciones
+  #COMMON_bt_rec_gestiones_mails: SHERIFF_Control_bt_rec_gestiones_mails
+  #COMMON_bt_rec_gest_estados_csm: SHERIFF_Control_bt_rec_gest_estados_csm
+  #COMMON_bt_rec_movimientos_tarjeta: SHERIFF_Control_bt_rec_movimientos_tarjeta
+  #COMMON_bt_rec_movimientos_cuenta: SHERIFF_Control_bt_rec_movimientos_cuenta
+  #COMMON_bt_rec_gestiones_csm: SHERIFF_Control_bt_rec_gestiones_csm
+  #COMMON_bt_rec_gestiones_tarjeta: SHERIFF_Control_bt_rec_gestiones_tarjeta
+  #COMMON_bt_rec_gestiones_cuenta: SHERIFF_Control_bt_rec_gestiones_cuenta
+notifications:
+  on_error: true
+  channels: [ $DEFAULT_SLACK_CHANNEL ]
+  users: [pabnunez@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar ]

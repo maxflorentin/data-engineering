@@ -1,0 +1,40 @@
+{
+	"file": "prem_maes_evento_schema",
+	"location": "/santander/bi-corp/landing/rio102/dim/prem_maes_evento/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/dim/rio102_prem_maes_evento",
+	"tempDirectory": "/santander/bi-corp/temp/prem_maes_evento",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_evento",
+			"type": "string"
+		},
+{
+			"name": "descripcion",
+			"type": "string"
+		},
+{
+			"name": "fecha_desde",
+			"type": "string"
+		},
+{
+			"name": "fecha_hasta",
+			"type": "string"
+		},
+{
+			"name": "descripcion_corta",
+			"type": "string"
+		}
+	],"extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

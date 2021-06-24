@@ -1,0 +1,34 @@
+name: ExecuteSpark-s3
+description: 'Test Execute Spark Airflow Cloud Zonda'
+owner: BI-Corp
+active: true
+start_date: '2020-09-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: ExecuteSparkS3
+    operator: SparkSubmitOperator
+    config:
+      name: ExecuteSparkS3
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: "s3a://sard1ae1ssszonda0plat001sdb/outbound/src/publisher_process.py"
+      py_files: "s3a://sard1ae1ssszonda0plat001sdb/outbound/src/publisher_config.py"
+      conf: {
+        'spark.dynamicAllocation.enabled': 'true',
+        'spark.shuffle.service.enabled': 'true'
+      }
+      application_args: ["s3a://sard1ae1ssszonda0plat001sdb/outbound/src/tripdata_export_csv.json"]

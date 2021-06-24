@@ -1,0 +1,139 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307993"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "aprp_waprp040",
+      "title": "Tabla de Características de Comisión de la Empresa",
+      "schema": "bi_corp_staging",
+      "source": "APRP",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla de Características de Comisión de la Empresa",
+      "columns": [
+        {
+          "name": "WAPRP040_NRO_LISTA        ",
+          "title": "WAPRP040_NRO_LISTA        ",
+          "description": "Lista que corresponde a la característica",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_NRO_PROD         ",
+          "title": "WAPRP040_NRO_PROD         ",
+          "description": "Número de producto de la empresa",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_DES_CARAC_COM    ",
+          "title": "WAPRP040_DES_CARAC_COM    ",
+          "description": "Descripción de característica",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_TPO_COM          ",
+          "title": "WAPRP040_TPO_COM          ",
+          "description": "Tipo de comisión a cobrar a la empresa",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_COD_PER_COBR_COM ",
+          "title": "WAPRP040_COD_PER_COBR_COM ",
+          "description": "Período para cobro de comisión",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_MAR_DISC_COM     ",
+          "title": "WAPRP040_MAR_DISC_COM     ",
+          "description": "Marca de discrimina comisión a la empresa/depositante",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_FEC_HRA_ULT_MODF ",
+          "title": "WAPRP040_FEC_HRA_ULT_MODF ",
+          "description": "Fecha y hora de última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 26.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_IDE_USER_ULT_MODF",
+          "title": "WAPRP040_IDE_USER_ULT_MODF",
+          "description": "Identificación de usuario de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_IDE_TERM_ULT_MODF",
+          "title": "WAPRP040_IDE_TERM_ULT_MODF",
+          "description": "Identificación terminal de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP040_TPO_DEBITO       ",
+          "title": "WAPRP040_TPO_DEBITO       ",
+          "description": "Tipo de Débito\nValor posible 1= Debito en cuenta ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

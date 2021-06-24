@@ -1,0 +1,79 @@
+{
+  "file": "act_bcra_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/act_bcra/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/act_bcra",
+  "createTable": "bi_corp_staging.sge_act_bcra",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+          {
+                    "name": "pecdgent",
+                    "type": "string"
+                },
+{
+                    "name": "peidioma",
+                    "type": "string"
+                },
+{
+                    "name": "pecodact",
+                    "type": "string"
+                },
+{
+                    "name": "des_de_cod",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "cod_padre",
+                    "type": "string"
+                },
+{
+                    "name": "cod_suprasector",
+                    "type": "string"
+                },
+{
+                    "name": "mar_sujeta_cred",
+                    "type": "string"
+                },
+{
+                    "name": "cod_act_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "cod_act_clanae",
+                    "type": "string"
+                },
+{
+                    "name": "des_act_clanae",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

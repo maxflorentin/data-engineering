@@ -1,0 +1,235 @@
+{
+     "file": "opp_trf_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/opp_trf/fecha_fact=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/opp_trf",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [		 {
+              "name": "cod_ops",
+              "type": "string"
+             },
+             {
+              "name": "tipo",
+              "type": "string"
+             },
+             {
+              "name": "id_swift",
+              "type": "string"
+             },
+             {
+              "name": "nro_form",
+              "type": "string"
+             },
+             {
+              "name": "iva",
+              "type": "string"
+             },
+             {
+              "name": "alicuota_iva",
+              "type": "string"
+             },
+             {
+              "name": "ganancias",
+              "type": "string"
+             },
+             {
+              "name": "motivo_gan",
+              "type": "string"
+             },
+             {
+              "name": "alicuota_gan",
+              "type": "string"
+             },
+             {
+              "name": "acargo_gan",
+              "type": "string"
+             },
+             {
+              "name": "doble_imposicion",
+              "type": "string"
+             },
+             {
+              "name": "banco_domic",
+              "type": "string"
+             },
+             {
+              "name": "beneficiario",
+              "type": "string"
+             },
+             {
+              "name": "benef_domic",
+              "type": "string"
+             },
+             {
+              "name": "benef_cta",
+              "type": "string"
+             },
+             {
+              "name": "sis_origen",
+              "type": "string"
+             },
+             {
+              "name": "bco_pagador_corre",
+              "type": "string"
+             },
+             {
+              "name": "cta_bco_int",
+              "type": "string"
+             },
+             {
+              "name": "gastos_corre",
+              "type": "string"
+             },
+             {
+              "name": "importe_gastos_corre",
+              "type": "string"
+             },
+             {
+              "name": "es_bco_benef",
+              "type": "string"
+             },
+             {
+              "name": "campo70",
+              "type": "string"
+             },
+             {
+              "name": "tipo_persona",
+              "type": "string"
+             },
+             {
+              "name": "banco_receptor",
+              "type": "string"
+             },
+             {
+              "name": "tipo_banco_receptor",
+              "type": "string"
+             },
+             {
+              "name": "banco_intermediario",
+              "type": "string"
+             },
+             {
+              "name": "tipo_banco_intermediario",
+              "type": "string"
+             },
+             {
+              "name": "banco_beneficiario",
+              "type": "string"
+             },
+             {
+              "name": "tipo_banco_beneficiario",
+              "type": "string"
+             },
+             {
+              "name": "envio_mail",
+              "type": "string"
+             },
+             {
+              "name": "f_envio_mail",
+              "type": "string"
+             },
+             {
+              "name": "desc_gan",
+              "type": "string"
+             },
+             {
+              "name": "baseimpo_iva",
+              "type": "string"
+             },
+             {
+              "name": "baseimpo_gan",
+              "type": "string"
+             },
+             {
+              "name": "fecha_swift",
+              "type": "string"
+             },
+             {
+              "name": "cod_gan",
+              "type": "string"
+             },
+             {
+              "name": "benef_localidad",
+              "type": "string"
+             },
+             {
+              "name": "secuencia",
+              "type": "string"
+             },
+             {
+              "name": "tipo_anterior",
+              "type": "string"
+             },
+             {
+              "name": "alicuota_rubro",
+              "type": "string"
+             },
+             {
+              "name": "ref_ct",
+              "type": "string"
+             },
+             {
+              "name": "id_alicuota",
+              "type": "string"
+             },
+             {
+              "name": "exencion_ganancias",
+              "type": "string"
+             },
+             {
+              "name": "invertir_acargo_gan",
+              "type": "string"
+             },
+             {
+              "name": "id_nif_ganancia",
+              "type": "string"
+             },
+             {
+              "name": "gan_ya_efectuada",
+              "type": "string"
+             },
+             {
+              "name": "guid",
+              "type": "string"
+             },
+             {
+              "name": "srp",
+              "type": "string"
+             },
+             {
+              "name": "inpi",
+              "type": "string"
+             },
+             {
+              "name": "id_regimen",
+              "type": "string"
+             },
+             {
+              "name": "cuit_benef",
+              "type": "string"
+             },
+             {
+              "name": "id_swift199",
+              "type": "string"
+             },
+             {
+              "name": "fecha_fact",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

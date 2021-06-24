@@ -1,0 +1,173 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_cp_envios_estados",
+            "title": "POSEE EL HISTORIAL DE LOS ESTADOS POR LOS QUE PASÓ UN ENVÍO",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "POSEE EL HISTORIAL DE LOS ESTADOS POR LOS QUE PASÓ UN ENVÍO",
+            "columns": [
+                {
+                    "name": "COD_ENVIO_ESTADO",
+                    "title": "COD_ENVIO_ESTADO",
+                    "description": "CÓDIGO INTERNO DEL ESTADO DEL ENVÍO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRUPIER_ID",
+                    "title": "CRUPIER_ID",
+                    "description": "CÓDIGO DEL ENVÍO CROSS APLICACIONES",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_ESTADO",
+                    "title": "COD_ESTADO",
+                    "description": "CÓDIGO DE ESTADO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ESTADO",
+                    "title": "FECHA_ESTADO",
+                    "description": "FECHA DEL ESTADO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF",
+                    "title": "ULTIMA_MODIF",
+                    "description": "FECHA DE ÚLTIMA MODIFICACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ESTADO_SOLR",
+                    "title": "FECHA_ESTADO_SOLR",
+                    "description": "FECHA DE SOLR",
+                    "type": "VARCHAR2(24)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 24.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREADO_POR",
+                    "title": "CREADO_POR",
+                    "description": "SISTEMA QUE CREÓ EL ESTADO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF_POR",
+                    "title": "ULTIMA_MODIF_POR",
+                    "description": "SISTEMA QUE MODIFICÓ POR ÚLTIMA VEZ EL ESTADO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

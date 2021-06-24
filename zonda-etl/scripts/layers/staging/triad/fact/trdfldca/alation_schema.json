@@ -1,0 +1,578 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A220615"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "triad_col_trdfldca",
+            "title": "Informacion de Cuentas Corrientes (CA) en linkage de salida de TRIAD Collections.",
+            "schema": "bi_corp_staging",
+            "source": "AATR",
+            "type": "FACT",
+            "description": "Informacion de Cuentas Corrientes (CA) en linkage de salida de TRIAD Collections.",
+            "columns": [
+                {
+                    "name": "DCA_LENGTH",
+                    "title": "DCA_LENGTH",
+                    "description": "Tenant ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TENANT_ID",
+                    "title": "DCA_TENANT-ID",
+                    "description": "Customer ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CUSTOMER_ID",
+                    "title": "DCA_CUSTOMER-ID",
+                    "description": "Rec ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_REC_ID",
+                    "title": "DCA_REC-ID",
+                    "description": "Rec ID NUM",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_REC_ID_NUM",
+                    "title": "DCA_REC-ID-NUM",
+                    "description": "Seq NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_REC_SEQ_NUM",
+                    "title": "DCA_REC-SEQ-NUM",
+                    "description": "CU Tenant ID",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_ACCOUNT_ID",
+                    "title": "DCA_ACCOUNT-ID",
+                    "description": "Es el identificador único de la cuenta. Este campo se compone en las primeras cuatro posiciones de la sucursal del Cliente y las doce siguientes el número de cuenta.Luego producto, subproducto y divisa (en 2 posiciones)",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_PREV_ACCT_ID",
+                    "title": "DCA_PREV-ACCT-ID",
+                    "description": "Idealmente debería informarse el identificador de cuenta anterior para poder reconstruir el hilo de la relación, si se quiere. (traspasos, etc)",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_OPEN",
+                    "title": "DCA_DATE-OPEN",
+                    "description": "Es la fecha de apertura de la cuenta.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_CLOSED",
+                    "title": "DCA_DATE-CLOSED",
+                    "description": "Es la fecha de cierre de la cuenta.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_REASON_CLOSED",
+                    "title": "DCA_REASON-CLOSED",
+                    "description": "Es el motivo ó razón del cierre de la cuenta.\nValidación aplicada\nEs un campo obligatorio, o sea siempre será informado, por lo que contendrá algunos de los siguientes valores:\n\n1 = written off  - bankrupt/fraud => Cerrado por el Banco por Banca rota o Fraude\n2 = written off – other  => Cerrado por el Banco por fallido\n3 = closed – voluntary  => Cerrado por el cliente.\n4 = closed – involuntary => Cerrado por el Banco por otros motivos\n\n0 = 000 No cerrada  - Activa.\n1 = 001 indica que la cuenta fue cerrada por inhabilitación por el BCRA\n4 = 002 indica que la cuenta fue cerrada por ser no rentable\n3 = 003 indica que la cuenta fue cerrada por decisión del cliente\n??? No deberia ocurrir - 004 indica que la cuenta fue cerrada por traslado a otra sucursal\n4 = 005 indica que la cuenta fue cerrada por otras causas\n2 = 006 indica que la cuenta fue cerrada por suspensión de servicio de pago de cheques\n4 = 007 indica que la cuenta fue cerrada por fallecimiento\n4 = 008 indica que la cuenta fue cerrada por decisión del Banco Río\n2 = 009 indica que la cuenta fue cerrada por problemas de pago\n2 = 010 indica que la cuenta fue cerrada por gestión y mora",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_NUM_PARTIES",
+                    "title": "DCA_NUM-PARTIES",
+                    "description": "El numero titulares y co-titulares de la cuenta.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DIVISOR",
+                    "title": "DCA_DIVISOR",
+                    "description": "Set to 1",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": false,
+                    "length": 4,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_LIABILITY_IND",
+                    "title": "DCA_LIABILITY-IND",
+                    "description": "\nNumero de titular: \n1 - Primer Titular\n2 - Segundo Titular\netc.  \n",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_ACCOUNT_TYPE",
+                    "title": "DCA_ACCOUNT-TYPE",
+                    "description": "1: Cuenta Corriente sin Paquete\n2: Cuenta Corriente incluida en Paquete\n",
+                    "type": "STIRNG",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_ACCOUNT_SPR_TYPE",
+                    "title": "DCA_ACCOUNT-SPR-TYPE",
+                    "description": "Set to zero",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_AMT_LAST_CREDIT",
+                    "title": "DCA_AMT-LAST-CREDIT",
+                    "description": "\nEs para TRIAD si  vamos a hacer recobros para dormant\nSuma de creditos del último mes calendario = TI-DCA_VAL-CUST-CREDIT[1]\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_LAST_CREDIT",
+                    "title": "DCA_DATE-LAST-CREDIT",
+                    "description": "Es la fecha del último movimiento de crédito del cliente sobre esta cuenta. Se incluyen solamente movimientos genuinos del Cliente.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_LAST_DEBIT",
+                    "title": "DCA_DATE-LAST-DEBIT",
+                    "description": "Es la fecha del último movimiento de débito del cliente sobre esta cuenta. Se incluyen solamente movimientos genuinos del Cliente.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CURR_BALANCE",
+                    "title": "DCA_CURR-BALANCE",
+                    "description": "Es el saldo actual de la cuenta a la fecha de proceso.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CURR_AGREED_LIMIT",
+                    "title": "DCA_CURR-AGREED-LIMIT",
+                    "description": "\nEs el limite acordado de la cuenta a la fecha de proceso.\n\n\n",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_START_DEBIT_BAL",
+                    "title": "DCA_DATE-START-DEBIT-BAL",
+                    "description": "Es la fecha de comienzo de la situación de saldo deudor (negativo) que hoy tiene la cuenta. Saldo deudor independiente del límite de acuerdo.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DATE_START_OVERLIMIT",
+                    "title": "DCA_DATE-START-OVERLIMIT",
+                    "description": "Es la fecha de comienzo de la situación de saldo deudor  sobre el límite acordado que hoy tiene la cuenta. ",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_PRIMARY_ACCT_IND",
+                    "title": "DCA_PRIMARY-ACCT-IND",
+                    "description": "1 - Si es primer titular\n0 - Resto de los casos",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITIES_IND",
+                    "title": "DCA_FACILITIES-IND",
+                    "description": "Indica si la cuenta posee chequera y/o tarjeta de débito (Banelco).\nEs un campo de información obligatoria, por lo tanto no habrá registros con valores en blanco. Y podrá tomar algunos de los siguientes valores.\n01 = Tiene Banelco y Chequera\n02 = Tiene Banelco y no tiene Chequera\n03 = No tiene Banelco y tiene Chequera\n04 = No tiene Banelco ni Chequera",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITY_1",
+                    "title": "DCA_FACILITY-1",
+                    "description": "Indica si la cuenta posee tarjeta de débito (Banelco).\n\n0: No tiene\n1: Tiene",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITY_2",
+                    "title": "DCA_FACILITY-2",
+                    "description": "Indica si la cuenta posee tarjeta de débito (Banelco).(idem anterior)\n\n0: No tiene\n1: Tiene",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITY_3",
+                    "title": "DCA_FACILITY-3",
+                    "description": "Indica si la cuenta posee chequera.\n\n0: No tiene\n1: Tiene",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITY_4",
+                    "title": "DCA_FACILITY-4",
+                    "description": "Set to 0. No Aplica.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FACILITY_RENEWAL_IND",
+                    "title": "DCA_FACILITY-RENEWAL-IND",
+                    "description": "0: Ninguna Decision sobre Renovacion este mes\n1: Renovado este mes\n2: Expirado este mes\nActualmente no expiran los sobregiros, por tanto, set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TRIAD_CAT",
+                    "title": "DCA_TRIAD-CAT",
+                    "description": "Realimentado de llamada anterior REVW O REVC",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_SHADOW_LIMIT",
+                    "title": "DCA_SHADOW-LIMIT",
+                    "description": "Limite Autorizado + Limite Oculto",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DEBIT_INTEREST_1",
+                    "title": "DCA_VAL-DEBIT-INTEREST-1",
+                    "description": "Los intereses cargados en cuenta corriente por saldos dentro del limite autorizado. \n Se pueden identificar.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DEBIT_INTEREST_2",
+                    "title": "DCA_VAL-DEBIT-INTEREST-2",
+                    "description": "Intereses cargados en Cta Cte por saldos excedidos.  Se pueden idenficar.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_FEES_GROUP_FEES",
+                    "title": "DCA_VAL-FEES",
+                    "description": "\n\n1:  annual fees = fijas por mantenimiento cuenta (incluir seguro de vida)\n2:  transaction fees = comision por movimientos (exceso de movimientos????)\n3:  excess fees = comisiones por exceso de limite autorizado\n4:  returned transaction fees = others\n5 : collections fees = comisiones por recobros\n",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CREDITS_2",
+                    "title": "DCA_VAL-CREDITS-2",
+                    "description": "\n= TI-DCA_VAL-CUST-CREDITS(1) - TI-DCA_VAL-SALARY(1)",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CREDITS_3",
+                    "title": "DCA_VAL-CREDITS-3",
+                    "description": 0,
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN1_NUM",
+                    "title": "DCA_DECL-TXN1-NUM",
+                    "description": "Numero de cheques emitidos rechazados en el mes actual ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN1_VAL",
+                    "title": "DCA_DECL-TXN1-VAL",
+                    "description": "El importe de los cheques emitidos rechazados en el mes actual ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN2_NUM",
+                    "title": "DCA_DECL-TXN2-NUM",
+                    "description": "Set to 0",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN2_VAL",
+                    "title": "DCA_DECL-TXN2-VAL",
+                    "description": "Set to 0",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN_SHAD_NUM",
+                    "title": "DCA_APR-TXN-SHAD-NUM",
+                    "description": "No se podran alimentar.\nSet to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_TXN_SHAD_VAL",
+                    "title": "DCA_APR-TXN-SHAD-VAL",
+                    "description": "No se podran alimentar.\nSet to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_ATM_TXNS",
+                    "title": "DCA_VAL-ATM-TXNS",
+                    "description": "Not needed.\nSet to 0",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_DEBIT_CARD_TXNS",
+                    "title": "DCA_VAL-DEBIT-CARD-TXNS",
+                    "description": "Not needed.\nSet to 0",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_CHQ_TXNS",
+                    "title": "DCA_VAL-CHQ-TXNS",
+                    "description": "Not needed.\nSet to 0",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_PROFIT",
+                    "title": "DCA_PROFIT",
+                    "description": "Rentabilidad a nivel cuenta= valor de la ganancia del cliente del corriente mes. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_PROVISION",
+                    "title": "DCA_PROVISION",
+                    "description": "Provisión con perdida o sin perdida.\n\nOpción 1: la provisión específica calculada con el criterio local está en AIGE a nivel contrato.\nOpción 2: la provisión específica calculada de acuerdo a la norma 4/04 de Banco de España está en GARRA a nivel contrato. \n\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_APPORTIONMNT_EXCL_IND",
+                    "title": "DCA_APPORTIONMNT-EXCL-IND",
+                    "description": "Set to 0.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DCA_MONTHLY_SEGMENT",
+                    "title": "DCA_MONTHLY-SEGMENT",
+                    "description": "Vector que se compone por los siguientes campos:\n\n>>DCA_DATE:\tEs la fecha del último día del mes que se informa en la ocurrencia del vector.\n>>DCA_BLOCK-CODE:\t\"Es el código de estado de la cuenta.\n\n0 = No bloqueado\n20 = Disputa\n40 = Perdida o Robada\n50 = En litigio\n60 = Adjudicación de garantía\n70 = Fallido\n80 = Defunción\n\nIssue I-023\"\n>>DCA_MAX-BALANCE:\tEs el saldo máximo de la cuenta en el mes que se esta procesando.\n>>DCA_MIN-BALANCE:\tEs el saldo mínimo de la cuenta en el mes que se esta procesando.\n>>DCA_AVG-BALANCE:\tEs el saldo promedio de la cuenta en el mes que se esta procesando.\n>>DCA_EOM-BALANCE:\t\"Es el saldo correspondiente al último día del mes. PYMES: saldo vista\"\n>>DCA_EOM-DAYS-IN-EXCESS:\tSi la cuenta esta en excedido a fin de mes, el numero de dias en que la cuenta ha estado en exceso (la fecha de inicio puede haber comenzado en algun mes anterior). Set to 0 si no esta excedido en fin de mes.\n>>DCA_NUM-CUST-DEBITS:\tEs el número de movimientos de débitos genuinos del cliente en el mes que se esta procesando. No se tienen en cuenta, o sea se excluyen, los movimientos generados por el Banco Río (intereses, comisiones, etc.) y los movimientos entre cuentas del mismo cliente.\n>>DCA_VAL-CUST-DEBITS:\tEs el importe de los movimientos de débitos genuinos del cliente en el mes que se esta procesando. No se tienen en cuenta, o sea se excluyen, los movimientos generados por el Banco Río (intereses, comisiones, etc.) y los movimientos entre cuentas del mismo cliente.\n>>DCA_VAL-INTER-ACCT-DEBITS:\tEs el importe de los movimientos de débitos generados por el cliente entre sus cuentas en el mes que se esta procesando.\n>>DCA_VAL-DEBIT-INTEREST:\tInteres cobrado en el mes (Atención: es por movimientos del mes anterior) incluyendo comisiones a debito\n>>DCA_VAL-TOTAL-FEES:\tSumatoria de cargos del mes (debe ser = a la suma de TI-DCA_VAL-FEES(1) + (2) + (3) + (4) + (5))\n>>DCA_VAL-OTHER-DEBITS:\tEs el importe de otros movimientos de débitos no-genuinos del cliente en el mes que se esta procesando. Utilizado para correcciones.  \n>>DCA_NUM-CUST-CREDITS:\tEs el número de movimientos de créditos genuinos del cliente en el mes que se esta procesando. No se tienen en cuenta, o sea se excluyen, los movimientos generados por el Banco Río (intereses, comisiones, etc.) y los movimientos entre cuentas del mismo cliente (entre segmentos CA y DP).\n>>DCA_VAL-CUST-CREDITS:\t\"Es el importe de los movimientos de créditos genuinos del cliente en el mes que se esta procesando. No se tienen en cuenta, o sea se excluyen, los movimientos generados por el Banco Río (intereses, comisiones, etc.) y los movimientos entre cuentas del mismo cliente. Para PYMES: Alimentar solamente con los creditos  genuinos para el calculo de MRA\"\n>>DCA_VAL-INTER-ACCT-CREDITS:\tEs el importe de los movimientos de créditos generados por el cliente entre sus cuentas en el mes que se esta procesando.\n>>DCA_VAL-CREDIT-INTEREST:\tInteres pagado al cliente en el mes\n>>DCA_VAL-OTHER-CREDITS:\t\"Value of non-customer generated credit transactions (other than interest - example of usage could be for corrections) Utilizado para correcciones\"\n>>DCA_NUM-DAYS-IN-CREDIT:\tEs el número de días durante el mes en los que la cuenta tuvo saldo positivo o 0 (cero) \n>>DCA_NUM-DAYS-IN-DEBIT:\tEs el número de días durante el mes en los que la cuenta tuvo saldo negativo. Esto no significa que este por debajo del acuerdo o exceso.\n>>DCA_NUM-DAYS-IN-EXCESS:\tEs la cantidad de días durante el mes en lo que el saldo de la cuenta estuvo por encima del límite establecido. Esto puede responder a diferentes períodos de exceso durante el mes.\n>>DCA_MAX-CNSCT-DAYS-IN-EXCS:\t=TI-US-DCA_MX-CON-DYS-EXCESS\n>>DCA_MAX-VAL-EXCESS:\testa se puede informar\n>>DCA_AGREED-LIMIT:\t\"Es el monto del límite que aplica al último día del mes que se esta informando. Se actualiza en P2 idem DCA_16\"\n>>DCA_SALARY-IND:\tIndica que el cliente recibió este mes el depósito de su sueldo en la Cuenta Corriente.\n>>DCA_VAL-SALARY:\t\"Es el importe del sueldo o ingreso depositado en la cuenta en el mes que se esta informando\"\n>>DCA_NUM-DIR-DEPOSITS:\t\"Para PYMES: Alimentar con acreditacion de cupones (cantidad)\"\n>>DCA_VAL-DIR-DEPOSITS:\t\"Para PYMES: Alimentar con acreditacion de cupones\"\n>>DCA_NUM-AUTO-DEBITS:\tNumero de cargos automaticos (domiciliaciones, transferencias automaticas pagadas por la cuenta durante el mes).  Issue I-034\n>>DCA_VAL-AUTO-DEBITS:\tImporte de cargos automaticos (domiciliaciones, transferencias automaticas pagadas por la cuenta durante el mes). Issue I-034\n>>DCA_NUM-RET-PYMT:\tEs la cantidad de cheques rechazados por sin fondo, siempre que la cuenta este activa, en el mes que se esta informando.\n>>DCA_VAL-RET-PYMT:\tEs el importe de los cheques rechazados por sin fondo en el mes que se esta informando.\n>>DCA_VAL-UTILITY-PYMT:\t\"Para individuos: Alimentar con los pagos de Luz, Gas, Telefono. Para Pyme: poner los pagos de servicios en debitos genuinos y los pagos de salarios en esta variable\"",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1308,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": ""
+            }
+        }
+    }
+}

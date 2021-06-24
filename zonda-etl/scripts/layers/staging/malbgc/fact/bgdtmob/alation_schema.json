@@ -1,0 +1,1145 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308837"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtmob",
+            "title": "Movimientos de cuentas",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Movimientos de cuentas",
+            "columns": [
+                {
+                    "name": "ENTIDAD",
+                    "title": "ENTIDAD",
+                    "description": "CLAVE DE ENTIDAD",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-ALTA",
+                    "title": "CENTRO-ALTA",
+                    "description": "CENTRO ALTA DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUENTA",
+                    "title": "CUENTA",
+                    "description": "NÚMERO DE CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIVISA",
+                    "title": "DIVISA",
+                    "description": "DIVISA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUMER-MOV",
+                    "title": "NUMER-MOV",
+                    "description": "NÚMERO DEL MOVIMIENTO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODIGO",
+                    "title": "CODIGO",
+                    "description": "CÓDIGO DE OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IMPORTE",
+                    "title": "IMPORTE",
+                    "description": "IMPORTE",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONCEPTO",
+                    "title": "CONCEPTO",
+                    "description": "CONCEPTO DEL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BASE-IMPUESTO",
+                    "title": "BASE-IMPUESTO",
+                    "description": "IMPORTE BASE SOBRE EL QUE SE CALCULÓ EL IMPUESTO QUE VIENE COMO IMPORTE PRINCIPAL",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-IMPUESTO",
+                    "title": "COD-IMPUESTO",
+                    "description": "CÓDIGO DE IMPUESTO ASOCIADO A LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IMPOR-IMPUESTO",
+                    "title": "IMPOR-IMPUESTO",
+                    "description": "IMPORTE DEL IMPUESTO ASOCIADO A LA OPERACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CPTO-IMPUESTO",
+                    "title": "CPTO-IMPUESTO",
+                    "description": "CONCEPTO DEL IMPUESTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-CONTA",
+                    "title": "FECHA-CONTA",
+                    "description": "FECHA CONTABLE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-OPER",
+                    "title": "FECHA-OPER",
+                    "description": "FECHA DE OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA-OPER",
+                    "title": "HORA-OPER",
+                    "description": "HORA DE OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-VALOR",
+                    "title": "FECHA-VALOR",
+                    "description": "FECHA VALOR DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CHEQUE",
+                    "title": "CHEQUE",
+                    "description": "NÚMERO DE CHEQUE",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM-SERIE",
+                    "title": "NUM-SERIE",
+                    "description": "NÚMERO SERIAL DE LA OPERACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MINIBANCO",
+                    "title": "MINIBANCO",
+                    "description": "MINIBANCO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "REF-INTERNA",
+                    "title": "REF-INTERNA",
+                    "description": "REFERENCIA INTERNA DEL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-DESDOBLA",
+                    "title": "IND-DESDOBLA",
+                    "description": "INDICADOR DE DESDOBLA MOVIMIENTOS EN EXTRACTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-OBSERVA",
+                    "title": "IND-OBSERVA",
+                    "description": "INDICADOR DE OBSERVACIONES EN EL EXTRACTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SALDO-AUT",
+                    "title": "SALDO-AUT",
+                    "description": "SALDO CON EL QUE SE AUTORIZÓ LA OPERACIÓN",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 15.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENTIDAD-CONT",
+                    "title": "ENTIDAD-CONT",
+                    "description": "ENTIDAD CONTABLE DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-CONT",
+                    "title": "CENTRO-CONT",
+                    "description": "CENTRO CONTABLE DE LA CUENTA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRODUCTO",
+                    "title": "PRODUCTO",
+                    "description": "PRODUCTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUBPRODU",
+                    "title": "SUBPRODU",
+                    "description": "SUBPRODUCTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-FICTICIO",
+                    "title": "IND-FICTICIO",
+                    "description": "INDICADOR DE MOVIMIENTO FICTICIO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-AOM",
+                    "title": "IND-AOM",
+                    "description": "INDICADOR DE AUTOMÁTICA O MANUAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-ACT",
+                    "title": "IND-ACT",
+                    "description": "INDICADOR DE MOVIMIENTO ACTUALIZADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-ANULABLE",
+                    "title": "IND-ANULABLE",
+                    "description": "INDICADOR DE MOVIMIENTO ANULABLE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-ANUL",
+                    "title": "IND-ANUL",
+                    "description": "INDICADOR DE MOVIMIENTO ANULADO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-CAR-ABO",
+                    "title": "IND-CAR-ABO",
+                    "description": "INDICADOR DE CARGO/ABONO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-GIRO-DEP",
+                    "title": "IND-GIRO-DEP",
+                    "description": "TIPO DE CARGO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODIGO-UR",
+                    "title": "CODIGO-UR",
+                    "description": "UNIDAD DE REAJUSTABILIDAD",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-CAMBIO",
+                    "title": "TIPO-CAMBIO",
+                    "description": "TIPO DE CAMBIO UR/DIVISA",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 9.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANAL",
+                    "title": "CANAL",
+                    "description": "CANAL DE OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-CONTAB",
+                    "title": "IND-CONTAB",
+                    "description": "INDICADOR DE CONTABILIZACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-IMPTO-MIR",
+                    "title": "IND-IMPTO-MIR",
+                    "description": "INDICADOR DE IMPUESTO GENERADO POR EL MIR",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-PPAL",
+                    "title": "IND-PPAL",
+                    "description": "INDICA SI EL MOVIMIENTO ES EL PRINCIPAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRANSACCION",
+                    "title": "TRANSACCION",
+                    "description": "TRANSACCIÓN QUE HA GENERADO EL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-APLICACIÓN",
+                    "title": "COD-APLICACIÓN",
+                    "description": "CÓDIGO DE APLICACIÓN QUE GENERA EL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TERM-NIO",
+                    "title": "TERM-NIO",
+                    "description": "TERMINAL DEL NÚMERO DE IDENTIFICACIÓN DE OPERACIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-NIO",
+                    "title": "FECHA-NIO",
+                    "description": "FECHA DEL NIO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA-NIO",
+                    "title": "HORA-NIO",
+                    "description": "HORA DEL NIO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-OPER-PPAL",
+                    "title": "COD-OPER-PPAL",
+                    "description": "CÓDIGO DE LA OPERACIÓN PRINCIPAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-DESTINO-MOV",
+                    "title": "COD-DESTINO-MOV",
+                    "description": "INDICA LA CUENTA DONDE SE IMPUTÓ EL MOVIMIENTO A LOS FINES DEL IMPUESTO A LAS CUENTAS CORRIENTES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-TRIBUTA",
+                    "title": "COD-TRIBUTA",
+                    "description": "INDICADOR DE SI CORRESPONDE TRIBUTAR O NO POR EL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "INC-ACRED-SUELDO",
+                    "title": "INC-ACRED-SUELDO",
+                    "description": "INDICA SI EL MOVIMIENTO CORRESPONDE A UNA ACREDITACIÓN DE HABERES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUMER-RET",
+                    "title": "NUMER-RET",
+                    "description": "NÚMERO DE LA RETENCIÓN VINCULADA AL MOVIMIENTO",
+                    "type": "NUMÉRICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD-APLIC-CONTAB",
+                    "title": "COD-APLIC-CONTAB",
+                    "description": "APLICACIÓN CONTRA LA CUAL DEBE CUADRAR EL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-ORIGEN",
+                    "title": "CENTRO-ORIGEN",
+                    "description": "CENTRO QUE ORIGINA LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "USERID-AUT",
+                    "title": "USERID-AUT",
+                    "description": "USUARIO QUE AUTORIZA EL DÉBITO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-MOV-GENUINO",
+                    "title": "IND-MOV-GENUINO",
+                    "description": "INDICADOR PARA DIFERENCIAR LOS MOVIMIENTOS DE AJUSTE INGRESADO EN LA SUCURSAL DE LOS MOVIMIENTOS GENUINOS DEL CLIENTE",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ENTIDAD-UMO",
+                    "title": "ENTIDAD-UMO",
+                    "description": "ENTIDAD ORIGEN DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CENTRO-UMO",
+                    "title": "CENTRO-UMO",
+                    "description": "CENTRO ORIGEN DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "USERID-UMO",
+                    "title": "USERID-UMO",
+                    "description": "USUARIO ORIGEN DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAJERO-UMO",
+                    "title": "CAJERO-UMO",
+                    "description": "CAJERO ORIGEN DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NETNAME-UMO",
+                    "title": "NETNAME-UMO",
+                    "description": "TERMINAL ORIGEN DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIMEST-UMO",
+                    "title": "TIMEST-UMO",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DISCRIMINANTE",
+                    "title": "DISCRIMINANTE",
+                    "description": "DISCRIMINANTE DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DIV-CONTRARIA",
+                    "title": "DIV-CONTRARIA",
+                    "description": "DIVISA CONTRARIA DEL MOVIMIENTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

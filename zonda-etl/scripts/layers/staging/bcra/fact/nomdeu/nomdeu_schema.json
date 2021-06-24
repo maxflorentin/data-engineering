@@ -1,0 +1,30 @@
+{
+  "file": "nomdeu",
+  "location": "/santander/bi-corp/landing/bcra/fact/nomdeu/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/nomdeu",
+  "createTable": "bi_corp_staging.bcra_nomdeu",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "numero_identificacion",
+          "type": "string",
+          "width": 11
+        },
+        {
+          "name": "denominacion",
+          "type": "string",
+          "width":  55
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

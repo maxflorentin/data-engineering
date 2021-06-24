@@ -1,0 +1,35 @@
+{
+  "file": "valores_cuotas_partes_schema",
+  "location": "/santander/bi-corp/landing/fm/fact/valores_cuotas_partes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/fact/valores_cuotas_partes",
+  "createTable": "bi_corp_staging.fm_valores_cuotas_partes",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "fund_code",
+    "type": "string"
+  },
+    {
+      "name": "info_date",
+      "type": "string"
+    },
+    {
+      "name": "share_value",
+      "type": "string"
+    },
+    {
+      "name": "patrimony",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

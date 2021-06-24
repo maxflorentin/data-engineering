@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.bt_gec_ofertas_presentadas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_gec_oferta","cod_per_nup","ds_gec_accion","ts_gec_presentacion","ds_gec_tipo_oferta"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_gec_oferta","cod_per_nup","ds_gec_accion","ts_gec_presentacion","ds_gec_tipo_oferta"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_gec_presentacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "threshold": 0.01
+    }
+  ]
+}

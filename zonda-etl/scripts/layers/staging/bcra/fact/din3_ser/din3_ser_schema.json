@@ -1,0 +1,34 @@
+{
+  "file": "din3_ser",
+  "location": "/santander/bi-corp/landing/bcra/fact/din3_ser/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/din3_ser",
+  "createTable": "bi_corp_staging.bcra_din3_ser",
+  "header": false,
+  "parquetFiles": 1,
+  "extension": "csv",
+  "delimiter": ";",
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "din3_cod_serie",
+          "type": "string"
+        },
+        {
+          "name": "din3_fecha_serie",
+          "type": "string"
+        },
+        {
+          "name": "din3_valor_serie",
+          "type": "string"
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

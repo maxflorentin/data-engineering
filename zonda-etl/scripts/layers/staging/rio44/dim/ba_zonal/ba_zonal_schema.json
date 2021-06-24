@@ -1,0 +1,47 @@
+{
+    "file": "ba_zonal_schema",
+    "createTable": "bi_corp_staging.rio44_ba_zonal",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_zonal/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_zonal",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_zona",
+            "type": "string"
+        },
+        {
+            "name": "descri_zonal",
+            "type": "string"
+        },
+        {
+            "name": "area",
+            "type": "string"
+        },
+        {
+            "name": "zona_nro",
+            "type": "string"
+        },
+        {
+            "name": "zona_nombre",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

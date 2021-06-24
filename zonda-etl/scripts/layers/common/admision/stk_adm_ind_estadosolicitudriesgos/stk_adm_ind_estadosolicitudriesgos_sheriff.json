@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_ind_estadosolicitudriesgos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_suc_sucursal","cod_adm_nrosolicitud","cod_adm_legajo","ts_adm_fecha","ts_adm_hora","cod_adm_estado","ds_adm_estado","cod_adm_sector","ds_adm_secestado"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_suc_sucursal","cod_adm_nrosolicitud","cod_adm_legajo","ts_adm_fecha","ts_adm_hora","cod_adm_estado","ds_adm_estado","cod_adm_sector","cod_adm_usuario","ds_adm_secestado"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecha","dt_adm_feciniresol","dt_adm_fecfinresol"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

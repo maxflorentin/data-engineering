@@ -1,0 +1,26 @@
+{
+    "tables": [
+        {
+            "serverAka": "watson_rio32",
+            "serverConfig": "dblxorabcatel01.ar.bsch",
+            "database": "TEL",
+            "table": "TMP_INTERFACE_DIALOGOREPRO",
+            "table_type": "fact",
+            "environment": "RIO32",
+            "landing_path": "/santander/bi-corp/landing/watson/fact/web",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT HEADER,ID,FECHA,CANAL,NUP,MORA_TEMPRANA,MORA_TARDIA,TRANSFERIDO_HUMANO,INTENT_MORA,JSESSIONID,PDFPSUELDO,CONVERSATIONID,PREGUNTA,RESPUESTA,FINAL_INTENT,INTENT,CONFIDENCE_INTENT,ASK_ANSWER_WAS_USEFUL,POSSIBLEQUESTIONS,SUGGESTIONTOPICS,'OPTIONS',WASPOSSIBLEQUESTIONS,WAS_SUGGESTION_TOPICS,WASOPTIONS,FECHAINICIO,FECHAFIN,LIST_INTENT,FINALINTENT_AUX1,CONFIDENCEFINALINTENT_AUX1,FINALINTENT_AUX2,CONFIDENCEFINALINTENT_AUX2,TELEFONO,ESPAS,ID_GEC,'FROM',INTECIONDERIVACION,ASESORDISPONIBLE,OFRECIOMAIL,FUERAHORARIO FROM {database}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/rio32/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '~' --num-mappers 1 --password '{password}' --verbose\n"
+        },
+        {
+            "serverAka": "watson_rio143",
+            "serverConfig": "dblxdbcsrv01",
+            "database": "MCANAL",
+            "table": "DIALOGOS_WATSON",
+            "table_type": "fact",
+            "environment": "RIO143",
+            "landing_path": "/santander/bi-corp/landing/watson/fact/chat",
+            "partition_field": "FECHAHORA",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT CANAL,JSESSIONID,FECHAHORA,EMISORTIPO,EMISORNOMRBRE,MESSAGE,INTENT,CONFIDENCE,ASK_ANSWER_WAS_USEFUL,POSSIBLEQUESTIONS,SUGGESTION_TOPICS,'OPTIONS',NUPCLIENTE,IDGENESYS,TRANSFERIDOAHUMANO,FUEPOSSIBLEQUESTIONS,FUESUGGESTION_TOPICS,FUEOPTIONS FROM {database}.{table} WHERE TO_CHAR({partition_field},'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS \" --bindir '/aplicaciones/bi/zonda/sqoop/rio143/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by ';' --num-mappers 1 --password '{password}' --verbose\n"
+        }
+    ]
+}

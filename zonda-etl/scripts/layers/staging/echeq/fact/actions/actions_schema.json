@@ -1,0 +1,66 @@
+{
+        "file": "actions_schema",
+        "location": "/santander/bi-corp/landing/echeq/fact/actions/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/echeq/fact/actions",
+        "tempDirectory": "/santander/bi-corp/temp/echeq",
+        "extension": "csv",
+        "delimiter": ";",
+        "header": false,
+        "parquetFiles": 6,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "operation_id",
+                        "type": "string"
+                },
+                {
+                        "name": "cheque_id",
+                        "type": "string"
+                },
+                {
+                        "name": "operation",
+                        "type": "string"
+                },
+                {
+                        "name": "status",
+                        "type": "string"
+                },
+                {
+                        "name": "target",
+                        "type": "string"
+                },
+                {
+                        "name": "posted",
+                        "type": "string",
+                        "partitionColumn": true,
+                        "partitionOrder": 1
+                },
+                {
+                        "name": "executed",
+                        "type": "string"
+                },
+                {
+                        "name": "msg",
+                        "type": "string"
+                },
+                {
+                        "name": "req",
+                        "type": "string"
+                },
+                {
+                        "name": "res",
+                        "type": "string"
+                },
+                {
+                        "name": "cuit",
+                        "type": "string"
+                },
+                {
+                        "name": "emisor",
+                        "type": "string"
+                },
+                {
+                        "name": "receptor",
+                        "type": "string"
+                }
+        ]
+}

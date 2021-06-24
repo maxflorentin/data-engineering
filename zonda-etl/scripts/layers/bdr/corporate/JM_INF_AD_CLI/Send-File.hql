@@ -1,0 +1,1 @@
+select DISTINCT CONCAT(h0780_feoperac,h0780_s1emp,h0780_idnumcli,h0780_tipinfrl,h0780_tipinfrg,h0780_importh,h0780_coddiv,h0780_fechaact,h0780_fecultmo,h0780_cuotpres,h0780_ingclien,h0780_num_mtos,h0780_fecingre,h0780_rdeuding,h0780_tip_empr,h0780_tot_ingr,h0780_tot_deuf,h0780_flgacsld) AS line from bi_corp_bdr.jm_inf_ad_cli WHERE partition_date = '$month_partition_bdr';

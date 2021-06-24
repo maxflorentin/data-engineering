@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "WATSON",
+      "type": "FACT",
+      "name": "CHAT",
+      "filePrefix": "DIALOGOS_WATSON-"
+    },
+    {
+      "source": "WATSON",
+      "type": "FACT",
+      "name": "WEB",
+      "filePrefix": "INT_DIALOGOCONWAT_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Watson-Daily"
+  }
+}

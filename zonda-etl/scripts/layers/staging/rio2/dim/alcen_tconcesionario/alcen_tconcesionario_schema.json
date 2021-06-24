@@ -1,0 +1,43 @@
+{
+  "file": "tconcesionario_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/tconcesionario/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/tconcesionario",
+  "createTable": "bi_corp_staging.alcen_tconcesionario",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+             {
+                    "name": "cod_concesionario",
+                    "type": "string"
+                },
+{
+                    "name": "nom_concesionario",
+                    "type": "string"
+                },
+{
+                    "name": "fec_aprobacion",
+                    "type": "string"
+                },
+{
+                    "name": "mar_resol_comite",
+                    "type": "string"
+                },
+{
+                    "name": "mar_tienda",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

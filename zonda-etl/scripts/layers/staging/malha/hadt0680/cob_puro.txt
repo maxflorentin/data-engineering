@@ -1,0 +1,37 @@
+      ******************************************************************00000010
+      * DCLGEN TABLE(OPIGD1.HADV0680)                                  *00000020
+      *        LIBRARY(OPI.HAF.DCLGEN(HAGV0680))                       *00000030
+      *        ACTION(REPLACE)                                         *00000040
+      *        APOST                                                   *00000050
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *00000060
+      ******************************************************************00000070
+           EXEC SQL DECLARE HADV0680 TABLE                              00000080
+           ( EMPRESA                        DECIMAL(4, 0) NOT NULL,     00000090
+             HAPLAN                         CHAR(3) NOT NULL,
+             NUCTABCRA                      CHAR(15) NOT NULL,          00000110
+             TICTA                          CHAR(1) NOT NULL,           00000150
+             TICTAORD                       CHAR(1) NOT NULL,           00000160
+             TOTALCON                       CHAR(1) NOT NULL            00000170
+           ) END-EXEC.                                                  00001090
+      ******************************************************************00001100
+      * COBOL DECLARATION FOR TABLE OPIGD1.HADV0680                    *00001110
+      ******************************************************************00001120
+       01  HAGV0680.                                                    00001130
+           10 EMPRESA              PIC S9999V USAGE COMP-3.             00001140
+           10 HAPLAN               PIC X(3).                            00001160
+           10 NUCTABCRA            PIC X(15).                           00001160
+           10 TICTA                PIC X(1).                            00001180
+           10 TICTAORD             PIC X(1).                            00001190
+           10 TOTALCON             PIC X(1).                            00001210
+      ******************************************************************00002140
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS  6      *00002150
+      ******************************************************************00002160
+       01  IND-HAGV0680.                                                00002170
+           10 IND-EMPRESA              PIC S9999V USAGE COMP.           00002180
+           10 IND-HAPLAN               PIC S9999V USAGE COMP.           00002190
+           10 IND-NUCTABCRA            PIC S9999V USAGE COMP.           00002210
+           10 IND-TICTA                PIC S9999V USAGE COMP.           00002220
+           10 IND-TICTAORD             PIC S9999V USAGE COMP.           00002230
+           10 IND-TOTALCON             PIC S9999V USAGE COMP.           00002240
+       01  IND-HAGV0680-W REDEFINES IND-HAGV0680.                       00003180
+           10 HAGV0680-IND-OCC     PIC S9(4) COMP OCCURS 6.             00003190

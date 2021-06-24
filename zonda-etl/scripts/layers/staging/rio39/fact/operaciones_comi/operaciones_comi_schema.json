@@ -1,0 +1,92 @@
+{
+     "file": "operaciones_comi_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/operaciones_comi/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/operaciones_comi",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [		 {
+                     "name": "cod_ops",
+                     "type": "string"
+             },
+{
+                     "name": "secuencia",
+                     "type": "string"
+             },
+{
+                     "name": "comnum",
+                     "type": "string"
+             },
+{
+                     "name": "carga_fecha",
+                     "type": "string"
+             },
+{
+                     "name": "estado",
+                     "type": "string"
+             },
+{
+                     "name": "estado_tmp",
+                     "type": "string"
+             },
+{
+                     "name": "cuit",
+                     "type": "string"
+             },
+{
+                     "name": "com_tipo",
+                     "type": "string"
+             },
+{
+                     "name": "monto_oper",
+                     "type": "string"
+             },
+{
+                     "name": "cotizacion",
+                     "type": "string"
+             },
+{
+                     "name": "usuario",
+                     "type": "string"
+             },
+{
+                     "name": "cuenta",
+                     "type": "string"
+             },
+{
+                     "name": "monto_comi_usd",
+                     "type": "string"
+             },
+{
+                     "name": "monto_comi_ars",
+                     "type": "string"
+             },
+{
+                     "name": "swift_usd",
+                     "type": "string"
+             },
+{
+                     "name": "swift_ars",
+                     "type": "string"
+             },
+{
+                     "name": "idboleto",
+                     "type": "string"
+             },
+{
+                     "name": "excepto_our",
+                     "type": "string"
+             }
+
+	 ],
+ "mirrorColumns": [{
+  "name": "partition_date",
+  "target": "carga_fecha",
+  "type": "date",
+  "partitionColumn": true,
+  "partitionOrder": 1}]
+}

@@ -1,0 +1,32 @@
+{
+	"file": "exa_dim_cons_estab_rubro",
+	"location": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_estab_rubro/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_cons_estab_rubro",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_cons_estab_rubro",
+	"createTable": "bi_corp_staging.exa_dim_cons_estab_rubro",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "ID",
+			"type":"string"
+		},
+{
+			"name": "ID_ESTABLECIMIENTO",
+			"type":"string"
+		},
+{
+			"name": "ID_RUBRO",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

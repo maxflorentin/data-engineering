@@ -1,0 +1,50 @@
+name: BDR_LOAD_Baremos
+description: 'Load data from BDR baremos'
+owner: BI-Corp
+active: true
+start_date: '2020-09-04'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: CopyToBdrBaremoLocal
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -cp -f /santander/bi-corp/landing/manual/baremos/local/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_Baremos') }}/baremos_local.csv /santander/bi-corp/bdr/baremos_local/"
+  - name: CopyToBdrBaremoGlobal
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -cp -f /santander/bi-corp/landing/manual/baremos/global/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='BDR_LOAD_Baremos') }}/map_baremos_global_local.csv /santander/bi-corp/bdr/map_baremos_global_local/"
+  - name: Repair_Table_BaremoLocal
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/baremos/local/ETLV-Repair-partitions-Table.hql' 
+  - name: Repair_Table_BaremoGlobal
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/manual/baremos/global/ETLV-Repair-partitions-Table.hql'               
+dependencies:
+  CopyToBdrBaremoLocal: Repair_Table_BaremoLocal
+  CopyToBdrBaremoGlobal: Repair_Table_BaremoGlobal
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar]

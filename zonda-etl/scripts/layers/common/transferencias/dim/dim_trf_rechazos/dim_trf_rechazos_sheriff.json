@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.dim_trf_rechazos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_trf_rechazo", "cod_trf_origen"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_trf_rechazo", "cod_trf_origen"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_trf_fecha_ult_modif"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

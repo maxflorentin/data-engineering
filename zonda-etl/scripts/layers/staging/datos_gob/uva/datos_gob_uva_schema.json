@@ -1,0 +1,37 @@
+{
+  "file": "datos_gob_uva",
+  "location": "/santander/bi-corp/landing/datos_gob/uva/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/datos_gob/uva",
+  "createTable": "bi_corp_staging.datos_gob_uva",
+  "header": true,
+  "extension": "csv",
+  "delimiter": ",",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "cer",
+      "type": "string"
+    },
+    {
+      "name": "uva",
+      "type": "string"
+    },
+    {
+      "name": "uvi",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

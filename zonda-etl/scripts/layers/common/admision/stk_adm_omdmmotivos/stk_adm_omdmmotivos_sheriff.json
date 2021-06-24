@@ -1,0 +1,17 @@
+{
+  "table": "bi_corp_common.stk_adm_omdmmotivos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tipotramite","cod_adm_tramite","cod_adm_index","ds_adm_desresult","ds_adm_desstatus","ds_adm_desnombre","ds_adm_destipo","cod_adm_rank","cod_adm_decision","cod_adm_motivo","ts_adm_fecproceso"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecproceso"],
+      "pattern": "yyyy-MM-dd HH:mm:ss",
+      "threshold": 0.00
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+name: LOAD_STG_ATRC-Daily
+description: 'Load data from Atrc - transferencias - source to STG (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 * * *'
+start_date: '2020-10-25'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_ATRC_TRANSFERENCIAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_TRANSFERENCIAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/fact/atrc_transferencias/atrc_transferencias_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_transferencias_schema.json']
+  - name: STAGING_ATRC_CAMARAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_CAMARAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_camaras/atrc_camaras_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_camaras_schema.json']
+  - name: STAGING_ATRC_CANALES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_CANALES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_canales/atrc_canales_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_canales_schema.json']
+  - name: STAGING_ATRC_CONCEPTOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_CONCEPTOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_conceptos/atrc_conceptos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_conceptos_schema.json']
+  - name: STAGING_ATRC_ENTIDADES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_ENTIDADES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_entidades/atrc_entidades_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_entidades_schema.json']
+  - name: STAGING_ATRC_PRODUCTOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_PRODUCTOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_productos/atrc_productos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_productos_schema.json']
+  - name: STAGING_ATRC_RECHAZOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ATRC_RECHAZOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/atrc/dim/atrc_rechazos/atrc_rechazos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ATRC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['atrc_rechazos_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msuliano@santandertecnologia.com.ar]

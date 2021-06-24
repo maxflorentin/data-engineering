@@ -1,0 +1,128 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "malpe_pedt063",
+      "title": "Código AFIP",
+      "schema": "bi_corp_staging",
+      "source": "MALPE",
+      "query": "",
+      "type": "fact",
+      "description": "Código AFIP",
+      "columns": [
+        {
+          "name": "PECDGENT",
+          "title": "PECDGENT",
+          "description": "Código de la entidad",
+          "type": "A ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PENUMPER",
+          "title": "PENUMPER",
+          "description": "Número de cliente",
+          "type": "A",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PECODAFIP",
+          "title": "PECODAFIP",
+          "description": "Código AFIP",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEFECALT",
+          "title": "PEFECALT",
+          "description": "Fecha de alta del registro",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUALT",
+          "title": "PEUSUALT",
+          "description": "Usuario de alta",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUMOD",
+          "title": "PEUSUMOD",
+          "description": "Usuario de ultima modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PETERMOD",
+          "title": "PETERMOD",
+          "description": "Número de terminal ultima modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESUCMOD",
+          "title": "PESUCMOD",
+          "description": "Sucursal ultima modificación del registro",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEHSTAMP",
+          "title": "PEHSTAMP",
+          "description": "Timestamp ultima modificación del registro",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

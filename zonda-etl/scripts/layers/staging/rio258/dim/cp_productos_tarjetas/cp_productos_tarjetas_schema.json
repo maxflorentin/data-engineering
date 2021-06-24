@@ -1,0 +1,39 @@
+{
+	"file": "cp_productos_tarjetas_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_productos_tarjetas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_productos_tarjetas",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_productos_tarjetas",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_prod_tarjeta",
+			"type": "string"
+		},
+{
+			"name": "cod_prod",
+			"type": "string"
+		},
+{
+			"name": "desc_prod",
+			"type": "string"
+		},
+{
+			"name": "cod_origen",
+			"type": "string"
+		},
+{
+			"name": "cod_color",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

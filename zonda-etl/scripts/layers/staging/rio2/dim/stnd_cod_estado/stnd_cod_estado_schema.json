@@ -1,0 +1,71 @@
+{
+  "file": "stnd_cod_estado_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/stnd_cod_estado/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/stnd_cod_estado",
+  "createTable": "bi_corp_staging.sge_stnd_cod_estado",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+            {
+                    "name": "cod_tramite",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_accion",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_origen",
+                    "type": "string"
+                },
+{
+                    "name": "des_estado",
+                    "type": "string"
+                },
+{
+                    "name": "des_sge",
+                    "type": "string"
+                },
+{
+                    "name": "des_srs",
+                    "type": "string"
+                },
+{
+                    "name": "des_datos_adic",
+                    "type": "string"
+                },
+{
+                    "name": "mar_contador",
+                    "type": "string"
+                },
+{
+                    "name": "mar_pisa_paq",
+                    "type": "string"
+                },
+{
+                    "name": "cant_dias",
+                    "type": "string"
+                },
+{
+                    "name": "cant_dia",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,185 @@
+{
+	"file": "relacional_schema",
+	"location": "/santander/bi-corp/landing/rio61/fact/relacional/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/relacional",
+	"createTable": "bi_corp_staging.rio61_nps_relacional",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "id_respuesta",
+			"type": "string"
+		},
+		{
+			"name": "fecha_encuesta",
+			"type": "string"
+		},
+		{
+			"name": "tipo_doc",
+			"type": "string"
+		},
+		{
+			"name": "nro_doc",
+			"type": "string"
+		},
+		{
+			"name": "nombre",
+			"type": "string"
+		},
+		{
+			"name": "apellido",
+			"type": "string"
+		},
+		{
+			"name": "color",
+			"type": "string"
+		},
+		{
+			"name": "renta",
+			"type": "string"
+		},
+		{
+			"name": "mejor_producto",
+			"type": "string"
+		},
+		{
+			"name": "prefijo_1",
+			"type": "string"
+		},
+		{
+			"name": "telefono_fijo1",
+			"type": "string"
+		},
+		{
+			"name": "prefijo_2",
+			"type": "string"
+		},
+		{
+			"name": "telefono_fijo2",
+			"type": "string"
+		},
+		{
+			"name": "edad",
+			"type": "string"
+		},
+		{
+			"name": "sexo",
+			"type": "string"
+		},
+		{
+			"name": "antiguedad_en_meses",
+			"type": "string"
+		},
+		{
+			"name": "direcc_correo_electronico",
+			"type": "string"
+		},
+		{
+			"name": "region",
+			"type": "string"
+		},
+		{
+			"name": "region_centro_alta",
+			"type": "string"
+		},
+		{
+			"name": "cd_sucursal_cliente",
+			"type": "string"
+		},
+		{
+			"name": "fecha",
+			"type": "string"
+		},
+		{
+			"name": "nps_ban_rel",
+			"type": "string"
+		},
+		{
+			"name": "com_nps_rel",
+			"type": "string"
+		},
+		{
+			"name": "com_detract",
+			"type": "string"
+		},
+		{
+			"name": "com_neutros",
+			"type": "string"
+		},
+		{
+			"name": "com_promotores",
+			"type": "string"
+		},
+		{
+			"name": "etiquetas",
+			"type": "string"
+		},
+		{
+			"name": "nup",
+			"type": "string"
+		},
+		{
+			"name": "telefono_celular1",
+			"type": "string"
+		},
+		{
+			"name": "telefono_celular2",
+			"type": "string"
+		},
+		{
+			"name": "desc_mej_prod",
+			"type": "string"
+		},
+		{
+			"name": "ind_caja",
+			"type": "string"
+		},
+		{
+			"name": "ind_plat",
+			"type": "string"
+		},
+		{
+			"name": "ind_tas",
+			"type": "string"
+		},
+		{
+			"name": "ind_atm",
+			"type": "string"
+		},
+		{
+			"name": "ind_cc",
+			"type": "string"
+		},
+		{
+			"name": "ind_olb",
+			"type": "string"
+		},
+		{
+			"name": "ind_mob",
+			"type": "string"
+		},
+		{
+			"name": "marca_ges_remoto",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

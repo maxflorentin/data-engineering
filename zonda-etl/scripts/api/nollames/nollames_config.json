@@ -1,0 +1,13 @@
+{ "name": "nollames",
+  "partition_value": "${partition_date}",
+  "tables": [
+             {
+                "schema": "bi_corp_common",
+                "table": "nrm_normal_telefonos",
+                "destination_path": "/santander/bi-corp/inbound/nollames/",
+                "fields": "inter_cif_id, CONCAT(xprefijo_interurbano, xnumero_telefono) AS numero, partition_date",
+                "new_table_name": "nrm_normal_telefonos_nollames",
+                "partition_date_origin": "partition_date"
+            }
+    ]
+}

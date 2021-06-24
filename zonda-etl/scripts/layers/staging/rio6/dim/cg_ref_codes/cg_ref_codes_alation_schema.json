@@ -1,0 +1,93 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cg_ref_codes",
+            "title": "Listas de Valores del sistema",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Listas de Valores del sistema",
+            "columns": [
+                {
+                    "name": "RV_LOW_VALUE",
+                    "title": "RV_LOW_VALUE",
+                    "description": "Campo parametrico",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 240.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RV_HIGH_VALUE",
+                    "title": "RV_HIGH_VALUE",
+                    "description": "Campo parametrico",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 240.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RV_ABBREVIATION",
+                    "title": "RV_ABBREVIATION",
+                    "description": "Campo parametrico",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 500.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RV_DOMAIN",
+                    "title": "RV_DOMAIN",
+                    "description": "Nombre de Lista de valores",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RV_MEANING",
+                    "title": "RV_MEANING",
+                    "description": "Campo parametrico",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 240.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RV_TYPE",
+                    "title": "RV_TYPE",
+                    "description": "Campo parametrico",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

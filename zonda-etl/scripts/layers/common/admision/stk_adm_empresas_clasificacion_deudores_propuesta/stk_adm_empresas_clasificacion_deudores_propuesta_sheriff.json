@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_clasificacion_deudores_propuesta",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_cladeu"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_cladeu","cod_adm_nro_prop","cod_adm_clasif_vigente","cod_adm_clasif_definitiva"],
+      "threshold": 0.00
+    }
+  ]
+}
+

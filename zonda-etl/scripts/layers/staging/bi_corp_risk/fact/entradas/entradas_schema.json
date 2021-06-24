@@ -1,0 +1,98 @@
+{
+	"file": "entradas_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/entradas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/entradas",
+	"tempDirectory": "/santander/bi-corp/temp/entradas",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "periodo",
+			"type": "double"
+		},
+		{
+			"name": "fecha_ejecucion_garra",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+		{
+			"name": "nup",
+			"type": "double"
+		},
+		{
+			"name": "sucursal",
+			"type": "double"
+		},
+		{
+			"name": "nro_cuenta",
+			"type": "double"
+		},
+		{
+			"name": "codigo_producto",
+			"type": "string"
+		},
+		{
+			"name": "codigo_subproducto",
+			"type": "string"
+		},
+		{
+			"name": "divisa",
+			"type": "string"
+		},
+		{
+			"name": "fecha_situacion_irregular",
+			"type": "string"
+		},
+		{
+			"name": "dias_atraso",
+			"type": "int"
+		},
+		{
+			"name": "marca",
+			"type": "string"
+		},
+		{
+			"name": "submarca",
+			"type": "string"
+		},
+		{
+			"name": "importe_entrada",
+			"type": "double"
+		},
+		{
+			"name": "tipo_movimiento",
+			"type": "string"
+		},
+		{
+			"name": "codigo_segmento",
+			"type": "string"
+		},
+		{
+			"name": "descripcion_segmento",
+			"type": "string"
+		},
+		{
+			"name": "detalle_renta",
+			"type": "string"
+		},
+		{
+			"name": "tipo_producto",
+			"type": "string"
+		},
+		{
+			"name": "descripcion_producto",
+			"type": "string"
+		},
+		{
+			"name": "tipo_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "contrato_citi",
+			"type": "boolean"
+		}
+	]
+}

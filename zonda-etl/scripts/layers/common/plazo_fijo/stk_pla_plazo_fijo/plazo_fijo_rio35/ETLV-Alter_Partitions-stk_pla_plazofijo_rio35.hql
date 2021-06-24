@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_common.stk_pla_plazofijo_rio35 ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

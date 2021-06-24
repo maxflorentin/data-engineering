@@ -1,0 +1,157 @@
+{
+  "file": "bgdtmpa_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/bgdtmpa_hist/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtmpa/consolidated",
+  "createTable": "bi_corp_staging.malbgc_bgdtmpa",
+  "tempDirectory": "/santander/bi-corp/temp/bgdtmpa",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 5,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "mpa_entidad",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_centro_alta",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_paquete",
+      "width": 12,
+      "type": "string"
+    },
+    {
+      "name": "mpa_producto_paq",
+      "width": 2,
+      "type": "string"
+    },
+    {
+      "name": "mpa_subprodu_paq",
+      "width": 2,
+      "type": "string"
+    },
+    {
+      "name": "mpa_entidad_inv",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_centro_inv",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_cuenta_inv",
+      "width": 12,
+      "type": "string"
+    },
+    {
+      "name": "mpa_entidad_contab",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_centro_contab",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_cod_plan",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_indesta",
+      "width": 1,
+      "type": "string"
+    },
+    {
+      "name": "mpa_cod_sop_ext",
+      "width": 1,
+      "type": "string"
+    },
+    {
+      "name": "mpa_pco_ecu_fhpr",
+      "width": 10,
+      "type": "string"
+    },
+    {
+      "name": "mpa_fecha_alta",
+      "width": 10,
+      "type": "string"
+    },
+    {
+      "name": "mpa_fecha_cancel",
+      "width": 10,
+      "type": "string"
+    },
+    {
+      "name": "mpa_fecha_upgrade",
+      "width": 10,
+      "type": "string"
+    },
+    {
+      "name": "mpa_fecha_downgr",
+      "width": 10,
+      "type": "string"
+    },
+    {
+      "name": "mpa_ind_inhab_sbrg",
+      "width": 1,
+      "type": "string"
+    },
+    {
+      "name": "mpa_cod_envio_mov",
+      "width": 1,
+      "type": "string"
+    },
+    {
+      "name": "mpa_calpar_envio_mov",
+      "width": 2,
+      "type": "string"
+    },
+    {
+      "name": "mpa_ordpar_envio_mov",
+      "width": 3,
+      "type": "integer"
+    },
+    {
+      "name": "mpa_entidad_umo",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_centro_umo",
+      "width": 4,
+      "type": "string"
+    },
+    {
+      "name": "mpa_userid_umo",
+      "width": 8,
+      "type": "string"
+    },
+    {
+      "name": "mpa_netname_umo",
+      "width": 8,
+      "type": "string"
+    },
+    {
+      "name": "mpa_timest_umo",
+      "width": 26,
+      "type": "string"
+    }
+  ],
+   "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

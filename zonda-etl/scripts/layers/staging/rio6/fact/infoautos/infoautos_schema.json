@@ -1,0 +1,56 @@
+{
+  "file": "infoautos_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/infoautos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/infoautos",
+  "createTable": "bi_corp_staging.infoautos",
+  "extension":"csv",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":",",
+  "columns": [
+    {
+      "name":"cd_marca",
+      "type": "string"
+    },
+    {
+      "name":"desc_marca",
+      "type":"string"
+    },
+    {
+      "name":"cd_modelo",
+      "type":"int"
+    },
+    {
+      "name":"desc_modelo",
+      "type":"int"
+    },
+    {
+      "name":"tipo_veh",
+      "type":"string"
+    },
+    {
+      "name":"importado",
+      "type":"string"
+    },
+    {
+      "name":"anio",
+      "type":"string"
+    },
+    {
+      "name":"valor",
+      "type":"string"
+    },
+    {
+      "name":"fe_carga",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

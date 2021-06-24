@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308562"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio15_nb_submodulos",
+      "title": "Descripciones de los submodulos",
+      "schema": "bi_corp_staging",
+      "source": "RIOPIF",
+      "query": "",
+      "type": "DIM",
+      "description": "Descripciones de los submodulos",
+      "columns": [
+        {
+          "name": "SUBMODULO",
+          "title": "SUBMODULO",
+          "description": "Id de submodulo (Relacion Tabla NB_DESC_TRX)",
+          "type": "NUMBER(8)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Descripcion del ID",
+          "type": "VARCHAR2(60 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 60.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

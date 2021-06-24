@@ -1,0 +1,158 @@
+{
+  "file": "mercados_prop_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/mercados_prop/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/mercados_prop",
+  "createTable": "bi_corp_staging.sge_mercados_prop",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "nro_prop",
+      "type": "string"
+    },
+    {
+      "name": "tpo_cliente",
+      "type": "string"
+    },
+    {
+      "name": "gdo_cliente",
+      "type": "string"
+    },
+    {
+      "name": "antig_cliente",
+      "type": "string"
+    },
+    {
+      "name": "mar_dentro_radio",
+      "type": "string"
+    },
+    {
+      "name": "des_posicion",
+      "type": "string"
+    },
+    {
+      "name": "mar_visitado",
+      "type": "string"
+    },
+    {
+      "name": "fec_ultima_visita",
+      "type": "string"
+    },
+    {
+      "name": "mar_marco_visita",
+      "type": "string"
+    },
+    {
+      "name": "obs_marco_visita",
+      "type": "string"
+    },
+    {
+      "name": "can_empleados",
+      "type": "string"
+    },
+    {
+      "name": "can_clientes",
+      "type": "string"
+    },
+    {
+      "name": "porc_ventas_credit",
+      "type": "string"
+    },
+    {
+      "name": "mar_datos_gravados",
+      "type": "string"
+    },
+    {
+      "name": "antig_socios",
+      "type": "string"
+    },
+    {
+      "name": "mar_aval",
+      "type": "string"
+    },
+    {
+      "name": "mar_otros_negocios",
+      "type": "string"
+    },
+    {
+      "name": "obs_otros_negocios",
+      "type": "string"
+    },
+    {
+      "name": "des_funcionamiento",
+      "type": "string"
+    },
+    {
+      "name": "mar_gcia_distinta",
+      "type": "string"
+    },
+    {
+      "name": "cod_usu_alta",
+      "type": "string"
+    },
+    {
+      "name": "fec_alta",
+      "type": "string"
+    },
+    {
+      "name": "cod_usu_mod",
+      "type": "string"
+    },
+    {
+      "name": "fec_mod",
+      "type": "string"
+    },
+    {
+      "name": "des_producto1",
+      "type": "string"
+    },
+    {
+      "name": "des_producto2",
+      "type": "string"
+    },
+    {
+      "name": "des_producto3",
+      "type": "string"
+    },
+    {
+      "name": "porc_producto1",
+      "type": "string"
+    },
+    {
+      "name": "porc_producto2",
+      "type": "string"
+    },
+    {
+      "name": "porc_producto3",
+      "type": "string"
+    },
+    {
+      "name": "obs_datos_gravados",
+      "type": "string"
+    },
+    {
+      "name": "mar_deuda",
+      "type": "string"
+    },
+    {
+      "name": "obs_deuda",
+      "type": "string"
+    },
+    {
+      "name": "verificado",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

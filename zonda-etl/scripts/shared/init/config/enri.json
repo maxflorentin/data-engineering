@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "ENRI",
+      "type": "fact",
+      "name": "factiva_nombres_terr_full",
+      "filePrefix": "factiva_nombres_terr_full_"
+    },
+    {
+      "source": "ENRI",
+      "type": "fact",
+      "name": "factiva_nombres",
+      "filePrefix": "factiva_nombres_terr_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_ENRI-Daily"
+  }
+}

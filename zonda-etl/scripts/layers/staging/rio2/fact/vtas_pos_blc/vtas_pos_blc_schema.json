@@ -1,0 +1,79 @@
+{
+  "file": "vtas_pos_blc_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/vtas_pos_blc/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/vtas_pos_blc",
+  "createTable": "bi_corp_staging.sge_vtas_pos_blc",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+          {
+            "name": "id",
+            "type": "string"
+          },
+          {
+            "name": "nro_prop",
+            "type": "string"
+          },
+          {
+            "name": "penumper",
+            "type": "string"
+          },
+          {
+            "name": "monto",
+            "type": "string"
+          },
+          {
+            "name": "mes",
+            "type": "string"
+          },
+          {
+            "name": "peusualt",
+            "type": "string"
+          },
+          {
+            "name": "pefecalt",
+            "type": "string"
+          },
+          {
+            "name": "peusumod",
+            "type": "string"
+          },
+          {
+            "name": "unidades_fisicas_ext",
+            "type": "string"
+          },
+          {
+              "name": "unidades_fisicas_int",
+              "type": "string"
+            },
+          {
+            "name": "monto_dolares",
+            "type": "string"
+          },
+          {
+            "name": "pefecmod",
+            "type": "string"
+          },
+          {
+            "name": "cotizacion_dolar",
+            "type": "string"
+          },
+          {
+            "name": "nro_ultima_prop",
+            "type": "string"
+          }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

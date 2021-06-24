@@ -1,0 +1,35 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO78",
+      "table": "DISPOSITIVO",
+      "table_type": "fact",
+      "environment": "LOGMB",
+      "landing_path": "/santander/bi-corp/landing/rio78/fact/dispositivo",
+      "partition_field": "FECHA",
+      "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=dispositivo -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_TERMINAL,TOKEN,ID_RUNTIME,DEVICE_ID,DEVICE_MODEL,FECHA,DEVICE_HARDWARE_ID,DEVICE_MAC_ADDRESS,DEVICE_VERSION_SO,DEVICE_OS_ID, to_char(FECHA, 'YYYY-MM-DD') as PARTITION_DATE FROM {environment}.{table} WHERE to_char(FECHA, 'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 6 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO78",
+      "table": "TRANSACCION",
+      "table_type": "dim",
+      "environment": "LOGMB",
+      "landing_path": "/santander/bi-corp/landing/rio78/dim/transaccion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=transaccion -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT TRANSACCION,replace(DESCRIPCION , '\u0096', ' ') AS DESCRIPCION,MODULO,HABILITADO FROM {environment}.{table} WHERE \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "database": "RIO78",
+      "table": "ESTADISTICAS_HISTORICO",
+      "table_type": "fact",
+      "environment": "LOGMB",
+      "landing_path": "/santander/bi-corp/landing/rio78/fact/estadisticas",
+      "partition_field": "FECHA",
+      "split_field": "MES",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=estadisticas_historico -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_ESTADISTICA,FECHA,TRANSACCION,NUP_EMPRESA,NUP_INDIVIDUO,IMPORTE_DEBITO,IMPORTE_CREDITO,MONEDA,IP,TOKEN,COMPROBANTE,CUENTA_ORIGEN,CUENTA_DESTINO ,NRO_SOLICITUD,EST_SOLICITUD, FECHA_INICIO_TRN , FECHA_FIN_TRN ,CUIT_EMPRESA,DOCUMENTO ,IMPORTE_DEBITO_USD ,SERVIDOR,COD_RES, LATITUD,LONGITUD,VERSION,EMAIL_DEST,DOCUMENTO_DEST,MONEDA_DEBITO,COTIZACION,EMPSERV,ID_TERMINAL,to_char(FECHA ,'YYYY-MM-DD') AS PARTITION_DATE , MES  FROM {environment}.{table} WHERE to_char(FECHA ,'YYYY-MM-DD') ='{partition_date}'AND extract(year FROM FECHA)= SUBSTR('{partition_date}',1,4 ) AND EXTRACT(MONTH FROM FECHA) = SUBSTR('{partition_date}',6,2 ) AND EXTRACT(day FROM FECHA) = SUBSTR('{partition_date}',9,2 ) AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/estadisticas' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 10 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    }
+  ]
+}

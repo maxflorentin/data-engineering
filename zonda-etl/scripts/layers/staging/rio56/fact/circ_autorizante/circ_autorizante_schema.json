@@ -1,0 +1,85 @@
+{
+    "file": "circ_autorizante",
+    "location": "/santander/bi-corp/landing/rio56/fact/circ_autorizante/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/fact/circ_autorizante",
+    "tempDirectory": "/santander/bi-corp/temp/circ_autorizante",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+     {
+            "name": "cod_entidad",
+            "type": "string"
+        }, 
+{
+            "name": "cod_perfil",
+            "type": "string"
+        }, 
+{
+            "name": "cod_prioridad",
+            "type": "string"
+        }, 
+{
+            "name": "cod_sector",
+            "type": "string"
+        }, 
+{
+            "name": "est_circ_autz",
+            "type": "string"
+        }, 
+{
+            "name": "fec_alt_circ_autz",
+             "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+            "type": "string"
+        }, 
+{
+            "name": "fec_modf_circ_autz",
+            "type": "string"
+        }, 
+{
+            "name": "ide_circuito",
+            "type": "string"
+        }, 
+{
+            "name": "imp_max_autz",
+            "type": "string"
+        }, 
+{
+            "name": "imp_min_autz",
+            "type": "string"
+        }, 
+{
+            "name": "indi_mail_autz",
+            "type": "string"
+        }, 
+{
+            "name": "indi_selec_autz",
+            "type": "string"
+        }, 
+{
+            "name": "nro_ord_autz",
+            "type": "string"
+        }, 
+{
+            "name": "tmp_circ_autz",
+            "type": "string"
+        }, 
+{
+            "name": "user_alt_circ_autz",
+            "type": "string"
+        }, 
+{
+            "name": "user_modf_circ_autz",
+            "type": "string"
+        } 
+    ]
+    ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fec_alt_circ_autz",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

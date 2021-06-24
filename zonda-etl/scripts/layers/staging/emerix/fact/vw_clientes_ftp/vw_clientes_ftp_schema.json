@@ -1,0 +1,236 @@
+{
+	"file": "clientes_schema",
+	"location": "/santander/bi-corp/landing/emerix/fact/clientes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/emerix/fact/emerix_clientes",
+	"tempDirectory": "/santander/bi-corp/temp/emerix_clientes",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "apellido_cliente",
+			"type": "string"
+		},
+{
+			"name": "nombre_cliente",
+			"type": "string"
+		},
+{
+			"name": "codigo_agencia",
+			"type": "string"
+		},
+{
+			"name": "nombre_agencia",
+			"type": "string"
+		},
+{
+			"name": "cantidad_dias_en_escenario",
+			"type": "string"
+		},
+{
+			"name": "cantidad_dias_en_estado",
+			"type": "string"
+		},
+{
+			"name": "categoria_producto",
+			"type": "string"
+		},
+{
+			"name": "deuda_contrato",
+			"type": "string"
+		},
+{
+			"name": "dias_mora_contrato",
+			"type": "string"
+		},
+{
+			"name": "fecha_ini_asignacion_estudio",
+			"type": "string"
+		},
+{
+			"name": "fecha_fin_asignacion_estudio",
+			"type": "string"
+		},
+{
+			"name": "codigo_escenario",
+			"type": "string"
+		},
+{
+			"name": "nombre_escenario",
+			"type": "string"
+		},
+{
+			"name": "codigo_estado",
+			"type": "string"
+		},
+{
+			"name": "nombre_estado",
+			"type": "string"
+		},
+{
+			"name": "monto_transferido_contrato",
+			"type": "string"
+		},
+{
+			"name": "apellido_gestor",
+			"type": "string"
+		},
+{
+			"name": "nombre_gestor",
+			"type": "string"
+		},
+{
+			"name": "grupo_producto",
+			"type": "string"
+		},
+{
+			"name": "moneda",
+			"type": "string"
+		},
+{
+			"name": "motivo_salida_contrato",
+			"type": "string"
+		},
+{
+			"name": "numero_cliente",
+			"type": "string"
+		},
+{
+			"name": "numero_contrato",
+			"type": "string"
+		},
+{
+			"name": "pes_codigo",
+			"type": "string"
+		},
+{
+			"name": "banca_nombre_corto",
+			"type": "string"
+		},
+{
+			"name": "pes_obs",
+			"type": "string"
+		},
+{
+			"name": "cod_estado_contable",
+			"type": "string"
+		},
+{
+			"name": "estado_contable",
+			"type": "string"
+		},
+{
+			"name": "codigo_garantia",
+			"type": "string"
+		},
+{
+			"name": "nombre_garantia",
+			"type": "string"
+		},
+{
+			"name": "riesgo_total_persona",
+			"type": "string"
+		},
+{
+			"name": "barrio_persona",
+			"type": "string"
+		},
+{
+			"name": "cliente_citinv",
+			"type": "string"
+		},
+{
+			"name": "contrato_citi",
+			"type": "string"
+		},
+{
+			"name": "fecha_ultima_consulta_nosis",
+			"type": "string"
+		},
+{
+			"name": "ingresos_inferidos",
+			"type": "string"
+		},
+{
+			"name": "endeudamiento_1",
+			"type": "string"
+		},
+{
+			"name": "endeudamiento_2",
+			"type": "string"
+		},
+{
+			"name": "endeudamiento_3",
+			"type": "string"
+		},
+{
+			"name": "cantidad_cheques_rechazados",
+			"type": "string"
+		},
+{
+			"name": "monto_cheques_rechazados",
+			"type": "string"
+		},
+{
+			"name": "tiene_juicio",
+			"type": "string"
+		},
+{
+			"name": "marca_pase_judicial",
+			"type": "string"
+		},
+{
+			"name": "marca_venta",
+			"type": "string"
+		},
+{
+			"name": "telefono_1",
+			"type": "string"
+		},
+{
+			"name": "telefono_2",
+			"type": "string"
+		},
+{
+			"name": "telefono_3",
+			"type": "string"
+		},
+{
+			"name": "valor_score",
+			"type": "string"
+		},
+{
+			"name": "valor_perju",
+			"type": "string"
+		},
+{
+			"name": "valor_benef",
+			"type": "string"
+		},
+{
+			"name": "script",
+			"type": "string"
+		},
+{
+			"name": "numero_proceso",
+			"type": "string"
+		},
+{
+			"name": "numero_orden_judicial",
+			"type": "string"
+		},
+{
+			"name": "numero_posicion",
+			"type": "string"
+		}
+	],"extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

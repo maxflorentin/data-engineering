@@ -1,0 +1,30 @@
+{
+  "file": "tactico_rtra",
+  "location": "/santander/bi-corp/landing/tactico_rtra/fact/rtra/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/tactico_rtra/fact/rtra",
+  "createTable": "bi_corp_staging.tactico_rtra",
+  "extension": "csv",
+  "header": true,
+  "delimiter": ";",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+      {
+        "name": "cuenta",
+        "type": "string"
+      },
+      {
+        "name": "dealstamp",
+        "type": "string"
+      }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

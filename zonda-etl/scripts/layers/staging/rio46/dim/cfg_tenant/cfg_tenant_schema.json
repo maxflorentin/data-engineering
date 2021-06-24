@@ -1,0 +1,104 @@
+{
+  "file": "cfg_tenant_schema",
+  "location": "/santander/bi-corp/landing/rio46/dim/cfg_tenant/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio46/dim/cfg_tenant",
+  "tempDirectory": "/santander/bi-corp/temp/rio46",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "dbid",
+      "type": "string"
+    },
+    {
+      "name": "is_serv_provider",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "password",
+      "type": "string"
+    },
+    {
+      "name": "address_line1",
+      "type": "string"
+    },
+    {
+      "name": "address_line2",
+      "type": "string"
+    },
+    {
+      "name": "address_line3",
+      "type": "string"
+    },
+    {
+      "name": "address_line4",
+      "type": "string"
+    },
+    {
+      "name": "address_line5",
+      "type": "string"
+    },
+    {
+      "name": "chargeable_number",
+      "type": "string"
+    },
+    {
+      "name": "tenant_person_dbid",
+      "type": "string"
+    },
+    {
+      "name": "provid_person_dbid",
+      "type": "string"
+    },
+    {
+      "name": "is_super_tenant",
+      "type": "string"
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "csid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_person_csid",
+      "type": "string"
+    },
+    {
+      "name": "provid_person_csid",
+      "type": "string"
+    },
+    {
+      "name": "capacity_dbid",
+      "type": "string"
+    },
+    {
+      "name": "contract_dbid",
+      "type": "string"
+    },
+    {
+      "name": "parent_tenant_dbid",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+
+
+}

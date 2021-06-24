@@ -1,0 +1,24 @@
+name: CORE_InitKerberosTicket
+description: 'Renew Kerberos ticket for Service User'
+owner: BI-Corp
+schedule_interval: '0 */4 * * *'
+active: true
+depends_on_past: False
+wait_for_downstream: False
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: RenewTicketBI
+    operator: BashOperator
+    config:
+      bash_command: "kinit -V -kt /home/$SERVICE_USER/security/$SERVICE_USER.keytab $SERVICE_USER@RIO.AR.BSCH & klist"
+  - name: RenewTicketCloudera
+    operator: SSHOperator
+    config:
+      connection_id: cloudera_ssh
+      command: "kinit -V -kt /home/$SERVICE_USER/security/$SERVICE_USER.keytab $SERVICE_USER@RIO.AR.BSCH & klist"
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

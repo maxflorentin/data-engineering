@@ -1,0 +1,59 @@
+{
+  "file": "benefitcustomerrefund_schema",
+  "location": "/santander/bi-corp/landing/rio265/fact/benefitcustomerrefund/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/fact/rio265_benefitcustomerrefund",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_benefitcustomerrefund",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_benefitcustomer",
+      "type": "string"
+    },
+    {
+      "name": "id_transactiontype",
+      "type": "string"
+    },
+    {
+      "name": "id_coin",
+      "type": "string"
+    },
+    {
+      "name": "totalamount",
+      "type": "string"
+    },
+    {
+      "name": "transactiondate",
+      "type": "string"
+    },
+    {
+      "name": "cardnumber",
+      "type": "string"
+    },
+    {
+      "name": "receiptnumber",
+      "type": "string"
+    },
+    {
+      "name": "id_establishment",
+      "type": "string"
+    },
+    {
+      "name": "discountamount",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [{
+    "name": "partition_date",
+    "target": "transactiondate",
+    "type": "date",
+    "partitionColumn": true,
+    "partitionOrder": 1}]
+}

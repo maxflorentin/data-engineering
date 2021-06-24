@@ -1,0 +1,49 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_tmk_tipocircuito",
+      "title": "TIPO DE CIRCUITO",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "TIPO DE CIRCUITO",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO",
+          "description": "codigo del tipo de circuito",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "descripcion del tipo de circuito",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 80.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

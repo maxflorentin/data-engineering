@@ -1,0 +1,31 @@
+{
+    "table": "bi_corp_common.dim_rec_canal",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_canal_cosmos",
+                "cod_rec_canal",
+                "ds_rec_canal",
+                "cod_rec_usuario_modif",
+                "dt_rec_canal_modif"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_canal_alta",
+                "dt_rec_canal_modif",
+                "dt_rec_canal_baja"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+    ]
+}

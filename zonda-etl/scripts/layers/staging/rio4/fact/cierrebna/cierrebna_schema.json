@@ -1,0 +1,60 @@
+{
+        "file": "cierrebna_schema",
+        "location": "/santander/bi-corp/landing/rio4/fact/cierrebna/fecha=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/rio4/fact/cierrebna",
+        "tempDirectory": "/santander/bi-corp/temp/rio4",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "skipNotify": true,
+        "columns": [
+                {
+                 "name": "especie",
+                 "type": "string"
+                },
+                {
+                 "name": "preciocompra",
+                 "type": "string"
+                },
+                {
+                 "name": "precioventa",
+                 "type": "string"
+                },
+                {
+                 "name": "precio1",
+                 "type": "string"
+                },
+                {
+                 "name": "precio2",
+                 "type": "string"
+                },
+                {
+                 "name": "precio3",
+                 "type": "string"
+                },
+                {
+                 "name": "precio4",
+                 "type": "string"
+                },
+                {
+                 "name": "precio5",
+                 "type": "string"
+                },
+                {
+                 "name": "porcada",
+                 "type": "string"
+                },
+                {
+                 "name": "mercado",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha",
+                 "type": "string",
+				 "partitionColumn": true,
+                 "partitionOrder": 1
+				}
+        ]
+}

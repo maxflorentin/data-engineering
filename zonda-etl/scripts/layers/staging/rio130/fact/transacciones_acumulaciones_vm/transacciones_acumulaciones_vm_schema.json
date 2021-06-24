@@ -1,0 +1,137 @@
+{
+  "file": "txn_acum_loy_schema",
+  "location": "/santander/bi-corp/landing/rio130/fact/txn_acum_loy/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio130/fact/txn_acum_loy",
+  "tempDirectory": "/santander/bi-corp/temp/rio130",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+    "name": "num_cuo1",
+    "type": "string"
+  },
+{
+    "name": "plan_cuo1",
+    "type": "string"
+  },
+{
+    "name": "rubro1",
+    "type": "string"
+  },
+{
+    "name": "puntos_acumulados",
+    "type": "string"
+  },
+{
+    "name": "puntos_canjeados",
+    "type": "string"
+  },
+{
+    "name": "numero",
+    "type": "string"
+  },
+{
+    "name": "subtipo",
+    "type": "string"
+  },
+{
+    "name": "tipo",
+    "type": "string"
+  },
+{
+    "name": "programa",
+    "type": "string"
+  },
+{
+    "name": "producto",
+    "type": "string"
+  },
+{
+    "name": "estado",
+    "type": "string"
+  },
+{
+    "name": "monto",
+    "type": "string"
+  },
+{
+    "name": "miembro",
+    "type": "string"
+  },
+{
+    "name": "apellido",
+    "type": "string"
+  },
+{
+    "name": "nombre",
+    "type": "string"
+  },
+{
+    "name": "tipo_tarjeta",
+    "type": "string"
+  },
+{
+    "name": "num_trj",
+    "type": "string"
+  },
+{
+    "name": "comercio",
+    "type": "string"
+  },
+{
+    "name": "x_commerce_city",
+    "type": "string"
+  },
+{
+    "name": "x_commerce_code",
+    "type": "string"
+  },
+{
+    "name": "x_commer_sector",
+    "type": "string"
+  },
+{
+    "name": "codigo_moneda",
+    "type": "string"
+  },
+{
+    "name": "fecha_de_cierre",
+    "type": "string"
+  },
+{
+    "name": "fecha_de_consumo",
+    "type": "string"
+  },
+{
+    "name": "fecha_de_proceso",
+    "type": "string"
+  },
+{
+    "name": "estado_delivery",
+    "type": "string"
+  },
+{
+    "name": "estado_prev_delivery",
+    "type": "string"
+  },
+{
+    "name": "fecha_estado_delivery",
+    "type": "string"
+  },
+{
+    "name": "motivo_cance_canje",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha_de_proceso",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

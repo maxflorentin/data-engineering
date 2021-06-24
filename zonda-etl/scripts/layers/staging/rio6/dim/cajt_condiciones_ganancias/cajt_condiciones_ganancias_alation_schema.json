@@ -1,0 +1,49 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cajt_condiciones_ganancias",
+            "title": "Condiciones de ganancias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Condiciones de ganancias",
+            "columns": [
+                {
+                    "name": "CJGN_CD_CONDICION_GANANCIA",
+                    "title": "CJGN_CD_CONDICION_GANANCIA",
+                    "description": "Código de ganancias",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CJGN_DE_CONDICION_GANANCIA",
+                    "title": "CJGN_DE_CONDICION_GANANCIA",
+                    "description": "Descripción de ganancias",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

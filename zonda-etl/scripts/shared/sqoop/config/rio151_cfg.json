@@ -1,0 +1,194 @@
+{
+    "tables": [
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_INTERACCION",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT CD_INTERACCION,NUP,CD_EJECUTIVO,DT_INICIO,DT_CIERRE,CD_CANAL_COMUNICACION,CD_CANAL_VENTA,CD_SUCURSAL,DS_COMENTARIO FROM {database}.{table} WHERE TO_CHAR(DT_INICIO, 'YYYY-MM-DD') = '{partition_date}' OR TO_CHAR(DT_CIERRE, 'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_INTERACCION_PRODUCTO",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion_producto",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT CD_INTERACCION_PRODUCTO,CD_INTERACCION,ID_ACC,DS_CAMPANA_O_PRODUCTO,MC_CAMPANA,CD_ESCENARIO,CD_ENVIO,DS_PRODUCTO_CRM,CD_GESTION,CD_RESULTADO,JSON,DS_COMENTARIO,MC_ENVIO_MAIL,DT_AGENDA_HORARIO,DT_MODIFICACION,DT_GESTION,CD_IDENTIFICACION_RESULTADO,CD_PRODUCTO_CRM,VL_NRO_SOLICITUD,CD_CANAL_SOLICITUD,ID_CAMP_BUC,DS_CONTACTO,SEGUIMIENTOTEC FROM {database}.{table} WHERE TO_CHAR(DT_MODIFICACION, 'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_INTERACCION_ALERTA",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion_alerta",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT CD_INTERACCION_ALERTA ,CD_INTERACCION,CD_ALERTA,CD_RESULTADO,CD_GESTION,DT_GESTION,CLAVE_UNICA,JSON,DS_CONTACTO,CD_IDENTIFICACION_RESULTADO FROM {database}.{table} WHERE TO_CHAR(DT_GESTION, 'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_INTERACCION_SEGUIMIENTO",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion_seguimiento",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"CD_INTERACCION,NUP,CD_EJECUTIVO\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO_ERM",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_mi_equipo_erm",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_PROMOCION",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_calculador_promocion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_BENEFICIO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_beneficio",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_CATALOGO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_catalogo",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_CONDICION",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_condicion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_DETALLE",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_detalle",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_PROGRAMA_VENTA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_programa_venta",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_REGLA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_regla",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CALCULADOR_REQUISITO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_requisito",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_mi_equipo",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_MI_EQUIPO_PUESTO",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_mi_equipo_puesto",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CANAL_VENTA",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_canal_venta",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_CANAL_COMUNICACION",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_canal_comunicacion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_INTERACCION_HIST",
+            "table_type": "fact",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT CD_INTERACCION,NUP,CD_EJECUTIVO,DT_INICIO,DT_CIERRE,CD_CANAL_COMUNICACION,CD_CANAL_VENTA,CD_SUCURSAL,DS_COMENTARIO FROM {database}.{table} WHERE TO_CHAR(DT_INICIO, 'YYYY-MM-DD') = '{partition_date}' OR TO_CHAR(DT_CIERRE, 'YYYY-MM-DD') = '{partition_date}' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        },
+        {
+            "serverAka": "+CHE",
+            "database": "MKT02",
+            "table": "TBL_COMBO_IATX_TMK",
+            "table_type": "dim",
+            "environment": "RIO151",
+            "landing_path": "/santander/bi-corp/landing/rio151/dim/tbl_combo_iatx_tmk",
+            "partition_field": "FECHA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng -Dmapreduce.output.basename={table} --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --fields-terminated-by '^' --bindir '{zonda_dir}/sqoop/{environment}/{table}' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir --null-string '' --null-non-string ''  --verbose \n"
+        }
+    ]
+}

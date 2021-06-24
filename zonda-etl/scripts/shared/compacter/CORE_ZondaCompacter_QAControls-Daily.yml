@@ -1,0 +1,38 @@
+name: CORE_ZondaCompacter_QAControls-Daily
+description: 'Exec Compacter to zonda_qa_controls flume files'
+owner: BI-Corp
+active: true
+start_date: '2020-07-01'
+schedule_interval: '0 5 * * *'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: ExecCompacterFlumeFiles
+    operator: SparkSubmitOperator
+    config:
+      name: 'zonda_qa_controls_compacter'
+      connection_id: cloudera_spark2
+      num_executors: 20
+      executor_cores: 4
+      executor_memory: 16G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/compacter/compacter_extend.py'
+      conf: {
+            'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='CORE_ZondaCompacter_QAControls-Daily') }}",
+            'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+            'spark.sql.autoBroadcastJoinThreshold': '-1',
+            'spark.yarn.appMasterEnv.next_date_from': "{{ ti.xcom_pull(task_ids='InputConfig', key='next_date_from', dag_id='CORE_ZondaCompacter_QAControls-Daily') }}"
+      }
+      application_args: ['--path', "/santander/bi-corp/staging/zonda_qa_controls",
+                         '--file_format', "json",
+                         '--add_partition', "true",
+                         '--schema_table', "bi_corp_staging.zonda_qa_controls"]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [nbucardo@santandertecnologia.com.ar, mjourdan@santandertecnologia.com.ar, glasalviacalio@santandertecnologia.com.ar]

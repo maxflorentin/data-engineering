@@ -1,0 +1,35 @@
+{
+    "table": "bi_corp_common.stk_cys_inhabilitados",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_cys_inh",
+                "cod_per_tipopersona",
+                "ds_per_apellido",
+                "ds_per_nombre",
+                "cod_per_sexo",
+                "dt_per_fechanacimiento",
+                "ds_per_tipodoc",
+                "ds_per_numdoc",
+                "cod_cys_causal",
+                "int_cys_seccaus",
+                "dt_cys_inh",
+                "dt_cys_rehb",
+                "flag_cys_vigencia"
+            ],
+            "threshold": 0
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_per_fechanacimiento",
+                "dt_cys_inh",
+                "dt_cys_rehb"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0
+        }
+    ]
+}

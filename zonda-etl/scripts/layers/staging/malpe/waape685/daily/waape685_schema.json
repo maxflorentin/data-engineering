@@ -1,0 +1,19 @@
+{
+  "file": "waape685_daily_schema",
+  "location": "/santander/bi-corp/landing/malpe/fact/waape685/daily/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malpe/fact/waape685/daily",
+  "createTable": "bi_corp_staging.malpe_daily_waape685",
+  "header": false,
+  "copybook": "waape685_daily.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

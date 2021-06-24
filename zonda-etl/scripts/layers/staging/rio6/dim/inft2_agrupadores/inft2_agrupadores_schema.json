@@ -1,0 +1,30 @@
+{
+  "file": "inft2_agrupadores_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/inft2_agrupadores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/inft2_agrupadores",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"inag_cd_agrupador",
+      "type": "string"
+    },
+    {
+      "name":"inag_de_agrupador",
+      "type":"string"
+    },
+    {
+      "name":"inag_st_agrupador",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

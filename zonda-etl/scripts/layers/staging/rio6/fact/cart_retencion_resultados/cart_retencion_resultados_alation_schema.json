@@ -1,0 +1,137 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_retencion_resultados",
+            "title": "Resultados de retencion",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Resultados de retencion",
+            "columns": [
+                {
+                    "name": "CRES_NU_INTERACCION",
+                    "title": "CRES_NU_INTERACCION",
+                    "description": "numero de interaccion",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_CD_USUARIO",
+                    "title": "CRES_CD_USUARIO",
+                    "description": "codigo de usuario",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_FE_PROCESO",
+                    "title": "CRES_FE_PROCESO",
+                    "description": "fecha de proceso",
+                    "type": "Fecha",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_CD_NACIONALIDAD",
+                    "title": "CRES_CD_NACIONALIDAD",
+                    "description": "tipo de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_NU_CEDULA_RIF",
+                    "title": "CRES_NU_CEDULA_RIF",
+                    "description": "numero de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_NM_CLIENTE",
+                    "title": "CRES_NM_CLIENTE",
+                    "description": "nombre de cliente",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 60.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_FE_NACIMIENTO",
+                    "title": "CRES_FE_NACIMIENTO",
+                    "description": "fecha de nacimiento",
+                    "type": "Fecha",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_TP_RESULTADO",
+                    "title": "CRES_TP_RESULTADO",
+                    "description": "tipo de resultado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_DE_OBSERVACIONES",
+                    "title": "CRES_DE_OBSERVACIONES",
+                    "description": "Observaciones",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CRES_CD_RESULTADO",
+                    "title": "CRES_CD_RESULTADO",
+                    "description": "codigo de resultado",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

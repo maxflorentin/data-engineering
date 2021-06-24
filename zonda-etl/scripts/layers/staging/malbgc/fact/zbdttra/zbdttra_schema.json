@@ -1,0 +1,179 @@
+{
+    "file":"zbdttra_schema",
+    "location": "/santander/bi-corp/landing/malbgc/fact/zbdttra/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/malbgc/fact/zbdttra",
+    "createTable": "bi_corp_staging.malbgc_zbdttra",
+	"extension":"txt",
+	"header":false,
+    "fixed":true,
+	"parquetFiles":1,
+	"compression":"gzip",
+    "columns": [{
+             "name": "cod_aplic_nio",
+             "type": "string",
+             "width": 2
+        },
+        {
+             "name": "term_nio",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "fecha_nio",
+             "type": "string",
+             "width": 10
+        },
+        {
+             "name": "hora_nio",
+             "type": "string",
+             "width": 8
+        },
+        {
+             "name": "entidad_cargo",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "suc_cargo",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "cuenta_cargo",
+             "type": "string",
+             "width": 12
+        },
+        {
+             "name": "divisa_cargo",
+             "type": "string",
+             "width": 3
+        },
+        {
+             "name": "importe_cargo",
+             "type": "string",
+             "width": 15
+        },
+        {
+             "name": "concepto_cargo",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "codigo_cargo",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "entidad_abono",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "suc_abono",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "cuenta_abono",
+             "type": "string",
+             "width": 12
+        },
+        {
+             "name": "divisa_abono",
+             "type": "string",
+             "width": 3
+        },
+        {
+             "name": "importe_abono",
+             "type": "string",
+             "width": 15
+        },
+        {
+             "name": "codigo_abono",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "comprobante",
+             "type": "string",
+             "width": 8
+        },
+        {
+             "name": "fecha_hoy",
+             "type": "string",
+             "width": 10
+        },
+        {
+             "name": "hora_hoy",
+             "type": "string",
+             "width": 8
+        },
+        {
+             "name": "canal",
+             "type": "string",
+             "width": 2
+        },
+        {
+             "name": "estado",
+             "type": "string",
+             "width": 1
+        },
+        {
+             "name": "transaccion",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "usuario",
+             "type": "string",
+             "width": 8
+        },
+        {
+             "name": "val_lim",
+             "type": "string",
+             "width": 1
+        },
+        {
+             "name": "nup",
+             "type": "string",
+             "width": 8
+        },
+        {
+             "name": "fecha_valor",
+             "type": "string",
+             "width": 10
+        },
+        {
+             "name": "terminal",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "centro_contab",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "ident_oper_contab",
+             "type": "string",
+             "width": 4
+        },
+        {
+             "name": "cbu_origen",
+             "type": "string",
+             "width": 22
+        },
+        {
+             "name": "cbu_destino",
+             "type": "string",
+             "width": 22
+        }
+    ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

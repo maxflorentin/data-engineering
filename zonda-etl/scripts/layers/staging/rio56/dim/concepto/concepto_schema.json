@@ -1,0 +1,63 @@
+{
+    "file": "concepto",
+    "location": "/santander/bi-corp/landing/rio56/dim/concepto/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/concepto",
+    "tempDirectory": "/santander/bi-corp/temp/concepto",
+    "createTable": "bi_corp_staging.rio56_concepto",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_cpto",
+            "type": "string"
+        },
+        {
+            "name": "desc_cpto",
+            "type": "string"
+        },
+        {
+            "name": "desc_detall_cpto",
+            "type": "string"
+        },
+        {
+            "name": "est_cpto",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_cpto",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_cpto",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_cpto",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_cpto",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

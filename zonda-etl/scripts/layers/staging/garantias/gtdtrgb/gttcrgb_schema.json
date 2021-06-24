@@ -1,0 +1,19 @@
+{
+  "file": "gttcrgb_schema",
+  "location": "/santander/bi-corp/landing/garantias/fact/gtdtrgb/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/garantias/fact/gtdtrgb",
+  "extension": "DAT",
+  "header": false,
+  "parquetFiles": 1,
+  "copybook": "copybook_gttcrgb_schema.txt",
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

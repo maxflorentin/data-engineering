@@ -1,0 +1,84 @@
+{
+  "file": "cfg_group_schema",
+  "location": "/santander/bi-corp/landing/rio46/dim/cfg_group/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio46/dim/cfg_group",
+  "tempDirectory": "/santander/bi-corp/temp/rio46",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "dbid",
+      "type": "string"
+    },
+    {
+      "name": "group_type",
+      "type": "string"
+    },
+    {
+      "name": "tenant_dbid",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "cap_table_dbid",
+      "type": "string"
+    },
+    {
+      "name": "quota_table_dbid",
+      "type": "string"
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "dn_group_type",
+      "type": "string"
+    },
+    {
+      "name": "csid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_csid",
+      "type": "string"
+    },
+    {
+      "name": "cap_table_csid",
+      "type": "string"
+    },
+    {
+      "name": "quota_table_csid",
+      "type": "string"
+    },
+    {
+      "name": "capacity_dbid",
+      "type": "string"
+    },
+    {
+      "name": "site_dbid",
+      "type": "string"
+    },
+    {
+      "name": "contract_dbid",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+
+
+}

@@ -1,0 +1,30 @@
+{
+     "file": "opp_tipos_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/opp_tipos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/opp_tipos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [       {
+              "name": "cod_tipo",
+              "type": "string"
+             },
+             {
+              "name": "desc_tipo",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

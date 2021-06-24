@@ -1,0 +1,78 @@
+{
+  "file": "valoracion_operaciones_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/valoracion_operaciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/valoracion_operaciones",
+  "createTable": "bi_corp_staging.sge_valoracion_operaciones",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_vo",
+      "type": "string"
+    },
+    {
+      "name": "nro_prop",
+      "type": "string"
+    },
+    {
+      "name": "secuencia",
+      "type": "string"
+    },
+    {
+      "name": "cod_operacion",
+      "type": "string"
+    },
+    {
+      "name": "plazo",
+      "type": "string"
+    },
+    {
+      "name": "unidad_plazo",
+      "type": "string"
+    },
+    {
+      "name": "atraso",
+      "type": "string"
+    },
+    {
+      "name": "punt_plazo",
+      "type": "string"
+    },
+    {
+      "name": "punt_antiguedad",
+      "type": "string"
+    },
+    {
+      "name": "valoracion_operacion",
+      "type": "string"
+    },
+    {
+      "name": "peusualt",
+      "type": "string"
+    },
+    {
+      "name": "pefecalt",
+      "type": "string"
+    },
+    {
+      "name": "peusumod",
+      "type": "string"
+    },
+    {
+      "name": "pefecmod",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

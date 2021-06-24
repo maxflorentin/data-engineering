@@ -1,0 +1,167 @@
+{
+        "file": "alzxllgr_cheques",
+        "location": "/santander/bi-corp/landing/malzx/fact/alzxllgr/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzx/fact/alzxllgr",
+		"createTable": "bi_corp_staging.malzx_alzxllgr",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":
+                                        [
+                                          {
+                                            "name": "nro_tramite",
+                                            "type": "string",
+                                            "width": 10
+                                          },
+                                          {
+                                            "name": "nro_orden_chq",
+                                            "type": "string",
+                                            "width": 3
+                                          },
+                                          {
+                                            "name": "nro_orden_lib",
+                                            "type": "string",
+                                            "width": 3
+                                          },
+                                          {
+                                            "name": "bco_girado",
+                                            "type": "string",
+                                            "width": 3
+                                          },
+                                          {
+                                            "name": "suc_girada",
+                                            "type": "string",
+                                            "width": 3
+                                          },
+                                          {
+                                            "name": "cod_postal",
+                                            "type": "string",
+                                            "width": 4
+                                          },
+                                          {
+                                            "name": "nro_cheque",
+                                            "type": "string",
+                                            "width": 8
+                                          },
+                                          {
+                                            "name": "cta_girada",
+                                            "type": "string",
+                                            "width": 11
+                                          },
+                                          {
+                                            "name": "fec_alta",
+                                            "type": "string",
+                                            "width": 10
+                                          },
+                                          {
+                                            "name": "nup_librador",
+                                            "type": "string",
+                                            "width": 8
+                                          },
+                                          {
+                                            "name": "cuit_librador",
+                                            "type": "string",
+                                            "width": 11
+                                          },
+                                          {
+                                            "name": "est_verif_riesgo",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "fec_vto_cheque",
+                                            "type": "string",
+                                            "width": 10
+                                          },
+                                          {
+                                            "name": "importe_cheque",
+                                            "type": "string",
+                                            "width": 13
+                                          },
+                                          {
+                                            "name": "est_cheque",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "mot_rech_lib",
+                                            "type": "string",
+                                            "width": 50
+                                          },
+                                          {
+                                            "name": "marca_primer_lib",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "tim_alta",
+                                            "type": "string",
+                                            "width": 26
+                                          },
+                                          {
+                                            "name": "filler",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "ide_user_alta",
+                                            "type": "string",
+                                            "width": 8
+                                          },
+                                          {
+                                            "name": "filler_2",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "ide_term_alta",
+                                            "type": "string",
+                                            "width": 4
+                                          },
+                                          {
+                                            "name": "filler_3",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "tim_ult_modf",
+                                            "type": "string",
+                                            "width": 26
+                                          },
+                                          {
+                                            "name": "filler_4",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "ide_user_ult_modf",
+                                            "type": "string",
+                                            "width": 8
+                                          },
+                                          {
+                                            "name": "filler_5",
+                                            "type": "string",
+                                            "width": 1
+                                          },
+                                          {
+                                            "name": "term_ult_modf",
+                                            "type": "string",
+                                            "width": 4
+                                          },
+                                          {
+                                            "name": "filler_6",
+                                            "type": "string",
+                                            "width": 1
+                                          }
+                                        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}
+

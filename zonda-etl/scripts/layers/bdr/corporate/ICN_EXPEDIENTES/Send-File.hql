@@ -1,0 +1,1 @@
+SELECT CONCAT('01', SUBSTR('$month_partition_bdr', 6), SUBSTR('$month_partition_bdr', 1,4), '0');

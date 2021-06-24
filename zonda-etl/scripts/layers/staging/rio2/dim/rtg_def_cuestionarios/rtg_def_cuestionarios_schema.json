@@ -1,0 +1,50 @@
+{
+  "file": "rtg_def_cuestionarios_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/rtg_def_cuestionarios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/rtg_def_cuestionarios",
+  "createTable": "bi_corp_staging.sge_rtg_def_cuestionarios",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_cuestionario",
+      "type": "string"
+    },
+    {
+      "name": "x_cuestionario",
+      "type": "string"
+    },
+    {
+      "name": "n_intercept",
+      "type": "string"
+    },
+    {
+      "name": "f_alta",
+      "type": "string"
+    },
+    {
+      "name": "f_ultima_modif",
+      "type": "string"
+    },
+    {
+      "name": "x_user_alta",
+      "type": "string"
+    },
+    {
+      "name": "x_user_ultima_modif",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "file": "usuarios_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/usuarios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/usuarios",
+  "createTable": "bi_corp_staging.sge_usuarios",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+              {
+                    "name": "cod_usuario",
+                    "type": "string"
+                },
+{
+                    "name": "nombre_usuario",
+                    "type": "string"
+                },
+{
+                    "name": "pecdgent",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "estado",
+                    "type": "string"
+                },
+{
+                    "name": "dir_mail",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

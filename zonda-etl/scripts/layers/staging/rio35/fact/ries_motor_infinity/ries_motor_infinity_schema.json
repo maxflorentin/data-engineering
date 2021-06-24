@@ -1,0 +1,71 @@
+{
+  "file": "ries_motor_infinity_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/ries_motor_infinity/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/fact/ries_motor_infinity",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "penumper",
+    "type": "string"
+  },
+    {
+    "name": "codigo_rechazo",
+    "type": "string"
+   },
+    {
+      "name": "motivo_rechazo",
+      "type": "string"
+    },
+    {
+      "name": "apellido",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "producto_paq",
+      "type": "string"
+    },
+    {
+      "name": "subprodu_paq",
+      "type": "string"
+    },
+    {
+      "name": "linea_pesos",
+      "type": "string"
+    },
+    {
+      "name": "linea_dolares",
+      "type": "string"
+    },
+    {
+      "name": "pres_pesos_disponible",
+      "type": "string"
+    },
+    {
+      "name": "pres_dolares_disponible",
+      "type": "string"
+    },
+    {
+      "name": "cuota_pesos",
+      "type": "string"
+    },
+    {
+      "name": "cuota_dolares",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

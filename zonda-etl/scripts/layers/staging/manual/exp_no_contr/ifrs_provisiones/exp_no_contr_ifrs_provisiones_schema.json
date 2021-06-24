@@ -1,0 +1,29 @@
+{
+    "file": "ifrs_provisiones",
+    "location": "/santander/bi-corp/landing/manual/exp_no_contr/ifrs_provisiones/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/manual/exp_no_contr/ifrs_provisiones",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                          "name": "ctacgbal",
+                          "type": "string"
+                        },
+                        {
+                          "name": "importe",
+                          "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date_filter}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }
+  

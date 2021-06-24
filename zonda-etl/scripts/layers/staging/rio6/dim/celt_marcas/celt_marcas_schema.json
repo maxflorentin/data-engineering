@@ -1,0 +1,34 @@
+{
+  "file": "celt_marcas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/celt_marcas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/celt_marcas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cema_cd_marca",
+      "type": "string"
+    },
+    {
+      "name":"cema_de_marca",
+      "type":"string"
+    },
+    {
+      "name":"cema_fe_alta",
+      "type":"string"
+    },
+    {
+      "name":"cema_st_marca",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

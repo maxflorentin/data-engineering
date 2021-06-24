@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.stk_cyp_envios",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cyp_nro_empr"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cyp_fec_altaenvio", "dt_cyp_fec_autz", "dt_cyp_fec_maxbaja", "dt_cyp_fec_confirm", "dt_cyp_fec_disp", "dt_cyp_fec_emisioncal"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

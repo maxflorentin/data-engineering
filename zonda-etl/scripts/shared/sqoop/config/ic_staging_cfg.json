@@ -1,0 +1,160 @@
+{
+  "tables" :[
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "OBI_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_SUCURSALES",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_sucursales",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ZONA,SUC,ESTADO,DESCRIP,APELLIDO,NOMBRE,DOMICILIO,LOCALIDAD,PROVINCIA,CP,TELEFONO,SUC_ORIG,FEC_BAJA,HH_DESDE,HH_HASTA,HV_DESDE,HV_HASTA,ORDEN,FECHA_APERTURA,TEC,ALTA_TEC,TIPO_TEC,TEC_CABA,X,Y,MOD_ATEN_SELECT,BC_FECHA_APERTURA,BC_VALOR,CE_VALOR,SUC_CITI,PBA_PEVALIND,SC1_PRC_DIG,TIPO,CPA \" --table \"OBI_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+    {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "SRVCENGINEERLAKE",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_PRODUCTOS",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_productos",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" PRODUCTO,SUBPRODUCTO,NOMBRE,DESCRIPCION,PRODUCTO_AGRUP,FLAG_UNIVERSIDAD,UNIVERSIDAD_CONVENIO,GRUPO_PRODUCTO_ID,COD_PAS,TASA,BAP,PESO,ALIAS,COD_CBTF,PROD_AGRUP,COD_AGRUP1,DEPO_AGRUP,DEPO_AGRUP_NOMBRE,DEPO_AGRUP_ORDEN,PRODUCTO_OFERTADO_ID,RIESGO,VISTA_MASCHE,COD_AGRUP2,VIZ_FAMILIA,VIZ_FAMILIA_ORDEN,VIZ_PRODUCTO,VIZ_PRODUCTO_ORDEN \" --table \"SRVCENGINEERLAKE.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "OBI_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_CANALES_TRANSACCION",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_canales_transaccion",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" OPERACION_ID,TRANSACCION,ID_TRANSACCION,TRANSACCION_DESC,GRUPO,TIPO,CANAL_ID,CANAL,CANAL_DESC,FECHA_NUEVA_OPER,OP_LOGIN \" --table \"OBI_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "SRVCENGINEERLAKE",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_MOVIMIENTOS_CTA",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_movimientos_cta",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" CODIGO,ALFA_CHICA,ALFA_GRANDE,COD_ANULACION,IND_TIPO,IND_CLIENTE,CLS_MOV,AGRUP_NIVEL1,AGRUP_NIVEL2,AGRUP_NIVEL3,REVERSA,ANALISIS_MINING,CONDICION,MOV_GENUINO,OBSERVACION \" --table \"SRVCENGINEERLAKE.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_TCOD_VISA",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_tcod_visa",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID_ARCHIVO,CODCONCI,DESCRIPCION,MONEDA,MARCA_CF,CC_COSTOFIN,MARCA_RLIMPIO,CC_RESLIMPIO,CC_CF_RESLIMPIO,CLASE,RESTA \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "DIM_RUBROS_VISA",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/dim_rubros_visa",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" RUBRO,TIPO,CATEGORIA,DESC_RUBRO,AGRUP_RUBRO_COMITE \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_T_PALABRAS_CLAVE",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_palabras_clave",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID_PALABRA_CLAVE, CLAVE, ID_ESTABLECIMIENTO, ID_ORDEN \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_TIPO_ORDEN",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_tipo_orden",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID_ORDEN, NOMBRE, ORDEN, ACTUALIZA \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_T_CLAVE_RUBRO",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_clave_rubro",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID, ID_PALABRA_CLAVE, RUBRO, TIPO \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_ESTABLECIMIENTOS",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_establecimientos",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID_ESTABLECIMIENTO, NOMBRE, GENERICO \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_ESTAB_RUBRO",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_estab_rubro",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID, ID_ESTABLECIMIENTO, ID_RUBRO \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "TRJ_01",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TLM_RUBROS",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_rubros",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" ID_RUBRO, NOMBRE, ID_PADRE, CONTROL_DUPLICADO, TIPO \" --table \"TRJ_01.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      },
+      {
+            "serverAka": "rio35",
+            "serverConfig" : "dbexap01-scan",
+            "database": "SRVCENGINEERLAKE",
+            "table_type": "dim",
+            "environment": "bi_corp_ic",
+            "table": "TB_RUBROS_AFIP",
+            "landing_path": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_rubros_afip",
+            "partition_field_value": "2019-12-03",
+            "split_field": "PENUMPER",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --columns \" RUBRO_NIVEL1, RUBRO_NIVEL2,RUBRO_NIVEL3, DESC_AFIP,COD_AFIP, SECTOR,ID_ESTABLECIMIENTO, OBSERVACION, RUBRO_ABUELO, RUBRO_PADRE \" --table \"SRVCENGINEERLAKE.{table} \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --bindir '{zonda_dir}/sqoop/exa/{table}' -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose --null-string '' --null-non-string ''\n"
+      }
+  ]
+}

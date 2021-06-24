@@ -1,0 +1,43 @@
+{
+  "file": "stnd_log_f487_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/stnd_log_f487/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/stnd_log_f487",
+  "createTable": "bi_corp_staging.sge_stnd_log_f487",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+             {
+                    "name": "secu_f487",
+                    "type": "string"
+                },
+{
+                    "name": "fec_log",
+                    "type": "string"
+                },
+{
+                    "name": "des_log",
+                    "type": "string"
+                },
+{
+                    "name": "obs_log",
+                    "type": "string"
+                },
+{
+                    "name": "cod_usuario",
+                    "type": "string"
+                }
+       ],
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

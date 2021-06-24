@@ -1,0 +1,107 @@
+{
+     "file": "comcob_imp_det_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/comcob_imp_det/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/comcob_imp_det",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [		 {
+                     "name": "comnum",
+                     "type": "string"
+             },
+{
+                     "name": "concepto",
+                     "type": "string"
+             },
+{
+                     "name": "dbto_cdto",
+                     "type": "string"
+             },
+{
+                     "name": "porcentaje",
+                     "type": "string"
+             },
+{
+                     "name": "cod_moneda",
+                     "type": "string"
+             },
+{
+                     "name": "cotizacion",
+                     "type": "string"
+             },
+{
+                     "name": "importe_origen",
+                     "type": "string"
+             },
+{
+                     "name": "importe_pesos",
+                     "type": "string"
+             },
+{
+                     "name": "concepto_desc",
+                     "type": "string"
+             },
+{
+                     "name": "modif_usu",
+                     "type": "string"
+             },
+{
+                     "name": "modif_fec",
+                     "type": "string"
+             },
+{
+                     "name": "verif_usu",
+                     "type": "string"
+             },
+{
+                     "name": "verif_fec",
+                     "type": "string"
+             },
+{
+                     "name": "fecha_proc",
+                     "type": "string"
+             },
+{
+                     "name": "fecha_valor",
+                     "type": "string"
+             },
+{
+                     "name": "estado",
+                     "type": "string"
+             },
+{
+                     "name": "contab",
+                     "type": "string"
+             },
+{
+                     "name": "comprob",
+                     "type": "string"
+             },
+{
+                     "name": "cod_agrupa",
+                     "type": "string"
+             },
+{
+                     "name": "cob_dev",
+                     "type": "string"
+             },
+{
+                     "name": "marca_iva",
+                     "type": "string"
+             },
+       {
+                     "name": "carga_fecha",
+                     "type": "string"
+             }
+	 ],
+ "mirrorColumns": [{
+  "name": "partition_date",
+  "target": "carga_fecha",
+  "type": "date",
+  "partitionColumn": true,
+  "partitionOrder": 1}]
+}

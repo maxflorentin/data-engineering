@@ -1,0 +1,83 @@
+{
+    "file": "jm_vr_cli_std_schema",
+    "location": "/santander/bi-corp/landing/output_bdr/jm_vr_cli_std/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/bdr/output_bdr/jm_vr_cli_std",
+    "createTable": "bi_corp_bdr.jm_vr_cli_std",
+    "extension": "csv",
+    "header": true,
+    "fixed": false,
+    "delimiter": "|",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [{
+        "name": "r9451_feoperac",
+		"type": "string"
+    }, {
+        "name": "r9451_s1emp",
+		"type": "string"
+    }, {
+        "name": "r9451_idnumcli",
+        "type": "string"
+    }, {
+		"name": "r9451_grup_eco",
+        "type": "string"
+    }, {
+		"name": "r9451_rol_jera",
+        "type": "string"
+    }, {
+		"name": "r9451_cod_kgl4",
+        "type": "string"
+    }, {
+		"name": "r9451_fact_cli",
+        "type": "string"
+    }, {
+		"name": "r9451_fact_gr",
+        "type": "string"
+    }, {
+		"name": "r9451_fact_fin",
+        "type": "string"
+    }, {
+		"name": "r9451_flgfacdf",
+        "type": "string"
+    }, {
+		"name": "r9451_act_cli",
+        "type": "string"
+    }, {
+		"name": "r9451_act_gr",
+        "type": "string"
+    }, {
+		"name": "r9451_act_fin",
+        "type": "string"
+    }, {
+		"name": "r9451_rgo_cli",
+        "type": "string"
+    }, {
+		"name": "r9451_rgo_gr",
+        "type": "string"
+    }, {
+		"name": "r9451_rgoclpym",
+        "type": "string"
+    }, {
+		"name": "r9451_rgogrpym",
+        "type": "string"
+    }, {
+		"name": "r9451_flg_pyme",
+        "type": "string"
+    }, {
+		"name": "r9451_flg_bce",
+        "type": "string"
+    }, {
+		"name": "r9451_flgintra",
+        "type": "string"
+    }],
+    "extraColumns": [{
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }]
+}
+
+
+

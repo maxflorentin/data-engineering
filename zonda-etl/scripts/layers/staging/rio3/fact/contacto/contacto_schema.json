@@ -1,0 +1,161 @@
+{
+  "file": "contacto_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/contacto/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/contacto",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+     {
+    "name": "contacto",
+    "type": "string"
+  },
+ {
+    "name": "tipodoc",
+    "type": "string"
+  },
+ {
+    "name": "nrodoc",
+    "type": "string"
+  },
+ {
+    "name": "expedida",
+    "type": "string"
+  },
+ {
+    "name": "nacio",
+    "type": "string"
+  },
+ {
+    "name": "fechaalta",
+    "type": "string"
+  },
+ {
+    "name": "apellido",
+    "type": "string"
+  },
+ {
+    "name": "nombre",
+    "type": "string"
+  },
+ {
+    "name": "teledisc1",
+    "type": "string"
+  },
+ {
+    "name": "tel_1",
+    "type": "string"
+  },
+ {
+    "name": "postal1",
+    "type": "string"
+  },
+ {
+    "name": "teledisc2",
+    "type": "string"
+  },
+ {
+    "name": "tel_2",
+    "type": "string"
+  },
+ {
+    "name": "postal2",
+    "type": "string"
+  },
+ {
+    "name": "interno",
+    "type": "string"
+  },
+ {
+    "name": "origen",
+    "type": "string"
+  },
+ {
+    "name": "medio",
+    "type": "string"
+  },
+ {
+    "name": "estado",
+    "type": "string"
+  },
+ {
+    "name": "sexo",
+    "type": "string"
+  },
+ {
+    "name": "usuario",
+    "type": "string"
+  },
+ {
+    "name": "clifondos",
+    "type": "string"
+  },
+ {
+    "name": "nivclifon",
+    "type": "string"
+  },
+ {
+    "name": "cliente",
+    "type": "string"
+  },
+ {
+    "name": "sucursal",
+    "type": "string"
+  },
+ {
+    "name": "clavehost",
+    "type": "string"
+  },
+ {
+    "name": "conytipodoc",
+    "type": "string"
+  },
+ {
+    "name": "conynrodoc",
+    "type": "string"
+  },
+ {
+    "name": "capturado",
+    "type": "string"
+  },
+ {
+    "name": "incontactable",
+    "type": "string"
+  },
+ {
+    "name": "cantoperac",
+    "type": "string"
+  },
+ {
+    "name": "ultoperacion",
+    "type": "string"
+  },
+ {
+    "name": "tipo_persona",
+    "type": "string"
+  },
+ {
+    "name": "tipo_cliente",
+    "type": "string"
+  },
+ {
+    "name": "estado2",
+    "type": "string"
+  },
+ {
+    "name": "fecha_modificacion",
+    "type": "string"
+  }
+  ],
+ "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+        }]
+}

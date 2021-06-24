@@ -1,0 +1,63 @@
+{
+    "file": "gec_notificacion_canal_cliente_schema",
+    "createTable": "bi_corp_staging.rio170_gec_notif_canal_cliente",
+    "location": "/santander/bi-corp/landing/rio170/fact/gec_v_notificacion_canal_cliente/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio170/fact/gec_v_notificacion_canal_cliente",
+    "tempDirectory": "/santander/bi-corp/temp/rio170",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_notificacion",
+            "type": "string"
+        },
+        {
+            "name": "cod_canal",
+            "type": "string"
+        },
+        {
+            "name": "cod_subcanal",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "accion",
+            "type": "string"
+        },
+        {
+            "name": "fecha_estado",
+            "type": "string"
+        },
+        {
+            "name": "comentarios",
+            "type": "string"
+        },
+        {
+            "name": "codigo",
+            "type": "string"
+        },
+        {
+            "name": "sub_codigo",
+            "type": "string"
+        },
+        {
+            "name": "id_grupo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

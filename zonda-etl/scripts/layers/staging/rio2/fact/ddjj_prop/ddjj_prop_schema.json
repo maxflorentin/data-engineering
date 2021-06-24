@@ -1,0 +1,55 @@
+{
+  "file": "ddjj_prop_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/ddjj_prop/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/ddjj_prop",
+  "createTable": "bi_corp_staging.sge_ddjj_prop",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "id_ddjj",
+                    "type": "string"
+                },
+{
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "fec_ddjj",
+                    "type": "string"
+                },
+{
+                    "name": "res_neto_djig",
+                    "type": "string"
+                },
+{
+                    "name": "amort_djig",
+                    "type": "string"
+                },
+{
+                    "name": "vtas_anuales",
+                    "type": "string"
+                },
+{
+                    "name": "pat_neto_total",
+                    "type": "string"
+                },
+{
+                    "name": "deu_bancaria",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

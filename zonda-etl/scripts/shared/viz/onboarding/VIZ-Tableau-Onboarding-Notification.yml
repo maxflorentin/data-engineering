@@ -1,0 +1,19 @@
+name: VIZ-Tableau-Onboarding-Notification
+description: 'Send onboarding notifiation to new users'
+owner: BI-Corp
+active: true
+start_date: '2020-03-01'
+schedule_interval: '*/15 * * * *'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: RunReport
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/viz/onboarding/onboarding_notification.py"
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

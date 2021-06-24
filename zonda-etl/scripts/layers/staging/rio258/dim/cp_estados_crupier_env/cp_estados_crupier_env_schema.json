@@ -1,0 +1,27 @@
+{
+	"file": "cp_estados_crupier_env_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_estados_crupier_env/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_estados_crupier_env",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_estados_crupier_env",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_estado",
+			"type": "string"
+		},
+{
+			"name": "desc_estado",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

@@ -1,0 +1,15 @@
+{
+    "name": "BCAAUT_Respuestas-Common",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_RIO102-ATM-Daily",
+            "tasks": "STAGING_HIVE_AddPartition_ATM_RESPUESTA_MENSAJES"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_CMN_BCAAUT_Respuestas"
+        }
+    ]
+}

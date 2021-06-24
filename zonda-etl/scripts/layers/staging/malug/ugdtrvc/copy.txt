@@ -1,0 +1,139 @@
+      ******************************************************************00000100
+      *                       B S C H - ALTAIR                         *00000201
+      * -------------------------------------------------------------- *00000301
+      * ÁREA       - ACTIVO                                            *00000401
+      * APLICACIÓN - PRÉSTAMOS Y AVALES                                *00000501
+      * -------------------------------------------------------------- *00000601
+      * REGISTRO          - UGTCRVC                                    *00000701
+      * FECHA DE CREACIÓN - 25-OCT-1999                                *00000801
+      *                                                                *00000901
+      * DESCRIPCIóN DEL REGISTRO                                       *00001001
+      *                                                                *00001101
+      ******************************************************************00001201
+      *                     LOG DE MODIFICACIONES                      *00001301
+      * -------------------------------------------------------------- *00001401
+      * FECHA    | AUTOR     | DESCRIPCIÓN                             *00001501
+      * -------------------------------------------------------------- *00001601
+      * ALTEC-0001-I/F                                                 *00001701
+      * NUMERO PETICION: ALT-06-02419-0A                               *00001801
+      * FECHA          : AGOSTO-2006                                   *00001901
+      * AUTOR          : ALTEC (SORELLANA)                             *00002001
+      * DESCRIPCION    :         PROYECTO MIS                          *00002101
+      *                  INCORPORACION DE FECHAS ULTIMA REVISION Y     *00002101
+      *                  NUMERO DE REVISION                            *00002201
+      ******************************************************************00003001
+      ******************************************************************00010000
+      * UGTCRVC. REVISION DE CONCEPTOS DE LIQUIDACION.                 *00020000
+      ******************************************************************00030000
+      * CUENTA          CUENTA                                         *00100000
+      * OFICINA         OFICINA                                        *00110000
+      * ENTIDAD         ENTIDAD                                        *00120000
+      * CODCONLI        CODIGO CONCEPTO LIQUIDACION                    *00130000
+      * FECOVALI        FECHA COMIENZO DE VALIDEZ                      *00140000
+      * NUM-SECUENCIA   NUMERO DE SECUENCIA                            *00140100
+      * FEFIVALI        FECHA FIN DE VALIDEZ                           *00150000
+      * PZO-VIGENCIA    PLAZO DE VIGENCIA                              *00150100
+      * FEC-PROAVIAC    FECHA PROX. AVISO REVISION ACTUAL AJUSTADA     *00160000
+      * FEC-PROREVAC    FECHA PROX. REVISION ACTUAL AJUSTADA           *00170000
+      * FEC-PROAVIAC-O  FECHA PROX. AVISO REVISION ACTUAL AJUSTADA     *00180000
+      * FEC-PROREVAC-O  FECHA PROX. REVISION ACTUAL AJUSTADA           *00190000
+      * FEC-ULTAVIAC    FECHA ULTIMO ENVIO DE AVISO                    *00200000
+      *                                                                *00200000
+      *ALTEC-0001-I                                                    *00200000
+      * FEC-ULTREVAC    FECHA DE ULTIMA REVISION AJUSTADA              *00200000
+      * FEC-ULTREVAC-O  FECHA DE ULTIMA REVISION AJUSTADA ORIGINAL     *00200000
+      * NUM-REVISIONES  NUMERO DE REVISIONES                           *00200000
+      *ALTEC-0001-F                                                    *00200000
+      *                                                                *00200000
+      * TIPODIAS        TIPO DE DIAS DE REVISION                       *00210000
+      * DIA-PAGO        DIA DE REVISION                                *00220000
+      * PER-REVISIAC    PERIODICIDAD DE REVISION ACTUAL                *00230000
+      * TAS-CORRECAC    DIFERENCIAL A APLICAR SOBRE LA TASA REV. ACTUAL*00240000
+      * TIP-REDONDEO    TIPO REDONDEO                                  *00250000
+      * NUM-REDONDEO    FRACCION DEL REDONDEO                          *00260000
+      * COD-CLAREVIS    CODIGO DE LA CLAUSULA DE REVISION              *00270000
+      * IND-AJUSINHA    INDICADOR AJUSTE DIAS HABILES                  *00280000
+      * COD-MOTIVO      MOTIVO ALTA CONDICION EN LA TABLA              *00290000
+      *                 'N' NEGOCIADA                                  *00290100
+      *                 'A' ALTERNATIVA                                *00290200
+      *                 'S' ESTANDAR                                   *00290300
+      *                 MOTIVO ALTA CONDICION EN LA TABLA              *00290400
+      * IND-MODREVIS    MODO DE REVISION                               *00290401
+      *                 'P' PERIODICO                                  *00290410
+      *                 'A' APERIODICO                                 *00290420
+      *                 'F' FECHA DE FORMALIZACION                     *00290430
+      *                 'E' EVENTO                                     *00290440
+      * COD_DIVISA      DIVISA                                         *00290450
+      * IMPMINI         IMPORTE MINIMO                                 *00290460
+      * IMPMAXI         IMPORTE MÁXIMO                                 *00290470
+      * ENTIDAD-UMO     ENTIDAD ULTIMA MODIFICACION                    *00300000
+      * CENTRO-UMO      CENTRO ULTIMA MODIFICACION                     *00310000
+      * USERID-UMO      USUARIO ULTIMA MODIFICACION                    *00320000
+      * NETNAME-UMO     TERMINAL ULTIMA MODIFICACION                   *00330000
+      * TIMEST-UMO      TIMESTAMP ULTIMA MODIFICACION                  *00340000
+      ******************************************************************00360000
+       02  UGTCRVC.                                                     00390000
+           05 RVC-CLAVE.                                                00391000
+              10 RVC-CCC.                                               00392000
+                 15 RVC-CUENTA           PIC X(12).                     00400000
+                 15 RVC-OFICINA          PIC X(4).                      00410000
+                 15 RVC-ENTIDAD          PIC X(4).                      00420000
+              10 RVC-CODCONLI            PIC X(3).                      00430000
+              10 RVC-FECOVALI            PIC X(10).                     00440000
+              10 RVC-NUM-SECUENCIA       PIC S9(3)V USAGE COMP-3.       00440100
+           05 RVC-DATOS-GENERALES.                                      00441000
+              10 RVC-FEFIVALI            PIC X(10).                     00450000
+              10 RVC-PZO-VIGENCIA        PIC X(4).                      00450100
+              10 RVC-CTRL-REVISION.                                     00451000
+                 15 RVC-FEC-PROAVIAC     PIC X(10).                     00460000
+                 15 RVC-FEC-PROREVAC     PIC X(10).                     00470000
+                 15 RVC-FEC-PROAVIAC-O   PIC X(10).                     00480000
+                 15 RVC-FEC-PROREVAC-O   PIC X(10).                     00490000
+                 15 RVC-FEC-ULTAVIAC     PIC X(10).                     00500000
+      *ALTEC-0001-I
+                 15 RVC-FEC-ULTREVAC     PIC X(10).                     00500000
+                 15 RVC-FEC-ULTREVAC-O   PIC X(10).                     00500000
+                 15 RVC-NUM-REVISIONES   PIC S9(5)V USAGE COMP-3.       00520000
+      *ALTEC-0001-F
+              10 RVC-DATOS-ADMON.                                       00501000
+                 15 RVC-TIPODIAS         PIC X(1).                      00510000
+                    88 RVC-88-TIPODIAS-ANIVERSARIO  VALUE '1'.          00511000
+                    88 RVC-88-TIPODIAS-FINMES       VALUE '2'.          00512000
+                    88 RVC-88-TIPODIAS-DIA-PAGO     VALUE '3'.          00513000
+                    88 RVC-88-TIPODIAS-ULT-VENCI    VALUE '4'.          00514000
+                    88 RVC-88-TIPODIAS-PRO-VENCI    VALUE '5'.          00515000
+                    88 RVC-88-TIPODIAS-FECHAPAGO    VALUE '6'.          00515100
+                    88 RVC-88-TIPODIAS-QUINCENAL    VALUE '7'.          00515200
+                    88 RVC-88-TIPODIAS-HIP-CHILE    VALUE '8'.          00515300
+                 15 RVC-DIA-PAGO         PIC S9(3)V USAGE COMP-3.       00520000
+                 15 RVC-PER-REVISIAC     PIC X(4).                      00530000
+                 15 RVC-TAS-CORRECAC     PIC S9(3)V9(6) USAGE COMP-3.   00540000
+                 15 RVC-TIP-REDONDEO     PIC X(1).                      00550000
+                    88 RVC-88-TIPREDONDEO-ALZA      VALUE 'A'.          00551000
+                    88 RVC-88-TIPREDONDEO-BAJO      VALUE 'B'.          00552000
+                    88 RVC-88-TIPREDONDEO-PURO      VALUE 'P'.          00553000
+                    88 RVC-88-TIPREDONDEO-SIN       VALUE 'S'.          00554000
+                 15 RVC-NUM-REDONDEO     PIC S9(5)V9(6) USAGE COMP-3.   00560000
+                 15 RVC-COD-CLAREVIS     PIC X(3).                      00570000
+                 15 RVC-IND-AJUSINHA     PIC X(1).                      00580000
+                    88 RVC-88-AJUSINHA-NO           VALUE 'N'.          00581000
+                    88 RVC-88-AJUSINHA-SI           VALUE 'N'.          00582000
+                 15 RVC-COD-MOTIVO       PIC X(1).                      00590000
+                    88 RVC-88-COD-MOTIVO-NEGO       VALUE 'N'.          00590100
+                    88 RVC-88-COD-MOTIVO-ALTE       VALUE 'A'.          00590200
+                    88 RVC-88-COD-MOTIVO-ESTA       VALUE 'S'.          00590300
+                 15 RVC-IND-MODREVIS     PIC X(1).                      00590400
+                    88 RVC-88-IND-MODREVIS-PERIO    VALUE 'P'.          00590500
+                    88 RVC-88-IND-MODREVIS-APERIO   VALUE 'A'.          00590600
+                    88 RVC-88-IND-MODREVIS-FECHA    VALUE 'F'.          00590700
+                    88 RVC-88-IND-MODREVIS-EVEN     VALUE 'E'.          00590800
+                 15 RVC-COD-DIVISA       PIC X(3).                      00590900
+                 15 RVC-IMPMINI          PIC S9(13)V9(4) COMP-3.        00590910
+                 15 RVC-IMPMAXI          PIC S9(13)V9(4) COMP-3.        00590920
+           05 RVC-STAMP.                                                00591000
+              10 RVC-ENTIDAD-UMO         PIC X(4).                      00600000
+              10 RVC-CENTRO-UMO          PIC X(4).                      00610000
+              10 RVC-USERID-UMO          PIC X(8).                      00620000
+              10 RVC-NETNAME-UMO         PIC X(8).                      00630000
+              10 RVC-TIMEST-UMO          PIC X(26).                     00640000
+v

@@ -1,0 +1,2 @@
+INVALIDATE METADATA santander_business_risk_arda.calendario_rda;
+COMPUTE INCREMENTAL STATS santander_business_risk_arda.calendario_rda;

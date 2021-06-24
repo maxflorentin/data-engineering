@@ -1,0 +1,14 @@
+{
+    "tables": [
+        {
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "schema": "cartera",
+            "table": "log_cuotaphone_history",
+            "table_type": "fact",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/fact/log_cuotaphone_history",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --query \"select  right(replicate('0',4) + cast(CODIGO_ENTIDAD as varchar),4) as cod_entigen, right(replicate('0',8) + cast(nup as varchar),8) as nup, right(replicate('0',4) + cast(CODIGO_ENTIDAD as varchar),4) as COD_ENTIDAD, right(replicate('0',4) + cast(sucursal as varchar),4) as COD_SUCURSAL, NRO_CUENTA, CODIGO_PRODUCTO, CODIGO_SUBPRODUCTO, DIVISA, NRO_SECUENCIA, FECHA_CUOTAPHONE, NRO_CUENTA_BASE, CODIGO_MARCA_INICIAL, CODIGO_SUBMARCA_INICIAL, COD_MARCA_SEG_INI, TIPO_REESTRUCTURACION_INI, CODIGO_MARCA_ACTUAL, COD_SUBMARCA_ACTUAL, FECHA_CAMBIO_SEG, CODIGO_MARCA_SEG_ACT, TIPO_REESTRUCTURACION_ACT, FECHA_CURA, FECHA_EMPEORA, FECHA_NORMALIZA, null as cod_criterio, MOTIVO_CAMBIO, NUM_REE, null as entidad_umo,  null as centro_umo,  null as userid_umo,  null as netname_umo,  null as timest_umo,  FECHA_INFORMACION as partition_date from CARTERA.NORMALIZACIONES_CUOTAPHONE where cast(fecha_informacion as varchar)= '{partition_date}' and \\$CONDITIONS\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir  '{landing_path}/partition_date={partition_date}' -m 1  --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose\n"
+        }
+    ]
+}

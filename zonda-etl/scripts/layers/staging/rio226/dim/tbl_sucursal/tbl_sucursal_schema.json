@@ -1,0 +1,75 @@
+{
+  "file": "tbl_sucursal_schema",
+  "location": "/santander/bi-corp/landing/rio226/dim/tbl_sucursal/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/dim/tbl_sucursal",
+  "createTable": "bi_corp_staging.rio226_maestro_fondos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+      "name": "id_corresponsal",
+      "type": "string"
+    },
+{
+      "name": "id_sucursal",
+      "type": "string"
+    },
+{
+      "name": "id_filial",
+      "type": "string"
+    },
+{
+      "name": "calle",
+      "type": "string"
+    },
+{
+      "name": "localidad",
+      "type": "string"
+    },
+{
+      "name": "altura",
+      "type": "string"
+    },
+{
+      "name": "codigo_postal",
+      "type": "string"
+    },
+{
+      "name": "codigo_provincia",
+      "type": "string"
+    },
+{
+      "name": "nombre",
+      "type": "string"
+    },
+{
+      "name": "activa",
+      "type": "string"
+    },
+{
+      "name": "es_anses",
+      "type": "string"
+    },
+{
+      "name": "es_rural",
+      "type": "string"
+    },
+{
+      "name": "latitud",
+      "type": "string"
+    },
+{
+      "name": "longitud",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,195 @@
+{
+  "file": "mer_vw_aire_swaps_schema",
+  "location": "/santander/bi-corp/landing/rio4/dim/mer_vw_aire_swaps/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio4/dim/mer_vw_aire_swaps",
+  "createTable": "bi_corp_staging.mer_vw_aire_swaps",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "nro_operacion",
+                    "type": "string"
+                },
+                {
+                    "name": "id_murex",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_operacion",
+                    "type": "string"
+                },
+                {
+                    "name": "codigo_cli_kgl",
+                    "type": "string"
+                },
+                {
+                    "name": "fechacarga",
+                    "type": "string"
+                },
+                {
+                    "name": "fechainicio",
+                    "type": "string"
+                },
+                {
+                    "name": "fechavto",
+                    "type": "string"
+                },
+                {
+                    "name": "fechacancel",
+                    "type": "string"
+                },
+                {
+                    "name": "nominal_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "nominal_res_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "moneda_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "nominal_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "nominal_res_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "moneda_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "portfolio",
+                    "type": "string"
+                },
+                {
+                    "name": "daycountbasis_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "daycountbasis_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_tasa_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_tasa_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "tasa_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "tasa_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "spread_add_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "spread_mult_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "spread_add_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "spread_mult_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_tasa_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_tasa_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "moneda_op",
+                    "type": "string"
+                },
+                {
+                    "name": "comp_mode_bco",
+                    "type": "string"
+                },
+                {
+                    "name": "comp_mode_cli",
+                    "type": "string"
+                },
+                {
+                    "name": "marktomarket",
+                    "type": "string"
+                },
+                {
+                    "name": "rec",
+                    "type": "string"
+                },
+                {
+                    "name": "fechainforme",
+                    "type": "string"
+                },
+                {
+                    "name": "status",
+                    "type": "string"
+                },
+                {
+                    "name": "plazo",
+                    "type": "string"
+                },
+                {
+                    "name": "trader",
+                    "type": "string"
+                },
+                {
+                    "name": "siopel",
+                    "type": "string"
+                },
+                {
+                    "name": "fechaconcerta",
+                    "type": "string"
+                },
+                {
+                    "name": "canal",
+                    "type": "string"
+                },
+                {
+                    "name": "operador",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_hora_carga",
+                    "type": "string"
+                },
+                {
+                    "name": "legajo_carga",
+                    "type": "string"
+                },
+                {
+                    "name": "legajo_desc",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

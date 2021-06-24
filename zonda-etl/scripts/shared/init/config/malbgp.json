@@ -1,0 +1,38 @@
+{
+  "tables": [
+    {
+      "source": "MALBGP",
+      "type": "FACT",
+      "name": "BGTCIPF",
+      "filePrefix": "IMPOSICIONES_PLZ_BGDTIPF_D"
+    },
+    {
+      "source": "MALBGP",
+      "type": "FACT",
+      "name": "BGDTIP2",
+      "filePrefix": "DETALLE_PLZ_BGDTIP2_D"
+    },
+    {
+      "source": "MALBGP",
+      "type": "FACT",
+      "name": "WABGPPER",
+      "filePrefix": "PERSONAS_PLZ_WABGPPER_D"
+    },
+    {
+      "source": "MALBGP",
+      "type": "FACT",
+      "name": "ZBDTAPF",
+      "filePrefix": "SERVICIOS_PLZ_ZBDTAPF_D"
+    },
+    {
+      "source": "MALBGP",
+      "type": "FACT",
+      "name": "BGDTRIE",
+      "filePrefix": "MOVIMIENTOS_PLZ_BGDTRIE_D"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_MALBGP-Daily"
+  }
+}

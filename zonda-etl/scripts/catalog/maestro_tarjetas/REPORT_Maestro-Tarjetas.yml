@@ -1,0 +1,66 @@
+name: REPORT_Maestro-Tarjetas
+description: 'REPORT_Maestro-Tarjetas'
+owner: BI-Corp
+active: true
+schedule_interval: '0 12 * * 1-5'
+start_date: '2020-05-12'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: SparkSubmitOperator
+    config:
+      name: 'ExportData-WAMAS02'
+      connection_id: cloudera_spark2
+      num_executors: 10
+      executor_cores: 5
+      executor_memory: 8G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/unloader/unloader.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/maestro_tarjetas/tarjetas_report.hql'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='REPORT_Maestro-Tarjetas') }}"
+      }
+      application_args: ['--query', "$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/maestro_tarjetas/tarjetas_report.hql",
+                         '--output', "/user/$SERVICE_USER/.sparkStaging/tmp/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv",
+                         '--header', "false"]
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/user/$SERVICE_USER/.sparkStaging/tmp/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv"
+      local_path: "$ZONDA_DIR/outbound/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv"
+      skip_errors: false
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/apicore/maestro_tarjetas_report/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/maestro_tarjetas_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='REPORT_Maestro-Tarjetas') }}.csv"
+dependencies:
+  report_execution: MoveFileToLocalServer
+  MoveFileToLocalServer: report_send_sftp
+  report_send_sftp : EXECUTE_Remove_FILE
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_cys_discrepanciasasdf",
+  "partition_date": "${partition_date}",
+  "controls": [
+        {
+      "control_id": "duplicates",
+      "field_to_check": ["int_cys_ejecucion","dt_cys_periodo","cod_per_nup","ds_per_numdoc"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["int_cys_ejecucion","dt_cys_periodo","cod_per_nup","ds_per_numdoc","ds_cys_razonsocial","ds_clasificacionedf","fc_cys_deudatotal","fc_cys_previsiontotalsindiscrepancia","fc_previsiontotal"],
+      "threshold": 0.00
+    }
+	]
+}
+

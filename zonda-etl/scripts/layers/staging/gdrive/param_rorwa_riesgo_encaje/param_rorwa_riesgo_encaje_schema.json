@@ -1,0 +1,38 @@
+{
+    "file": "param_rorwa_riesgo_encaje_schema",
+    "createTable": "bi_corp_staging.param_rorwa_riesgo_encaje",
+    "location": "/santander/bi-corp/landing/googledrive/dim/param_rorwa_riesgo_encaje/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/gdrive/param_rorwa_riesgo_encaje",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_ren_producto",
+            "type": "string"
+        },
+        {
+            "name": "moneda",
+            "type": "string"
+        },
+        {
+            "name": "pondera_porc",
+            "type": "string"
+        },
+        {
+            "name": "pondera",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

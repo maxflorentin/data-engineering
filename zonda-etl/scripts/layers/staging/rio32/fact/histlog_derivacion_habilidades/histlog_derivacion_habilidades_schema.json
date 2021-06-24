@@ -1,0 +1,71 @@
+{
+  "file": "histlog_derivacion_habilidades_schema",
+  "location": "/santander/bi-corp/landing/rio32/fact/histlog_derivacion_habilidades/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/fact/histlog_derivacion_habilidades",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "fecha",
+    "type": "string"
+  },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "documento",
+      "type": "string"
+    },
+    {
+      "name": "connectionid",
+      "type": "string"
+    },
+    {
+      "name": "vq",
+      "type": "string"
+    },
+    {
+      "name": "grupo_agentes",
+      "type": "string"
+    },
+    {
+      "name": "grupo_agentes_des",
+      "type": "string"
+    },
+    {
+      "name": "habilidad_1",
+      "type": "string"
+    },
+    {
+      "name": "habilidad_2",
+      "type": "string"
+    },
+    {
+      "name": "agente",
+      "type": "string"
+    },
+    {
+      "name": "descrip",
+      "type": "string"
+    },
+    {
+      "name": "cod_app",
+      "type": "string"
+    },
+    {
+      "name": "sesion",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

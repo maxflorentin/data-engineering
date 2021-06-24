@@ -1,0 +1,128 @@
+{
+	"file": "dim_productos_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_productos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_productos",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_productos",
+	"createTable": "bi_corp_staging.exa_dim_productos",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "producto",
+			"type":"string"
+		},
+{
+			"name": "subproducto",
+			"type":"string"
+		},
+{
+			"name": "nombre",
+			"type":"string"
+		},
+{
+			"name": "descripcion",
+			"type":"string"
+		},
+{
+			"name": "producto_agrup",
+			"type":"string"
+		},
+{
+			"name": "flag_universidad",
+			"type":"string"
+		},
+{
+			"name": "universidad_convenio",
+			"type":"string"
+		},
+{
+			"name": "grupo_producto_id",
+			"type":"string"
+		},
+{
+			"name": "cod_pas",
+			"type":"string"
+		},
+{
+			"name": "tasa",
+			"type":"string"
+		},
+{
+			"name": "bap",
+			"type":"string"
+		},
+{
+			"name": "peso",
+			"type":"string"
+		},
+{
+			"name": "alias",
+			"type":"string"
+		},
+{
+			"name": "cod_cbtf",
+			"type":"string"
+		},
+{
+			"name": "prod_agrup",
+			"type":"string"
+		},
+{
+			"name": "cod_agrup1",
+			"type":"string"
+		},
+{
+			"name": "depo_agrup",
+			"type":"string"
+		},
+{
+			"name": "depo_agrup_nombre",
+			"type":"string"
+		},
+{
+			"name": "depo_agrup_orden",
+			"type":"string"
+		},
+{
+			"name": "producto_ofertado_id",
+			"type":"string"
+		},
+{
+			"name": "riesgo",
+			"type":"string"
+		},
+{
+			"name": "vista_masche",
+			"type":"string"
+		},
+{
+			"name": "cod_agrup2",
+			"type":"string"
+		},
+{
+			"name": "viz_familia",
+			"type":"string"
+		},
+{
+			"name": "viz_familia_orden",
+			"type":"string"
+		},
+{
+			"name": "viz_producto",
+			"type":"string"
+		},
+{
+			"name": "viz_producto_orden",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

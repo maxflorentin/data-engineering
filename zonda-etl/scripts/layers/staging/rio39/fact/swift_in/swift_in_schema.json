@@ -1,0 +1,108 @@
+{
+     "file": "swift_in_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/swift_in/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/swift_in",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [
+             {
+              "name": "id_swift",
+              "type": "string"
+             },
+             {
+              "name": "benef",
+              "type": "string"
+             },
+             {
+              "name": "moneda",
+              "type": "string"
+             },
+             {
+              "name": "monto",
+              "type": "string"
+             },
+             {
+              "name": "estado",
+              "type": "string"
+             },
+             {
+              "name": "nro_op",
+              "type": "string"
+             },
+             {
+              "name": "usuario",
+              "type": "string"
+             },
+             {
+              "name": "fmodif",
+              "type": "string"
+             },
+             {
+              "name": "referencia",
+              "type": "string"
+             },
+             {
+              "name": "nro_opr",
+              "type": "string"
+             },
+             {
+              "name": "nroswift",
+              "type": "string"
+             },
+             {
+              "name": "banco",
+              "type": "string"
+             },
+             {
+              "name": "fvalor",
+              "type": "string"
+             },
+             {
+              "name": "tipo_ingreso",
+              "type": "string"
+             },
+             {
+              "name": "gpi",
+              "type": "string"
+             },
+             {
+              "name": "srp",
+              "type": "string"
+             },
+             {
+              "name": "cuenta",
+              "type": "string"
+             },
+             {
+              "name": "con_fondos",
+              "type": "string"
+             },
+             {
+              "name": "fingreso_fondos",
+              "type": "string"
+             },
+             {
+              "name": "fecha_fondos",
+              "type": "string"
+             },
+			 {
+              "name": "fingreso",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

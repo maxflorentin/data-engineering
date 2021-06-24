@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_bdr.matriz_rating_calificacion ADD IF NOT EXISTS PARTITION (partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Garantias_Manual_Demanda') }}');

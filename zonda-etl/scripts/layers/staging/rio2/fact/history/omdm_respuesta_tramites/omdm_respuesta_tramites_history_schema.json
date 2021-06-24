@@ -1,0 +1,41 @@
+{
+  "file": "omdm_respuesta_tramites_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/history/omdm_respuesta_tramites/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/omdm_respuesta_tramites",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 8,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "tipo_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_campo",
+                    "type": "string"
+                },
+                {
+                    "name": "valor",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_proceso",
+                    "type": "string"
+                }
+            ],
+           "mirrorColumns": [{
+                  "name": "partition_date",
+                  "type": "date",
+                  "target": "fec_proceso",
+                  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+  }]
+}

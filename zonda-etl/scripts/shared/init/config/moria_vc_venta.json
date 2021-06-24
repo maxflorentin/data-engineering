@@ -1,0 +1,20 @@
+{
+    "tables": [
+      {
+        "source": "MORIA",
+        "type": "FACT",
+        "name": "vc_venta",
+        "filePrefix": "VC_VENTA_"
+      },
+      {
+        "source": "MORIA",
+        "type": "FACT",
+        "name": "vc_historico_venta",
+        "filePrefix": "HISTORICO_DATALAKE_"
+      }
+    ],
+    "trigger": {
+      "condition": "any",
+      "dag": "LOAD_STG_MORIA_VC_Ventas"
+    }
+  }

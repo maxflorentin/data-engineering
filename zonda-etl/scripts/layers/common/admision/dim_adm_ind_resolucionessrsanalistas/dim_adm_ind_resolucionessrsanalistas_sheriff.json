@@ -1,0 +1,26 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_resolucionessrsanalistas",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_legajo","ds_adm_rol","ts_adm_fechaalta"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_legajo","ds_adm_rol","ts_adm_fechaalta"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["flag_adm_activo","flag_adm_cpi","ds_adm_usuario_srs","ds_adm_usuario","ds_adm_equipo","ds_adm_seniority"],
+        "threshold": 0.005
+      },
+     {
+        "control_id": "date_format",
+        "field_to_check": ["ts_adm_fechaalta","ts_adm_fechabaja"],
+        "pattern": "yyyy-MM-dd",
+        "threshold": 0.01
+      }
+    ]
+  }

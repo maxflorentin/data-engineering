@@ -1,0 +1,253 @@
+{
+    "file": "vc_historico_venta",
+    "location": "/santander/bi-corp/landing/moria/fact/vc_historico_venta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/moria/fact/vc_historico_venta",
+    "extension": "csv",
+    "delimiter": ";",
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.moria_vc_historico_ventas",
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "idventa",
+            "type": "string"
+        },
+        {
+            "name": "cod_centro",
+            "type": "string"
+        },
+        {
+            "name": "num_contrato",
+            "type": "string"
+        },
+        {
+            "name": "cod_producto",
+            "type": "string"
+        },
+        {
+            "name": "cod_subprodu",
+            "type": "string"
+        },
+        {
+            "name": "cod_divisa",
+            "type": "string"
+        },
+        {
+            "name": "penumper",
+            "type": "string"
+        },
+        {
+            "name": "petipdoc",
+            "type": "string"
+        },
+        {
+            "name": "penumdoc",
+            "type": "string"
+        },
+        {
+            "name": "penomfan",
+            "type": "string"
+        },
+        {
+            "name": "pepriape",
+            "type": "string"
+        },
+        {
+            "name": "penomper",
+            "type": "string"
+        },
+        {
+            "name": "petipdoc_i",
+            "type": "string"
+        },
+        {
+            "name": "penumdoc_i",
+            "type": "string"
+        },
+        {
+            "name": "pepriape_i",
+            "type": "string"
+        },
+        {
+            "name": "penomper_i",
+            "type": "string"
+        },
+        {
+            "name": "tot_capital",
+            "type": "string"
+        },
+        {
+            "name": "tot_interes",
+            "type": "string"
+        },
+        {
+            "name": "tot_comision",
+            "type": "string"
+        },
+        {
+            "name": "tot_gastos",
+            "type": "string"
+        },
+        {
+            "name": "tot_seguros",
+            "type": "string"
+        },
+        {
+            "name": "tot_impuesto",
+            "type": "string"
+        },
+        {
+            "name": "tot_ajuste",
+            "type": "string"
+        },
+        {
+            "name": "saldo",
+            "type": "string"
+        },
+        {
+            "name": "saldo_informado_i",
+            "type": "string"
+        },
+        {
+            "name": "imp_recuperar",
+            "type": "string"
+        },
+        {
+            "name": "imp_totcanco",
+            "type": "string"
+        },
+        {
+            "name": "imp_cancgasc",
+            "type": "string"
+        },
+        {
+            "name": "total_contable",
+            "type": "string"
+        },
+        {
+            "name": "total_no_contable",
+            "type": "string"
+        },
+        {
+            "name": "total_impuperc",
+            "type": "string"
+        },
+        {
+            "name": "cant_pagos",
+            "type": "string"
+        },
+        {
+            "name": "cod_estado",
+            "type": "string"
+        },
+        {
+            "name": "fec_castigo",
+            "type": "string"
+        },
+        {
+            "name": "cod_origcast",
+            "type": "string"
+        },
+        {
+            "name": "fec_abseguim",
+            "type": "string"
+        },
+        {
+            "name": "fec_abtotal",
+            "type": "string"
+        },
+        {
+            "name": "fec_baja",
+            "type": "string"
+        },
+        {
+            "name": "cod_motbajac",
+            "type": "string"
+        },
+        {
+            "name": "fec_inisitir",
+            "type": "string"
+        },
+        {
+            "name": "cod_coefinde",
+            "type": "string"
+        },
+        {
+            "name": "cod_refinanc",
+            "type": "string"
+        },
+        {
+            "name": "ind_conversi",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipadmin",
+            "type": "string"
+        },
+        {
+            "name": "cod_proceden",
+            "type": "string"
+        },
+        {
+            "name": "nombre_eejj_i",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "userid_alta",
+            "type": "string"
+        },
+        {
+            "name": "userid_umo",
+            "type": "string"
+        },
+        {
+            "name": "timest_umo",
+            "type": "string"
+        },
+        {
+            "name": "prod_emerix",
+            "type": "string"
+        },
+        {
+            "name": "tip_cartera",
+            "type": "string"
+        },
+        {
+            "name": "escenario",
+            "type": "string"
+        },
+        {
+            "name": "nup_eejj",
+            "type": "string"
+        },
+        {
+            "name": "segmento_comer",
+            "type": "string"
+        },
+        {
+            "name": "ind_rechazo",
+            "type": "string"
+        },
+        {
+            "name": "cod_rechazo",
+            "type": "string"
+        },
+        {
+            "name": "motivo_rechazo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

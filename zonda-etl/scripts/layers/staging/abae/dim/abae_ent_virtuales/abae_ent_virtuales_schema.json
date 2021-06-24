@@ -1,0 +1,33 @@
+{
+	"file": "abae_ent_virtuales_schema",
+	"location": "/santander/bi-corp/landing/abae/dim/abae_ent_virtuales/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/abae/dim/abae_ent_virtuales",
+	"createTable": "bi_corp_staging.abae_ent_virtuales",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "entidad",
+			"type": "string"
+		},
+		{
+			"name": "descrip_corta",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

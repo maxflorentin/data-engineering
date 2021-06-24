@@ -1,0 +1,1 @@
+SELECT DISTINCT RE.cod_segmento_gest , SE.des_hijo FROM (SELECT DISTINCT RE.cod_segmento_gest FROM bi_corp_staging.rio157_ms0_ft_dwh_blce_result RE WHERE RE.partition_date = '$month_to' ) RE JOIN bi_corp_staging.rio157_ms0_dm_je_dwh_segmentos_ctr SE ON SE.partition_date = '$max_partition_rio157_ms0_dm_je_dwh_segmentos_ctr' AND RE.cod_segmento_gest = SE.cod_hijo ;

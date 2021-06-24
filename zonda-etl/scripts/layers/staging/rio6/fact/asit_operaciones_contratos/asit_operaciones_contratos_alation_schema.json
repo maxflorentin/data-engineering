@@ -1,0 +1,159 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_operaciones_contratos",
+            "title": "Operaciones de contratos",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Operaciones de contratos",
+            "columns": [
+                {
+                    "name": "  ASOC_CD_OPERACION ",
+                    "title": "  ASOC_CD_OPERACION ",
+                    "description": "Codigo de operación",
+                    "type": "CLOB",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_CD_SUB_OPERACION",
+                    "title": "  ASOC_CD_SUB_OPERACION",
+                    "description": "Codigo de sub operación",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_FE_OPERACION",
+                    "title": "  ASOC_FE_OPERACION",
+                    "description": "Fecha de operación",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_CD_USUARIO",
+                    "title": "  ASOC_CD_USUARIO",
+                    "description": "Codigo de usuario",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_CD_RAMO",
+                    "title": "  ASOC_CD_RAMO",
+                    "description": "Codigo de ramo",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_NU_CONTRATO",
+                    "title": "  ASOC_NU_CONTRATO",
+                    "description": "Numero de contrato",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_NU_CERTIFICADO",
+                    "title": "  ASOC_NU_CERTIFICADO",
+                    "description": "Numero de certificado",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_NU_ENDOSO",
+                    "title": "  ASOC_NU_ENDOSO",
+                    "description": "Numero de endoso",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_DE_ENDOSO",
+                    "title": "  ASOC_DE_ENDOSO",
+                    "description": "Informacion de endoso",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_TP_DOCUMENTO",
+                    "title": "  ASOC_TP_DOCUMENTO",
+                    "description": "Tipo de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_NU_DOCUMENTO",
+                    "title": "  ASOC_NU_DOCUMENTO",
+                    "description": "Numero de identificacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASOC_DE_OPERACION",
+                    "title": "  ASOC_DE_OPERACION",
+                    "description": "Informacion de la operación",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 70.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

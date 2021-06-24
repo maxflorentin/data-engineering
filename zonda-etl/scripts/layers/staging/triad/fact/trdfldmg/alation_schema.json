@@ -1,0 +1,402 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A220615"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "triad_col_trdfldmg",
+            "title": "Informacion de Prestamos Hipotecarios (MG) en linkage de salida de TRIAD Collections.",
+            "schema": "bi_corp_staging",
+            "source": "AATR",
+            "type": "FACT",
+            "description": "Informacion de Prestamos Hipotecarios (MG) en linkage de salida de TRIAD Collections.",
+            "columns": [
+                {
+                    "name": "DMG_LENGTH",
+                    "title": "DMG_LENGTH",
+                    "description": "Rec length",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_TENANT_ID",
+                    "title": "DMG_TENANT-ID",
+                    "description": "Tenant ID",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_CUSTOMER_ID",
+                    "title": "DMG_CUSTOMER-ID",
+                    "description": "Customer ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_REC_ID",
+                    "title": "DMG_REC-ID",
+                    "description": "Rec ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_REC_ID_NUM",
+                    "title": "DMG_REC-ID-NUM",
+                    "description": "Rec ID NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_REC_SEQ_NUM",
+                    "title": "DMG_REC-SEQ-NUM",
+                    "description": "Seq NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_ACCOUNT_ID",
+                    "title": "DMG_ACCOUNT-ID",
+                    "description": "Es el identificador único de la cuenta. Este campo se compone en las primeras cuatro posiciones de la sucursal del Cliente y las doce siguientes el número de cuenta.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PREV_ACCT_ID",
+                    "title": "DMG_PREV-ACCT-ID",
+                    "description": "Previous Account ID. This field should be mapped if the account ID changed for any reason since the last time that the customer was reviewed by TRIAD and the TRIAD data is being passed on to the TRIAD Analytic Datamart. It is not used by TRIAD itself, but if the data is being communicated to the TRIAD Analytic Datamart it will allow historical tracking of the data. ",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DATE_OPEN",
+                    "title": "DMG_DATE-OPEN",
+                    "description": "Es la fecha de apertura/liquidación del préstamo hipotecario.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DATE_CLOSED",
+                    "title": "DMG_DATE-CLOSED",
+                    "description": "Es la fecha de cierre o fin del Préstamo hipotecario.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_REASON_CLOSED",
+                    "title": "DMG_REASON-CLOSED",
+                    "description": "Es el motivo ó razón de cierre del préstamo hipotecario.\nEs un campo obligatorio, o sea siempre será informado. Los valores posibles son:\n 3- A: Cancelación Anticipada\n4-  N: Cancelación Natural\n 2- C: Condonación de Deuda\n R: Renovado\n F: Refinanciado\n S: Subrogado\n E: Reestructurado\n J: Cobro Judicial (en contencioso) con recobro\n ‘’(blanco): No cerrada – Activa.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_NUM_PARTIES",
+                    "title": "DMG_NUM-PARTIES",
+                    "description": "Es el número de titulares y co-titulares del préstamo hipotecario.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DIVISOR",
+                    "title": "DMG_DIVISOR",
+                    "description": "Set to 1",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "2,2",
+                    "nullable": false,
+                    "length": 4,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_LIABILITY_IND",
+                    "title": "DMG_LIABILITY-IND",
+                    "description": "1 - 1. Titular\n2 - 2. Titular\n3 - 3. Titular",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PRIMARY_ACCT_IND",
+                    "title": "DMG_PRIMARY-ACCT-IND",
+                    "description": "1 - Primer titular\n0 - Resto",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_ACCOUNT_TYPE",
+                    "title": "DMG_ACCOUNT-TYPE",
+                    "description": "Qué paga este mes:\n1-Capital e intereses\n2-Solo intereses\n3-Solo Capital\n4-Nada (carencia)\n\nEs el tipo de préstamo hipotecario disponible (con garantía ó sin garantía, interés fijo o variable, etc.). \nSe compone de la siguiente información:\nPrimeros dos dígitos : Producto\nSegundos cuatro dígitos : Sub Producto\nLos últimos tres dígitos: Moneda\nEste campo podrá contener los siguientes valores:\nProducto /subproducto/Moneda/ Descripción\n37 0001 ARS SUPER HIPOTECA FRANCES T.FIJA ARS",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_ACCOUNT_SPR_TYPE",
+                    "title": "DMG_ACCOUNT-SPR-TYPE",
+                    "description": "1: Préstamos Hipotecarios Refinanciados \n2: Préstamos Hipotecarios sin Refinanciación.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_ORIGINAL_TERM",
+                    "title": "DMG_ORIGINAL-TERM",
+                    "description": "Es el plazo original del préstamo hipotecario, se informa en meses. Se calcula mediante la diferencia entre la fecha de vencimiento y la fecha de liquidación del préstamo.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_REMAINING_TERM",
+                    "title": "DMG_REMAINING-TERM",
+                    "description": "Es el plazo restante del préstamo hipotecario, se informa en meses. Se calcula mediante la diferencia entre la fecha de vencimiento del préstamo hipotecario y la fecha del último pago de cuota. También puede quedar en cero cuando la última cuota paga se realizó luego de la fecha de vencimiento original estipulada.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_ORIGINAL_LOAN_AMOUNT",
+                    "title": "DMG_ORIGINAL-LOAN-AMOUNT",
+                    "description": "Es el importe original del préstamo hipotecario, es el monto del capital del préstamo hipotecario.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DATE_LAST_PAY",
+                    "title": "DMG_DATE-LAST-PAY",
+                    "description": "Fecha de último pago",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DATE_START_ARREARS",
+                    "title": "DMG_DATE-START-ARREARS",
+                    "description": "Fecha de comienzo de deuda",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_DATE_FIRST_INSTALLMENT",
+                    "title": "DMG_DATE-FIRST-INSTALLMENT",
+                    "description": "Fecha de 1ª cuota",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PAYMENT_FREQUENCY",
+                    "title": "DMG_PAYMENT-FREQUENCY",
+                    "description": "01 = monthly\n03 = quarterly\n06 = semi-annually\n12 = annually  ",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_STNDRD_INSTALLMENT_AMT",
+                    "title": "DMG_STNDRD-INSTALLMENT-AMT",
+                    "description": "El pago estandar a realizar periodicamente (con la periodicidad estabelecida en el campo anterior).\nPor ejemplo: Si trimestralmente se pagan 300, entonces TI-DMG_STNDRD-INSTALLMENT = 300 y TI-DMG_PAYMENT-FREQUENCY = 3\n\nSon las siguientes a pagar",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PAYMENT_METHOD",
+                    "title": "DMG_PAYMENT-METHOD",
+                    "description": "Se identifica si el pago se realiza por débito automático o no.\nEs un campo de información obligatoria, por lo tanto no habrá registros con valores en blanco ó cero. Los valores que puede tomar son: \n1: Con débito automático.\n2: Sin débito automático.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_INSURANCE",
+                    "title": "DMG_INSURANCE",
+                    "description": "1- Tiene Seguro\n0- No tiene Seguro",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_TRIAD_CAT",
+                    "title": "DMG_TRIAD-CAT",
+                    "description": "Realimentado de llamada anterior REVW O REVC",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_VAL_FEES",
+                    "title": "DMG_VAL-FEES",
+                    "description": "1: Comisiones de Apertura\n2: Comisiones por pagos atrasados\n3: Comisiones de Cancelacion\n4: Otros\n5: Not Used",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PROFIT",
+                    "title": "DMG_PROFIT",
+                    "description": "Rentabilidad a nivel cuenta= valor de la ganancia del cliente del corriente mes. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_PROVISION",
+                    "title": "DMG_PROVISION",
+                    "description": "Provisión con perdida o sin perdida.\n\nOpción 1: la provisión específica calculada con el criterio local está en AIGE a nivel contrato.\nOpción 2: la provisión específica calculada de acuerdo a la norma 4/04 de Banco de España está en GARRA a nivel contrato. \n\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_APPORTIONMNT_EXCL_IND",
+                    "title": "DMG_APPORTIONMNT-EXCL-IND",
+                    "description": "Set to 0. No se aplica.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_MONTHLY_SEGMENT",
+                    "title": "DMG_MONTHLY-SEGMENT",
+                    "description": "\"12 historical occurrences of account performance:\noccurrence (1)   = most recent  \noccurrence (12) = 12 months previous.\"\n\n>>DMG_DATE-DUE\tEs la fecha de vencimiento de la cuota del préstamo hipotecario.\n>>DMG_BLOCK-CODE\t\"Es el código de estado del Préstamo Hipotecario.\nEs un campo de información obligatoria, por lo tanto no habrá registros con valores en blanco ó en ceros. Este campo podrá tener alguno de los siguientes valores: \n0 = No bloqueado\n20 = Disputa\n40 = Perdida o Robada\n50 = En litigio\n60 = Adjudicación de garantía\n70 = Fallido\n80 = Defunción\n(ver como matchea con estos anteriores\nACTI : Si el préstamo hipotecario se encuentra activo\nBAJA: Si el préstamo hipotecario se encuentra dado de baja.\nCANC: Si el préstamo hipotecario se encuentra cancelado.\n‘    ‘(blancos) : Cuenta aún no dada de alta.)\"\n>>DMG_BALANCE\tEs el saldo de capital adeudado, ó pendiente, del préstamo hipotecario a la fecha informada.\n>>DMG_INSTALLMENT-DUE\tEs el importe de la cuota a pagar correspondiente al mes que se esta informando. (incluye monto adeudado anterior)\n>>DMG_VAL-PAYMENTS\tPagos del mes\n>>DMG_VAL-ARREARS\tDeuda\n>>DMG_VAL-INTEREST\tInteres devengado. Se obtiene al calcular la cuota (Ojo)\n>>DMG_VAL-TOTAL-FEES\tSuma de las comisiones",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 384,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DMG_MONTHLY_SEGMENT2",
+                    "title": "DMG_MONTHLY-SEGMENT2",
+                    "description": "\"24 historical occurrences of Delinquency:\noccurrence (1)   = most recent  \noccurrence (24) = 24 months previous.\"\n\n>>DMG_NUM-MTHS-IN-ARREARS\t\"Es el número de ciclos en impago en el mes informado.  \n 1 - 30: 1 ciclo\n31 - 60: 2 ciclos\n61 - 90: 3 ciclos\"",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 48,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

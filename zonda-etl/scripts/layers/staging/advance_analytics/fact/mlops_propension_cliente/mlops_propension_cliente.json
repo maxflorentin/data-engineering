@@ -1,0 +1,38 @@
+{
+    "file": "mlops_propension_cliente",
+    "location": "/santander/bi-corp/landing/advance_analytics/fact/mlops_propension_cliente/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/advance_analytics/fact/mlops_propension_cliente",
+    "createTable": "bi_corp_staging.mlops_propension_cliente",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_per_nup",
+            "type": "string"
+        },
+        {
+            "name": "score",
+            "type": "string"
+        },
+        {
+            "name": "score_binneado",
+            "type": "string"
+        },
+        {
+            "name": "modelo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,107 @@
+{
+    "file": "ba_equipos_dispo_tas_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos_dispo_tas",
+    "location": "/santander/bi-corp/landing/rio44/fact/ba_equipos_dispo_tas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/fact/ba_equipos_dispo_tas",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+        {
+            "name": "fecha",
+            "type": "string"
+        },
+        {
+            "name": "sigla",
+            "type": "string"
+        },
+        {
+            "name": "n_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "zona",
+            "type": "string"
+        },
+        {
+            "name": "zonal",
+            "type": "string"
+        },
+        {
+            "name": "marca",
+            "type": "string"
+        },
+        {
+            "name": "operador",
+            "type": "string"
+        },
+        {
+            "name": "descripcion_posicion",
+            "type": "string"
+        },
+        {
+            "name": "calle",
+            "type": "string"
+        },
+        {
+            "name": "numero",
+            "type": "string"
+        },
+        {
+            "name": "localidad",
+            "type": "string"
+        },
+        {
+            "name": "provincia",
+            "type": "string"
+        },
+        {
+            "name": "disponibilidad",
+            "type": "string"
+        },
+        {
+            "name": "cash_out",
+            "type": "string"
+        },
+        {
+            "name": "balanceo",
+            "type": "string"
+        },
+        {
+            "name": "dispensador",
+            "type": "string"
+        },
+        {
+            "name": "hard",
+            "type": "string"
+        },
+        {
+            "name": "suministro",
+            "type": "string"
+        },
+        {
+            "name": "comunicacion",
+            "type": "string"
+        },
+        {
+            "name": "supervisor",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

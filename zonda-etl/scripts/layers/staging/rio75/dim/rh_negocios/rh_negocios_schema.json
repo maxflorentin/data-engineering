@@ -1,0 +1,71 @@
+{
+  "file": "rh_negocios_schema",
+  "location": "/santander/bi-corp/landing/rio75/dim/rh_negocios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio75/dim/rh_negocios",
+  "tempDirectory": "/santander/bi-corp/temp/rio75",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "c_negociorh",
+      "type": "string"
+    },
+    {
+      "name": "n_negocio_rio3",
+      "type": "string"
+    },
+    {
+      "name": "d_negocio",
+      "type": "string"
+    },
+    {
+      "name": "c_usu_resp",
+      "type": "string"
+    },
+    {
+      "name": "c_departamentorh",
+      "type": "string"
+    },
+    {
+      "name": "f_alta",
+      "type": "string"
+    },
+    {
+      "name": "f_baja",
+      "type": "string"
+    },
+    {
+      "name": "i_activo",
+      "type": "string"
+    },
+    {
+      "name": "i_liquidable",
+      "type": "string"
+    },
+    {
+      "name": "n_asegurado",
+      "type": "string"
+    },
+    {
+      "name": "i_cii",
+      "type": "string"
+    },
+    {
+      "name": "c_tipo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

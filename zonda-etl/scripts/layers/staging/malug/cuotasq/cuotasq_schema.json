@@ -1,0 +1,16 @@
+{
+  "file": "cuotasq_schema",
+  "location": "/santander/bi-corp/landing/malug/fact/cuotasq/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/cuotasq",
+  "createTable": "bi_corp_staging.malug_cuotasq",
+  "copybook": "cuotasq.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

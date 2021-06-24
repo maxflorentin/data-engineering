@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_balances_propuestas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_balance","dt_adm_fecha_balance","cod_adm_numero_persona_sge","cod_adm_numero_propuesta"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_balance","dt_adm_fecha_balance","cod_adm_numero_persona_sge","cod_adm_numero_propuesta","flag_adm_consolidado","ds_adm_segmento","ds_adm_balance_origen","int_adm_orden","ds_adm_periodo"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_fecha_balance","dt_adm_datos_adicionales_distribucion_utilidades_fecha_asamblea_aprobatoria","dt_adm_fecha_hora_actual"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+  ]
+}
+

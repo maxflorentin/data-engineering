@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_tmya_status_log",
+      "title": "información de los estados de envio de novedades",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "DIM",
+      "description": "información de los estados de envio de novedades",
+      "columns": [
+        {
+          "name": "ID_ESTADO",
+          "title": "ID_ESTADO",
+          "description": "ID de la tabla",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "descripción del estado",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

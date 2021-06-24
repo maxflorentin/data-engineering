@@ -1,0 +1,96 @@
+{
+    "file": "rtd_ofertas_presentadas_schema",
+    "createTable": "bi_corp_staging.rio163_rtd_ofertas_presentadas",
+    "location": "/santander/bi-corp/landing/rio163/fact/rtd_ofertas_presentadas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio163/fact/rtd_ofertas_presentadas",
+    "tempDirectory": "/santander/bi-corp/temp/rio163",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_oferta_rtd",
+            "type": "string"
+        },
+        {
+            "name": "id_oferta_interno",
+            "type": "string"
+        },
+        {
+            "name": "id_canal",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "accion",
+            "type": "string"
+        },
+        {
+            "name": "fecha",
+            "dateFormat": "yyyy-MM-dd HH:mm:ss",
+            "type": "string"
+        },
+        {
+            "name": "tipo_oferta",
+            "type": "string"
+        },
+        {
+            "name": "categoria_oferta",
+            "type": "string"
+        },
+        {
+            "name": "grupo_control",
+            "type": "string"
+        },
+        {
+            "name": "fecha_carga",
+            "type": "string"
+        },
+        {
+            "name": "probabilidad",
+            "type": "string"
+        },
+        {
+            "name": "ubicacion_carrusel",
+            "type": "string"
+        },
+        {
+            "name": "ubicacion_seccion",
+            "type": "string"
+        },
+        {
+            "name": "id_rtd",
+            "type": "string"
+        },
+        {
+            "name": "fecha_ult_actualizacion",
+            "type": "string"
+        },
+        {
+            "name": "orden_prioridad",
+            "type": "string"
+        },
+        {
+            "name": "tipo_ofrecimiento",
+            "type": "string"
+        },
+        {
+            "name": "origen",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

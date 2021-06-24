@@ -1,0 +1,20 @@
+{
+    "name": "Beneficios_promociones-Daily",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id": "LOAD_STG_Cupones-WABAETL-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id": "LOAD_STG_Cupones_waftc600-Daily",
+                    "tasks": "all"
+                    }
+    ],
+    "trigger":[
+                {
+                    "dag_id": "LOAD_CMN_Beneficios_promociones-Daily",
+                    "tasks": "all"
+                }
+    ]
+}

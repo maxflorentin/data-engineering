@@ -1,0 +1,173 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_tracking_event",
+            "title": "CONTIENE TODOS LOS ENVÍOS QUE FUERON PROCESADOS POR EL COURIER (ANDREANI)\nY QUE TRATAMIENTO LE DA A PARTIR DE SU MODELO DE DATOS.",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE TODOS LOS ENVÍOS QUE FUERON PROCESADOS POR EL COURIER (ANDREANI)\nY QUE TRATAMIENTO LE DA A PARTIR DE SU MODELO DE DATOS.",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "CÓDIGO DE ENVÍO INTERNO DE COURIER ",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRACKING_ID",
+                    "title": "TRACKING_ID",
+                    "description": "CÓDIGO DE SEGUIMIENTO DEL COURIER",
+                    "type": "VARCHAR2(200)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 200.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "STATUS_ID",
+                    "title": "STATUS_ID",
+                    "description": "CÓDIGO DE ESTADO",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "EVENT_DATE",
+                    "title": "EVENT_DATE",
+                    "description": "FECHA CREACIÓN DEL ESTADO",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "BRANCH_CODE",
+                    "title": "BRANCH_CODE",
+                    "description": "CÓDIGO DE SUCURSAL",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER",
+                    "title": "COURIER",
+                    "description": "DESCRIPCIÓN DEL COURIER",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHIPPING_ID",
+                    "title": "SHIPPING_ID",
+                    "description": "CÓDIGO DEL ENVÍO CROSS APLICACIONES",
+                    "type": "NUMBER(22,0)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COURIER_BRANCH_CODE",
+                    "title": "COURIER_BRANCH_CODE",
+                    "description": "CÓDIGO DE SUCURSAL DEL COURIER",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "table": "bi_corp_common.stk_cys_adsf",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": [
+                "cod_cys_interface",
+                "cod_per_nup",
+                "cod_cys_entidad",
+                "cod_suc_sucursal",
+                "cod_nro_cuenta",
+                "cod_prod_producto",
+                "cod_prod_subproducto",
+                "cod_div_divisa",
+                "int_cys_identificador",
+                "cod_cys_concepto",
+                "cod_cys_rubroaltair",
+                "cod_cys_rubrobcra",
+                "cod_cys_rubrocargabal",
+                "cod_cys_garantia",
+                "fc_cys_importedeuda"
+            ]
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_cys_interface",
+                "cod_cys_entidad",
+                "cod_suc_sucursal",
+                "cod_nro_cuenta",
+                "cod_prod_producto",
+                "cod_prod_subproducto",
+                "cod_div_divisa",
+                "cod_cys_concepto",
+                "cod_cys_rubroaltair",
+                "cod_cys_rubrobcra",
+                "cod_cys_rubrocargabal",
+                "fc_cys_importedeuda",
+                "fc_cys_importeprovision"
+            ],
+            "threshold": 0
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_cys_fechaalta",
+                "dt_cys_fechavto",
+                "dt_cys_fechapriminc",
+                "dt_cys_fechaupgradepaq",
+                "dt_cys_fechaaltaprod",
+                "dt_cys_fechavtoprod",
+                "dt_cys_fechaingmoria",
+                "dt_cys_fechaingemerix",
+                "dt_cys_fechaprimercuota"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0
+        }
+    ]
+}

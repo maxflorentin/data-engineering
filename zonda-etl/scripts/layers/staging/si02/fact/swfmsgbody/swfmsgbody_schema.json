@@ -1,0 +1,64 @@
+{
+        "file": "swfmsgbody_schema",
+        "location": "/santander/bi-corp/landing/si02/fact/swfmsgbody/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/si02/fact/swfmsgbody",
+        "tempDirectory": "/santander/bi-corp/temp/si02",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":
+		[
+
+                {
+                 "name": "queue",
+                 "type": "string"
+                },
+                {
+                 "name": "seq",
+                 "type": "string"
+                },
+                {
+                 "name": "line_order",
+                 "type": "string"
+                },
+                {
+                 "name": "field",
+                 "type": "string"
+                },
+                {
+                 "name": "sub_field",
+                 "type": "string"
+                },
+                {
+                 "name": "sub_line",
+                 "type": "string"
+                },
+                {
+                 "name": "txcomment",
+                 "type": "string"
+                },
+                {
+                 "name": "text_val",
+                 "type": "string"
+                },
+                {
+                 "name": "number_val",
+                 "type": "string"
+                },
+                {
+                 "name": "date_val",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "swift_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

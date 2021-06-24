@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.rio102_mvw_cabecera_premiaciones ADD IF NOT EXISTS PARTITION (fecha_desde='{partition_date}');

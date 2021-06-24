@@ -1,0 +1,713 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A304726"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "zendesk_usr_comex_santander",
+            "title": "Posee todos los usuarios que pueden interactuar con la herramienta zendesk.",
+            "schema": "bi_corp_staging",
+            "source": "ZENDSK",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Posee todos los usuarios que pueden interactuar con la herramienta zendesk.",
+            "columns": [
+                {
+                    "name": "usr_id ",
+                    "title": "usr_id ",
+                    "description": "Asignado automáticamente cuando se crea el usuario.",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_url ",
+                    "title": "usr_url ",
+                    "description": "La URL de la API del usuario",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_name ",
+                    "title": "usr_name ",
+                    "description": "El nombre del usuario",
+                    "type": "string",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_email ",
+                    "title": "usr_email ",
+                    "description": "La dirección de correo electrónico principal del usuario. ",
+                    "type": "string",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_created_at ",
+                    "title": "usr_created_at ",
+                    "description": "La hora en que se creó el usuario",
+                    "type": "datetime",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_updated_at ",
+                    "title": "usr_updated_at ",
+                    "description": "La hora de la última actualización del usuario.",
+                    "type": "datetime",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_time_zone ",
+                    "title": "usr_time_zone ",
+                    "description": "La zona horaria de este usuario",
+                    "type": "datetime",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_iana_time_zone ",
+                    "title": "usr_iana_time_zone ",
+                    "description": "La zona horaria del usuario",
+                    "type": "datetime",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_phone ",
+                    "title": "usr_phone ",
+                    "description": "El número de teléfono principal del usuario.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_shared_phone_number ",
+                    "title": "usr_shared_phone_number ",
+                    "description": "Si el phonenúmero se comparte o no. ",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_photo ",
+                    "title": "usr_photo ",
+                    "description": "La imagen de perfil del usuario representada como un objeto adjunto",
+                    "type": "object Attachment",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_locale_id ",
+                    "title": "usr_locale_id ",
+                    "description": "El identificador de idioma del usuario",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_locale ",
+                    "title": "usr_locale ",
+                    "description": "La configuración regional del usuario.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_organization_id ",
+                    "title": "usr_organization_id ",
+                    "description": "El ID de la organización del usuario",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_role ",
+                    "title": "usr_role ",
+                    "description": "El rol del usuario. Los valores posibles son \"usuario final\", \"agente\" o \"administrador\".",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_verified ",
+                    "title": "usr_verified ",
+                    "description": "Indica si cualquiera de las identidades del usuario esta verificada",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_external_id ",
+                    "title": "usr_external_id ",
+                    "description": "Un identificador único de otro sistema. Se carga el NUP de cliente",
+                    "type": "string",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_tags ",
+                    "title": "usr_tags ",
+                    "description": "Las etiquetas del usuario.",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_alias ",
+                    "title": "usr_alias ",
+                    "description": "Un alias que se muestra a los usuarios finales.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_active ",
+                    "title": "usr_active ",
+                    "description": "Falso si el usuario ha sido eliminado",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_shared ",
+                    "title": "usr_shared ",
+                    "description": "Si el usuario es compartido desde una instancia de Zendesk Support diferente",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_shared_agent ",
+                    "title": "usr_shared_agent ",
+                    "description": "\tSi el usuario es un agente compartido de una instancia de Zendesk Support diferente",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_last_login_at ",
+                    "title": "usr_last_login_at ",
+                    "description": "\tLa última vez que el usuario inició sesión en Zendesk Support",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_two_factor_auth_enabled ",
+                    "title": "usr_two_factor_auth_enabled ",
+                    "description": "\tSi la autenticación de dos factores está habilitada",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_signature ",
+                    "title": "usr_signature ",
+                    "description": "\tLa firma del usuario. Solo los agentes y administradores pueden tener firmas",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_details ",
+                    "title": "usr_details ",
+                    "description": "Cualquier dato que desee almacenar sobre el usuario, como una dirección",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_notes ",
+                    "title": "usr_notes ",
+                    "description": "Cualquier nota que desee almacenar sobre el usuario",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_role_type ",
+                    "title": "usr_role_type ",
+                    "description": "El ID de rol del usuario. 0 para agentes personalizados, 1 para agente ligero, 2 para agente de chat y 3 para agente de chat agregado a la cuenta de soporte como colaborador",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_custom_role_id ",
+                    "title": "usr_custom_role_id ",
+                    "description": "Un rol personalizado si el usuario es un agente del plan Enterprise",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_moderator ",
+                    "title": "usr_moderator ",
+                    "description": "Designa si el usuario tiene capacidades de moderación de foros",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_ticket_restriction ",
+                    "title": "usr_ticket_restriction ",
+                    "description": "Especifica a qué tickets tiene acceso el usuario. Los valores posibles son: \"organización\", \"grupos\", \"asignado\", \"solicitado\", nulo",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_only_private_comments ",
+                    "title": "usr_only_private_comments ",
+                    "description": "Verdadero si el usuario solo puede crear comentarios privados",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_restricted_agent ",
+                    "title": "usr_restricted_agent ",
+                    "description": "\tSi el agente tiene alguna restricción; falso para administradores y agentes sin restricciones, verdadero para otros agentes",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_suspended ",
+                    "title": "usr_suspended ",
+                    "description": "Si el agente está suspendido. Los tickets de usuarios suspendidos también se suspenden y estos usuarios no pueden iniciar sesión en el portal de usuarios finales.",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_chat_only ",
+                    "title": "usr_chat_only ",
+                    "description": "Si el usuario es un agente de solo chat o no",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_default_group_id ",
+                    "title": "usr_default_group_id ",
+                    "description": "\tLa identificación del grupo predeterminado del usuario",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_report_csv ",
+                    "title": "usr_report_csv ",
+                    "description": "\tSi el usuario puede acceder o no al informe CSV en la pestaña Buscar de la página Informes en la interfaz de administración de Soporte.",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "usr_user_fields",
+                    "title": "usr_user_fields",
+                    "description": "Valores de campos personalizados en el perfil del usuario.",
+                    "type": "object",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,351 @@
+{
+    "tables": [
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "CIRC_AUTORIZANTE",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/circ_autorizante",
+            "partition_field": "FEC_ALT_CIRC_AUTZ ",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"cod_entidad, cod_perfil, cod_prioridad, cod_sector, est_circ_autz, fec_alt_circ_autz, fec_modf_circ_autz, ide_circuito, imp_max_autz, imp_min_autz, indi_mail_autz, indi_selec_autz, nro_ord_autz, tmp_circ_autz, user_alt_circ_autz, user_modf_circ_autz \" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "CIRC_RESOLUTOR",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/circ_resolutor",
+            "partition_field": "FEC_ALT_CIRC_RESOL",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"cod_entidad, cod_prior_circ, cod_sector, est_circ_resol, fec_alt_circ_resol, fec_modf_circ_resol, ide_circuito, ind_obl_resp, nro_ord_circ, tmp_circ_resol, user_alt_circ_resol, user_modf_circ_resol \"  --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "REAPERTURAS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/reaperturas",
+            "partition_field": "FEC_MODF_TPO_GEST",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\"  --columns \"cod_entidad, ide_gestion_nro, ide_gestion_sector, ide_nro_reapertura, nro_orden \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "TIPO_GESTION",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/tipo_gestion",
+            "partition_field": "FEC_MODF_TPO_GEST",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "TIPO_MEDIOS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/tipo_medios",
+            "partition_field": "FEC_MODF_MED",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "CLASIF_CRM",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/clasif_crm",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_BCRA",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_bcra",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "PRODUCTO",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/producto",
+            "partition_field": "FEC_MODF_PROD",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_SAC",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_sac",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_ESPANA",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_espana",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "SUBPRODUCTO",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/subproducto",
+            "partition_field": "FEC_MODF_SUBPROD",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "INFO_REQUERIDA_VALORES_HIJOS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/info_requerida_valores_hijos",
+            "partition_field": "FEC_MODF_VALOR",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "CONCEPTO",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/concepto",
+            "partition_field": "FEC_MODF_CPTO",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_ESPANA_CIRC",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_espana_circ",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "SECTORES",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/sectores",
+            "partition_field": "FEC_MODF_SECT",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_BCRA_CIRC",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_bcra_circ",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "SUBCONCEPTO",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/subconcepto",
+            "partition_field": "FEC_MODF_SUBCPTO",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "INFO_REQUERIDA",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/info_requerida",
+            "partition_field": "FEC_MODF_INFO_REQUE",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_CONCEPTOS_SAC_CIRC",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_conceptos_sac_circ",
+            "partition_field": "FEC_MODF",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "INFO_REQUERIDA_VALORES",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/info_requerida_valores",
+            "partition_field": "FEC_MODF_VALOR",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "CIRCUITO",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/circuito",
+            "partition_field": "FEC_MODF_CIRC",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT COD_ENTIDAD, IDE_CIRCUITO, COD_CIRCUITO, FEC_VIG_DDE_CIRC, FEC_VIG_HTA_CIRC, DESC_CIRC,  REGEXP_REPLACE(DESC_DETALL_CIRC, '(['||chr(10)||chr(11)||chr(13)||chr(9)||']+) > ') DESC_DETALL_CIRC, TPO_GESTION, COD_PROD, COD_SUBPROD, COD_CPTO, COD_SUBCPTO, TMP_ASIGN_ESPECIAL, TMP_PEDIDO_INFO, TMP_CIRC, INDI_GEST_PEND, INDI_MAIL_DEMORA, INDI_CIERR_AUTM, INDI_AUTORIZA_ITEM, COD_RECIBO, EST_CIRC, USER_ALT_CIRC, FEC_ALT_CIRC, USER_MODF_CIRC, FEC_MODF_CIRC, INDI_MODIF_DATOS, INDI_RECEP_RESP, INDI_SUCURSALES, INDI_DEJAR_PEND, COD_TPO_RESOL, UND_TIEMPO, TPO_VIS_GEST, INDI_SUMA_TMP_AUTZ, COD_CONFORME, INDI_JERARQUIA_AUTZ, INDI_SECUENCIA_AUTZ, INDI_ASIG_PARALELO, INDI_AUTORIZ_DEVOL, INDI_MODF_FEC, CIRCUITO_PREDECESOR, INDI_CRIT, INDI_INFO_MULTIVALUADA, INDI_ENVIAR_MAIL_RECEP, INDI_ENVIAR_SMS_RECEP, INDI_ENVIAR_MAIL_RESP, INDI_ENVIAR_SMS_RESP, INDI_ENVIAR_MAIL_DEMORA, COD_MODELO_MSJ, ID_CLASIF_SELECT, ID_PARRAFO_CUERPO_MAIL, INDI_USO_MONTO, INDI_ENVIAR_CARTA_RESP, COD_COMPROBANTE_CLIENTE, INDI_ENVIAR_MAIL_PROV, INDI_REAPERTURA, LONG_COMENTARIO_RECEP, LONG_COMENTARIO_CLIENTE, AVISO_VENC_GEST, INDI_ENVIAR_MAIL_NO_AUTZ, COD_ENTIDAD_AFECT FROM GEC01.CIRCUITO WHERE 1 = 1 and \\$CONDITIONS \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --map-column-java DESC_DETALL_CIRC=String --escaped-by '^' --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_EMPRESAS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_empresas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --delete-target-dir  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "CIRC_INFO_REQUE",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/circ_info_reque",
+            "partition_field": "FEC_MODF_CIRC_INFO_REQUE",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_EMPRESA_GESTIONES",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_empresa_gestiones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GC_INDIVIDUO_GESTIONES",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gc_individuo_gestiones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "GC_GESTIONES",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/gc_gestiones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^' --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "GESTIONES",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/gestiones",
+            "partition_field": "FEC_GESTION_ALTA",
+            "partition_field_value": "2003-07-01",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" SELECT COD_ENTIDAD, IDE_GESTION_SECTOR, IDE_GESTION_NRO, IDE_CIRCUITO, INDI_TIPO_CIRC, INDI_DECISION_COMER, INDI_REPLTEO, INDI_RTA_INMED, INDI_IMPRE_CART, IMP_AUTZ_SOLICITADO, COD_MONE_SOLICITADO, IMP_AUTZ_AUTORIZADO, COD_MONE_AUTORIZADO, IMP_AUTZ_RESOLUCION, COD_MONE_RESOLUCION, TPO_PERS,COD_CRM,REGEXP_REPLACE(COMEN_CLIENTE , '(['||chr(10)||chr(11)||chr(13)||chr(9)||']+)', '> ') COMEN_CLIENTE,IDE_GEST_SECTOR_RELAC, IDE_GEST_NRO_RELAC, FEC_GESTION_ALTA, COD_BANDEJA_ACTUAL, FEC_BANDEJA_ACTUAL, COD_SECTOR_ACTUAL, INIC_USER_ALTA, INDI_MAIL, INDI_PRIORIDAD, FEC_MAX_RESOL, COD_CONFORME, COD_USER_ACTUAL,COD_GRUPO_EMPRESA, COD_TIPO_FAVORABILIDAD, FEC_AVISO_VENC FROM GEC01.GESTIONES WHERE 1=1 and \\$CONDITIONS \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims --map-column-java COMEN_CLIENTE=String --escaped-by '^' --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "GC_INDIVIDUOS",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/gc_individuos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "INFORMACION_ADJUNTA",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/informacion_adjunta",
+            "partition_field": "FEC_INF_ADJUNTA",
+            "partition_field_value": "2003-07-01",
+            "split_field": "IDE_GESTION_SECTOR",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir --split-by \"{split_field}\"  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "GESTION_ESTADOS",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/gestion_estados",
+            "partition_field": "FEC_EST_GEST",
+            "partition_field_value": "2003-07-01",
+            "split_field": "IDE_GESTION_SECTOR",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims --map-column-java COMENTARIO=String  --delete-target-dir --split-by \"{split_field}\"  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "TIPO_FAVORABILIDAD",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/tipo_favorabilidad",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "dim",
+            "environment": "rio56",
+            "table": "RTA_RESOL_PREDEF",
+            "landing_path": "/santander/bi-corp/landing/rio56/dim/rta_resol_predef",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        },
+        {
+            "serverConfig": "DBSORA6",
+            "database": "GEC01",
+            "table_type": "fact",
+            "environment": "rio56",
+            "table": "V_GC_CLIENTES",
+            "landing_path": "/santander/bi-corp/landing/rio56/fact/v_gc_clientes",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1  --bindir {zonda_dir}/sqoop/{environment}/{table} --password '{password}' --fields-terminated-by '^'  --hive-drop-import-delims  --delete-target-dir  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --null-string '' --null-non-string ''  --verbose\n"
+        }
+    ]
+}

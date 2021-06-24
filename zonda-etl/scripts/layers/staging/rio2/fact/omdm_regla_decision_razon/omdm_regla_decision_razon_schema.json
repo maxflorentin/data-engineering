@@ -1,0 +1,47 @@
+{
+  "file": "omdm_regla_decision_razon_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/omdm_regla_decision_razon/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/omdm_regla_decision_razon",
+  "createTable": "bi_corp_staging.scoring_omdm_regla_decision_razon",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 8,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "cod_inqy",
+                    "type": "string"
+                },
+                {
+                    "name": "tpo_registro",
+                    "type": "string"
+                },
+                {
+                    "name": "id_conjregla_decision",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_razon",
+                    "type": "string"
+                },
+                {
+                    "name": "secuencia",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_proceso",
+                    "type": "string"
+                }
+            ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

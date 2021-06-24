@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio35_tnrm_normal_telefonos ;

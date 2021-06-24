@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio6_inft2_agrupadores_pxq;

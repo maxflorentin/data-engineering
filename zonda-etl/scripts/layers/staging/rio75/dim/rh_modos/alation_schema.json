@@ -1,0 +1,62 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_modos",
+      "title": "Maestro de modalidad",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Maestro de modalidad",
+      "columns": [
+        {
+          "name": "C_MODO",
+          "title": "C_MODO",
+          "description": "Código de la modalidad",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_MODO",
+          "title": "D_MODO",
+          "description": "Descripción",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "I_ACTIVO",
+          "title": "I_ACTIVO",
+          "description": "Indica si el registro está activo o inactivo",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

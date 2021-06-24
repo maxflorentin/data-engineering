@@ -1,0 +1,52 @@
+{
+	"file": "shipping_event_schema",
+	"location": "/santander/bi-corp/landing/rio258/fact/shipping_event/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/fact/rio258_shipping_event",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_shipping_event",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "id",
+			"type": "string"
+		},
+{
+			"name": "internal_shipping_id",
+			"type": "string"
+		},
+{
+			"name": "status_id",
+			"type": "string"
+		},
+{
+			"name": "event_date",
+			"type": "string"
+		},
+{
+			"name": "branch_code",
+			"type": "string"
+		},
+{
+			"name": "courier_branch_code",
+			"type": "string"
+		},
+{
+			"name": "uuid",
+			"type": "string"
+		},
+{
+			"name": "processed_date",
+			"type": "string"
+		}
+	],
+ "mirrorColumns": [{
+   "name": "partition_date",
+   "target": "processed_date",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

@@ -1,0 +1,20 @@
+SELECT DISTINCT CONCAT(E9954_FEOPERAC,
+                       E9954_S1EMP,
+                       E9954_IDNUMCLI,
+                       E9954_FECCALI,
+                       E9954_TIPMODEL,
+                       E9954_TIPMODE2,
+                       E9954_IDMODEL,
+                       E9954_TIPO,
+                       E9954_IDPUNSCO,
+                       E9954_FECCADUC,
+                       E9954_C1TARPUN,
+                       E9954_C1SPID,
+                       E9954_C1DIGCON,
+                       E0621_FECULTMO, 
+                       E9954_MOTIVFOR,
+                       E9954_IDPUNSC2,
+                       E9954_FECREPFI,
+                       E9954_FECINOFC) AS line 
+FROM bi_corp_bdr.jm_cal_in_cl 
+WHERE partition_date = '$month_partition_bdr';

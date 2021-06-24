@@ -1,0 +1,56 @@
+name: LOAD_CMN_PRESTAMOS_prestamos-History
+description: 'Load loans data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 14 * * *'
+start_date: '2020-09-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_staging.bgdtmae,bi_corp_staging.malug_rpe,bi_corp_staging.moria_wtri0010,bi_corp_staging.adsf_isec4060,bi_corp_staging.gtdtveh,bi_corp_staging.gtdtgar,bi_corp_staging.rio6_autt_marcas,bi_corp_staging.rio6_autt_modelos
+tasks:
+  - name: COMMON_LoadTable_stk_pre_prestamos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/DDLT-stk_pre_prestamos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/ETL-LOAD-stk_pre_prestamos_history.hql'
+  - name: SHERIFF_Control_stk_pre_prestamos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/stk_pre_prestamos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS_prestamos-History') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_pre_prestamos_sheriff.json']
+dependencies:
+  COMMON_LoadTable_stk_pre_prestamos: SHERIFF_Control_stk_pre_prestamos
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

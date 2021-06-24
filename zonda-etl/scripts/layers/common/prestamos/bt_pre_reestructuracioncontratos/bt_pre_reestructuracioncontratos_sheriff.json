@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.bt_pre_reestructuracioncontratos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_pre_entidad","cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_suc_sucursalreestructuracion","cod_pre_contratoreestructuracion","cod_pre_productoreestructuracion","cod_pre_subproductoreestructuracion","cod_pre_divisareestructuracion"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_pre_entidad","cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_suc_sucursalreestructuracion","cod_pre_contratoreestructuracion","cod_pre_productoreestructuracion","cod_pre_subproductoreestructuracion","cod_pre_divisareestructuracion"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["dt_pre_fecrefinanc","cod_pre_reesctr","flag_pre_indantconint","fc_pre_importerefinanciado","fc_pre_importeintereses"],
+      "threshold": 0.005
+    },
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_pre_fecrefinanc","dt_pre_fecprimerimp"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.001
+    }
+  ]
+}

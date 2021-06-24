@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_planes_detalle",
+            "title": "Detalle de los planes",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Detalle de los planes",
+            "columns": [
+                {
+                    "name": "  ASPD_CD_PLAN",
+                    "title": "  ASPD_CD_PLAN",
+                    "description": "Codigo de plan",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPD_CD_COBERTURA",
+                    "title": "  ASPD_CD_COBERTURA",
+                    "description": "Codigo de cobertura",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPD_NU_ORDEN",
+                    "title": "  ASPD_NU_ORDEN",
+                    "description": "Numero de orden",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

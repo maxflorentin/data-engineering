@@ -1,0 +1,190 @@
+{
+    "file": "reestructuraciones_history",
+    "location": "/santander/bi-corp/landing/sql5/fact/reestructuraciones_history/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/sql5/fact/stk_reestructuraciones",
+    "createTable": "bi_corp_staging.risksql5_stk_reestructuraciones",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+      {
+        "name": "periodo",
+        "type": "string"
+      },
+      {
+        "name": "nup",
+        "type": "string"
+      },
+      {
+        "name": "sucursal",
+        "type": "string"
+      },
+      {
+        "name": "nro_cuenta",
+        "type": "string"
+      },
+      {
+        "name": "codigo_producto",
+        "type": "string"
+      },
+      {
+        "name": "codigo_subproducto",
+        "type": "string"
+      },
+      {
+        "name": "divisa",
+        "type": "string"
+      },
+      {
+        "name": "fecha_alta_producto",
+        "type": "string"
+      },
+      {
+        "name": "mora",
+        "type": "string"
+      },
+      {
+        "name": "vigilancia_especial",
+        "type": "string"
+      },
+      {
+        "name": "subestandar",
+        "type": "string"
+      },
+      {
+        "name": "estado_gestion",
+        "type": "string"
+      },
+      {
+        "name": "importe_riesgo",
+        "type": "string"
+      },
+      {
+        "name": "importe_dispuesto",
+        "type": "string"
+      },
+      {
+        "name": "importe_provision",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_prestamo_hipotecario",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_personales",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_prestamo_prendario",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_prestamo_otro",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_tarjeta_credito",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_cuenta_corriente",
+        "type": "string"
+      },
+      {
+        "name": "porcentaje_otro_producto",
+        "type": "string"
+      },
+      {
+        "name": "codigo_segmento",
+        "type": "string"
+      },
+      {
+        "name": "descripcion_segmento",
+        "type": "string"
+      },
+      {
+        "name": "detalle_renta",
+        "type": "string"
+      },
+      {
+        "name": "tipo_reestructuracion",
+        "type": "string"
+      },
+      {
+        "name": "cantidad_reestructuraciones_sucesivas",
+        "type": "string"
+      },
+      {
+        "name": "normalizado",
+        "type": "string"
+      },
+      {
+        "name": "bucket",
+        "type": "string"
+      },
+      {
+        "name": "categoria_producto",
+        "type": "string"
+      },
+      {
+        "name": "tipo_clasificacion",
+        "type": "string"
+      },
+      {
+        "name": "descripcion_tipo_clasificacion",
+        "type": "string"
+      },
+      {
+        "name": "tipo_movimiento",
+        "type": "string"
+      },
+      {
+        "name": "contrato_citi",
+        "type": "string"
+      },
+      {
+        "name": "ultimo_dia_periodo",
+        "type": "string"
+      },
+      {
+        "name": "dias_atraso",
+        "type": "string"
+      },
+      {
+        "name": "porc_deuda_pendiente_pago",
+        "type": "string"
+      },
+      {
+        "name": "porc_deuda_pagada",
+        "type": "string"
+      },
+      {
+        "name": "antiguedad",
+        "type": "string"
+      },
+      {
+        "name": "numero_cuota_actual",
+        "type": "string"
+      },
+      {
+        "name": "numero_cuota_total",
+        "type": "string"
+      },
+      {
+        "name": "fecha_vencimiento_producto",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

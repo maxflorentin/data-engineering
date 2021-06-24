@@ -1,0 +1,118 @@
+{
+	    "file":"contratos_ref_stock",
+        "location": "/santander/bi-corp/landing/garra/fact/contratos_ref_stock/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/garra/fact/contratos_ref/contratos_ref_stock",
+        "extension": "csv",
+        "createTable": "bi_corp_staging.garra_contratos_ref_stock",
+        "header": false,
+        "delimiter": ";",
+        "parquetFiles": 1,
+	    "compression":"gzip",
+        "columns": [
+                {
+                    "name": "086_entidad",
+                    "type": "string"
+                },
+                {
+                    "name": "086_centro",
+                    "type": "string"
+                },
+                {
+                    "name": "086_contrato",
+                    "type": "string"
+                },
+                {
+                    "name": "086_producto",
+                    "type": "string"
+                },
+                {
+                    "name": "086_subproducto",
+                    "type": "string"
+                },
+                {
+                    "name": "086_divisa",
+                    "type": "string"
+                },
+                {
+                    "name": "086_centrod",
+                    "type": "string"
+                },
+                {
+                    "name": "086_contratod",
+                    "type": "string"
+                },
+                {
+                    "name": "086_productod",
+                    "type": "string"
+                },
+                {
+                    "name": "086_subproductod",
+                    "type": "string"
+                },
+                {
+                    "name": "086_divisad",
+                    "type": "string"
+                },
+                {
+                    "name": "086_imp_refnacdo",
+                    "type": "string"
+                },
+                {
+                    "name": "086_imp_refnacdl",
+                    "type": "string"
+                },
+                {
+                    "name": "086_imp_cbiomorg",
+                    "type": "string"
+                },
+                {
+                    "name": "086_fec_refinan",
+                    "type": "string"
+                },
+                {
+                    "name": "086_tipo_restructuracion",
+                    "type": "string"
+                },
+                {
+                    "name": "086_int_completo",
+                    "type": "string"
+                },
+                {
+                    "name": "086_imp_intereses",
+                    "type": "string"
+                },
+                {
+                    "name": "086_cod_marca_seg_esp",
+                    "type": "string"
+                },
+                {
+                    "name": "086_marca",
+                    "type": "string"
+                },
+                {
+                    "name": "086_submarca",
+                    "type": "string"
+                },
+                {
+                    "name": "086_fec_sit_irr",
+                    "type": "string"
+                },
+                {
+                    "name": "086_nup",
+                    "type": "string"
+                },
+                {
+                    "name": "086_marca_reestruc",
+                    "type": "string"
+                }
+            ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

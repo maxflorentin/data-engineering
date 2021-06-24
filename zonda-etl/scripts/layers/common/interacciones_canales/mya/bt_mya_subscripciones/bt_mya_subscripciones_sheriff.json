@@ -1,0 +1,16 @@
+
+{
+  "table": "bi_corp_common.bt_mya_subscripciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_mya_novedad"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_mya_fecha_creacion","ts_mya_fecha_modificacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+     "file": "v_formularios_schema",
+     "location": "/santander/bi-corp/landing/rio39/fact/v_formularios/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/fact/v_formularios",
+     "tempdirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetfiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [
+             {
+              "name": "cod_concep",
+              "type": "string"
+             },
+             {
+              "name": "cod_ops",
+              "type": "string"
+             },
+             {
+              "name": "secuencia",
+              "type": "string"
+             },
+             {
+              "name": "nro_form",
+              "type": "string"
+             },
+             {
+              "name": "nro_form_rel",
+              "type": "string"
+             },
+             {
+              "name": "tipo_form",
+              "type": "string"
+             },
+             {
+              "name": "nro_oper_rel",
+              "type": "string"
+             },
+             {
+              "name": "estado",
+              "type": "string"
+             },
+             {
+              "name": "fecha_carga",
+              "type": "string"
+             },
+             {
+              "name": "fecha_firma",
+              "type": "string"
+             },
+             {
+              "name": "fecha_verif",
+              "type": "string"
+             },
+             {
+              "name": "tiempo_cliente",
+              "type": "string"
+             },
+             {
+              "name": "lvl_rectificacion",
+              "type": "string"
+             },
+             {
+              "name": "nro_form_original",
+              "type": "string"
+             },
+             {
+              "name": "primer_fecha_carga",
+              "type": "string"
+             },
+             {
+              "name": "primer_fecha_firma",
+              "type": "string"
+             },
+             {
+			  "name": "partition_date",
+			  "type": "string",
+			  "partitionColumn": true,
+			  "partitionOrder": 1
+		     }
+	]
+}

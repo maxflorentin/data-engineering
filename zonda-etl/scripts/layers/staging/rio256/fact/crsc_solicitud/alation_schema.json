@@ -1,0 +1,461 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308640"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio256_crsc_solicitud",
+            "title": "Tabla que contiene los registros de las solicitudes de alta de supercuenta digital",
+            "schema": "bi_corp_staging",
+            "source": "ATENEA",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla que contiene los registros de las solicitudes de alta de supercuenta digital",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "Identificador del registro insertado. Pk de la tabla",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_SUCURSAL",
+                    "title": "ID_SUCURSAL",
+                    "description": "Número de la sucursal que se asigna para el alta del producto solicitado",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_PROSPECTO",
+                    "title": "ID_PROSPECTO",
+                    "description": "FK con la tabla CRSC_PROSPECTO",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_PROD",
+                    "title": "ID_PROD",
+                    "description": "FK con la tabla CRSC_PRODUCTO",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_ESTADO_SOLICITUD",
+                    "title": "ID_ESTADO_SOLICITUD",
+                    "description": "FK con la tabla CRSC_ESTADO_SOLICITUD",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SOLICITANTE_IP",
+                    "title": "SOLICITANTE_IP",
+                    "description": "IP origen de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DISPOSITIVO",
+                    "title": "DISPOSITIVO",
+                    "description": "Agente/Dispositivo desde el cual se da inicio a la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CREACION",
+                    "title": "FECHA_CREACION",
+                    "description": "Fecha de creación del registro",
+                    "type": "TIMESTAMP(6)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "Fecha en la cual se da el alta de la solicitud en ASOL",
+                    "type": "TIMESTAMP(6)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_ASOL",
+                    "title": "NRO_ASOL",
+                    "description": "Número de solicitud asignada en ASOL",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_DOC",
+                    "title": "TIPO_DOC",
+                    "description": "Tipo de documento utilizado para el alta de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_DOC",
+                    "title": "NRO_DOC",
+                    "description": "Número de documento de identidad del cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SERVIDOR_ALTA",
+                    "title": "SERVIDOR_ALTA",
+                    "description": "Nombre del servidor de ATENEA desde el cual se termina lanzando el alta de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_CHECKLIST",
+                    "title": "ID_CHECKLIST",
+                    "description": "FK con la tabla CRSC_CHECKLIST",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESTADO_ASOL",
+                    "title": "ESTADO_ASOL",
+                    "description": "Estado numérico asignado por ASOL de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUC_EMBOZADO",
+                    "title": "SUC_EMBOZADO",
+                    "description": "",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "EMBOZADO",
+                    "title": "EMBOZADO",
+                    "description": "",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_CUENTA",
+                    "title": "NRO_CUENTA",
+                    "description": "Número de cuenta asignado en el alta exitosa de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUP",
+                    "title": "NUP",
+                    "description": "Identificador interno del banco único para cada cliente",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANAL",
+                    "title": "CANAL",
+                    "description": "Canal desde el cual fue iniciado el proceso de alta de la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_BIOMETRIA",
+                    "title": "ID_BIOMETRIA",
+                    "description": "Identificador asignado por el sistema de biometría",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "APPID",
+                    "title": "APPID",
+                    "description": "Identificador de la corresponsalía desde la cual se origina la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUCURSAL_CR",
+                    "title": "SUCURSAL_CR",
+                    "description": "Sucursal de la corresponsalía desde la cual se origina la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAJERO",
+                    "title": "CAJERO",
+                    "description": "Cajero de la corresponsalía desde la cual se origina la solicitud",
+                    "type": "VARCHAR2(255)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 255.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+{
+    "file": "enc_estado_schema",
+    "createTable": "bi_corp_staging.rio154_enc_estado",
+    "location": "/santander/bi-corp/landing/rio154/dim/enc_estado/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/dim/enc_estado",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_estado",
+            "type": "string"
+        },
+        {
+            "name": "descri",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

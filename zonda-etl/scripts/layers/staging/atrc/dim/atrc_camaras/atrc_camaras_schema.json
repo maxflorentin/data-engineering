@@ -1,0 +1,33 @@
+{
+	"file": "atrc_camaras_schema",
+	"location": "/santander/bi-corp/landing/atrc/dim/atrc_camaras/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/atrc/dim/atrc_camaras",
+	"createTable": "bi_corp_staging.atrc_camaras",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ult_modif",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

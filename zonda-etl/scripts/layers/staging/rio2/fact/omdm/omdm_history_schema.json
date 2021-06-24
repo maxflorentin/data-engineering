@@ -1,0 +1,81 @@
+{
+  "file": "omdm_history_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/history/omdm/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/omdm",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 8,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "tipo_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_tramite",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_proceso",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_request",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_response",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_fin_proc",
+                    "type": "string"
+                },
+                {
+                    "name": "des_observacion",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_decision",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_decision",
+                    "type": "string"
+                },
+                {
+                    "name": "des_nombre_flujo",
+                    "type": "string"
+                },
+                {
+                    "name": "des_ultimo_paso",
+                    "type": "string"
+                },
+                {
+                    "name": "des_categoria_producto",
+                    "type": "string"
+                },
+                {
+                    "name": "des_cod_producto",
+                    "type": "string"
+                },
+                {
+                    "name": "indicador_estado",
+                    "type": "string"
+                },
+                {
+                    "name": "des_nombre_estrategia",
+                    "type": "string"
+                }
+       ],
+           "mirrorColumns": [{
+                  "name": "partition_date",
+                  "type": "date",
+                  "target": "fec_proceso",
+                  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+  }]
+}

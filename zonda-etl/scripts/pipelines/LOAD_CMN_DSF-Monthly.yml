@@ -1,0 +1,45 @@
+name: LOAD_CMN_DSF-Monthly
+description: 'Load in Common Data from DSF'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+start_date: '2019-01-31'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/recuperaciones/stk_rcp_discrepanciasasdf/DDLT-stk_rcp_discrepanciasasdf.hql'
+  - name: InsertPartition_stk_rcp_discrepanciasasdf
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/recuperaciones/stk_rcp_discrepanciasasdf/ETL-LOAD-stk_rcp_discrepanciasasdf.hql'
+dependencies:
+  CreateTable: InsertPartition_stk_rcp_discrepanciasasdf
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maflorentin@santandertecnologia.com.ar]

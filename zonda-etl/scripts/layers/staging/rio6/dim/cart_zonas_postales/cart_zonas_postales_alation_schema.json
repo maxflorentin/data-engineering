@@ -1,0 +1,148 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_zonas_postales",
+            "title": "Códigos postales",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Códigos postales",
+            "columns": [
+                {
+                    "name": "CAZP_CAES_CD_ESTADO",
+                    "title": "CAZP_CAES_CD_ESTADO",
+                    "description": "Código de la provincia",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CD_POBLACION",
+                    "title": "CAZP_CD_POBLACION",
+                    "description": "Obsoleto",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CD_COLONIA",
+                    "title": "CAZP_CD_COLONIA",
+                    "description": "Obsoleto",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CD_POSTAL",
+                    "title": "CAZP_CD_POSTAL",
+                    "description": "Código postal",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CD_ZONA_SISMICA",
+                    "title": "CAZP_CD_ZONA_SISMICA",
+                    "description": "Código de la zona sismica",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CD_ZONA_HURACAN",
+                    "title": "CAZP_CD_ZONA_HURACAN",
+                    "description": "Código de la zona de huracanes",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CACI_CD_CIUDAD",
+                    "title": "CAZP_CACI_CD_CIUDAD",
+                    "description": "Código de localidad",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CAZZ_CD_CUMULO",
+                    "title": "CAZP_CAZZ_CD_CUMULO",
+                    "description": "Código de cumulo",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CNIR_CD_NIVEL_RIESGO",
+                    "title": "CAZP_CNIR_CD_NIVEL_RIESGO",
+                    "description": "Código del nivel de riesgo 1",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CNIR_CD_NIVEL_RIESGO_22",
+                    "title": "CAZP_CNIR_CD_NIVEL_RIESGO_22",
+                    "description": "Código del nivel de riesgo 2",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAZP_CNIR_CD_NIVEL_RIESGO_23",
+                    "title": "CAZP_CNIR_CD_NIVEL_RIESGO_23",
+                    "description": "Código del nivel de riesgo 3",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

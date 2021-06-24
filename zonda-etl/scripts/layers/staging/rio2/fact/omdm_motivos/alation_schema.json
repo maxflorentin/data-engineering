@@ -1,0 +1,150 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A288378"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "scoring_omdm_motivos",
+            "title": "Tabla referente a las reglas y/o a los motivos particulares que fueron asociados a las solicitudes procesadas por el motor de admision (OMDM).",
+            "schema": "bi_corp_staging",
+            "source": "OMDM_MOTIVOS",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla referente a las reglas y/o a los motivos particulares que fueron asociados a las solicitudes procesadas por el motor de admision (OMDM).",
+            "columns": [
+                {
+                    "name": "TIPO_TRAMITE ",
+                    "title": "TIPO_TRAMITE ",
+                    "description": "Identificacion del modulo asociado al procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_TRAMITE ",
+                    "title": "COD_TRAMITE ",
+                    "description": "Codigo de identificacion de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_INDEX ",
+                    "title": "NRO_INDEX ",
+                    "description": "Numero de indice interno asociado al procesamiento de solicitudes.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_RESULT ",
+                    "title": "DES_RESULT ",
+                    "description": "Codigo de identificacion del tipo de decision asociado al procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_STATUS ",
+                    "title": "DES_STATUS ",
+                    "description": "Tipo de clasificacion del tipo de decision asociado a la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_NOMBRE ",
+                    "title": "DES_NOMBRE ",
+                    "description": "Nombre del objeto y/o componente asociado a la decision de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_TIPO ",
+                    "title": "DES_TIPO ",
+                    "description": "Tipo de clasificacion de objeto y/o componente.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_RANK ",
+                    "title": "NRO_RANK ",
+                    "description": "Numero de ranking interno asociado al procesamiento de solicitudes.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_DECISION ",
+                    "title": "COD_DECISION ",
+                    "description": "Codigo de identificacion del tipo de clasificacion de decision interna asociado al procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_MOTIVO ",
+                    "title": "COD_MOTIVO ",
+                    "description": "Codigo de identificacion del motivo particular asociado al procesamiento de solicitudes",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_PROCESO",
+                    "title": "FEC_PROCESO",
+                    "description": "Fecha de Proceso",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

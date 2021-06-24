@@ -1,0 +1,50 @@
+{
+  "file": "rtg_calculos_respuestas_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/rtg_calculos_respuestas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/rtg_calculos_respuestas",
+  "createTable": "bi_corp_staging.sge_rtg_calculos_respuestas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_calculo",
+      "type": "string"
+    },
+    {
+      "name": "id_pregunta",
+      "type": "string"
+    },
+    {
+      "name": "id_cuestionario",
+      "type": "string"
+    },
+    {
+      "name": "id_respuesta",
+      "type": "string"
+    },
+    {
+      "name": "n_intercept",
+      "type": "string"
+    },
+    {
+      "name": "n_beta",
+      "type": "string"
+    },
+    {
+      "name": "n_woe",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

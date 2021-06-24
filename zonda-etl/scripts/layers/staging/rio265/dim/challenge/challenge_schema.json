@@ -1,0 +1,91 @@
+{
+	"file": "challenge_schema",
+	"location": "/santander/bi-corp/landing/rio265/dim/challenge/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio265/dim/rio265_challenge",
+	"tempDirectory": "/santander/bi-corp/temp/rio265_challenge",
+	"createTable": "bi_corp_staging.rio265_challenge",
+	"extension": "csv",
+	"delimiter": "^",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "id",
+			"type": "string"
+		},
+{
+			"name": "name",
+			"type": "string"
+		},
+{
+			"name": "order",
+			"type": "string"
+		},
+{
+			"name": "description",
+			"type": "string"
+		},
+{
+			"name": "user",
+			"type": "string"
+		},
+{
+			"name": "pointsduration",
+			"type": "string"
+		},
+{
+			"name": "datefrom",
+			"type": "string"
+		},
+{
+			"name": "dateto",
+			"type": "string"
+		},
+{
+			"name": "hasautomaticrenewal",
+			"type": "string"
+		},
+{
+			"name": "originaldatefrom",
+			"type": "string"
+		},
+{
+			"name": "originaldateto",
+			"type": "string"
+		},
+{
+			"name": "triggerpoints",
+			"type": "string"
+		},
+{
+			"name": "id_trigger",
+			"type": "string"
+		},
+{
+			"name": "id_bonuscode",
+			"type": "string"
+		},
+{
+			"name": "id_challengesfather",
+			"type": "string"
+		},
+{
+			"name": "id_challengestate",
+			"type": "string"
+		},
+{
+			"name": "only_one_time",
+			"type": "string"
+		}
+	],
+ "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

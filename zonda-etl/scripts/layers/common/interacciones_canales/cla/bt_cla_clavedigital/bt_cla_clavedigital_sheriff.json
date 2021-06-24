@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.bt_cla_clavedigital",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup","cod_cla_sesion"],
+      "threshold": 0.1
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_cla_fecha"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "file": "gitccuo_schema",
+  "location": "/santander/bi-corp/landing/garra/fact/log_cuotaphone/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garra/fact/log_cuotaphone",
+  "createTable": "bi_corp_staging.garra_log_cuotaphone",
+  "copybook": "log_cuotaphone.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

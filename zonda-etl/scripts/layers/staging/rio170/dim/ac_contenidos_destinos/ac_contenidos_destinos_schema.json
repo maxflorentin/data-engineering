@@ -1,0 +1,53 @@
+{
+	"file": "ac_contenidos_destinos_schema",
+	"location": "/santander/bi-corp/landing/rio170/dim/ac_contenidos_destinos/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/dim/ac_contenidos_destinos",
+	"tempDirectory": "/santander/bi-corp/temp/rio170",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_ac_contenidos_destinos",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_canal",
+			"type": "string"
+		},
+        {
+			"name": "cod_seccion",
+			"type": "string"
+		},
+        {
+			"name": "cod_ubicacion",
+			"type": "string"
+		},
+        {
+			"name": "cod_accion_comercial",
+			"type": "string"
+		},
+        {
+			"name": "cod_grupo_ac",
+			"type": "string"
+		},
+        {
+			"name": "cod_clave",
+			"type": "string"
+		},
+        {
+			"name": "valor",
+			"type": "string"
+		},
+        {
+			"name": "indic_activa",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

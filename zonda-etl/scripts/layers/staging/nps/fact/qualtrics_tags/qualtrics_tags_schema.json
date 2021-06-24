@@ -1,0 +1,55 @@
+{
+	"file": "qualtrics_tags_schema",
+	"location": "/santander/bi-corp/landing/nps/fact/tags/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/nps/fact/qualtrics_tags",
+	"createTable": "bi_corp_staging.qualtrics_nps_tags",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "momento_critico",
+		"type": "string"
+	},
+	{
+		"name": "id_respuesta",
+		"type": "string"
+	},
+	{
+		"name": "parent_topics",
+		"type": "string"
+	},
+	{
+		"name": "sentiment_polarity",
+		"type": "string"
+	},
+	{
+		"name": "sentiment_score",
+		"type": "string"
+	},
+	{
+		"name": "sentiment",
+		"type": "string"
+	},
+	{
+		"name": "topic_sentiment_label",
+		"type": "string"
+	},
+	{
+		"name": "topic_sentiment_score",
+		"type": "string"
+	},
+	{
+		"name": "topics",
+		"type": "string"
+	}],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

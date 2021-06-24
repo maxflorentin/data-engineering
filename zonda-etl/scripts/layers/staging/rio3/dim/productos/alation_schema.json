@@ -1,0 +1,49 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_productos",
+      "title": "PRODUCTOS ASOCIADOS A LA ENCUESTA",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "PRODUCTOS ASOCIADOS A LA ENCUESTA",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO",
+          "description": "codigo de producto",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"                },
+        {
+          "name": "DESCRI",
+          "title": "DESCRI",
+          "description": "descripcion del producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 80.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

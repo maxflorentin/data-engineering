@@ -1,0 +1,95 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A288378"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "scoring_omdm_regla_decision_razon",
+            "title": "Tabla referente a las reglas internas que fueron usadas por el motor de admision (OMDM) dentro del procesamiento de solicitudes.",
+            "schema": "bi_corp_staging",
+            "source": "OMDM_REGLA_DECISION_RAZON",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla referente a las reglas internas que fueron usadas por el motor de admision (OMDM) dentro del procesamiento de solicitudes.",
+            "columns": [
+                {
+                    "name": "COD_INQY",
+                    "title": "COD_INQY",
+                    "description": "Codigo de identificacion de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TPO_REGISTRO",
+                    "title": "TPO_REGISTRO",
+                    "description": "Tipo de clasificacion del tipo de decision asociado a la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 200.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_CONJREGLA_DECISION",
+                    "title": "ID_CONJREGLA_DECISION",
+                    "description": "Nombre del objeto y/o componente asociado a la decision de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 200.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_RAZON",
+                    "title": "COD_RAZON",
+                    "description": "Codigo de identificacion del motivo particular asociado al procesamiento de solicitudes",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECUENCIA",
+                    "title": "SECUENCIA",
+                    "description": "Numero de secuencia interna usada en el procesamiento de la solicitud.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_PROCESO",
+                    "title": "FEC_PROCESO",
+                    "description": "Fecha de Proceso",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

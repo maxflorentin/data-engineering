@@ -1,0 +1,91 @@
+{
+    "file": "informacion_adjunta",
+    "location": "/santander/bi-corp/landing/rio56/dim/informacion_adjunta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/informacion_adjunta",
+    "tempDirectory": "/santander/bi-corp/temp/informacion_adjunta",
+    "createTable": "bi_corp_staging.rio56_informacion_adjunta",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_sector",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_nro",
+            "type": "string"
+        },
+        {
+            "name": "cod_actor",
+            "type": "string"
+        },
+        {
+            "name": "nro_orden",
+            "type": "string"
+        },
+        {
+            "name": "indi_tpo_info",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_doc_reque",
+            "type": "string"
+        },
+        {
+            "name": "dato_info_doc_reque",
+            "type": "string"
+        },
+        {
+            "name": "link_inf_adjunta",
+            "type": "string"
+        },
+        {
+            "name": "fec_inf_adjunta",
+            "type": "string"
+        },
+        {
+            "name": "user_inf_adjunta",
+            "type": "string"
+        },
+        {
+            "name": "cod_sect_inf_adjunta",
+            "type": "string"
+        },
+        {
+            "name": "nom_archivo_original",
+            "type": "string"
+        },
+        {
+            "name": "nom_archivo",
+            "type": "string"
+        },
+        {
+            "name": "nom_directorio",
+            "type": "string"
+        },
+        {
+            "name": "tamano",
+            "type": "string"
+        },
+        {
+            "name": "secuencia",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

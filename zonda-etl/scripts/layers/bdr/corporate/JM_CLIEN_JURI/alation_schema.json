@@ -1,0 +1,567 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "businessReference":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_clien_juri",
+         "title":"Información Adicional de Clientes que tengan factuación",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contiene datos adicionales a los anteriormente reflejados en la tabla de Clientes BIS para aquellos clientes que son personas jurídicas y también para aquellas que son personas físicas y que tienen facturación. Será obligatorio informar esta tabla con los datos conocidos de aquellas personas jurídicas reflejadas en la tabla de Clientes BIS.",
+         "columns":[
+            {
+               "name":"g5508_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>\nAraceli Stero <astero@santander.com.ar>\nPilar Farias <pfarias@santander.com.ar>\nMaria Del Pilar Sanchez Arjona <msanchezarjona@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando. se informará con la fecha del último día natural (31, 30 o 28) del més en el que se está reportando la información. la fecha se informará en formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_flgempno",
+               "title":"Marca de empresa no obligada a tener facturación",
+               "description":"Hay empresas que por su naturaleza no tienen facturación. no se refiere al caso de patrimoniales en las que se toma el total de activos en lugar de la facturación. son empresas en las que facturación 0 (< 10.000) es válida (reciente constitución, no están obligada a presentar balance,…). esta marca indicará si el cliente es una empresa de este tipo.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_idnumcli",
+               "title":"Identificador del cliente",
+               "description":"Clave única de identificación del cliente dentro de la entidad. no sólo se incluirán personas jurídicas, también se incluirán personas físicas si tienen facturación económica.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"bcra",
+                     "column":"g4093_idnumcli"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"no_mrg_juridica",
+                     "column":"identificador_cliente"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"personas_comp_fisicas",
+                     "column":"num_persona"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"sge_grupos_economicos",
+                     "column":"nup"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"afip",
+                     "column":"penumper"
+                  }
+               ]
+            },
+            {
+               "name":"g5508_impfactm",
+               "title":"Facturación",
+               "description":"Cifra de facturación (ventas) de las cuentas individuales del cliente (contravalorado en  moneda local)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_inffecha",
+               "title":"Fecha Información",
+               "description":"Fecha a la que se refiere la información económica reflejada en estas tablas.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_num_empl",
+               "title":"Número Empleados",
+               "description":"Número empleados de la empresa (cliente del que se está reportando la información)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_orgdepen",
+               "title":"Organismos dependientes",
+               "description":"Código de cliente del organismo del que depende el cliente clave del registro. este campos es un mecanismo para vincular un organismo dependiente con el ente superior del que dependen  para que sean tratados de manera homogénea en el motor irb.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Martín Hirschfeld,Ezequiel O. Martinez,Carlos Pitton",
+                  "businessReference":"Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>\nAraceli Stero <astero@santander.com.ar>\nPilar Farias <pfarias@santander.com.ar>\nMaria Del Pilar Sanchez Arjona <msanchezarjona@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_orig_act",
+               "title":"Origen Activos",
+               "description":"Información del origen del dato de total activos (valor estimado, comunicado por cliente, capturado de un balance no auditado o captura de un balance auditado)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_orig_emp",
+               "title":"Código identificación cargabal",
+               "description":"Este campo será informado con el código cargabal asociado al cliente (contraparte) en caso de tratarse de un cliente intragrupo.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_orig_fac",
+               "title":"Origen Facturación",
+               "description":"Información del origen del dato de facturación (valor estimado, comunicado por cliente, capturado de un balance no auditado o captura de un balance auditado)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_rat_cet1",
+               "title":"Ratio CET1",
+               "description":"Ratio common equity tier 1",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Martín Hirschfeld,Ezequiel O. Martinez,Carlos Pitton",
+                  "businessReference":"Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>\nAraceli Stero <astero@santander.com.ar>\nPilar Farias <pfarias@santander.com.ar>\nMaria Del Pilar Sanchez Arjona <msanchezarjona@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_tasamora",
+               "title":"Tasa de Mora",
+               "description":"Porcentaje de mora del cliente, esfuerzo que realiza el cliente en total en su balance. se define como los (préstamos morosos – provisiones) + (valores de deuda morosos y otros intereses – provisiones) / (total de préstamos + total de valores de deuda – intereses de balance)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Martín Hirschfeld,Ezequiel O. Martinez,Carlos Pitton",
+                  "businessReference":"Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>\nAraceli Stero <astero@santander.com.ar>\nPilar Farias <pfarias@santander.com.ar>\nMaria Del Pilar Sanchez Arjona <msanchezarjona@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_tdeudacl",
+               "title":"Total deuda cliente",
+               "description":"Es la cifra de pasivos según contabilidad (cuentas anuales individuales) del cliente. el importe se reportará siempre en moneda local e incluirá la suma del pasivo circulante y el pasivo a largo plazo, es decir, la cifra total de pasivo excluyendo capital y reservas",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5508_tot_acti",
+               "title":"Total Activos Cliente",
+               "description":"Cifra de activos según contabilidad  (cuentas anuales individuales) del cliente (contravalorado en moneda local)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager,Nicolás Intrieri,Christian Fregosi",
+                  "businessReference":"Carlos Daniel Pitton  <cpitton@santander.com.ar>\nMartin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\nEzequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"sge_grupos_economicos ",
+                     "column":"total_activo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"aqua_clientes_asoc_geconomicos",
+                     "column":"total_activos"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"no_mrg_juridica",
+                     "column":"total_activos_cliente"
+                  }
+               ]
+            },
+            {
+               "name":"g5508_tot_eqty",
+               "title":"Total Equity",
+               "description":"Fondos propios totales del cliente",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Martín Hirschfeld,Ezequiel O. Martinez,Carlos Pitton",
+                  "businessReference":"Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>\nAraceli Stero <astero@santander.com.ar>\nPilar Farias <pfarias@santander.com.ar>\nMaria Del Pilar Sanchez Arjona <msanchezarjona@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

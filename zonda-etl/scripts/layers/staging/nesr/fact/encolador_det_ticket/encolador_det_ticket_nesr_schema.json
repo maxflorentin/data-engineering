@@ -1,0 +1,119 @@
+{
+    "file": "encolador_det_ticket_nesr_schema",
+    "createTable": "bi_corp_staging.nesr_encolador_det_ticket",
+    "location": "/santander/bi-corp/landing/nesr/fact/encolador_det_ticket/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/nesr/fact/encolador_det_ticket",
+    "tempDirectory": "/santander/bi-corp/temp/nesr/encolador_det_ticket",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "fecha",
+            "type": "string"
+        },
+        {
+            "name": "sucursal",
+            "type": "string"
+        },
+        {
+            "name": "zona",
+            "type": "string"
+        },
+        {
+            "name": "tipo_cola",
+            "type": "string"
+        },
+        {
+            "name": "ticket",
+            "type": "string"
+        },
+        {
+            "name": "numero_servicio",
+            "type": "string"
+        },
+        {
+            "name": "nombre_servicio",
+            "type": "string"
+        },
+        {
+            "name": "numero_puesto",
+            "type": "string"
+        },
+        {
+            "name": "nombre_puesto",
+            "type": "string"
+        },
+        {
+            "name": "usuario",
+            "type": "string"
+        },
+        {
+            "name": "t_obj_espera",
+            "type": "string"
+        },
+        {
+            "name": "t_max_espera",
+            "type": "string"
+        },
+        {
+            "name": "fecha_ingreso",
+            "type": "string"
+        },
+        {
+            "name": "fecha_llamado",
+            "type": "string"
+        },
+        {
+            "name": "fecha_fin_atencion",
+            "type": "string"
+        },
+        {
+            "name": "tiempo_espera",
+            "type": "string"
+        },
+        {
+            "name": "tiempo_atencion",
+            "type": "string"
+        },
+        {
+            "name": "auxiliar1",
+            "type": "string"
+        },
+        {
+            "name": "auxiliar2",
+            "type": "string"
+        },
+        {
+            "name": "cod_motivo",
+            "type": "string"
+        },
+        {
+            "name": "nom_motivo",
+            "type": "string"
+        },
+        {
+            "name": "estado",
+            "type": "string"
+        },
+        {
+            "name": "motivo_abandono",
+            "type": "string"
+        },
+        {
+            "name": "tecn",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

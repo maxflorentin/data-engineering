@@ -1,0 +1,24 @@
+{
+  "tables" :[
+
+     {
+      "serverConfig" : "DBLXORAFRONT05",
+       "database": "AICC",
+       "table": "ATM_RESPUESTA_MENSAJES",
+       "table_type": "fact",
+      "partition_field": "AS_OF_DATE",
+       "environment": "rio102",
+      "landing_path": "/santander/bi-corp/landing/rio102/fact/atm_respuesta_mensajes",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"tarjeta,nup,mensaje,resp_cliente_novedad,resp_cliente_maestro,fecha_alta,fecha_baja,sigla_atm,fecha_oferta,hora_oferta,tipo_telefono,codigo_area,numero_tel,tip_doc,num_doc,as_of_date \" --where \"to_char({partition_field} ,'YYYY-MM-DD')= '{partition_date}'\" --bindir '{zonda_dir}/sqoop/rio102/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAFRONT05",
+      "database": "AICC",
+      "table": "SORPRESA_CASCADA",
+      "table_type": "fact",
+      "environment": "rio102",
+      "landing_path": "/santander/bi-corp/landing/rio102/fact/sorpresa_cascada",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"fecha_envio,nup,fecha_inicio,fecha_fin,cascada_yn,canal_alta \" --bindir '{zonda_dir}/sqoop/rio102/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+    }
+  ]
+}

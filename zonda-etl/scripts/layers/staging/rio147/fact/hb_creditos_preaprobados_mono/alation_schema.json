@@ -1,0 +1,238 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A273003"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio147_hb_creditos_preaprobados_mono",
+      "title": "PRÉSTAMOS PREAPROBADOS MONOPRODUCTO",
+      "schema": "bi_corp_staging",
+      "source": "MOBP",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "PRÉSTAMOS PREAPROBADOS MONOPRODUCTO",
+      "columns": [
+        {
+          "name": "ID",
+          "title": "ID",
+          "description": "PK. ID DEL REGISTRO EN LA TABLA",
+          "type": "NUMBER(22)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP                          ",
+          "description": "PK. NUP DEL CLIENTE",
+          "type": "NUMBER(22)  ",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_INICIO_VIG",
+          "title": "FECHA_INICIO_VIG",
+          "description": "FECHA DE INICIO DE VIGENCIA DEL PRÉSTAMO",
+          "type": "DATE        ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": "N/A",
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_FIN_VIG",
+          "title": "FECHA_FIN_VIG",
+          "description": "FECHA DE FIN DE VIGENCIA DEL PRÉSTAMO",
+          "type": "DATE        ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": "N/A",
+          "security": "Secreto"
+        },
+        {
+          "name": "DIVISA",
+          "title": "DIVISA",
+          "description": "DIVISA DEL PRÉSTAMO",
+          "type": "VARCHAR2(3)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "CANT_CUOTAS_MIN",
+          "title": "CANT_CUOTAS_MIN",
+          "description": "CANTIDAD DE CUOTAS MÍNIMAS DEL PRÉSTAMO",
+          "type": "NUMBER(3)  ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "CANT_CUOTAS_MAX",
+          "title": "CANT_CUOTAS_MAX",
+          "description": "CANTIDAD DE CUOTAS MÁXIMA DEL PRÉSTAMO",
+          "type": "NUMBER(3)  ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "IMPORTE_MIN",
+          "title": "IMPORTE_MIN",
+          "description": "IMPORTE MÍNIMO DEL PRÉSTAMO",
+          "type": "NUMBER(13,4)  ",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 13.4,
+          "security": "Secreto"
+        },
+        {
+          "name": "IMPORTE_MAX",
+          "title": "IMPORTE_MAX",
+          "description": "IMPORTE MÁXIMO DEL PRÉSTAMO",
+          "type": "NUMBER(13,4)  ",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 13.4,
+          "security": "Secreto"
+        },
+        {
+          "name": "TIPO_TASA",
+          "title": "TIPO_TASA",
+          "description": "TIPO DE TASA DEL PRÉSTAMO",
+          "type": "VARCHAR2(1)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": "N/A",
+          "security": "Secreto"
+        },
+        {
+          "name": "TNA",
+          "title": "TNA",
+          "description": "TASA TNA DEL PRÉSTAMO",
+          "type": "NUMBER(9,6)  ",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 9.6,
+          "security": "Secreto"
+        },
+        {
+          "name": "CFTA_SIN_IMP",
+          "title": "CFTA_SIN_IMP",
+          "description": "CFTA SIN IMPUESTOS DEL PRÉSTAMO",
+          "type": "NUMBER(9,6)  ",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 9.6,
+          "security": "Secreto"
+        },
+        {
+          "name": "CFTA_CON_IMP",
+          "title": "CFTA_CON_IMP",
+          "description": "CFTA CON IMPUESTOS DEL PRÉSTAMO",
+          "type": "NUMBER(9,6)  ",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 9.6,
+          "security": "Secreto"
+        },
+        {
+          "name": "ENTIDAD_UG",
+          "title": "ENTIDAD_UG",
+          "description": "ENTIDAD UG PARA EL ALTA DEL PRÉSTAMOS",
+          "type": "NUMBER(4)  ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "PRODUCTO_UG",
+          "title": "PRODUCTO_UG",
+          "description": "PRODUCTO UG PARA EL ALTA DEL PRÉSTAMOS",
+          "type": "NUMBER(2)  ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "SUBPRODUCTO_UG",
+          "title": "SUBPRODUCTO_UG",
+          "description": "SUBPRODUCTO UG PARA EL ALTA DEL PRÉSTAMOS",
+          "type": "NUMBER(4)  ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "HABILITADO",
+          "title": "HABILITADO",
+          "description": "INDICA SI EL PRÉSTAMO ESTÁ HABILITADO PARA SOLICITAR",
+          "type": "VARCHAR2(1)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "SOLICITADO",
+          "title": "SOLICITADO",
+          "description": "INDICA SI EL PRÉSTAMO FUE SOLICITADO",
+          "type": "VARCHAR2(1)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Secreto"
+        },
+        {
+          "name": "FECHA_ALTA_REGISTRO",
+          "title": "FECHA_ALTA_REGISTRO",
+          "description": "FECHA DE ALTA DEL REGISTRO EN LA TABLA",
+          "type": "DATE        ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": "N/A",
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

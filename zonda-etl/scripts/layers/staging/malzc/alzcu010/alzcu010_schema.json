@@ -1,0 +1,60 @@
+{
+        "file": "Data_Ingestion_MALZC_ALZCU010",
+        "location": "/santander/bi-corp/landing/malzc/dim/alzcu010/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malzc/dim/alzcu010",
+		"createTable": "bi_corp_staging.malzc_alzcu010",
+        "extension": "txt",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [
+            {
+                "name": "COD_ESTADO_OPE",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "IDE_USER_ALTA",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ALTA",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "FEC_ALTA",
+                "type": "string",
+                "width": 10
+            },
+            {
+                "name": "DES_ESTADO_OPE",
+                "type": "string",
+                "width": 30
+            },
+            {
+                "name": "IDE_USER_ULT_MODF",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ULT_MODF",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "TIM_ULT_MODF",
+                "type": "string",
+                "width": 26
+            }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

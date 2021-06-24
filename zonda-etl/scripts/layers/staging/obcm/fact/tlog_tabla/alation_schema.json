@@ -1,0 +1,149 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307835"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "obcm_tlog_tabla",
+      "title": "Tiene los datos de cada transacción en el canal (Login, Generación de solicitudes, Consultas, Autorizaciones)",
+      "schema": "bi_corp_staging",
+      "source": "OBCM",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tiene los datos de cada transacción en el canal (Login, Generación de solicitudes, Consultas, Autorizaciones)",
+      "columns": [
+        {
+          "name": "IDE_EMPRESA",
+          "title": "IDE_EMPRESA",
+          "description": "Cuit de la Empresa",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "11 Bytes",
+          "security": "Confidencial"                },
+        {
+          "name": "IDE_USUARIO",
+          "title": "IDE_USUARIO",
+          "description": "Nup del usuario",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "12 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "IDE_TRANSACCION",
+          "title": "IDE_TRANSACCION",
+          "description": "Id de transaccion ",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "21 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "NOM_OPERACION",
+          "title": "NOM_OPERACION",
+          "description": "Nombre de la operacion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "25 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "NOM_PRODUCTO",
+          "title": "NOM_PRODUCTO",
+          "description": "Nombre del producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "25 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "NOM_REQ_FRONTEND",
+          "title": "NOM_REQ_FRONTEND",
+          "description": "Nombre del requerimiento de Front End",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "25 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "COD_ESTADO_TRN",
+          "title": "COD_ESTADO_TRN",
+          "description": "Codigo estado Transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "18 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "TIM_INI_TRN",
+          "title": "TIM_INI_TRN",
+          "description": "Tiempo de Inicio de Transaccion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "TIM_FIN_TRN",
+          "title": "TIM_FIN_TRN",
+          "description": "Tiempo de Fin de Transaccion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "MON_TRANSACCION",
+          "title": "MON_TRANSACCION",
+          "description": "Monto de la transaccion",
+          "type": "INTEGER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "NRO_NUP_EMPRESA",
+          "title": "NRO_NUP_EMPRESA",
+          "description": "Nup de la empresa",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "NRO_NUP_INDIVIDUO",
+          "title": "NRO_NUP_INDIVIDUO",
+          "description": "Nup del individuo",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

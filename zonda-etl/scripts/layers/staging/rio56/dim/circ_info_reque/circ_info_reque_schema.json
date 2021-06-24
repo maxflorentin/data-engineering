@@ -1,0 +1,75 @@
+{
+    "file": "circ_info_reque",
+    "location": "/santander/bi-corp/landing/rio56/dim/circ_info_reque/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/circ_info_reque",
+    "tempDirectory": "/santander/bi-corp/temp/circ_info_reque",
+    "createTable": "bi_corp_staging.rio56_circ_info_reque",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "ide_circuito",
+            "type": "string"
+        },
+        {
+            "name": "indi_info_gpo",
+            "type": "string"
+        },
+        {
+            "name": "cod_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "indi_info_oblig",
+            "type": "string"
+        },
+        {
+            "name": "est_circ_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_circ_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_circ_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_circ_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_circ_info_reque",
+            "type": "string"
+        },
+        {
+            "name": "orden_info",
+            "type": "string"
+        },
+        {
+            "name": "cod_etapa",
+            "type": "string"
+        },
+        {
+            "name": "orden_etapa",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

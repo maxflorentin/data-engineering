@@ -1,0 +1,203 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308761","A308250"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "FM_FONDOS",
+            "title": "Vista con el detalle de todos los fondos. VW_FUNDS DB: RIO264",
+            "schema": "bi_corp_staging",
+            "source": "Fondos",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Vista con el detalle de todos los fondos. VW_FUNDS DB: RIO264",
+            "columns": [
+                {
+                    "name": "MANAGER_ID",
+                    "title": "MANAGER_ID",
+                    "description": "Identificador de la sociedad gerente.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MANAGER_FUND_CODE",
+                    "title": "MANAGER_FUND_CODE",
+                    "description": "Fondo de la sociedad gerente.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MANAGER_FUND_CLASS",
+                    "title": "MANAGER_FUND_CLASS",
+                    "description": "Clase del fondo.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FUND_CODE",
+                    "title": "FUND_CODE",
+                    "description": "Código de fondo de FM.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NAME",
+                    "title": "NAME",
+                    "description": "Nombre del fondo.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 70.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CURRENCY",
+                    "title": "CURRENCY",
+                    "description": "Divisa.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ISIN",
+                    "title": "ISIN",
+                    "description": "Numero identificador de valores internacional.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FUND_CNV_CODE",
+                    "title": "FUND_CNV_CODE",
+                    "description": "Código en la Comisión Nacional de Valores.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 45.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FUND_CUSTODY_CODE",
+                    "title": "FUND_CUSTODY_CODE",
+                    "description": "Código de custodia.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 45.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FORMAT",
+                    "title": "FORMAT",
+                    "description": "Indica si esta Abierto o Cerrado el fondo.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "LACK_DAYS",
+                    "title": "LACK_DAYS",
+                    "description": "Carencia del fondo.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FUND_TYPE_ID",
+                    "title": "FUND_TYPE_ID",
+                    "description": "Identificador del tipo de Fondo.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FACT_SHEET_URL",
+                    "title": "FACT_SHEET_URL",
+                    "description": "PDF  \"http://\"",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 250.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "REGULATION_URL",
+                    "title": "REGULATION_URL",
+                    "description": "URL del reglamento.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 250.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "STATUS_ID",
+                    "title": "STATUS_ID",
+                    "description": "Identificador del estado.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IS_ENABLED",
+                    "title": "IS_ENABLED",
+                    "description": "Indica si esta habilitado o no.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

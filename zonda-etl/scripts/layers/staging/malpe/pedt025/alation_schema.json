@@ -1,0 +1,162 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "malpe_pedt025",
+      "title": "Jerarquía de grupo",
+      "schema": "bi_corp_staging",
+      "source": "MALPE",
+      "query": "",
+      "type": "fact",
+      "description": "Jerarquía de grupo",
+      "columns": [
+        {
+          "name": "PECDGENT",
+          "title": "PECDGENT",
+          "description": "Código de la entidad",
+          "type": "A ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PENUMPAR",
+          "title": "PENUMPAR",
+          "description": "Número de participación (Identificación del vinculado al grupo)",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PENUMGRU",
+          "title": "PENUMGRU",
+          "description": "Número de grupo",
+          "type": "A ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PETIPGRU",
+          "title": "PETIPGRU",
+          "description": "Tipo de vínculo",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PETIPREL",
+          "title": "PETIPREL",
+          "description": "Tipo de relación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEPORPAR",
+          "title": "PEPORPAR",
+          "description": "Porcentaje de participación",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUALT",
+          "title": "PEUSUALT",
+          "description": "Usuario de alta",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEFECALT",
+          "title": "PEFECALT",
+          "description": "Fecha de alta del registro",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEUSUMOD",
+          "title": "PEUSUMOD",
+          "description": "Usuario última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PETERMOD",
+          "title": "PETERMOD",
+          "description": "Terminal última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESUCMOD",
+          "title": "PESUCMOD",
+          "description": "Sucursal última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEHSTAMP",
+          "title": "PEHSTAMP",
+          "description": "Timestamp última modificación",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+
+      ]
+    },
+    "schedule": {
+      "periodicity": "Monthly",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

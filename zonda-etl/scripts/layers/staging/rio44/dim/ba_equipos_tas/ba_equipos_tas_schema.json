@@ -1,0 +1,55 @@
+{
+    "file": "ba_equipos_tas_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos_tas",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_equipos_tas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_equipos_tas",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_equipo",
+            "type": "string"
+        },
+        {
+            "name": "billete_min",
+            "type": "string"
+        },
+        {
+            "name": "hddh",
+            "type": "string"
+        },
+        {
+            "name": "hhdh",
+            "type": "string"
+        },
+        {
+            "name": "tas_prisma",
+            "type": "string"
+        },
+        {
+            "name": "ubicacion",
+            "type": "string"
+        },
+        {
+            "name": "suc_cc",
+            "type": "string"
+        },
+        {
+            "name": "tas_prisma_f",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

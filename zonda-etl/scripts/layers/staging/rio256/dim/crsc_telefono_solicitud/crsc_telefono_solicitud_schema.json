@@ -1,0 +1,43 @@
+{
+    "file": "crsc_telefono_solicitud_schema",
+    "createTable": "bi_corp_staging.rio256_crsc_telefono_solicitud",
+    "location": "/santander/bi-corp/landing/rio256/dim/crsc_telefono_solicitud/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio256/dim/crsc_telefono_solicitud",
+    "tempDirectory": "/santander/bi-corp/temp/rio256",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "prefijo",
+            "type": "string"
+        },
+        {
+            "name": "telefono",
+            "type": "string"
+        },
+        {
+            "name": "id_solicitud",
+            "type": "string"
+        },
+        {
+            "name": "fecha",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

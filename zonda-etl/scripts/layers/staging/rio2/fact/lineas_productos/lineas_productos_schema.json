@@ -1,0 +1,47 @@
+{
+  "file": "lineas_productos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/lineas_productos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/lineas_productos",
+  "createTable": "bi_corp_staging.sge_lineas_productos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+         {
+              "name": "cod_producto",
+              "type": "string"
+         },
+         {
+              "name": "cod_operacion",
+              "type": "string"
+         },
+         {
+              "name": "peusualt",
+              "type": "string"
+         },
+         {
+              "name": "pefecalt",
+              "type": "string"
+         },
+         {
+              "name": "peusumod",
+              "type": "string"
+         },
+         {
+              "name": "pefecmod",
+              "type": "string"
+         }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

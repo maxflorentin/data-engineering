@@ -1,0 +1,16 @@
+{
+    "name": "LOAD_CMN_DSF-Monthly",
+    "shift": 0,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG-ADSF-Clientes-Monthly",
+            "tasks": "all"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_CMN_DSF-Monthly",
+            "tasks": "all"
+        }
+    ]
+}

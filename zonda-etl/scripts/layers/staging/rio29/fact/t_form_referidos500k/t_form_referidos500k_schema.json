@@ -1,0 +1,98 @@
+{
+  "file": "t_form_referidos500k_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_referidos500k/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_referidos500k",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "rfte_nup",
+      "type": "string"
+    },
+    {
+      "name": "rfte_nombre",
+      "type": "string"
+    },
+    {
+      "name": "rfte_apellido",
+      "type": "string"
+    },
+    {
+      "name": "rfte_nrodni",
+      "type": "string"
+    },
+    {
+      "name": "rfte_afinidad",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_nombre",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_apellido",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_nrodni",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_cod_area_tel",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_nro_tel",
+      "type": "string"
+    },
+    {
+      "name": "rfdo_email",
+      "type": "string"
+    },
+    {
+      "name": "cod_rechazo",
+      "type": "string"
+    },
+    {
+      "name": "tipo",
+      "type": "string"
+    },
+    {
+      "name": "premio",
+      "type": "string"
+    },
+    {
+      "name": "cod_campania",
+      "type": "string"
+    },
+    {
+      "name": "cod_origen",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "fechaalta",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fechaalta",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

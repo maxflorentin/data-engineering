@@ -1,0 +1,29 @@
+name: NWCA_Create_All_Tables
+description: 'This DAG creates all the tables of the New Cargabal schema if the table not exists, remember to drop the tables you want to create'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [Master, Sat01_Intra_Group_Transactions, Sat02_Liabilities_Provisions, Sat03_Non_Financial_Assets, Sat04_Taxes, Sat05_Local_Equity_Reconciliation, Sat06_Equity, Sat07_Restricted_Reserves, Sat08_Collective_Investment_Institutions, Sat09_Debt_Securities, Sat10_Equity_Instruments_Group, Sat11_Equity_Instruments_Rest, Sat12_Share_Capital_Breakdown, Sat13_Country_Currency_1, Sat14_Country_Currency_2, Sat15_LTV_TPD, Sat17_Maturity_Residual, Sat18_Annual_Average_Interest_Rate, Sat19_Derivatives, Sat20_Market_Risk, Sat21_Transferred_Financial_Instruments, Sat22_Credit_Risk_Movements, Sat23_Liabilities_Details, Sat24_Netting_And_Interest_Rates]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/nuevo_cargabal/corporate/${e}/DDLT-Create_Table.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar]

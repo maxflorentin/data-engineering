@@ -1,0 +1,233 @@
+{
+	"file": "rating_empresas",
+	"location": "/santander/bi-corp/landing/aqua/rating_empresas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/aqua/rating_empresas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"createTable": "bi_corp_staging.rating_empresas",
+	"columns":
+	[
+		{
+		"name": "Unidad_Operativa",
+		"type": "string"
+		},
+		{
+			"name": "Ticker",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SU",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_SUW",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SU_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_IR",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_I_W",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_IR_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_LT_FC",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_LFW",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_LT_FC_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_LT_LC",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_LLW",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_LT_LC_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SS",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_SSW",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SS_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SI",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_S_W",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_SI_DT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_OUT",
+			"type": "string"
+		},
+		{
+			"name": "MDYS_OUT_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_FC",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_F_W",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_FC_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_LC",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_L_W",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_LC_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_OUT",
+			"type": "string"
+		},
+		{
+			"name": "SP_OUT_DT",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_SU",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_SU_W",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_SU_DT",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LT_F",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LT_W",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LT_F_DT",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LT_L",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LTLW",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_LT_L_DT",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_OUT",
+			"type": "string"
+		},
+		{
+			"name": "FITCH_OUT_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_ST_LCUR_CREDIT_RT",
+			"type": "string"
+		},
+		{
+			"name": "SP_ST_FCUR_CREDIT_RT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_FCUR_CREDIT_RT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_LCUR_CREDIT_RT",
+			"type": "string"
+		},
+		{
+			"name": "SP_ST_LC_ISR_CR_RT_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_ST_FC_ISR_CR_RT_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_FC_ISR_CR_RT_DT",
+			"type": "string"
+		},
+		{
+			"name": "SP_LT_LC_ISR_CR_RT_DT",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_LT_RT",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_LT_DT",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_ST_DEBT_RATING",
+			"type": "string"
+		},
+		{
+			"name": "MOODYS_ST_RATING_DATE",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

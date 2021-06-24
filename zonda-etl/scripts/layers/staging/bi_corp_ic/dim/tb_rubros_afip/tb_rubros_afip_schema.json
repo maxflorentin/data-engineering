@@ -1,0 +1,60 @@
+{
+	"file": "exa_dim_cons_rubros_afip",
+	"location": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_rubros_afip/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_cons_rubros_afip",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_cons_rubros_afip",
+	"createTable": "bi_corp_staging.exa_dim_cons_rubros_afip",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "RUBRO_NIVEL1",
+			"type":"string"
+		},
+{
+			"name": "RUBRO_NIVEL2",
+			"type":"string"
+		},
+{
+			"name": "RUBRO_NIVEL3",
+			"type":"string"
+		},
+{
+			"name": "DESC_AFIP",
+			"type":"string"
+		},
+{
+			"name": "COD_AFIP",
+			"type":"string"
+		},
+{
+			"name": "SECTOR",
+			"type":"string"
+		},
+{
+			"name": "ID_ESTABLECIMIENTO",
+			"type":"string"
+		},
+{
+			"name": "OBSERVACION",
+			"type":"string"
+		},
+{
+			"name": "RUBRO_ABUELO",
+			"type":"string"
+		},
+{
+			"name": "RUBRO_PADRE",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

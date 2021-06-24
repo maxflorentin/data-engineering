@@ -1,0 +1,58 @@
+{
+    "file": "tcdv0200",
+    "location": "/santander/bi-corp/landing/maltc/dim/tcdv0200/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/maltc/dim/tcdv0200",
+    "extension": "csv",
+    "fixed": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.maltc_tcdv0200",
+    "compression": "gzip",
+    "columns": [
+      {
+        "name": "200_fhfestiv",
+        "type": "string",
+        "width": 10
+
+      },
+      {
+        "name": "200_tpfestiv",
+        "type": "string",
+        "width": 1
+      },
+      {
+        "name": "200_cdautono",
+        "type": "string",
+        "width": 2
+      },
+      {
+        "name": "200_stcdpine",
+        "type": "string",
+        "width": 7
+      },
+      {
+        "name": "200_cdempres",
+        "type": "string",
+        "width": 4
+      },
+      {
+        "name": "200_cddiasem",
+        "type": "string",
+        "width": 1
+      },
+      {
+        "name": "200_nbfhfest",
+        "type": "string",
+        "width": 30
+      }
+    ],
+    "extraColumns": [
+      {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+      }
+    ]
+  }
+  

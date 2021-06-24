@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio32_reg_elect_datos_hist ;

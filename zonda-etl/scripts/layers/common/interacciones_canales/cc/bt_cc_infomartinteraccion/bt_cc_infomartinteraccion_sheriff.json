@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.bt_cc_infomartinteraccion",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cc_interaccion"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cc_fecha"],
+      "pattern": "yyyy-MM-dd"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_cc_inicio_gestioninteraccion","ts_cc_fin_gestioninteraccion","ts_cc_fin_interaccion","ts_cc_inicio_interaccion"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

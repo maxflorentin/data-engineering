@@ -1,0 +1,19 @@
+{
+  "name": "TRIAD-KEYS",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_TRIAD-Linkage-Daily",
+      "tasks": "all"
+    },
+	{
+      "dag_id":"LOAD_STG_TRIAD-RR-Daily",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_TRIAD_KEYS-Daily"
+    }
+  ]
+}

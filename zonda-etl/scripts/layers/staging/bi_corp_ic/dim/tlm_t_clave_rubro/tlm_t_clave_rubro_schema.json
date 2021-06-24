@@ -1,0 +1,36 @@
+{
+	"file": "exa_dim_cons_clave_rubro",
+	"location": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_clave_rubro/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_cons_clave_rubro",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_cons_clave_rubro",
+	"createTable": "bi_corp_staging.exa_dim_cons_clave_rubro",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "ID",
+			"type":"string"
+		},
+{
+			"name": "ID_PALABRA_CLAVE",
+			"type":"string"
+		},
+{
+			"name": "RUBRO",
+			"type":"string"
+		},
+{
+			"name": "TIPO",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

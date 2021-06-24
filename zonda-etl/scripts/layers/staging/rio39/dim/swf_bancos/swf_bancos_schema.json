@@ -1,0 +1,170 @@
+{
+     "file": "swf_bancos_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/swf_bancos/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/swf_bancos",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [		 {
+              "name": "bic_code",
+              "type": "string"
+             },
+             {
+              "name": "branch_code",
+              "type": "string"
+             },
+             {
+              "name": "name1",
+              "type": "string"
+             },
+             {
+              "name": "name2",
+              "type": "string"
+             },
+             {
+              "name": "name3",
+              "type": "string"
+             },
+             {
+              "name": "branch_information1",
+              "type": "string"
+             },
+             {
+              "name": "branch_information2",
+              "type": "string"
+             },
+             {
+              "name": "city_heading",
+              "type": "string"
+             },
+             {
+              "name": "subtype_indication",
+              "type": "string"
+             },
+             {
+              "name": "direc_fisica1",
+              "type": "string"
+             },
+             {
+              "name": "direc_fisica2",
+              "type": "string"
+             },
+             {
+              "name": "direc_fisica3",
+              "type": "string"
+             },
+             {
+              "name": "direc_fisica4",
+              "type": "string"
+             },
+             {
+              "name": "location1",
+              "type": "string"
+             },
+             {
+              "name": "location2",
+              "type": "string"
+             },
+             {
+              "name": "location3",
+              "type": "string"
+             },
+             {
+              "name": "nom_pais1",
+              "type": "string"
+             },
+             {
+              "name": "nom_pais2",
+              "type": "string"
+             },
+             {
+              "name": "pob_codpostal",
+              "type": "string"
+             },
+             {
+              "name": "pob_location1",
+              "type": "string"
+             },
+             {
+              "name": "pob_location2",
+              "type": "string"
+             },
+             {
+              "name": "pob_location3",
+              "type": "string"
+             },
+             {
+              "name": "pob_nom_pais1",
+              "type": "string"
+             },
+             {
+              "name": "pob_nom_pais2",
+              "type": "string"
+             },
+             {
+              "name": "cod_bcra",
+              "type": "string"
+             },
+             {
+              "name": "cod_banco",
+              "type": "string"
+             },
+             {
+              "name": "modo_operacion",
+              "type": "string"
+             },
+             {
+              "name": "codigobancopais",
+              "type": "string"
+             },
+             {
+              "name": "usu_baja",
+              "type": "string"
+             },
+             {
+              "name": "fecha_baja",
+              "type": "string"
+             },
+             {
+              "name": "usu_reactiva",
+              "type": "string"
+             },
+             {
+              "name": "fecha_reactiva",
+              "type": "string"
+             },
+             {
+              "name": "usu_alta",
+              "type": "string"
+             },
+             {
+              "name": "fecha_alta",
+              "type": "string"
+             },
+             {
+              "name": "usu_modif",
+              "type": "string"
+             },
+             {
+              "name": "fecha_modif",
+              "type": "string"
+             },
+             {
+              "name": "bco_seguimiento",
+              "type": "string"
+             }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

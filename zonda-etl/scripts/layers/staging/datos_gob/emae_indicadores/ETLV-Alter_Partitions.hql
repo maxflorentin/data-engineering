@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.datos_gob_emae_indicadores ADD IF NOT EXISTS PARTITION (partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='DOWNLOAD_DATOS_GOB_UVA-Daily') }}');

@@ -1,0 +1,106 @@
+{
+  "objectMetadata": {
+    "governance": {
+      "steward": [
+        "A307834"
+      ],
+      "validator": [
+        "A307625"
+      ],
+      "level": "Básico"
+    },
+    "table": {
+      "application": "RIO170",
+      "name": "rio170_nps_encuestas",
+      "title": "Encuestas de OBP y MOBP",
+      "schema": "bi_corp_staging",
+      "type": "dim",
+      "description": "Maestro de encuestas de OBP y MOBP",
+      "columns": [
+        {
+          "name": "id_encuesta",
+          "title": "Identificador de Encuesta",
+          "description": "Identificador de Encuesta",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "codigo",
+          "title": "Codigo",
+          "description": "Codigo de Encuesta",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "canal",
+          "title": "Canal",
+          "description": "Canal de la encuesta (OBP/MOBP)",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "descripcion",
+          "title": "Descripcion",
+          "description": "Descripcion de la Encuesta",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fecha_inicio",
+          "title": "Fecha Inicio",
+          "description": "Fecha de Inicio de la Encuesta",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fecha_fin",
+          "title": "Fecha Fin",
+          "description": "Fecha de Fin de la Encuesta",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Diario",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    },
+    "lineage": {
+      "target_table": "bi_corp_common.bt_nps_nps",
+      "source_table": ["bi_corp_staging.rio170_nps_encuestas"]
+    }
+  }
+}

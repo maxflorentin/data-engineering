@@ -1,0 +1,19 @@
+{
+    "name": "NORKOM_REPORT",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id": "LOAD_STG_Malpe-Daily",
+                    "tasks": ["STAGING_PEDT001_Parquetize", "STAGING_PEDT003_Parquetize"]
+                },
+                {
+                    "dag_id": "LOAD_STG_GARANTIAS-Daily",
+                    "tasks": ["STAGING_GTDTRGB_AddPartition", "STAGING_GTDTGAR_AddPartition", "STAGING_GTDTMAE_AddPartition"]
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id": "REPORT_NORKOM_GTDTRBC"
+                }
+    ]
+}

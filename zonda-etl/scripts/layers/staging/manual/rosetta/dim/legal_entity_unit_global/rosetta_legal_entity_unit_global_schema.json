@@ -1,0 +1,32 @@
+{
+  "file": "rosetta_global_domains",
+  "location": "/santander/bi-corp/landing/manual/rosetta/dim/legal_entity_unit_global/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/rosetta/dim/legal_entity_unit_global",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true ,
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "code",
+					    "type": "string"
+					  },
+					  {
+					    "name": "description",
+					    "type": "string"
+					  },
+					  {
+					    "name": "domain",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

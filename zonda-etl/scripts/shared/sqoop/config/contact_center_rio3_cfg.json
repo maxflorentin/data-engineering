@@ -1,0 +1,228 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "CIRCUITO",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/circuito",
+      "split_field": "MODALIDAD_OUTXORIGEN",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,dias_backoffice,activo,tipo_informe_entrevista,codificacion_oca,pais,tiposolicitud,procesotibco,tipocircuito,reversa \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "CONTACTO",
+      "table_type": "fact",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/contacto",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"contacto,tipodoc,nrodoc,expedida,nacio,fechaalta,apellido,nombre,teledisc1,tel_1,postal1,teledisc2,tel_2,postal2,interno,origen,medio,estado,sexo,usuario,clifondos,nivclifon,cliente,sucursal,clavehost,conytipodoc,conynrodoc,capturado,incontactable,cantoperac,ultoperacion,tipo_persona,tipo_cliente,estado2,fecha_modificacion \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TMK_TELEFONO",
+      "table_type": "fact",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/tmk_telefono",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"id ,tipo  ,ddi ,telediscado,numero   ,interno   ,postal ,semaforo ,contacto  ,fechaalta,usuarioalta        ,fechamodificacion  ,usuariomodificacion,prioridadoutbound  ,empresacelular    \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "ORIGEN",
+      "table_type": "fact",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/origen",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,activo,agenda,producto,appsource,cantcontactos,prioridad,cantoperaciones,fecdesde,fechasta,canal,fecdesde_crm,id_camp_buc,tipo_campania,cant_op_agente,nroshot,modelo_contacto,modalidad_outxorigen,fec_pri_vigencia,usuario_modif,fecha_modif,pais,porcentaje_cont_contactar,setgestion,listallamado,fec_ult_vigencia,blanquear_origen_discador \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+     {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "OPERACION",
+      "table_type": "fact",
+      "partition_field": "FECHA",
+       "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/operacion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"operacion,contacto,origen,medio,llamada,usuario,fecha,hora,gestion,duracion,dia_rel,hor_rel,com_rel,unico_ope,vfecha,vdesde,vhasta,vcomenta,exportada,vgestor,canal,canal_comunicacion,sucursal,llamada2 \" --where \"{partition_field} = REPLACE('{partition_date}', '-', '' )\" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^'  --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "SOLICITUD",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "CAMBIOESTADO",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/solicitud",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"solicitud,circular,promocion,delivery,canal,sucursal,familia,programa,lista,vehiculo,oferta1,oferta2,oferta3,anio,mes,estado,cambioestado,uniqueid,solicitud_asol,returncode_asol,observaciones_asol,nrocuenta_asol,usuario,fechaimpresol,domicilioresumen,promocion_asol,ultoperacionvisita,comentario,campania,prioperacion,fecha_prioperacion,circuito,rpt_fcambio,idjournal,oficial,solicitud_portal,dependencia \" --where \"{partition_field} = REPLACE('{partition_date}', '-', '' )\"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "OPERACIONSOLICITUD",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "B.FECHA",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/operacionsolicitud",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select a.operacion ,a.solicitud, b.fecha from TMK.OPERACIONSOLICITUD a  inner join TMK.OPERACION b  on a.operacion = b.operacion  WHERE {partition_field} = REPLACE('{partition_date}', '-', '' ) and \\$CONDITIONS \"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TMK_SESIONXOPERACION",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "B.FECHA",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/tmk_sesionxoperacion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select a.operacion ,a.sesion, b.fecha from TMK.TMK_SESIONXOPERACION a  inner join TMK.OPERACION b  on a.operacion = b.operacion  WHERE {partition_field} = REPLACE('{partition_date}', '-', '' ) and \\$CONDITIONS \"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "ENCUESTAS",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/encuestas",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,activo,producto,tipo \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "PREGUNTAS",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/preguntas",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"encuesta,pregunta,descri,respuesta_multiple,activo,orden,contabilizar \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "PRODUCTOS",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/productos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo, descri \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "RESPUESTAS",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/respuestas",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"encuesta,pregunta,respuesta,descri,activo \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "DETALLERESULTADOS",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "OP.FECHA",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/detalleresultados",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select det.operacion, det.encuesta, det.pregunta, det.respuesta, det.comentario, op.fecha from TMK.DETALLERESULTADOS det inner join TMK.OPERACION op on det.operacion = op.operacion  WHERE {partition_field} = REPLACE('{partition_date}', '-', '' ) and \\$CONDITIONS \"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "OPERACIONENCUESTA_RIONLINE",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "OP.FECHA",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/operacionencuesta_rionline",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select en.operacion, en.encuesta, en.producto, en.sucursal, en.nrocuenta, en.nuptitular, en.numero_visa, en.cuenta_visa, en.numero_amex, en.cuenta_amex, en.numero_master, en.cuenta_master, op.fecha from TMK.OPERACIONENCUESTA_RIOLINE en inner join TMK.OPERACION op on en.operacion = op.operacion  WHERE {partition_field} = REPLACE('{partition_date}', '-', '' ) and \\$CONDITIONS \"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TIPOESTADOSOLICITUD",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tipoestadosolicitud",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,gestion,estadoproducto,estadoasol,ordenbo,imprimesolicitud,asol_bo,estadorector,activo,tipo_estado,documentacion,codigomensaje \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TBL_CANAL_COMUNICACION",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tbl_canal_comunicacion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,activo \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "CANAL",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/canal",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,activo,forma_oper,modalidad \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TMK_TIPOCIRCUITO",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tmk_tipocircuito",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descripcion\" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "GESTION",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/gestion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,tipo,llamada,contacto,baja,rellamar,visitar,activo,concosto,conproducto,rellamaauto,validaventa,novalidar,rellamadias,rellamahoras,duracion,terminacion,tg_tipo,duracion_crm,colorfila,llamadain,llamadaoutmanual,llamadaoutorigen,llamadaagenda,sincontacto,nuevoestadocontacto,nuevoestado2contacto,activo_ap,depura_agenda,usuario_modif,fecha_modif,llamadaoutinternet\" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "RESULTADOENCUESTA_RIOLINE",
+      "table_type": "fact",
+      "environment": "rio3",
+      "partition_field": "OP.FECHA",
+      "landing_path": "/santander/bi-corp/landing/rio3/fact/resultadoencuesta_rioline",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select det.operacion, det.encuesta,  det.producto, det.respuesta,  det.pregunta, det.valor,det.comentario, op.fecha from TMK.RESULTADOENCUESTA_RIOLINE det inner join TMK.OPERACION op on det.operacion = op.operacion  WHERE {partition_field} = REPLACE('{partition_date}', '-', '' ) and \\$CONDITIONS \"  --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'   --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TBL_ENCUESTA",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tbl_encuesta",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"codigo,descri,activo,comentario,plantilla \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TBL_PREGUNTA",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tbl_pregunta",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"encuesta,pregunta,descri,primerapregunta,activo,comentario,tabla_nombre,tabla_codigo,tabla_descri,tabla_condicion,respuesta_multiple \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "PRODUCTO",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/producto",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"CODIGO ,DESCRI ,PRODUCTO_ASOL,ICONO,VERENARBOL ,VISIBLE_GRILLA ,ACTIVO ,DESCRI_CRM ,OFRECER ,FAMILIA,AUTOMATICO,ORDEN,CELLSTATION ,PRIORIDAD ,INTERNET ,PATHICONO ,PROVEEDORID,PAIS,VERSION_ESQUEMA,TIPOINFINITY,DIAS_RECORDATORIO_INTERNET,IDENTIFICARIVR,VALIDA_SCORING,CANT_MAX_DIAS_DESBLOQUEO \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig" : "DBLXORABCATEL01.ar.bsch",
+      "database": "TMK",
+      "table": "TBL_RESPUESTA",
+      "table_type": "dim",
+      "environment": "rio3",
+      "landing_path": "/santander/bi-corp/landing/rio3/dim/tbl_respuesta",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"encuesta,pregunta,respuesta,proximapregunta,descri,activo,comentario,valor,puntaje,respuestalibre \" --bindir '{zonda_dir}/sqoop/rio3/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_SOLICITUD",
+            "table_type": "fact",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/fact/crsc_solicitud",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_solicitud -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --query \"select ID,ID_SUCURSAL,ID_PROSPECTO,ID_PROD,ID_ESTADO_SOLICITUD,SOLICITANTE_IP,DISPOSITIVO,FECHA_CREACION,FECHA_ALTA,NRO_ASOL,TIPO_DOC,NRO_DOC,SERVIDOR_ALTA,ID_CHECKLIST,ESTADO_ASOL,SUC_EMBOZADO,EMBOZADO,NRO_CUENTA,NUP,CANAL,ID_BIOMETRIA,APPID,SUCURSAL_CR,CAJERO from ATENEABE.CRSC_SOLICITUD WHERE (to_char(FECHA_CREACION ,'YYYY-MM-DD') ='{partition_date}' OR to_char(FECHA_ALTA ,'YYYY-MM-DD') ='{partition_date}') and \\$CONDITIONS \" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_ESTADO_SOLICITUD",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_estado_solicitud",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_estado_solicitud -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_PRODUCTO",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_producto",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_producto -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_PROSPECTO",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_prospecto",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_prospecto -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_TELEFONO_SOLICITUD",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_telefono_solicitud",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_telefono_solicitud -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_DOMICILIO",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_domicilio",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_domicilio -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      },
+      {
+            "serverConfig" : "RIO256db.ar.bsch",
+            "database": "ATENEABE",
+            "table": "CRSC_CAMPANIA",
+            "table_type": "dim",
+            "environment": "rio256",
+            "landing_path": "/santander/bi-corp/landing/rio256/dim/crsc_campania",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=crsc_campania -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@RIO256db.ar.bsch:7365/srv_RIO256_ap' --username 'srvcbi' --table \"{database}.{table}\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --bindir {zonda_dir}/sqoop --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '7FMBE1S+mzCrSB07T' --verbose\n"
+      }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+     "file": "conceptosbcra_schema",
+     "location": "/santander/bi-corp/landing/rio4/dim/conceptosbcra/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio4/dim/conceptosbcra",
+     "tempDirectory": "/santander/bi-corp/temp/rio4",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [          {
+                 "name": "codigo",
+                 "type": "string"
+                },
+                {
+                 "name": "descripcion",
+                 "type": "string"
+                },
+                {
+                 "name": "alias1",
+                 "type": "string"
+                },
+                {
+                 "name": "alias2",
+                 "type": "string"
+                },
+                {
+                 "name": "alias3",
+                 "type": "string"
+                },
+                {
+                 "name": "extendido",
+                 "type": "string"
+                },
+                {
+                 "name": "impuesto",
+                 "type": "string"
+                },
+                {
+                 "name": "tasa",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_alta",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_baja",
+                 "type": "string"
+                },
+                {
+                 "name": "utiliza_cuota",
+                 "type": "string"
+                },
+                {
+                 "name": "cod_afip",
+                 "type": "string"
+                },
+                {
+                 "name": "valida_afip",
+                 "type": "string"
+                },
+                {
+                 "name": "multiple_dejai",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_referencia_afip",
+                 "type": "string"
+                },
+                {
+                 "name": "tipo_registracion_afip",
+                 "type": "string"
+                },
+                {
+                 "name": "permiso_embarque",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_embarque",
+                 "type": "string"
+                },
+                {
+                 "name": "turismo",
+                 "type": "string"
+                },
+                {
+                 "name": "archivo_turismo",
+                 "type": "string"
+                },
+                {
+                 "name": "grupo",
+                 "type": "string"
+                },
+                {
+                 "name": "grupom",
+                 "type": "string"
+                },
+                {
+                 "name": "rg3421",
+                 "type": "string"
+                },
+                {
+                 "name": "cxd",
+                 "type": "string"
+                },
+                {
+                 "name": "infbcra",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

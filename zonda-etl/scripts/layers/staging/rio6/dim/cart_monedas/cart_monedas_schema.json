@@ -1,0 +1,30 @@
+{
+  "file": "cart_monedas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_monedas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_monedas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"camo_cd_moneda",
+      "type": "string"
+    },
+    {
+      "name":"camo_de_moneda",
+      "type":"string"
+    },
+    {
+      "name":"camo_sm_moneda",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

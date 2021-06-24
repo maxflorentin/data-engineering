@@ -1,0 +1,44 @@
+{
+  "file": "links_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/links/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/links",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_subscriber",
+    "type": "string"
+  },
+    {
+      "name": "entitlement",
+      "type": "string"
+    },
+    {
+      "name": "accion",
+      "type": "string"
+    },
+    {
+      "name": "destination",
+      "type": "string"
+    },
+    {
+      "name": "msg_id",
+      "type": "string"
+    },
+    {
+      "name": "timestamp",
+      "type": "string"
+
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

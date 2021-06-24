@@ -1,0 +1,92 @@
+{
+	"file": "procesos_schema",
+	"location": "/santander/bi-corp/landing/emerix/fact/procesos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/emerix/fact/emerix_procesos",
+	"tempDirectory": "/santander/bi-corp/temp/emerix_procesos",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "num_cliente",
+			"type": "string"
+		},
+{
+			"name": "contrato",
+			"type": "string"
+		},
+{
+			"name": "codigo_estado",
+			"type": "string"
+		},
+{
+			"name": "nombre_estado",
+			"type": "string"
+		},
+{
+			"name": "codigo_escenario",
+			"type": "string"
+		},
+{
+			"name": "nombre_escenario",
+			"type": "string"
+		},
+{
+			"name": "codigo_agencia",
+			"type": "string"
+		},
+{
+			"name": "nombre_agecia",
+			"type": "string"
+		},
+{
+			"name": "numero_proceso",
+			"type": "string"
+		},
+{
+			"name": "estado_proceso",
+			"type": "string"
+		},
+{
+			"name": "fecha_alta_proceso",
+			"type": "string"
+		},
+{
+			"name": "fecha_fin_proceso",
+			"type": "string"
+		},
+{
+			"name": "tipo_proceso",
+			"type": "string"
+		},
+{
+			"name": "juzgado",
+			"type": "string"
+		},
+{
+			"name": "secretaria",
+			"type": "string"
+		},
+{
+			"name": "expediente",
+			"type": "string"
+		},
+{
+			"name": "riesgo_contrato",
+			"type": "string"
+		},
+{
+			"name": "num_reg",
+			"type": "string"
+		}
+	],"extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

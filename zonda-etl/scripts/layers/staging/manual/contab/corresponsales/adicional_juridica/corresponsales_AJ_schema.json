@@ -1,0 +1,32 @@
+{
+    "file": "corresponsales_AJ",
+    "location": "/santander/bi-corp/landing/manual/contab/corresponsales/adicional_juridica/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/manual/contab/corresponsales/adicional_juridica",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                            "name": "nup",
+                            "type": "string"
+                        },
+                        {
+                            "name": "banco",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cargabal",
+                            "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date_filter}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }

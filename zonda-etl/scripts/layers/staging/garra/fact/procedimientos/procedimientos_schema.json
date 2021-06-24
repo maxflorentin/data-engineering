@@ -1,0 +1,17 @@
+{
+  "file": "waguc527_schema",
+  "location": "/santander/bi-corp/landing/garra/fact/procedimientos/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garra/fact/procedimientos",
+  "createTable": "bi_corp_staging.garra_procedimientos",
+  "copybook": "procedimientos.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

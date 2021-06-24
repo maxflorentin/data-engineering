@@ -1,0 +1,63 @@
+{
+    "file": "codigos_operativos_tarjeta",
+    "location": "/santander/bi-corp/landing/csm/fact/codigos_operativos_tarjeta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/codigos_operativos_tarjeta",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_codigos_operativos_tarjeta",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_operativo",
+            "type": "string"
+        },
+        {
+            "name": "desc_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "ind_pago_tarjeta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "cod_ajuste",
+            "type": "string"
+        },
+        {
+            "name": "cod_subajuste",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "Admision_Flattener_OMDM-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_CMN_Admision",
+      "tasks": ["COMMON_LoadTable_stk_adm_ind_omdmafip","COMMON_LoadTable_stk_adm_ind_omdmparticipantes","COMMON_LoadTable_stk_adm_ind_omdmprendario","COMMON_LoadTable_stk_adm_ind_omdmsolicitudes","COMMON_LoadTable_stk_adm_omdm","COMMON_LoadTable_stk_adm_omdmscoring","COMMON_CreateTable_stk_adm_omdmmotivos","COMMON_LoadTable_stk_adm_ind_omdmoferta","COMMON_LoadTable_stk_adm_pyme_omdmparticipantepropuesta","COMMON_LoadTable_stk_adm_pyme_omdmpropuestas"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Flattener_OMDM-Daily"
+    }
+  ]
+}

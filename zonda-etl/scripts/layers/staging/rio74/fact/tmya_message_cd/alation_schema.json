@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_tmya_message_cd",
+      "title": "relaciona las tablas mya02.tmya_message_request_data_cd con mya02.tmya_message_log_cd",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "relaciona las tablas mya02.tmya_message_request_data_cd con mya02.tmya_message_log_cd",
+      "columns": [
+        {
+          "name": "MSG_REQ_ID",
+          "title": "MSG_REQ_ID",
+          "description": "id del mensaje",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MSG_ID",
+          "title": "MSG_ID",
+          "description": "id del log del mensaje",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

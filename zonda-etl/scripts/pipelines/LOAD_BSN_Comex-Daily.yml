@@ -1,0 +1,45 @@
+name: LOAD_BSN_Comex-Daily
+description: 'Load Daily Dashboard Comex Data'
+owner: BI-Corp
+active: true
+schedule_interval: '00 10 * * 2-6'
+start_date: '2020-05-04'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Create_tbl_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/tbl/comex/DDLT-Create_business_tbl_comex.hql'
+  - name: Load_tbl_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/tbl/comex/ETL_LOAD_tbl_comex_volumen.hql'
+dependencies:
+  Create_tbl_Table: Load_tbl_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [itroisi@santandertecnologia.com.ar]

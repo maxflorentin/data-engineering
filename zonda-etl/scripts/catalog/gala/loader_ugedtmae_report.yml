@@ -1,0 +1,55 @@
+name: GALA_UGDTMAE_REPORT
+description: 'UGTMAE_REPORT'
+owner: BI-Corp
+active: true
+schedule_interval: '0 19 * * 1-6'
+start_date: '2019-11-02'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "/aplicaciones/bi/zonda/outbound/ugtmae_report_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GALA_UGDTMAE_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      delimiter: '\t'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/gala/ugedtmae_report.hql'
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "/aplicaciones/bi/zonda/outbound/ugtmae_report_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GALA_UGDTMAE_REPORT') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/GALA/ugedtmae_report/ugtmae_report_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GALA_UGDTMAE_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: SSHOperator
+    config:
+      connection_id: de_ssh
+      command: "rm /aplicaciones/bi/zonda/outbound/ugtmae_report_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GALA_UGDTMAE_REPORT') }}.txt"
+dependencies:
+  report_execution: report_send_sftp
+  report_send_sftp: EXECUTE_Remove_FILE
+notifications:
+  on_start: true
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

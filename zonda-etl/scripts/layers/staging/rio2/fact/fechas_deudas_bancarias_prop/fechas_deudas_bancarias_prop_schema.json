@@ -1,0 +1,55 @@
+{
+  "file": "fechas_deudas_bancarias_prop_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/fechas_deudas_bancarias_prop/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/fechas_deudas_bancarias_prop",
+  "createTable": "bi_corp_staging.sge_fechas_deudas_bancarias_prop",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "fecha_deuda_id",
+                    "type": "string"
+                },
+{
+                    "name": "fec_deuda",
+                    "type": "string"
+                },
+{
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cant_ban_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "deu_total_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "mar_consulta_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "obs_can_deu_bcra",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

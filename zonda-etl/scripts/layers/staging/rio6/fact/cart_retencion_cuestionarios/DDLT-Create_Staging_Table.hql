@@ -1,0 +1,53 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.rio6_cart_retencion_cuestionarios(
+    crec_nu_interaccion          string,
+    crec_cd_usuario              string,
+    crec_fe_proceso              string,
+    crec_cd_nacionalidad         string,
+    crec_nu_cedula_rif           string,
+    crec_nm_cliente              string,
+    crec_fe_nacimiento           string,
+    crec_in_sexo                 string,
+    crec_cd_ramo                 string,
+    crec_nu_poliza               string,
+    crec_nu_certificado          string,
+    crec_de_ramo                 string,
+    crec_de_producto             string,
+    crec_de_plan                 string,
+    crec_fe_vigencia_poliza      string,
+    crec_cd_sucursal_emision     string,
+    crec_cd_cuenta_debito        string,
+    crec_nu_cuenta_debito        string,
+    crec_cd_evaluacion           string,
+    crec_cd_causa_baja           string,
+    crec_cd_recomendacion        string,
+    crec_tx_algo_mas             string,
+    crec_tx_mantener             string,
+    crec_tx_agregar             string,
+    crec_in_costos               string,
+    crec_in_recomendado          string,
+    crec_in_prestigio            string,
+    crec_in_beneficios           string,
+    crec_in_otros_productos      string,
+    crec_in_apertura             string,
+    crec_in_otros_motivos        string,
+    crec_tp_cuestionario         string,
+    crec_mt_cuota                string,
+    crec_tp_resultado            string,
+    crec_in_gruas                string,
+    crec_in_recepcion            string,
+    crec_in_atencion             string,
+    crec_in_siniestros           string,
+    crec_in_debitos              string,
+    crec_nu_poliza_nuevo         string,
+    crec_nu_certificado_nuevo    string,
+    crec_fe_comision             string,
+    crec_cd_canal                string,
+    crec_cd_renta                string,
+    crec_cd_ramo_nuevo           string
+)
+
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '${DATA_LAKE_SERVER}/santander/bi-corp/staging/rio6/fact/cart_retencion_cuestionarios';

@@ -1,0 +1,63 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "rio4_operacionesbits",
+      "title": "Clientes",
+      "schema": "bi_corp_staging",
+      "source": "rio4",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio4/fact/operacionesbits/",
+      "type": "fact",
+      "description": "La tabla contiene las instancias por la que pasa una operación",
+      "columns":
+               [
+                {
+                  "name": "nroperacion",
+                  "title": "NROPERACION",
+                  "description": "Número de la operación",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": false,
+                  "length": 8,
+                  "security": "Público"
+                },
+                {
+                  "name": "nrbit",
+                  "title": "NRBIT",
+                  "description": "Instancia de la operación en SAM",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "valor",
+                  "title": "VALOR",
+                  "description": "Indica si la operación está o no en la instancia (0 / 1)",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                }
+			   ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "file": "benefitlevel_schema",
+  "location": "/santander/bi-corp/landing/rio265/dim/benefitlevel/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/dim/rio265_benefitlevel",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_benefitlevel",
+  "createTable": "bi_corp_staging.rio265_benefitlevel",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "id_level",
+      "type": "string"
+    },
+    {
+      "name": "id_benefit",
+      "type": "string"
+    },
+    {
+      "name": "accreditationpercentage",
+      "type": "string"
+    },
+    {
+      "name": "topamount",
+      "type": "string"
+    },
+    {
+      "name": "fixedamount",
+      "type": "string"
+    },
+    {
+      "name": "conditionamount",
+      "type": "string"
+    },
+    {
+      "name": "toptransactions",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

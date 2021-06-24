@@ -1,0 +1,62 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307319"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "abae_ent_virtuales",
+            "title": "Parametria + Descripcion de entidades Virtuales(billeteras virtuales tipo MP)",
+            "schema": "bi_corp_staging",
+            "source": "ABAE",
+            "query": "",
+            "type": "DIM",
+            "description": "Parametria + Descripcion de entidades Virtuales(billeteras virtuales tipo MP)",
+            "columns": [
+                {
+                    "name": "ENTIDAD",
+                    "title": "ENTIDAD",
+                    "description": "Entidad Virtual",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIP_CORTA",
+                    "title": "DESCRIP_CORTA",
+                    "description": "Descripcion corta de la entidad virtual",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIPCION",
+                    "title": "DESCRIPCION",
+                    "description": "Descripcion de la entidad virtual",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 35.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

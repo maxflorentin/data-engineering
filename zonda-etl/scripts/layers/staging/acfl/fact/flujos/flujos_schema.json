@@ -1,0 +1,91 @@
+{
+  "file": "flujos_schema",
+  "location": "/santander/bi-corp/landing/acfl/fact/flujos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/acfl/fact/flujos",
+  "createTable": "bi_corp_staging.acfl_flujos",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "id_flujo",
+    "type": "string"
+  },
+{
+    "name": "codigo",
+    "type": "string"
+  },
+{
+    "name": "descripcion",
+    "type": "string"
+  },
+{
+    "name": "tiptasa",
+    "type": "string"
+  },
+{
+    "name": "moneda",
+    "type": "string"
+  },
+{
+    "name": "tamort",
+    "type": "string"
+  },
+{
+    "name": "fecha_emision",
+    "type": "string"
+  },
+{
+    "name": "val_cer_fch_emi",
+    "type": "string"
+  },
+{
+    "name": "tasa_referencia",
+    "type": "string"
+  },
+{
+    "name": "tasa_promedio",
+    "type": "string"
+  },
+{
+    "name": "ancho_muestra",
+    "type": "string"
+  },
+{
+    "name": "dias_lag",
+    "type": "string"
+  },
+{
+    "name": "tope_muestra",
+    "type": "string"
+  },
+{
+    "name": "tipo_lag",
+    "type": "string"
+  },
+{
+    "name": "tipo_calculo",
+    "type": "string"
+  },
+{
+    "name": "int_on_dev",
+    "type": "string"
+  },
+{
+    "name": "cod_emisor",
+    "type": "string"
+  },
+{
+    "name": "monedapago",
+    "type": "string"
+  }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

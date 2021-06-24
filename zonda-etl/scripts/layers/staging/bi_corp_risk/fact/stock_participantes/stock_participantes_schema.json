@@ -1,0 +1,94 @@
+{
+	"file": "stock_participantes_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/stock_participantes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/stock_participantes",
+	"tempDirectory": "/santander/bi-corp/temp/stock_participantes",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "cod_sucursal",
+			"type": "string"
+		},
+		{
+			"name": "nro_solicitud",
+			"type": "string"
+		},
+		{
+			"name": "nro_participante",
+			"type": "string"
+		},
+		{
+			"name": "nom_nombre",
+			"type": "string"
+		},
+		{
+			"name": "nom_apellido",
+			"type": "string"
+		},
+		{
+			"name": "tpo_doc",
+			"type": "string"
+		},
+		{
+			"name": "nro_doc",
+			"type": "string"
+		},
+		{
+			"name": "fec_nacimiento",
+			"type": "string"
+		},
+		{
+			"name": "mar_sexo",
+			"type": "string"
+		},
+		{
+			"name": "cod_nacionalidad",
+			"type": "string"
+		},
+		{
+			"name": "cod_estado_civil",
+			"type": "string"
+		},
+		{
+			"name": "cod_nivel_estudio",
+			"type": "string"
+		},
+		{
+			"name": "cod_rol_en_soli",
+			"type": "string"
+		},
+		{
+			"name": "cod_profesion",
+			"type": "string"
+		},
+		{
+			"name": "mar_cliente",
+			"type": "string"
+		},
+		{
+			"name": "indicador_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "nup_empresa_asociada",
+			"type": "string"
+		},
+		{
+			"name": "cod_informe_veraz",
+			"type": "string"
+		},
+		{
+			"name": "ide_nup",
+			"type": "string"
+		},
+		{
+			"name": "fecha",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

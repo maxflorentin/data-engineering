@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.stk_cyp_recdeuda",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cyp_nro_empr"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_cyp_alta_deud"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cyp_1er_vto", "dt_cyp_alta"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "file": "cajt_condiciones_ganancias_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cajt_condiciones_ganancias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cajt_condiciones_ganancias",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cjgn_cd_condicion_ganancia",
+      "type": "string"
+    },
+    {
+      "name":"cjgn_de_condicion_ganancia",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

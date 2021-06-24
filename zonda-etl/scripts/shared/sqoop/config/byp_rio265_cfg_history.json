@@ -1,0 +1,16 @@
+{
+  "tables" :[
+      {
+            "serverConfig" : "dblxbusisrv03",
+            "database": "FIDEL",
+            "table": "MVW_T_WCM_PROMOCIONES",
+            "table_type": "fact",
+            "environment": "rio265",
+            "landing_path": "/santander/bi-corp/landing/rio265/fact/mvw_t_wcm_promociones",
+            "partition_field": "FECHADESDE",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.MVW_T_WCM_PROMOCIONES\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      }
+  ]
+}

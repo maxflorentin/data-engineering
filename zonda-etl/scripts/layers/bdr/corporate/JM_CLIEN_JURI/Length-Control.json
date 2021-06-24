@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(g5508_feoperac,g5508_s1emp,g5508_idnumcli,g5508_inffecha,g5508_impfactm,g5508_tot_acti,g5508_num_empl,g5508_orig_fac,g5508_orig_act,g5508_orig_emp,g5508_fecultmo,g5508_tdeudacl,g5508_rat_cet1,g5508_tasamora,g5508_tot_eqty,g5508_orgdepen,g5508_flgempno)) as longitud, CONCAT(g5508_feoperac,g5508_s1emp,g5508_idnumcli,g5508_inffecha,g5508_impfactm,g5508_tot_acti,g5508_num_empl,g5508_orig_fac,g5508_orig_act,g5508_orig_emp,g5508_fecultmo,g5508_tdeudacl,g5508_rat_cet1,g5508_tasamora,g5508_tot_eqty,g5508_orgdepen,g5508_flgempno) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_clien_juri r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_CLIEN_JURI' where partition_date = '$month_partition_bdr' and length(CONCAT(g5508_feoperac,g5508_s1emp,g5508_idnumcli,g5508_inffecha,g5508_impfactm,g5508_tot_acti,g5508_num_empl,g5508_orig_fac,g5508_orig_act,g5508_orig_emp,g5508_fecultmo,g5508_tdeudacl,g5508_rat_cet1,g5508_tasamora,g5508_tot_eqty,g5508_orgdepen,g5508_flgempno)) != cast(d.longitud as int)"
+    ]
+}

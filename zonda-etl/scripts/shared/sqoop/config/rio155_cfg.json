@@ -1,0 +1,15 @@
+{
+    "tables": [
+        {
+            "serverAka": "rio155",
+            "database": "OPTICASH",
+            "table": "ATM_REMANENTES",
+            "table_type": "fact",
+            "environment": "rio155",
+            "landing_path": "/santander/bi-corp/landing/rio155/fact/atm_remanentes",
+            "partition_field": "FECHA",
+            "partition_field_value": "2019-10-31",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@dblxorafront01.ar.bsch:1555:RIO155'  --username 'srvcbi' --table \"{database}.{table}\" --columns \"ID,FECHA,TERMINAL,DIVISA,REMANENTE\" --where \"to_char({partition_field} ,'YYYY-MM-DD')= '{partition_date}'\" --bindir '{zonda_dir}/sqoop/rio155/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password 'p9NO5QN98zIPEdQmOyR' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        }
+    ]
+}

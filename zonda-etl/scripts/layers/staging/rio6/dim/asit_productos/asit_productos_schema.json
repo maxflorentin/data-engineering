@@ -1,0 +1,50 @@
+{
+  "file": "asit_productos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_productos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_productos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"aspr_cd_producto",
+      "type": "string"
+    },
+    {
+      "name":"aspr_de_producto",
+      "type":"string"
+    },
+    {
+      "name":"aspr_fe_inicio",
+      "type":"string"
+    },
+    {
+      "name":"aspr_cd_moneda",
+      "type":"string"
+    },
+    {
+      "name":"aspr_in_empleado",
+      "type":"string"
+    },
+    {
+      "name":"aspr_st_producto",
+      "type":"string"
+    },
+    {
+      "name":"aspr_fe_status",
+      "type":"string"
+    },
+    {
+      "name":"aspr_nu_cuotas",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

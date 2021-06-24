@@ -1,0 +1,48 @@
+{
+        "file": "control_ars",
+        "location": "/santander/bi-corp/landing/malbgc/fact/control_ars/partition_date=${partition_date_filter}/CONTROL_ARS-${file_date_filter}.DAT",
+        "destination": "/santander/bi-corp/staging/malbgc/fact/control_ars",
+        "tempDirectory": "/santander/bi-corp/temp/control_ars",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "delimiter": ";",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "sucursal_radicacion",
+                        "type": "string"
+                },
+                {
+                        "name": "cuenta",
+                        "type": "string"
+                },
+                {
+                        "name": "cod_op",
+                        "type": "string"
+                },
+                {
+                        "name": "importe",
+                        "type": "string"
+                },
+                {
+                        "name": "partition_date",
+                        "type": "string"
+                },
+                {
+                        "name": "sucursal_operacion",
+                        "type": "string"
+                },
+                {
+                        "name": "extraction_date",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

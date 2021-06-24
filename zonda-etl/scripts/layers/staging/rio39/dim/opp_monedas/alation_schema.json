@@ -1,0 +1,195 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_opp_monedas",
+      "title": "monedas",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/opp_monedas/",
+      "type": "dim",
+      "description": "Información de codigos de Monedas",
+      "columns":
+                [
+                {
+                  "name": "moncod",
+                  "title": "moncod",
+                  "description": "codigo de moneda",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "mondes",
+                  "title": "mondes",
+                  "description": "descripcion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_afip",
+                  "title": "cod_afip",
+                  "description": "codigo afip",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_bcra",
+                  "title": "cod_bcra",
+                  "description": "codigo bcra",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "usu_alta",
+                  "title": "usu_alta",
+                  "description": "usuario de alta",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 18,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_alta",
+                  "title": "fecha_alta",
+                  "description": "fecha de alta",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "usu_modif",
+                  "title": "usu_modif",
+                  "description": "usuario de modificacion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 18,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_modif",
+                  "title": "fecha_modif",
+                  "description": "fecha de modificacion",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "usu_baja",
+                  "title": "usu_baja",
+                  "description": "usuario de baja",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 18,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_baja",
+                  "title": "fecha_baja",
+                  "description": "fecha de baja",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "usu_verif",
+                  "title": "usu_verif",
+                  "description": "usuario de verificacion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 18,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_verif",
+                  "title": "fecha_verif",
+                  "description": "fecha de verificacion",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "corresponsal",
+                  "title": "corresponsal",
+                  "description": "corresponsal",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 10,
+                  "security": "Público"
+                },
+                {
+                  "name": "oper_sml",
+                  "title": "oper_sml",
+                  "description": "opera sml",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 2,
+                  "security": "Público"
+                },
+                {
+                  "name": "gpi",
+                  "title": "gpi",
+                  "description": "gpi",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

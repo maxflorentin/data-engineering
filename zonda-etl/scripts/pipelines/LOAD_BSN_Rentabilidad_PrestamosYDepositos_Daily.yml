@@ -1,0 +1,54 @@
+name: LOAD_BSN_Rentabilidad_PrestamosYDepositos_Daily
+description: 'Load in Business Data from Rentabilidad Prestamos y Depositos'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+start_date: '2020-09-10'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_common.dim_areanegocio_marca  
+tasks:
+  - name: CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/rentabilidad/agg_cdg_prestamosdepositos_daily/DDLT-agg_cdg_prestamosdepositos_daily.hql'
+  - name: InsertPartition_agg_cdg_prestamosdepositos_daily
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/rentabilidad/agg_cdg_prestamosdepositos_daily/ETLV-agg_cdg_prestamosdepositos_daily.hql'
+  - name: UPDATE_Tableau_Extract
+    operator: ZondaTableauUpdateOperator
+    config:
+      content_url: LabData
+      url: 'http://tableau.santander.com.ar/api/3.5/sites/{}/datasources/6fce99f6-259b-424f-9e4e-bbc828e0bff1/refresh'
+dependencies:
+  CreateTables: InsertPartition_agg_cdg_prestamosdepositos_daily
+  InsertPartition_agg_cdg_prestamosdepositos_daily: UPDATE_Tableau_Extract
+notifications:
+  on_error: true
+  on_success: true
+  users: [jviani@santander.com.ar, aleivajacquelin@santandertecnologia.com.ar, itroisi@santandertecnologia.com.ar, pabnunez@santandertecnologia.com.ar]

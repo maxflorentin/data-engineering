@@ -1,0 +1,129 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307835"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "obcm_tpcs_log_operacion",
+      "title": "contiene todas las operaciones que fueran de Autorizaciones",
+      "schema": "bi_corp_staging",
+      "source": "OBCM",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "contiene todas las operaciones que fueran de Autorizaciones",
+      "columns": [
+        {
+          "name": "IDE_TRANSACCION",
+          "title": "IDE_TRANSACCION",
+          "description": "Id de transaccion ",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "21 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "IDE_SOLICITUD",
+          "title": "IDE_SOLICITUD",
+          "description": "Nro de la solicitud",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "8 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "COD_OPERACION",
+          "title": "COD_OPERACION",
+          "description": "Codigo de la operacion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "2 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "COD_ESTADO_SOL",
+          "title": "COD_ESTADO_SOL",
+          "description": "Estado de la solicitud",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "2 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "MON_IMPORTE1",
+          "title": "MON_IMPORTE1",
+          "description": "Importe",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": "15,2",
+          "security": "Publico"                },
+        {
+          "name": "COD_MONEDA1",
+          "title": "COD_MONEDA1",
+          "description": "Codigo de la moneda",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "6 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "CAN_ITEMS1",
+          "title": "CAN_ITEMS1",
+          "description": "Cantidad de items",
+          "type": "INTEGER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "MON_IMPORTE2",
+          "title": "MON_IMPORTE2",
+          "description": "Importe",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": "15,2",
+          "security": "Publico"                },
+        {
+          "name": "COD_MONEDA2",
+          "title": "COD_MONEDA2",
+          "description": "Codigo de la moneda",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "6 Bytes",
+          "security": "Publico"                },
+        {
+          "name": "CAN_ITEMS2",
+          "title": "CAN_ITEMS2",
+          "description": "Cantidad de items",
+          "type": "INTEGER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

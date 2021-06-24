@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_risk.contratos_garra_diaria;

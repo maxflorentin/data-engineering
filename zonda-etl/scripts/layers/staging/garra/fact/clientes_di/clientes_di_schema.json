@@ -1,0 +1,17 @@
+{
+  "file": "waguci35_schema",
+  "location": "/santander/bi-corp/landing/garra/fact/clientes_di/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garra/fact/clientes_di",
+  "createTable": "bi_corp_staging.garra_clientes_di",
+  "copybook": "clientes_di.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

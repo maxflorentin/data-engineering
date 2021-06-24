@@ -1,0 +1,413 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A220615"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "triad_col_trdfldln",
+            "title": "Informacion de Prestamos no hipotecarios (LN) en linkage de salida de TRIAD Collections.",
+            "schema": "bi_corp_staging",
+            "source": "AATR",
+            "type": "FACT",
+            "description": "Informacion de Prestamos no hipotecarios (LN) en linkage de salida de TRIAD Collections.",
+            "columns": [
+                {
+                    "name": "HEADER_LENGTH",
+                    "title": "HEADER_LENGTH",
+                    "description": "Rec length",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_TENANT_ID",
+                    "title": "HEADER_TENANT-ID",
+                    "description": "Tenant ID",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CUSTOMER_ID",
+                    "title": "HEADER_CUSTOMER-ID",
+                    "description": "Customer ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_ID",
+                    "title": "HEADER_REC-ID",
+                    "description": "Rec ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_ID_NUM",
+                    "title": "HEADER_REC-ID-NUM",
+                    "description": "Rec ID NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_SEQ_NUM",
+                    "title": "HEADER_REC-SEQ-NUM",
+                    "description": "Seq NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_ID",
+                    "title": "HEADER_ACCOUNT-ID",
+                    "description": "Es el identificador único de la cuenta. Este campo se compone en las primeras cuatro posiciones de la sucursal del Cliente y las doce siguientes el número de cuenta.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PREV_ACCT_ID",
+                    "title": "HEADER_PREV-ACCT-ID",
+                    "description": "No aplica. Set to blanks.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_OPEN",
+                    "title": "HEADER_DATE-OPEN",
+                    "description": "Es la fecha de apertura/liquidación del préstamo.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_CLOSED",
+                    "title": "HEADER_DATE-CLOSED",
+                    "description": "Es la fecha de cierre.\n\nFecha de cancelación del préstamo.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REASON_CLOSED",
+                    "title": "HEADER_REASON-CLOSED",
+                    "description": "Es el motivo ó razón de cierre del préstamo.\nEs un campo obligatorio, o sea siempre será informado. Los valores posibles son:\n\n\n3 = A: Cancelación Anticipada\n3 = N: Cancelación Natural\n2 = C: Condonación de Deuda\n R: Renovado\n F: Refinanciado\n S: Subrogado\n E: Reestructurado\n J: Cobro Judicial (en contencioso) con recobro\n\nEstos últimos códigos = 4?",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_PARTIES",
+                    "title": "HEADER_NUM-PARTIES",
+                    "description": "Es el número de titulares y co-titulares del préstamo.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DIVISOR",
+                    "title": "HEADER_DIVISOR",
+                    "description": "Set to 1",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "2,2",
+                    "nullable": false,
+                    "length": 4,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_LIABILITY_IND",
+                    "title": "HEADER_LIABILITY-IND",
+                    "description": "Número de Titular\n1 - 1° Titular\n2 - 2° Titular\n3 - 3° Titular",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PRIMARY_ACCT_IND",
+                    "title": "HEADER_PRIMARY-ACCT-IND",
+                    "description": "1 - Primer titular\n0 - Resto",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_TYPE",
+                    "title": "HEADER_ACCOUNT-TYPE",
+                    "description": "Es el tipo de préstamo disponible (con garantía ó sin garantía, interés fijo o variable, etc.). \nSe compone de la siguiente información:\n\n1: Solo Firma\n2: Pre-acordado\n3: Refinanciacion de otra deuda\n4: Open Credit\n10: Prestamo Prendario (coche)\n11. Préstamo Prendario Refinanciado (uso futuro)\n20. Leasing\n21: COMEX Prefinanciacion exportacion\n22: COMEX Carta de credito\n23: COMEX financiacion importacion\n24: COMEX financiacion exportacion\n\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_SPR_TYPE",
+                    "title": "HEADER_ACCOUNT-SPR-TYPE",
+                    "description": "1: Prendarios \n2: Personales sin Refinanciación \n3: Préstamos Refinanciados u otros (sin los Préstamos Hipotecarios Refinanciados).\n",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_LOAN_PURPOSE",
+                    "title": "HEADER_LOAN-PURPOSE",
+                    "description": "Proposito del Prestamo:\n\n1: Refinanciacion\n2: Reforma Vivienda\n3: Educación \n4: Business\n5: Coche\n6: Otros",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ORIGINAL_TERM",
+                    "title": "HEADER_ORIGINAL-TERM",
+                    "description": "Es el plazo del préstamo en meses. Lo informa Préstamos cada mes. Puede cambiar de un mes a otro por cancelación anticipada o cambio en el vencimiento.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REMAINING_TERM",
+                    "title": "HEADER_REMAINING-TERM",
+                    "description": "Es el plazo restante del préstamo, se informa en meses. Se calcula mediante la diferencia entre la fecha de vencimiento del préstamo y la fecha de la última facturación de cuota cuota paga.  ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ORIGINAL_LOAN_AMOUNT",
+                    "title": "HEADER_ORIGINAL-LOAN-AMOUNT",
+                    "description": "Monto liquidado (original)",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_START_ARREARS",
+                    "title": "HEADER_DATE-START-ARREARS",
+                    "description": "Fecha de comienzo del impago.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_FIRST_INSTALLMENT",
+                    "title": "HEADER_DATE-FIRST-INSTALLMENT",
+                    "description": "Fecha de 1ª cuota",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_LAST_PAY",
+                    "title": "HEADER_DATE-LAST-PAY",
+                    "description": "pagos del mes",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PAYMENT_FREQUENCY",
+                    "title": "HEADER_PAYMENT-FREQUENCY",
+                    "description": "01 = monthly\n03 = quarterly\n06 = semi-annually\n12 = annually  ",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_STNDRD_INSTALLMENT_AMT",
+                    "title": "HEADER_STNDRD-INSTALLMENT-AMT",
+                    "description": "El pago estandar a realizar periodicamente (con la periodicidad estabelecida en el campo anterior).\nPor ejemplo: Si trimestralmente se pagan 300, entonces TI-HEADER_STNDRD-INSTALLMENT = 300 y TI-HEADER_PAYMENT-FREQUENCY = 3",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PAYMENT_METHOD",
+                    "title": "HEADER_PAYMENT-METHOD",
+                    "description": "Se identifica si el pago se realiza por débito automático o no.\nEs un campo de información obligatoria, por lo tanto no habrá registros con valores en blanco ó cero. Los valores que puede tomar son: \n\n1 = S: Con débito automático. \n2 = N: Sin débito automático. ",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_INSURANCE",
+                    "title": "HEADER_INSURANCE",
+                    "description": "Indica si tiene seguro\n\n0: Sin seguro de pago\n1: Con seguro",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_TRIAD_CAT",
+                    "title": "HEADER_TRIAD-CAT",
+                    "description": "Realimentado de llamada anterior REVW O REVC",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_VAL_FEES_GROUP_VAL_FEES",
+                    "title": "HEADER_VAL-FEES",
+                    "description": "1: Comisiones de Apertura\n2: Comisiones por pagos atrasados\n3: Comisiones de Cancelacion\n4: Otros\n5: Not Used\n\nComisiones cobradas en el mes, no importa la frecuencia",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PROFIT",
+                    "title": "HEADER_PROFIT",
+                    "description": "Rentabilidad a nivel cuenta= valor de la ganancia del cliente del corriente mes. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PROVISION",
+                    "title": "HEADER_PROVISION",
+                    "description": "Provisión con perdida o sin perdida.\nProvisión específica calculada con el criterio local está en AIGE a nivel contrato.\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_APPORTIONMNT_EXCL_IND",
+                    "title": "HEADER_APPORTIONMNT-EXCL-IND",
+                    "description": "Set to 0. \nNo se aplica.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_MONTHLY_SEGMENT",
+                    "title": "HEADER_MONTHLY-SEGMENT",
+                    "description": ">>HEADER_DATE-DUE\t\"Es la fecha de vencimiento de la cuota del préstamo.\n\nIssue I-080\nEsa noche tiene que haber pagado. Al día siguiente está impago.\"\n>>HEADER_BLOCK-CODE\t\"Es el código de estado del Préstamo.\nEs un campo de información obligatoria, por lo tanto no habrá registros con valores en blanco ó en ceros. Este campo podrá tener alguno de los siguientes valores: \n0 = No bloqueado\n20 = Disputa\n40 = Perdida o Robada\n50 = En litigio\n60 = Adjudicación de garantía\n70 = Fallido\n80 = Defunción\n(ver como matchea con estos anteriores\nACTI : Si el préstamo se encuentra activo\nBAJA: Si el préstamo hipotecario se encuentra dado de baja.\nCANC: Si el préstamo hipotecario se encuentra cancelado.\n ‘    ‘ (blancos) : Cuenta aún no dada de alta.)\"\n>>HEADER_BALANCE\tEs el saldo de capital adeudado, ó pendiente, del préstamo a la fecha informada.\n>>HEADER_INSTALLMENT-DUE\t\"Es el importe de la cuota a pagar correspondiente al mes que se esta informando mas atrasos, impagos, etc. \n\nIncluye capital, interes, etc (todo lo que debe)\"\n>>HEADER_VAL-PAYMENTS\tPagos del mes\n>>HEADER_VAL-ARREARS\tImporte impago (cuota/s completa)\n>>HEADER_VAL-INTEREST\tIntereses que se cargan en la cuenta durante el mes. \n>>HEADER_VAL-TOTAL-FEES\tSuma de las comisiones",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 384,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_MONTHLY_SEGMENT2",
+                    "title": "HEADER_MONTHLY-SEGMENT2",
+                    "description": ">>HEADER_NUM-MTHS-IN-ARREARS\t\"Es el número de ciclos en impago en el mes informado.  \n 1 - 30: 1 ciclo\n31 - 60: 2 ciclos\n61 - 90: 3 ciclos\"",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 48,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

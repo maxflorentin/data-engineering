@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(r9736_feoperac,r9736_s1emp,lpad(r9736_contra1, 9, '0' ),r9736_fvtacart,r9736_imppdte,r9736_precioob,r9736_ind_credit)) as longitud, CONCAT(r9736_feoperac,r9736_s1emp,lpad(r9736_contra1, 9, '0' ),r9736_fvtacart,r9736_imppdte,r9736_precioob,r9736_ind_credit) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_vta_carter r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_VTA_CARTER' where partition_date = '$month_partition_bdr' and length(CONCAT(r9736_feoperac,r9736_s1emp,lpad(r9736_contra1, 9, '0' ),r9736_fvtacart,r9736_imppdte,r9736_precioob,r9736_ind_credit)) != cast(d.longitud as int)"
+    ]
+}

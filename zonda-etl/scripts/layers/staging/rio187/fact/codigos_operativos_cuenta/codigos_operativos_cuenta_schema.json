@@ -1,0 +1,71 @@
+{
+    "file": "codigos_operativos_cuenta_schema",
+    "createTable": "bi_corp_staging.rio187_codigos_operativos_cuenta",
+    "location": "/santander/bi-corp/landing/rio187/fact/codigos_operativos_cuenta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio187/fact/codigos_operativos_cuenta",
+    "tempDirectory": "/santander/bi-corp/temp/rio187",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_operativo",
+            "type": "string"
+        },
+        {
+            "name": "desc_corta",
+            "type": "string"
+        },
+        {
+            "name": "desc_larga",
+            "type": "string"
+        },
+        {
+            "name": "cod_anulacion",
+            "type": "string"
+        },
+        {
+            "name": "clasif_mov",
+            "type": "string"
+        },
+        {
+            "name": "cod_concepto_brio",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "tipo_destino",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

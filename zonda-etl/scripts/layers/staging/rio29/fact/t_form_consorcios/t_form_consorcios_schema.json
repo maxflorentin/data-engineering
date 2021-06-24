@@ -1,0 +1,90 @@
+{
+  "file": "t_form_consorcios_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_consorcios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_consorcios",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "razon_social",
+      "type": "string"
+    },
+    {
+      "name": "cuit_consorcio",
+      "type": "string"
+    },
+    {
+      "name": "admin_consorcio",
+      "type": "string"
+    },
+    {
+      "name": "codarea_tel",
+      "type": "string"
+    },
+    {
+      "name": "dni",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "es_admin_consorcio",
+      "type": "string"
+    },
+    {
+      "name": "motivo_iniciativa",
+      "type": "string"
+    },
+    {
+      "name": "numero_tel",
+      "type": "string"
+    },
+    {
+      "name": "sucursal",
+      "type": "string"
+    },
+    {
+      "name": "cod_area_no_admin",
+      "type": "string"
+    },
+    {
+      "name": "dni_no_admin",
+      "type": "string"
+    },
+    {
+      "name": "email_no_admin",
+      "type": "string"
+    },
+    {
+      "name": "nom_app_no_admin",
+      "type": "string"
+    },
+    {
+      "name": "tel_no_admin",
+      "type": "string"
+    },
+    {
+      "name": "fechaalta",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fechaalta",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

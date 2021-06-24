@@ -1,0 +1,174 @@
+{
+  "file": "zendesk_usr_comex-santander",
+  "location": "/santander/bi-corp/landing/zendesk_usr/fact/comex-santander/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/zendesk/fact/users/comex-santander",
+  "extension": "csv",
+  "header": true,
+  "delimiter": "^",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "usr_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_url",
+      "type": "string"
+    },
+    {
+      "name": "usr_name",
+      "type": "string"
+    },
+    {
+      "name": "usr_email",
+      "type": "string"
+    },
+    {
+      "name": "usr_created_at",
+      "type": "string"
+    },
+    {
+      "name": "usr_updated_at",
+      "type": "string"
+    },
+    {
+      "name": "usr_time_zone",
+      "type": "string"
+    },
+    {
+      "name": "usr_iana_time_zone",
+      "type": "string"
+    },
+    {
+      "name": "usr_phone",
+      "type": "string"
+    },
+    {
+      "name": "usr_shared_phone_number",
+      "type": "string"
+    },
+    {
+      "name": "usr_photo",
+      "type": "string"
+    },
+    {
+      "name": "usr_locale_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_locale",
+      "type": "string"
+    },
+    {
+      "name": "usr_organization_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_role",
+      "type": "string"
+    },
+    {
+      "name": "usr_verified",
+      "type": "string"
+    },
+    {
+      "name": "usr_external_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_tags",
+      "type": "string"
+    },
+    {
+      "name": "usr_alias",
+      "type": "string"
+    },
+    {
+      "name": "usr_active",
+      "type": "string"
+    },
+    {
+      "name": "usr_shared",
+      "type": "string"
+    },
+    {
+      "name": "usr_shared_agent",
+      "type": "string"
+    },
+    {
+      "name": "usr_last_login_at",
+      "type": "string"
+    },
+    {
+      "name": "usr_two_factor_auth_enabled",
+      "type": "string"
+    },
+    {
+      "name": "usr_signature",
+      "type": "string"
+    },
+    {
+      "name": "usr_details",
+      "type": "string"
+    },
+    {
+      "name": "usr_notes",
+      "type": "string"
+    },
+    {
+      "name": "usr_role_type",
+      "type": "string"
+    },
+    {
+      "name": "usr_custom_role_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_moderator",
+      "type": "string"
+    },
+    {
+      "name": "usr_ticket_restriction",
+      "type": "string"
+    },
+    {
+      "name": "usr_only_private_comments",
+      "type": "string"
+    },
+    {
+      "name": "usr_restricted_agent",
+      "type": "string"
+    },
+    {
+      "name": "usr_suspended",
+      "type": "string"
+    },
+    {
+      "name": "usr_chat_only",
+      "type": "string"
+    },
+    {
+      "name": "usr_default_group_id",
+      "type": "string"
+    },
+    {
+      "name": "usr_report_csv",
+      "type": "string"
+    },
+    {
+      "name": "usr_user_fields",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "target": "usr_updated_at",
+      "dateFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

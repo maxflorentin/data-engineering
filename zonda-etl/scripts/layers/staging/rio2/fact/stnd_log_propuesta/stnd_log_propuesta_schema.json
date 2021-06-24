@@ -1,0 +1,55 @@
+{
+  "file": "stnd_log_propuesta_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/stnd_log_propuesta/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/stnd_log_propuesta",
+  "createTable": "bi_corp_staging.sge_stnd_log_propuesta",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+              {
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "fec_log",
+                    "type": "string"
+                },
+{
+                    "name": "des_log",
+                    "type": "string"
+                },
+{
+                    "name": "obs_log",
+                    "type": "string"
+                },
+{
+                    "name": "cod_usuario",
+                    "type": "string"
+                },
+{
+                    "name": "estado_prop",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_accion",
+                    "type": "string"
+                },
+{
+                    "name": "cod_estado_origen",
+                    "type": "string"
+                }
+       ],
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

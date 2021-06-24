@@ -1,0 +1,96 @@
+{
+    "file": "cliente_domicilios",
+    "location": "/santander/bi-corp/landing/csm/fact/cliente_domicilios/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/cliente_domicilios",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_cliente_domicilios",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+      {
+        "name": "o_cliente_dom",
+        "type": "string"
+      },
+      {
+        "name": "id_cliente",
+        "type": "string"
+      },
+      {
+        "name": "tipo_via_domicilio",
+        "type": "string"
+      },
+      {
+        "name": "calle",
+        "type": "string"
+      },
+      {
+        "name": "numero",
+        "type": "string"
+      },
+      {
+        "name": "piso",
+        "type": "string"
+      },
+      {
+        "name": "departamento",
+        "type": "string"
+      },
+      {
+        "name": "localidad",
+        "type": "string"
+      },
+      {
+        "name": "comuna",
+        "type": "string"
+      },
+      {
+        "name": "cod_postal",
+        "type": "string"
+      },
+      {
+        "name": "ruta_cartero",
+        "type": "string"
+      },
+      {
+        "name": "cod_provincia",
+        "type": "string"
+      },
+      {
+        "name": "cod_pais",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_alta",
+        "type": "string"
+      },
+      {
+        "name": "fecha_alta",
+        "type": "string"
+      },
+      {
+        "name": "id_usuario_modif",
+        "type": "string"
+      },
+      {
+        "name": "fecha_modif",
+        "type": "string"
+      },
+      {
+        "name": "fecha_baja",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+      {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+      }
+    ]
+  }
+  

@@ -1,0 +1,644 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A220615"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "triad_col_trdfldrv",
+            "title": "Informacion de Tarjetas de Credito (RV) en linkage de salida de TRIAD Collections.",
+            "schema": "bi_corp_staging",
+            "source": "AATR",
+            "type": "FACT",
+            "description": "Informacion de Tarjetas de Credito (RV) en linkage de salida de TRIAD Collections.",
+            "columns": [
+                {
+                    "name": "HEADER_LENGTH",
+                    "title": "HEADER_LENGTH",
+                    "description": "Rec length",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_TENANT_ID",
+                    "title": "HEADER_TENANT-ID",
+                    "description": "Tenant ID",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CUSTOMER_ID",
+                    "title": "HEADER_CUSTOMER-ID",
+                    "description": "Customer ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_ID",
+                    "title": "HEADER_REC-ID",
+                    "description": "Rec ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_ID_NUM",
+                    "title": "HEADER_REC-ID-NUM",
+                    "description": "Rec ID NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REC_SEQ_NUM",
+                    "title": "HEADER_REC-SEQ-NUM",
+                    "description": "Seq NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_ID",
+                    "title": "HEADER_ACCOUNT-ID",
+                    "description": "Es el identificador único de la cuenta. Este campo se compone en las primeras cuatro posiciones de la sucursal del Cliente y las doce siguientes el número de cuenta.",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PREV_ACCT_ID",
+                    "title": "HEADER_PREV-ACCT-ID",
+                    "description": "identificador de cuenta anterior para poder reconstruir el hilo de la relación, si se quiere. (traspasos, etc)",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_OPEN",
+                    "title": "HEADER_DATE-OPEN",
+                    "description": "Es la fecha de apertura de la cuenta correspondiente a la tarjeta de crédito.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_CLOSED",
+                    "title": "HEADER_DATE-CLOSED",
+                    "description": "Es la fecha de cierre de la cuenta correspondiente a la tarjeta de crédito.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_REASON_CLOSED",
+                    "title": "HEADER_REASON-CLOSED",
+                    "description": "Es el código de estado de la cuenta de la tarjeta de crédito.\nEs un campo obligatorio, o sea siempre será informado, por lo que contendrá algunos de los siguientes valores tanto para Visa como para Amercian Express:\n\n0: indica que la cuenta esta abierta\n0 = 10 : indica que la cuenta esta activa\n0 = 11 : indica que la cuenta esta en gestión y mora\n0 = 12 : indica que la cuenta esta inhabilitada\n4 = 19+MotivoBaja: indica que la cuenta esta cerrada por decision del banco\n3 = 19+MotivoBaja: indica que la cuenta esta cerrada por decision del cliente\n\n19+MotivoBaja=\nWAMAS01-DECIS-CLIE-C-TARJ    VALUE 01.\nWAMAS01-DECIS-CLIE-DESIST    VALUE 02.\nWAMAS01-DECIS-CLIE-S-TARJ    VALUE 03.\nWAMAS01-POR-NO-RENOVACION    VALUE 04.\nWAMAS01-PASE-A-MORA          VALUE 05.\nWAMAS01-DECIS-BANCO          VALUE 06.\nWAMAS01-CIERRE-CAMPA         VALUE 08.\n",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_PARTIES",
+                    "title": "HEADER_NUM-PARTIES",
+                    "description": "Set to 1.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DIVISOR",
+                    "title": "HEADER_DIVISOR",
+                    "description": "Set to 1.",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "2,2",
+                    "nullable": false,
+                    "length": 4,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_LIABILITY_IND",
+                    "title": "HEADER_LIABILITY-IND",
+                    "description": "Set to 1.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PRIMARY_ACCT_IND",
+                    "title": "HEADER_PRIMARY-ACCT-IND",
+                    "description": "Set to 1",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CASH_ADV_IND",
+                    "title": "HEADER_CASH-ADV-IND",
+                    "description": "Indicator specifying whether the account is permitted to make cash advances. Values: \n0 = Cash Advances not allowed\n1 = Cash Advances allowed\nPotentially used as scoring characteristic. ",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_TYPE",
+                    "title": "HEADER_ACCOUNT-TYPE",
+                    "description": "Es el tipo de tarjetas de crédito.\nEs un campo obligatorio, o sea siempre será informado. Contendrá algunos de los siguientes valores:\n1 = Tarjeta Visa Nacional\n2 = Tarjeta Visa Internacional\n3 = Tarjeta Visa Gold / Premier\n4 = Tarjeta Visa Platinum\n5 = Tarjeta American Express Internacional\n6 = Tarjeta American Express Gold\n7 = Tarjeta American Express Platinum\n8 = Tarjeta Prepaga recargable / Nominada\n9 = Tarjeta Visa Black\n10= Tarjeta American Express Black                        \n11 = Tarjeta Mastercard Nacional\n12 = Tarjeta Mastercard Internacional\n13 = Tarjeta Mastercard Gold / Premier\n14 = Tarjeta Mastercard Platinum                                  \n15 = Tarjeta Mastercard Black\n16 = Tarjeta visa Agro (AGRO)\n17 = Tarjeta Visa Business (BUS)\n18 = Purchase (PURC)\n19 = Corporate (CORP)\n20 = Visa cuenta central (COCC)\n21 = Visa distribution (DIST)\n22 = ....(PUIR)\n\nFalta completar lista de tarjetas\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_ACCOUNT_SPR_TYPE",
+                    "title": "HEADER_ACCOUNT-SPR-TYPE",
+                    "description": "1: Tarjetas asociadas a un Paquete\n2: Monoproducto: Tarjetas sin un paquete asociado que no sean Puntos de Venta \n3: Puntos de Venta: Tarjetas con canal de origen Puntos de Venta.\n\nPYMES:\n\n1-Agro\n2-Business\n3-Personal",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_FIRST_ACTIVE",
+                    "title": "HEADER_DATE-FIRST-ACTIVE",
+                    "description": "Es la fecha de la primera actividad desde el alta de la tarjeta. Incluye compras como avances en efectivo. \n\nTomar el primero con que se cuente actualmente y luego guardarlo",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_LAST_MERCH",
+                    "title": "HEADER_DATE-LAST-MERCH",
+                    "description": "Fecha ultima compra con tarjeta excluyendo extracciones de efectivo a credito\n\n'**'\nSe cuenta con codigo MCC (Merchand code)?\nSolo se distingue en movimientos de tarjeta. Ver",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_LAST_PAY",
+                    "title": "HEADER_DATE-LAST-PAY",
+                    "description": "Es la fecha del último pago realizado por el cliente.\n\nIssue I-078",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_LAST_CASH_ADV",
+                    "title": "HEADER_DATE-LAST-CASH-ADV",
+                    "description": "Es la fecha del último avance en efectivo.\n\nSolo se distingue en movimientos de tarjeta. Ver",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_START_OVERLIMIT",
+                    "title": "HEADER_DATE-START-OVERLIMIT",
+                    "description": "Fecha desde que el saldo es superior al limite de compras. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DATE_START_DELQ",
+                    "title": "HEADER_DATE-START-DELQ",
+                    "description": "Fecha de comienzo de atraso (fecha de vencimiento si no paga pago minimo)",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CURR_BALANCE",
+                    "title": "HEADER_CURR-BALANCE",
+                    "description": "Es el saldo actual de la cuenta correspondiente a tarjeta de crédito.\nEl saldo no incluye las cuotas futuras relativas a la compra en cuotas.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CURR_LIMIT",
+                    "title": "HEADER_CURR-LIMIT",
+                    "description": "Limite de compras.\n\nHay 3 límites: compra, cuota, adelanto. Solo tomar Límite de Compra",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CURR_CYCLES_DELQ",
+                    "title": "HEADER_CURR-CYCLES-DELQ",
+                    "description": "de 1 dia en impago a 30 dias: 1 ciclo\nde 31 dias en impago a 60 dias: 2 ciclos",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PAYMENT_METHOD",
+                    "title": "HEADER_PAYMENT-METHOD",
+                    "description": "1-Debito en cuenta pago minimo\n2-Debito en cuenta saldo total\n3-Pago en ventanilla",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_FACILITY_1",
+                    "title": "HEADER_FACILITY-1",
+                    "description": "Set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_FACILITY_2",
+                    "title": "HEADER_FACILITY-2",
+                    "description": "Set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_FACILITY_3",
+                    "title": "HEADER_FACILITY-3",
+                    "description": "Set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_FACILITY_4",
+                    "title": "HEADER_FACILITY-4",
+                    "description": "Set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_FACILITY_RENEWAL_IND",
+                    "title": "HEADER_FACILITY-RENEWAL-IND",
+                    "description": "0: Ninguna Decision sobre Renovacion este mes\n1: Renovado este mes\n2: Expirado este mes\nActualmente siempre set to 0",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_TRIAD_CAT",
+                    "title": "HEADER_TRIAD-CAT",
+                    "description": "Realimentado de llamada anterior REVW O REVC",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_SHADOW_LIMIT",
+                    "title": "HEADER_SHADOW-LIMIT",
+                    "description": "Limite Autorizado + Limite Oculto\nIssue I-079\n\nLimite oculto es el límite transitorio con origen VISA.\nEl Límite transitorio con origen Banco es el que se otorga a pedido del cliente por viajes al exterior por ejemplo.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CASH_LIMIT",
+                    "title": "HEADER_CASH-LIMIT",
+                    "description": "limite adelanto de efectivo",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_VAL_FEES_GROUP_VAL_FEES",
+                    "title": "HEADER_VAL-FEES",
+                    "description": "1:  comisiones fijas (anuales o mensuales)\n2:  cash advance fees\n3:  excess/overlimit fees\n4:  collections fees\n5 : other fees.",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_CREDIT_INTEREST",
+                    "title": "HEADER_CREDIT-INTEREST",
+                    "description": "Intereses Cobrados",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DECL_TXN1_NUM",
+                    "title": "HEADER_DECL-TXN1-NUM",
+                    "description": "Set to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DECL_TXN1_VAL",
+                    "title": "HEADER_DECL-TXN1-VAL",
+                    "description": "Set to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DECL_TXN2_NUM",
+                    "title": "HEADER_DECL-TXN2-NUM",
+                    "description": "Set to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_DECL_TXN2_VAL",
+                    "title": "HEADER_DECL-TXN2-VAL",
+                    "description": 0,
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_APR_TXN_SHAD_NUM",
+                    "title": "HEADER_APR-TXN-SHAD-NUM",
+                    "description": "Set to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_APR_TXN_SHAD_VAL",
+                    "title": "HEADER_APR-TXN-SHAD-VAL",
+                    "description": "Set to 0.",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PROFIT",
+                    "title": "HEADER_PROFIT",
+                    "description": "Rentabilidad a nivel cuenta= valor de la ganancia del cliente del corriente mes. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_PROVISION",
+                    "title": "HEADER_PROVISION",
+                    "description": "Provisión con perdida o sin perdida.\n\nOpción 1: la provisión específica calculada con el criterio local está en AIGE a nivel contrato.\nOpción 2: la provisión específica calculada de acuerdo a la norma 4/04 de Banco de España está en GARRA a nivel contrato. \n\n",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_APPORTIONMNT_EXCL_IND",
+                    "title": "HEADER_APPORTIONMNT-EXCL-IND",
+                    "description": "Set to 0.",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_HI_BAL_LF",
+                    "title": "HEADER_HI-BAL-LF",
+                    "description": "Considerar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 9,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_HI_DELQ_LF",
+                    "title": "HEADER_HI-DELQ-LF",
+                    "description": "Considerar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_1_CYC_LF",
+                    "title": "HEADER_NUM-1-CYC-LF",
+                    "description": "Cantidad de veces en ciclo 1 en los últimos 12 meses (incluído actual)\nConsiderar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_2_CYC_LF",
+                    "title": "HEADER_NUM-2-CYC-LF",
+                    "description": "Cantidad de veces en ciclo 2 en los últimos 12 meses (incluído actual)\nConsiderar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_3_CYC_LF",
+                    "title": "HEADER_NUM-3-CYC-LF",
+                    "description": "Cantidad de veces en ciclo 3 en los últimos 12 meses (incluído actual)\nConsiderar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NUM_4P_CYC_LF",
+                    "title": "HEADER_NUM-4P-CYC-LF",
+                    "description": "Cantidad de veces en ciclo 4 en los últimos 12 meses (incluído actual)\nConsiderar una longitud temporal inicial de 12 meses. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_NO_CARDS",
+                    "title": "HEADER_NO-CARDS",
+                    "description": "Numero de plasticos. ",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_MONTHLY_SEGMENT",
+                    "title": "HEADER_MONTHLY-SEGMENT",
+                    "description": ">>HEADER_DATE-CYCLE\tEs la fecha del ciclo de la cuenta tarjeta. Se refiere a la fecha de cierre de la  cuenta tarjeta del mes que se informa.\n>>HEADER_BLOCK-CODE\t\"Es el código de estado de la cuenta de la tarjeta de crédito.\nEs un campo obligatorio, o sea siempre será informado, por lo que contendrá algunos de los siguientes valores tanto para Visa como para Amercian Express:\n0 = No bloqueado\n20 = Disputa\n40 = Perdida o Robada\n50 = En litigio\n60 = Adjudicación de garantía\n70 = Fallido\n80 = Defunción\n\nIssue I-023\"\n>>HEADER_CYCLE-BALANCE\tEs el importe del saldo de la cuenta al cierre del ciclo.\n>>HEADER_CASH-BALANCE\tEs el importe del saldo de la cuenta por avances en efectivo al cierre del ciclo. \n>>HEADER_AMOUNT-DUE\tEs el pago mínimo a pagar en el mes informado, incluyendo importe en impago.\n>>HEADER_VAL-PAYMENTS\tEs el importe de los pagos hechos en el mes informado\n>>HEADER_VAL-MERCH-SALES\t\"El valor de compras realizado durante el ciclo. \nNo incorpora cuotas futuras\n\nSe extrae de movimientos? \"\n>>HEADER_NUM-MERCH-SALES\tCantidad de compras en el ciclo\n>>HEADER_VAL-CASH-ADV\tAdelantos en efectivo durante el mes. \n>>HEADER_NUM-CASH-ADV\tCantidad de adelantos en efectivo en el mes\n>>HEADER_VAL-ARREARS\tEs el importe impago en el mes informado. \n>>HEADER_LIMIT\tEs el importe correspondiente al límite de compra establecido para la tarjeta de crédito en el mes informado.\n>>HEADER_VAL-RETURNS\tDevoluciones de operaciones.\n>>HEADER_VAL-OTHER-TXNS\tEs el importe correspondiente a otras transacciones que no sean compras y avances en efectivo realizadas durante el mes informado. Se incluye abonos o devoluciones de operaciones.\n>>HEADER_VAL-INTEREST\t\"Es el importe correspondiente al interés cobrado sobre montos impagos o saldos rotativos durante el mes informado.\n\"\n>>HEADER_VAL-TOTAL-FEES\tTotal of all fees posted to the account this month.  (Should equal the sum of TI-HEADER_VAL-FEES(1) + (2) + (3) + (4) + (5) above)\n>>HEADER_VAL-OTHER-DEBITS\tUtilizar para correcciones \n>>HEADER_NO-NSF\tSet to 0.\n>>HEADER_NUM-BALTRF\tSet to 0.\n>>HEADER_VAL-BALTRF\tSet to 0.\n>>HEADER_BAL-BALTRF\tSet to 0.\n>>HEADER_VAL-INTCHG-REVNU\tSet to 0.",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 960,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HEADER_MONTHLY_SEGMENT2",
+                    "title": "HEADER_MONTHLY-SEGMENT2",
+                    "description": "\"24 historical occurrences of Delinquency:\noccurrence (1)   = most recent  \noccurrence (24) = 24 months previous.\"\n\n>>HEADER_CYCLES-DELQ\t\"Es el número de ciclos en impago en el mes informado.  \n 1 - 30: 1 ciclo\n31 - 60: 2 ciclos\n61 - 90: 3 ciclos\"",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 24,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

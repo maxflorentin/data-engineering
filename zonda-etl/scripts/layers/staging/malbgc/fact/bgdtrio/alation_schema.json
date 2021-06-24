@@ -1,0 +1,160 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A308837"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtrio_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "rio_plan",
+                    "title": "rio_plan",
+                    "description": "PLAN DE COMISIONES",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "rio_concepto",
+                    "title": "rio_concepto",
+                    "description": "CÓDIGO DE CONCEPTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "rio_tip_operación",
+                    "title": "rio_tip_operación",
+                    "description": "TIPO DE OPERACIÓN AL QUE SE APLICA EL PRECIO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0
+                },
+                {
+                    "name": "rio_zona",
+                    "title": "rio_zona",
+                    "description": "ZONA DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0
+                },
+                {
+                    "name": "rio_divisa",
+                    "title": "rio_divisa",
+                    "description": "DIVISA DE LA OPERACIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0
+                },
+                {
+                    "name": "rio_fecha_desde",
+                    "title": "rio_fecha_desde",
+                    "description": "FECHA DESDE ENTRADA EN VIGOR DE LA TARIFA",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "rio_fecha_hasta",
+                    "title": "rio_fecha_hasta",
+                    "description": "FECHA HASTA VIGENCIA DE PLAN/COMISIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "rio_comision",
+                    "title": "rio_comision",
+                    "description": "COMISIÓN A APLICAR",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "rio_entidad_umo",
+                    "title": "rio_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "rio_centro_umo",
+                    "title": "rio_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION            ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "rio_userid_umo",
+                    "title": "rio_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "rio_netname_umo",
+                    "title": "rio_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "rio_timest_umo",
+                    "title": "rio_timest_umo",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

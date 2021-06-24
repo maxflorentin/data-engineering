@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(concat(  r.G7015_S1EMP,r.G7015_IDNUMCLI,r.G7015_FECDESDE,r.G7015_IDSISTE,r.G7015_TIP_PER,r.G7015_CDG_PERS,r.G7015_CODSISTE,r.G7015_FEC_HAS,r.G7015_FEC_MOD)) as longitud, concat(  r.G7015_S1EMP,r.G7015_IDNUMCLI,r.G7015_FECDESDE,r.G7015_IDSISTE,r.G7015_TIP_PER,r.G7015_CDG_PERS,r.G7015_CODSISTE,r.G7015_FEC_HAS,r.G7015_FEC_MOD) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_trz_cliente r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_TRZ_CLIENTE' where partition_date = '$month_partition_bdr' and length(concat(  r.G7015_S1EMP,r.G7015_IDNUMCLI,r.G7015_FECDESDE,r.G7015_IDSISTE,r.G7015_TIP_PER,r.G7015_CDG_PERS,r.G7015_CODSISTE,r.G7015_FEC_HAS,r.G7015_FEC_MOD))  != cast(d.longitud as int)"
+    ]
+}

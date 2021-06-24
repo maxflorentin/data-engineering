@@ -1,0 +1,74 @@
+{
+  "file": "marc_pin_schema",
+  "location": "/santander/bi-corp/landing/asgi/fact/marc_pin/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/asgi/fact/marc_pin",
+  "createTable": "bi_corp_staging.asgi_marc_pin",
+  "extension": "csv",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "nup",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "esp1",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "tipo_clave",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "esp2",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "fecha_creacion",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "esp3",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "fecha_cambio_clave",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "esp4",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "fecha_ultimo_acceso",
+      "type": "string",
+      "width": 10
+    },
+    {
+      "name": "esp5",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "marca_bloqueo",
+      "type": "string",
+      "width": 1
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

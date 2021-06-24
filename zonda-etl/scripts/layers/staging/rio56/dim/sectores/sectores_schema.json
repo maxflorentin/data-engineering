@@ -1,0 +1,159 @@
+{
+    "file": "sectores",
+    "location": "/santander/bi-corp/landing/rio56/dim/sectores/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/sectores",
+    "tempDirectory": "/santander/bi-corp/temp/sectores",
+    "createTable": "bi_corp_staging.rio56_sectores",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_sector",
+            "type": "string"
+        },
+        {
+            "name": "desc_sect",
+            "type": "string"
+        },
+        {
+            "name": "cod_grupo",
+            "type": "string"
+        },
+        {
+            "name": "indi_actral",
+            "type": "string"
+        },
+        {
+            "name": "cod_pcia",
+            "type": "string"
+        },
+        {
+            "name": "mail_sector",
+            "type": "string"
+        },
+        {
+            "name": "est_sect",
+            "type": "string"
+        },
+        {
+            "name": "user_alt_sect",
+            "type": "string"
+        },
+        {
+            "name": "fec_alt_sect",
+            "type": "string"
+        },
+        {
+            "name": "user_modf_sect",
+            "type": "string"
+        },
+        {
+            "name": "fec_modf_sect",
+            "type": "string"
+        },
+        {
+            "name": "enviar_mail",
+            "type": "string"
+        },
+        {
+            "name": "indi_info_asig_esp",
+            "type": "string"
+        },
+        {
+            "name": "cod_pais",
+            "type": "string"
+        },
+        {
+            "name": "indi_resol_info_adj",
+            "type": "string"
+        },
+        {
+            "name": "cod_ctro_costos",
+            "type": "string"
+        },
+        {
+            "name": "indi_mail_bandeja",
+            "type": "string"
+        },
+        {
+            "name": "indi_uso_carta",
+            "type": "string"
+        },
+        {
+            "name": "sector_owner",
+            "type": "string"
+        },
+        {
+            "name": "cod_grupo_empresa",
+            "type": "string"
+        },
+        {
+            "name": "indi_admin",
+            "type": "string"
+        },
+        {
+            "name": "gest_x_pag_bandeja",
+            "type": "string"
+        },
+        {
+            "name": "cod_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "cod_zona",
+            "type": "string"
+        },
+        {
+            "name": "tipo_sector",
+            "type": "string"
+        },
+        {
+            "name": "class_pdf",
+            "type": "string"
+        },
+        {
+            "name": "dias_gestiones_ant",
+            "type": "string"
+        },
+        {
+            "name": "cod_sector_gen",
+            "type": "string"
+        },
+        {
+            "name": "indi_compromiso_gold",
+            "type": "string"
+        },
+        {
+            "name": "indi_enviar_mail_resp",
+            "type": "string"
+        },
+        {
+            "name": "indi_enviar_sms_resp",
+            "type": "string"
+        },
+        {
+            "name": "indi_no_enviar_mya",
+            "type": "string"
+        },
+        {
+            "name": "indi_instancias_post",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

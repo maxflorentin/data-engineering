@@ -1,0 +1,214 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A198986","A308258"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "COMMISSIONS",
+            "title": "Registra las comisiones creadas de Custodia y Eventos corporativos de ROSSI DB: RIO347",
+            "schema": "bi_corp_staging",
+            "source": "ROSSI",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Registra las comisiones creadas de Custodia y Eventos corporativos de ROSSI\nTabla: COMMISSIONS\nDB: RIO347",
+            "columns": [
+                {
+                    "name": "CUSTOMERID",
+                    "title": "CUSTOMERID",
+                    "description": "Numero Único de Persona",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECURITIES_CONTRACT_CODE",
+                    "title": "SECURITIES_CONTRACT_CODE",
+                    "description": "Número de contrato de la cuenta títulos (código altair)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "OFFICE_CODE",
+                    "title": "OFFICE_CODE",
+                    "description": "Oficina/Sucursal del contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGIN",
+                    "title": "ORIGIN",
+                    "description": "Origen de la comisión.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACTIONID",
+                    "title": "ACTIONID",
+                    "description": "Referencia evento corporativo que generó la comisión.\nEl campo será null si la comisión es por custodia.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIOD",
+                    "title": "PERIOD",
+                    "description": "Periodo sobre el cual se toma la tenencia para efectuar el cobró de la comisión.\nSolo aplica a comisiones de custodia. En caso de eventos corporativos debiera ser nulo.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODICITY",
+                    "title": "PERIODICITY",
+                    "description": "Indica si el cobro de la comisión es Mensual o Trimestral.Solo aplica a comisiones de custodia. En caso de eventos corporativos debiera ser nulo.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TRANSACTION_TYPE",
+                    "title": "TRANSACTION_TYPE",
+                    "description": "Indica si el cobro de la comisiones es sobre la posición del contrato o sus movimiento.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NOMINAL_HOLDING",
+                    "title": "NOMINAL_HOLDING",
+                    "description": "Tenencia nominal. Tenencia promedio del periodo expresada en cantidad de nominales sobre la cual se realiza el calculo de la comision.\nEste campo solo se completará cuando al cliente se le cobre la comisión por tenencia nominalizada.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 19.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VALUATED_HOLDING",
+                    "title": "VALUATED_HOLDING",
+                    "description": "Tenencia valuada. Tenencia promedio del periodo valuada según su precio sobre la cual se realiza el calculo de la comisión.\nEste campo solo se completará cuando al cliente se le cobre la comisión por tenencia monetarizada.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 19.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERCENTAGE",
+                    "title": "PERCENTAGE",
+                    "description": "Porcentaje de la tenencia que voy a cobrar en concepto de comisión.\nSi la comisión es por Movimiento queda en blanco.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 8.0,
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COUNT_MOVEMENTS",
+                    "title": "COUNT_MOVEMENTS",
+                    "description": "Cantidad de movimientos por los cuales se cobrará comisión.",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FIXED_PRICE_MOVEMENT",
+                    "title": "FIXED_PRICE_MOVEMENT",
+                    "description": "Monto fijo por Movimiento.\nEl campo se completa si la comisión es por Movimiento. Si la comisión es por Tenencia queda en blanco.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 19.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "AMMOUNT",
+                    "title": "AMMOUNT",
+                    "description": "Importe total de la comisión",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 19.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "BONUS",
+                    "title": "BONUS",
+                    "description": "Bonificación de la comisión.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 19.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATION_DATE",
+                    "title": "CREATION_DATE",
+                    "description": "Fecha de creación del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "UPDATE_DATE",
+                    "title": "UPDATE_DATE",
+                    "description": "Última fecha de actualización del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

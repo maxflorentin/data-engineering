@@ -1,0 +1,51 @@
+{
+	"file": "wahac680_schema",
+	"location": "/santander/bi-corp/landing/malha/fact/wahac680/partition_date=${partition_date_landing}",
+	"destination": "/santander/bi-corp/staging/malha/fact/wahac680",
+	"tempDirectory": "/santander/bi-corp/temp/malha/fact/wahac680",
+	"extension": "csv",
+	"header": false,
+	"delimiter": ";",
+	"parquetFiles": 2,
+	"compression": "gzip",
+	"columns": [{
+			"name": "empresa",
+			"type": "string"
+		},
+		{
+			"name": "nucta",
+			"type": "string"
+		},
+		{
+			"name": "cedestin",
+			"type": "string"
+		},
+		{
+			"name": "divisa",
+			"type": "string"
+		},
+		{
+			"name": "saldo_actual",
+			"type": "string"
+		},
+		{
+			"name": "numeral_actual",
+			"type": "string"
+		},
+		{
+			"name": "saldo_anterior",
+			"type": "string"
+		},
+		{
+			"name": "numeral_anterior",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "date",
+		"value": "${partition_date_staging}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

@@ -1,0 +1,63 @@
+{
+     "file": "comex_estados_log_schema",
+     "location": "/santander/bi-corp/landing/rio4/fact/comex_estados_log/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio4/fact/comex_estados_log",
+     "tempDirectory": "/santander/bi-corp/temp/rio4",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "skipNotify": true,
+     "columns":
+	 [			{
+                 "name": "nro_propuesta",
+                 "type": "string"
+                },
+                {
+                 "name": "nro_boleto",
+                 "type": "string"
+                },
+                {
+                 "name": "cotizacion",
+                 "type": "string"
+                },
+                {
+                 "name": "estado",
+                 "type": "string"
+                },
+                {
+                 "name": "procesado",
+                 "type": "string"
+                },
+                {
+                 "name": "id_log",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_carga",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_proceso",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_liq_mon",
+                 "type": "string"
+                },
+                {
+                 "name": "fecha_liq_mon_ext",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "fechaop",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

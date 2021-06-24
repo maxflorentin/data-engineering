@@ -1,0 +1,16 @@
+{
+  "file": "tadtcon_schema",
+  "location": "/santander/bi-corp/landing/tadt/fact/tadtcon/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/tadt/fact/tadtcon",
+  "createTable": "bi_corp_staging.tadt_tadtcon",
+  "copybook": "tadt_tadtcon.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

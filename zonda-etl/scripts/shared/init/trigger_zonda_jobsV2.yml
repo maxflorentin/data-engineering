@@ -1,0 +1,36 @@
+name: CORE_TriggerZondaJobsV2
+description: 'Move inbound files to HDFS,S3 and trigger depending DAGs'
+owner: BI-Corp
+active: true
+start_date: "2019-10-24"
+schedule_interval: '*/5 * * * *'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: WaitForFiles
+    operator: ZondaFileSensor
+    config:
+      path: "/aplicaciones/bi/zonda/inbound"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+  - name: UploadFilesS3
+    operator: ZondaS3Operator
+    config:
+      operation: PUT
+      local_path: "{{ ti.xcom_pull(task_ids='WaitForFiles', key='return_value', dag_id='CORE_TriggerZondaJobsV2') }}"
+      prefix: "$ZONDA_DIR/inbound"
+      replace_prefix: "/santander/bi-corp/landing"
+      partitioned_by_date: true
+      source_s3_conn_id: "aws_s3_desagote"
+      s3_bucket: 'sard1ae1ssszonda0plat001'
+      skip_errors: true
+dependencies:
+  WaitForFiles: UploadFilesS3
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [nbucardo@santandertecnologia.com.ar]
+

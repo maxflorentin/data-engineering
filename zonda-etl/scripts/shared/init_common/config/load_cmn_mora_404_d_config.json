@@ -1,0 +1,31 @@
+{
+    "name": "Mora-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_RiskAlmacen_Mora-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_CMN_Personas-Daily",
+                    "tasks": ["InsertPartitionPersonas"]
+                },
+                {
+                    "dag_id":"LOAD_STG_Garra_WAGUCDEX-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALUG-Daily",
+                    "tasks": ["STAGING_UGDTMAE_AddPartition"]
+                },
+                {
+                    "dag_id":"LOAD_BDR_Rosetta_Risk_tables",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_MORA-Daily"
+                }
+    ]
+}

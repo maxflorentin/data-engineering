@@ -1,0 +1,75 @@
+name: LOAD_STG_CLAVES_SR-Daily
+description: 'Load data from INFOMART in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2020-01-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_CLAVE_SR_CANALES_DIGITALES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_CLAVE_SR_CANALES_DIGITALES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/sgi1/fact/clave_sr_canales_digitales/clave_sr_canales_digitales_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_CLAVES_SR-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['clave_sr_canales_digitales_schema.json']
+  - name: STAGING_MARC_PIN_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MAR_PIN_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/asgi/fact/marc_pin/marc_pin_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_CLAVES_SR-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['marc_pin_schema.json']
+  - name: STAGING_ALTA_RESET_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ALTA_RESET_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/asgi/fact/alta_reset/alta_reset_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_CLAVES_SR-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['alta_reset_schema.json']
+
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

@@ -1,0 +1,335 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A304726"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "zendesk_tk_forms_comex_santander",
+            "title": "Los formularios de ticket permiten que un administrador defina un subconjunto de campos de ticket para mostrar tanto a los agentes como a los usuarios finales.",
+            "schema": "bi_corp_staging",
+            "source": "ZENDSK",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Los formularios de ticket permiten que un administrador defina un subconjunto de campos de ticket para mostrar tanto a los agentes como a los usuarios finales.",
+            "columns": [
+                {
+                    "name": "active",
+                    "title": "active",
+                    "description": "Si el formulario está configurado como activo",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "agent_conditions",
+                    "title": "agent_conditions",
+                    "description": "Matriz de conjuntos de condiciones para espacios de trabajo de agentes",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "created_at",
+                    "title": "created_at",
+                    "description": "La hora en que se creó el formulario de ticket",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "default",
+                    "title": "default",
+                    "description": "\t¿Es el formulario el formulario predeterminado para esta cuenta?",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "display_name",
+                    "title": "display_name",
+                    "description": "El nombre del formulario que se muestra a un usuario final",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "end_user_conditions",
+                    "title": "end_user_conditions",
+                    "description": "Matriz de conjuntos de condiciones para productos de usuario final",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "end_user_visible",
+                    "title": "end_user_visible",
+                    "description": "\t¿El formulario es visible para el usuario final?",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "id",
+                    "title": "id",
+                    "description": "\tAsignado automáticamente al crear un formulario de ticket",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "in_all_brands",
+                    "title": "in_all_brands",
+                    "description": "¿El formulario está disponible para su uso en todas las marcas de esta cuenta?",
+                    "type": "boolean",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "name",
+                    "title": "name",
+                    "description": "El nombre del formulario",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "position",
+                    "title": "position",
+                    "description": "\tLa posición de este formulario entre otros formularios en la cuenta, es decir, el menú desplegable",
+                    "type": "integer",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "raw_display_name",
+                    "title": "raw_display_name",
+                    "description": "\tEl marcador de posición de contenido dinámico, si está presente, o el valor \"display_name\", si no lo está.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "raw_name",
+                    "title": "raw_name",
+                    "description": "\tEl marcador de posición de contenido dinámico, si está presente, o el valor \"nombre\", si no lo está.",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "restricted_brand_ids",
+                    "title": "restricted_brand_ids",
+                    "description": "\tidentificadores de todas las marcas a las que este formulario de ticket está restringido",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ticket_field_ids",
+                    "title": "ticket_field_ids",
+                    "description": "identificadores de todos los campos de ticket que se encuentran en este formulario de ticket. Los productos utilizan el orden de los identificadores para mostrar los valores de los campos en los tickets.",
+                    "type": "array",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "updated_at",
+                    "title": "updated_at",
+                    "description": "La hora de la última actualización del formulario de ticket",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "url",
+                    "title": "url",
+                    "description": "URL del formulario de ticket",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": "-",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

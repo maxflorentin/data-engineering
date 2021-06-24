@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.comex_rio39_boletos_sam_det;

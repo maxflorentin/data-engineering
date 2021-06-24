@@ -1,0 +1,76 @@
+{
+    "tables": [
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "ENC_DURACION",
+            "table_type": "dim",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/dim/enc_duracion",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_DURACION,DURACION,SECTOR,ID_TIPO_TURNO\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "ENC_ESTADO",
+            "table_type": "dim",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/dim/enc_estado",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_ESTADO,DESCRI\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "SUCURSALES",
+            "table_type": "dim",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/dim/sucursales",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"SUC_NRO,OFI_NRO,HORA_DESDE,HORA_HASTA,DESCRI,ZONA_LLAMADO,REGION,CANT_PUESTOS_CAJA_DISP,TEC,ALTA_TEC,TIPO_TEC\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "SUCURSALRIO",
+            "table_type": "dim",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/dim/sucursalrio",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"CODIGO,DESCRI,TELEFONO,DOMICILIO,LOCALIDAD,POSTAL,VENDEDORES,SELLOS,RESPFONDOS,SUGERIDA,VISIBLE_CRM,ZONA,PROVINCIA,CODLOCALIDAD,ACTIVO,ATENCION_RAPIDA\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "ENC_PUESTO_CITAS",
+            "table_type": "fact",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/fact/enc_puesto_citas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_PUESTO_CITAS,ID_TIPO_PUESTO,ID_SUC,ACTIVO,CANT ,SECTOR,ID_EJECUTIVO,HORA_INICIO,HORA_FIN\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "ENC_TURNO",
+            "table_type": "fact",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/fact/enc_turno",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_TURNO,ID_ESTADO,TIPODOC,NRODOC,SECTOR ,ID_SUC ,FECHA_HORA_DESDE,FECHA_HORA_HASTA,FRACCION ,DIA ,NUP,APELLIDO,NOMBRE,PESUBSEG,PESEXPER,ID_MOTIVO,MAIL,CUIT ,ID_TURNO_ORIG ,ID_EJEC_ATENCION ,ID_SUC_ATENCION,ID_PUESTO_CITAS ,TELEFONO,ID_TIPO_TURNO,FECHA_DESDE,FECHA_HASTA\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "MOTIVO_VISITA_V2",
+            "table_type": "dim",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/dim/motivo_visita_v2",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_MOTIVO,ID_MOTIVO_PADRE ,DESCRIPCION ,PRIORIDAD ,DURACION,ID_CANAL,ID_SECTOR,ORDEN,ACTIVO,TAG,ID_TIPO_STACK,TIENE_FLUJO_SOL\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio154",
+            "database": "CITAS",
+            "table": "ENC_TURNO_EXT",
+            "table_type": "fact",
+            "environment": "RIO154",
+            "landing_path": "/santander/bi-corp/landing/rio154/fact/enc_turno_ext",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \"{database}.{table}\" --columns \"ID_TURNO,ID_CANAL,FECHA_ALTA,NOTIFICACION,EJECUTIVO_ROL,COMENTARIO_CLIENTE\" --bindir {zonda_dir}/sqoop/rio154/{table} --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        }
+    ]
+}

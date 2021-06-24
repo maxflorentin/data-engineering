@@ -1,0 +1,47 @@
+{
+  "file": "nyse_2012_fixed",
+  "location": "s3a://sard1ae1ssszonda0plat001/guyraTemp/resources/inbound/control_ars",
+  "destination": "s3a://sard1ae1ssszonda0plat001/bi-corp/staging/control_ars",
+  "executionTimestamp": true,
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "delimiter": ";",
+  "compression": "gzip",
+  "columns": [{
+                  "name": "sucursal_radicacion",
+                  "type": "string"
+          },
+          {
+                  "name": "cuenta",
+                  "type": "string"
+          },
+          {
+                  "name": "cod_op",
+                  "type": "string"
+          },
+          {
+                  "name": "importe",
+                  "type": "string"
+          },
+          {
+                  "name": "partition_date",
+                  "type": "string"
+          },
+          {
+                  "name": "sucursal_operacion",
+                  "type": "string"
+          },
+          {
+                  "name": "extraction_date",
+                  "type": "string"
+          }
+   ],
+  "extraColumns": [{
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+  }]
+}

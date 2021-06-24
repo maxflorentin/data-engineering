@@ -1,0 +1,74 @@
+{
+    "file": "comprobante_distribucion",
+    "location": "/santander/bi-corp/landing/pap/fact/comprobante_distribucion/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/pap/fact/comprobante_distribucion",
+    "createTable": "bi_corp_staging.pap_comprobante_distribucion",
+    "extension": "csv",
+    "delimiter": "\t",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+{
+            "name": "id_comprobante",
+            "type": "string"
+        },
+{
+            "name": "centro_costo",
+            "type": "string"
+        },
+{
+            "name": "centro_costo_nombre",
+            "type": "string"
+        },
+{
+            "name": "importe",
+            "type": "string"
+        },
+{
+            "name": "tipo_servicio",
+            "type": "string"
+        },
+{
+            "name": "fecha_consumo",
+            "type": "string"
+        },
+{
+            "name": "descripcion",
+            "type": "string"
+        },
+{
+            "name": "unidad_medida",
+            "type": "string"
+        },
+{
+            "name": "cantidad",
+            "type": "string"
+        },
+{
+            "name": "precio_unitario",
+            "type": "string"
+        },
+{
+            "name": "numero_remito",
+            "type": "string"
+        },
+{
+            "name": "provincia",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

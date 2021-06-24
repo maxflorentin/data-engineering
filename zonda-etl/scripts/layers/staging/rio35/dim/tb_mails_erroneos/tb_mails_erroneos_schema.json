@@ -1,0 +1,26 @@
+{
+  "file": "tb_mails_erroneos_schema",
+  "location": "/santander/bi-corp/landing/rio35/dim/tb_mails_erroneos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/dim/tb_mails_erroneos",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "email",
+    "type": "string"
+  }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

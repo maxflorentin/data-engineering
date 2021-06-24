@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.dim_zen_form",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_zen_form"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_zen_form", "ds_zen_form"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_zen_creacion","ts_zen_actualizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}

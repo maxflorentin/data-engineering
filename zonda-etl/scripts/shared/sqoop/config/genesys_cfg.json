@@ -1,0 +1,55 @@
+{
+  "tables": [
+    {
+      "serverAka": "rio46",
+      "serverConfig": "dblxorabcatel01",
+      "database": "GENCME",
+      "table": "CFG_CALLING_LIST",
+      "table_type": "dim",
+      "environment": "RIO46",
+      "landing_path": "/santander/bi-corp/landing/rio46/dim/cfg_calling_list",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \" DBID,TENANT_DBID,NAME,DESCRIPTION,TABL_ACC_DBID,FILTER_DBID,LOG_TABL_ACC_DBID,TIME_FROM,TIME_UNTIL,MAX_ATTEMPTS,SCRIPT_DBID,STATE,CSID,TENANT_CSID,TABL_ACC_CSID,FILTER_CSID,LOG_TABL_ACC_CSID,SCRIPT_CSID   \" --bindir '{zonda_dir}/sqoop/rio46/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverAka": "rio46",
+      "serverConfig": "dblxorabcatel01",
+      "database": "GENCME",
+      "table": "CFG_CAMPAIGN",
+      "table_type": "dim",
+      "environment": "RIO46",
+      "landing_path": "/santander/bi-corp/landing/rio46/dim/cfg_campaign",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \" DBID,TENANT_DBID,NAME,DESCRIPTION,SCRIPT_DBID,STATE,CSID,TENANT_CSID,SCRIPT_CSID   \" --bindir '{zonda_dir}/sqoop/rio46/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverAka": "rio46",
+      "serverConfig": "dblxorabcatel01",
+      "database": "GENOUTTLZ",
+      "table": "COD_RETORNOS",
+      "table_type": "dim",
+      "environment": "RIO46",
+      "landing_path": "/santander/bi-corp/landing/rio46/dim/cod_retornos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \" ID_COD_RETORNO,COD_RETORNO_GENESYS,COD_RETORNO_CACS,DESCRIP   \" --bindir '{zonda_dir}/sqoop/rio46/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverAka": "rio46",
+      "serverConfig": "dblxorabcatel01",
+      "database": "GENCME",
+      "table": "CFG_GROUP",
+      "table_type": "dim",
+      "environment": "RIO46",
+      "landing_path": "/santander/bi-corp/landing/rio46/dim/cfg_group",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \" dbid    ,group_type   ,tenant_dbid      ,name ,cap_table_dbid   ,quota_table_dbid ,state ,dn_group_type  ,csid  ,tenant_csid,cap_table_csid   ,quota_table_csid ,capacity_dbid    ,site_dbid        ,contract_dbid  \" --bindir '{zonda_dir}/sqoop/rio46/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ,
+    {
+      "serverAka": "rio46",
+      "serverConfig": "dblxorabcatel01",
+      "database": "GENCME",
+      "table": "CFG_TENANT",
+      "table_type": "dim",
+      "environment": "RIO46",
+      "landing_path": "/santander/bi-corp/landing/rio46/dim/cfg_tenant",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \" DBID ,IS_SERV_PROVIDER   ,NAME,PASSWORD  ,ADDRESS_LINE1,ADDRESS_LINE2,ADDRESS_LINE3  ,ADDRESS_LINE4,ADDRESS_LINE5 ,CHARGEABLE_NUMBER  ,TENANT_PERSON_DBID ,PROVID_PERSON_DBID ,IS_SUPER_TENANT ,STATE  ,CSID   ,TENANT_PERSON_CSID ,PROVID_PERSON_CSID ,CAPACITY_DBID      ,CONTRACT_DBID      ,PARENT_TENANT_DBID   \" --bindir '{zonda_dir}/sqoop/rio46/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+      ]
+}

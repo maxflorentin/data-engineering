@@ -1,0 +1,123 @@
+{
+  "file": "deudores_rechazados",
+  "location": "/santander/bi-corp/landing/bcra/deudores/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/deudores",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+                            "name": "codigo_entidad",
+                            "type": "string",
+                            "width": 11
+                          },
+					{
+                            "name": "fecha_informacion",
+                            "type": "string",
+                            "width": 10
+                          },
+						{
+                            "name": "tipo_identificacion",
+                            "type": "string",
+                            "width": 8
+                          },
+						{
+                            "name": "nro_identificacion",
+                            "type": "string",
+                            "width": 15
+                          },
+						{
+                            "name": "actividad",
+                            "type": "string",
+                            "width": 1
+                          },
+						{
+                            "name": "situacion",
+                            "type": "string",
+                            "width": 8
+                          },
+						{
+                            "name": "prestamos",
+                            "type": "string",
+                            "width": 1
+                          },
+						{
+                            "name": "participaciones",
+                            "type": "string",
+                            "width": 1
+                          },
+						{
+                            "name": "garantias_otorgadas",
+                            "type": "string",
+                            "width": 11
+                          },
+						{
+                            "name": "otros_conceptos",
+                            "type": "string",
+                            "width": 15
+                          },
+                      {
+                        "name": "garantias_preferidas_a",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "garantias_preferidas_b",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "sin_contragarantias_preferidas",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "previsiones",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "deuda_cubierta",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "proceso_judicial",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "refinanciaciones",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "recategoriacion_obligatoria",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "situacion_juridica",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "irrecuperables",
+                        "type": "string",
+                        "width": 2
+                      },
+                      {
+                        "name": "dias_atraso",
+                        "type": "string",
+                        "width": 2
+                      }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

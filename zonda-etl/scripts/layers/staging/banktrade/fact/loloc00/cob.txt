@@ -1,0 +1,307 @@
+ 01  LC-RECORD-TYPE0.
+     05  L0-KEY.
+         10  L0-LC-NUMBER.
+             15  L0-GROUP                  PIC X.
+             15  L0-NUMBER                 PIC X(6).
+         10  L0-RECORD-TYPE                PIC X(2).
+         10  L0-TYPE-SEQUENCE              PIC X(3).
+         10  L0-RECORD-SEQUENCE            PIC X(6).
+     05  LC-TYPE                           PIC X.
+     05  L0-SUFFIX                         PIC X.
+     05  L0-CUST-INFO.
+         10  L0-CUST-REF-NUMBER            PIC X(30).
+         10  L0-CUST-DDA-ACCT              PIC X(15).
+         10  L0-CUST-CITY-CODE             PIC X(4).
+         10  L0-CUST-AREA-CODE             PIC X(3).
+         10  L0-CUST-COUNTRY-CODE          PIC X(5).
+         10  L0-CUST-SIC-CODE              PIC S9(5) COMP-3.
+         10  L0-CUST-ACCT-BRANCH           PIC X(3).
+         10  L0-CUST-COST-CENTER           PIC X(4).
+         10  L0-CUST-COST-CENTER-NO REDEFINES
+             L0-CUST-COST-CENTER           PIC 9(7)  COMP-3.
+     05  L0-ADVISING-BANK-INFO.
+         10  L0-ADV-BK-REF-NUM             PIC X(30).
+         10  L0-ADV-BK-DDA-ACCT            PIC X(15).
+         10  L0-ADV-BK-CITY-CODE           PIC X(4).
+         10  L0-ADV-BK-DIRECTED-BY         PIC X.
+         10  L0-ADV-BK-COUNTRY-CODE        PIC X(5).
+         10  L0-ADV-BK-CO-CITY             PIC X(14).
+     05  L0-BENEFICIARY-INFO.
+         10  L0-BENEF-CREDIT-CODE          PIC X(5).
+         10  L0-BENEF-DDA-ACCT             PIC X(15).
+         10  L0-BENEF-CITY-CODE            PIC X(4).
+     05  L0-ACCT-PARTY-DDA-ACCT            PIC X(15).
+     05  L0-ACCT-PARTY-CITY-CODE           PIC X(4).
+     05  L0-PARENT-CIF-NUM                 PIC X(02).
+     05  L0-TICKL-CANCEL-EXPIRY-KEY        PIC X(13).
+     05  L0-TRANSFER-INFO.
+         10  L0-TRANS-TO-IND               PIC X.
+         10  L0-TRANS-TO-LC-NUM            PIC X(7).
+         10  L0-TRANS-FROM-IND             PIC X.
+         10  L0-TRANS-FROM-LC-NUM          PIC X(7).
+         10  L0-TRANS-CONFIRMED-AMOUNT     PIC S9(11)V99 COMP-3.
+         10  L0-TRANS-UNCONFIRMED-AMOUNT   PIC S9(11)V99 COMP-3.
+     05  L0-PARTIC-BOUGHT-FROM-DDA-ACCT    PIC X(15).
+     05  L0-COMM-PERIOD-TYPE               PIC X.
+     05  L0-COMM-ALIGNMENT                 PIC X.
+     05  L0-COMM-NEXT-ANNIVERSARY          PIC 9(7)  COMP-3.
+     05  L0-COMM-LAST-EFFECT-TAKEN-DTE     PIC 9(7)  COMP-3.
+     05  L0-COMM-CALC-BASIS                PIC 9(3)  COMP-3.
+     05  L0-BONDS-STEAM-IND.
+         10  L0-BONDS-GUARANTEE-IND        PIC X.
+         10  L0-STEAM-GUARANTEE-IND        PIC X.
+         10  L0-PERIODIC-FEE-IND           PIC X.
+     05  L0-TENOR-INFO.
+         10  L0-TENOR-CODE-ORIG            PIC X(3).
+         10  L0-TENOR-DAYS-ORIG            PIC S9(3) COMP-3.
+         10  L0-TENOR-DATE-ORIG            PIC S9(7) COMP-3.
+         10  L0-TENOR-CODE-LATEST          PIC X(3).
+         10  L0-TENOR-DAYS-LATEST          PIC S9(3) COMP-3.
+         10  L0-TENOR-DATE-LATEST          PIC S9(7) COMP-3.
+         10  L0-TENOR-TEXT                 PIC X(50).
+     05  L0-SHIPPING-INFO.
+         10  L0-SHIPPING-DATE-IND          PIC X.
+         10  L0-SHIPPING-DATE-ONE          PIC S9(7) COMP-3.
+         10  L0-SHIPPING-DATE-TWO          PIC S9(7) COMP-3.
+         10  L0-SHIPPING-DATE-LATEST       PIC S9(7) COMP-3.
+         10  L0-SHORT-MERCHANDISE-DESC     PIC X(35).
+         10  L0-PURPOSE-CODER REDEFINES L0-SHORT-MERCHANDISE-DESC.
+             15  L0-PURPOSE-CODE           PIC X(05).
+             15  FILLER                    PIC X(30).
+         10  L0-SHIP-TO-FROM.
+             15  L0-SHIP-TO                    PIC X(30).
+             15  L0-SHIP-FROM                  PIC X(30).
+         10  L0-NEW-FIELDS  REDEFINES  L0-SHIP-TO-FROM.
+             15  L0-SPECIAL-FIELDS-ID          PIC X(02).
+                 88  L0-NEW-FIELDS-ID VALUE  '@\'.
+             15  L0-USER-XREFN                 PIC X(30).
+             15  L0-PCT-MODIF-SWIFT-ORIG       PIC X(05).
+             15  L0-PCT-MODIF-SWIFT-LAT        PIC X(05).
+             15  L0-REVOLVE-TYPE               PIC X.
+             15  L0-REVOLVE-PERIOD             PIC 9(03).
+             15  L0-MERCH-CODE                 PIC X(10).
+             15  L0-RELATED-PAYMENT-SEQ-NO     PIC X(3).
+             15  L0-CUST-ADV-BK-IND            PIC X.
+     05  L0-ISSUE-DATE                     PIC S9(7) COMP-3.
+     05  L0-CANCEL-DATE                    PIC S9(7) COMP-3.
+     05  L0-LAST-ACTIVITY-DATE             PIC S9(7) COMP-3.
+     05  L0-EXPIRY-INFO.
+         10  L0-EXPIRY-DATE-ORIG           PIC S9(7) COMP-3.
+         10  L0-EXPIRY-DATE-LATEST         PIC S9(7) COMP-3.
+         10  L0-EXPIRY-DATE-NOT-BEFORE     PIC S9(7) COMP-3.
+         10  L0-LAST-EXPIRY-CHANGE-DATE REDEFINES
+             L0-EXPIRY-DATE-NOT-BEFORE     PIC S9(7) COMP-3.
+         10  L0-EXPIRY-AT-CITY             PIC X(15).
+         10  L0-AUTO-EXT-REVIEW-DATE       PIC S9(7) COMP-3.
+         10  L0-OBLIGATION-CLASS-ORIG      PIC X(3).
+         10  L0-OBLIGATION-CLASS-CURRENT   PIC X(3).
+     05  L0-CREDIT-INFO.
+         10  L0-CREDIT-PERIOD              PIC 99.
+         10  L0-DRAWING-PER-PERIOD  REDEFINES  L0-CREDIT-PERIOD
+                                           PIC 99.
+         10  L0-CREDIT-PERIOD-TYPE         PIC X.
+         10  L0-NUM-OF-CREDIT-PERIODS      PIC 99.
+         10  L0-CREDIT-AMT-PER-PERIOD      PIC S9(11)V99 COMP-3.
+         10  L0-LIABILITY-AMOUNT  REDEFINES
+                 L0-CREDIT-AMT-PER-PERIOD  PIC S9(11)V99 COMP-3.
+         10  L0-CUMULATIVE-IND             PIC X.
+     05  L0-I-E-LICENSE-NO                 PIC X(09).
+     05  L0-BENE-COUNTRY-CODER REDEFINES L0-I-E-LICENSE-NO.
+         10  FILLER                        PIC X.
+         10  L0-ISLAMIC-BANKING-IND        PIC X.
+         10  L0-CUST-COMM-CHARGE-TYPE      PIC X.
+         10  L0-INC-SWIFT-IND              PIC X.
+         10  L0-BENE-COUNTRY-CODE          PIC X(05).
+     05  L0-WRKR-LOCATION                  PIC X(06).
+     05  L0-VALUE-ADDED-TAX-CODE           PIC X(10).
+     05  L0-COLL-DISCHG-CNTRY REDEFINES L0-VALUE-ADDED-TAX-CODE.
+         10  L0-COLL-TYPE                  PIC X(05).
+         10  L0-ULTIMATE-DISCHG-CNTRY      PIC X(05).
+     05  L0-AMOUNT-SUB-ACCT                PIC S9(3)    COMP-3.
+     05  L0-MASTER-LC-NO                   PIC X(7).
+     05  L0-TEMPLATE-LC-NO REDEFINES L0-MASTER-LC-NO
+                                           PIC X(7).
+     05  L0-LOG-MODE                       PIC X.
+     05  L0-TICKLER-KEY                    PIC S9(13)   COMP-3.
+     05  L0-GENERAL-LEDGER.
+         10  L0-GL-BANK-LIABIL-ORIG        PIC S9(9) COMP-3.
+         10  L0-GL-INCOME-LIABIL-ORIG      PIC S9(9) COMP-3.
+         10  L0-GL-PR-ADV-INCOME-ORIG      PIC S9(9) COMP-3.
+         10  L0-GL-BANK-LIABIL-CURR        PIC S9(9) COMP-3.
+         10  L0-GL-INCOME-LIABIL-CURR      PIC S9(9) COMP-3.
+         10  L0-GL-PRE-ADV-INCOME-CURR     PIC S9(9) COMP-3.
+     05  L0-OFFICER-CODE                   PIC X(3).
+     05  L0-OFFICER-CODE-NO REDEFINES
+         L0-OFFICER-CODE                   PIC 9(5)   COMP-3.
+     05  L0-ASSIGNED-TO                    PIC X(3).
+     05  L0-FIRST-AUTHORIZER               PIC X(4).
+     05  L0-SECOND-AUTHORIZER              PIC X(4).
+     05  L0-RELEASE-CODE-ONE               PIC S9(3)   COMP-3.
+     05  L0-RELEASE-CODE-TWO               PIC S9(3)   COMP-3.
+     05  L0-FIRST-DIVISION-CODE            PIC X(4).
+     05  L0-SECOND-DIVISION-CODE           PIC X(4).
+     05  L0-CASH-COLLATERAL-INFO.
+         10  L0-CASH-COLL-BALANCE          PIC S9(11)V99 COMP-3.
+         10  L0-CASH-COLL-PCT              PIC S9(3)V99 COMP-3.
+         10  L0-CASH-COLL-CURR-CODE        PIC X(3).
+         10  L0-CASH-COLL-FIXED-EXCH       PIC S9(6)V9(9) COMP-3.
+         10  L0-CASH-COLL-DEBIT-CODE       PIC X(5).
+         10  L0-CASH-COLL-DEBIT-DDA-ACCT   PIC X(15).
+         10  L0-CASH-COLL-ORIG-AMT         PIC S9(11)V99 COMP-3.
+         10  L0-CASH-COLL-SPOT-RATE        PIC S9(6)V9(9) COMP-3.
+         10  L0-CASH-COLL-ORIG-BASE        PIC S9(11)V99  COMP-3.
+         10  L0-CASH-COLL-BASE-BALANCE     PIC S9(11)V99  COMP-3.
+     05  L0-ORIG-BANK-LIABILITY-CODE       PIC S9(9) COMP-3.
+     05  L0-ORIG-CURRENCY-CODE             PIC X(3).
+     05  L0-CABLE-AIR-MAIL-INFO.
+         10  L0-WAVE-CABLE-CHARGES-IND     PIC X.
+         10  L0-CABLE-CHARGES-TO-BENEF-IND PIC X.
+         10  L0-CABLE-CHARGES-AMOUNT       PIC S9(7)V99.
+     05  L0-CABLE-PRE-ADV-CODE             PIC X(3).
+     05  L0-CABLE-PRE-ADV-DATE-UNPK        PIC S9(6).
+     05  L0-CABLE-PRE-ADV-DATE REDEFINES
+         L0-CABLE-PRE-ADV-DATE-UNPK        PIC S9(7) COMP-3.
+     05  L0-PRE-ADVISE-LETTER-C-A-IND      PIC X.
+     05  L0-PRE-ADVISE-LETTER-NO           PIC X(8).
+     05  L0-FULL-DETAIL-LET-1-C-A-IND      PIC X.
+     05  L0-FULL-DETAIL-LET-1-NO           PIC X(8).
+     05  L0-FULL-DETAIL-LET-2-C-A-IND      PIC X.
+     05  L0-FULL-DETAIL-LET-2-NO           PIC X(8).
+     05  L0-CONFIRMED-AMOUNTS.
+         10  L0-CONFIRM-OPEN-AMT           PIC S9(11)V99 COMP-3.
+         10  L0-CONFIRM-AMEND-ADJ          PIC S9(11)V99 COMP-3.
+         10  L0-CONFIRM-CURR-BAL           PIC S9(11)V99 COMP-3.
+         10  L0-CONFIRM-ORIG-PCT           PIC S9(3)V99 COMP-3.
+         10  L0-CONFIRM-CURR-PCT           PIC S9(3)V99 COMP-3.
+     05  L0-UNCONFIRMED-AMOUNTS.
+         10  L0-UNCONFIRM-OPEN-AMT         PIC S9(11)V99 COMP-3.
+         10  L0-UNCONFIRM-AMEND-ADJ        PIC S9(11)V99 COMP-3.
+         10  L0-UNCONFIRM-CURR-BAL         PIC S9(11)V99 COMP-3.
+     05  L0-MODIFY-INFO.
+         10  L0-AMT-MODIFIER               PIC S9(11)V99 COMP-3.
+         10  L0-ABOUT-MODIFER-IND          PIC X(1).
+         10  L0-PCT-MODIFER                PIC S9(3)V99 COMP-3.
+         10  L0-PCT-MODIFER-TYPE           PIC X.
+         10  L0-MODIFIER-TEXT-1            PIC X(30).
+         10  L0-MODIFIER-TEXT-2            PIC X(20).
+     05  L0-BOOK-EXCHANGE-RATE             PIC S9(6)V9(9) COMP-3.
+     05  L0-CURRENCY-CODE                  PIC X(3).
+     05  L0-OBLIGATION-CLASS               PIC X(3).
+     05  L0-LIABILITY-CODE                 PIC X(5).
+     05  L0-PRE-ADVICE-OBLIG-CLASS         PIC X(3).
+     05  L0-PRE-ADVICE-LIABILITY-AMT       PIC S9(11)V99  COMP-3.
+     05  L0-COMMISSION-INFO.
+         10  L0-COMM-DEBIT-CODE            PIC X(5).
+         10  L0-COMM-DEBIT-CURR-CODE       PIC X(3).
+         10  L0-COMM-DEBIT-EXCHANGE-RATE  PIC S9(6)V9(9)  COMP-3.
+         10  L0-COMM-DEBIT-DDA-ACCT        PIC X(15).
+         10  L0-COMM-TO-BENEF              PIC X.
+         10  L0-CURR-CANCEL-COMM-AMT       PIC S9(11)V99  COMP-3.
+         10  L0-TOTAL-CANCEL-COMM-AMT      PIC S9(11)V99  COMP-3.
+         10  L0-ADVISING-COMM-OVERRIDE     PIC S9(9)V99   COMP-3.
+         10  L0-STANDARD-COMM-OVERRIDE     PIC S9(11)V99  COMP-3.
+         10  L0-ST-BY-COMM-OVERRIDE-PCT    PIC S99V9(5)   COMP-3.
+         10  L0-ST-BY-COMM-OVERRIDE-AMT    PIC S9(9)V99   COMP-3.
+         10  L0-ST-BY-COMM-PERIOD-OVERRIDE PIC S9(3)      COMP-3.
+         10  L0-ST-BY-COMM-B-E-OVERRIDE    PIC X.
+         10  L0-ST-BY-COMM-PERIOD-PROC     PIC S9(3)      COMP-3.
+         10  L0-ST-BY-COMM-MINIMUM-TAKEN   PIC X.
+         10  L0-ISSUE-CONF-COMM-OVRIDE-PCT PIC S99V9(5)   COMP-3.
+         10  L0-TOTAL-COMM-OVERRIDE-AMT    PIC S9(9)V99   COMP-3.
+         10  L0-COMM-SPOT-RATE             PIC S9(6)V9(9) COMP-3.
+         10  L0-WAVE-CANCEL-COMMISSION-IND PIC X.
+     05  L0-PRIMARY-DEBIT-CODE             PIC X(5).
+     05  L0-PRIMARY-DEBIT-CURRENCY         PIC X(3).
+     05  L0-PRIMARY-DEBIT-DDA-ACCT         PIC X(15).
+     05  L0-DRAFTS-ON-CODE                 PIC X(5).
+     05  L0-DRAFTS-ON-TEXT                 PIC X(120).
+     05  L0-INDICATORS.
+         10  L0-STAND-BY-IND               PIC X.
+         10  L0-OFFERING-IND               PIC X.
+         10  L0-INDEMNITY-IND              PIC X.
+         10  L0-REVOCABLE-IND              PIC X.
+         10  L0-REIMBURSE-IND              PIC X.
+         10  L0-MANUAL-TICKLER-IND         PIC X.
+         10  L0-SUPERVISORY-CANCEL-IND     PIC X.
+         10  L0-USER-DEFINED-IND-2  REDEFINES
+               L0-SUPERVISORY-CANCEL-IND   PIC X.
+         10  L0-TRANSSHIP-IND              PIC X.
+         10  L0-BOYCOTT-CREDIT-IND         PIC X.
+         10  L0-USER-DEFINED-IND-5 REDEFINES L0-BOYCOTT-CREDIT-IND
+                                           PIC X.
+         10  L0-AUTO-SWIFT-IND   REDEFINES L0-BOYCOTT-CREDIT-IND
+                                           PIC X.
+         10  L0-PARTIAL-SHIPMENT-IND       PIC X.
+         10  L0-FDA-IND                    PIC X.
+         10  L0-USER-DEFINED-IND-8  REDEFINES  L0-FDA-IND
+                                           PIC X.
+         10  L0-RED-CLAUSE-IND             PIC X.
+         10  L0-MISC-IND                   PIC X.
+         10  L0-CONVERSION-CREDIT-IND      PIC X.
+         10  L0-FOREIGN-TRANSFER-IND       PIC X.
+         10  L0-PARTICIPATION-IND     REDEFINES
+             L0-FOREIGN-TRANSFER-IND       PIC X.
+         10  L0-DOMESTIC-TRANSFER-IND      PIC X.
+         10  L0-PRE-ADV-RELEASED-IND       PIC X.
+         10  L0-CANCEL-PENDING-IND         PIC X.
+         10  L0-STANDBY-INT-PENDING-IND    PIC X.
+         10  L0-MANUAL-GL-IND REDEFINES L0-STANDBY-INT-PENDING-IND
+                                           PIC X.
+         10  L0-COMM-BENEF-IND             PIC X.
+         10  L0-COMM-ISSUE-IND             PIC X.
+         10  L0-DELETE-CANDIDATE-IND       PIC X.
+         10  L0-OFFERING-APPROVED-IND      PIC X.
+         10  L0-BOYCOTT-REPORT-IND         PIC X.
+         10  L0-USER-DEFINED-IND-6 REDEFINES L0-BOYCOTT-REPORT-IND
+                                           PIC X.
+         10  L0-BOYCOTT-TAXABLE-IND        PIC X.
+         10  L0-USER-DEFINED-IND-7  REDEFINES
+                 L0-BOYCOTT-TAXABLE-IND    PIC X.
+         10  L0-BOYCOTT-PROHIBITED-IND     PIC X.
+         10  L0-REVALUE-IND   REDEFINES L0-BOYCOTT-PROHIBITED-IND
+                                           PIC X.
+         10  L0-ASSIGN-IND                 PIC X.
+         10  L0-USER-DEFINED-IND-1  REDEFINES  L0-ASSIGN-IND
+                                           PIC X.
+         10  L0-ACCT-55-IND                PIC X.
+         10  L0-USER-DEFINED-IND-3 REDEFINES L0-ACCT-55-IND
+                                           PIC X.
+         10  L0-CALL-BEFORE-PAY-IND        PIC X.
+         10  L0-CLAIM-PAYMENT-IND          PIC X.
+         10  L0-USER-DEFINED-IND-4 REDEFINES L0-CLAIM-PAYMENT-IND
+                                           PIC X.
+         10  L0-STANDBY-LTR-IND            PIC X.
+         10  L0-GOV-GUAR-IND               PIC X.
+         10  L0-LIQUOR-CREDITS-IND         PIC X.
+         10  L0-AUTO-EXT-IND REDEFINES L0-LIQUOR-CREDITS-IND
+                                           PIC X.
+         10  L0-COUNTER-TRADE-IND          PIC X.
+             88 CUST-BRIDGE           VALUE  'C'.
+             88 CLIENT-TRADE-INTERNET VALUE  'I'.
+             88 LINKS                 VALUE  'L'.
+             88 MAXTRADE              VALUE  'M'.
+             88 TIGER                 VALUE  'T'.
+         10  L0-AUTO-ADJUST-RELSE-IND      PIC X.
+     05  L0-COUNTERS.
+         10  L0-ACCEPTANCE-PROCESSED-CTR   PIC S9(3)      COMP-3.
+         10  L0-ACCOUNTING-PROCESSED-CTR.
+             15 L0-TRANSFER-PROCESSED-CTR  PIC S9(3)      COMP-3.
+         10  L0-ADJUSTMENTS-PROCESSED-CTR  PIC S9(3)      COMP-3.
+         10  L0-ADJUSTMENTS-RELEASED-CTR   PIC S9(3)      COMP-3.
+         10  L0-AMENDMENTS-PROCESSED-CTR   PIC S9(3)      COMP-3.
+         10  L0-AMENDMENTS-RELEASED-CTR    PIC S9(3)      COMP-3.
+         10  L0-COMMISSIONS-PROCESSED-CTR.
+             15 L0-TRANSFER-RELEASED-CTR   PIC S9(3)      COMP-3.
+         10  L0-PARTIC-PROCESSED-CTR       PIC S9(3)      COMP-3.
+         10  L0-PAYMENTS-PROCESSED-CTR     PIC S9(3)      COMP-3.
+         10  L0-PAYMENTS-RELEASED-CTR      PIC S9(3)      COMP-3.
+     05  L0-WAIVE-COMM-IND                 PIC X.
+     05  L0-SIGNED-APPLIC-IND              PIC X.
+     05  L0-GUARANTEE-INFO.
+         10  L0-GUARANTOR-DDA-ACCT.
+             15 L0-CLIENT-UNIQUE-1         PIC X(10).
+             15 L0-CLIENT-UNIQUE-2         PIC X(05).
+         10  L0-PRIV-GAR-PERCENT           PIC 9(2)V9(5)  COMP-3.
+     05  L0-UNADVISED-PAYMENT-IND             PIC X.
+     05  L0-LATEST-CLAIMS-DATE             PIC S9(7)      COMP-3.
+     05  FILLER                            PIC XX.

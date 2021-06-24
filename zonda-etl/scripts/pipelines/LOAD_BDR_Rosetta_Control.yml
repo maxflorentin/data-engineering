@@ -1,0 +1,57 @@
+name: LOAD_BDR_Rosetta_Control
+description: 'EXEC Rosetta Integrity Tests and TDIM, MDIM New data Recognition'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: ambito
+    description: 'Complete ambit to control/send. Possible values: capital | icaap | cdg | stress_test | finrep | credit_risk'
+tasks:
+  - name: Declare_Ambito
+    operator: PythonOperator
+    config:
+      function_name: 'loadCtrlRosetta'
+      function_def: |
+          def loadCtrlRosetta(*args, **kwargs):
+            import os
+            print(kwargs)
+            # VARIABLES
+            extra_args= eval(kwargs.get('extra_args'))
+            ambito_path= os.path.join(kwargs.get('zonda_dir'),'repositories/zonda-etl/scripts/layers/common/rosetta/fact/rnkd',str(extra_args.get('ambito')),'Integrity-Control.json')
+            print(ambito_path)
+            kwargs['ti'].xcom_push(key='ambito_path', value=ambito_path)
+      provide_context: true
+      op_kwargs:
+        ambito: "{{ ti.xcom_pull(task_ids='InputConfig', key='ambito', dag_id='LOAD_BDR_Rosetta_Control') }}"
+        zonda_dir: $ZONDA_DIR
+        extra_args: "{{ ti.xcom_pull(task_ids='InputConfig', key='all', dag_id='LOAD_BDR_Rosetta_Control') }}"
+  - name: ExecIntegrityControls
+    operator: SparkSubmitOperator
+    config:
+      name: 'Rosetta_Controls'
+      connection_id: cloudera_spark2
+      num_executors: 20
+      executor_cores: 4
+      executor_memory: 16G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/controls/control_runner_v2.py'
+      files: ["{{ ti.xcom_pull(task_ids='Declare_Ambito', key='ambito_path', dag_id='LOAD_BDR_Rosetta_Control') }}"]
+      conf: {
+            'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Rosetta_Control') }}",
+            'spark.yarn.appMasterEnv.last_calendar_day': "{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day', dag_id='LOAD_BDR_Rosetta_Control') }}",
+            'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+            'spark.sql.autoBroadcastJoinThreshold': '-1'
+      }
+      application_args: ['Integrity-Control.json']
+dependencies:
+  Declare_Ambito: ExecIntegrityControls
+notifications:
+  on_start: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar]

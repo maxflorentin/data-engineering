@@ -1,0 +1,18 @@
+{
+  "file": "ugdtuva",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtuva/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtuva",
+  "createTable": "bi_corp_staging.malug_ugdtuva",
+  "copybook": "ugdtuva.cob",
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

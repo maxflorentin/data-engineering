@@ -1,0 +1,87 @@
+name: DOWNLOAD_DATOS_ENACOM_NUMGEO-Weekly
+description: 'Download Data of Enacom'
+owner: BI-Corp
+active: true
+start_date: '2020-07-31'
+schedule_interval: '0 8 * * 1'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: EXECUTE_Enacom_DOWNLOAD_Script
+    operator: BashOperator
+    config:
+      command: "
+              python3.6 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/enacom_numgeof.py
+              --date {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_DATOS_ENACOM_NUMGEO-Weekly') }}
+              --name enacom_numeracion_geografica
+              --folder enacom/
+              --wd_from $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/files/
+              --wd_to $ZONDA_DIR/inbound/enacom/fact/numgeo/"
+  - name: WaitForFiles
+    operator: ZondaFileSensor
+    config:
+      path: "$ZONDA_DIR/inbound/enacom/numgeo/"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+  - name: UploadFilesHDFS
+    operator: ZondaHDFSOperator
+    config:
+      operation: PUT
+      local_path: "{{ ti.xcom_pull(task_ids='WaitForFiles', key='return_value', dag_id='DOWNLOAD_DATOS_ENACOM_NUMGEO-Weekly') }}"
+      prefix: "$ZONDA_DIR/inbound"
+      replace_prefix: "/santander/bi-corp/landing"
+      skip_errors: true
+      partitioned_by_date: true
+      remove_local_path: true
+  - name: STAGING_ENACOM_NUM_GEO_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ENACOM_NUM_GEO_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      jars: '$ZONDA_DIR/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/enacom/numgeo/enacom_numeracion_geografica_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='DOWNLOAD_DATOS_ENACOM_NUMGEO-Weekly') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_DATOS_ENACOM_NUMGEO-Weekly') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['enacom_numeracion_geografica_schema.json']
+  - name: STAGING_ENACOM_NUM_GEO_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/enacom/numgeo/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/enacom/numgeo/ETLV-Alter_Partitions.hql'
+dependencies:
+  EXECUTE_Enacom_DOWNLOAD_Script: WaitForFiles
+  WaitForFiles: UploadFilesHDFS
+  UploadFilesHDFS: STAGING_ENACOM_NUM_GEO_Parquetize
+  STAGING_ENACOM_NUM_GEO_Parquetize: STAGING_ENACOM_NUM_GEO_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

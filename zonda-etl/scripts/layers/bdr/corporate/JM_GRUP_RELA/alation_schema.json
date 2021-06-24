@@ -1,0 +1,258 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_grup_rela",
+         "title":"Información que relaciona Adicional Jurídicas BIS y Grupos Económicos BIS",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"En esta tabla se establecerán las relaciones entre los grupos económicos dados de alta en la tabla Grupos económicos BIS y los clientes que formen parte de este grupo y que fueron dados de alta en la tabla Clientes BIS. Para todos los clientes de la entidad que formen parte de algún grupo económico será obligatorio establecer las relaciones a través de estas tablas.",
+         "columns":[
+            {
+               "name":"g5515_fecultmo",
+               "title":"",
+               "description":"Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro",
+               "type":"String",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5515_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando. ",
+               "type":"String",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5515_grup_eco",
+               "title":"Identificador de grupo económico",
+               "description":"Clave única de identificación del grupo económico dentro de la entidad",
+               "type":"Numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager\nNicolás Intrieri",
+                  "businessReference":"Carlos Daniel Pitton <cpitton@santander.com.ar>,Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\n",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"sge_grupos_economicos",
+                     "column":"nro_grupo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"no_mrg_grupo_relacion",
+                     "column":"identificador_grupo_economico"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"aqua_grupos_economicos",
+                     "column":"entidad_legal"
+                  }
+               ]
+            },
+            {
+               "name":"g5515_idnumcli",
+               "title":"Identificador del cliente",
+               "description":"Clave única de identificación del cliente dentro de la entidad",
+               "type":"Numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager\nNicolás Intrieri",
+                  "businessReference":"Carlos Daniel Pitton <cpitton@santander.com.ar>,Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\n",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"sge_grupos_economicos",
+                     "column":"nup"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"no_mrg_grupo_relacion",
+                     "column":"unidad_operativa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"aqua_grupos_economicos",
+                     "column":"identificador_cliente"
+                  }
+               ]
+            },
+            {
+               "name":"g5515_rol_jera",
+               "title":"Rol Jerárquico",
+               "description":"Papel que desempeña el cliente en la estructura jerárquica del grupo al que pertenece",
+               "type":"Numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Julio Sager\nNicolás Intrieri",
+                  "businessReference":"Carlos Daniel Pitton <cpitton@santander.com.ar>,Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>\n",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g5515_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"Numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"String",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "A307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

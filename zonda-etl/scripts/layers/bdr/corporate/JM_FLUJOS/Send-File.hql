@@ -1,0 +1,1 @@
+select distinct concat(r9746_feoperac, r9746_s1emp, r9746_contra1, r9746_fecmvto, r9746_clasmvto, r9746_importe, r9746_salonbal) from bi_corp_bdr.jm_flujos where partition_date = '$month_partition_bdr';

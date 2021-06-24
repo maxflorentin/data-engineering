@@ -1,0 +1,47 @@
+{
+  "file": "sorpresa_cascada_schema",
+  "location": "/santander/bi-corp/landing/rio102/fact/sorpresa_cascada/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio102/fact/sorpresa_cascada",
+  "tempDirectory": "/santander/bi-corp/temp/rio102",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+    "name": "fecha_envio",
+    "type": "string"
+  },
+{
+    "name": "nup",
+    "type": "string"
+  },
+{
+    "name": "fecha_inicio",
+    "type": "string"
+  },
+{
+    "name": "fecha_fin",
+    "type": "string"
+  },
+{
+    "name": "cascada_yn",
+    "type": "string"
+  },
+{
+    "name": "canal_alta",
+    "type": "string"
+  }
+  ],
+
+  "extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

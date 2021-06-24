@@ -1,0 +1,124 @@
+{
+  "file": "campanias_corporativo_schema",
+  "location": "/santander/bi-corp/landing/campanias/fact/becas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/campanias/fact/becas",
+  "createTable": "bi_corp_staging.campanias_becas",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "firstname",
+    "type": "string"
+  },
+    {
+      "name": "lastname",
+      "type": "string"
+    },
+
+    {
+      "name": "contactar",
+      "type": "string"
+    },
+    {
+      "name": "usr_profile_name",
+      "type": "string"
+    },
+    {
+      "name": "usr_universityname",
+      "type": "string"
+    },
+    {
+      "name": "idorppnum",
+      "type": "string"
+    },
+    {
+      "name": "usr_analytic",
+      "type": "string"
+    },
+    {
+      "name": "usr_commercial",
+      "type": "string"
+    },
+    {
+      "name": "usr_isactive",
+      "type": "string"
+    },
+    {
+      "name": "usr_country",
+      "type": "string"
+    },
+    {
+      "name": "usr_city",
+      "type": "string"
+    },
+    {
+      "name": "usr_region",
+      "type": "string"
+    },
+    {
+      "name": "usr_gender",
+      "type": "string"
+    },
+    {
+      "name": "usr_date",
+      "type": "string"
+    },
+    {
+      "name": "birthdate",
+      "type": "string"
+    },
+    {
+      "name": "year",
+      "type": "string"
+    },
+    {
+      "name": "usr_language",
+      "type": "string"
+    },
+    {
+      "name": "usr_created_at",
+      "type": "string"
+    },
+    {
+      "name": "becas_enrolled",
+      "type": "string"
+    },
+    {
+      "name": "becas_requested",
+      "type": "string"
+    },
+    {
+      "name": "becas_draft",
+      "type": "string"
+    },
+    {
+      "name": "becas_rejected",
+      "type": "string"
+    },
+    {
+      "name": "becas_accepted",
+      "type": "string"
+    },
+    {
+      "name": "becas_refused",
+      "type": "string"
+    },
+    {
+      "name": "becas_pregranted",
+      "type": "string"
+    },
+    {
+      "name": "becas_granted",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

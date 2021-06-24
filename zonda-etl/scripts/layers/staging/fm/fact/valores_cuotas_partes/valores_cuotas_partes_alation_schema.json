@@ -1,0 +1,71 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308761","A308250"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "FM_VALORES CUOTAS PARTES",
+            "title": "Tabla de precios de fondos.",
+            "schema": "bi_corp_staging",
+            "source": "Fondos",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla de precios de fondos.",
+            "columns": [
+                {
+                    "name": "FUND_CODE",
+                    "title": "FUND_CODE",
+                    "description": "Fondo depositaria",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INFO_DATE",
+                    "title": "INFO_DATE",
+                    "description": "fecha del precio",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHARE_VALUE",
+                    "title": "SHARE_VALUE",
+                    "description": "precio",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 17.8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PATRIMONY",
+                    "title": "PATRIMONY",
+                    "description": "patrimonio del fondo",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 17.4,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

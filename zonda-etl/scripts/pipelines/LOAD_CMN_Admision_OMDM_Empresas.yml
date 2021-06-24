@@ -1,0 +1,47 @@
+name: LOAD_CMN_Admision_OMDM_Empresas
+description: 'Load omdm data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 13 * * *'
+#start_date: '2020-01-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [stk_adm_empresas_omdm_cpp_participante, stk_adm_empresas_omdm_cpp_agri, stk_adm_empresas_omdm_cpp_agro, stk_adm_empresas_omdm_cpp_cria, stk_adm_empresas_omdm_cpp_balance, stk_adm_empresas_omdm_cpp_varios, stk_adm_empresas_omdm_cpp_propuesta, stk_adm_empresas_omdm_cpp_frutales, stk_adm_empresas_omdm_cpp_invernada]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/DDLT-${e}.hql'
+  - name: COMMON_LoadTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/ETL-LOAD-${e}.hql'
+dependencies:
+  COMMON_CreateTable: COMMON_LoadTable
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mlevisrossi@santandertecnologia.com.ar, Mmarrocchi@santandertecnologia.com.ar]

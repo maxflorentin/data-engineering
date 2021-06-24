@@ -1,0 +1,68 @@
+{
+  "file": "grupo_agentes_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/grupo_agentes/monthly/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/grupo_agentes/monthly/",
+  "createTable": "bi_corp_staging.infomart_grupo_agentes_monthly",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "grupo_agentes",
+      "type": "string"
+    },
+    {
+      "name": "tipo_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_aceptadas_acw",
+      "type": "string"
+    },
+    {
+      "name": "promedio_tt_aceptadas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_logueo_total",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_total_not_ready",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_total_ready",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_total_acw",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

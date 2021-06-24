@@ -1,0 +1,63 @@
+name: LOAD_CMN_Mapping_Marca
+description: 'Load dim from marcas cdg in CMN'
+owner: BI-Corp
+active: true
+start_date: '2021-03-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: EXECUTE_Mapping_Marca_Script
+    operator: SparkSubmitOperator
+    config:
+      name: Load_Jerarq_test
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 10
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/cdg/jerarquias/LOAD_Mapping_Marca.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Mapping_Marca') }}"
+      }
+      application_args: ['--max_level', "14",
+						 '--partition_date', "'{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Mapping_Marca') }}'"]	 
+  - name: CMN_AddPartition_resultado
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_resultado_marca/ETLV-Alter_Partitions.hql'
+  - name: CMN_AddPartition_producto
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_producto_marca/ETLV-Alter_Partitions.hql'
+  - name: CMN_AddPartition_areanegocio
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_areanegocio_marca/ETLV-Alter_Partitions.hql'        
+dependencies:
+  EXECUTE_Mapping_Marca_Script: [CMN_AddPartition_resultado, CMN_AddPartition_producto, CMN_AddPartition_areanegocio]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [aleivajacquelin@santandertecnologia.com.ar, pabnunez@santandertecnologia.com.ar]

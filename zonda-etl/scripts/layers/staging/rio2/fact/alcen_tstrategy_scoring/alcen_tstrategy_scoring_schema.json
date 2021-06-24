@@ -1,0 +1,67 @@
+{
+  "file": "tstrategy_scoring_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tstrategy_scoring/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tstrategy_scoring",
+  "createTable": "bi_corp_staging.alcen_tstrategy_scoring",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+             {
+                    "name": "cod_inqy",
+                    "type": "string"
+                },
+{
+                    "name": "nro_sec_scoring",
+                    "type": "string"
+                },
+{
+                    "name": "cod_escenario",
+                    "type": "string"
+                },
+{
+                    "name": "cod_score_pop",
+                    "type": "string"
+                },
+{
+                    "name": "nro_scorecard",
+                    "type": "string"
+                },
+{
+                    "name": "cod_app_score",
+                    "type": "string"
+                },
+{
+                    "name": "cod_final_score",
+                    "type": "string"
+                },
+{
+                    "name": "cod_score_recomend",
+                    "type": "string"
+                },
+{
+                    "name": "val_probabilidad",
+                    "type": "string"
+                },
+{
+                    "name": "nro_score_blancos",
+                    "type": "string"
+                },
+{
+                    "name": "val_corte_final",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

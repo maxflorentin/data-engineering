@@ -1,0 +1,59 @@
+{
+	"file": "segmentos_schema",
+	"location": "/santander/bi-corp/landing/sql5/dim/segmentos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_segmentos",
+	"tempDirectory": "/santander/bi-corp/temp/segmentos",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "ramo",
+			"type": "string"
+		},
+		{
+			"name": "segmento",
+			"type": "string"
+		},
+		{
+			"name": "subsegmento",
+			"type": "string"
+		},
+		{
+			"name": "detalle_renta",
+			"type": "string"
+		},
+		{
+			"name": "desc_marca",
+			"type": "string"
+		},
+		{
+			"name": "escalar",
+			"type": "string"
+		},
+		{
+			"name": "modelos",
+			"type": "string"
+		},
+		{
+			"name": "segmento_control",
+			"type": "string"
+		},
+		{
+			"name": "cuadrante",
+			"type": "string"
+		},
+		{
+			"name": "cuadrante_triad",
+			"type": "string"
+		},
+		{
+			"name": "fecha_informacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

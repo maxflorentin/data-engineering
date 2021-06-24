@@ -1,0 +1,115 @@
+{
+    "file": "tbl_interaccion_producto_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_interaccion_producto",
+    "location": "/santander/bi-corp/landing/rio151/fact/tbl_interaccion_producto/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/fact/tbl_interaccion_producto",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_interaccion_producto",
+            "type": "string"
+        },
+        {
+            "name": "cd_interaccion",
+            "type": "string"
+        },
+        {
+            "name": "id_acc",
+            "type": "string"
+        },
+        {
+            "name": "ds_campana_o_producto",
+            "type": "string"
+        },
+        {
+            "name": "mc_campana",
+            "type": "string"
+        },
+        {
+            "name": "cd_escenario",
+            "type": "string"
+        },
+        {
+            "name": "cd_envio",
+            "type": "string"
+        },
+        {
+            "name": "ds_producto_crm",
+            "type": "string"
+        },
+        {
+            "name": "cd_gestion",
+            "type": "string"
+        },
+        {
+            "name": "cd_resultado",
+            "type": "string"
+        },
+        {
+            "name": "json",
+            "type": "string"
+        },
+        {
+            "name": "ds_comentario",
+            "type": "string"
+        },
+        {
+            "name": "mc_envio_mail",
+            "type": "string"
+        },
+        {
+            "name": "dt_agenda_horario",
+            "type": "string"
+        },
+        {
+            "name": "dt_modificacion",
+            "type": "string"
+        },
+        {
+            "name": "dt_gestion",
+            "type": "string"
+        },
+        {
+            "name": "cd_identificacion_resultado",
+            "type": "string"
+        },
+        {
+            "name": "cd_producto_crm",
+            "type": "string"
+        },
+        {
+            "name": "vl_nro_solicitud",
+            "type": "string"
+        },
+        {
+            "name": "cd_canal_solicitud",
+            "type": "string"
+        },
+        {
+            "name": "id_camp_buc",
+            "type": "string"
+        },
+        {
+            "name": "ds_contacto",
+            "type": "string"
+        },
+        {
+            "name": "seguimientotec",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+{
+    "file": "test_inter_recaud_oper_schema",
+    "location": "/santander/bi-corp/landing/rio61/fact/test_inter_recaud_oper/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio61/fact/test_inter_recaud_oper",
+    "createTable": "bi_corp_staging.rio61_test_inter_recaud_oper",
+    "extension": "csv",
+    "header": true,
+    "fixed": false,
+    "skipNotify": true,
+    "delimiter": "|",
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "nup",
+            "type": "string"
+        },
+        {
+            "name": "canal",
+            "type": "string"
+        },
+        {
+            "name": "producto",
+            "type": "string"
+        },
+        {
+            "name": "subprodu",
+            "type": "string"
+        },
+        {
+            "name": "suc_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "cuenta",
+            "type": "string"
+        },
+        {
+            "name": "suc_origen",
+            "type": "string"
+        },
+        {
+            "name": "imp_mov",
+            "type": "string"
+        },
+        {
+            "name": "divisa",
+            "type": "string"
+        },
+        {
+            "name": "ind_forma_pago",
+            "type": "string"
+        },
+        {
+            "name": "fecha_proceso",
+            "type": "string"
+        },
+        {
+            "name": "nro_prod",
+            "type": "string"
+        },
+        {
+            "name": "tipo_canje",
+            "type": "string"
+        },
+        {
+            "name": "ide_pgo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

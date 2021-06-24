@@ -1,0 +1,1 @@
+msck repair table bi_corp_staging.no_mrg_juridica;

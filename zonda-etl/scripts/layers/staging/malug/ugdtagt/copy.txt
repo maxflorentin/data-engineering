@@ -1,0 +1,131 @@
+000100******************************************************************00000100
+000200*                       B S C H - ALTAIR                         *00000200
+000300* -------------------------------------------------------------- *00000300
+000400* ¡REA       - ACTIVO                                            *00000400
+000500* APLICACI”N - PR…STAMOS Y AVALES                                *00000500
+000600* -------------------------------------------------------------- *00000600
+000700* REGISTRO          - UGTCAGT                                    *00000700
+000800* FECHA DE CREACI”N - 23-NOV-1999                                *00000800
+000900*----------------------------------------------------------------*00000900
+001000* COPY ASOCIADA A LA TABLA DE AGENTES DE VENTA                   *00001000
+001100*----------------------------------------------------------------*00001100
+102001* CLAVE G                                                        *00102001
+110001* ENTIDAD            CODIGO DE ENTIDAD                           *00110001
+112001* COD_AGENTE         CODIGO DEL AGENTE DE VENTAS                 *00112001
+114001* DATOS_AGENTE G                                                 *00114001
+115001* TIP_AGENTE         TIPO DE AGENTE                              *00115001
+116001* EST_AGENTE         ESTADO DEL AGENTE                           *00116001
+117001* <'A'> -  ACTIVO                                                *00117001
+118001* <'D'> -  DESACTIVO                                             *00118001
+119001* DES_AGENTE         DESCRIPCION DEL AGENTE                      *00119001
+119101* NUM_CLIENTE        NUMERO DEL CLIENTE DEL AGENTE DE VENTAS     *00119101
+119301* FECALTA            FECHA DE ALTA                               *00119301
+119401* DATOS_LIQUID. G                                                *00119401
+119501* FEC_ULTLIQ         FECHA ULTIMA LIQUIDACION                    *00119501
+119601* FEC_PROLIQ         FECHA PROXIMA LIQUIDACION                   *00119601
+119701* PER_LIQUIDAC       PERIODICIDAD LIQUIDACION AGENTE             *00119701
+119801* IND_LIQUIDAC       INDICADOR DE LIQUIDACION                    *00119801
+119901* <'I'> -IMPORTE DE LA OPERAC.                                   *00119901
+120001* <'O'> - NUM. DE OPERACIONES                                    *00120001
+120101* TIP_LIQUIDAC       TIPO DE LIQUIDACI”N DE COMISIONES GEN…RIC   *00120101
+120201* 'A' - ACUMULADO.                                               *00120201
+120301* 'O' - POR OPERACI”N.                                           *00120301
+120401* TIP_COMISION       TIPO DE COMISIONES A LIQUIDAR AL AGENTE:    *00120401
+120501* 'G' - GEN…RICAS.                                               *00120501
+120601* 'A' - ADICIONALES.                                             *00120601
+120701* 'T' - TODAS.                                                   *00120701
+120801* IND_PLANMAYO       INDICADOR DE CONTROL DE PLAN MAYOR/MENOR    *00120801
+120802* COD_DIVISA_TEMP    DIVISA DEL CUPO TEMPORAL                    *00120802
+120803* FEC_FINAVAL_TEMP   FECHA DE FIN DE AVAL TEMPORAL               *00120803
+120804* COD_DIVISA_PERM    DIVISA DEL CUPO PERMANENTE                  *00120804
+120805* FEC_FINAVAL_PERM   FECHA DE FIN DE AVAL PERMANENTE             *00120805
+120901* CUPOS_PARA_ AVALAR G                                           *00120901
+121001* CUP_MAXAVAL        CUPO MAXIMO PARA AVALAR TEMPORALMENTE P     *00121001
+121101* CUP_DISAVAL        CUPO DISPUESTO PARA AVALAR PRESTAMOS DE     *00121101
+121102* CUP-MAXAVAL-TEMP   MODIFICA EL NOMBRE DEL CUPO M·XIMO ACTUAL EN 00121102
+121103* CUP-DISAVAL-TEMP   MODIFICA EL NOMBRE DEL CUPO DISPUESTO ACTUAL 00121103
+121104* CUP-MAXAVAL-PERM   NUEVO CUPO M·XIMO PERMANENTE                *00121104
+121105* CUP-DISAVAL-PERM   NUEVO CUPO DISPUESTO PERMANENTE             *00121105
+121201* CUENTA_AGENTE G                                                *00121201
+121401* NUM_CUENTA         CUENTA ABONO AGENTE                         *00121401
+121501* COD_OFICINA        OFICINA CUENTA ABONO                        *00121501
+121601* COD_ENTIDAD        ENTIDAD CUENTA ABONO                        *00121601
+121602* AGT-DIVISA         DIVISA DEL AGENTE                           *00121602
+121603* CUENTA-AGENTE-ALT G                                            *00121603
+121604* AGT-NUM-CUENTA-ALT  CUENTA ABONO AGENTE  ALTA                  *00121604
+121605* AGT-COD-OFICINA-ALT OFICINA CUENTA ABONO ALTA                  *00121605
+121606* AGT-COD-ENTIDAD-ALT ENTIDAD CUENTA ABONO ALTA                  *00121606
+121607* AGT-DIVISA-ALT      DIVISA DEL AGENTE    ALTA                  *00121607
+121701* STAMP_UMO G                                                    *00121701
+121801* ENTIDAD_UMO        ENTIDAD ULTIMA MODIFICACION                 *00121801
+121901* CENTRO_UMO         CENTRO ULTIMA MODIFICACION                  *00121901
+122001* USERID_UMO         USUARIO ULTIMA MODIFICACION                 *00122001
+122101* NETNAME_UMO        TERMINAL ULTIMA MODIFICACION                *00122101
+122201* TIMEST_UMO         FECHA Y HORA DE ULTIMA MODIFICACION         *00122201
+124001******************************************************************00124001
+130001*                     LOG DE MODIFICACIONES                      *00130001
+140001* -------------------------------------------------------------- *00140001
+150001* FECHA    | AUTOR     | DESCRIPCI”N                             *00150001
+160001* -------------------------------------------------------------- *00160001
+170001*                                                                *00170001
+180001******************************************************************00180001
+190001*                                                                *00190001
+200001* CAMPO                      DESCRIPCIÛN                         *00200001
+210001* -------------------------- ----------------------------------- *00210001
+220001*                                                                *00220001
+230001******************************************************************00230001
+240001 02  UGTCAGT.                                                     00240001
+250001     05 AGT-CLAVE.                                                00250001
+251001        10 AGT-ENTIDAD          PIC X(4).                         00251001
+260001        10 AGT-COD-AGENTE       PIC X(4).                         00260001
+261003     05 AGT-DATOS.                                                00261003
+262003        10 AGT-DATOS-AGENTES.                                     00262003
+270003           15 AGT-TIP-AGENTE       PIC X(3).                      00270003
+280003           15 AGT-EST-AGENTE       PIC X(1).                      00280003
+281003              88 AGT-88-EST-AGENTE-ACTIVO      VALUE 'A'.         00281003
+282003              88 AGT-88-EST-AGENTE-DESACTIVO   VALUE 'B'.         00282003
+290003           15 AGT-DES-AGENTE       PIC X(60).                     00290003
+300003           15 AGT-NUM-CLIENTE      PIC X(8).                      00300003
+310003           15 AGT-FECALTA          PIC X(10).                     00310003
+311003        10 DATOS-LIQUID.                                          00311003
+320003           15 AGT-FEC-ULTLIQ       PIC X(10).                     00320003
+330003           15 AGT-FEC-PROLIQ       PIC X(10).                     00330003
+340003           15 AGT-PER-LIQUIDAC     PIC X(4).                      00340003
+350003           15 AGT-IND-LIQUIDAC     PIC X(1).                      00350003
+351003              88 AGT-88-IND-LIQUIDAC-IMP       VALUE 'I'.         00351003
+352003              88 AGT-88-IND-LIQUIDAC-NUM       VALUE 'O'.         00352003
+360003           15 AGT-TIP-LIQUIDAC     PIC X(1).                      00360003
+361003              88 AGT-88-TIP-LIQUIDAC-ACUM      VALUE 'A'.         00361003
+362003              88 AGT-88-TIP-LIQUIDAC-OPER      VALUE 'O'.         00362003
+370003           15 AGT-TIP-COMISION     PIC X(1).                      00370003
+371003              88 AGT-88-TIP-COMISION-GENER     VALUE 'G'.         00371003
+372003              88 AGT-88-TIP-COMISION-ADICI     VALUE 'A'.         00372003
+373003              88 AGT-88-TIP-COMISION-TODAS     VALUE 'T'.         00373003
+380003           15 AGT-IND-PLANMAYO     PIC X(1).                      00380003
+380004           15 AGT-COD-DIVISA-TEMP  PIC X(3).                      00380004
+380005           15 AGT-FEC-FINAVAL-TEMP PIC X(10).                     00380005
+380006           15 AGT-COD-DIVISA-PERM  PIC X(3).                      00380006
+380007           15 AGT-FEC-FINAVAL-PERM PIC X(10).                     00380007
+381003        10 AGT-CUPOS-PARA-AVALAR.                                 00381003
+390003           15 AGT-CUP-MAXAVAL      PIC S9(13)V9(4) USAGE COMP-3.  00390003
+400003           15 AGT-CUP-DISAVAL      PIC S9(13)V9(4) USAGE COMP-3.  00400003
+400004           15 AGT-CUP-MAXAVAL-TEMP PIC S9(13)V9(4) USAGE COMP-3.  00400004
+400005           15 AGT-CUP-DISAVAL-TEMP PIC S9(13)V9(4) USAGE COMP-3.  00400005
+400006           15 AGT-CUP-MAXAVAL-PERM PIC S9(13)V9(4) USAGE COMP-3.  00400006
+400007           15 AGT-CUP-DISAVAL-PERM PIC S9(13)V9(4) USAGE COMP-3.  00400007
+411003        10 CUENTA-AGENTE.                                         00411003
+412003           15 AGT-NUM-CUENTA       PIC X(12).                     00412003
+420003           15 AGT-COD-OFICINA      PIC X(4).                      00420003
+430003           15 AGT-COD-ENTIDAD      PIC X(4).                      00430003
+430004           15 AGT-DIVISA           PIC X(3).                      00430004
+430005        10 CUENTA-AGENTE-ALT.                                     00430005
+430006           15 AGT-NUM-CUENTA-ALT   PIC X(12).                     00430006
+430007           15 AGT-COD-OFICINA-ALT  PIC X(4).                      00430007
+430008           15 AGT-COD-ENTIDAD-ALT  PIC X(4).                      00430008
+430009           15 AGT-DIVISA-ALT       PIC X(3).                      00430009
+441001     05 STAMP-UMO.                                                00441001
+442001        10 AGT-ENTIDAD-UMO      PIC X(4).                         00442001
+450001        10 AGT-CENTRO-UMO       PIC X(4).                         00450001
+460001        10 AGT-USERID-UMO       PIC X(8).                         00460001
+470001        10 AGT-NETNAME-UMO      PIC X(8).                         00470001
+480001        10 AGT-TIMEST-UMO       PIC X(26).                        00480001

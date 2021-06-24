@@ -1,0 +1,45 @@
+name: LOAD_STG_MALZC-Daily
+description: 'Load data from MALZC tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2019-12-20'
+# catchup: true
+retries: 0
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [alzcu001, alzcu002, alzcu003, alzcu006, alzcu007, alzcu008, alzcu010, alzcu012, alzcu013, alzcu017, alzcu019, alzcu023]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_TABLE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malzc/${e}/${e}_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALZC-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['${e}_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar,dtridico@santandertecnologia.com.ar]

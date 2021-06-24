@@ -1,0 +1,151 @@
+{
+        "file": "t0akctas_schema",
+        "location": "/santander/bi-corp/landing/si02/dim/t0akctas/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/si02/dim/t0akctas",
+        "tempDirectory": "/santander/bi-corp/temp/si02",
+        "extension": "csv",
+        "delimiter": "|",
+        "header": false,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns":
+		[
+                {
+                "name": "cdcencon",
+                 "type": "string"
+                },
+                {
+                "name": "cdsucurs",
+                 "type": "string"
+                },
+                {
+                "name": "cdproduc",
+                 "type": "string"
+                },
+                {
+                "name": "cdsubpro",
+                 "type": "string"
+                },
+                {
+                "name": "nucuenta",
+                 "type": "string"
+                },
+                {
+                "name": "nuordenx",
+                 "type": "string"
+                },
+                {
+                "name": "cddivisa",
+                 "type": "string"
+                },
+                {
+                "name": "fhaltaxx",
+                 "type": "string"
+                },
+                {
+                "name": "fhbajaxx",
+                 "type": "string"
+                },
+                {
+                "name": "nurenova",
+                 "type": "string"
+                },
+                {
+                "name": "cdstatus",
+                 "type": "string"
+                },
+                {
+                "name": "cdtipoju",
+                 "type": "string"
+                },
+                {
+                "name": "fhinicio",
+                 "type": "string"
+                },
+                {
+                "name": "fhvencto",
+                 "type": "string"
+                },
+                {
+                "name": "cdsucpro",
+                 "type": "string"
+                },
+                {
+                "name": "cdpromot",
+                 "type": "string"
+                },
+                {
+                "name": "imlimite",
+                 "type": "string"
+                },
+                {
+                "name": "imimposi",
+                 "type": "string"
+                },
+                {
+                "name": "cdperext",
+                 "type": "string"
+                },
+                {
+                "name": "nuarxxxx",
+                 "type": "string"
+                },
+                {
+                "name": "cdcemoti",
+                 "type": "string"
+                },
+                {
+                "name": "fhcamtip",
+                 "type": "string"
+                },
+                {
+                "name": "imnoinve",
+                 "type": "string"
+                },
+                {
+                "name": "nbdomici",
+                 "type": "string"
+                },
+                {
+                "name": "nbdomiam",
+                 "type": "string"
+                },
+                {
+                "name": "cdpostal",
+                 "type": "string"
+                },
+                {
+                "name": "nbpoblac",
+                 "type": "string"
+                },
+                {
+                "name": "nbpoblaa",
+                 "type": "string"
+                },
+                {
+                "name": "nbprovin",
+                 "type": "string"
+                },
+                {
+                "name": "nbpaisxx",
+                 "type": "string"
+                },
+                {
+                "name": "nbordenx",
+                 "type": "string"
+                },
+                {
+                "name": "mcretcor",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

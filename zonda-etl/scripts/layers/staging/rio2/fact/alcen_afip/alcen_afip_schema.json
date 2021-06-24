@@ -1,0 +1,55 @@
+{
+  "file": "alcen_afip_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/afip/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/afip",
+  "createTable": "bi_corp_staging.alcen_afip",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cuit",
+    "type": "string"
+  },
+  {
+    "name": "denominacion",
+    "type": "string"
+  },
+  {
+    "name": "imp_ganancias",
+    "type": "string"
+  },
+  {
+    "name": "imp_iva",
+    "type": "string"
+  },
+  {
+    "name": "monotributo",
+    "type": "string"
+  },
+  {
+    "name": "integrante_soc",
+    "type": "string"
+  },
+  {
+    "name": "empleador",
+    "type": "string"
+  },
+  {
+    "name": "actividad_monotributo",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

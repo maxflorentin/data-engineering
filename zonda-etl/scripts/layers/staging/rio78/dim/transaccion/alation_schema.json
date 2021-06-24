@@ -1,0 +1,73 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309193"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio78_transaccion",
+      "title": "Tabla que contiene todas las transacciones disponibles a loguear en la tabla estadisitcas",
+      "schema": "bi_corp_staging",
+      "source": "RIO78 Mobile Banking Individuos",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Tabla que contiene todas las transacciones disponibles a loguear en la tabla estadisitcas",
+      "columns": [
+        {
+          "name": "TRANSACCION",
+          "title": "TRANSACCION",
+          "description": "Identificación de la operación",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Descripción de la operación",
+          "type": "VARCHAR2(100 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 100.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODULO",
+          "title": "MODULO",
+          "description": "Módulo al que corresponde la operación",
+          "type": "VARCHAR2(1 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "HABILITADO",
+          "title": "HABILITADO",
+          "description": "Estado de la operación",
+          "type": "NUMBER(1,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "file": "es_series",
+  "location": "/santander/bi-corp/landing/bcra/dim/tabt0006/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/dim/tabt0006",
+  "header": false,
+  "parquetFiles": 1,
+  "createTable": "bi_corp_staging.bcra_tabt0006",
+  "extension": "csv",
+  "delimiter": ";",
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "tabt0006_cod_titulo",
+          "type": "string"
+        },
+        {
+          "name": "tabt0006_descripcion",
+          "type": "string"
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio35_tmp2_sorpresa_cascada_hist ;

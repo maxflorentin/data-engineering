@@ -1,0 +1,139 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_grupos",
+      "title": "Contiene el maestro de grupos",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Contiene el maestro de grupos",
+      "columns": [
+        {
+          "name": "C_GRUPORH",
+          "title": "C_GRUPORH",
+          "description": "Código del grupo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USU_RESP",
+          "title": "C_USU_RESP",
+          "description": "Código del usuario en SLC (RH_USUARIOS, C_USUARIORH) del responsable del grupo actual (no guarda históricos)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_NEGOCIORH",
+          "title": "C_NEGOCIORH",
+          "description": "Código del negocio al que pertenece el grupo (no guarda histórico de cambio Negocio/grupo)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_GRUPO",
+          "title": "D_GRUPO",
+          "description": "Descripción del grupo",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_MODO",
+          "title": "C_MODO",
+          "description": "Indica la modalidad del grupo (IN, OUT, IN/OUT) relacionado con la tabla RH_MODOS",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "I_COMISIONA",
+          "title": "I_COMISIONA",
+          "description": "Indica si el grupo debe aparecer en los reportes de comisiones",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_ALTA",
+          "title": "F_ALTA",
+          "description": "Fecha de alta del grupo",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "F_BAJA",
+          "title": "F_BAJA",
+          "description": "Fecha de baja del grupo",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "I_ACTIVO",
+          "title": "I_ACTIVO",
+          "description": "Indica si el grupo está activo (no tiene baja)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "I_AUSENTISMO",
+          "title": "I_AUSENTISMO",
+          "description": "Indica si el grupo debe aparecer en los reportes de Ausentismo",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+name: LOAD_CMN_MORA_History
+description: 'Load Daily Mora in Common Layer'
+owner: BI-Corp
+active: true
+start_date: '2020-10-01'
+end_date: '2021-03-01'
+catchup: True
+schedule_interval: '15 12 * * 1-5'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: COMMON_LoadTable_stk_mora_404
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/mora/stk_mora_404/ETL-LOAD-stk_mora_404_h.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mjourdan@santandertecnologia.com.ar]

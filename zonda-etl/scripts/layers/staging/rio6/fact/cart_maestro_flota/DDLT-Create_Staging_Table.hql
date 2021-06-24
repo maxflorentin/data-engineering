@@ -1,0 +1,52 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.rio6_cart_maestro_flota(
+    camf_capj_cd_sucursal            string,
+    camf_nu_flota                    string,
+    camf_fe_cotizacion               string,
+    camf_cacn_cd_nacionalidad        string,
+    camf_cacn_nu_cedula_rif          string,
+    camf_nombre_cliente              string,
+    camf_apellido_cliente            string,
+    camf_fe_nac                      string,
+    camf_cacn_direc                  string,
+    camf_cjiv_cd_categoria           string,
+    camf_mt_premio                   string,
+    camf_caae_cd_actividad           string,
+    camf_caes_cd_estado              string,
+    camf_caci_cd_ciudad              string,
+    camf_cazp_zn_postal              string,
+    camf_nu_telefono                 string,
+    camf_caus_cd_usuario             string,
+    camf_de_empresa                  string,
+    camf_cd_relacionamiento          string,
+    camf_caae_cd_indole_categoria    string,
+    camf_fe_status                   string,
+    camf_carp_cd_ramo                string,
+    camf_camo_cd_moneda              string,
+    camf_de_cuenta_debito            string,
+    camf_de_siniestralidad           string,
+    camf_st_flota                    string,
+    camf_capo_nu_poliza              string,
+    camf_nm_contacto                 string,
+    camf_cacm_cd_compania            string,
+    camf_cace_cd_suc_debito          string,
+    camf_st_orden                    string,
+    camf_cia_aseguradora             string,
+    camf_fe_envio                    string,
+    camf_causa_anulacion             string,
+    camf_fe_desde                    string,
+    camf_fe_hasta                    string,
+    camf_nu_prestamo                 string,
+    camf_fe_vig_prestamo             string,
+    camf_cuotas_prestamo             string,
+    camf_nm_firmante                 string,
+    camf_nu_doc_firmante             string,
+    camf_nu_tel_firmante             string,
+    camf_dir_email_firmante          string,
+    camf_personeria_firmante         string
+)
+
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '${DATA_LAKE_SERVER}/santander/bi-corp/staging/rio6/fact/cart_maestro_flota';

@@ -1,0 +1,70 @@
+{
+	"file": "ac_tx_presentadas_schema",
+	"location": "/santander/bi-corp/landing/rio170/fact/ac_tx_presentadas/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/fact/ac_tx_presentadas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_ac_tx_presentadas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "fe_proceso",
+			"type": "string"
+		},
+        {
+			"name": "cod_accion_comercial",
+			"type": "string"
+		},
+        {
+			"name": "id_ac_cliente",
+			"type": "string"
+		},
+        {
+			"name": "cod_canal",
+			"type": "string"
+		},
+        {
+			"name": "cod_seccion",
+			"type": "string"
+		},
+        {
+			"name": "cod_ubicacion",
+			"type": "string"
+		},
+        {
+			"name": "cod_cliente",
+			"type": "string"
+		},
+        {
+			"name": "fe_ult_actualizacion",
+			"type": "string"
+		},
+        {
+			"name": "cod_accion_ejecutada",
+			"type": "string"
+		},
+        {
+			"name": "valor_accion",
+			"type": "string"
+		},
+        {
+			"name": "cod_grupo_ac",
+			"type": "string"
+		},
+		{
+			"name": "delta",
+			"type": "string"
+		}
+	],
+	"extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

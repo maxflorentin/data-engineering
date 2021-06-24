@@ -1,0 +1,53 @@
+{
+	"file": "challengecustomer_schema",
+	"location": "/santander/bi-corp/landing/rio265/fact/challengecustomer/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio265/fact/rio265_challengecustomer",
+	"tempDirectory": "/santander/bi-corp/temp/rio265_challengecustomer",
+	"createTable": "bi_corp_staging.rio265_challengecustomer",
+	"extension": "csv",
+	"delimiter": "^",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "id",
+			"type": "string"
+		},
+{
+			"name": "id_challenge",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "expireddate",
+			"type": "string"
+		},
+{
+			"name": "points",
+			"type": "string"
+		},
+{
+			"name": "dateused",
+			"type": "string"
+		},
+{
+			"name": "id_level",
+			"type": "string"
+		},
+{
+			"name": "id_request",
+			"type": "string"
+		}
+	],
+ "mirrorColumns": [{
+  "name": "partition_date",
+  "target": "dateused",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1}]
+}

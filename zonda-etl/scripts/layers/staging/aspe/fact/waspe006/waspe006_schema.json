@@ -1,0 +1,17 @@
+{
+  "file": "waspe006_schema",
+  "location": "/santander/bi-corp/landing/aspe/fact/waspe006/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/aspe/fact/waspe006",
+  "createTable": "bi_corp_staging.aspe_waspe006",
+  "copybook": "waspe006.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

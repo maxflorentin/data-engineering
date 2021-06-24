@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.dim_prem_premiaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_prem_premiacion","cod_prem_solicitud","cod_prem_evento"],
+      "threshold": 0.00
+    },
+
+	{
+      "control_id": "date_format",
+      "field_to_check": ["dt_prem_desde","dt_prem_hasta","dt_prem_asignacion","dt_prem_solicitudalta","dt_prem_solicituddesde","dt_prem_solicitudhasta","dt_prem_ultmodificacion","dt_prem_evedesde","dt_prem_evehasta"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

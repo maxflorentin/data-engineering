@@ -1,0 +1,30 @@
+{
+  "file": "tbl_canal_venta_schema",
+  "location": "/santander/bi-corp/landing/rio226/dim/tbl_canal_venta/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/dim/tbl_canal_venta",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "codigo",
+    "type": "string"
+  },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "marca_activo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

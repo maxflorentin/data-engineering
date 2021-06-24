@@ -1,0 +1,86 @@
+{
+  "file": "cart_coberturas_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_coberturas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_coberturas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cacb_carb_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"cacb_cd_cobertura",
+      "type":"string"
+    },
+    {
+      "name":"cacb_de_cobertura",
+      "type":"string"
+    },
+    {
+      "name":"cacb_carp_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"cacb_caro_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"cacb_mt_maximo",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_sumarizacion",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_cobertura_sub",
+      "type":"string"
+    },
+    {
+      "name":"cacb_de_cobertura1",
+      "type":"string"
+    },
+    {
+      "name":"cacb_de_cobertura2",
+      "type":"string"
+    },
+    {
+      "name":"cacb_de_cobertura3",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_aumento_automatico",
+      "type":"string"
+    },
+    {
+      "name":"cacb_mt_maximo_dolares",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_valida_monto_sin",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_sumapri",
+      "type":"string"
+    },
+    {
+      "name":"cacb_in_restitucion",
+      "type":"string"
+    },
+    {
+      "name":"cacb_cd_producto",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

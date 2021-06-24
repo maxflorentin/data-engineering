@@ -1,0 +1,42 @@
+{
+  "file": "rln_transacciones_schema",
+  "location": "/santander/bi-corp/landing/rio32/dim/rln_transacciones/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/dim/rln_transacciones",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "id",
+    "type": "string"
+  },
+    {
+    "name": "nombre",
+    "type": "string"
+   },
+    {
+      "name": "idfamilia",
+      "type": "string"
+    },
+    {
+      "name": "descripcion",
+      "type": "string"
+    },
+    {
+      "name": "robustecida",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

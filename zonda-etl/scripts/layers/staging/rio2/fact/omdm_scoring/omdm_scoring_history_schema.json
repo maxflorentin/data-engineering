@@ -1,0 +1,53 @@
+{
+  "file": "omdm_scoring_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/history/omdm_scoring/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/omdm_scoring",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 8,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "cod_inqy",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_sec_scoring",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_scorecard",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_final_score",
+                    "type": "string"
+                },
+                {
+                    "name": "cod_score_recomend",
+                    "type": "string"
+                },
+                {
+                    "name": "val_corte_final",
+                    "type": "string"
+                },
+                {
+                    "name": "val_corte_max",
+                    "type": "string"
+                },
+                {
+                    "name": "fec_proceso",
+                    "type": "string"
+                }
+            ],
+      "mirrorColumns": [{
+                  "name": "partition_date",
+                  "type": "date",
+                  "target": "fec_proceso",
+                  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,165 @@
+name: GETNET_REPORT
+description: 'GETNET_REPORT'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 6 * * *'
+start_date: '2020-01-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution_m
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/getnet/merchants_report.hql'
+  - name: report_send_sftp_m
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio61"
+      local_filepath: "$ZONDA_DIR/outbound/getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      remote_filepath: "/RIO61/INTERFACE/getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_m
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+  - name: report_execution_mp
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/getnet_mediopago_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/getnet/mediopago_report.hql'
+  - name: report_send_sftp_mp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio61"
+      local_filepath: "$ZONDA_DIR/outbound/getnet_mediopago_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      remote_filepath: "/RIO61/INTERFACE/getnet_mediopago_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_mp
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/getnet_mediopago_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+  - name: report_execution_d
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/getnet_dongles_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/getnet/dongles_report.hql'
+  - name: report_send_sftp_d
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio61"
+      local_filepath: "$ZONDA_DIR/outbound/getnet_dongles_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      remote_filepath: "/RIO61/INTERFACE/getnet_dongles_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_d
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/getnet_dongles_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+  - name: report_execution_m_rio53
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/pv_getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/getnet/merchants_report_rio53.hql'
+  - name: report_send_sftp_m_rio53
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio53"
+      local_filepath: "$ZONDA_DIR/outbound/pv_getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      remote_filepath: "/RIO53/INTERFACE/pv_getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_m_rio53
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/pv_getnet_merchants_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+  - name: report_execution_t_rio53
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/pv_getnet_transactions_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: '^'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/getnet/transactions_report_rio53.hql'
+  - name: report_send_sftp_t_rio53
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi_rio53"
+      local_filepath: "$ZONDA_DIR/outbound/pv_getnet_transactions_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      remote_filepath: "/RIO53/INTERFACE/pv_getnet_transactions_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE_t_rio53
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/pv_getnet_transactions_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='GETNET_REPORT') }}.txt"
+dependencies:
+  report_execution_m: report_send_sftp_m
+  report_send_sftp_m : EXECUTE_Remove_FILE_m
+  report_execution_mp: report_send_sftp_mp
+  report_send_sftp_mp: EXECUTE_Remove_FILE_mp
+  report_execution_d: report_send_sftp_d
+  report_send_sftp_d: EXECUTE_Remove_FILE_d
+  #EXECUTE_Remove_FILE_m: report_execution_m_rio53
+  report_execution_m_rio53: report_send_sftp_m_rio53
+  report_send_sftp_m_rio53: EXECUTE_Remove_FILE_m_rio53
+  #EXECUTE_Remove_FILE_t: report_execution_t_rio53
+  report_execution_t_rio53: report_send_sftp_t_rio53
+  report_send_sftp_t_rio53: EXECUTE_Remove_FILE_t_rio53
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [gbernardini@santandertecnologia.com.ar,nlask@santandertecnologia.com.ar,msuliano@santandertecnologia.com.ar, gcortina@santandertecnologia.com.ar,fabrodriguez@santandertecnologia.com.ar]

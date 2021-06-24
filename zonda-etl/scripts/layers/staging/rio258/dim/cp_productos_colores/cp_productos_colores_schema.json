@@ -1,0 +1,32 @@
+{
+	"file": "cp_productos_colores_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_productos_colores/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_productos_colores",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_productos_colores",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_color",
+			"type": "string"
+		},
+{
+			"name": "desc_color",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

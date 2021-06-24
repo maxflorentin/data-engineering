@@ -1,0 +1,150 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A204202"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtppr_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "ppr_codigo de plan                           ",
+                    "title": "ppr_codigo de plan                           ",
+                    "description": "CODIGO DE PLAN                           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ppr_codigo de concepto                       ",
+                    "title": "ppr_codigo de concepto                       ",
+                    "description": "CODIGO DE CONCEPTO                       ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ppr_periodo de emision",
+                    "title": "ppr_periodo de emision",
+                    "description": "PERIODO DE EMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0
+                },
+                {
+                    "name": "ppr_soporte de emision",
+                    "title": "ppr_soporte de emision",
+                    "description": "SOPORTE DE EMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0
+                },
+                {
+                    "name": "ppr_fecha desde de vigencia del plan/comision",
+                    "title": "ppr_fecha desde de vigencia del plan/comision",
+                    "description": "FECHA DESDE DE VIGENCIA DEL PLAN/COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "ppr_fecha hasta vigencia del plan/comision",
+                    "title": "ppr_fecha hasta vigencia del plan/comision",
+                    "description": "FECHA HASTA VIGENCIA DEL PLAN/COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "ppr_codigo de la comision asociada        ",
+                    "title": "ppr_codigo de la comision asociada        ",
+                    "description": "CODIGO DE LA COMISION ASOCIADA        ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ppr_entidad de ultima modificacion ",
+                    "title": "ppr_entidad de ultima modificacion ",
+                    "description": "ENTIDAD DE ULTIMA MODIFICACION ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ppr_centro de ultima modificacion ",
+                    "title": "ppr_centro de ultima modificacion ",
+                    "description": "CENTRO DE ULTIMA MODIFICACION ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "ppr_usuario de ultima modificacion ",
+                    "title": "ppr_usuario de ultima modificacion ",
+                    "description": "USUARIO DE ULTIMA MODIFICACION ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "ppr_terminal de ultima modificacion ",
+                    "title": "ppr_terminal de ultima modificacion ",
+                    "description": "TERMINAL DE ULTIMA MODIFICACION ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "ppr_fecha y hora de ultima modificacion ",
+                    "title": "ppr_fecha y hora de ultima modificacion ",
+                    "description": "FECHA Y HORA DE ULTIMA MODIFICACION ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

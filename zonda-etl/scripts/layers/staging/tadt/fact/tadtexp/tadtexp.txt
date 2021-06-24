@@ -1,0 +1,52 @@
+******************************************************************
+      * DCLGEN TABLE(AALD4.TADTEXP)                                    *
+      *        LIBRARY(ACVAMD4.UT005400.CCOBLIB(TAGTEXP))              *
+      *        ACTION(REPLACE)                                         *
+      *        LANGUAGE(COBOL)                                         *
+      *        STRUCTURE(DCL-EXP)                                      *
+      *        APOST                                                   *
+      * ... IS THE DCLGEN COMMAND THAT MADE THE FOLLOWING STATEMENTS   *
+      ******************************************************************
+           EXEC SQL DECLARE TADTEXP TABLE
+           ( ENTIDAD                        CHAR(4) NOT NULL,
+             IMPUESTO                       CHAR(8) NOT NULL,
+             FECHA_VIG_INICIO               DATE NOT NULL,
+             CONJUNTO                       INTEGER NOT NULL,
+             CONDICION                      CHAR(18) NOT NULL,
+             FECHA_VIG_FIN                  DATE NOT NULL,
+             OPERANDO_1                     CHAR(2) NOT NULL,
+             VALOR_ALFA_1                   CHAR(20) NOT NULL,
+             VALOR_NUME_1                   DECIMAL(18, 5) NOT NULL,
+             OPERANDO_2                     CHAR(2) NOT NULL,
+             VALOR_ALFA_2                   CHAR(20) NOT NULL,
+             VALOR_NUME_2                   DECIMAL(18, 5) NOT NULL,
+             ENTIDAD_UMO                    CHAR(4) NOT NULL,
+             CENTRO_UMO                     CHAR(4) NOT NULL,
+             NETNAME_UMO                    CHAR(8) NOT NULL,
+             USERID_UMO                     CHAR(8) NOT NULL,
+             TIMEST_UMO                     TIMESTAMP NOT NULL
+           ) END-EXEC.
+      ******************************************************************
+      * COBOL DECLARATION FOR TABLE AALD4.TADTEXP                      *
+      ******************************************************************
+       01  DCL-EXP.
+           10 EXP-ENTIDAD          PIC X(4).
+           10 EXP-IMPUESTO         PIC X(8).
+           10 EXP-FECHA-VIG-INICIO PIC X(10).
+           10 EXP-CONJUNTO         PIC S9(9) USAGE COMP.
+           10 EXP-CONDICION        PIC X(18).
+           10 EXP-FECHA-VIG-FIN    PIC X(10).
+           10 EXP-OPERANDO-1       PIC X(2).
+           10 EXP-VALOR-ALFA-1     PIC X(20).
+           10 EXP-VALOR-NUME-1     PIC S9(13)V9(5) USAGE COMP-3.
+           10 EXP-OPERANDO-2       PIC X(2).
+           10 EXP-VALOR-ALFA-2     PIC X(20).
+           10 EXP-VALOR-NUME-2     PIC S9(13)V9(5) USAGE COMP-3.
+           10 EXP-ENTIDAD-UMO      PIC X(4).
+           10 EXP-CENTRO-UMO       PIC X(4).
+           10 EXP-NETNAME-UMO      PIC X(8).
+           10 EXP-USERID-UMO       PIC X(8).
+           10 EXP-TIMEST-UMO       PIC X(26).
+      ******************************************************************
+      * THE NUMBER OF COLUMNS DESCRIBED BY THIS DECLARATION IS 17      *
+      ******************************************************************

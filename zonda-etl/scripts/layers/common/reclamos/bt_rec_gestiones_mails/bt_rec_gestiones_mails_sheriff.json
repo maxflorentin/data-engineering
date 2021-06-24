@@ -1,0 +1,34 @@
+{
+    "table": "bi_corp_common.bt_rec_gestiones_mails",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_gestion",
+                "cod_rec_orden_estado",
+                "ds_rec_email",
+                "ds_rec_asunto_mail",
+                "ds_rec_texto_mail",
+                "cod_rec_estado_mail",
+                "ts_rec_alta"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_alta",
+                "ts_rec_envio",
+                "ts_rec_modif",
+                "ts_rec_baja"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+            "threshold": 0.01
+        }
+    ]
+}

@@ -1,0 +1,131 @@
+ 01  ACCOUNT-MASTER-RECORD-00.
+     05  AM-KEY-00.
+         10  AM-ACCOUNT-NUMBER-00         PIC X(15).
+         10  AM-RECORD-TYPE-00            PIC X(02).
+         10  AM-CITY-CODE-00              PIC X(04).
+     05  AM-NAME-AND-ADDRESS                     OCCURS  6 TIMES.
+         10  AM-NAME-AND-ADDRESS-LINE     PIC X(35).
+     05  AM-POSTAL-CODE                   PIC X(09).
+     05  AM-ACCOUNT-ABBREVIATION          PIC X(08).
+     05  AM-COUNTRY-CODE                  PIC X(05).
+     05  AM-RESP-COUNTRY-CODE             PIC X(05).
+     05  AM-ACCOUNT-TYPE-CODE             PIC X(02).
+     05  AM-ACCOUNT-CURRENCY-CODE         PIC X(03).
+     05  AM-ACCOUNT-WATCH-IND             PIC X(01).
+     05  AM-COMPANY-TYPE-CODE             PIC X(05).
+     05  AM-LINE-OF-BUSINESS-CODE         PIC X(05).
+     05  AM-DDA-INDICATOR                 PIC X(01).
+     05  AM-DDA-ACCOUNT-NUMBER            PIC X(15).
+     05  AM-SAVINGS-ACCOUNT-NUM-INFO.
+         10  AM-SAVINGS-ACCOUNT-NUMBER    PIC X(15).
+         10  AM-SAVINGS-ACCOUNT-CURRENCY  PIC X(03).
+     05  AM-SAVINGS-RE  REDEFINES AM-SAVINGS-ACCOUNT-NUM-INFO.
+         10  AM-SVACT-RE-1                PIC X(06).
+         10  AM-SVACT-RE-2                PIC X(06).
+         10  AM-SVACT-RE-3                PIC X(06).
+     05  AM-TIME-DEP-ACCOUNT-NUM-INFO.
+         10  AM-TIME-DEP-ACCOUNT-NUMBER   PIC X(15).
+         10  AM-TIME-DEP-ACCOUNT-CURRENCY PIC X(03).
+     05  AM-TIME-DEP-RE  REDEFINES AM-TIME-DEP-ACCOUNT-NUM-INFO.
+         10  AM-TDACT-RE-1                PIC X(08).
+         10  AM-TDACT-RE-2                PIC X(08).
+         10  AM-TDACT-RE-3                PIC X(02).
+     05  AM-PARENT-SUBSIDIARY-IND         PIC X(01).
+     05  AM-PARENT-ACCOUNT-NUMBER         PIC X(15).
+     05  AM-DUNN-AND-BRAD-NUMBER          PIC X(15).
+     05  AM-L-C-WORKER-CODE               PIC X(03).
+     05  AM-OFFICER-CODE                  PIC X(03).
+     05  AM-OFFICER-CODE-NO REDEFINES AM-OFFICER-CODE
+                                          PIC 9(05)        COMP-3.
+     05  AM-LAST-ACTIVITY-STAMP           PIC 9(13)        COMP-3.
+     05  AM-WHOLESALE-RETAIL-IND          PIC X(01).
+     05  AM-SUB-ACCOUNT-NUMBER            PIC X(03).
+     05  AM-GROUP-CODE                    PIC X(01).
+     05  AM-BRANCH-IND                    PIC X(01).
+     05  AM-BRANCH-IDENT                  PIC X(03).
+     05  AM-ADVISING-BANK-IND             PIC X(01).
+     05  AM-BENEFICIARY-IND               PIC X(01).
+     05  AM-CUSTOMER-IND                  PIC X(01).
+     05  AM-ACCOUNT-PARTY-IND             PIC X(01).
+     05  AM-NOSTRO-IND                    PIC X(01).
+     05  AM-PUBLIC-PRIVATE-IND            PIC X(01).
+     05  AM-ALL-SAME-STANDING-INSTR-IND   PIC X(01).
+     05  AM-ADV-BNK-STANDING-INSTR-IND    PIC X(01).
+     05  AM-BENEFIC-STANDING-INSTR-IND    PIC X(01).
+     05  AM-CUSTOMER-STANDING-INSTR-IND   PIC X(01).
+     05  AM-NEGOTIATING-BANK-CHARGES      PIC X(01).
+     05  AM-WRKR-LOCATION                 PIC X(06).
+     05  AM-CUST-ANALYSIS                 PIC X(01).
+     05  AM-SWIFT-AUTH                    PIC X(01).
+     05  AM-CLS-NUMBER                    PIC X(15).
+     05  AM-CLS-RE REDEFINES AM-CLS-NUMBER.
+         10  AM-CLS-RE-1                  PIC X(08).
+         10  AM-CLS-RE-2                  PIC X(07).
+     05  AM-CIF-ACCOUNT-NUMBER            PIC X(15).
+     05  AM-CIF-RE REDEFINES AM-CIF-ACCOUNT-NUMBER.
+         10  AM-CFACT-RE-1                  PIC X(08).
+         10  AM-CFACT-RE-2                  PIC X(07).
+     05  AM-L-C-NUMBER-BLOCK-IND          PIC X(01).
+     05  AM-L-C-NUMBER-BLOCK-TABLE               OCCURS  2 TIMES.
+         10  AM-LC-START-BLOCK-NO         PIC S9(06)       COMP-3.
+         10  AM-LC-END-BLOCK-NO           PIC S9(06)       COMP-3.
+     05  AM-STANDARD-COMM-IND             PIC X(01).
+     05  AM-STANDARD-LETTER-IND           PIC X(01).
+     05  AM-STANDARD-LETTER-ARRAY                OCCURS  9 TIMES.
+         10  AM-STD-LTR-IND               PIC X(01).
+         10  AM-STD-LTR-NO                PIC X(08).
+     05  AM-OFFERING-REQUIRED-IND         PIC X(01).
+     05  AM-OFFERING-LIMIT-AMOUNT         PIC S9(05)       COMP-3.
+     05  AM-REGION-CODE                   PIC X(03).
+     05  AM-AREA-CODE                     PIC X(03).
+     05  AM-DISTRICT-CODE                 PIC X(02).
+     05  AM-COST-CENTER-CODE              PIC X(04).
+     05  AM-COST-CENTER-NO REDEFINES AM-COST-CENTER-CODE
+                                          PIC 9(07)        COMP-3.
+     05  AM-DIVISION-CODE                 PIC X(04).
+     05  AM-SIC-CODE                      PIC X(05).
+     05  AM-EPG-CODE                      PIC X(05).
+     05  AM-MARKET-SEGMENT                PIC X(03).
+     05  AM-TAX-PAYER-ID                  PIC X(09).
+     05  AM-LOAN-ID                       PIC X(10).
+     05  AM-TELEX-TESTING-IND             PIC X(01).
+     05  AM-TELEX-COUNTRY-CODE            PIC X(05).
+     05  AM-TELEX-NUMBER                  PIC X(11).
+     05  AM-TELEX-ANSWER-BACK             PIC X(16).
+     05  AM-DEBIT-CODE                    PIC X(05).
+     05  AM-CREDIT-CODE                   PIC X(05).
+     05  AM-CASH-COLLAT-CREDIT-CODE       PIC X(05).
+     05  AM-CASH-COLLAT-ACCOUNT-NO        PIC X(15).
+     05  AM-CASH-COLLAT-CURRENCY-CODE     PIC X(03).
+     05  AM-CABLE-NUMBER                  PIC X(15).
+     05  AM-CABEX-ADDRESS                 PIC X(10).
+     05  AM-SWIFT-AUTH-IND                PIC X(01).
+     05  AM-SWIFT-IDENT                   PIC X(12).
+     05  AM-CHIPS-IDENT                   PIC X(06).
+     05  AM-IVA-BLUE-DATE
+             REDEFINES AM-CHIPS-IDENT     PIC S9(07) COMP-3.
+     05  AM-BANK-WIRE-IND                 PIC X(01).
+     05  AM-BANK-WIRE-IDENT               PIC X(08).
+     05  AM-ADEQVACY-CODE         REDEFINES AM-BANK-WIRE-IDENT.
+         10  AM-CAP-ADQ-CODE              PIC X(04).
+         10  FILLER                       PIC X(04).
+     05  AM-FED-WIRE-IND                  PIC X(01).
+     05  AM-FED-WIRE-ID-NUMBER            PIC X(14).
+     05  AM-LC-CREDIT-LINE-AMOUNT         PIC S9(11)V99    COMP-3.
+     05  AM-LC-CREDIT-LINE-USED           PIC S9(11)V99    COMP-3.
+     05  AM-LC-CREDIT-EXPIRY-DATE         PIC S9(07)       COMP-3.
+     05  AM-BA-CREDIT-LINE-AMOUNT         PIC S9(11)V99    COMP-3.
+     05  AM-BA-CREDIT-LINE-USED           PIC S9(11)V99    COMP-3.
+     05  AM-BA-CREDIT-EXPIRY-DATE         PIC S9(07)       COMP-3.
+     05  AM-NEW-FIELDS.
+         10  AM-CASH-COLLAT-PCT           PIC S9(03)V99.
+         10  AM-DOC-REQ-LTR               PIC X(08).
+         10  AM-SPC-CON-LTR               PIC X(08).
+         10  AM-COMMISSION-GROUP          PIC X(01).
+         10  AM-COMMISSION-CHARGE-TYPE    PIC X(01).
+         10  AM-COLLECTION-LOCATION-CODE  PIC X(06).
+         10  AM-ACCOUNT-USE-IND           PIC X.
+         10  AM-ACCT-FROM-EXTERNAL-SYS-IND PIC X.
+         10  AM-BENE-COMMIS-DEBIT-ACCT    PIC X(15).
+         10  AM-BENE-COMMIS-DEBIT-CURR    PIC X(03).
+         10  FILLER                       PIC X(01).

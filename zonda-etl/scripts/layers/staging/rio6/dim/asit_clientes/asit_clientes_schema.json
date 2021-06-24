@@ -1,0 +1,85 @@
+{
+  "file": "asit_clientes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_clientes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_clientes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"ascl_tp_documento",
+      "type": "string"
+    },
+    {
+      "name":"ascl_nu_documento",
+      "type":"string"
+    },
+    {
+      "name":"ascl_apellido",
+      "type":"string"
+    },
+    {
+      "name":"ascl_nombre",
+      "type":"string"
+    },
+    {
+      "name":"ascl_nu_cuit_cuil",
+      "type":"string"
+    },
+    {
+      "name":"ascl_nu_telefono",
+      "type":"string"
+    }, {
+      "name":"ascl_sexo",
+      "type": "string"
+    },
+    {
+      "name":"ascl_fe_nacimiento",
+      "type":"string"
+    },
+    {
+      "name":"ascl_cd_provincia",
+      "type":"string"
+    },
+    {
+      "name":"ascl_cd_postal",
+      "type":"string"
+    },
+    {
+      "name":"ascl_cd_localidad",
+      "type":"string"
+    },
+    {
+      "name":"ascl_calle",
+      "type":"string"
+    },
+    {
+      "name":"ascl_numero",
+      "type":"string"
+    },
+    {
+      "name":"ascl_piso",
+      "type":"string"
+    },
+    {
+      "name":"ascl_depto",
+      "type":"string"
+    },
+    {
+      "name":"ascl_mail",
+      "type":"string"
+    },
+    {
+      "name":"ascl_nu_nup",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

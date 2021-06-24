@@ -1,0 +1,139 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A305516"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "acse_modulos_fisicos",
+            "title": "Cajas de Seguridad",
+            "schema": "bi_corp_staging",
+            "source": "ACSE",
+            "query": "",
+            "type": "FACT",
+            "description": "Cajas de Seguridad",
+            "columns": [
+                {
+                    "name": "SUCURSAL-CAJA",
+                    "title": "SUCURSAL-CAJA",
+                    "description": "Sucursal caja fisica",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECTOR-CAJA",
+                    "title": "SECTOR-CAJA",
+                    "description": "Sector caja fisica",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUMERO-CAJA",
+                    "title": "NUMERO-CAJA",
+                    "description": "Numero de la caja fisica",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-CAJA",
+                    "title": "TIPO-CAJA",
+                    "description": "Tipo de caja fisica",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESTADO",
+                    "title": "ESTADO",
+                    "description": "Estado de la caja fisica",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND-OCUPACION",
+                    "title": "IND-OCUPACION",
+                    "description": "Indicador de ocupacion S/N",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-ALTA",
+                    "title": "FECHA-ALTA",
+                    "description": "Fecha de alta modulo fisico",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA-BAJA",
+                    "title": "FECHA-BAJA",
+                    "description": "Fecha de baja modulo fisico",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USUARIO-ULT-ACT",
+                    "title": "USUARIO-ULT-ACT",
+                    "description": "Usuario de ultima actualizacion",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONTRATO",
+                    "title": "CONTRATO",
+                    "description": "Numero de contrato de la caja",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Diario",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

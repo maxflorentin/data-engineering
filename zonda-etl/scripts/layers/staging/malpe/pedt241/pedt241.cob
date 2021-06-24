@@ -1,0 +1,19 @@
+           01  PEDT241.
+               10 PECDGENT     PIC X(4).
+               10 PENUMPER     PIC X(8).
+               10 PENUMREL     PIC X(8).
+               10 PECODREL     PIC X(3).
+               10 PESECCAM     PIC S9(7)V.
+               10 PETIPCAM     PIC X(2).
+               10 PEFECINI     PIC X(10).
+               10 PEFECFIN     PIC X(10).
+               10 PEFECVES     PIC X(10).
+               10 PEPORPAR     PIC S9(3)V9(2).
+               10 PEPORUTI     PIC S9(3)V9(2).
+               10 PERELPRI     PIC X(1).
+               10 PEFECALT     PIC X(10).
+               10 PEUSUALT     PIC X(8).
+               10 PEUSUMOD     PIC X(8).
+               10 PETERMOD     PIC X(4).
+               10 PESUCMOD     PIC X(4).
+               10 PEHSTAMP     PIC X(26).

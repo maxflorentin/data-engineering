@@ -1,0 +1,95 @@
+{
+    "file": "ba_disponibilidad_atm_schema",
+    "createTable": "bi_corp_staging.rio44_ba_disponibilidad_atm",
+    "location": "/santander/bi-corp/landing/rio44/fact/ba_disponibilidad_atm/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/fact/ba_disponibilidad_atm",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "fecha",
+            "type": "string"
+        },
+        {
+            "name": "atm",
+            "type": "string"
+        },
+        {
+            "name": "en_servicio",
+            "type": "string"
+        },
+        {
+            "name": "sin_servicio",
+            "type": "string"
+        },
+        {
+            "name": "hard",
+            "type": "string"
+        },
+        {
+            "name": "suministros",
+            "type": "string"
+        },
+        {
+            "name": "cash_out",
+            "type": "string"
+        },
+        {
+            "name": "comunicacion",
+            "type": "string"
+        },
+        {
+            "name": "host_down",
+            "type": "string"
+        },
+        {
+            "name": "balanceo",
+            "type": "string"
+        },
+        {
+            "name": "mant_prevent",
+            "type": "string"
+        },
+        {
+            "name": "vandalismo",
+            "type": "string"
+        },
+        {
+            "name": "logistica",
+            "type": "string"
+        },
+        {
+            "name": "corte_energia",
+            "type": "string"
+        },
+        {
+            "name": "dispensador",
+            "type": "string"
+        },
+        {
+            "name": "reciclador",
+            "type": "string"
+        },
+        {
+            "name": "deposito",
+            "type": "string"
+        },
+        {
+            "name": "cheques",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

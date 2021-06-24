@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.vstk_amuc_rechazados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_chq_entidad","cod_chq_cuentacheque","cod_chq_nrocheque","cod_suc_sucursal","cod_chq_divisa","cod_chq_cuenta","dt_chq_fecha_rechazo"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_cuentacheque","cod_chq_nrocheque","cod_suc_sucursal","cod_chq_divisa","cod_chq_cuenta","dt_chq_fecha_rechazo"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_chq_entidad","cod_chq_nrocheque","cod_suc_sucursal","cod_chq_divisa","cod_chq_cuenta","cod_chq_producto","dt_chq_fecha_rechazo","dt_chq_fecha_rescate","cod_chq_tipo_persona","ds_chq_firmante1","ds_chq_firmante2","ds_chq_firmante3","ds_chq_firmante4","ds_chq_firmante5","cod_chq_motivo_rechazo","cod_chq_subrechazo","cod_chq_indi_computable","cod_chq_rechazo","fc_chq_monto"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_chq_fecha_rechazo","dt_chq_fecha_rescate"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}

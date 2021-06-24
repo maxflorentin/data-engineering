@@ -1,0 +1,18 @@
+{
+    "name": "Tarjetas_Cuentas-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Cupones_Others-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Tarjetas_Credito_Cuentas-Daily"
+                },
+                {
+                    "dag_id":"LOAD_STG_AFMA_Updates-Daily"
+                }
+    ]
+}

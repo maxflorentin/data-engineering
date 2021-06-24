@@ -1,0 +1,63 @@
+{
+  "file": "mer_operaciones_audit_schema",
+  "location": "/santander/bi-corp/landing/rio4/dim/mer_operaciones_audit/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio4/dim/mer_operaciones_audit",
+  "createTable": "bi_corp_staging.mer_operaciones_audit",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "operador",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha",
+                    "type": "string"
+                },
+                {
+                    "name": "hora",
+                    "type": "string"
+                },
+                {
+                    "name": "accion",
+                    "type": "string"
+                },
+                {
+                    "name": "tabla",
+                    "type": "string"
+                },
+                {
+                    "name": "nroperacion",
+                    "type": "string"
+                },
+                {
+                    "name": "nrcuota",
+                    "type": "string"
+                },
+                {
+                    "name": "campo",
+                    "type": "string"
+                },
+                {
+                    "name": "valor_anterior",
+                    "type": "string"
+                },
+                {
+                    "name": "valor_actual",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

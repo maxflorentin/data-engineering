@@ -1,0 +1,122 @@
+name: LOAD_STG_RORWA_Inputs-Monthly
+description: 'Load data from gdrive - RORWA Inputs'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 5 * * *'
+#start_date: '2020-01-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_param_rorwa_area_negocio_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_area_negocio_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_area_negocio/param_rorwa_area_negocio_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_area_negocio_schema.json']
+  - name: STAGING_param_rorwa_coste_income_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_coste_income_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_coste_income/param_rorwa_coste_income_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_coste_income_schema.json']
+  - name: STAGING_param_rorwa_rel_segmento_adn_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_rel_segmento_adn_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_rel_segmento_adn/param_rorwa_rel_segmento_adn_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_rel_segmento_adn_schema.json']
+  - name: STAGING_param_rorwa_riesgo_encaje_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_riesgo_encaje_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_riesgo_encaje/param_rorwa_riesgo_encaje_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_riesgo_encaje_schema.json']
+  - name: STAGING_param_rorwa_riesgo_operativo_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_riesgo_operativo_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_riesgo_operativo/param_rorwa_riesgo_operativo_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_riesgo_operativo_schema.json']
+  - name: STAGING_param_rorwa_sucursales_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_param_rorwa_sucursales_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/gdrive/param_rorwa_sucursales/param_rorwa_sucursales_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RORWA_Inputs-Monthly') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['param_rorwa_sucursales_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [aleivajacquelin@santandertecnologia.com.ar]

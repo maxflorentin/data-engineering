@@ -1,0 +1,83 @@
+{
+	"file": "mvw_prem_novedades_inversiones_schema",
+	"location": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_inversiones/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/fact/rio102_mvw_prem_novedades_inversiones",
+	"tempDirectory": "/santander/bi-corp/temp/mvw_prem_novedades_inversiones",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "nup",
+			"type": "string"
+		},
+{
+			"name": "tipo_dni",
+			"type": "string"
+		},
+{
+			"name": "dni",
+			"type": "string"
+		},
+{
+			"name": "apellido",
+			"type": "string"
+		},
+{
+			"name": "nombre",
+			"type": "string"
+		},
+{
+			"name": "mail",
+			"type": "string"
+		},
+{
+			"name": "importe",
+			"type": "string"
+		},
+{
+			"name": "fecha_inicial",
+			"type": "string"
+		},
+{
+			"name": "fecha_final",
+			"type": "string"
+		},
+{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "fecha_proc",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "estado",
+			"type": "string"
+		},
+{
+			"name": "observaciones",
+			"type": "string"
+		},
+{
+			"name": "fecha_impacto",
+			"type": "string"
+		},
+{
+			"name": "estado_impacto",
+			"type": "string"
+		},
+		{
+			"name": "id_evento",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,172 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_interaccion_transaccion",
+      "title": "Se guarda cada transaccion que se genera dentro de una interaccion. Hoy en dia guardamos invocaciones a servicios IATX y WS (ya sea solo para consultar informacion o generar una transaccion)",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Se guarda cada transaccion que se genera dentro de una interaccion. Hoy en dia guardamos invocaciones a servicios IATX y WS (ya sea solo para consultar informacion o generar una transaccion)",
+      "columns": [
+        {
+          "name": "CD_INTERACCION                 ",
+          "title": "CD_INTERACCION                 ",
+          "description": "cd_interaccion de tbl_interaccion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "ID_TRANSACCION                 ",
+          "title": "ID_TRANSACCION                 ",
+          "description": "PK secuencia numerica",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "NUMERO_OPERACION               ",
+          "title": "NUMERO_OPERACION               ",
+          "description": "numero que devuelve el servicio luego de ejecutar la transaccion",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 18.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DATOS                          ",
+          "title": "DATOS                          ",
+          "description": "json con request response de la transaccion",
+          "type": "CLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MARCA_REVERSADO                ",
+          "title": "MARCA_REVERSADO                ",
+          "description": "S o N si se reverso o no la transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MARCA_OPERACION_EXITOSA        ",
+          "title": "MARCA_OPERACION_EXITOSA        ",
+          "description": "S o N si fue exitosa o no la transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NOMBRE_SERVICIO                ",
+          "title": "NOMBRE_SERVICIO                ",
+          "description": "nombre del servicio invocado (tbl_servicio)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 100.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ID_TRANSACCION_REVERSADO       ",
+          "title": "ID_TRANSACCION_REVERSADO       ",
+          "description": "siempre vacio (se iba a usar para guardar el ID_TRANSACCION de la transaccion de reversa, pero hoy en dia no se guardan transacciones de reversa)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": "*",
+
+          "security": "Publico"                },
+        {
+          "name": "FECHA_MODIFICACION             ",
+          "title": "FECHA_MODIFICACION             ",
+          "description": "timestamp que se inserto el registro",
+          "type": "TIMESTAMP",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 6.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPO_OPERACION                 ",
+          "title": "TIPO_OPERACION                 ",
+          "description": "tipo de transaccion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MARCA_REVERSABLE               ",
+          "title": "MARCA_REVERSABLE               ",
+          "description": "si la transaccion puede ser reversable o no",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ID_SERVICIO                    ",
+          "title": "ID_SERVICIO                    ",
+          "description": "id del servicio invocado (tbl_servicio)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 500.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ID_TRACKEO_TRANSACCION         ",
+          "title": "ID_TRACKEO_TRANSACCION         ",
+          "description": "siempre null",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": "*",
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

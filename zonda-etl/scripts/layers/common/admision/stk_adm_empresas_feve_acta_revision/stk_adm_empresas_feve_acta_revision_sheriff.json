@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_feve_acta_revision",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_numero_acta"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_numero_acta"],
+      "threshold": 0.0005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_creacion","dt_adm_modificacion","dt_adm_realizacion"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+	  ]
+}
+

@@ -1,0 +1,61 @@
+{
+  "file": "ccfg_campaign_schema",
+  "location": "/santander/bi-corp/landing/rio46/dim/cfg_campaign/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio46/dim/cfg_campaign",
+  "tempDirectory": "/santander/bi-corp/temp/rio46",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "dbid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_dbid",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "script_dbid",
+      "type": "string"
+
+    },
+    {
+      "name": "state",
+      "type": "string"
+    },
+    {
+      "name": "csid",
+      "type": "string"
+    },
+    {
+      "name": "tenant_csid",
+      "type": "string"
+    },
+    {
+      "name": "script_csid",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+
+
+}

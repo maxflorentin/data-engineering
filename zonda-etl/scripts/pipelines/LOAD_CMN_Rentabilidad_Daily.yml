@@ -1,0 +1,167 @@
+name: LOAD_CMN_Rentabilidad_Daily
+description: 'Load in Common Data from Rentabilidad'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+start_date: '2020-09-10'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: bi_corp_common.stk_per_personas,bi_corp_staging.rio157_ms0_dm_dwh_area_negocio_ctr,bi_corp_staging.rio157_ms0_dm_dwh_bca_corp_,bi_corp_staging.rio157_ms0_dm_dwh_centro_,bi_corp_staging.rio157_ms0_dm_dwh_cobrabilidad_,bi_corp_staging.rio157_ms0_dm_dwh_cta_resultados_ctr,bi_corp_staging.rio157_ms0_dm_dwh_entidad_juridica_,bi_corp_staging.rio157_ms0_dm_dwh_gestor_,bi_corp_staging.rio157_ms0_dm_dwh_grupos_globales_,bi_corp_staging.rio157_ms0_dm_dwh_oficina,bi_corp_staging.rio157_ms0_dm_dwh_productos_ctr,bi_corp_staging.rio157_ms0_dm_dwh_tipo_ajuste_,bi_corp_staging.rio157_ms0_dm_je_dwh_area_negocio_ctr
+tasks:
+  - name: CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_areanegocioctr/DDLT-dim_ren_areanegocioctr.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_bcacorp/DDLT-dim_ren_bcacorp.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_centro/DDLT-dim_ren_centro.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_cobrabilidad/DDLT-dim_ren_cobrabilidad.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_ctaresultadosctr/DDLT-dim_ren_ctaresultadosctr.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_entidadjuridica/DDLT-dim_ren_entidadjuridica.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_gestor/DDLT-dim_ren_gestor.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_gruposglobales/DDLT-dim_ren_gruposglobales.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_oficinas/DDLT-dim_ren_oficinas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_productosctrco/DDLT-dim_ren_productosctrco.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_productosctrldn/DDLT-dim_ren_productosctrldn.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_tipoajuste/DDLT-dim_ren_tipoajuste.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_jeareanegocioctr/DDLT-dim_ren_jeareanegocioctr.hql' 
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/bt_ren_result_dia/DDLT-bt_ren_result_dia.hql'
+  - name: InsertPartition_dim_ren_areanegocioctr
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_areanegocioctr/ETLV-dim_ren_areanegocioctr.hql'
+  - name: InsertPartition_dim_ren_bcacorp
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_bcacorp/ETLV-dim_ren_bcacorp.hql'
+  - name: InsertPartition_dim_ren_centro
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_centro/ETLV-dim_ren_centro.hql'
+  - name: InsertPartition_dim_ren_cobrabilidad
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_cobrabilidad/ETLV-dim_ren_cobrabilidad.hql'
+  - name: InsertPartition_dim_ren_ctaresultadosctr
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_ctaresultadosctr/ETLV-dim_ren_ctaresultadosctr.hql'
+  - name: InsertPartition_dim_ren_entidadjuridica
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_entidadjuridica/ETLV-dim_ren_entidadjuridica.hql'
+  - name: InsertPartition_dim_ren_gestor
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_gestor/ETLV-dim_ren_gestor.hql'
+  - name: InsertPartition_dim_ren_gruposglobales
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_gruposglobales/ETLV-dim_ren_gruposglobales.hql'
+  - name: InsertPartition_dim_ren_oficinas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_oficinas/ETLV-dim_ren_oficinas.hql'
+  - name: InsertPartition_dim_ren_productosctrco
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_productosctrco/ETLV-dim_ren_productosctrco.hql'
+  - name: InsertPartition_dim_ren_productosctrldn
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_productosctrldn/ETLV-dim_ren_productosctrldn.hql'
+  - name: InsertPartition_dim_ren_tipoajuste
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_tipoajuste/ETLV-dim_ren_tipoajuste.hql'
+  - name: InsertPartition_dim_ren_jeareanegocioctr
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/dim_ren_jeareanegocioctr/ETLV-dim_ren_jeareanegocioctr.hql'
+  - name: InsertPartition_bt_ren_result_dia
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/rentabilidad/bt_ren_result_dia/ETLV-bt_ren_result_dia.hql'
+dependencies:
+  CreateTables: [InsertPartition_dim_ren_centro,InsertPartition_dim_ren_gruposglobales,InsertPartition_dim_ren_oficinas,InsertPartition_dim_ren_bcacorp,InsertPartition_dim_ren_cobrabilidad,InsertPartition_dim_ren_bcacorp,InsertPartition_dim_ren_tipoajuste,InsertPartition_dim_ren_gestor]
+  InsertPartition_dim_ren_bcacorp: [InsertPartition_dim_ren_entidadjuridica,InsertPartition_dim_ren_areanegocioctr,InsertPartition_dim_ren_ctaresultadosctr,InsertPartition_dim_ren_productosctrco,InsertPartition_dim_ren_productosctrldn,InsertPartition_dim_ren_jeareanegocioctr]
+  InsertPartition_dim_ren_ctaresultadosctr: InsertPartition_bt_ren_result_dia
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [aleivajacquelin@santandertecnologia.com.ar,maflorentin@santandertecnologia.com.ar]

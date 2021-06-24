@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_garantias_operacion",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_penumper","int_adm_secu_f487","int_adm_secu_garan_ope","cod_adm_gartia","fc_adm_monto_garantia"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_penumper","int_adm_secu_f487","int_adm_secu_garan_ope","cod_adm_gartia","ds_adm_peusualt","ts_adm_pefecalt","ds_adm_tipo"],
+      "threshold": 0.0005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_pefecalt","ts_adm_pefecmod"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

@@ -1,0 +1,127 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A220615"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "triad_col_trdflduk",
+            "title": "Informacion de Claves definidas por negocio (UK) en linkage de salida de TRIAD.",
+            "schema": "bi_corp_staging",
+            "source": "AATR",
+            "type": "FACT",
+            "description": "Informacion de Claves definidas por negocio (UK) en linkage de salida de TRIAD.",
+            "columns": [
+                {
+                    "name": "DUK_LENGTH",
+                    "title": "DUK_LENGTH",
+                    "description": "Rec length",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_TENANT_ID",
+                    "title": "DUK_TENANT-ID",
+                    "description": "Tenant ID",
+                    "type": "BINARY",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_CUSTOMER_ID",
+                    "title": "DUK_CUSTOMER-ID",
+                    "description": "Customer ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_REC_ID",
+                    "title": "DUK_REC-ID",
+                    "description": "Rec ID",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_REC_ID_NUM",
+                    "title": "DUK_REC-ID-NUM",
+                    "description": "Rec ID NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_REC_SEQ_NUM",
+                    "title": "DUK_REC-SEQ-NUM",
+                    "description": "Seq NUM",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_USER_KEYS_USED",
+                    "title": "DUK_USER-KEYS-USED",
+                    "description": "Cantidad de user-defined keys",
+                    "type": "DECIMAL",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_USR_USER_DEFINED_KEY",
+                    "title": "DUK_USER-DEFINED-KEY",
+                    "description": "Claves User-defined\n>>DUK_USER-DEFINED-KEY-N\tClave(i) i=1 a 483",
+                    "type": "STRUCT",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1932,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DUK_USR_ACCOUNT_ID_SEG_CO",
+                    "title": "DUK_ACCOUNT-ID-SEG-CO",
+                    "description": "Contrato del segmento CO",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

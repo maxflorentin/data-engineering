@@ -1,0 +1,50 @@
+{
+  "file": "padron",
+  "location": "/santander/bi-corp/landing/bcra/fact/padron/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/fact/padron",
+  "createTable": "bi_corp_staging.bcra_padron",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+        {
+          "name": "cuit",
+          "type": "string",
+          "width": 11
+        },
+        {
+          "name": "denominacion",
+          "type": "string",
+          "width":  160
+        },
+        {
+          "name": "actividad",
+          "type": "string",
+          "width":  6
+        },
+        {
+          "name": "marca_baja",
+          "type": "string",
+          "width":  1
+        },
+        {
+          "name": "cuit_reemplazo",
+          "type": "string",
+          "width":  11
+        },
+        {
+          "name": "fallecimiento",
+          "type": "string",
+          "width":  1
+        }
+  ],
+  "extraColumns": [
+        {
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date_filter}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+        }
+  ]
+}

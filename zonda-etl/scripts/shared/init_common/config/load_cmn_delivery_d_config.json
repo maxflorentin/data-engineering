@@ -1,0 +1,15 @@
+{
+  "name": "Delivery-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_RIO258-Delivery-Daily",
+      "tasks": ["STAGING_HIVE_msck_repair_SHIPPING_EVENT","STAGING_HIVE_msck_repair_SHIPPING_COMPONENT","STAGING_HIVE_msck_repair_SHIPPING","STAGING_HIVE_msck_repair_CP_ENVIOS_ESTADOS","STAGING_HIVE_msck_repair_CP_ENVIOS"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Delivery-Daily"
+    }
+  ]
+}

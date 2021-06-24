@@ -1,0 +1,106 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307849"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "asgi_alta_reset",
+      "title": "Alta y Reset claves",
+      "schema": "bi_corp_staging",
+      "source": "ASGI",
+      "query": "",
+      "type": "FACT",
+      "description": "Alta y Reset claves",
+      "columns": [
+        {
+          "name": "FUNCION",
+          "title": "FUNCION",
+          "description": "ALTA O RESET",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 5.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUTORIZACION_1",
+          "title": "AUTORIZACION_1",
+          "description": "NIVEL AUT 1",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "AUTORIZACION_2",
+          "title": "AUTORIZACION_2",
+          "description": "NIVEL AUT 2",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NÚMERO PERSONA",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "FECHA ALTA O RESET",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "HORA",
+          "title": "HORA",
+          "description": "HORA ALTA O RESET",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "RETORNO",
+          "title": "RETORNO",
+          "description": "CÓD RESPUESTA",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

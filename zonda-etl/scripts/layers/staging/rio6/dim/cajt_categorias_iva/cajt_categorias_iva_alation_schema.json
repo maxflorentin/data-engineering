@@ -1,0 +1,71 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cajt_categorias_iva",
+            "title": "Categorías de IVA",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Categorías de IVA",
+            "columns": [
+                {
+                    "name": "CJIV_CD_CATEGORIA_IVA",
+                    "title": "CJIV_CD_CATEGORIA_IVA",
+                    "description": "Código de la categoría del IVA",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CJIV_DE_CATEGORIA_IVA",
+                    "title": "CJIV_DE_CATEGORIA_IVA",
+                    "description": "Descripción de la categoría del IVA",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CJIV_TP_FACTURA",
+                    "title": "CJIV_TP_FACTURA",
+                    "description": "Tipo de factura",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CJIV_CATEGORIA_AFIP",
+                    "title": "CJIV_CATEGORIA_AFIP",
+                    "description": "Código de la categoría del IVA de la AFIP",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

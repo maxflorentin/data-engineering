@@ -1,0 +1,84 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A288378"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "scoring_omdm_respuesta_tramites",
+            "title": "Tabla referente a las variables resultantes del procesamiento de solicitudes por el motor de admision (OMDM).",
+            "schema": "bi_corp_staging",
+            "source": "omdm_respuesta_tramites",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla referente a las variables resultantes del procesamiento de solicitudes por el motor de admision (OMDM).",
+            "columns": [
+                {
+                    "name": "TIPO_TRAMITE",
+                    "title": "TIPO_TRAMITE",
+                    "description": "Identificacion del modulo asociado al procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_TRAMITE",
+                    "title": "COD_TRAMITE",
+                    "description": "Codigo de identificacion de la solicitud procesada.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CAMPO",
+                    "title": "COD_CAMPO",
+                    "description": "Identificador del nombre las variables resultantes del procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VALOR",
+                    "title": "VALOR",
+                    "description": "Identificador del valor de las variables resultantes del procesamiento de solicitudes.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_PROCESO",
+                    "title": "FEC_PROCESO",
+                    "description": "Fecha de proceso",
+                    "type": "VARCHAR3",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DAILY",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

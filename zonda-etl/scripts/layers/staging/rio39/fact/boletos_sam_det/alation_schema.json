@@ -1,0 +1,195 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_boletos_sam_det",
+      "title": "boletos detalle",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/boletos_sam_det/",
+      "type": "fact",
+      "description": "Contiene información adicional de Boletos de compra/venta",
+      "columns":
+               [
+                {
+                  "name": "id_bol",
+                  "title": "id_bol",
+                  "description": "id del boleto",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 8,
+                  "security": "Público"
+                },
+                {
+                  "name": "importe",
+                  "title": "importe",
+                  "description": "importe   ",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "conceptobcra",
+                  "title": "conceptobcra",
+                  "description": "concepto bcra",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 6,
+                  "security": "Público"
+                },
+                {
+                  "name": "permiso_embarque",
+                  "title": "permiso_embarque",
+                  "description": "permiso de embarque",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "id_det",
+                  "title": "id_det",
+                  "description": "id detalle",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_embarque",
+                  "title": "fecha_embarque",
+                  "description": "fecha de embarque",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "djai",
+                  "title": "djai",
+                  "description": "djai",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 16,
+                  "security": "Público"
+                },
+                {
+                  "name": "djai_excep",
+                  "title": "djai_excep",
+                  "description": "djai excep",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "acumula_saldo",
+                  "title": "acumula_saldo",
+                  "description": "marca si acumula saldo",
+                  "type": "char",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "tipo_dec",
+                  "title": "tipo_dec",
+                  "description": "tipo dec",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "cod_observacion",
+                  "title": "cod_observacion",
+                  "description": "codigo de observacion",
+                  "type": "number",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "observacion",
+                  "title": "observacion",
+                  "description": "observacion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 2000,
+                  "security": "Público"
+                },
+                {
+                  "name": "fecha_venc",
+                  "title": "fecha_venc",
+                  "description": "fecha de vencimiento",
+                  "type": "date",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "gestion_cobro",
+                  "title": "gestion_cobro",
+                  "description": "marca gestion cobro",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 1,
+                  "security": "Público"
+                },
+                {
+                  "name": "bs_pos_aranc",
+                  "title": "bs_pos_aranc",
+                  "description": "posicion arancelaria",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 30,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

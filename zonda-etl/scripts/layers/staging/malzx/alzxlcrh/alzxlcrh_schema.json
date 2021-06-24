@@ -1,0 +1,86 @@
+{
+        "file": "alzxlcrh_cheques",
+        "location": "/santander/bi-corp/landing/malzx/fact/alzxlcrh/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzx/fact/alzxlcrh",
+		"createTable": "bi_corp_staging.malzx_alzxlcrh",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": 
+					[
+					  {
+					    "name": "tpo_rechazo",
+					    "type": "string",
+					    "width": 3
+					  },
+					  {
+					    "name": "cod_rechazo",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "des_rechazo_cli",
+					    "type": "string",
+					    "width": 100
+					  },
+					  {
+					    "name": "des_rechazo_ofc",
+					    "type": "string",
+					    "width": 100
+					  },
+					  {
+					    "name": "cod_estado",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "cod_prod",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "cod_subprod",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "tim_alta",
+					    "type": "string",
+					    "width": 26
+					  },
+					  {
+					    "name": "ide_user_alta",
+					    "type": "string",
+					    "width": 8
+					  },
+					  {
+					    "name": "ide_term_alta",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "tim_ult_modf",
+					    "type": "string",
+					    "width": 26
+					  },
+					  {
+					    "name": "ide_user_ult_modf",
+					    "type": "string",
+					    "width": 8
+					  },
+					  {
+					    "name": "ide_term_ult_modf",
+					    "type": "string",
+					    "width": 4
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,31 @@
+{
+    "name": "Recuperaciones_GarraMoria-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Garra-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MORIA-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Garra_WAGUCDEX-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_MALPE_POST_BATCH-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_BDR_Rosetta_Risk_tables",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_RECUPERACIONES_GarraMoria-Daily"
+                }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+	"file": "admision_canales_de_venta",
+	"location": "/santander/bi-corp/landing/sql5/dim/admision_canales_de_venta/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_admision_canales_de_venta",
+	"createTable": "bi_corp_staging.risksql5_admision_canales_de_venta",
+	"extension": "csv",
+	"delimiter": ";",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns":
+[
+  {
+    "name": "codigo",
+    "type": "string"
+  },
+  {
+    "name": "descripcion",
+    "type": "string"
+  },
+  {
+    "name": "agrupador",
+    "type": "string"
+  },
+  {
+    "name": "tipo",
+    "type": "string"
+  },
+  {
+    "name": "activo",
+    "type": "string"
+  },
+  {
+    "name": "fecha_alta",
+    "type": "string"
+  },
+  {
+    "name": "fecha_baja",
+    "type": "string"
+  }
+],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

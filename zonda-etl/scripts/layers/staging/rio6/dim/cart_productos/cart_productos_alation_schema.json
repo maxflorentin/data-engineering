@@ -1,0 +1,610 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_productos",
+            "title": "Productos de Seguros",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Productos de Seguros",
+            "columns": [
+                {
+                    "name": "CAPU_CARP_CD_RAMO",
+                    "title": "CAPU_CARP_CD_RAMO",
+                    "description": "Codigo de Ramo",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CD_PRODUCTO",
+                    "title": "CAPU_CD_PRODUCTO",
+                    "description": "Codigo de Producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_DE_PRODUCTO",
+                    "title": "CAPU_DE_PRODUCTO",
+                    "description": "Descripcion de Producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_NU_DURACION_CONTRATO",
+                    "title": "CAPU_NU_DURACION_CONTRATO",
+                    "description": "Duracion del Contrato",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_RECALCULO_RECARGO",
+                    "title": "CAPU_IN_RECALCULO_RECARGO",
+                    "description": "Indicado de Recalculo",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_FE_INICIO",
+                    "title": "CAPU_FE_INICIO",
+                    "description": "Inicio de contrato",
+                    "type": "Fecha",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_TP_MERCADO",
+                    "title": "CAPU_TP_MERCADO",
+                    "description": "Tipo de mercado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CAMO_CD_MONEDA",
+                    "title": "CAPU_CAMO_CD_MONEDA",
+                    "description": "Codigo de Moneda",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_EMISION_UNIVERSAL",
+                    "title": "CAPU_IN_EMISION_UNIVERSAL",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_ST_PRODUCTO",
+                    "title": "CAPU_ST_PRODUCTO",
+                    "description": "Estado del producto",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_FE_STATUS",
+                    "title": "CAPU_FE_STATUS",
+                    "description": "Fecha de estado",
+                    "type": "Fecha",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_MT_MINIMO",
+                    "title": "CAPU_MT_MINIMO",
+                    "description": "Monto Minimo",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_MT_MAXIMO",
+                    "title": "CAPU_MT_MAXIMO",
+                    "description": "Monto Maximo",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_DIAS_DIFERIMIENTOS",
+                    "title": "CAPU_DIAS_DIFERIMIENTOS",
+                    "description": "Dias de diferimiento",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_DIAS_RETROACTIVIDAD",
+                    "title": "CAPU_DIAS_RETROACTIVIDAD",
+                    "description": "Dias de retroactividad",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_EMPLEADO",
+                    "title": "CAPU_IN_EMPLEADO",
+                    "description": "Producto de Empleado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CACY_CD_CLASE",
+                    "title": "CAPU_CACY_CD_CLASE",
+                    "description": "Clase de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_NM_FORMA",
+                    "title": "CAPU_NM_FORMA",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 14.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_NM_FORMA_ENDOSO",
+                    "title": "CAPU_NM_FORMA_ENDOSO",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 14.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CD_INTERFACE",
+                    "title": "CAPU_CD_INTERFACE",
+                    "description": "Codigo Interfaz",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CD_SERVICIO",
+                    "title": "CAPU_CD_SERVICIO",
+                    "description": "Codigo de servicio",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_AUUS_CD_USO",
+                    "title": "CAPU_AUUS_CD_USO",
+                    "description": "Codigo de uso ",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_COLECTIVO",
+                    "title": "CAPU_IN_COLECTIVO",
+                    "description": "Indicador de producto colectivo",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CASU_CD_SUCURSAL",
+                    "title": "CAPU_CASU_CD_SUCURSAL",
+                    "description": "Campo deprecado",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CAPO_NU_POLIZA",
+                    "title": "CAPU_CAPO_NU_POLIZA",
+                    "description": "Numero de poliza del producto",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_FACT_ADEL",
+                    "title": "CAPU_IN_FACT_ADEL",
+                    "description": "Indicador de Facturacion Adelantada",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_NM_REPORTE",
+                    "title": "CAPU_NM_REPORTE",
+                    "description": "Campo deprecado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 14.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_ANUL_HABILITADA",
+                    "title": "CAPU_IN_ANUL_HABILITADA",
+                    "description": "Indicador de Anulacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CD_SELLADO_ESPECIAL",
+                    "title": "CAPU_CD_SELLADO_ESPECIAL",
+                    "description": "Indicador de Sellado Especial",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_TP_PRODUCTO",
+                    "title": "CAPU_TP_PRODUCTO",
+                    "description": "Tipo de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_INCENTIVO_EMI",
+                    "title": "CAPU_IN_INCENTIVO_EMI",
+                    "description": "Indicador de incentivo de emision",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_INCENTIVO_ANU",
+                    "title": "CAPU_IN_INCENTIVO_ANU",
+                    "description": "Indicador de incentivo de anulacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_TP_FACTURACION",
+                    "title": "CAPU_TP_FACTURACION",
+                    "description": "Tipo de facturacion",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_MT_PRIMA_MINIMA",
+                    "title": "CAPU_MT_PRIMA_MINIMA",
+                    "description": "Monto prima minima",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "12,2",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_SUMA_FIJA",
+                    "title": "CAPU_IN_SUMA_FIJA",
+                    "description": "Indicador Suma Fija",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_NU_POLIZAS_CLIENTE",
+                    "title": "CAPU_NU_POLIZAS_CLIENTE",
+                    "description": "Numero de poliza por cliente",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_MT_SUMA_AUX1",
+                    "title": "CAPU_MT_SUMA_AUX1",
+                    "description": "Campo deprecado",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_DJS",
+                    "title": "CAPU_IN_DJS",
+                    "description": "Indicador de DJS",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_PO_GASTOS",
+                    "title": "CAPU_PO_GASTOS",
+                    "description": "Porcentaje de gastos",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "7,3",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_PO_COMISION",
+                    "title": "CAPU_PO_COMISION",
+                    "description": "Porcentaje de comision",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "7,3",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_PO_UTILIDAD",
+                    "title": "CAPU_PO_UTILIDAD",
+                    "description": "Porcentaje de utilidad",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "7,3",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_CLASE_UTILIDAD",
+                    "title": "CAPU_CLASE_UTILIDAD",
+                    "description": "Clase de utilidad ",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_STOP_DEBIT",
+                    "title": "CAPU_IN_STOP_DEBIT",
+                    "description": "Indicador de stop debit",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_TP_CLIENTE",
+                    "title": "CAPU_TP_CLIENTE",
+                    "description": "Tipo de Cliente",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_IMPR_MASIVA",
+                    "title": "CAPU_IN_IMPR_MASIVA",
+                    "description": "Indicador de impresión masiva",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_TP_STOCK_EBOOK",
+                    "title": "CAPU_TP_STOCK_EBOOK",
+                    "description": "Tipo Stock Ebook",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_DE_PRODUCTO_LARGA",
+                    "title": "CAPU_DE_PRODUCTO_LARGA",
+                    "description": "Descripcion larga de Producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 150.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_PO_INTERNEGOCIO",
+                    "title": "CAPU_PO_INTERNEGOCIO",
+                    "description": "Porcentaje de internegocio",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "10,6",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_FE_FIN",
+                    "title": "CAPU_FE_FIN",
+                    "description": "Fecha de finalizacion ",
+                    "type": "Fecha",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_BSR",
+                    "title": "CAPU_IN_BSR",
+                    "description": "Producto BS",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_ZS",
+                    "title": "CAPU_IN_ZS",
+                    "description": "Producto ZSSA",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_SUMA_VARIABLE",
+                    "title": "CAPU_IN_SUMA_VARIABLE",
+                    "description": "Indicacador suma variable",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAPU_IN_PAS",
+                    "title": "CAPU_IN_PAS",
+                    "description": "Indicador Producto pas",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

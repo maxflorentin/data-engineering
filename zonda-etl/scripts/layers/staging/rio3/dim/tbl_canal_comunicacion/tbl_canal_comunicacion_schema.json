@@ -1,0 +1,33 @@
+{
+  "file": "tbl_canal_comunicacion_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/tbl_canal_comunicacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/tbl_canal_comunicacion",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "activo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

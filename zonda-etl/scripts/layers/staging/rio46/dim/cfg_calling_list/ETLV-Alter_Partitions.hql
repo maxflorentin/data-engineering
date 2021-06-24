@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio46_cfg_calling_list;

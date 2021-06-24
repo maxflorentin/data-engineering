@@ -1,0 +1,40 @@
+{
+	"file": "dim_rubros_visa_schema",
+	"location": "/santander/bi-corp/landing/exa/dim/dim_rubros_visa/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_rubros_visa",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_rubros_visa",
+	"createTable": "bi_corp_staging.exa_dim_rubros_visa",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "rubro",
+			"type":"string"
+		},
+{
+			"name": "tipo",
+			"type":"string"
+		},
+{
+			"name": "categoria",
+			"type":"string"
+		},
+{
+			"name": "desc_rubro",
+			"type":"string"
+		},
+{
+			"name": "agrup_rubro_comite",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

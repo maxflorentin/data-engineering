@@ -1,0 +1,83 @@
+{
+  "file": "testado_asol_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/testado_asol/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/testado_asol",
+  "createTable": "bi_corp_staging.alcen_testado_asol",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "fec_estado",
+    "type": "string"
+  },
+  {
+    "name": "hra_estado",
+    "type": "string"
+  },
+  {
+    "name": "cod_usuario",
+    "type": "string"
+  },
+  {
+    "name": "cod_sector_usu",
+    "type": "string"
+  },
+  {
+    "name": "nro_cta",
+    "type": "string"
+  },
+  {
+    "name": "lim_visa",
+    "type": "string"
+  },
+  {
+    "name": "lim_acte",
+    "type": "string"
+  },
+  {
+    "name": "lim_ppp",
+    "type": "string"
+  },
+  {
+    "name": "lim_amex",
+    "type": "string"
+  },
+  {
+    "name": "lim_cheq",
+    "type": "string"
+  },
+  {
+    "name": "lim_ptmo_mon",
+    "type": "string"
+  },
+  {
+    "name": "origen",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

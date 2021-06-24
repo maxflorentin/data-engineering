@@ -1,0 +1,93 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_segmentos_cuadrantes",
+            "title": "Renta - Rentabilidad",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Renta - Rentabilidad",
+            "columns": [
+                {
+                    "name": "CAGC_CASG_SEGMENTO",
+                    "title": "CAGC_CASG_SEGMENTO",
+                    "description": "Codigo de Segmento",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAGC_CASG_SEG_CALCULADO",
+                    "title": "CAGC_CASG_SEG_CALCULADO",
+                    "description": "Codigo de Segmento Calculado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAGC_CD_CUADRANTE",
+                    "title": "CAGC_CD_CUADRANTE",
+                    "description": "Codigo de Cuadrante",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAGC_DE_CUADRANTE",
+                    "title": "CAGC_DE_CUADRANTE",
+                    "description": "Descripcion de Cuadrante",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAGC_DE_SEGMENTO",
+                    "title": "CAGC_DE_SEGMENTO",
+                    "description": "Descripcion de Segmento",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAGC_ST_SEGMENTO",
+                    "title": "CAGC_ST_SEGMENTO",
+                    "description": "Estado de Segmento",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

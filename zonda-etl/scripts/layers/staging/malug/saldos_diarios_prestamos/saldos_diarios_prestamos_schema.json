@@ -1,0 +1,97 @@
+{
+	   "file":"Data_Ingestion_Saldos_Diarios_Prestamos",
+	   "location":"/santander/bi-corp/landing/malug/fact/saldos_diarios_prestamos/partition_date=${partition_date}",
+	   "destination":"/santander/bi-corp/staging/malug/fact/saldos_diarios_prestamos",
+       "createTable": "bi_corp_staging.malug_saldos_diarios_prestamos",
+       "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+	   "compression":"gzip",
+       "columns": [
+       {
+                        "name": "COD-ENTIDAD",
+                        "type": "string",
+                        "width": 4
+                },
+{
+                        "name": "COD-CENTRO",
+                        "type": "string",
+                        "width": 4
+                },
+{
+                        "name": "NUM-CUENTA",
+                        "type": "string",
+                        "width": 12
+                },
+{
+                        "name": "COD-PRODUCTO",
+                        "type": "string",
+                        "width": 2
+                },
+{
+                        "name": "COD-SUBPRODU",
+                        "type": "string",
+                        "width": 4
+                },
+{
+                        "name": "NUM-SECUENC-CTO ",
+                        "type": "string",
+                        "width": 5
+                },
+{
+                        "name": "CLVINT",
+                        "type": "string",
+                        "width": 3
+                },
+{
+                        "name": "CLVCONV",
+                        "type": "string",
+                        "width": 81
+                },
+{
+                        "name": "IMPOR-SALDO-MO",
+                        "type": "string",
+                        "width": 19
+                },
+{
+                        "name": "IMPOR-PROME-MO",
+                        "type": "string",
+                        "width": 19
+                },
+{
+                        "name": "IMPOR-SALDO-ML",
+                        "type": "string",
+                        "width": 19
+                },
+{
+                        "name": "IMPOR-PROME-ML ",
+                        "type": "string",
+                        "width": 19
+                },
+{
+                        "name": "COD-MONEDA",
+                        "type": "string",
+                        "width": 3
+                },
+{
+                        "name": "RUBRO-ALTAIR",
+                        "type": "string",
+                        "width": 15
+                },
+{
+                        "name": "COD-CENTRO-CONT",
+                        "type": "string",
+                        "width": 4
+                }
+         ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

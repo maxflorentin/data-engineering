@@ -1,0 +1,47 @@
+{
+  "file": "maestro_canales_schema",
+  "location": "/santander/bi-corp/landing/fm/dim/maestro_canales/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/dim/maestro_canales",
+  "createTable": "bi_corp_staging.fm_maestro_canales",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "agent_code",
+    "type": "string"
+  },
+    {
+      "name": "code",
+      "type": "string"
+    },
+    {
+      "name": "hame",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "mark",
+      "type": "string"
+    },
+    {
+      "name": "origin",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

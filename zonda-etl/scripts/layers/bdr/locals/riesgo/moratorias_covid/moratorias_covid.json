@@ -1,0 +1,64 @@
+{
+  "file": "afip",
+  "location": "/santander/bi-corp/landing/riesgo/moratorias_covid/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/bdr/moratoria_covid/saldos_tarjetas_covid",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "tipo",
+					    "type": "string"
+					  },
+					  {
+					    "name": "codigo_producto",
+					    "type": "string"
+					  },
+					  {
+					    "name": "codigo_subproducto",
+					    "type": "string"
+					  },
+					  {
+					    "name": "nro_cuenta",
+					    "type": "string"
+					  },
+					  {
+					    "name": "sucursal",
+					    "type": "string"
+					  },
+					  {
+					    "name": "moneda",
+					    "type": "string"
+					  },
+					  {
+					    "name": "saldo_original",
+					    "type": "string"
+					  },
+					  {
+					    "name": "saldo_hoy",
+					    "type": "string"
+					  },
+					  {
+					    "name": "nup",
+					    "type": "string"
+					  },
+					  {
+					    "name": "fecha_alta_producto",
+					    "type": "string"
+					  },
+					  {
+					    "name": "fecha_vencimiento_producto",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

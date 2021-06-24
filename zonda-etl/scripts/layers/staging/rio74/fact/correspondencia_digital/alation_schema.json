@@ -1,0 +1,491 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_correspondencia_digital",
+      "title": "Registra las cartas documento que no fueron enviadas por mail para poder enviarlas en papel al correo para su envio al cliente, relacionada con tmya_message_request_data por el campo msg_req_id",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Registra las cartas documento que no fueron enviadas por mail para poder enviarlas en papel al correo para su envio al cliente, relacionada con tmya_message_request_data por el campo msg_req_id",
+      "columns": [
+        {
+          "name": "ID_CORRESPONDENCIA",
+          "title": "ID_CORRESPONDENCIA",
+          "description": "id de la tabla secuencia oracle",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_CARTA",
+          "title": "TIPO_CARTA",
+          "description": "tipo de carta documento a enviar",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NOMBRE_APELLIDO",
+          "title": "NOMBRE_APELLIDO",
+          "description": "nombre y apellido ",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "RAZON_SOCIAL",
+          "title": "RAZON_SOCIAL",
+          "description": "razon social",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "TELEFONO",
+          "title": "TELEFONO",
+          "description": "telefono",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 12.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "TIPO_DOCUMENTO",
+          "title": "TIPO_DOCUMENTO",
+          "description": "tipo de documento de identidad, tambien puede ser el cuit",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "NUMERO_DOCUMENTO",
+          "title": "NUMERO_DOCUMENTO",
+          "description": "numero de documento de identidad, tambien puede ser el cuit",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "VALIDA_DIRECCION",
+          "title": "VALIDA_DIRECCION",
+          "description": "marca S o N ",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CALLE",
+          "title": "CALLE",
+          "description": "nombre de la calle",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "NUMERO_DIRECCION",
+          "title": "NUMERO_DIRECCION",
+          "description": "numero de direccion",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "PISO",
+          "title": "PISO",
+          "description": "piso",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 5.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "DEPTO",
+          "title": "DEPTO",
+          "description": "departamento",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 5.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "BARRIO",
+          "title": "BARRIO",
+          "description": "barrio",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "LOCALIDAD",
+          "title": "LOCALIDAD",
+          "description": "localidad",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CODIGO_POSTAL",
+          "title": "CODIGO_POSTAL",
+          "description": "codigo_postal",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "PROVINCIA",
+          "title": "PROVINCIA",
+          "description": "provincia",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "PAIS",
+          "title": "PAIS",
+          "description": "pais",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "LUGAR_FECHA",
+          "title": "LUGAR_FECHA",
+          "description": "lugar y fecha que se envia en la carta documento",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "id del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 16.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MARCA_TARJETA",
+          "title": "MARCA_TARJETA",
+          "description": "tipo de tarjeta, mastercard, visa, etc",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "TIPO_PRESTAMO",
+          "title": "TIPO_PRESTAMO",
+          "description": "tipo de prestamo",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "TARJETA_CUENTA",
+          "title": "TARJETA_CUENTA",
+          "description": "numero de tarjeta o de cuenta",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 30.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "NUMERO_SUCURSAL",
+          "title": "NUMERO_SUCURSAL",
+          "description": "numero de sucursal",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NOMBRE_SUCURSAL",
+          "title": "NOMBRE_SUCURSAL",
+          "description": "nombre sucursal",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DOMICILIO_SUCURSAL",
+          "title": "DOMICILIO_SUCURSAL",
+          "description": "domicilio de la sucursal",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONTO",
+          "title": "MONTO",
+          "description": "monto de la deuda a reclamar",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONEDA",
+          "title": "MONEDA",
+          "description": "tipo de moneda, ARS, USD, etc",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_CIERRE",
+          "title": "FECHA_CIERRE",
+          "description": "fecha de cierre",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CANTIDAD_PRODUCTO",
+          "title": "CANTIDAD_PRODUCTO",
+          "description": "cantidad de productos",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PRODUCTO1",
+          "title": "PRODUCTO1",
+          "description": "identifacion de producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONTO1",
+          "title": "MONTO1",
+          "description": "monto del producto adeudado",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PRODUCTO2",
+          "title": "PRODUCTO2",
+          "description": "identifacion de producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONTO2",
+          "title": "MONTO2",
+          "description": "monto del producto adeudado",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PRODUCTO3",
+          "title": "PRODUCTO3",
+          "description": "identifacion de producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONTO3",
+          "title": "MONTO3",
+          "description": "monto del producto adeudado",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MSG_REQ_ID",
+          "title": "MSG_REQ_ID",
+          "description": "id de referncia a tmya_message_request_data",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CREATE_DATE",
+          "title": "CREATE_DATE",
+          "description": "fecha de creacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODIFY_DATE",
+          "title": "MODIFY_DATE",
+          "description": "fecha de  modificacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TT_STS",
+          "title": "TT_STS",
+          "description": "informacion del correo argentino",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_IMPOSICION",
+          "title": "FECHA_IMPOSICION",
+          "description": "fecha de imposicion ",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ULTIMO_RESULTADO",
+          "title": "ULTIMO_RESULTADO",
+          "description": "estado del ultimo resultado del correo argentino",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 80.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_RESULTADO",
+          "title": "FECHA_RESULTADO",
+          "description": "fecha del ultimo resutlado del correo argentino",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

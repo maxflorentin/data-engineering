@@ -1,0 +1,18 @@
+{
+  "table": "bi_corp_common.stk_adm_ind_preselecciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+   	{
+      "control_id": "null_values",
+      "field_to_check": ["ds_adm_codpromocion","ds_adm_tpodoc","fc_adm_nrodoc","ts_adm_fecvigencia","ds_mar_sexo"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecvigencia"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

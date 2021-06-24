@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(e0621_feoperac, e0621_s1emp, e0621_contra1, E0621_CTA_CONT, e0621_tip_impt, e0621_fec_mes, E0621_AGRCTACB, e0621_importh, e0621_coddiv, e0621_fecultmo, E0621_CENTCTBL, rpad(E0621_CTACGBAL,40,' ')) AS line FROM bi_corp_bdr.test_jm_posic_contr WHERE partition_date = '$month_partition_bdr';

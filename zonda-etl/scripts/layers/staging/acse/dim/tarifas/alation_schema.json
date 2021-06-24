@@ -1,0 +1,106 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A305516"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "acse_tarifas",
+            "title": "Cajas de Seguridad",
+            "schema": "bi_corp_staging",
+            "source": "ACSE",
+            "query": "",
+            "type": "FACT",
+            "description": "Cajas de Seguridad",
+            "columns": [
+                {
+                    "name": "COMISION",
+                    "title": "COMISION",
+                    "description": "Tipo de comision",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ZONA",
+                    "title": "ZONA",
+                    "description": "Codigo de zona",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "GRUPO-CAJA",
+                    "title": "GRUPO-CAJA",
+                    "description": "Grupo de caja",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO-PERSONA",
+                    "title": "TIPO-PERSONA",
+                    "description": "Tipo de persona",
+                    "type": "STRING",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-VIG-DESDE",
+                    "title": "FEC-VIG-DESDE",
+                    "description": "Fecha vigencia desde",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC-VIG-HASTA",
+                    "title": "FEC-VIG-HASTA",
+                    "description": "Fecha vigencia hasta",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IMP-COMISION",
+                    "title": "IMP-COMISION",
+                    "description": "Importe de la comision",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

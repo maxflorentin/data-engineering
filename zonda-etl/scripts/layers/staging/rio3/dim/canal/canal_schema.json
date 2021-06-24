@@ -1,0 +1,41 @@
+{
+  "file": "canal_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/canal/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/canal",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "activo",
+      "type": "string"
+    },
+    {
+      "name": "forma_oper",
+      "type": "string"
+    },
+    {
+      "name": "modalidad",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

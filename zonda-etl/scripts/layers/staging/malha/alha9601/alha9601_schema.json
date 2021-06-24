@@ -1,0 +1,109 @@
+{
+    "file": "alha9601",
+    "location": "/santander/bi-corp/landing/malha/fact/alha9601/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/malha/fact/alha9601",
+	"createTable": "bi_corp_staging.malha_alha9601",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                            "name": "entidad",
+                            "type": "string"
+                        },
+                        {
+                            "name": "fecha_informacion",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_altair",
+                            "type": "string"
+                        },
+                        {
+                            "name": "nombre_cuenta",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_bcra",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cargabal",
+                            "type": "string"
+                        },                        
+                        {
+                            "name": "PdN",
+                            "type": "string"
+                        },
+                        {
+                            "name": "EM",
+                            "type": "string"
+                        },
+                        {
+                            "name": "cuenta_Ant",
+                            "type": "string"
+                        },
+                        {
+                            "name": "rubro_niif",
+                            "type": "string"
+                        },
+                        {
+                            "name": "enero",
+                            "type": "string"
+                        },
+                        {
+                            "name": "febrero",
+                            "type": "string"
+                        },
+                        {
+                            "name": "marzo",
+                            "type": "string"
+                        },
+                        {
+                            "name": "abril",
+                            "type": "string"
+                        },
+                        {
+                            "name": "mayo",
+                            "type": "string"
+                        },
+                        {
+                            "name": "junio",
+                            "type": "string"
+                        },
+                        {
+                            "name": "julio",
+                            "type": "string"
+                        },
+                        {
+                            "name": "agosto",
+                            "type": "string"
+                        },
+                        {
+                            "name": "septiembre",
+                            "type": "string"
+                        },
+                        {
+                            "name": "octubre",
+                            "type": "string"
+                        },
+                        {
+                            "name": "noviembre",
+                            "type": "string"
+                        },
+                        {
+                            "name": "diciembre",
+                            "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }

@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE  bi_corp_staging.rio226_tbl_datos_atenea_ventas ;

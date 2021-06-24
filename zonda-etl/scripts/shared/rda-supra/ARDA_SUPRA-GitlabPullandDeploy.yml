@@ -1,0 +1,43 @@
+name: ARDA_SUPRA-GitlabPullandDeploy
+description: 'Pull changes from Gitlab rda-supra-arg repo, Build and Deploy'
+owner: BI-Corp
+active: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: GitPullArdaSupra
+    operator: SSHOperator
+    config:
+      connection_id: arda_ssh
+      command: "sh $ARDA_HOME/scripts/arda_git.sh "
+  - name: BuildArdaSupra
+    operator: SSHOperator
+    config:
+      connection_id: arda_ssh
+      #command: "mvn -version "
+      command: "sh $ARDA_HOME/scripts/arda_build.sh "
+  - name: DeployArdaSupra
+    operator: SSHOperator
+    config:
+      connection_id: arda_ssh
+      command: "sh $ARDA_HOME/scripts/arda_deploy.sh "
+dependencies:
+  GitPullArdaSupra: BuildArdaSupra
+  BuildArdaSupra: DeployArdaSupra
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [juafernandez@santandertecnologia.com.ar, jtroncha@santandertecnologia.com.ar]

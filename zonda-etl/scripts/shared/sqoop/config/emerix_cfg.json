@@ -1,0 +1,79 @@
+{
+  "tables" :[
+    {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_ACCIONES_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/acciones",
+            "partition_field": "FECHA_ACCION",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      },
+    {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_ACTUACIONES_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/actuaciones",
+            "partition_field": "FECHA_ACTUACION",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'   --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      },
+    {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_CLIENTES_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/clientes",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'   --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      },
+    {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_PENDIENTES_DOC_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/pendientes_documentacion",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'   --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      },
+     {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_PROCESOS_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/procesos",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'  --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      },
+    {
+            "serverAka": "rio92",
+            "serverConfig" : "DBLXORAFRONT03",
+            "database": "EMERIX",
+            "table": "VW_RECHAZOS_DERIVACION_FTP",
+            "table_type": "fact",
+            "environment": "emerix",
+            "landing_path": "/santander/bi-corp/landing/emerix/fact/rechazos_derivacion",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"EMERIX.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir '{zonda_dir}/sqoop/{database}/{table}'   --password '{password}'  --delete-target-dir --fields-terminated-by '|' --verbose\n"
+      }
+
+  ]
+}

@@ -1,0 +1,45 @@
+name: LOAD_STG_Cuentas_Abae
+description: 'Load data from Abae (Banelco)'
+owner: BI-Corp
+active: true
+schedule_interval: '00 12 * * 1-6'
+start_date: '2020-05-08'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Create_abae_maestarj_aux_bajas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maestarj/DDLT-abae_maestarj_aux_bajas.hql'
+  - name: Load_abae_maestarj_aux_bajas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/maestarj/ETLV-Load_abae_maestarj_aux_bajas.hql'
+dependencies:
+  Create_abae_maestarj_aux_bajas_Table: Load_abae_maestarj_aux_bajas_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, pabnunez@santandertecnologia.com.ar]

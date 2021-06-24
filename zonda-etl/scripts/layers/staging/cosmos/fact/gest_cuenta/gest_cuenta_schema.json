@@ -1,0 +1,199 @@
+{
+    "file": "gest_cuenta",
+    "location": "/santander/bi-corp/landing/csm/fact/gest_cuenta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/gest_cuenta",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_gest_cuenta",
+    "skipNotify": true,
+    "compression": "snappy",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "orden_estado",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "divisa_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "aplicacion_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "cod_moneda",
+            "type": "string"
+        },
+        {
+            "name": "costo_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_convenio",
+            "type": "string"
+        },
+        {
+            "name": "cod_convenio",
+            "type": "string"
+        },
+        {
+            "name": "monto_convenio",
+            "type": "string"
+        },
+        {
+            "name": "suscriptor",
+            "type": "string"
+        },
+        {
+            "name": "cod_campania",
+            "type": "string"
+        },
+        {
+            "name": "monto_campania",
+            "type": "string"
+        },
+        {
+            "name": "cod_campania_recl",
+            "type": "string"
+        },
+        {
+            "name": "cod_convenio_univ",
+            "type": "string"
+        },
+        {
+            "name": "cod_universidad",
+            "type": "string"
+        },
+        {
+            "name": "monto_convenio_univ",
+            "type": "string"
+        },
+        {
+            "name": "fecha_desde_campania",
+            "type": "string"
+        },
+        {
+            "name": "desc_universidad",
+            "type": "string"
+        },
+        {
+            "name": "cod_producto",
+            "type": "string"
+        },
+        {
+            "name": "cod_subproducto",
+            "type": "string"
+        },
+        {
+            "name": "es_cuenta_defecto",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_hasta_campania",
+            "type": "string"
+        },
+        {
+            "name": "ind_tiene_convenio",
+            "type": "string"
+        },
+        {
+            "name": "nro_tarjeta",
+            "type": "string"
+        },
+        {
+            "name": "ind_trj_denunciante",
+            "type": "string"
+        },
+        {
+            "name": "ind_chip",
+            "type": "string"
+        },
+        {
+            "name": "nup_titular_tarjeta",
+            "type": "string"
+        },
+        {
+            "name": "ind_contacto_comercio",
+            "type": "string"
+        },
+        {
+            "name": "v_estado_relacion",
+            "type": "string"
+        },
+        {
+            "name": "id_requerimiento_premiacion",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cuenta_destino",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta_destino",
+            "type": "string"
+        },
+        {
+            "name": "nro_convenio_recl",
+            "type": "string"
+        },
+        {
+            "name": "cod_convenio_recl",
+            "type": "string"
+        },
+        {
+            "name": "suscriptor_recl",
+            "type": "string"
+        },
+        {
+            "name": "monto_convenio_recl",
+            "type": "string"
+        },
+        {
+            "name": "aplicacion_cuenta_destino",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

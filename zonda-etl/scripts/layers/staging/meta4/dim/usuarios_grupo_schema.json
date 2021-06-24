@@ -1,0 +1,31 @@
+{
+	"file": "usuarios_grupo_schema",
+	"location": "/santander/bi-corp/landing/meta4/dim/usuarios_grupo/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/meta4/dim/meta4_usuarios_grupo",
+	"tempDirectory": "/santander/bi-corp/temp/meta4_usuarios_grupo",
+    "createTable": "bi_corp_staging.meta4_usuarios_grupo",
+    "extension": "csv",
+	"delimiter": ",",
+	"header": true,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "usuario",
+			"type": "string"
+		},
+{
+			"name": "grupo_ad",
+			"type": "string"
+		}
+	],
+ "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

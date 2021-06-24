@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.academia_view_plan_course_user ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

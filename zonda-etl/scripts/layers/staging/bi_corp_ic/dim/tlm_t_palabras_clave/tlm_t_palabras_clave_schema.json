@@ -1,0 +1,36 @@
+{
+	"file": "exa_dim_cons_palabras_clave",
+	"location": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_palabras_clave/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_cons_palabras_clave",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_cons_palabras_clave",
+	"createTable": "bi_corp_staging.exa_dim_cons_palabras_clave",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "ID_PALABRA_CLAVE",
+			"type":"string"
+		},
+{
+			"name": "CLAVE",
+			"type":"string"
+		},
+{
+			"name": "ID_ESTABLECIMIENTO",
+			"type":"string"
+		},
+{
+			"name": "ID_ORDEN",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,37 @@
+name: LOAD_BDR_Tactico_Garantia_MIGA
+description: 'LOAD_BDR_Tactico_Garantia_MIGA'
+owner: BI-Corp
+active: true
+start_date: '2021-09-04'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: CopyToMiga
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -cp -f /santander/bi-corp/landing/garantias/migas/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_BDR_Tactico_Garantia_MIGA') }}/garantia_miga_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_BDR_Tactico_Garantia_MIGA') }}.csv /santander/bi-corp/bdr/gara_miga/"
+  - name: Repair_Table_Miga
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/garantias/migas/ETLV-Repair-partitions-Table.hql'               
+dependencies:
+  CopyToMiga: Repair_Table_Miga
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar]

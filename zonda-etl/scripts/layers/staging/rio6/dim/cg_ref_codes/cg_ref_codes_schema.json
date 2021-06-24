@@ -1,0 +1,42 @@
+{
+  "file": "cg_ref_codes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cg_ref_codes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cg_ref_codes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"rv_low_value",
+      "type": "string"
+    },
+    {
+      "name":"rv_high_value",
+      "type":"string"
+    },
+    {
+      "name":"rv_abbreviation",
+      "type":"string"
+    },
+    {
+      "name":"rv_domain",
+      "type":"string"
+    },
+    {
+      "name":"rv_meaning",
+      "type":"string"
+    },
+    {
+      "name":"rv_type",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

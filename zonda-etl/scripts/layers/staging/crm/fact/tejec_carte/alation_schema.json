@@ -1,0 +1,95 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308766"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "crm_tejec_carte",
+      "title": "Sucursal",
+      "schema": "bi_corp_staging",
+      "source": "CRM",
+      "query": "",
+      "type": "FACT",
+      "description": "Sucursal",
+      "columns": [
+        {
+          "name": "USER_ID",
+          "title": "USER_ID",
+          "description": "LEGAJO EJECUTIVO",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESUCADM",
+          "title": "PESUCADM",
+          "description": "SUCURSAL ADMINISTRADORA",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PESUBSEG",
+          "title": "PESUBSEG",
+          "description": "SEGMENTO DE LA CARTERA",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEJEFARE",
+          "title": "PEJEFARE",
+          "description": "DATO INTERNO DEL EJECUTIVO",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEEJECUE",
+          "title": "PEEJECUE",
+          "description": "NUMERO CARTERA ",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PEBANCAP",
+          "title": "PEBANCAP",
+          "description": "BANCA PRIVADA",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

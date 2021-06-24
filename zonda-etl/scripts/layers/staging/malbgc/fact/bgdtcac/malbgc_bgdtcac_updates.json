@@ -1,0 +1,20 @@
+{
+  "file": "bgdtcac_updates",
+  "createTable": "bi_corp_staging.malbgc_bgdtcac_updates",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtcac/updates/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtcac/updates",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgdtcac.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "table": "bi_corp_common.bt_coe_operaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": []
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "cod_coe_subproducto",
+        "cod_coe_sucursal",
+        "cod_coe_cuenta",
+        "cod_coe_moneda",
+        "fc_coe_tipo_cambio_usd",
+        "fc_coe_tipo_cambio_oper",
+        "cod_coe_nro_operacion",
+        "fc_coe_importe",
+        "fc_coe_importe_alta",
+        "cod_coe_nup",
+        "cod_coe_canal_venta",
+        "fc_coe_importe_moneda_nacional",
+        "cod_coe_nup_titular",
+        "cod_coe_moneda_cuenta_orig"
+      ],
+      "threshold": 0.01
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "ds_coe_banco_corresponsal_rio",
+        "ds_coe_pais_ordenante",
+        "ds_coe_banco_corresponsal",
+        "ds_coe_contraparte",
+        "ds_coe_pais",
+        "cod_coe_conceptobcra",
+        "ds_coe_sector"
+      ],
+      "threshold": 0.10
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "dt_coe_fecha_alta",
+        "dt_coe_fecha_proceso",
+        "dt_coe_fecha_venc",
+        "dt_coe_fecha_carga"
+      ],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

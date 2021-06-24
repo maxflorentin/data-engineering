@@ -1,0 +1,767 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio163_rtd_contenido_canal",
+            "title": "Mantiene el contenido específico para cada canal (OBP, OBE, IVR, ATM, etc) por oferta",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Mantiene el contenido específico para cada canal (OBP, OBE, IVR, ATM, etc) por oferta",
+            "columns": [
+                {
+                    "name": "ID_OFERTA_RTD",
+                    "title": "ID_OFERTA_RTD",
+                    "description": "Id de la oferta en RTD",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_CANAL",
+                    "title": "ID_CANAL",
+                    "description": "Identificador del Canal",
+                    "type": "VARCHAR2 (20 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCION_FINAL",
+                    "title": "ACCION_FINAL",
+                    "description": "Define la acción final (EXITO) correspondiente a la oferta para el canal específico",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO_DESCANSO",
+                    "title": "PERIODO_DESCANSO",
+                    "description": "Define el período (en días) que la oferta debe descansar antes de volver a ser presentada al cliente",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO_PRESENTACIONES_1",
+                    "title": "PERIODO_PRESENTACIONES_1",
+                    "description": "Período de tiempo para el cuál se aplicará el límite de presentaciones 1. El tiempo se expresa en semanas.\nPor ejemplo: si se define 1, se tendrá en cuenta la primera semana.\nSi se define 0 tendrá en cuenta el día actual.",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LIMITE_PRESENTACIONES_1",
+                    "title": "LIMITE_PRESENTACIONES_1",
+                    "description": "Cantidad de veces que se puede presentar una oferta en el período de presentaciones 1,  a un mismo cliente.",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO_PRESENTACIONES_2",
+                    "title": "PERIODO_PRESENTACIONES_2",
+                    "description": "Período de tiempo para el cuál se aplicará el límite de presentaciones 2.\nPor ejemplo: si se define 1, se tendrá en cuenta la primera semana.",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LIMITE_PRESENTACIONES_2",
+                    "title": "LIMITE_PRESENTACIONES_2",
+                    "description": "Cantidad de veces que se puede presentar una oferta en el período de presentaciones 2,  a un mismo cliente",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIODO_PRESENTACIONES_3",
+                    "title": "PERIODO_PRESENTACIONES_3",
+                    "description": "Período de tiempo para el cuál se aplicará el límite de presentaciones 3.\nPor ejemplo: si se define 1, se tendrá en cuenta la primera semana.",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LIMITE_PRESENTACIONES_3",
+                    "title": "LIMITE_PRESENTACIONES_3",
+                    "description": "Cantidad de veces que se puede presentar una oferta en el período de presentaciones 3,  a un mismo cliente",
+                    "type": "INTEGER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 38.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_1_CHAR",
+                    "title": "PARAMETRO_1_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el GOTO",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_1_NUM",
+                    "title": "PARAMETRO_1_NUM",
+                    "description": "Campo utilizado para definir la cantidad de veces que se puede presentar una oferta a un mismo cliente durante el día.",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_2_CHAR",
+                    "title": "PARAMETRO_2_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el mensaje para la Sección",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_2_NUM",
+                    "title": "PARAMETRO_2_NUM",
+                    "description": "Contenido específico para el canal - ",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_3_CHAR",
+                    "title": "PARAMETRO_3_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el mensaje para Carrusell",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_3_NUM",
+                    "title": "PARAMETRO_3_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_4_CHAR",
+                    "title": "PARAMETRO_4_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para la URL",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_4_NUM",
+                    "title": "PARAMETRO_4_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_5_CHAR",
+                    "title": "PARAMETRO_5_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el título",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_5_NUM",
+                    "title": "PARAMETRO_5_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_6_CHAR",
+                    "title": "PARAMETRO_6_CHAR",
+                    "description": "Contenido específico para el canal  - Utilizado para indicar si se puede hacer click en la sección",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_6_NUM",
+                    "title": "PARAMETRO_6_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_7_CHAR",
+                    "title": "PARAMETRO_7_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el tag urlMobile",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_7_NUM",
+                    "title": "PARAMETRO_7_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_8_CHAR",
+                    "title": "PARAMETRO_8_CHAR",
+                    "description": "Contenido específico para el canal - Utilizado para el tag descripcionCarruselMobile",
+                    "type": "VARCHAR2 (500 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_8_NUM",
+                    "title": "PARAMETRO_8_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_9_CHAR",
+                    "title": "PARAMETRO_9_CHAR",
+                    "description": "Contenido específico para el canal",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_9_NUM",
+                    "title": "PARAMETRO_9_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_10_CHAR",
+                    "title": "PARAMETRO_10_CHAR",
+                    "description": "Contenido específico para el canal",
+                    "type": "VARCHAR2 (50 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 500.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_10_NUM",
+                    "title": "PARAMETRO_10_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_11_CHAR",
+                    "title": "PARAMETRO_11_CHAR",
+                    "description": "Contenido específico para el canal",
+                    "type": "VARCHAR2 (100 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PARAMETRO_11_NUM",
+                    "title": "PARAMETRO_11_NUM",
+                    "description": "Contenido específico para el canal",
+                    "type": "NUMBER (22,4)",
+                    "personIdentifier": false,
+                    "decimalSeparator": ",",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CARGA",
+                    "title": "FECHA_CARGA",
+                    "description": "",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_CARRUSEL",
+                    "title": "IND_CARRUSEL",
+                    "description": "se utiliza para indicar si la oferta se debe presentar en el carrusel de tbanco 1=si 0 o vacio = no",
+                    "type": "NUMBER (1)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECCION",
+                    "title": "SECCION",
+                    "description": "Atributo que indica en que sección se puede mostrar la oferta. \nValores Posibles: CUENTAS, TARJETAS, PAGOS, CREDITOS, INVERSIONES, TENENCIA_CONSOLIDADA, PLAZOS_FIJOS, FONDOS_COMUNES_INVERSION, TITULO_VALORES",
+                    "type": "VARCHAR2 (30 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_LOGOFF",
+                    "title": "IND_LOGOFF",
+                    "description": "Se utiliza para indicar si una oferta puede mostrarse en el log off del canal",
+                    "type": "NUMBER (1)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_INICIO",
+                    "title": "HORA_INICIO",
+                    "description": "",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_FIN",
+                    "title": "HORA_FIN",
+                    "description": "",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MIN_INICIO",
+                    "title": "MIN_INICIO",
+                    "description": "",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "MIN_FIN",
+                    "title": "MIN_FIN",
+                    "description": "",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "AUDIENCIAS",
+                    "title": "AUDIENCIAS",
+                    "description": "",
+                    "type": "VARCHAR2 (999 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 999.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,17 @@
+{
+  "file": "mov_diarios_schema",
+  "location": "/santander/bi-corp/landing/abkt/fact/mov_diarios/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/abkt/fact/mov_diarios",
+  "createTable": "bi_corp_staging.abkt_mov_diarios",
+  "copybook": "mov_diarios.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

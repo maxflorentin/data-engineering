@@ -1,0 +1,106 @@
+{
+	"file": "stock_solicitudes_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/stock_solicitudes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/stock_solicitudes",
+	"tempDirectory": "/santander/bi-corp/temp/stock_solicitudes",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "cod_sucursal",
+			"type": "int"
+		},
+		{
+			"name": "nro_solicitud",
+			"type": "bigint"
+		},
+		{
+			"name": "actividad",
+			"type": "string"
+		},
+		{
+			"name": "mar_plan_sueldo",
+			"type": "string"
+		},
+		{
+			"name": "cod_prom_scor",
+			"type": "string"
+		},
+		{
+			"name": "cod_canal",
+			"type": "string"
+		},
+		{
+			"name": "valor_bien",
+			"type": "int"
+		},
+		{
+			"name": "monto_solicitado",
+			"type": "int"
+		},
+		{
+			"name": "cant_cuotas",
+			"type": "smallint"
+		},
+		{
+			"name": "importe_cuota",
+			"type": "int"
+		},
+		{
+			"name": "monto_ingreso_total_grupo",
+			"type": "int"
+		},
+		{
+			"name": "afectacion_minima",
+			"type": "int"
+		},
+		{
+			"name": "val_rel_cuota_ingreso",
+			"type": "int"
+		},
+		{
+			"name": "endeudamiento_revolving",
+			"type": "int"
+		},
+		{
+			"name": "marca",
+			"type": "string"
+		},
+		{
+			"name": "modelo",
+			"type": "string"
+		},
+		{
+			"name": "cod_concesionario",
+			"type": "string"
+		},
+		{
+			"name": "cod_estado_sw",
+			"type": "string"
+		},
+		{
+			"name": "cod_estado_srs",
+			"type": "string"
+		},
+		{
+			"name": "des_obs_scor",
+			"type": "string"
+		},
+		{
+			"name": "motivos_scoring",
+			"type": "string"
+		},
+		{
+			"name": "num_score",
+			"type": "smallint"
+		},
+		{
+			"name": "fecha",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

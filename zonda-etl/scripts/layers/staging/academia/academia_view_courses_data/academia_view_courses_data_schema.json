@@ -1,0 +1,50 @@
+{
+        "file": "academia_view_courses_data",
+        "location": "/santander/bi-corp/landing/academia/academia_view_courses_data/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/academia/academia_view_courses_data",
+        "extension": "csv",
+        "header": true,
+        "delimiter": "\t",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                "name": "user_id",
+                "type": "string"
+                },
+                {
+                        "name": "nombre_curso",
+                        "type": "string"
+                },
+                {
+                        "name": "categoria",
+                        "type": "string"
+                },
+                {
+                        "name": "duracion",
+                        "type": "string"
+                },
+                {
+                        "name": "completado_en",
+                        "type": "string"
+                },
+                {
+                        "name": "legajo",
+                        "type": "string"
+                },
+                {
+                        "name": "curso_id",
+                        "type": "string"
+                },
+                {
+                        "name": "completado",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

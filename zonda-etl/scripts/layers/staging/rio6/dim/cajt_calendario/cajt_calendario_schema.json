@@ -1,0 +1,30 @@
+{
+  "file": "cajt_calendario_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cajt_calendario/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cajt_calendario",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"caca_fe_dia",
+      "type": "string"
+    },
+    {
+      "name":"caca_st_dia",
+      "type":"string"
+    },
+    {
+      "name":"caca_nu_dia",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

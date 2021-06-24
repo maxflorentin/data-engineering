@@ -1,0 +1,49 @@
+{
+	   "file":"tcalif_paquete_history_schema",
+	   "location":"/santander/bi-corp/landing/acal/fact/tcalif_paquete_history/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/acal/fact/ries_limites_cheques",
+	   "extension":"csv",
+	   "header":false,
+	   "delimiter": ",",
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "ide_persona",
+                        "type": "string"
+                },
+                {
+                        "name": "cod_entidad",
+                        "type": "string"
+                },
+                {
+                        "name": "sucursal",
+                        "type": "string"
+                },
+                {
+                        "name": "nro_paquete",
+                        "type": "string"
+                },
+                {
+                        "name": "limite_ces",
+                        "type": "string"
+                },
+                {
+                        "name": "monto_cesi",
+                        "type": "string"
+                },
+                {
+                        "name": "monto_pend",
+                        "type": "string"
+                },
+                {
+                        "name": "monto_disp",
+                        "type": "string"
+                },
+                {
+                        "name": "partition_date",
+                        "type": "string",
+                        "partitionColumn": true,
+                        "partitionOrder": 1
+                }
+         ]
+}

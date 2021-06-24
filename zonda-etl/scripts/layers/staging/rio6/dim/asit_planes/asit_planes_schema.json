@@ -1,0 +1,53 @@
+{
+  "file": "asit_planes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_planes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_planes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"aspl_cd_plan",
+      "type": "string"
+    },
+    {
+      "name":"aspl_fe_inicio",
+      "type":"string"
+    },
+    {
+      "name":"aspl_de_plan",
+      "type":"string"
+    },
+    {
+      "name":"aspl_po_comision",
+      "type":"string"
+    },
+    {
+      "name":"aspl_edad_min",
+      "type":"string"
+    },
+    {
+      "name":"aspl_edad_max",
+      "type":"string"
+    }, {
+      "name":"aspl_st_plan",
+      "type": "string"
+    },
+    {
+      "name":"aspl_fe_status",
+      "type":"string"
+    },
+    {
+      "name":"aspl_prioridad",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

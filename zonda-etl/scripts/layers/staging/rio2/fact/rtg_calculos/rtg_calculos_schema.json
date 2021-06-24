@@ -1,0 +1,62 @@
+{
+  "file": "rtg_calculos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/rtg_calculos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/rtg_calculos",
+  "createTable": "bi_corp_staging.sge_rtg_calculos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id_calculo",
+      "type": "string"
+    },
+    {
+      "name": "id_version",
+      "type": "string"
+    },
+    {
+      "name": "e_calculo",
+      "type": "string"
+    },
+    {
+      "name": "t_ejecucion",
+      "type": "string"
+    },
+    {
+      "name": "fi_ejecucion",
+      "type": "string"
+    },
+    {
+      "name": "ff_ejecucion",
+      "type": "string"
+    },
+    {
+      "name": "x_1er_usuario",
+      "type": "string"
+    },
+    {
+      "name": "x_ult_usuario",
+      "type": "string"
+    },
+    {
+      "name": "nro_prop",
+      "type": "string"
+    },
+    {
+      "name": "penumper",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

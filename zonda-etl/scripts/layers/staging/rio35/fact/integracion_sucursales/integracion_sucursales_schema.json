@@ -1,0 +1,63 @@
+{
+  "file": "integracion_sucursales_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/integracion_sucursales/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/fact/integracion_sucursales",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "suc_ant",
+      "type": "string"
+    },
+    {
+      "name": "suc_nva",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "caja",
+      "type": "string"
+    },
+    {
+      "name": "nombre_suc",
+      "type": "string"
+    },
+    {
+      "name": "direc_suc",
+      "type": "string"
+    },
+    {
+      "name": "nsuc_ant",
+      "type": "string"
+    },
+    {
+      "name": "f_asce",
+      "type": "string"
+    },
+    {
+      "name": "resto",
+      "type": "string"
+    },
+    {
+      "name": "suc_default",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

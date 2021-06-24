@@ -1,0 +1,26 @@
+{
+  "table": "bi_corp_common.stk_gar_garantias",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_gar_num_garantia","cod_per_nup","cod_gar_sucural","cod_gar_num_cuenta","cod_gar_producto","cod_gar_subproducto","cod_gar_num_bien","cod_gar_contrato_divisaoriginal"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_gar_entidad","cod_gar_num_garantia","cod_gar_garantia","ds_gar_garantia","cod_gar_cla_garantia","cod_gar_tipo_cobertura","cod_per_nup","dt_gar_fecha_alta","cod_gar_divisa","cod_gar_estado","ds_gar_estado"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["fc_gar_importe_limiteoriginal","dt_gar_fecha_cambiolimite","dt_gar_fecha_ultimacobertura","cod_gar_subestado","dt_gar_fecha_activacion","fc_gar_bien_cambioactualizado"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_gar_fecha_alta","dt_gar_fecha_vencimiento","dt_gar_fecha_activacion","dt_gar_fecha_cambiolimite","dt_gar_fecha_ultimacobertura","dt_gar_fecha_inivali","dt_gar_fecha_finvali","dt_gar_bien_fechaactualizacion","dt_gar_uva_fechactualizacion"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

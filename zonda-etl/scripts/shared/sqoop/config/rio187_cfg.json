@@ -1,0 +1,193 @@
+{
+    "tables": [
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "ACTORES",
+            "table_type": "dim",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/dim/actores",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string '' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CANALES",
+            "table_type": "dim",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/dim/canales",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CASUISTICA_MOTIVOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/casuistica_motivos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CASUISTICAS",
+            "table_type": "dim",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/dim/casuisticas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CENTRO_COSTOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/centro_costos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CLIENTE_DOMICILIOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/cliente_domicilios",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CLIENTES",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/clientes",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CODIGOS_OPERATIVOS_CUENTA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/codigos_operativos_cuenta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "CODIGOS_OPERATIVOS_TARJETA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/codigos_operativos_tarjeta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_CUENTA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_cuenta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_ESTADOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_estados",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_MAILS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_mails",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --query \"SELECT ID_GESTION, ORDEN_ESTADO, EMAIL, ASUNTO_MAIL, REGEXP_REPLACE(TEXTO_MAIL, '(['||chr(10)||chr(11)||chr(13)||chr(9)||']+) > ') TEXTO_MAIL, ESTADO_MAIL, FECHA_ALTA, FECHA_ENVIO, TIPO_MAIL, ID_USUARIO_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, FECHA_BAJA, NRO_ENVIO, M_AUTOMATICO FROM CSM.GEST_MAILS WHERE 1 = 1 and \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 6 --split-by \"ID_GESTION\" --password 'cx63rtP20ACcEZSm3rA-' --hive-drop-import-delims  --map-column-java TEXTO_MAIL=String --escaped-by '^' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec  --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_MOTDES_ACCIONES",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_motdes_acciones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_MOVIMIENTOS_CUENTA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_movimientos_cuenta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_MOVIMIENTOS_TARJETA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_movimientos_tarjeta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_RESOL_ACCIONES",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_resol_acciones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GEST_TARJETA",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_tarjeta",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "GESTIONES",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/gestiones",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --query \"SELECT  ID_GESTION, ID_CLIENTE, ID_CASUISTICA, APLICACION_CONTRATO, PRODUCTO_CONTRATO, SUBPRODUCTO_CONTRATO, SUCURSAL_CONTRATO, NRO_CONTRATO, DIVISA_CONTRATO, MONTO_RECLAMADO, MONTO_DEVUELTO, COD_MOTIVO, DESC_MOTIVO, REGEXP_REPLACE(COMENTARIO, '(['||chr(10)||chr(11)||chr(13)||chr(9)||']+)', '> ') COMENTARIO, ESTADO_ACTUAL, ID_USUARIO_ALTA, FECHA_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, ACTOR_ACTUAL, PRODUCTO_PAQUETE, SUBPRODUCTO_PAQUETE, ID_MAIL_RESOLUCION, COD_GRUPO_MOTDES, DIGITO_VERIFICADOR, ID_USUARIO_ACTUAL, TIENE_SORPRESA, MONTO_RECLAMADO_USD, MONTO_DEVUELTO_USD, FECHA_RESOLUCION, FECHA_ESTADO_ACTUAL, FECHA_ESTADO_MAX, COD_RESPUESTA, COD_RESULTADO, REGEXP_REPLACE(COMENTARIO_RESOLUTOR, '(['||chr(10)||chr(11)||chr(13)||chr(9)||']+)', '> ') COMENTARIO_RESOLUTOR, FECHA_BAJA, ID_CANAL, IND_FAVORABILIDAD_MOT_DES, IND_FAVORABILIDAD_RESOL, INFORMA_BCRA, NRO_GESTION, COD_RESOLUCION, DESC_RESOLUCION, NRO_TICKET, PREFIJO_TICKET, NRO_RECLAMO_BCO, ID_IMPUESTO, IND_AJUSTE, IND_ANTICIPO, ORIGEN_RECLAMO, ZONA_CONSUMO, ETAPA_RESOLUCION, COD_SEGMENTO, COD_SUBSEGMENTO, V_IND_AJUSTE_PROVISORIO, EJECUTIVO_ON_LINE, MONTO_IVA, COD_SUC_ALTA, COD_OFIC_ALTA, ID_ACTOR_ALTA, ID_REQUERIMIENTO_PREMIACION, CUENTA_PAQUETE, NRO_PAQUETE, SUCURSAL_PAQUETE, TIPO_PERSONA, CLIENTE_VIP, CANT_CHEQUE_RECLAMADO, FECHA_HORA_OPERACION, COD_SUC_RESOL, COD_ZONA_RESOL, COD_BCO_EMISOR, FECHA_BAJA_CAJA_SEG FROM CSM.GESTIONES  WHERE 1=1 and \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --hive-drop-import-delims --map-column-java COMENTARIO=String --map-column-java COMENTARIO_RESOLUTOR=String --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "MOTDES_ARBOL_RESULTADOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/motdes_arbol_resultados",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "TIPOS_GESTION",
+            "table_type": "dim",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/dim/tipos_gestion",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        },
+        {
+            "serverAka": "rio187",
+            "database": "RIO187",
+            "table": "USUARIOS",
+            "table_type": "fact",
+            "environment": "rio187",
+            "landing_path": "/santander/bi-corp/landing/rio187/fact/usuarios",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{database}' --username '{username}' --table \"CSM.{table}\" --bindir '{zonda_dir}/sqoop/rio187/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose \n"
+        }
+    ]
+}

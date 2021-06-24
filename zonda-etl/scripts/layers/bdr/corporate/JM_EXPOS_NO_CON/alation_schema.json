@@ -1,0 +1,387 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_expos_no_con",
+         "title":"Importes por masa contable, contratos ficticios.",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"En esta tabla se recogerán las operaciones relacionadas con cuentas no personales, es decir, aquellas que no tengan un cliente asociado y de las que no se precise el detalle a nivel contrato, por ejemplo el caso de Resto de Activos.  También se incluirán cuentas personales de las que no se dispone de número de contrato.",
+         "columns":[
+            {
+               "name":"e0621_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro. se informará con la fecha del dia en que se genera el registro",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"",
+               "length":"",
+               "nullable":"",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_agrctacb",
+               "title":"Agrupador Cta. Contable local",
+               "description":"Agrupador contable local de grupos cuentas, por ejemplo la rúbrica. en caso de no existir agrupador este campo se informará con espacios",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo <bnolascoarruzzo@santander.com.ar> – Leonardo Ariel Gomez Tupone <legomez@santander.com.ar>",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_centctbl",
+               "title":"Centro Contable",
+               "description":"Información del centro contable asociado al importe, a nivel saldo. este dato facilita la segmentación y análisis de la información.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_contra1",
+               "title":"Identificador de contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad. este campo tendrá que estar siempre informado. para todos aquellas operaciones o resto de activo que no tienen contrato asociado será igualmente obligatorio la generación de un identificador que incluir en este campo. esto es necesario de cara a su posterior tratamiento por el motor de cálculo",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_cta_cont",
+               "title":"Cuenta Contable Local",
+               "description":"Número de cuenta contable afectada por el contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_ctacgbal",
+               "title":"Cuenta Cargabal",
+               "description":"Número de cuenta contable cargabal afectada por el contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_entcgbal",
+               "title":"Código de identificación entidad cargabal ",
+               "description":"Este campo será informado con el código entidad cargabal asociado al cliente (contraparte) en caso de tratarse de un cliente intragrupo. para clientes que no sean intragrupo este campo se informará con el valor ‘99999’.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_fec_mes",
+               "title":"Fecha mes",
+               "description":"Fecha desde la que tiene validez la información.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando. ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_idctacen",
+               "title":"Indicador ctas personales",
+               "description":"Indicador de que se trata de una cuenta personal pero que no tiene contrato, en este caso se marcará con una ‘s’, en caso contrario este campo se informará con una ‘n’. este campo se utilizará, además, para la identificación de operaciones intragrupo. así pues los valores que tomará serán uno de los siguientes:- ‘s’ : registros que tienen un contrato pero en el que no es posible identificar el interviniente- ‘n’ : registros que no tienen un contrato en origen- ‘i’ : registros de operaciones intragrupo que tienen asociado un contrato pero en el que no es posible identificar el interviniente- ‘h’ : registros de operaciones intragrupo que no tienen asociado un contrato en origen- ‘j’:  registros de operaciones de intragrupo local que tienen asociado un contrato pero en el que no es posible identificar el interviniente- ‘k’:  registros de operaciones de intragrupo local que no tienen asociado un contrato en origen",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_importh",
+               "title":"Importe",
+               "description":"Importe de la cuenta contable. contravalorado a moneda local si no lo estuviera ya",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"e0627_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Roxana Fiasche",
+                  "businessReference":"Bernabe Nolasco Arruzzo – Leonardo Gómez Tupone",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10.0,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimelero@santander.com.ar>",
+                  "businessSteward":[
+                     "a121702"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

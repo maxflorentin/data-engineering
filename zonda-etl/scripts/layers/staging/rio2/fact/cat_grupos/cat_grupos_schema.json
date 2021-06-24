@@ -1,0 +1,139 @@
+{
+  "file": "cat_grupos_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/cat_grupos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/cat_grupos",
+  "createTable": "bi_corp_staging.sge_cat_grupos",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+                {
+                    "name": "pecdgent",
+                    "type": "string"
+                },
+{
+                    "name": "penumgru",
+                    "type": "string"
+                },
+{
+                    "name": "pedesgru",
+                    "type": "string"
+                },
+{
+                    "name": "petipgru",
+                    "type": "string"
+                },
+{
+                    "name": "petipact",
+                    "type": "string"
+                },
+{
+                    "name": "pesucgru",
+                    "type": "string"
+                },
+{
+                    "name": "peformjur",
+                    "type": "string"
+                },
+{
+                    "name": "pepaires",
+                    "type": "string"
+                },
+{
+                    "name": "peuserid",
+                    "type": "string"
+                },
+{
+                    "name": "pemodope",
+                    "type": "string"
+                },
+{
+                    "name": "perescom",
+                    "type": "string"
+                },
+{
+                    "name": "peobserv",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "petermod",
+                    "type": "string"
+                },
+{
+                    "name": "pesucmod",
+                    "type": "string"
+                },
+{
+                    "name": "pehstamp",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "resp_comercial",
+                    "type": "string"
+                },
+{
+                    "name": "resp_riesgos",
+                    "type": "string"
+                },
+{
+                    "name": "segmento",
+                    "type": "string"
+                },
+{
+                    "name": "penumgru_host",
+                    "type": "string"
+                },
+{
+                    "name": "cod_rubro",
+                    "type": "string"
+                },
+{
+                    "name": "cod_act_bcra",
+                    "type": "string"
+                },
+{
+                    "name": "cod_act_bma",
+                    "type": "string"
+                },
+{
+                    "name": "monto_facturacion",
+                    "type": "string"
+                },
+{
+                    "name": "cod_act_santander",
+                    "type": "string"
+                },
+{
+                    "name": "segmento_riesgo",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

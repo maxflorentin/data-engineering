@@ -1,0 +1,192 @@
+{
+  "name": {
+    "required": true,
+    "type": "string"
+  },
+  "description": {
+    "required": false,
+    "type": "string"
+  },
+  "owner": {
+    "required": false,
+    "type": "string"
+  },
+  "schedule_interval": {
+    "required": false,
+    "type": "string"
+  },
+  "start_date": {
+    "required": false,
+    "type": "string"
+  },
+  "end_date": {
+    "required": false,
+    "type": "string"
+  },
+  "catchup": {
+  "required": false,
+  "type": "boolean"
+  },
+  "active": {
+    "required": false,
+    "type": "boolean"
+  },
+  "include_dummy_task": {
+    "required": false,
+    "type": "boolean"
+  },
+  "depends_on_past": {
+    "required": false,
+    "type": "boolean"
+  },
+  "wait_for_downstream": {
+    "required": false,
+    "type": "boolean"
+  },
+  "loop": {
+    "type": "dict",
+    "required": false,
+    "schema": {
+      "values": {
+        "required": true,
+        "type": ["list", "string"]
+      },
+      "iterator": {
+        "required": false,
+        "type": "string"
+      }
+    }
+  },
+  "max_active_runs": {
+    "required": false,
+    "type": "integer",
+    "min": 1
+  },
+  "retries": {
+    "required": false,
+    "type": "integer",
+    "min": 0,
+    "max": 10
+  },
+  "retry_delay": {
+    "required": false,
+    "type": "integer",
+    "min": 0,
+    "max": 86400
+  },
+  "timezone": {
+    "required": false,
+    "type": "string"
+  },
+  "run_as_user": {
+    "required": false,
+    "type": "string"
+  },
+  "input": {
+    "required": false,
+    "type": "list",
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "name": {
+          "required": true,
+          "type": "string"
+        },
+        "description": {
+          "required": false,
+          "type": "string"
+        },
+        "default": {
+          "required": false,
+          "type": ["string", "integer"]
+        }
+      }
+    }
+  },
+  "params": {
+    "required": false,
+    "type": "list",
+    "schema": {
+      "type": "dict",
+      "schema": {
+        "name": {
+          "required": true,
+          "type": "string"
+        },
+        "value": {
+          "required": true,
+          "type": ["string", "list", "integer", "dict"]
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "required": false,
+    "type": "dict",
+    "keysrules": {
+      "type": "string",
+      "regex": "[^\\s]+"
+    },
+    "valuesrules": {
+      "type": ["string", "list"]
+    }
+  },
+  "notifications": {
+    "required": false,
+    "type": "dict",
+    "schema": {
+      "on_start": {
+        "required": false,
+        "type": "boolean"
+      },
+      "on_finish": {
+        "required": false,
+        "type": "boolean"
+      },
+      "on_success": {
+        "required": false,
+        "type": "boolean"
+      },
+      "on_error": {
+        "required": false,
+        "type": "boolean"
+      },
+      "channels": {
+        "required": false,
+        "type": ["string", "list"]
+      },
+      "emails": {
+        "required": false,
+        "type": ["string", "list"]
+      },
+      "users": {
+        "required": false,
+        "type": ["string", "list"]
+      }
+    }
+  },
+  "tasks": {
+    "required": true,
+    "type": "list",
+    "schema": {
+      "type": "dict",
+      "excludes": "config",
+      "schema": {
+        "name": {
+          "required": true,
+          "type": "string"
+        },
+        "operator": {
+          "required": true,
+          "type": "string",
+          "allowed": ["SFTPOperator", "PythonOperator", "BranchPythonOperator", "SqoopOperator", "ZondaTriggerDagRunOperator", "TriggerDagRunOperator", "ZondaHiveOperator", "ZondaGCSOperator", "ZondaMoveItOperator", "ZondaHDFSOperator", "ZondaS3Operator", "ZondaFileSensor", "ZondaDagSensor", "DummyOperator", "HiveOperator", "SparkSubmitOperator", "ZondaSlackOperator", "BashOperator", "SSHOperator", "ZondaGDOperator","ZondaTableauUpdateOperator","ZondaControlmOperator", "MySqlOperator"]
+        },
+        "config": {
+          "required": false,
+          "type": "dict",
+          "dependencies": {"operator": ["SFTPOperator", "PythonOperator", "BranchPythonOperator", "SqoopOperator", "ZondaTriggerDagRunOperator", "TriggerDagRunOperator", "ZondaHiveOperator", "ZondaGCSOperator", "ZondaMoveItOperator", "ZondaHDFSOperator", "ZondaS3Operator", "ZondaFileSensor", "ZondaDagSensor", "HiveOperator", "SparkSubmitOperator", "ZondaSlackOperator", "BashOperator", "SSHOperator", "ZondaGDOperator","ZondaTableauUpdateOperator","ZondaControlmOperator", "MySqlOperator"]}
+        }
+      }
+    }
+  }
+}

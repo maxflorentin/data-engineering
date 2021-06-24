@@ -1,0 +1,13 @@
+{"dag_id": "LOAD_CMN_Partition_Loader_Tarjetas_Mov_Pres",
+  "tables": {
+            "tarjetas_presentados": {
+                          "schema": "bi_corp_staging",
+                          "table": "aftc_waftc600",
+                          "new_table": "aftc_waftc600_presentados",
+                          "path": "/santander/bi-corp/staging/cupones/aftc_waftc600_presentados",
+                          "partition_field": "600_fevento",
+                          "partition_date": "${partition_date}",
+                          "query": "select t.*, from_unixtime(unix_timestamp(cast(t.{partition_field} as string),'yyyyMMdd'),'yyyy-MM-dd') as new_partition_date from {schema}.{table} as t where partition_date='{partition_date}' and t.600_id_archivo = 'P' and t.600_cod_registro = 30"
+            }
+  }
+}

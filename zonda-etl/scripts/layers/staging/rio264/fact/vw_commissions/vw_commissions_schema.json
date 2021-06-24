@@ -1,0 +1,70 @@
+{
+  "file": "vw_commissions_schema",
+  "location": "/santander/bi-corp/landing/rio264/fact/vw_commissions/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/fact/comisiones",
+  "extension":"csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+    "name": "person",
+    "type": "string"
+    },
+    {
+      "name": "account",
+      "type": "string"
+    },
+    {
+      "name": "shares",
+      "type": "string"
+    },
+    {
+      "name": "manager_id",
+      "type": "string"
+    },
+    {
+      "name": "fund_code",
+      "type": "string"
+    },
+    {
+      "name": "patrimony",
+      "type": "string"
+    },
+    {
+      "name": "date_process",
+      "type": "string"
+    },
+     {
+      "name": "calc_date",
+      "type": "string"
+    },
+    {
+      "name": "destination",
+      "type": "string"
+    },
+    {
+      "name": "accounting_center",
+      "type": "string"
+    },
+    {
+      "name": "accounting_account",
+      "type": "string"
+    },
+    {
+      "name": "percentage",
+      "type": "string"
+    },
+    {
+      "name": "commission",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

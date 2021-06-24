@@ -1,0 +1,209 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio170_gec_notif_canal_cliente",
+            "title": "Vista que une GEC_NOTIFICACION_CANAL_CLIENTE con GEC_NOTIFICACION_HEADER\nContiene todas las acciones realizadas sobre las notificaciones de los clientes y su parametria",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Vista que une GEC_NOTIFICACION_CANAL_CLIENTE con GEC_NOTIFICACION_HEADER\nContiene todas las acciones realizadas sobre las notificaciones de los clientes y su parametria",
+            "columns": [
+                {
+                    "name": "ID_NOTIFICACION",
+                    "title": "ID_NOTIFICACION",
+                    "description": "Identificacion unica de la notificacion. Es la pk en el buzon de notificaciones(gec_notificacion_header)",
+                    "type": "NUMBER (27)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 27.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CANAL",
+                    "title": "COD_CANAL",
+                    "description": "codigo de canal",
+                    "type": "VARCHAR2 (2 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBCANAL",
+                    "title": "COD_SUBCANAL",
+                    "description": "codigo de subcanal",
+                    "type": "VARCHAR2 (2 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUP",
+                    "title": "NUP",
+                    "description": "Identificador de persona",
+                    "type": "VARCHAR2 (8 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCION",
+                    "title": "ACCION",
+                    "description": "texto con la accion  ( SENT, CLICKED, DONE, REJECTED, READ )",
+                    "type": "VARCHAR2 (16 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ESTADO",
+                    "title": "FECHA_ESTADO",
+                    "description": "fecha de registro de la accion",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 16.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COMENTARIOS",
+                    "title": "COMENTARIOS",
+                    "description": "Comentarios sobre la accion. Puede ser cualquier dato relevante a la accion misma",
+                    "type": "VARCHAR2 (200 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODIGO",
+                    "title": "CODIGO",
+                    "description": "FK a GEC_NOTIFICACIONES",
+                    "type": "VARCHAR2 (8 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUB_CODIGO",
+                    "title": "SUB_CODIGO",
+                    "description": "FK a GEC_NOTIFICACIONES",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_GRUPO",
+                    "title": "ID_GRUPO",
+                    "description": "FK a GEC_GRUPO_MENSAJES",
+                    "type": "NUMBER (27)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 27.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

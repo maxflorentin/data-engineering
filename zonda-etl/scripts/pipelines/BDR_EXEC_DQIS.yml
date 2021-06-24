@@ -1,0 +1,23 @@
+name: BDR_EXEC_DQIS
+description: 'EXEC EVENT BDR DQIS'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 1 * *'
+start_date: '2018-03-01'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+- name: DQI_Task
+  operator: BashOperator
+  config:
+    command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/gitlab-pipelines/run_gitlab_pipelines.py --url https://gitlab.ar.bsch/api/v4/projects/1564/pipeline_schedules/26/play"
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar, hpolitano@santandertecnologia.com.ar, lmirandagonzalez@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

@@ -1,0 +1,32 @@
+{
+    "table": "bi_corp_common.dim_rec_informacion_requerida",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_entidad",
+                "cod_rec_circuito",
+                "flag_rec_info_gpo",
+                "cod_rec_info_reque",
+                "flag_rec_info_oblig",
+                "cod_estado_circ_info_reque",
+                "cod_rec_etapa",
+                "int_rec_orden_etapa"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_dde_info_reque",
+                "dt_rec_hta_info_reque"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+    ]
+}

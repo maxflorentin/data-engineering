@@ -1,0 +1,130 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A308837"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdtcpc_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "cpc_concepto",
+                    "title": "cpc_concepto",
+                    "description": "CÓDIGO DE CONCEPTO",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "cpc_comision",
+                    "title": "cpc_comision",
+                    "description": "CÓDIGO DE LA COMISIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "cpc_canal",
+                    "title": "cpc_canal",
+                    "description": "CÓDIGO DE CANAL",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0
+                },
+                {
+                    "name": "cpc_fecha_desde",
+                    "title": "cpc_fecha_desde",
+                    "description": "FECHA DESDE ENTRADA EN VIGOR DE LA EXCEPCIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "cpc_fecha_hasta",
+                    "title": "cpc_fecha_hasta",
+                    "description": "FECHA FINAL DE LA EXCEPCIÓN",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "cpc_entidad_umo",
+                    "title": "cpc_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "cpc_centro_umo",
+                    "title": "cpc_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION            ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "cpc_userid_umo",
+                    "title": "cpc_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "cpc_netname_umo",
+                    "title": "cpc_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "cpc_timest_umo",
+                    "title": "cpc_timest_umo",
+                    "description": "FECHA Y HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

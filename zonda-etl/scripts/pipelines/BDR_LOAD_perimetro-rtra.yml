@@ -1,0 +1,134 @@
+name: BDR_LOAD_perimetro-rtra
+description: 'perimetro-rtra'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: bi_corp_staging.cargabal_rtra, santander_business_risk_arda.cotizaciones_bcra, santander_business_risk_arda.especies, bi_corp_common.rosetta_nkey_hist, bi_corp_common.rosetta_rnkd_hist, bi_corp_staging.aqua_rating_empresas, bi_corp_bdr.jm_client_bii, bi_corp_bdr.map_no_mrg, bi_corp_staging.afip, bi_corp_staging.afip_cat_monotributo, bi_corp_staging.alha9600, bi_corp_staging.aqua_clientes_asoc_geconomicos, bi_corp_staging.aqua_grupos_economicos, bi_corp_staging.aqua_tipo_cambio, bi_corp_staging.bcra, bi_corp_staging.bcra_sector, bi_corp_staging.bcra_sector_desc, bi_corp_staging.bgdtmae, bi_corp_staging.corresponsales, bi_corp_staging.gtdtrbc, bi_corp_staging.gtdtrgb, bi_corp_staging.inferencia_ingreso, bi_corp_staging.malbgc_acreditaciones, bi_corp_staging.malbgc_zbdtmig, bi_corp_staging.malpe_pedt008, bi_corp_staging.malpe_pedt015, bi_corp_staging.malpe_pedt024, bi_corp_staging.malpe_pedt042, bi_corp_staging.malpe_peec867c, bi_corp_staging.mddtccn, bi_corp_staging.mdr_contrapartes, bi_corp_staging.mmff_tactico_especie, bi_corp_staging.moria_vc_historico_ventas, bi_corp_staging.moria_vc_ventas, bi_corp_staging.no_mrg_grupo_relacion, bi_corp_staging.no_mrg_grupos, bi_corp_staging.no_mrg_juridica, bi_corp_staging.recla_adicional_cargabal, bi_corp_staging.recla_moro_cargabal, bi_corp_staging.rtra_economico, bi_corp_staging.rtra_regulatorio, bi_corp_staging.rubros_cargabal_provisiones, bi_corp_staging.sge_grupos_economicos, bi_corp_staging.view_clientes_en_mora, santander_business_risk_arda.calendario, santander_business_risk_arda.clientes, santander_business_risk_arda.contratos, santander_business_risk_arda.contratos_adsf, santander_business_risk_arda.contratos_deudores_adic, santander_business_risk_arda.contratos_garra, santander_business_risk_arda.contratos_refinanciados, santander_business_risk_arda.ifrs9_contratos, santander_business_risk_arda.ifrs9_tarjetas_saldos_amex, santander_business_risk_arda.ifrs9_tarjetas_saldos_master, santander_business_risk_arda.ifrs9_tarjetas_saldos_visa, santander_business_risk_arda.mapa_seguimiento, santander_business_risk_arda.marca_comite, santander_business_risk_arda.marcas_riesgo, santander_business_risk_arda.personas, santander_business_risk_arda.personas_comp_fisicas, santander_business_risk_arda.personas_valor_rgo, santander_business_risk_arda.rating_aqua_nilo, santander_business_risk_arda.rating_sge, santander_business_risk_arda.relacion_contrato_cliente, santander_business_risk_arda.score_comportamiento, santander_business_risk_arda.scoring_admision, bi_corp_staging.corresponsales_adicional_juridica, santander_business_risk_ifrs9.ifrs9_tablon, bi_corp_staging.malug_ugdtmae, bi_corp_bdr.saldos_tarjetas_covid, bi_corp_bdr.perim_contratos_bis_tarjetas_covid, bi_corp_common.stk_mora_marcas_riesgos
+tasks:
+  - name: Load_Cliente_Bis_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIENT_BII/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Contratos_bis_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_BIS/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Contratos_otros_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Area-Contratos_otros_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/tactico-rtra/ETLV-Load_Table_AreaDeNegocio-tactico-rtra.hql'
+  - name: Load_Intevinientes_Cto_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Importe_Pos_Cto_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_POSIC_CONTR/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Exp_No_Con_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Exp_No_Con_Ajustes_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/tactico-rtra/ETLV-Load_Table_ajustes-tactico-rtra.hql'
+  - name: Load_Exp_No_Con_Prov_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/tactico-rtra/ETLV-Load_Table_ajustes_prov-tactico-rtra.hql'
+  - name: Load_Trazabilidad_Cliente_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CLIENTE/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_EAD_Contr_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EAD_CONTR/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Normalizacion_cto_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_contratos/tactico-rtra/ETLV-Load_Table-tactico-rtra.hql'
+  - name: Load_Normalizacion_cto_ajuste_rtra
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/locals/normalizacion_id_contratos/tactico-rtra/ETLV-Load_Table_ENC_ajustes-tactico-rtra.hql'
+dependencies:
+  Load_Cliente_Bis_rtra: [Load_Trazabilidad_Cliente_rtra, Load_Area-Contratos_otros_rtra]
+  Load_Normalizacion_cto_rtra: [Load_Contratos_otros_rtra, Load_Contratos_bis_rtra, Load_EAD_Contr_rtra, Load_Importe_Pos_Cto_rtra, Load_Intevinientes_Cto_rtra]
+  Load_Contratos_otros_rtra: [Load_Area-Contratos_otros_rtra]
+  Load_Intevinientes_Cto_rtra: [Load_Area-Contratos_otros_rtra]
+  Load_Importe_Pos_Cto_rtra: [Load_Normalizacion_cto_ajuste_rtra]
+  Load_Normalizacion_cto_ajuste_rtra: [Load_Exp_No_Con_rtra]
+  Load_Exp_No_Con_rtra: [Load_Exp_No_Con_Ajustes_rtra]
+  Load_Exp_No_Con_Ajustes_rtra: [Load_Exp_No_Con_Prov_rtra]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jhungramos@santandertecnologia.com.ar, hpolitano@santandertecnologia.com.ar, lmirandagonzalez@santandertecnologia.com.ar, mamarmo@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

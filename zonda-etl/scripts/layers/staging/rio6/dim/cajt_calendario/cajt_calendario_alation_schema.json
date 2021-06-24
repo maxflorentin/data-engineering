@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125127","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "CAJT_CALENDARIO",
+            "title": "Calendarios",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Calendarios",
+            "columns": [
+                {
+                    "name": "CACA_FE_DIA",
+                    "title": "CACA_FE_DIA",
+                    "description": "Fecha del día",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACA_ST_DIA",
+                    "title": "CACA_ST_DIA",
+                    "description": "Indicador de feriado/laborable",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACA_NU_DIA",
+                    "title": "CACA_NU_DIA",
+                    "description": "Obsoleto",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

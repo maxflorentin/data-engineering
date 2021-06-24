@@ -1,0 +1,172 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307507"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.malzx_alzxlsta",
+            "title": "Tabla estados Granel  ( STA )",
+            "schema": "bi_corp_staging",
+            "source": "MALZX",
+            "query": "",
+            "type": "FACT",
+            "description": "Tabla estados Granel  ( STA )",
+            "columns": [
+                {
+                    "name": "COD_EST_TRAMITE",
+                    "title": "COD_EST_TRAMITE",
+                    "description": "codigo de estado",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_EST_TRAMITE",
+                    "title": "DES_EST_TRAMITE",
+                    "description": "descripcion tramite",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DES_EST_CLIENTE",
+                    "title": "DES_EST_CLIENTE",
+                    "description": "descripcion cliente",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MCA_AGRUPA_CLI",
+                    "title": "MCA_AGRUPA_CLI",
+                    "description": "Marca agrupacion cliente",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_ESTADO",
+                    "title": "COD_ESTADO",
+                    "description": "estado",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_PRODUCTO",
+                    "title": "COD_PRODUCTO",
+                    "description": "Producto de cesion",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUBPRODUCTO",
+                    "title": "COD_SUBPRODUCTO",
+                    "description": "Subproducto de cesion",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIM_ALTA",
+                    "title": "TIM_ALTA",
+                    "description": "Fecha de alta registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_USER_ALTA",
+                    "title": "IDE_USER_ALTA",
+                    "description": "usuario alta registro",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_TERM_ALTA",
+                    "title": "IDE_TERM_ALTA",
+                    "description": "terminal de alta del registro",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIM_ULT_MODF",
+                    "title": "TIM_ULT_MODF",
+                    "description": "fecha de ultima modificacion",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_USER_ULT_MODF",
+                    "title": "IDE_USER_ULT_MODF",
+                    "description": "usuario que actualizo el registro",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IDE_TERM_ULT_MODF",
+                    "title": "IDE_TERM_ULT_MODF",
+                    "description": "terminal que actualizo el registro",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+{
+    "file": "motdes_arbol_resultados",
+    "location": "/santander/bi-corp/landing/csm/fact/motdes_arbol_resultados/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/motdes_arbol_resultados",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_motdes_arbol_resultados",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_casuistica",
+            "type": "string"
+        },
+        {
+            "name": "cod_resultado",
+            "type": "string"
+        },
+        {
+            "name": "desc_resultado",
+            "type": "string"
+        },
+        {
+            "name": "texto_mensaje",
+            "type": "string"
+        },
+        {
+            "name": "ind_favorabilidad",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

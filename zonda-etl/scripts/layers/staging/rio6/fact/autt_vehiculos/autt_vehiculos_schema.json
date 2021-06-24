@@ -1,0 +1,114 @@
+{
+  "file": "autt_vehiculos_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/autt_vehiculos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/autt_vehiculos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"auve_nu_serial_carroceria",
+      "type": "string"
+    },
+    {
+      "name":"auve_nu_serial_motor",
+      "type":"string"
+    },
+    {
+      "name":"auve_auma_cd_marca",
+      "type":"string"
+    },
+    {
+      "name":"auve_aumo_cd_modelo",
+      "type":"string"
+    },
+    {
+      "name":"auve_an_fabricacion",
+      "type":"string"
+    },
+    {
+      "name":"auve_nu_placa",
+      "type":"string"
+    },
+    {
+      "name":"auve_ca_peso_kilogramos",
+      "type":"string"
+    },
+    {
+      "name":"auve_in_automatico_sincronico",
+      "type":"string"
+    },
+    {
+      "name":"auve_in_carga_pasajeros",
+      "type":"string"
+    },
+    {
+      "name":"auve_cp_carga_pasajeros",
+      "type":"string"
+    },
+    {
+      "name":"auve_auco_cd_color",
+      "type":"string"
+    },
+    {
+      "name":"auve_auth_cd_tipo_vehiculo",
+      "type":"string"
+    },
+    {
+      "name":"auve_aucl_cd_clase",
+      "type":"string"
+    },
+    {
+      "name":"auve_nu_cilindros",
+      "type":"string"
+    },
+    {
+      "name":"auve_auco_cd_color2",
+      "type":"string"
+    },
+    {
+      "name":"auve_auco_cd_color3",
+      "type":"string"
+    },
+    {
+      "name":"auve_nu_oblea_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_de_marca_regulador_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_nu_serial_regulador_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_fe_desde_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_fe_hasta_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_nu_taller_montaje_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_mt_suma_asegurada_gnc",
+      "type":"string"
+    },
+    {
+      "name":"auve_cd_tipo_gnc",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,264 @@
+name: LOAD_CMN_PRESTAMOS-Daily
+description: 'Load loans data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 14 * * *'
+start_date: '2020-09-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_staging.malpe_ptb_pedt008,bi_corp_staging.malug_rpe,bi_corp_common.stk_mora_primas_redistribuidas,bi_corp_staging.moria_wtri0010,bi_corp_staging.adsf_isec4060,bi_corp_common.stk_mora_404
+tasks:
+  - name: COMMON_LoadTable_stk_pre_prestamos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/DDLT-stk_pre_prestamos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/ETL-LOAD-stk_pre_prestamos.hql'
+  - name: SHERIFF_Control_stk_pre_prestamos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_prestamos/stk_pre_prestamos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_pre_prestamos_sheriff.json']
+  - name: COMMON_LoadTable_bt_pre_cancelacionesprestamos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_cancelacionesprestamos/DDLT-bt_pre_cancelacionesprestamos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_cancelacionesprestamos/ETL-LOAD-bt_pre_cancelacionesprestamos.hql'
+  - name: SHERIFF_Control_bt_pre_cancelacionesprestamos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_cancelacionesprestamos/bt_pre_cancelacionesprestamos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_pre_cancelacionesprestamos_sheriff.json']
+  - name: COMMON_LoadTable_bt_pre_pagosprestamos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_pagosprestamos/DDLT-bt_pre_pagosprestamos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_pagosprestamos/ETL-LOAD-bt_pre_pagosprestamos.hql'
+  - name: SHERIFF_Control_bt_pre_pagosprestamos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_pagosprestamos/bt_pre_pagosprestamos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_pre_pagosprestamos_sheriff.json']
+  - name: COMMON_LoadTable_stk_pre_normalizaciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_normalizaciones/DDLT-stk_pre_normalizaciones.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_normalizaciones/ETL-LOAD-stk_pre_normalizaciones.hql'
+  - name: SHERIFF_Control_stk_pre_normalizaciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_normalizaciones/stk_pre_normalizaciones_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_pre_normalizaciones_sheriff.json']
+  - name: COMMON_LoadTable_stk_pre_reestructuraciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_reestructuraciones/DDLT-stk_pre_reestructuraciones.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_reestructuraciones/ETL-LOAD-stk_pre_reestructuraciones.hql'
+  - name: SHERIFF_Control_stk_pre_reestructuraciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_reestructuraciones/stk_pre_reestructuraciones_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_pre_reestructuraciones_sheriff.json']
+  - name: COMMON_LoadTable_bt_pre_bajas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajas/DDLT-bt_pre_bajas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajas/ETL-LOAD-bt_pre_bajas.hql'
+  - name: SHERIFF_Control_bt_pre_bajas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajas/bt_pre_bajas_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_pre_bajas_sheriff.json']
+  - name: COMMON_LoadTable_bt_pre_reestructuracioncontratos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_reestructuracioncontratos/DDLT-bt_pre_reestructuracioncontratos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_reestructuracioncontratos/ETL-LOAD-bt_pre_reestructuracioncontratos.hql'
+  - name: SHERIFF_Control_bt_pre_reestructuracioncontratos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_reestructuracioncontratos/bt_pre_reestructuracioncontratos_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_pre_reestructuracioncontratos_sheriff.json']
+  - name: COMMON_LoadTable_stk_pre_cuotaspendientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_cuotaspendientes/DDLT-stk_pre_cuotaspendientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_cuotaspendientes/ETL-LOAD-stk_pre_cuotaspendientes.hql'
+  - name: SHERIFF_Control_stk_pre_cuotaspendientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/stk_pre_cuotaspendientes/stk_pre_cuotaspendientes_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['stk_pre_cuotaspendientes_sheriff.json']
+  - name: COMMON_LoadTable_bt_pre_bajasreestructuraciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajasreestructuraciones/DDLT-bt_pre_bajasreestructuraciones.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajasreestructuraciones/ETL-LOAD-bt_pre_bajasreestructuraciones.hql'
+  - name: SHERIFF_Control_bt_pre_bajasreestructuraciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/prestamos/bt_pre_bajasreestructuraciones/bt_pre_bajasreestructuraciones_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_PRESTAMOS-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_pre_bajasreestructuraciones_sheriff.json']
+dependencies:
+  COMMON_LoadTable_stk_pre_prestamos: SHERIFF_Control_stk_pre_prestamos
+  COMMON_LoadTable_bt_pre_cancelacionesprestamos: SHERIFF_Control_bt_pre_cancelacionesprestamos
+  COMMON_LoadTable_bt_pre_pagosprestamos: SHERIFF_Control_bt_pre_pagosprestamos
+  COMMON_LoadTable_stk_pre_normalizaciones: SHERIFF_Control_stk_pre_normalizaciones
+  COMMON_LoadTable_stk_pre_reestructuraciones: [SHERIFF_Control_stk_pre_reestructuraciones, COMMON_LoadTable_bt_pre_bajasreestructuraciones]
+  COMMON_LoadTable_bt_pre_bajas: SHERIFF_Control_bt_pre_bajas
+  COMMON_LoadTable_bt_pre_reestructuracioncontratos: SHERIFF_Control_bt_pre_reestructuracioncontratos
+  COMMON_LoadTable_stk_pre_cuotaspendientes: SHERIFF_Control_stk_pre_cuotaspendientes
+  COMMON_LoadTable_bt_pre_bajasreestructuraciones: SHERIFF_Control_bt_pre_bajasreestructuraciones
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar]

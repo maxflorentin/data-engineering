@@ -1,0 +1,24 @@
+{
+  "tables" :[
+    {
+      "serverConfig": "dbexap01-scan",
+      "database": "RIO35_APPS",
+      "table": "bgdtmpa",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/bgdtmpa_hist",
+      "table_type": "fact",
+      "environment": "rio35",
+      "split_field": "centro_alta",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT ENTIDAD AS mpa_entidad,CENTRO_ALTA,PAQUETE AS mpa_paquete,PRODUCTO_PAQ mpa_producto_paq,SUBPRODU_PAQ mpa_subprodu_paq,ENTIDAD_INV mpa_ENTIDAD_INV,CENTRO_INV mpa_CENTRO_INV,CUENTA_INV mpa_CUENTA_INV,ENTIDAD_CONTAB MPA_ENTIDAD_CONTAB,CENTRO_CONTAB MPA_CENTRO_CONTAB, COD_PLAN MPA_COD_PLAN,INDESTA MPA_INDESTA,COD_SOP_EXT MPA_COD_SOP_EXT,PCO_ECU_FHPR MPA_PCO_ECU_FHPR,to_char(FECHA_ALTA, 'yyyy-MM-dd') MPA_FECHA_ALTA,to_char(FECHA_CANCEL, 'yyyy-MM-dd') MPA_FECHA_CANCEL,to_char(FECHA_UPGRADE, 'yyyy-MM-dd') MPA_FECHA_UPGRADE,to_char(FECHA_DOWNGR, 'yyyy-MM-dd') MPA_FECHA_DOWNGR,IND_INHAB_SBRG MPA_IND_INHAB_SBRG,COD_ENVIO_MOD MPA_COD_ENVIO_MOD,CALPAR_ENVIO_MOV MPA_CALPAR_ENVIO_MOV,ORDPAR_ENVIO_MOV MPA_ORDPAR_ENVIO_MOV,ENTIDAD_UMO MPA_ENTIDAD_UMO,CENTRO_UMO MPA_CENTRO_UMO,USERID_UMO MPA_USERID_UMO,NETNAME_UMO MPA_NETNAME_UMO,TIMEST_UMO MPA_TIMEST_UMO FROM mviews.BGDTMPA WHERE as_of_date=date'{partition_date}' AND \\$CONDITIONS\" --target-dir '{landing_path}/partition_date={partition_date}'  --num-mappers 6  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "dbexap01-scan",
+      "database": "RIO35_APPS",
+      "table": "bgdtrpp",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/bgdtrpp_hist",
+      "table_type": "fact",
+      "environment": "rio35",
+      "split_field": "centro_alta",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT ENTIDAD,CENTRO_ALTA,PAQUETE,ENTIDAD2,CENTRO_ALTA2,CUENTA,PRODUCTO,SUBPRODU,DIVISA1,DIVISA2,IND_CTA_PIV,ESTAREL,ENTIDAD_UMO,CENTRO_UMO,USERID_UMO,NETNAME_UMO,TIMEST_UMO FROM mviews.BGDTRPP WHERE as_of_date=date'{partition_date}' AND \\$CONDITIONS\" --target-dir '{landing_path}/partition_date={partition_date}'  --num-mappers 6  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

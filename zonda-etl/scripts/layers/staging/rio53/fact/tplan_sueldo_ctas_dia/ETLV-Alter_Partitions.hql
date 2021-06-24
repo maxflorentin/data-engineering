@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio53_tplan_sueldo_ctas_dia;

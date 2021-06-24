@@ -1,0 +1,121 @@
+      *                                                                         
+      *--------------------------------------------------------------*  00220000
+      *               - HISTORICO DE CHEQUES PAGADOS -               *          
+      *                   < <  WACLE640  > >                         *          
+      *  BASE HISTORICA DE CHEQUES                                   *  00230000
+      *  ARCHIVO DE INTERFASE DEL BACKEND ACLE PARA CARGARSE EN      *  00230000
+      *  LA BASE ORACLE                                              *  00230000
+      *  LONGITUD: 200 BYTES                                         *  00250000
+      *  TIPO DE REGISTRO: FIJO                                      *  00260000
+      *--------------------------------------------------------------*  00270000
+      *                                                                         
+      ******************************************************************00000300
+      * DESCRIPCION DE LOS CAMPOS DE LA COPY                                    
+      ******************************************************************00000300
+      *01  WACLE640.                                                    00280000
+      *                                                                         
+      *    WACLE640-TIPO-REG ---------> INDICA EL EL TIPO DE INFO       00292000
+      *                                 QUE VIENE EN EL DETALLE         00292000
+      *       ALTA           ---------> 'A'.                            00292000
+      *       MODIFICACION   ---------> 'M'.                            00292000
+      *                                                                         
+      *    WACLE640-ID-CHEQUE --------> IDENT. UNIVOCA DEL CHEQUE       00292000
+      *      WACLE640-CMC7    --------> DATOS DEL CMC7                  00292000
+      *        WACLE640-BANCO-CMC7 ---> BANCO CMC7                      00292000
+      *        WACLE640-SUCURSAL-CMC7-> SUCURSAL CMC7                   00292000
+      *        WACLE640-NRO-CHEQUE-CMC7                                 00292000
+      *                           ----> NRO CHEQUE CMC7                 00292000
+      *        WACLE640-NRO-CTA-CMC7--> NRO CTA CMC7                    00292000
+      *        WACLE640-FECHA-COMPENSACION                              00292000
+      *                          -----> FECHA-COMPENSACION              00292000
+      *    WACLE640-DETALLE       ----> DETALLE                         00292000
+      *      WACLE640-TIPO-CHEQUE ----> IDENTIFICA TPO CHEQUE           00292000
+      *               CANJE-INTERNO---> 'C'                             00292000
+      *               CAMARA-REMITIDA-> 'M'                             00292000
+      *               CAMARA-RECIBIDA-> 'B'                             00292000
+      *               PAGADOR   ------> 'P'                             00292000
+      *               SOBRANTE  ------> 'S'                             00292000
+      *       WACLE640-COD-POSTAL ----> CODIGO POSTAL DEL CMC7          00292000
+      *       WACLE640-IMPORTE -------> IMPORTE DEL CHEQUE              00292000
+      *       WACLE640-FEC-PRES ------> FEC PRES DEL CHQ A CAMARA       00292000
+      *       WACLE640-FEC-DEPOSITO---> FEC DEPOSITO DEL CHQ            00292000
+      *       WACLE640-MOT-RECH-PPAL--> MOT NACHA POR EL QUE EL CHEQUE  00292000
+      *                                 FUE EFECT. RECHAZADO            00292000
+      *       WACLE640-MOT-RECH-DEPO--> MOT NACHA DE RECHAZO DE         00292000
+      *                                 DEPOSITARIA SI NO FUE EL PPAL   00292000
+      *       WACLE640-ESTADO --------> ESTADO DEL CHEQUE               00292000
+      *          WACLE640-PAGADO -----> 'P'                             00292000
+      *          WACLE640-BAJA      --> 'B'                             00292000
+      *          WACLE640-RECHAZADO --> 'R'                             00292000
+      *          WACLE640-NO-DEFINIDO-> ' '                             00292000
+      *       WACLE640-PTO-INTERCAMBIO                                  00292000
+      *                             --> PTO-INTERC                      00292000
+      *       WACLE640-BCO-RECEP    --> BANCO RECEP DEL CHEQUE          00292000
+      *                                 DE CAMARA RECIBIDA              00292000
+      *       WACLE640-CANAL-INGRESO--> CANAL DE INGRESO DEL CHEQUE     00292000
+      *       WACLE640-BCO-CORRESP ---> BCO CORRESPONSAL                00292000
+      *       WACLE640-SUC-CORRESP ---> SUC CORRESPONSAL                00292000
+      *       WACLE640-PLAZO       ---> PLAZO DE CANJE                  00292000
+      *       WACLE640-SUC-ACRED   ---> SUC ACREDITACION                00292000
+      *       WACLE640-CTA-ACRED   ---> CTA ACREDITACION                00292000
+      *       WACLE640-SUC-ORIGEN  ---> SUC DONDE SE DEPOSITO EL CHQ    00292000
+      *       WACLE640-SUC-GIRADA  ---> SUC DONDE SE RADICA LA CTA      00292000
+      *                                 DESDE DONDE SE GIRARON LOS FDOS 00292000
+      *       WACLE640-CTA-GIRADA  ---> CTA DDE DONDE SE GIRARON LOS FDO00292000
+      *       WACLE640-NRO-CAJA    ---> CAJA DONDE SE GUARDA EL FISICO  00292000
+      *       WACLE640-VOLUMEN     ---> NRO DE MEDIO MAGNETICO DONDE    00292000
+      *                                 SE GRABA LA IMAGEN DEL CHEQUE   00292000
+      *    FILLER                                                       00290000
+      ******************************************************************00000300
+      *                                                                         
+       01  WACLE640.                                                    00280000
+                                                                                
+           03 WACLE640-TIPO-REG                PIC X(01).               00292000
+              88 WACLE640-TIPO-REG-ALTA         VALUE 'A'.              00292000
+              88 WACLE640-TIPO-REG-MOD          VALUE 'M'.              00292000
+                                                                                
+           03 WACLE640-ID-CHEQUE.                                       00292000
+              05 WACLE640-CMC7.                                         00292000
+                 07 WACLE640-BANCO-CMC7        PIC 9(03).               00292000
+                 07 WACLE640-SUCURSAL-CMC7     PIC 9(03).               00292000
+                 07 WACLE640-NRO-CHEQUE-CMC7   PIC 9(08).               00292000
+                 07 WACLE640-NRO-CTA-CMC7      PIC 9(11).               00292000
+              05 WACLE640-FECHA-COMPENSACION   PIC 9(08).               00292000
+                                                                                
+           03 WACLE640-DETALLE.                                         00292000
+              05 WACLE640-TIPO-CHEQUE          PIC X(01).               00292000
+                 88 WACLE640-CANJE-INTERNO      VALUE 'C'.              00292000
+                 88 WACLE640-CAMARA-REMITIDA    VALUE 'M'.              00292000
+                 88 WACLE640-CAMARA-RECIBIDA    VALUE 'B'.              00292000
+                 88 WACLE640-PAGADOR            VALUE 'P'.              00292000
+                 88 WACLE640-SOBRANTE           VALUE 'S'.              00292000
+              05 WACLE640-COD-POSTAL           PIC 9(04).               00292000
+              05 WACLE640-IMPORTE              PIC 9(11)V99.            00292000
+              05 WACLE640-FEC-PRES             PIC 9(08).               00292000
+              05 WACLE640-FEC-DEPOSITO         PIC 9(08).               00292000
+              05 WACLE640-MOT-RECH-PPAL        PIC X(03).               00292000
+              05 WACLE640-MOT-RECH-DEPO        PIC X(03).               00292000
+              05 WACLE640-ESTADO               PIC X(01).               00292000
+                 88 WACLE640-PAGADO             VALUE 'P'.              00292000
+                 88 WACLE640-BAJA               VALUE 'B'.              00292000
+                 88 WACLE640-RECHAZADO          VALUE 'R'.              00292000
+                 88 WACLE640-NO-DEFINIDO        VALUE ' '.              00292000
+              05 WACLE640-PTO-INTERCAMBIO      PIC X(04).               00292000
+              05 WACLE640-BCO-RECEP            PIC X(03).               00292000
+              05 WACLE640-CANAL-INGRESO        PIC X(02).               00292000
+              05 WACLE640-BCO-CORRESP          PIC X(03).               00292000
+              05 WACLE640-SUC-CORRESP          PIC X(04).               00292000
+              05 WACLE640-PLAZO                PIC X(02).               00292000
+              05 WACLE640-SUC-ACRED            PIC X(04).               00292000
+              05 WACLE640-CTA-ACRED            PIC X(12).               00292000
+              05 WACLE640-SUC-ORIGEN           PIC X(04).               00292000
+              05 WACLE640-SUC-GIRADA           PIC X(04).               00292000
+              05 WACLE640-CTA-GIRADA           PIC X(12).               00292000
+              05 WACLE640-MONEDA               PIC X(03).               00292000
+      * DATOS DE GUARDA                                                         
+              05 WACLE640-NRO-CAJA             PIC X(09).               00292000
+              05 WACLE640-VOLUMEN              PIC 9(05).               00292000
+           03 WACLE640-FILLER                  PIC X(54).               00290000
+      ******************************************************************00006000
+      *                         LONGITUD 200                           *00006100
+      ******************************************************************00006200

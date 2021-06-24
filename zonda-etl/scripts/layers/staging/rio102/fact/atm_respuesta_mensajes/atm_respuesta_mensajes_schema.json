@@ -1,0 +1,85 @@
+{
+  "file": "atm_respuesta_mensajes_schema",
+  "location": "/santander/bi-corp/landing/rio102/fact/atm_respuesta_mensajes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio102/fact/atm_respuesta_mensajes",
+  "tempDirectory": "/santander/bi-corp/temp/rio102",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+    "name": "tarjeta",
+    "type": "string"
+  },
+{
+    "name": "nup",
+    "type": "string"
+  },
+{
+    "name": "mensaje",
+    "type": "string"
+  },
+{
+    "name": "resp_cliente_novedad",
+    "type": "string"
+  },
+{
+    "name": "resp_cliente_maestro",
+    "type": "string"
+  },
+{
+    "name": "fecha_alta",
+    "type": "string"
+  },
+{
+    "name": "fecha_baja",
+    "type": "string"
+  },
+{
+    "name": "sigla_atm",
+    "type": "string"
+  },
+{
+    "name": "fecha_oferta",
+    "type": "string"
+  },
+{
+    "name": "hora_oferta",
+    "type": "string"
+  },
+{
+    "name": "tipo_telefono",
+    "type": "string"
+  },
+{
+    "name": "codigo_area",
+    "type": "string"
+  },
+{
+    "name": "numero_tel",
+    "type": "string"
+  },
+{
+    "name": "tip_doc",
+    "type": "string"
+  },
+{
+    "name": "num_doc",
+    "type": "string"
+  },
+{
+    "name": "as_of_date",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "as_of_date",
+   "type": "date",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

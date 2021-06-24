@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_equipo_directivo_cliente",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_secuencia"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_secuencia","ds_adm_nombre","cod_adm_peusualt","ts_adm_pefecalt"],
+      "threshold": 0.0005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_pefecalt","ts_adm_pefecmod"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

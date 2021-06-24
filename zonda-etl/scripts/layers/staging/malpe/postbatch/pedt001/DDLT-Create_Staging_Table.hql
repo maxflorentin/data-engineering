@@ -1,0 +1,67 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.malpe_ptb_pedt001(
+    pecdgent string COMMENT 'codigo de entidad',
+    penumper string COMMENT 'numero de cliente',
+    petipdoc string COMMENT 'tipo de documento',
+    penumdoc string COMMENT 'numero del documento',
+    pesecdoc string COMMENT 'secuencia de identificacion del documento',
+    penomfan string COMMENT 'nombre de fantasia',
+    pepriape string COMMENT 'primer apellido',
+    pesegape string COMMENT 'segundo apellido',
+    penomper string COMMENT 'nombre/ razon social',
+    pefecing string COMMENT 'fecha de ingreso',
+    pesucadm string COMMENT 'sucursal administradora',
+    peestciv string COMMENT 'estado civil',
+    pesexper string COMMENT 'sexo',
+    petipper string COMMENT 'tipo de persona (fisica o juridica)',
+    pefecnac string COMMENT 'fecha de nacimiento/constitucion',
+    pefecini string COMMENT 'fecha de inicio de la actividad',
+    pecanven string COMMENT 'canal de venta',
+    pecancap string COMMENT 'canal de captacion',
+    pepaiori string COMMENT 'pais de nacimiento/ origen',
+    pecodcam string COMMENT 'campana',
+    penacper string COMMENT 'nacionalidad',
+    pepaires string COMMENT 'pais de residencia',
+    pesecper string COMMENT 'sector',
+    petipocu string COMMENT 'tipo de ocupacion',
+    pecodact string COMMENT 'codigo actividad',
+    petieres string COMMENT 'tiempo de residencia o operacion en el pais',
+    petieres_sgn string COMMENT 'signo',
+    peforjur string COMMENT 'forma juridica',
+    penatjur string COMMENT 'naturaleza juridica',
+    peareneg string COMMENT 'unidad de negocio',
+    pecodsuj string COMMENT 'codigo de sujeto',
+    pebanpri string COMMENT 'marca cliente banca privada',
+    penivacc string COMMENT 'nivel de acceso',
+    peestper string COMMENT 'estado del cliente',
+    peconper string COMMENT 'condicion del cliente',
+    pevinsan string COMMENT 'vinculacion  grupo  santander',
+    pecodemp string COMMENT 'codigo empresa del grupo (obligatorio para venezuela en caso de vinculacion al grupo santander)',
+    peindrel string COMMENT 'indicador de relaciones entre personas',
+    peindcon string COMMENT 'indicador de tener contratos',
+    peindgru string COMMENT 'indicador de pertenencia a grupo',
+    peindavi string COMMENT 'indicador de avisos',
+    peindno1 string COMMENT 'marca cliente vip (colombia)',
+    peindno2 string COMMENT 'marca exento de reporte efectivo s/n (col)',
+    peindno3 string COMMENT 'indicador de uso',
+    peindno4 string,
+    peindno5 string,
+    peactriu string,
+    pesubseg string,
+    pefecrev string,
+    peidioma string,
+    peusualt string,
+    pefecalt string,
+    peusumod string,
+    petermod string,
+    pesucmod string,
+    pehstamp string
+)
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT
+  'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION
+  '${DATA_LAKE_SERVER}/santander/bi-corp/staging/malpe-post-batch/fact/pedt001';

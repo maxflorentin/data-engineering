@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_rpc",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_rpc"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_rpc","dt_adm_calificacion","int_adm_rel_porc","cod_adm_nro_prop","fc_adm_imp_resp_pat_comp"],
+      "threshold": 0.009
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_calificacion","dt_adm_estados_contables"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}
+

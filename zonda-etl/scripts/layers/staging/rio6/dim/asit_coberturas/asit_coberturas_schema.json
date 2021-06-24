@@ -1,0 +1,30 @@
+{
+  "file": "asit_coberturas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/asit_coberturas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/asit_coberturas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"ascb_cd_cobertura",
+      "type": "string"
+    },
+    {
+      "name":"ascb_de_cobertura",
+      "type":"string"
+    },
+    {
+      "name":"ascb_tp_cobertura",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

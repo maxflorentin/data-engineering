@@ -1,0 +1,48 @@
+name: BDR_LOAD_Area_De_Negocio
+description: 'Eventual de carga de Area de Negocio en JM_CONTR_OTROS'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: bi_corp_common.rosetta_nkey_hist, bi_corp_common.rosetta_rnkd_hist
+tasks:
+  - name: Load_AdN_Origen_JM_CONTR_OTROS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/Eventual AdN/ETLV-De_Origen.hql'
+  - name: Load_AdN_Default_JM_CONTR_OTROS
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/Eventual AdN/ETLV-Por_Defecto.hql'
+  - name: Load_Table_TRZ_Cont
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/Eventual AdN/ELTV-Load_Table_TRZ_Cont.hql'
+dependencies:
+  Load_AdN_Origen_JM_CONTR_OTROS: Load_AdN_Default_JM_CONTR_OTROS
+  Load_AdN_Default_JM_CONTR_OTROS: Load_Table_TRZ_Cont
+notifications:
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, jhungramos@santandertecnologia.com.ar]

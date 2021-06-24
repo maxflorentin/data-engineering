@@ -1,0 +1,24 @@
+{
+  "tables" :[
+    {
+      "serverAka": "RIO37",
+      "serverConfig": "DBLXINTESRV01",
+      "database": "RIO2",
+      "table": "arbol_cc_vw_lake",
+      "landing_path": "/santander/bi-corp/landing/rio37/dim/arbol_cc_vw_lake",
+      "table_type": "dim",
+      "environment": "rio37",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM bup01.arbol_cc_vw_lake WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO37",
+      "serverConfig": "DBLXINTESRV01",
+      "database": "RIO2",
+      "table": "personas_vw_lake",
+      "landing_path": "/santander/bi-corp/landing/rio37/fact/personas_vw_lake",
+      "table_type": "fact",
+      "environment": "rio37",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM bup01.personas_vw_lake WHERE \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir '{zonda_dir}/sqoop/{environment}/{table}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

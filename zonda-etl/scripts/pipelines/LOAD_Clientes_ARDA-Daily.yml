@@ -1,0 +1,63 @@
+name: LOAD_Clientes_ARDA
+description: 'Genera Tablon Clientes ARDA'
+owner: BI-Corp
+active: true
+# schedule_interval: '30 7 * * *'
+start_date: '2018-10-31'
+# catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COPY_CONFIG_HDFS
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -put -f $ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/conf/credito/* /santander/bi-corp/arda/config/credito"
+  - name: RUN_TABLON
+    operator: SparkSubmitOperator
+    config:
+      name: RUN_TABLON
+      connection_id: cloudera_spark
+      executor_cores: 5
+      executor_memory: 45G
+      num_executors: 10
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/lib/credito/tablon-clientes-2.7.0.jar'
+      jars: '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/lib/credito/arda-extensions-2.7.0-shade.jar'
+      java_class: 'com.santander.tablon.clientes.TablonClientesDriver'
+      conf: {
+        'spark.driver.memory':"8G",
+        'spark.yarn.driver.memoryOverhead':'512',
+        'spark.yarn.executor.memoryOverhead':'3072',
+        'spark.network.timeout':'610s',
+        'spark.executor.heartbeatInterval':'60s',
+        'spark.sql.shuffle.partitions':'200',
+        'spark.shuffle.spill.numElementsForceSpillThreshold':'50000',
+        'spark.executor.extraJavaOptions':"-XX:+PrintFlagsFinal -XX:+PrintReferenceGC -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:+PrintAdaptiveSizePolicy -XX:+UnlockDiagnosticVMOptions'",
+        'spark.yarn.queue':'apps.arda',
+      }
+      application_args: ['-c' ,'$HDFS_SERVER/santander/bi-corp/arda/config/credito/tablonclientes.conf', '-d', "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_Clientes_ARDA') }}",
+                         '-s', 'santander_business_risk_arda', '-j', 'clientes_rda', '-v', 'santander_staging_arda',
+                         '-k', '$HDFS_SERVER/santander/bi-corp/arda/tmp/credito', '-p', 'FALSE', '-t', "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_Clientes_ARDA') }}{{ ti.xcom_pull(task_ids='InputConfig', key='hour', dag_id='LOAD_Clientes_ARDA') }}{{ ti.xcom_pull(task_ids='InputConfig', key='minute', dag_id='LOAD_Clientes_ARDA') }}{{ ti.xcom_pull(task_ids='InputConfig', key='second', dag_id='LOAD_Clientes_ARDA') }}"]
+
+  - name: COMPUTE_INVALIDATE_TABLES
+    operator: BashOperator
+    config:
+      bash_command: "export PYTHONPATH=/usr/bin/python3.6:/usr/local/lib64/python3.6/site-packages;impala-shell -k -i $IMPALA_SERVER --ssl --ca_cert /opt/cloudera/security/CAcerts/cacerts -f $ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/queries/credito/tablon_clientes/tablon_clientes.sql"
+dependencies:
+  COPY_CONFIG_HDFS: RUN_TABLON
+  RUN_TABLON: COMPUTE_INVALIDATE_TABLES
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  user: [juafernandez@santandertecnologia.com.ar,jtroncha@santandertecnologia.com.ar]

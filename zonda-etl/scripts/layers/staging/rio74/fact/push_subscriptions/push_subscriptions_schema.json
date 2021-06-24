@@ -1,0 +1,75 @@
+{
+  "file": "push_subscriptions_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/push_subscriptions/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/push_subscriptions",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "active",
+      "type": "string"
+    },
+    {
+      "name": "app_version",
+      "type": "string"
+    },
+    {
+      "name": "device_id",
+      "type": "string"
+    },
+    {
+      "name": "manufacturer",
+      "type": "string"
+    },
+    {
+      "name": "model",
+      "type": "string"
+    },
+    {
+      "name": "model_code",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "os_version",
+      "type": "string"
+    },
+    {
+      "name": "platform",
+      "type": "string"
+    },
+    {
+      "name": "registered_at",
+      "type": "string"
+    },
+    {
+      "name": "last_register",
+      "type": "string"
+    },
+    {
+      "name": "token",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

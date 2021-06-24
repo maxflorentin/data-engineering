@@ -1,0 +1,106 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_tmya_message_request_data",
+      "title": "Se guardan las  novedades a enviar",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Se guardan las  novedades a enviar",
+      "columns": [
+        {
+          "name": "MSG_REQ_ID",
+          "title": "MSG_REQ_ID",
+          "description": "id del mensaje - primary key",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_ENTITLEMENT",
+          "title": "ID_ENTITLEMENT",
+          "description": "codigo de entitlement",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CREATE_TIMESTAMP",
+          "title": "CREATE_TIMESTAMP",
+          "description": "fecha de creación de la novedad a enviar",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MANUAL",
+          "title": "MANUAL",
+          "description": "identifica si se interto manualmente",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PROCESSED",
+          "title": "PROCESSED",
+          "description": "estado que identifica si se proceso o no la novedad",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DATA",
+          "title": "DATA",
+          "description": "informacion que se envia en la novedad",
+          "type": "CLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 4000.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIMESTAMP_INICIO_PROCESAMIENTO",
+          "title": "TIMESTAMP_INICIO_PROCESAMIENTO",
+          "description": "fecha de inicio de procesamiento",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+	"file": "centro_costo_schema",
+	"location": "/santander/bi-corp/landing/meta4/dim/centro_costo/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/meta4/dim/centro_costo",
+	"createTable": "bi_corp_staging.meta4_centro_costo",
+	"extension": "txt",
+	"fixed": true,
+	"skipNotify": true,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo_cc",
+			"type": "string",
+		    "width": 10
+		},
+		{
+			"name": "fecha_alta",
+			"type": "string",
+		    "width": 10
+		},
+		{
+			"name": "marca_activo",
+			"type": "string",
+		    "width": 1
+		},
+	{
+			"name": "descripcion",
+			"type": "string",
+		    "width": 30
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

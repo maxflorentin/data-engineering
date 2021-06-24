@@ -1,0 +1,79 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dblxorafront07",
+      "serverAka": "rio75",
+      "database": "RIO75",
+      "table": "RH_USUARIOS_GRUPOS",
+      "table_type": "fact",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/fact/rh_usuarios_grupos",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "to_char(F_ALTA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_usuarios_grupos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select N_UG_ID , C_USUARIORH,C_GRUPORH,F_ALTA,F_BAJA,I_ACTIVO  from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "serverAka": "rio75",
+      "database": "RIO75",
+      "table": "RH_USUARIOS",
+      "table_type": "fact",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/fact/rh_usuarios",
+      "split_field": "to_char(DT_INICIO, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_usuarios -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select C_USUARIORH , C_USUARIONT,C_USUARIO_RIO3,N_LEGAJO_BUP,N_LEG_ADMIN,D_NOMBRE,D_APELLIDO,D_CUIT_CUIL,T_DOCUMENTO,N_DOCUMENTO,F_NACIMIENTO,I_SEXO,D_TELEFONO1,D_TELEFONO2,D_INTERNO,D_EMAIL,D_CALLE,D_NUMERO,D_PISO,D_DEPTO,D_LOCALIDAD,D_COD_POSTAL,D_PROVINCIA,D_TIPO_EMPLEADO,V_HORA_IN,V_HORA_OUT,F_INGRESO,F_EGRESO,D_ESTADO_BUP,D_CCOSTO,C_MOTIVO_BAJA,C_USU_BKP,F_CARGA_BAJA,N_USUARIO_RACF,C_ID_TELEFONICO  from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "serverAka": "rio75",
+      "database": "RIO75",
+      "table": "RH_GRUPOS",
+      "table_type": "dim",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/dim/rh_grupos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_grupos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select C_GRUPORH , C_USU_RESP,C_NEGOCIORH,D_GRUPO,C_MODO,I_COMISIONA,F_ALTA,F_BAJA,I_ACTIVO,I_AUSENTISMO from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "database": "RIO75",
+      "serverAka": "rio75",
+      "table": "RH_NEGOCIOS",
+      "table_type": "dim",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/dim/rh_negocios",
+      "split_field": "to_char(F_ALTA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_negocios -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select C_NEGOCIORH , N_NEGOCIO_RIO3,D_NEGOCIO,C_USU_RESP,C_DEPARTAMENTORH,F_ALTA,F_BAJA,I_ACTIVO,I_LIQUIDABLE,N_ASEGURADO,I_CII,C_TIPO from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "database": "RIO75",
+      "serverAka": "rio75",
+      "table": "RH_MODOS",
+      "table_type": "dim",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/dim/rh_modos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_modos -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select C_MODO ,D_MODO,I_ACTIVO from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "database": "RIO75",
+      "serverAka": "rio75",
+      "table": "RH_EMPRESAS",
+      "table_type": "dim",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/dim/rh_empresas",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_empresas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select C_EMPRESA ,D_EMPRESA,F_ALTA,F_BAJA,I_ACTIVO,D_DOMICILIO,C_USU_RESP,I_LIQUIDABLE,C_HORAS_LABORALES,C_HORAS_LACTANCIA  from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront07",
+      "database": "RIO75",
+      "serverAka": "rio75",
+      "table": "RH_USUARIOS_MODALIDAD",
+      "table_type": "fact",
+      "environment": "SLC",
+      "landing_path": "/santander/bi-corp/landing/rio75/fact/rh_usuarios_modalidad",
+      "split_field": "to_char(F_ALTA, 'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=rh_usuarios_modalidad -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select N_UMOD_ID ,C_USUARIORH,C_EMPRESA,C_TIPO_CONTRATO,C_UBICACION,F_ALTA,F_BAJA,I_ACTIVO from {environment}.{table} WHERE  \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+    "file": "rubros_cargabal_provisiones",
+    "location": "/santander/bi-corp/landing/manual/exp_no_contr/provisiones/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/manual/exp_no_contr/provisiones",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": false ,
+    "parquetFiles": 1 ,
+    "compression": "gzip",
+    "columns":
+                      [
+                        {
+                          "name": "cargabal",
+                          "type": "string"
+                        },
+                        {
+                          "name": "detalle",
+                          "type": "string"
+                        }
+                      ],
+          "extraColumns": [{
+                  "name": "partition_date",
+                  "type": "string",
+                  "value": "${partition_date_filter}",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+          }]
+  }
+  

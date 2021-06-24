@@ -1,0 +1,126 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_planes",
+            "title": "Planes de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Planes de asistencias",
+            "columns": [
+                {
+                    "name": "  ASPL_CD_PLAN",
+                    "title": "  ASPL_CD_PLAN",
+                    "description": "Codigo de plan",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_FE_INICIO",
+                    "title": "  ASPL_FE_INICIO",
+                    "description": "Fecha de inicio",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_DE_PLAN",
+                    "title": "  ASPL_DE_PLAN",
+                    "description": "Descripcion de plan",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_PO_COMISION",
+                    "title": "  ASPL_PO_COMISION",
+                    "description": "Porcentaje de comision",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": true,
+                    "length": "(7,4)",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_EDAD_MIN",
+                    "title": "  ASPL_EDAD_MIN",
+                    "description": "Edad Minima",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_EDAD_MAX",
+                    "title": "  ASPL_EDAD_MAX",
+                    "description": "Edad Maxima",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_ST_PLAN",
+                    "title": "  ASPL_ST_PLAN",
+                    "description": "Estado de plan",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_FE_STATUS",
+                    "title": "  ASPL_FE_STATUS",
+                    "description": "Fecha de estado",
+                    "type": "Date",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPL_PRIORIDAD",
+                    "title": "  ASPL_PRIORIDAD",
+                    "description": "Prioridad",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

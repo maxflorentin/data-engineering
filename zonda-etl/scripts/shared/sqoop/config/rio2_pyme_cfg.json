@@ -1,0 +1,1080 @@
+{
+  "tables" :[
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "estados",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/estados",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"       estado_prop, desc_estado , peusualt    , peusumod    , pefecalt    , pefecmod    , cod_proceso  \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },{
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "ALCEN",
+      "table": "v_tpo_operacion_sge",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/v_tpo_operacion_sge",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_operacion, desc_operacion, peusualt, peusumod, pefecalt, pefecmod, cod_grupo, cod_subgrupo, cod_gartia, mar_oper_preaprobados, por_ponderado, mar_estandarizado, mar_mm \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ree_motivos_desacuerdo",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/ree_motivos_desacuerdo",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, descripcion \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "ALCEN",
+      "table": "stnd_motivo_sw_srs",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/stnd_motivo_sw_srs",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_grupo_decision, cod_motivo, nro_prioridad, nom_aplicativo, des_motivo, des_motivo_srs, des_motivo_sge, tpo_tramite \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_cod_estado",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/stnd_cod_estado",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_tramite, cod_estado, cod_estado_accion, cod_estado_origen, des_estado, des_sge, des_srs, des_datos_adic, mar_contador, mar_pisa_paq, cant_dias, cant_dia \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "garantias",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/garantias",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" pecdgent, peidioma, cod_gartia, des_gartia, porc_max, peusualt, peusumod, pefecalt, pefecmod, puntaje, categoria, tipo, grupo_gartia, des_garantia_bma, gtia_clean \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "act_bcra",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/act_bcra",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" pecdgent, peidioma, pecodact, des_de_cod, peusualt, peusumod, pefecalt, pefecmod, cod_padre, cod_suprasector, mar_sujeta_cred, cod_act_bcra, cod_act_clanae, des_act_clanae \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ree_area_preguntas",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/ree_area_preguntas",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, cod_rating_area, descripcion_pregunta \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+     {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ree_areas",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/ree_areas",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, descripcion \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ree_pregunta_respuestas",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/ree_pregunta_respuestas",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, cod_area_pregunta, descripcion_respuesta, codigo_ree \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ree_tipos_rating",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/ree_tipos_rating",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"  codigo, descripcion\"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "tpo_operacion",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tpo_operacion",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_operacion, desc_operacion, marcawacre, cod_prod_bcrio, cod_subprod, cod_subrubro, cod_cat_prod, cod_rubro, peusualt, peusumod, pefecalt, pefecmod, cod_grupo, cod_subgrupo, cod_gartia, mar_oper_preaprobados, por_ponderado, mar_estandarizado, mar_mm, nro_prior_modif_sw, mar_atri, mar_individuos, cod_catg, cod_cat_ref \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "usuarios",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/usuarios",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_usuario, nombre_usuario, pecdgent, peusualt, pefecalt, peusumod, pefecmod, estado, dir_mail \"   --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "accionariado_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/accionariado_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, secuencia, nombre, porcentaje, cargo, solvencia, cliente, peusualt, peusumod, pefecalt, pefecmod, penumper, nup, cuit, tipo_doc, nro_doc, nro_orden, mar_sexo, fec_nac, mar_error_altair, msj_error_altair, apellido, forma_juridica, tipo_doc_conyuge, nro_doc_conyuge, cod_estado_civil \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "balances_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/balances_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_balance, penumper, fec_balance, tpo_balance, cod_auditor, vtas_netas, res_net, liq_corriente, endeud_total, deu_financiera, mon_compras, rot_existencias, rot_activos, prom_pagos, prom_cobros, ren_activo, ren_pat_neto, ren_ventas, evol_ventas, disp_act_cp, cred_vtas_act_cp, cred_otros_act_cp, bien_cambio_act_cp, otros_corr_act_cp, inv_act_lp, ctas_cobrar_act_lp, bien_uso_act_lp, bien_intangible_ac, otros_ncorr_act_lp, deu_ban_pas_cp, prov_pas_cp, otros_corr_pas_cp, deu_soc_pas_lp, prev_pas_cp, mon_capital_social, mon_reserva_tec, mon_reserva_res, mon_res_nasignados, ing_vtas_servicios, cost_ventas, gtos_admin_res, gtos_comerc_res, otros_gtos_res, otros_ing_res, otros_egr_res, res_financieros, ing_extraordinario, egr_extraordinario, impu_res, com_vuelco_balance, fec_asamblea, div_aprobados, hon_aprobados, prov_impuestos, imp_cap_suscripto, otros_ajustes_pat, act_me_cp, act_me_lp, pas_me_cp, pas_me_lp, energia, sueldos_carga_soc, porc_ventas_act_exp, porc_compras_act_imp, div_hon_pagar_cp, deu_soc_pas_cp, prov_pas_lp, otros_no_corr_pas_lp, previsiones_lp, tiene_me, deu_ban_pas_lp, cuen_part_soc_cp, cuen_part_soc_lp, bien_cambio_no_corr, res_ejercicio, amort_bien_uso, amort_bien_intangible, nro_ultima_prop, tpo_informe, verificado, peusualt, peusumod, pefecalt, pefecmod, res_financieros_intereses \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_act",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_act",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, fec_blc, consolidado, duracion, imp_disponibil, imp_inver_trans, imp_credxvtas, imp_ctasxcob, imp_doc_desc, imp_doc_endos, tot_credxvtas, imp_matprimas, imp_prodenpros, imp_prodterm, imp_antprovbscbio, imp_bs_cbio, imp_otrcrectes, imp_otrcrecov, imp_crefisc, imp_otractctes, tot_actcte, c_libre_cxvtas, imp_c_libre_cxvtas, c_libre_cte, imp_c_libre_cte, imp_crelp, imp_bs_cbio_lp, imp_terrenos, imp_edyotrcons, imp_maqyequip, imp_antprovbsuso, imp_revtecbsuso, imp_amort_acum, imp_amort_revtec, tot_bs_uso, imp_bs_intang, imp_inv_soccyv, imp_otrasinv, imp_prestlpgr, tot_bs_usoyotr, tot_act_total, imp_gs_pagxadel, imp_gs_orgyreest, campo_libre, imp_campo_libre, tot_acttotcd, orden, peusualt, peusumod, pefecalt, pefecmod, auditor, id_blc, id_proyeccion, imp_otractnocte, fec_ini_blc, tpo_blc, tot_actcte_bcra, tot_act_bcra, imp_cajabancos, imp_valores_depositar, imp_dsventas_doccobrar, imp_deugest_chrech, imp_prevds_inc, imp_gs_pagxadel_corr, imp_hondivant, imp_hondivaprant, imp_apor_pend_int_cta_soc, imp_divcobrar, imp_diversos, imp_prev_otr_cred, imp_prod_term_merc, imp_otros_insumos, imp_prev_desv, imp_dsventas_servdoc_cobrar, imp_deugest_chrech_nocorr, imp_cred_socvinc_vtas, imp_prevds_inc_nocorr, imp_cred_fisc_nocorr, imp_cred_socvinc_nocorr, imp_ctas_part_acc, imp_diversos_nocorr, imp_prev_otr_cred_nocorr, imp_edificios_mejoras, imp_maqeqherr, imp_mutiles_instalac_rod, imp_otros, imp_obras_curso, imp_marcas_patentes, imp_valor_llave, imp_amort_acum_bsint, nro_ultima_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_dadic",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_dadic",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_blc, penumper, fec_blc, consolidado, id_proyeccion, duracion, orden, peusualt, peusumod, pefecalt, pefecmod, fec_ini_blc, tpo_blc, imp_deprec_cprod, imp_deprec_gsadm, imp_deprec_gscom, imp_deprec_otrgsop, imp_deprec_otregresos, imp_deprec_perdext, imp_desresrtbsuso_cprod, imp_desresrtbsuso_gsadm, imp_desresrtbsuso_gscom, imp_desresrtbsuso_otrgsop, imp_desresrtbsuso_otringresos, imp_desresrtbsuso_ganext, imp_amortint_cprod, imp_amortint_gsadm, imp_amortint_gscom, imp_amortint_otrgsop, imp_amortint_otregresos, imp_amortint_perdext, imp_amortinv_otregresos, imp_prev_cprod, imp_prev_gsadm, imp_prev_gscom, imp_prev_otrgsop, imp_prev_otregresos, imp_prev_perdext, imp_hondir, imp_gratifpersonal, imp_gtosprod, imp_dismamort, imp_divcob_socvinculadas, imp_aportes_capital, imp_constrrt, imp_desafrrt, imp_ajustes_resantnaf, imp_ajuste_ejerant, imp_act_monex, imp_pas_monex, nro_ultima_prop, imp_ajejerant_ajinfla, imp_altas_bienes_uso, imp_bajas_bienes_uso, imp_altas_inv_perm, imp_bajas_inv_perm, imp_altas_int_val_llave, imp_altas_int_gtos_reorg, imp_bajas_int, imp_var_prev_pasivo \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_eres",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_eres",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, fec_blc, consolidado, duracion, imp_vtasnetas, imp_cstovtas, tot_resbruto, imp_gsadmin, imp_gscomeryotr, imp_amortdepre, tot_gsoperat, imp_bf_industexpor, tot_res_explot, imp_aumenprev, imp_ingegroper, tot_gciaoper, imp_c_libre_totgsoperat, c_libre_totgsoperat, imp_c_libre_gciaoper, c_libre_gciaoper, imp_interpag, imp_intergan, tot_internetos, imp_difcbio, imp_resxtenen, imp_resxinflac, tot_resfinneto, imp_rdoinvers, imp_ingegnextr, tot_rdoantesimp, imp_perdextra, imp_gciaextra, tot_resantesimp, imp_impuestos, tot_gcianeta, imp_dividendos, imp_part3enressocc, tot_resnetomay, imp_c_libre_rdoantesimp, c_libre_rdoantesimp, orden, imp_impuestgcia, imp_impuestintfin, tot_totalimpuest, imp_c_libre_totalimpuest, c_libre_totalimpuest, imp_divhant, imp_divhapant, imp_divhapxpag, imp_provimp, tot_totalutil, imp_divefec, imp_compras, fec_asamblea, peusualt, peusumod, pefecalt, pefecmod, imp_invneta_bu, imp_invneta_per, imp_invneta_int, imp_amort_int, id_blc, id_proyeccion, fec_ini_blc, tpo_blc, imp_energia, imp_sueldos_y_carg_soc, imp_ing_prom_ind, imp_reint_exp, imp_otros_ingresos, imp_otros_egresos, imp_res_fin_gen_activos, imp_rei_res_fin_gen_activos, imp_difcbio_res_fin_gen_act, imp_res_ten_res_fin_gen_act, imp_otros_res_fin_gen_act, imp_res_fin_gen_pas, imp_rei_res_fin_gen_pas, imp_difcbio_res_fin_gen_pas, imp_resten_res_fin_gen_pas, imp_otros_res_fin_gen_pas, nro_ultima_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_pas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_pas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, fec_blc, consolidado, duracion, imp_deubanccp, imp_otrdeufinlp, imp_tctedeulp, imp_proveedores, imp_provsubafil, imp_acreeddiv, imp_acredivsubafil, imp_deudsocyfisc, imp_honydivapag, imp_prevpascte, imp_otrpascp, top_pasivocte, imp_deubanclp, imp_arrenleasing, imp_ctasapaglp, imp_ctasapagsubafil, imp_deusocyfis, imp_prevpasncte, imp_utilarealizar, imp_part3ensocc, tot_pasnocte, imp_cssuscint, imp_aportnocap, imp_accpencart, imp_primasemic, imp_resnoasig, imp_parsubresnasig, imp_gannetejer, imp_resvrevbsuso, imp_resvlegal, tot_pneto, tot_pasexigible, tot_pasypneto, imp_verificacion, tot_conting, imp_capspendintgr, campo_libre, imp_campo_libre, imp_campo_libre2, imp_campo_libre3, peusualt, peusumod, pefecalt, pefecmod, id_blc, id_proyeccion, imp_acreddivafillp, imp_otrpaslp, fec_ini_blc, tpo_blc, otr_ajus_pn, tot_pascte_bcra, tot_pas_bcra, tot_pneto_bcra, imp_pas_mon_ext_cp, imp_pas_mon_ext_lp, imp_act_mon_ext_cp, imp_act_mon_ext_lp, imp_ccred_imp, imp_deufinban, imp_deufinsoc, imp_otras_deudas, imp_morat_ctes, imp_difimp_ctes, imp_otrds_socfisc_ctes, imp_ccred_imp_nctes, imp_deufinban_nctes, imp_obligneg_nctes, imp_deufinsoc_nctes, imp_otras_deudas_nctes, imp_morat_nctes, imp_difimp_nctes, imp_otrds_socfisc_nctes, nro_ultima_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "cat_grupos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/cat_grupos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" pecdgent, penumgru, pedesgru, petipgru, petipact, pesucgru, peformjur, pepaires, peuserid, pemodope, perescom, peobserv, peusualt, pefecalt, peusumod, petermod, pesucmod, pehstamp, pefecmod, resp_comercial, resp_riesgos, segmento, penumgru_host, cod_rubro, cod_act_bcra, cod_act_bma, monto_facturacion, cod_act_santander, segmento_riesgo \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ddjj_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/ddjj_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_ddjj, fec_ddjj, penumper, res_neto_djig, amort_djig, vtas_anuales, pat_neto_total, deu_bancaria, nro_ultima_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "deudas_bancarias_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/deudas_bancarias_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" fecha_deuda_id, cod_banco, acc_cto_plz, acc_lgo_plz, aecc_cto_plz, aecc_lgo_plz, dto_doc_cto_plz, dto_doc_lgo_plz, leasing_cto_plz, leasing_lgo_plz, gtia_real_cto_plz, gtia_real_lgo_plz, otr_gtias_cto_plz, otr_gtias_lgo_plz, cart_cred_cto_plz, cart_cred_lgo_plz, avales_cto_plz, avales_lgo_plz, acc_cto_plz_dol, acc_lgo_plz_dol, aecc_cto_plz_dol, aecc_lgo_plz_dol, dto_doc_cto_plz_dol, dto_doc_lgo_plz_dol, leasing_cto_plz_dol, leasing_lgo_plz_dol, gtia_real_cto_plz_dol, gtia_real_lgo_plz_dol, otr_gtias_cto_plz_dol, otr_gtias_lgo_plz_dol, avales_cto_plz_dol, avales_lgo_plz_dol, cod_col_variable_1, cod_col_variable_2, variable_1_cto_plz, variable_1_lgo_plz, variable_1_cto_plz_dol, variable_1_lgo_plz_dol, variable_2_cto_plz, variable_2_lgo_plz, variable_2_cto_plz_dol, variable_2_lgo_plz_dol, nro_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "estados_f487",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/estados_f487",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select penumper, secu_f487, fecha, estado, usuario, id_dev, observaciones, cod_cargo_autorizante, cod_dentro_limite, mar_dentro_limite, mar_devolucion from {database}.{table} where to_char(fecha ,'YYYY-MM-DD') >= '2016-01-01'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "estados_propuesta",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/estados_propuesta",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "fecha",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select nro_prop, fecha, estado, usuario, obs_estado, cod_estado_accion, cod_estado_origen, mar_formalizada from {database}.{table} where to_char(fecha ,'YYYY-MM-DD') >= '2016-01-01'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "fechas_deudas_bancarias_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/fechas_deudas_bancarias_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" fecha_deuda_id, fec_deuda, penumper, nro_prop, cant_ban_bcra, deu_total_bcra, mar_consulta_bcra, obs_can_deu_bcra \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "firmas_autorizadas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/firmas_autorizadas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "fecha",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" fecha, cuit, razonsocial \" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "f485",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/f485",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, secuencia, lim_prop, imp_monto_prop, nro_pglobal, peusualt, pefecalt, peusumod, lim_actual, rorac_cc, rorac_sc, experiencia, opiniondesfon, opinionreembol, otrdatinteres, recomendacion, estado_f485, fecha, valoracion_operaciones, recomendaciones_comite, pefecmod, secuencia_pglobal, riesgo_maximo_alcanzado_f485, roa, com_lib_rie_hist, com_lib_rie_est, nro_acta, fecha_resolucion, ingr_total_est, lim_actual_om, lim_prop_om, fec_revision, mar_revision, total_equivalente_actual, total_equivalente_prop, cer, feve, rating, mar_empresa_vinculada, moneda_cer, fec_tope_garantia \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "f487",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/f487",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, secu_f487, cod_producto, nro_prop, secuencia, cod_operacion, monto, pecodmon, plazo, unidad_plazo, vencimiento, tasa, tipo_tasa, costo, origen_fondos, destino_fondos, clase_operacion, fecha_acreditacion, numero_cta_cte, plazo_repacto, unidad_plazo_repacto, sistema_amortizacion, comentarios, observaciones, dentro_limite, estado_f487, fecha_operacion, deuda_actual_resto_grupo, maximo_debido_resto_grupo, id_prestamo_altair, cod_iva, cod_iibb, agen_perc_iibb, porc_reducc_iibb, fec_reducc_iibb, porc_reducc_sell, fec_reducc_sell, pacto_fiscal, cod_pacto_fiscal, datos_seguros, pefecalt, peusualt, pefecmod, peusumod, tasa_especial, tipo_cta_cte, sucursal_cta_cte, mar_comunidad, cod_comunidad, mon_comunidad, operacion_especial, cant_cheques, porcent_cesion, usu_liquidacion, fecha_liquidacion, nro_acuerdo, periodo_liq, cod_estado_accion, cod_estado_origen, obs_ultimo_estado_stnd, mon_f487_original, plazo_f487_original, nro_comprobante, mar_export_cesion, tsa_sugerida, usu_liquidacion_net, cod_usuario_net, tasamaxima, seg_comercial_duro, mar_repauto, monto_anticipo, pecodmon_anticipo, mar_cubre_intereses, id_comite, nro_op_sam, secu_padre_f487, comision, mar_doc_en_tramite, mar_contingencia, cod_sub_producto, cod_canal_sam, tasa_cliente, tipo_tasa_cliente, cod_cargo_aut_ultimo_estado, nombre_archivo_bma, cod_dentro_limite_ult_estado, mar_waiver, cod_periodointeres, mar_bma, tipo_costo, mar_dentro_limite_ult_estado, mar_devolucion_ult_estado, tipo_comision, inicio_cobro, periodicidad_cobro, primer_pago_intereses, tipo_operacion, tasa_repacto, mar_aprueba_tasa_especial, tipo_operacion_esp, cuit, razon_social, obs_repacto, fec_adelanto_cesion, mar_otrorango \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "garantias_genericas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/garantias_genericas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_gartia, detalle, mon_gartia, peusumod, pefecalt, peusualt, seq_gartia, secuencia, pefecmod, valoracion, patrim_neto, porc_gtia, moneda_gartia, fec_vencimiento, monto_limite \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "jerarquia_cargos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/jerarquia_cargos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id, ecr_id, id_depende, id_atiende, cod_usuario, descripcion, observaciones, peusualt, pefecalt, peusumod, pefecmod, generico_cpp, pecdgent, orden \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "lineas_otorgadas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/lineas_otorgadas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT nro_prop, monto_linea, fec_vto_linea, estado_linea, porc_garantia, cod_operacion, grado_riesgo, pecodmon, spread, fec_deu_ant, monto_deuda, monto_ant, obs_garantias, peusualt, pefecalt, peusumod, tpo_operacion, contravalor, replace(replace(planamort, chr(34) ,''), chr(94), '') planamort, plazo, replace(destino, chr(34), '') destino, mediosreembolso, tasaref, roa, rorac, cod_gartia, cod_gartia2, porc_garantia2, mon_garantia, mon_garantia2, avalista, mon_avalista, secuencia, fec_concesion, pefecmod, unidad_plazo, riesgo_maximo_alcanzado, obs_comite_credito, modif_vo, mon_cer, mon_reca, ant_prendario, mon_librador, mon_librador_2, plz_librador, plz_librador_2, mon_firmante, mon_firmante_2, mon_lim_utilizado, mantiene_linea, mon_aprobado_riesgos, valor_bien_vendor, tipo_bien_vendor, plazo_vendor, unidad_plazo_vendor, tpo_ptmo_flex, plazo_ptmo_flex, unidad_plazo_ptmo_flex, mar_renovable, comision, mar_consume_disponible, riesgo_operacion, mar_otrorango FROM SGE01.LINEAS_OTORGADAS WHERE \\$CONDITIONS\"  --hive-drop-import-delims --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "personas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/personas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" pecdgent, penumper, petipdoc, penumdoc, penomfan, pepriape, pesegape, penomper, pefecing, peestciv, pesexper, petipper, pefecnac, pefecini, pecancap, pepaiori, penacper, pepaires, petipocu, pecodact, petieres, peforjur, penatjur, peestper, peconper, pecodemp, peindno2, peactriu, pefecrev, peidioma, peusualt, pefecalt, peusumod, petermod, psucmod, pehstamp, penumgru, peuserid, cuit_cliente, petipemp, petieblc, pegfeve, segmento, numgruant, perescom, peobserv, perubro, nup, pefecmod, situacion, resp_comercial, resp_riesgos, cod_iva, cod_iibb, actualizacion_host, mar_global, val_nivelger_item1, val_nivelger_item2, val_nivelger_item3, val_nivelger_item4, val_nivelger_item5, val_nivelger_item6, can_pers_ocupado, des_censo, fec_carga_censo, fec_venc_censo, cod_segmento, cod_actecon, pecodpai_nac, nro_solicitud_atril, fec_inactivacion, cod_usu_inactivacion, mar_uge, mar_afip_ok, fecha_afip_ok, mar_contrato_marco, nivel_estudio, tipo_vivienda, desc_actividad_bma, cod_actividad_santander, marca_resolucion_3337, marca_impuesto_endeudamiento, sucursal_cta_cte_bma, tipo_cta_cte_bma, numero_cta_cte_bma, monto_facturacion, com5603, cod_act_bma, resp_riesgos_por_omision, segmento_por_omision, segmento_riesgo \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "prop_global",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/prop_global",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_pglobal, secuencia_pglobal, penumgru, lim_prop, lim_actual, estado_prop, fec_est_prop, fec_vto_prop, roa, rorac_cc, posicion_otras_uni, garantias, peusualt, pefecalt, peusumod, pefecmod, origen, tpo_pglobal, resp_actual, recomendacion, id_rentabilidad, nro_acta, fecha_resolucion, lim_bsch, dispuesto_bsch, id_acta, valoracion_operaciones, recomendacion_comercial, lim_actual_om, lim_prop_om, lim_bsch_om, dispuesto_bsch_om, comite_esp, fecha_env_esp, fecha_recep_esp, cod_estado_accion, cod_estado_origen, fec_carga, cod_usuario_net, fec_alta_prop, id_comite, fec_comite, rorac_con_compensacion, rorac_sin_compensacion, motivo, fecha_cotizacion, moneda_lim_prop, mar_comite_enviado, mar_balance_enviado, mar_baja_enviado, mar_confirming_enviado, fec_proximo_envio, fec_alerta_riesgo_bma \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "propuesta",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/propuesta",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, fec_prop, nro_grupo, fec_vto_prop, penumper, tpo_prop, obs_fondos, fec_paso_ries, gerente_suc, cuit_cliente, pecdgent, resp_cta, obs_estado, origen, resp_comercial, resp_riesgos, resp_comite, fec_comite, pos_acre, fec_pos_acre, peusualt, pefecalt, peusumod, estado_prop, fec_est_prop, rorac_cc, rorac_sc, pefecmod, fecha_deuda_id_1, fecha_deuda_id_2, eoaf_id, id_cashflow, fecha_ventas_hist_desde, fecha_ventas_hist_hasta, fecha_ventas_est_1, fecha_ventas_est_2, cantidad_meses_est, resp_actual, pegfeve, id_rentabilidad, id_acta, modif_vo, excluir_vo, id_proyeccion, comite_esp, fecha_env_esp, fecha_recep_esp, mar_refinanciacion, mar_cesionado, cod_campania, cod_estado_accion, cod_estado_origen, obs_baja, obs_ultimo_estado_stnd, cod_usuario_net, tpo_supervision, fec_vigencia_campania, mar_migrada, nro_pglobal, tipo_promocion, campania, campania_desc, sub_origen, cuadrante \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rpc",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rpc",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rpc, nro_prop, imp_importe_calif, imp_resp_pat_comp, justificacion, fec_calificacion, cod_usu_alta, fec_estados_contables, duracion, rel_porc, penumper, mar_imprimir_acta \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_balances",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/stnd_balances",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, id_balance, fec_balance, imp_act_credito_com, imp_act_bienes_cambio, imp_act_corriente, imp_act_bienes_uso, imp_act_total, imp_pas_deuda_fin_cp, imp_pas_deuda_com_cp, imp_pas_deuda_fis_cp, imp_pas_corriente, imp_pas_deuda_fin_lp, imp_pas_deuda_fis_lp, imp_pas_otros_lp, imp_pas_total, imp_pas_patrimonio, imp_res_ventas, imp_res_costos_ventas, imp_res_gtos_admin, imp_res_gtos_comer, imp_res_gtos_finan, imp_res_operativo, imp_res_extraordinario, imp_res_imp_ganancias, imp_res_final, imp_antic_accionistas, imp_amortizaciones, imp_compras, imp_dividendos_ret, imp_utilidad, imp_ingresos, penumper, peusualt, pefecalt, peusumod, pefecmod, disponibilidades, meses_abarca, revision_balance, canal, imp_div_aprob_post_bal \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_datos_adicionales_f487",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/stnd_datos_adicionales_f487",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" secu_f487, cod_canal_origen, cod_analista_srs, cod_supervisor_srs, cod_analista_sup, cod_supervisor_sup, cod_resol_srs, obs_resol_srs, cod_resol_sup, obs_resol_sup, lote_fecha, usu_codigo, lote_num, obs_baja, mar_reutiliza_veraz, fec_carga, fec_cierre, fec_envio_sw, fec_respuesta_sw, fec_ini_resol_zg, fec_fin_resol_zg, fec_ini_resol_sup, fec_fin_resol_sup, fec_envio_veraz, fec_respuesta_veraz, fec_ini_resol_op, fec_fin_resol_op, tipo_acuerdo, mar_firma_obe, mar_tipo_acuerdo, monto_original_acuerdo, tasa_tea, cft, tsa_maxima, tasa_tea_max, cft_max, tsa_exceso, tasa_tea_exc, cft_exc, val_mapa_riesgo, val_fecha_mapa, nro_tramite_paq, indicador_riesgo \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_datos_adicionales_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/stnd_datos_adicionales_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_resol_cvc, cod_resol_sup, obs_resol_cvc, obs_resol_sup, usu_codigo, lote_num, cod_motivo_cvc, lote_fecha, mon_valoracion_final, mon_sw_final, porc_exceso, mon_valoracion_financiera, nro_prop, cod_canal_origen, cod_analista_srs, cod_supervisor_srs, cod_analista_cvc, cod_supervisor_cvc, cod_analista_sup, cod_supervisor_sup, cod_canal_destino, cod_resol_srs, obs_resol_srs, mar_reutiliza_veraz, fec_carga, fec_cierre, fec_envio_sw, fec_respuesta_sw, fec_ini_resol_zg, fec_fin_resol_zg, fec_ini_resol_cvc, fec_fin_resol_cvc, fec_ini_resol_sup, fec_fin_resol_sup, fec_envio_veraz, fec_respuesta_veraz, mar_inf_calificacion, mar_alta_por_pyme, val_mapa_riesgo, val_fecha_mapa, origen_suc, mar_reca_obligatoria, indicador_riesgo, mrat, mar_baja_cent_ant, mar_baja_centralizada, segmento_f485, mar_paquetizacion, cod_motivo1_sup, cod_motivo2_sup, cod_motivo3_sup, cod_motivo4_sup, cod_motivo1_cvc, cod_motivo2_cvc, cod_motivo3_cvc, cod_motivo4_cvc, cod_estado_accion, cod_estado_origen, canal_om \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_log_f487",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/stnd_log_f487",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select secu_f487, fec_log, des_log, obs_log, cod_usuario from {database}.{table} where to_char(fec_log ,'YYYY-MM-DD') >= '2016-01-01'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "stnd_log_propuesta",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/stnd_log_propuesta",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select nro_prop, fec_log, des_log, obs_log, cod_usuario, estado_prop, cod_estado_accion, cod_estado_origen from {database}.{table} where to_char(fec_log ,'YYYY-MM-DD') >= '2016-01-01'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT nro_prop, antig_acc_mot, antig_acc_result, ubicacion_mot, ubicacion_result, sist_fin_mot, sist_fin_result, cump_afip_mot, cump_afip_result, pn_emp_mot, pn_emp_resul, fac_bru_mot, fac_bru_result, beneficios_mot, beneficios_result, deuda_com_mot, deuda_com_result, cant_bcos_mot, cant_bcos_result, deuda_banc_mot, deuda_banc_result, garantias_mot, garantias_result, vcuali_pro_dem_mer_pun, vcuali_acc_ger_pun, vcuali_acc_cred_pun, vcuant_ben_rentab_pun, vcuant_gen_recursos_pun, vcuant_solvencia_pun, vcuant_promedio, vcuant_valoracion_final, vcuant_rnetfin_vta_res, vcuant_rnetfin_vta_pun, vcuant_dbtot_vta_res, vcuant_dbtot_vta_pun, vcuant_dbtot_rent_res, vcuant_dbtot_rent_pun, vcuant_pastot_pnet_res, vcuant_pastot_pnet_pun, vcuant_dbtot_pnet_res, vcuant_dbtot_pnet_pun, obs_pro_dem_mer, obs_acc_ger, obs_acc_cred, obs_ben_rentab, obs_gen_recursos, obs_solvencia, obs_proyecciones, obs_exp_ant, replace(obs_sintesis, chr(94), '') obs_sintesis, peusualt, pefecalt, peusumod, pefecmod, obs_pro_dem_mer_2, id, penumper, fecha_valoracion, vcuant_ben_rentab_pun_a, vcuant_gen_recursos_pun_a, vcuant_solvencia_pun_a, obs_pro_dem_mer_3, obs_pro_dem_mer_4, obs_acc_ger_2, obs_acc_cred_2, obs_ben_rentab_2, obs_gen_recursos_2, obs_solvencia_2, obs_proyecciones_2, obs_exp_ant_2, obs_sintesis_2, fecha_valoracion_ant, valoracion_final_ant, fecha_valoracion_garra, valoracion_final_garra, usuario_val_garra, rel_fac_tierra_mot, rel_fac_tierra_result, vcuali_pro_dem_mer_res, vcuali_acc_ger_res, vcuali_acc_cred_res, vcuant_ben_rentab_res, vcuant_gen_recursos_res, vcuant_solvencia_res, mar_valoracion, mar_rating, vcuant_val_estadistica, apoyo_casa_matriz, ree_motivo_no_aplic, cod_tipo_rating, ree_rating_matriz, ree_prob_apoyo, ree_rating_estadistico, ree_rating_est_experto, ree_rating_apoyo_matriz, rc_rating_matriz, rc_prob_apoyo, vcuali_admin_pun, vcuali_finan_promo_pun, vcuali_prof_gestor_pun, obs_admin, obs_admin_2, obs_finan_promo, obs_finan_promo_2, obs_prof_gestor, obs_prof_gestor_2, ree_id_balance_1, ree_id_balance_2, mra, val_ant_rentabilidad, val_ant_recursos, val_ant_solvencia, val_ant_prodmerc, val_ant_accionistas, val_ant_credito, resumen_act, bullet_points, rating_regulador, comentarios, riesgos, mitigantes, ree_motivos_desacuerdo, ree_alerta_rating, m_rating_plus, rating_plus, rating_final, t_rating_final FROM SGE01.VALORACION WHERE \\$CONDITIONS\"  --hive-drop-import-delims --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, antig_acc_mot, antig_acc_result, ubicacion_mot, ubicacion_result, sist_fin_mot, sist_fin_result, cump_afip_mot, cump_afip_result, pn_emp_mot, pn_emp_resul, fac_bru_mot, fac_bru_result, beneficios_mot, beneficios_result, deuda_com_mot, deuda_com_result, cant_bcos_mot, cant_bcos_result, deuda_banc_mot, deuda_banc_result, garantias_mot, garantias_result, vcuali_pro_dem_mer_pun, vcuali_acc_ger_pun, vcuali_acc_cred_pun, vcuant_ben_rentab_pun, vcuant_gen_recursos_pun, vcuant_solvencia_pun, vcuant_promedio, vcuant_valoracion_final, vcuant_rnetfin_vta_res, vcuant_rnetfin_vta_pun, vcuant_dbtot_vta_res, vcuant_dbtot_vta_pun, vcuant_dbtot_rent_res, vcuant_dbtot_rent_pun, vcuant_pastot_pnet_res, vcuant_pastot_pnet_pun, vcuant_dbtot_pnet_res, vcuant_dbtot_pnet_pun, obs_pro_dem_mer, obs_acc_ger, obs_acc_cred, obs_ben_rentab, obs_gen_recursos, obs_solvencia, obs_proyecciones, obs_exp_ant, obs_sintesis, peusualt, pefecalt, peusumod, pefecmod, obs_pro_dem_mer_2, id, fecha_valoracion, vcuant_ben_rentab_pun_a, vcuant_gen_recursos_pun_a, vcuant_solvencia_pun_a, obs_pro_dem_mer_3, obs_pro_dem_mer_4, obs_acc_ger_2, obs_acc_cred_2, obs_ben_rentab_2, obs_gen_recursos_2, obs_solvencia_2, obs_proyecciones_2, obs_exp_ant_2, obs_sintesis_2, fecha_valoracion_ant, valoracion_final_ant, fecha_valoracion_garra, valoracion_final_garra, usuario_val_garra, rel_fac_tierra_mot, rel_fac_tierra_result, vcuali_pro_dem_mer_res, vcuali_acc_ger_res, vcuali_acc_cred_res, vcuant_ben_rentab_res, vcuant_gen_recursos_res, vcuant_solvencia_res, nro_ultima_prop, mar_valoracion, mar_rating, vcuant_val_estadistica, apoyo_casa_matriz, ree_motivo_no_aplic, cod_tipo_rating, ree_rating_matriz, ree_prob_apoyo, ree_rating_estadistico, ree_rating_est_experto, ree_rating_apoyo_matriz, rc_rating_matriz, rc_prob_apoyo, vcuali_admin_pun, vcuali_finan_promo_pun, vcuali_prof_gestor_pun, obs_admin, obs_admin_2, obs_finan_promo, obs_finan_promo_2, obs_prof_gestor, obs_prof_gestor_2, ree_id_balance_1, ree_id_balance_2, mra, val_ant_rentabilidad, val_ant_recursos, val_ant_solvencia, val_ant_prodmerc, val_ant_accionistas, val_ant_credito, resumen_act, bullet_points, rating_regulador, comentarios, riesgos, mitigantes, ree_motivos_desacuerdo, ree_alerta_rating, m_rating_plus, rating_plus, rating_final, t_rating_final \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ddjj_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/ddjj_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_ddjj, nro_prop, fec_ddjj, res_neto_djig, amort_djig, vtas_anuales, pat_neto_total, deu_bancaria \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "lineas_garantias",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/lineas_garantias",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_operacion, seq_lin_garan, cod_gartia, porc_garantia, monto_garantia, detalle_garantia, peusualt, pefecalt, peusumod, secuencia, pefecmod, valoracion, patrim_neto, marca_garantia_default, moneda_garantia, fec_vencimiento, opcion, ltv, vencimiento, porcentaje_cobertura, codigo, monto_limite \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "tlinea_prendario",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tlinea_prendario",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_operacion, secuencia, marca_bien, modelo_bien, valor_bien, antiguedad, marca_nuevo, cuotas, mar_pesado_utilitario, mar_gnc, val_gnc, comp_seguro, val_cotizacion, monto_solicitado, plazo, can_bien, monto_aprobado_sw, monto_cuota \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "accionariado",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/accionariado",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, secuencia, nombre, porcentaje, cargo, solvencia, cliente, peusualt, peusumod, pefecalt, pefecmod, penumper, nup, cuit, tipo_doc, nro_doc, nro_orden, mar_sexo, fec_nac, mar_error_altair, msj_error_altair, apellido, forma_juridica, tipo_doc_conyuge, nro_doc_conyuge, cod_estado_civil \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "garantias_operacion",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/garantias_operacion",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, secu_f487, secu_garan_ope, cod_gartia, tipo, porc_garantia, monto_garantia, detalle_garantia, peusualt, pefecalt, pefecmod, peusumod, id_garantia_altair, porc_gtia, secuencia, fecha_vigencia, moneda_gartia, monto_limite \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "resumen_crediticio",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/resumen_crediticio",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, mar_bureau, obs_bureau, mar_incumplimiento_afip, obs_incumplimiento_afip, imp_peor_bcra, obs_peor_bcra, mar_cheques_rechazados, can_cheques_rechazados, can_antiguedad, des_productos, fec_balance_ddjj, imp_resultado_neto, imp_patrimonio, imp_facturacion, imp_deuda_bancaria, cat_monotributo, peusualt, pefecalt, peusumod, pefecmod, mar_radio_sucursal, can_empleados, anio_monotributo, mes_monotributo, imp_ventas, fec_recategorizacion, imp_ingresos, imp_utilidad, cat_recategorizacion, tpo_info, anio_ganancias, mon_rentabilidad_sr, mon_facturacion_mensual, penumper, mon_resultado_operativo, mon_amortizaciones, mon_patrimonio_cabecera, fec_ultimo_ejercicio \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "lineas_nominados",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/lineas_nominados",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_operacion, secuencia, cuit_librador, mon_librador, plz_librador, moneda, razon_social\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "balances_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/balances_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_balance, nro_prop, fec_balance, tpo_balance, cod_auditor, vtas_netas, res_net, liq_corriente, endeud_total, deu_financiera, mon_compras, rot_existencias, rot_activos, prom_pagos, prom_cobros, ren_activo, ren_pat_neto, ren_ventas, evol_ventas, disp_act_cp, cred_vtas_act_cp, cred_otros_act_cp, bien_cambio_act_cp, otros_corr_act_cp, inv_act_lp, ctas_cobrar_act_lp, bien_uso_act_lp, bien_intangible_ac, otros_ncorr_act_lp, deu_ban_pas_cp, prov_pas_cp, otros_corr_pas_cp, deu_soc_pas_lp, prev_pas_cp, mon_capital_social, mon_reserva_tec, mon_reserva_res, mon_res_nasignados, ing_vtas_servicios, cost_ventas, gtos_admin_res, gtos_comerc_res, otros_gtos_res, otros_ing_res, otros_egr_res, res_financieros, ing_extraordinario, egr_extraordinario, impu_res, com_vuelco_balance, fec_asamblea, div_aprobados, hon_aprobados, prov_impuestos, imp_cap_suscripto, otros_ajustes_pat, act_me_cp, act_me_lp, pas_me_cp, pas_me_lp, energia, sueldos_carga_soc, porc_ventas_act_exp, porc_compras_act_imp, div_hon_pagar_cp, deu_soc_pas_cp, prov_pas_lp, otros_no_corr_pas_lp, previsiones_lp, tiene_me, deu_ban_pas_lp, cuen_part_soc_cp, cuen_part_soc_lp, bien_cambio_no_corr, res_ejercicio, amort_bien_uso, amort_bien_intangible, tpo_informe, verificado, res_financieros_intereses\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_pas_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_pas_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_blc, penumper, nro_prop, fec_blc, consolidado, id_proyeccion, duracion, imp_deubanccp, imp_otrdeufinlp, imp_tctedeulp, imp_proveedores, imp_provsubafil, imp_acreeddiv, imp_acredivsubafil, imp_deudsocyfisc, imp_honydivapag, imp_prevpascte, imp_otrpascp, top_pasivocte, imp_deubanclp, imp_arrenleasing, imp_ctasapaglp, imp_ctasapagsubafil, imp_deusocyfis, imp_prevpasncte, imp_utilarealizar, imp_part3ensocc, tot_pasnocte, imp_cssuscint, imp_aportnocap, imp_accpencart, imp_primasemic, imp_resnoasig, imp_parsubresnasig, imp_gannetejer, imp_resvrevbsuso, imp_resvlegal, tot_pneto, tot_pasexigible, tot_pasypneto, imp_verificacion, tot_conting, imp_capspendintgr, campo_libre, imp_campo_libre, imp_campo_libre2, imp_campo_libre3, peusualt, peusumod, pefecalt, pefecmod, imp_acreddivafillp, imp_otrpaslp, fec_ini_blc, tpo_blc, otr_ajus_pn, tot_pascte_bcra, tot_pas_bcra\n, tot_pneto_bcra\n, imp_pas_mon_ext_cp, imp_pas_mon_ext_lp, imp_act_mon_ext_cp, imp_act_mon_ext_lp, imp_ccred_imp, imp_deufinban, imp_deufinsoc, imp_otras_deudas, imp_morat_ctes, imp_difimp_ctes, imp_otrds_socfisc_ctes, imp_ccred_imp_nctes, imp_deufinban_nctes, imp_obligneg_nctes, imp_deufinsoc_nctes, imp_otras_deudas_nctes, imp_morat_nctes, imp_difimp_nctes, imp_otrds_socfisc_nctes\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_act_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_act_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_blc, penumper, nro_prop, fec_blc, consolidado, id_proyeccion, duracion, imp_disponibil, imp_inver_trans, imp_credxvtas, imp_ctasxcob, imp_doc_desc, imp_doc_endos, tot_credxvtas, imp_matprimas, imp_prodenpros, imp_prodterm, imp_antprovbscbio, imp_bs_cbio, imp_otrcrectes, imp_otrcrecov, imp_crefisc, imp_otractctes, tot_actcte, c_libre_cxvtas, imp_c_libre_cxvtas, c_libre_cte, imp_c_libre_cte, imp_crelp, imp_bs_cbio_lp, imp_terrenos\n, imp_edyotrcons\n, imp_maqyequip, imp_antprovbsuso, imp_revtecbsuso, imp_amort_acum, imp_amort_revtec, tot_bs_uso, imp_bs_intang, imp_inv_soccyv, imp_otrasinv, imp_prestlpgr, tot_bs_usoyotr, tot_act_total, imp_gs_pagxadel, imp_gs_orgyreest, campo_libre, imp_campo_libre, tot_acttotcd, orden, peusualt, peusumod, pefecalt, pefecmod, auditor, imp_otractnocte, fec_ini_blc, tpo_blc, tot_actcte_bcra, tot_act_bcra, imp_cajabancos, imp_valores_depositar, imp_dsventas_doccobrar, imp_deugest_chrech, imp_prevds_inc, imp_gs_pagxadel_corr, imp_hondivant, imp_hondivaprant, imp_apor_pend_int_cta_soc, imp_divcobrar, imp_diversos, imp_prev_otr_cred, imp_prod_term_merc, imp_otros_insumos, imp_prev_desv, imp_dsventas_servdoc_cobrar, imp_deugest_chrech_nocorr, imp_cred_socvinc_vtas, imp_prevds_inc_nocorr, imp_cred_fisc_nocorr, imp_cred_socvinc_nocorr, imp_ctas_part_acc, imp_diversos_nocorr, imp_prev_otr_cred_nocorr, imp_edificios_mejoras, imp_maqeqherr, imp_mutiles_instalac_rod, imp_otros, imp_obras_curso, imp_marcas_patentes, imp_valor_llave, imp_amort_acum_bsint\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_dadic_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_dadic_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_blc, penumper, nro_prop, fec_blc, consolidado, id_proyeccion, duracion, orden, peusualt, peusumod, pefecalt, pefecmod, fec_ini_blc, tpo_blc, imp_deprec_cprod, imp_deprec_gsadm, imp_deprec_gscom, imp_deprec_otrgsop, imp_deprec_otregresos, imp_deprec_perdext, imp_desresrtbsuso_cprod, imp_desresrtbsuso_gsadm, imp_desresrtbsuso_gscom, imp_desresrtbsuso_otrgsop, imp_desresrtbsuso_otringresos, imp_desresrtbsuso_ganext, imp_amortint_cprod, imp_amortint_gsadm, imp_amortint_gscom, imp_amortint_otrgsop, imp_amortint_otregresos, imp_amortint_perdext, imp_amortinv_otregresos, imp_prev_cprod, imp_prev_gsadm, imp_prev_gscom, imp_prev_otrgsop, imp_prev_otregresos, imp_prev_perdext, imp_hondir, imp_gratifpersonal, imp_gtosprod, imp_dismamort, imp_divcob_socvinculadas, imp_aportes_capital, imp_constrrt, imp_desafrrt, imp_ajustes_resantnaf, imp_ajuste_ejerant, imp_act_monex, imp_pas_monex, imp_ajejerant_ajinfla, imp_altas_bienes_uso, imp_bajas_bienes_uso, imp_altas_inv_perm, imp_bajas_inv_perm, imp_altas_int_val_llave, imp_altas_int_gtos_reorg, imp_bajas_int, imp_var_prev_pasivo\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "blc_eres_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/blc_eres_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_blc, penumper, nro_prop, fec_blc, consolidado, id_proyeccion, duracion, imp_vtasnetas, imp_cstovtas, tot_resbruto, imp_gsadmin, imp_gscomeryotr, imp_amortdepre, tot_gsoperat, imp_bf_industexpor, tot_res_explot, imp_aumenprev, imp_ingegroper, tot_gciaoper, imp_c_libre_totgsoperat, c_libre_totgsoperat, imp_c_libre_gciaoper, c_libre_gciaoper, imp_interpag, imp_intergan, tot_internetos, imp_difcbio, imp_resxtenen, imp_resxinflac, tot_resfinneto, imp_rdoinvers, imp_ingegnextr, tot_rdoantesimp, imp_perdextra, imp_gciaextra, tot_resantesimp, imp_impuestos, tot_gcianeta, imp_dividendos, imp_part3enressocc, tot_resnetomay, imp_c_libre_rdoantesimp, c_libre_rdoantesimp, orden, imp_impuestgcia, imp_impuestintfin, tot_totalimpuest, imp_c_libre_totalimpuest, c_libre_totalimpuest, imp_divhant, imp_divhapant, imp_divhapxpag, imp_provimp, tot_totalutil, imp_divefec, imp_compras, fec_asamblea, imp_invneta_bu, imp_invneta_per, imp_invneta_int, imp_amort_int, peusualt, peusumod, pefecalt, pefecmod, fec_ini_blc, tpo_blc, imp_energia, imp_sueldos_y_carg_soc, imp_ing_prom_ind, imp_reint_exp, imp_otros_ingresos, imp_otros_egresos, imp_res_fin_gen_activos, imp_rei_res_fin_gen_activos, imp_difcbio_res_fin_gen_act, imp_res_ten_res_fin_gen_act, imp_otros_res_fin_gen_act, imp_res_fin_gen_pas, imp_rei_res_fin_gen_pas, imp_difcbio_res_fin_gen_pas, imp_resten_res_fin_gen_pas, imp_otros_res_fin_gen_pas\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "proveedores",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/proveedores",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_prov, nom_prov, plz_pago, porc_compras, ref_obt, peusualt, pefecalt, peusumod, pefecmod\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "proveedores_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/proveedores_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, nro_ultima_prop, cod_prov, nom_prov, plz_pago, porc_compras, ref_obt, cod_usu_alta, fec_alta, cod_usu_mod, fec_mod\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "proveedores_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/proveedores_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, cod_prov, nom_prov, plz_pago, porc_compras, ref_obt, cod_usu_alta, fec_alta, cod_usu_mod, fec_mod\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "clientes",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/clientes",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, nom_cliente, cod_cliente, plz_cobro, porc_ventas, ref_obtenidas, nro_ultima_prop\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "clientes_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/clientes_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, nom_cliente, cod_cliente, plz_cobro, porc_ventas, ref_obtenidas\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "ddjj_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/ddjj_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_ddjj, fec_ddjj, penumper, res_neto_djig, amort_djig, vtas_anuales, pat_neto_total, deu_bancaria, nro_ultima_prop\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_pos_blc",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_pos_blc",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id, nro_prop, penumper, monto, mes, peusualt, pefecalt, peusumod, unidades_fisicas_ext, unidades_fisicas_int, monto_dolares, pefecmod, cotizacion_dolar, nro_ultima_prop\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_blc_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_blc_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_balance, penumper, id_venta, mon_venta, fec_venta\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_ddjj_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_ddjj_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_ddjj, penumper, id_venta, mon_venta, fec_venta\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_ddjj_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_ddjj_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_venta, id_ddjj, nro_prop, mon_venta, fec_venta\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_pos_blc_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_pos_blc_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id, nro_prop, penumper, monto, mes, unidades_fisicas_ext, unidades_fisicas_int, monto_dolares, cotizacion_dolar\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "vtas_blc_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vtas_blc_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_venta, id_balance, nro_prop, mon_venta, fec_venta\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "feve_ficha",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/feve_ficha",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idfichafeve, nup, razon_social, idsucursal, supervision_riesgo, id_zona, cuit, grupo_economico, gradofeve_origen, gradofeve_actual, grado_feve_ficha, importe_objetivo, plazo_objetivo, tipo_comite, motivo_entrada, calif_monto_disp, fecha_mensaje, fecha_revision, fecha_prox_revision, fecha_entrada, fecha_salida, fecha_objetivo, actividad_empresa, calificacion, detalle_garantias, fecha_vencimiento, valoracion_exp_pdm, valoracion_exp_accger, valoracion_exp_acccred, valoracion_exp_rent, valoracion_exp_gener, valoracion_exp_solv, valoracion_exp_porm, valoracion_est_estadistico, valoracion_est_experto, valoracion_final, activo_corriente_actual, activo_corriente_anterior, activo_nocorriente_actual, activo_nocorriente_anterior, total_activo_actual, total_activo_anterior, pasivo_corriente_actual, pasivo_corriente_anterior, deuda_bancaria_actual, deuda_bancaria_anterior, total_pasivo_actual, total_pasivo_anterior, patrimonio_neto_actual, patrimonio_neto_anterior, ventas_actual, ventas_anterior, resultado_operativo_actual, resultado_operativo_anterior, resultado_neto_actual, resultado_neto_anterior, generacion_propia_actual, generacion_propia_anterior, liquidez_actual, liquidez_anterior, endeudamiento, ros, deuda_bangen, comentario_supervision, comentario_comite_anterior, comentario_comite_actual, fecha_creacion, fecha_modificacion, usuario_alta, usuario_modificacion, estado, meses, importe, fecha_balance_anterior, fecha_balance_actual, porcentaje, tipo_empresa, actividad_principal, infopostbalance_mesanio, nro_cliente, total_ar, total_us, total_grupo_ar, total_grupo_us, deuda_ban_fin_corriente, deuda_ban_fin_no_corriente, ventas_netas, endeudamiento_anterior, ros_anterior, deuda_bangen_anterior, segmento, fecha_baja, estadofeve, politica_seguir, motivo_cambio_grado, indice_cambio_grado, legajo, tipomensaje, gestor, es_ultima_salida_feve, es_ultima_entrada_normal, es_ultima_salida_automatica ,politica_seguir_bk\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "clasificacion_deudores",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/clasificacion_deudores",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_cladeu, nro_prop, nro_cta_cte, clasif_vigente, clasif_definitiva, com_plan_accion, com_comite_banca\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "clasificacion_deudores_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/clasificacion_deudores_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_cladeu, penumper, nro_cta_cte, clasif_vigente, clasif_definitiva, com_plan_accion, com_comite_banca\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "deudas_bancarias",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/deudas_bancarias",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"fecha_deuda_id, cod_banco, acc_cto_plz, acc_lgo_plz, aecc_cto_plz, aecc_lgo_plz, dto_doc_cto_plz, dto_doc_lgo_plz, leasing_cto_plz, leasing_lgo_plz, gtia_real_cto_plz, gtia_real_lgo_plz, otr_gtias_cto_plz, otr_gtias_lgo_plz, cart_cred_cto_plz, cart_cred_lgo_plz, avales_cto_plz, avales_lgo_plz, peusualt, pefecalt, peusumod, pefecmod, acc_cto_plz_dol, acc_lgo_plz_dol, aecc_cto_plz_dol, aecc_lgo_plz_dol, dto_doc_cto_plz_dol, dto_doc_lgo_plz_dol, leasing_cto_plz_dol, leasing_lgo_plz_dol, gtia_real_cto_plz_dol, gtia_real_lgo_plz_dol, otr_gtias_cto_plz_dol, otr_gtias_lgo_plz_dol, avales_cto_plz_dol, avales_lgo_plz_dol, cod_col_variable_1, cod_col_variable_2, variable_1_cto_plz, variable_1_lgo_plz, variable_1_cto_plz_dol, variable_1_lgo_plz_dol, variable_2_cto_plz, variable_2_lgo_plz, variable_2_cto_plz_dol, variable_2_lgo_plz_dol \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "deudas_bancarias_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/deudas_bancarias_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"fecha_deuda_id, cod_banco, acc_cto_plz, acc_lgo_plz, aecc_cto_plz, aecc_lgo_plz, dto_doc_cto_plz, dto_doc_lgo_plz, leasing_cto_plz, leasing_lgo_plz, gtia_real_cto_plz, gtia_real_lgo_plz, otr_gtias_cto_plz, otr_gtias_lgo_plz, cart_cred_cto_plz, cart_cred_lgo_plz, avales_cto_plz, avales_lgo_plz, acc_cto_plz_dol, acc_lgo_plz_dol, aecc_cto_plz_dol, aecc_lgo_plz_dol, dto_doc_cto_plz_dol, dto_doc_lgo_plz_dol, leasing_cto_plz_dol, leasing_lgo_plz_dol, gtia_real_cto_plz_dol, gtia_real_lgo_plz_dol, otr_gtias_cto_plz_dol, otr_gtias_lgo_plz_dol, avales_cto_plz_dol, avales_lgo_plz_dol, cod_col_variable_1, cod_col_variable_2, variable_1_cto_plz, variable_1_lgo_plz, variable_1_cto_plz_dol, variable_1_lgo_plz_dol, variable_2_cto_plz, variable_2_lgo_plz, variable_2_cto_plz_dol, variable_2_lgo_plz_dol, nro_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "eoaf",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/eoaf",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"id, fec_blc, consolidado, penumper, fec_eoaf, deudxvtas, bscambio, deucomerci, deusocyfisc, deusistfinanc, inv_actintang, aportescap, distresult, credsocyev, otr_varcaptr1, imp_otr_varcaptr1, otr_varcaptr2, imp_otr_varcaptr2, otr_varcaptr3, imp_otr_varcaptr3, otr_oanooper1, otr_oanooper2, otr_oanooper3, imp_otr_varcaptr1_ori, imp_otr_varcaptr2_ori, imp_otr_varcaptr3_ori, imp_otr_oanooper1_ori, imp_otr_oanooper2_ori, imp_otr_oanooper3_ori, imp_otr_varcaptr1_apl, imp_otr_varcaptr2_apl, imp_otr_varcaptr3_apl, imp_otr_oanooper1_apl, imp_otr_oanooper2_apl, imp_otr_oanooper3_apl, ingxvtasxperid, resultposblc, difmeses, peusualt, peusumod, pefecalt, pefecmod, id_blc, observaciones, nro_ultima_prop \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "equipo_directivo",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/equipo_directivo",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, secuencia, nombre, cargo, cliente, peusualt, peusumod, pefecalt, pefecmod, penumper, nup, cuit, tipo_doc, nro_doc, año_nacimiento, des_titulo_prof, mar_inmuebles_propios\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "equipo_directivo_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/equipo_directivo_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, secuencia, nombre, cargo, cliente, peusualt, peusumod, pefecalt, pefecmod, penumper, nup, cuit, tipo_doc, nro_doc, año_nacimiento, des_titulo_prof, mar_inmuebles_propios\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion_preguntas_per",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion_preguntas_per",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, ree_cod_area_pregunta, ree_cod_respuesta, ree_cod_area\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion_preguntas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion_preguntas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, ree_cod_area_pregunta, ree_cod_respuesta, ree_cod_area\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion_operaciones",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion_operaciones",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_vo, nro_prop, secuencia, cod_operacion, plazo, unidad_plazo, atraso, punt_plazo, punt_antiguedad, valoracion_operacion, peusualt, pefecalt, peusumod, pefecmod\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "valoracion_garantias",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/valoracion_garantias",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" penumper, nro_prop, fec_proceso, nup, nro_pglobal, estado_prop, fec_vto_prop, cod_actividad, origen_prop, ries_tot_pesos_grupo, ries_tot_dol_grupo, ries_tot_pesos_prop, ries_tot_dol_prop, valoracion_oper, nom_resp_riesgos, nom_resp_comercial, usu_confec_ries, usu_confec_comer, grupo_1_pesos, grupo_1_dol, grupo_2_pesos, grupo_2_dol, grupo_3_pesos, grupo_3_dol, grupo_4_pesos, grupo_4_dol, grupo_5_pesos, grupo_5_dol, grupo_6_pesos, grupo_6_dol, grupo_7_pesos, grupo_7_dol, grupo_8_pesos, grupo_8_dol, grupo_9_pesos, grupo_9_dol, grupo_10_pesos, grupo_10_dol, grupo_11_pesos, grupo_11_dol, grupo_12_pesos, grupo_12_dol, grupo_13_pesos, grupo_13_dol, grupo_14_pesos, grupo_14_dol, grupo_15_pesos, grupo_15_dol, grupo_16_pesos, grupo_16_dol, grupo_17_pesos, grupo_17_dol, subgrupo_1_pesos, subgrupo_1_dol, subgrupo_2_pesos, subgrupo_2_dol, subgrupo_3_pesos, subgrupo_3_dol, subgrupo_4_pesos, subgrupo_4_dol, subgrupo_5_pesos, subgrupo_5_dol, subgrupo_6_pesos, subgrupo_6_dol, grupo_18_pesos, grupo_18_dol, grupo_19_pesos, grupo_19_dol, peestper, mar_global, subgrupo_7_pesos, subgrupo_7_dol, lin_prod_1_pesos, lin_prod_1_dol, lin_prod_2_pesos, lin_prod_2_dol, lin_prod_3_pesos, lin_prod_3_dol, lin_prod_4_pesos, lin_prod_4_dol, lin_prod_5_pesos, lin_prod_5_dol, lin_prod_6_pesos, lin_prod_6_dol, lin_prod_7_pesos, lin_prod_7_dol, lin_prod_8_pesos, lin_prod_8_dol, lin_prod_9_pesos, lin_prod_9_dol, lin_prod_10_pesos, lin_prod_10_dol, lin_prod_11_pesos, lin_prod_11_dol, lin_prod_12_pesos, lin_prod_12_dol, lin_prod_13_pesos, lin_prod_13_dol, lin_prod_14_pesos, lin_prod_14_dol, lin_prod_15_pesos, lin_prod_15_dol, lin_prod_16_pesos, lin_prod_16_dol, lin_prod_17_pesos, lin_prod_17_dol, lin_prod_18_pesos, lin_prod_18_dol, lin_prod_19_pesos, lin_prod_19_dol, lin_prod_20_pesos, lin_prod_20_dol, lin_prod_21_pesos, lin_prod_21_dol, lin_prod_22_pesos, lin_prod_22_dol, lin_prod_23_pesos, lin_prod_23_dol, lin_prod_24_pesos, lin_prod_24_dol, lin_prod_25_pesos, lin_prod_25_dol, lin_prod_26_pesos, lin_prod_26_dol, lin_prod_27_pesos, lin_prod_27_dol, lin_prod_28_pesos, lin_prod_28_dol, lin_prod_29_pesos, lin_prod_29_dol, lin_prod_30_pesos, lin_prod_30_dol, lin_prod_31_pesos, lin_prod_31_dol, lin_prod_32_pesos, lin_prod_32_dol, lin_prod_33_pesos, lin_prod_33_dol, lin_prod_34_pesos, lin_prod_34_dol, lin_prod_35_pesos, lin_prod_35_dol, lin_prod_36_pesos, lin_prod_36_dol, lin_prod_37_pesos, lin_prod_37_dol, lin_prod_38_pesos, lin_prod_38_dol, lin_prod_39_pesos, lin_prod_39_dol, lin_prod_40_pesos, lin_prod_40_dol, lin_prod_41_pesos, lin_prod_41_dol, lin_prod_42_pesos, lin_prod_42_dol, lin_prod_43_pesos, lin_prod_43_dol, lin_prod_44_pesos, lin_prod_44_dol, lin_prod_45_pesos, lin_prod_45_dol, lin_prod_46_pesos, lin_prod_46_dol, lin_prod_47_pesos, lin_prod_47_dol, lin_prod_48_pesos, lin_prod_48_dol, lin_prod_49_pesos, lin_prod_49_dol, lin_prod_50_pesos, lin_prod_50_dol, lin_prod_51_pesos, lin_prod_51_dol, lin_prod_52_pesos, lin_prod_52_dol, lin_prod_53_pesos, lin_prod_53_dol, lin_prod_54_pesos, lin_prod_54_dol, lin_prod_55_pesos, lin_prod_55_dol, lin_prod_56_pesos, lin_prod_56_dol, lin_prod_57_pesos, lin_prod_57_dol, lin_prod_58_pesos, lin_prod_58_dol, lin_prod_59_pesos, lin_prod_59_dol, lin_prod_60_pesos, lin_prod_60_dol, lin_prod_61_pesos, lin_prod_61_dol, lin_prod_62_pesos, lin_prod_62_dol, lin_prod_63_pesos, lin_prod_63_dol, lin_prod_64_pesos, lin_prod_64_dol, lin_prod_65_pesos, lin_prod_65_dol, grado_feve, lin_prod_66_pesos, lin_prod_66_dol, lin_prod_67_pesos, lin_prod_67_dol, valoracion_final, fec_valoracion, mar_refinanciacion, lin_prod_68_pesos, lin_prod_68_dol, cod_campania, lin_prod_69_pesos, lin_prod_69_dol, ide_nup_garra, lin_prod_70_pesos, lin_prod_70_dol, lin_prod_71_pesos, lin_prod_71_dol, lin_prod_72_pesos, lin_prod_72_dol, lin_prod_73_pesos, lin_prod_73_dol, riesgo_empresa, lin_prod_74_pesos, lin_prod_74_dol\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "mercados_prop",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/mercados_prop",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_prop, tpo_cliente, gdo_cliente, antig_cliente, mar_dentro_radio, des_posicion, mar_visitado, fec_ultima_visita, mar_marco_visita, obs_marco_visita, can_empleados, can_clientes, porc_ventas_credit, mar_datos_gravados, antig_socios, mar_aval, mar_otros_negocios, obs_otros_negocios, des_funcionamiento, mar_gcia_distinta, cod_usu_alta, fec_alta, cod_usu_mod, fec_mod, des_producto1, des_producto2, des_producto3, porc_producto1, porc_producto2, porc_producto3, obs_datos_gravados, mar_deuda, obs_deuda, verificado\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "actividades_santander_nace",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/actividades_santander_nace",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, codigo_nace\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_calculos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rtg_calculos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_calculo , id_version , e_calculo , t_ejecucion, fi_ejecucion, ff_ejecucion , x_1er_usuario , x_ult_usuario, nro_prop, penumper\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_calculos_respuestas",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/rtg_calculos_respuestas",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_calculo, id_pregunta, id_cuestionario, id_respuesta, n_intercept, n_beta, n_woe\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_def_cuestionarios",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/rtg_def_cuestionarios",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_cuestionario, x_cuestionario, n_intercept, f_alta, f_ultima_modif, x_user_alta, x_user_ultima_modif\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_calculos_det",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rtg_calculos_det",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_calculo,x_etiqueta,n_orden,x_sentencia,x_descripcion,x_msg_error,t_resultado,n_resultado_num,f_resultado_date,x_resultado_char,id_secuencia,x_sentencia_def\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_def_cuest_respuestas",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rtg_def_cuest_respuestas",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_respuesta,id_pregunta,x_respuesta,n_woe\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rtg_def_cuest_preguntas",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/rtg_def_cuest_preguntas",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_pregunta,id_cuestionario,x_pregunta,cod_area,n_beta\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "cod_estado_net",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/cod_estado_net",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_tramite, cod_estado, des_estado, mar_final, cod_estado_accion, cod_estado_origen, cod_cargo\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "feve_acta_revision",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" numero_acta, nombre_acta, estado_acta, codigo_banca, fecha_realizacion, nombre_centro, servicios_centrales_codigo, servicios_centrales_desc, gestor, idsucursal, tipo_comite, segmento_tutela, codigo_instancia, orden_del_dia, observaciones_generales, comentarios_acta, cant_empresas_analizadas, total_dispuesto, num_tot_clientes_analizados, num_clientes_afianzar, num_clientes_seguir, num_clientes_extinguir, num_clientes_reducir, limites, porcentaje_revisados, num_salidas, num_cliente_mej_grado, num_cleinte_mej_valoracion, num_cliente_deterioro, fecha_creacion, fecha_modificacion, usuario_creacion, usuario_modificacion, numero_acta_gys\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "feve_acta_revision_asistentes",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision_asistentes",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_acta, nombrecompleto, dni, codcargo, nup\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "feve_acta_revision_clientes",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/feve_acta_revision_clientes",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_acta, nup, idfichafeve\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "feve_estado",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/feve_estado",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idfeveestado, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "gradofeve_sge",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/gradofeve_sge",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, descripcion, cant_dias, cod_grado_garra\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "politicas_seguir",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/politicas_seguir",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" codigo, descripcion, id_politica_seguir, cod_politica\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "promontorio_estado",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/promontorio_estado",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idpromontorioestado, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "promontorio_estadoempresa",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/promontorio_estadoempresa",
+      "table_type": "dim",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idpromontorioestadoempresa, descripcion, color\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "promontorio_ficha",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/promontorio_ficha",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idfichapromontorio, idpromontorioestadoempresa, idpromontorioestado, nup, valorrating, descripcion_tiporating, razonsocial, feve, razonsociallimite, razonsocialdispuesto, razonsocialgarreal, totallimite, totaldispuesto, totalgarreal, financierocplimite, financierocpdispuesto, financierocpgarreal, financierolplimite, financierolpdispuesto, financierolpgarreal, avalestecnicoslimite, avalestecnicosdispuesto, avalestecnicosgarreal, otroslimite, otrosdispuesto, otrosgarreal, total2limite, total2dispuesto, total2garreal, ventas, ebitda, ebit, bai, cashflowlibre, fondospropios, deudafinancieraneta, deudafinancieralp, capitalcirculanteoperativo, totalbalance, margenordinariovalor, margenordinarioroa, cuotasanlimites, cuotasandispuestos, bcrafecha, bcravalor, fechaentradafeve, fechaprevia, antiguedad, calificacionactual, fechaultimacalificacion, calificacionfeve, situacionactual, focodepreocupacion, proximospasos, recomendacioncomite, zona, sucursal, grupoeconomico, fechainicio, fechafinalizacion, fechavtocalifactual, fecultimobalance\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "revision_rating_ficha",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/revision_rating_ficha",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" idficharevision, idrevisionestado, idtipoproducto, idtipodemanda, idtipomercado, idtipoaccionistagerencia1, idtipoaccionistagerencia2, idtipoaccionistagerencia3, idtipoaccionistagerencia4, idtipoaccesoalcredito1, idtipoaccesoalcredito2, idtipoaccesoalcredito3, idtipoaccesoalcredito4, idtipoaccesoalcredito5, idtiporentabilidadbeneficio1, idtiporentabilidadbeneficio2, idtiporentabilidadbeneficio3, idtiporentabilidadbeneficio4, idtipogeneracionderecursos1, idtipogeneracionderecursos2, idtipogeneracionderecursos3, idtipogeneracionderecursos4, idtiposolvencia1, idtiposolvencia2, idtiposolvencia3, idtiposolvencia4, idtiposolvencia5, idtipoproyeccion, idestadocomentarios, idseguimiento, idestadosfinancieros, idinformesectorial, idsistemaopcional, idsistemaopcionalfeve, idconclusion, ratingcomentadorta, ratingrta, calificacioninternarta, cuit, razonsocial, idzona, ultimapropuesta, idsucursal, rating, analista, calificacion, ratingvigente, ratingcomentado, calificacioninterna, regional, cliente, revisorgys, analistarevisor, comentario, comentariocorreccion, nup, fechainicio, fechafinalizacion, idcuestionarioree1, idcuestionarioree2, idcuestionarioree3, idcuestionarioree4, idcuestionarioree5, idcuestionarioree6, cuestionarioreerta, valoracion, ratingresumido, idzonarating, descripcionzonarating\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_conclusion",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_conclusion",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_conclusion, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_cuestionario_ree",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_cuestionario_ree",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_cuestionario_ree, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_estado",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_estado",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_estado, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_estado_financiero",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_estado_financiero",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_estadofinanciero, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_informe_sectorial",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_informe_sectorial",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_informesectorial, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_opciones_item_revision",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_opciones_item_revision",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_itemrevision, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_seguimiento",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_seguimiento",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_seguimiento, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_sist_opcional_feve",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_sist_opcional_feve",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_sistemaopcionalfeve, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "rev_rat_sistema_opcional",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/rev_rat_sistema_opcional",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id_rev_sistemaopcional, descripcion\"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "gnl_control_libradores",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/gnl_control_libradores",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_tramite_zx, nup, id_librador, nro_doc, plazo, suc_cta_credito, tipo_cta_credito, cuenta_credito, monto_librador, mca_atomizacion, real_atomizacion, nosis_realizado, nosis_bcra, nosis_inhabilitados, nosis_cheques_rec, nosis_quiebra, nosis_concurso, observaciones, fec_alta, usu_alta, fec_modif,usu_modif, mca_vinculado, obs_vinculado, rechazo_antecedentes_int, tipo_cliente \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "gnl_datos_complem",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/gnl_datos_complem",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nro_tramite_zx, nup, cliente_nuevo, banca, segm_origen, tipo_per, tipo_emp,  tipo_linea, nro_prop, fec_vigencia, mca_vigencia, obs_vigencia, mca_calificacion, mon_lin_otorgada, mon_lin_otorgada_no_cesion, real_calificacion, obs_calificacion, mca_disponible, real_disponible, mon_disponible, obs_disponible, mca_garantia, real_garantia, obs_garantia, mca_cli_vin, real_cli_vin, obs_cli_vin, mca_afip, real_afip, obs_afip, mca_bcra, real_bcra, obs_bcra, form_487, mca_opera, obs_opera, mca_especial_granel, obs_especial_granel, mca_especial_f487, obs_especial_f487, motiv_nopera, cod_pevalind,  cod_peindica, tasa_min, cta_cte, prod_cta_cte, subp_cta_cte, fec_alta, usu_alta, fec_modif, usu_modif, rechazo_antecedentes_int  \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "SGE01",
+      "table": "lineas_productos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/lineas_productos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "partition_field": "to_be_defined",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" cod_producto, cod_operacion, peusualt, pefecalt, peusumod, pefecmod  \"  --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

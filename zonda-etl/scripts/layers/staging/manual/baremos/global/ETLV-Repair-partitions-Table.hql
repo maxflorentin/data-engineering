@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_bdr.map_baremos_global_local;

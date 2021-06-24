@@ -1,0 +1,84 @@
+{
+  "file": "zendesk_groups_santander_ar_schema",
+  "location": "/santander/bi-corp/landing/zendesk_brands/dim/santander-ar/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/zendesk/dim/brands/santander-ar",
+  "extension": "csv",
+  "header": false,
+  "delimiter": "^",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "url",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+
+    {
+      "name": "brand_url",
+      "type": "string"
+    },
+    {
+      "name": "subdomain",
+      "type": "string"
+    },
+    {
+      "name": "has_help_center",
+      "type": "string"
+    },
+    {
+      "name": "help_center_state",
+      "type": "string"
+    },
+    {
+      "name": "active",
+      "type": "string"
+    },
+    {
+      "name": "default",
+      "type": "string"
+    },
+    {
+      "name": "is_deleted",
+      "type": "string"
+    },
+    {
+      "name": "logo",
+      "type": "string"
+    },
+    {
+      "name": "ticket_form_ids",
+      "type": "string"
+    },
+    {
+      "name": "signature_template",
+      "type": "string"
+    },
+    {
+      "name": "created_ats",
+      "type": "string"
+    },
+    {
+      "name": "updated_ats",
+      "type": "string"
+    },
+    {
+      "name": "host_mappings",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

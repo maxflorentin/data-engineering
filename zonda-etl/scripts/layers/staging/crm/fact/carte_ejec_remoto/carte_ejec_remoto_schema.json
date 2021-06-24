@@ -1,0 +1,43 @@
+{
+  "file": "carte_ejec_remoto_schema",
+  "location": "/santander/bi-corp/landing/crm/fact/carte_ejec_remoto/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/crm/fact/carte_ejec_remoto",
+  "createTable": "bi_corp_staging.crm_carte_ejec_remoto",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "user_id",
+    "type": "string"
+  },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "grupo",
+      "type": "string"
+    },
+    {
+      "name": "fec_desde",
+      "type": "string"
+    },
+    {
+      "name": "fec_hasta",
+      "type": "string"
+    },
+    {
+      "name": "prestado",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "obcm",
+      "type": "FACT",
+      "name": "tlog_tabla",
+      "filePrefix": "TlogTabla-"
+    },
+    {
+      "source": "obcm",
+      "type": "FACT",
+      "name": "tpcs_log_operacion",
+      "filePrefix": "Log-Operaciones-"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_OBCM-Daily"
+  }
+}

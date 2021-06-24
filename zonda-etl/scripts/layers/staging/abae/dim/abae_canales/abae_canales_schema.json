@@ -1,0 +1,29 @@
+{
+	"file": "abae_canales_schema",
+	"location": "/santander/bi-corp/landing/abae/dim/abae_canales/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/abae/dim/abae_canales",
+	"createTable": "bi_corp_staging.abae_canales",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "canal",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

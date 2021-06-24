@@ -1,0 +1,324 @@
+name: LOAD_CMN_Delivery-Daily
+description: 'Load Delivery Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 9 * * *'
+start_date: '2020-04-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: dim_deli_cp_canales_venta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_canales_venta/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_canales_venta/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_clientes/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_clientes/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_estados_crupier_comp
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_estados_crupier_comp/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_estados_crupier_comp/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_estados_crupier_env
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_estados_crupier_env/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_estados_crupier_env/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_oper_crupier
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_oper_crupier/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_oper_crupier/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_paquetes_crupier
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_paquetes_crupier/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_paquetes_crupier/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_productos_crupier
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_crupier/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_crupier/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_productos_tarjetas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_tarjetas/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_tarjetas/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_trackingstatus
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_trackingstatus/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_trackingstatus/ETLV-Load_Common_Table.hql'
+  - name: dim_deli_cp_productos_colores
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_colores/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/dim/dim_deli_cp_productos_colores/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_componentes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_componentes/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_componentes/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_stock
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+       - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_stock/DDLT-Create_Common_Table.hql'
+       - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_stock/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_envios
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_courier_component
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_component/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_component/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_courier_event
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_event/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_event/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_courier_shipping
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_shipping/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_courier_shipping/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_envios_eliminados
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios_eliminados/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios_eliminados/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_componentes_estados
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_componentes_estados/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_componentes_estados/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_envios_estados
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios_estados/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios_estados/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_visitas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_visitas/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_visitas/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_custodia
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_custodia/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_custodia/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_destruidos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_destruidos/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_destruidos/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_enviofallido
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_enviofallido/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_enviofallido/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_estadototal
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_estadototal/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_estadototal/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_entregadacorreo
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_entregadacorreo/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_entregadacorreo/ETLV-Load_Common_Table.hql'
+  - name: bt_deli_kpi_entregadaprisma
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_entregadaprisma/DDLT-Create_Common_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_kpi_entregadaprisma/ETLV-Load_Common_Table.hql'
+  - name: SHERIFF_Control_bt_deli_componentes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_deli_componentes
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_componentes/bt_deli_componentes_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Delivery-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_deli_componentes_sheriff.json']
+  - name: SHERIFF_Control_bt_deli_stock
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_deli_stock
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_stock/bt_deli_stock_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Delivery-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_deli_stock_sheriff.json']
+  - name: SHERIFF_Control_bt_deli_envios
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_deli_envios
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/delivery/fact/bt_deli_envios/bt_deli_envios_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Delivery-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_deli_envios_sheriff.json']
+dependencies:
+  dim_deli_cp_canales_venta: bt_deli_envios
+  dim_deli_cp_clientes: [bt_deli_componentes, bt_deli_envios]
+  dim_deli_cp_estados_crupier_comp: bt_deli_componentes_estados
+  dim_deli_cp_estados_crupier_env: bt_deli_envios_estados
+  dim_deli_cp_oper_crupier: bt_deli_envios
+  dim_deli_cp_paquetes_crupier: bt_deli_envios
+  dim_deli_cp_productos_crupier: bt_deli_componentes
+  dim_deli_cp_productos_tarjetas: bt_deli_componentes
+  dim_deli_trackingstatus: bt_deli_courier_event
+  dim_deli_cp_productos_colores: bt_deli_componentes
+  bt_deli_envios: [SHERIFF_Control_bt_deli_envios, bt_deli_kpi_visitas, bt_deli_kpi_custodia, bt_deli_kpi_destruidos, bt_deli_kpi_enviofallido, bt_deli_kpi_estadototal]
+  bt_deli_stock: SHERIFF_Control_bt_deli_stock
+  bt_deli_componentes: [SHERIFF_Control_bt_deli_componentes, bt_deli_kpi_destruidos]
+  bt_deli_courier_shipping: [bt_deli_kpi_visitas, bt_deli_kpi_custodia, bt_deli_kpi_destruidos, bt_deli_kpi_enviofallido]
+  bt_deli_courier_event: [bt_deli_kpi_custodia, bt_deli_kpi_destruidos, bt_deli_kpi_enviofallido, bt_deli_kpi_estadototal]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

@@ -1,0 +1,130 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_gc_conceptos_sac",
+            "title": "Son los códigos operativos de SAC (Servicio Atencion al Cliente)",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "N",
+            "description": "Son los códigos operativos de SAC (Servicio Atencion al Cliente)",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CPTO",
+                    "title": "COD_CPTO",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_CPTO",
+                    "title": "DESC_CPTO",
+                    "description": "Descripcion del la informacion del Registro",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 255.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_TIPO_RECLAMO",
+                    "title": "COD_TIPO_RECLAMO",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_ALT",
+                    "title": "USER_ALT",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_ALT",
+                    "title": "FEC_ALT",
+                    "description": "Fecha de Alta del registro / DATA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_MODF",
+                    "title": "USER_MODF",
+                    "description": "Legajo del usuario que efectuo la Modificacion de la DATA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_MODF",
+                    "title": "FEC_MODF",
+                    "description": "Fecha de Modificacion del registro",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESTADO",
+                    "title": "ESTADO",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

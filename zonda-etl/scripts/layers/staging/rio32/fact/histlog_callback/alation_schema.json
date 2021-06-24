@@ -1,0 +1,109 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "a308609"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio32_histlog_callback",
+      "title": "Informacion historica detallada llamadas",
+      "schema": "bi_corp_staging",
+      "source": "SLAUTO - tel.HISTLOG_CALLBACK",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Informacion historica detallada llamadas",
+      "columns": [
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "Fecha de la interaccion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"                },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NUP del Cliente",
+          "type": "CHAR (8 Byte)",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"                },
+        {
+          "name": "DOCUMENTO",
+          "title": "DOCUMENTO",
+          "description": "Documento del cliente",
+          "type": "CHAR (11 Byte)",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 11.0,
+          "security": "Confidencial"                },
+        {
+          "name": "SESIONID",
+          "title": "SESIONID",
+          "description": "ID de la session",
+          "type": "NUMBER (10)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "COD_APP",
+          "title": "COD_APP",
+          "description": "Codigo de APP",
+          "type": "VARCHAR2 (50 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"                },
+        {
+          "name": "DESCRIP",
+          "title": "DESCRIP",
+          "description": "Descripcion",
+          "type": "VARCHAR2 (50 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"                },
+        {
+          "name": "ANI",
+          "title": "ANI",
+          "description": "ANI del cliente",
+          "type": "VARCHAR2 (16 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"                },
+        {
+          "name": "OPCION_IVR",
+          "title": "OPCION_IVR",
+          "description": "Opcion de ivr de ingreso de la llamada",
+          "type": "VARCHAR2 (60 Byte)",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 60.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

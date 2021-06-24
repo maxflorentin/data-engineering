@@ -1,0 +1,171 @@
+{
+  "file": "zendesk_tickets_comex-santander",
+  "location": "/santander/bi-corp/landing/zendesk_tk/fact/comex-santander/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/zendesk/fact/tk/comex-santander",
+  "extension": "csv",
+  "header": true,
+  "delimiter": "^",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "url",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "external_id",
+      "type": "string"
+    },
+
+    {
+      "name": "via",
+      "type": "string"
+    },
+    {
+      "name": "created_at",
+      "type": "string"
+    },
+    {
+      "name": "updated_at",
+      "type": "string"
+    },
+    {
+      "name": "type",
+      "type": "string"
+    },
+    {
+      "name": "subject",
+      "type": "string"
+    },
+    {
+      "name": "raw_subject",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "priority",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "recipient",
+      "type": "string"
+    },
+    {
+      "name": "requester_id",
+      "type": "string"
+    },
+    {
+      "name": "submitter_id",
+      "type": "string"
+    },
+    {
+      "name": "assignee_id",
+      "type": "string"
+    },
+    {
+      "name": "organization_id",
+      "type": "string"
+    },
+    {
+      "name": "group_id",
+      "type": "string"
+    },
+    {
+      "name": "collaborator_ids",
+      "type": "string"
+    },
+    {
+      "name": "follower_ids",
+      "type": "string"
+    },
+    {
+      "name": "email_cc_ids",
+      "type": "string"
+    },
+    {
+      "name": "forum_topic_id",
+      "type": "string"
+    },
+    {
+      "name": "problem_id",
+      "type": "string"
+    },
+    {
+      "name": "has_incidents",
+      "type": "string"
+    },
+    {
+      "name": "is_public",
+      "type": "string"
+    },
+    {
+      "name": "due_at",
+      "type": "string"
+    },
+    {
+      "name": "tags",
+      "type": "string"
+    },
+    {
+      "name": "custom_fields",
+      "type": "string"
+    },
+    {
+      "name": "satisfaction_rating",
+      "type": "string"
+    },
+    {
+      "name": "sharing_agreement_ids",
+      "type": "string"
+    },
+    {
+      "name": "fields",
+      "type": "string"
+    },
+    {
+      "name": "followup_ids",
+      "type": "string"
+    },
+    {
+      "name": "ticket_form_id",
+      "type": "string"
+    },
+    {
+      "name": "brand_id",
+      "type": "string"
+    },
+    {
+      "name": "satisfaction_probability",
+      "type": "string"
+    },
+    {
+      "name": "allow_channelback",
+      "type": "string"
+    },
+    {
+      "name": "result_type",
+      "type": "string"
+    }
+  ],
+  "mirrorColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "target": "updated_at",
+      "dateFormat": "yyyy-MM-dd'T'HH:mm:ss'Z'",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

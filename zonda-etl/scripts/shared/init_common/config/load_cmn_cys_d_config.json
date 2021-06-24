@@ -1,0 +1,15 @@
+{
+    "name": "LOAD_CMN_CyS",
+    "shift": -1,
+    "conditions" : [
+      {
+        "dag_id":"LOAD_STG_Garra-Daily",
+        "tasks": "STAGING_Table_Parquetize_log_cuotaphone"
+      }
+    ],
+    "trigger":[
+      {
+        "dag_id":"LOAD_CMN_CyS"
+      }
+    ]
+  }

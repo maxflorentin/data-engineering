@@ -1,0 +1,25 @@
+            02 I35.
+               10 PENUMPER             PIC X(08).
+               10 PEPRIAPE             PIC X(20).
+               10 PESEGAPE             PIC X(20).
+               10 PENOMPER             PIC X(40).
+               10 PETIPPER             PIC X(01).
+               10 PETIPDOC             PIC X(02).
+               10 PENUMDOC             PIC X(11).
+               10 PECODACT             PIC X(08).
+               10 PESUBSEG             PIC X(03).
+               10 PEBANCAP             PIC X(02).
+               10 PEDIVISI             PIC X(02).
+               10 PETEALEA             PIC X(04).
+               10 PEEJECUE             PIC X(04).
+               10 PEJEFARE             PIC X(04).
+               10 PEGERENT             PIC X(04).
+               10 PESUCADM             PIC X(04).
+               10 MAR-BCO-ESP          PIC X(02).
+               10 MAR-LOC              PIC X(02).
+               10 MAR-CPP              PIC X(03).
+               10 MAR-ACTV             PIC X(01).
+               10 IMP-RIES             PIC 9(17).
+               10 IMP-IRREG            PIC 9(17).
+               10 PYME                 PIC X(01).
+               10 SEGCLA               PIC X(03).

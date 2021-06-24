@@ -1,0 +1,137 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_cp_productos_tarjetas",
+            "title": "POSEE LAS DESCRIPCIONES DE LOS PRODUCTOS TARJETAS DE LOS COMPONENTES ",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "POSEE LAS DESCRIPCIONES DE LOS PRODUCTOS TARJETAS DE LOS COMPONENTES ",
+            "columns": [
+                {
+                    "name": "COD_PROD_TARJETA",
+                    "title": "COD_PROD_TARJETA",
+                    "description": "CÓDIGO DEL PRODUCTO TARJETA",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_PROD",
+                    "title": "COD_PROD",
+                    "description": "CÓDIGO DEL SUBPRODUCTO TARJETA",
+                    "type": "VARCHAR2(1)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_PROD",
+                    "title": "DESC_PROD",
+                    "description": "DESCRIPCIÓN DEL PRODUCTO TARJETA",
+                    "type": "VARCHAR2(100)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_ORIGEN",
+                    "title": "COD_ORIGEN",
+                    "description": "CÓDIGO DEL PRODUCTO TARJETA",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_COLOR",
+                    "title": "COD_COLOR",
+                    "description": "CÓDIGO DE COLOR DEL PRODUCTO TARJETA",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 22.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF",
+                    "title": "ULTIMA_MODIF",
+                    "description": "FECHA DE ULTIMA MODIFICACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 11.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,79 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_detalleresultados",
+      "title": "respuesta efectuada a la encuesta presentada en la operación",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "respuesta efectuada a la encuesta presentada en la operación",
+      "columns": [
+        {
+          "name": "OPERACION",
+          "title": "OPERACION",
+          "description": "codigo de la operación",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "ENCUESTA",
+          "title": "ENCUESTA",
+          "description": "codigo de la encuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "PREGUNTA",
+          "title": "PREGUNTA",
+          "description": "codigo de la pregunta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "RESPUESTA",
+          "title": "RESPUESTA",
+          "description": "codigo de la respuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "COMENTARIO",
+          "title": "COMENTARIO",
+          "description": "comentario para las respuestas que permiten escribir libremente",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1000.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

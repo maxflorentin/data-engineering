@@ -1,0 +1,50 @@
+{
+  "tables": [
+    {
+      "source": "FM",
+      "type": "FACT",
+      "name": "FM_SALDOS",
+      "filePrefix": "FMA350_PyL.D"
+    },
+    {
+      "source": "FM",
+      "type": "FACT",
+      "name": "FM_SUSCRIPCIONES",
+      "filePrefix": "AFCI035_PyL.D"
+    },
+    {
+      "source": "FM",
+      "type": "FACT",
+      "name": "FM_RESCATES",
+      "filePrefix": "RESCATES_"
+    },
+    {
+      "source": "FM",
+      "type": "FACT",
+      "name": "FM_COMISIONES",
+      "filePrefix": "VW_COMMISSIONS_"
+    },
+    {
+      "source": "FM",
+      "type": "FACT",
+      "name": "FM_VALORES_CUOTAS_PARTES",
+      "filePrefix": "VW_EQUITY_"
+    },
+    {
+      "source": "FM",
+      "type": "DIM",
+      "name": "FM_MAESTRO_CANALES",
+      "filePrefix": "VW_CHANNELS_"
+    },
+    {
+      "source": "FM",
+      "type": "DIM",
+      "name": "FM_MAESTRO_FONDOS",
+      "filePrefix": "VW_FUNDS_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_FM-Daily"
+  }
+}

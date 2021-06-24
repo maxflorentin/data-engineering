@@ -1,0 +1,38 @@
+{
+     "file": "comexweb_estados_schema",
+     "location": "/santander/bi-corp/landing/rio4/dim/comexweb_estados/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio4/dim/comexweb_estados",
+     "tempDirectory": "/santander/bi-corp/temp/rio4",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+	 [          {
+                 "name": "tipoop",
+                 "type": "string"
+                },
+                {
+                 "name": "bit",
+                 "type": "string"
+                },
+                {
+                 "name": "estado",
+                 "type": "string"
+                },
+                {
+                 "name": "descripcion",
+                 "type": "string"
+                }
+       	 ],
+	    "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

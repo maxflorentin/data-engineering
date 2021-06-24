@@ -1,0 +1,42 @@
+{
+        "file": "academia_view_users_data",
+        "location": "/santander/bi-corp/landing/academia/academia_view_users_data/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/academia/academia_view_users_data",
+        "extension": "csv",
+        "header": true,
+        "delimiter": "\t",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                "name": "id",
+                "type": "string"
+        },
+                {
+                        "name": "nombre",
+                        "type": "string"
+                },
+                {
+                        "name": "legajo",
+                        "type": "string"
+                },
+                {
+                        "name": "puesto",
+                        "type": "string"
+                },
+                {
+                        "name": "centro_costos",
+                        "type": "string"
+                },
+                {
+                        "name": "centro_costos_nombre",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

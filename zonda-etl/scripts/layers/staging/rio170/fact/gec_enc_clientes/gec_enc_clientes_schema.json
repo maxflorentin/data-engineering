@@ -1,0 +1,64 @@
+{
+	"file": "clientes_schema",
+	"location": "/santander/bi-corp/landing/rio170/fact/clientes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio170/fact/clientes",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_nps_clientes",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_encuesta",
+			"type": "string"
+		},
+        {
+			"name": "nup",
+			"type": "string"
+		},
+        {
+			"name": "fecha",
+			"type": "string"
+		},
+        {
+			"name": "estado",
+			"type": "string"
+		},
+        {
+			"name": "fecha_carga",
+			"type": "string"
+		},
+        {
+			"name": "nup_empresa",
+			"type": "string"
+		},
+        {
+			"name": "cuit_empresa",
+			"type": "string"
+		},
+        {
+			"name": "nombre_empresa",
+			"type": "string"
+		},
+        {
+			"name": "banca",
+			"type": "string"
+		},
+        {
+			"name": "segmento",
+			"type": "string"
+		},
+        {
+			"name": "login_automatico",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

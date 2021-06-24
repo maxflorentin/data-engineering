@@ -1,0 +1,72 @@
+name: LOAD_STG_RIO6-Coberturas-Daily
+description: 'Load data from RIO6 - Coberturas'
+owner: BI-Corp
+active: true
+start_date: '2020-05-31'
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_RIO6_Coberturas_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Coberturas_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio6/dim/coberturas/coberturas_schema.json']
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RIO6-Coberturas-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['coberturas_schema.json']
+  - name: STAGING_RIO6_Coberturas_Detalle_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Coberturas_Detalle_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio6/dim/coberturas_detalle/coberturas_detalle_schema.json']
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RIO6-Coberturas-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['coberturas_detalle_schema.json']
+  - name: STAGING_RIO6_Planes_Coberturas_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_Planes_Coberturas_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio6/dim/planes_coberturas/planes_coberturas_schema.json']
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_RIO6-Coberturas-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['planes_coberturas_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL, analytics-alerts]
+  users: [msanguinetti@santandertecnologia.com.ar]

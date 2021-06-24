@@ -1,0 +1,152 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "INCREMENTAL"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bi_corp_staging.rio56_info_requerida_valores",
+            "title": "Codigo y valores que puede adoptar la informacion requerida ",
+            "schema": "bi_corp_staging",
+            "source": "SGC",
+            "query": "HQL del ETL",
+            "type": "N",
+            "description": "Codigo y valores que puede adoptar la informacion requerida ",
+            "columns": [
+                {
+                    "name": "COD_ENTIDAD",
+                    "title": "COD_ENTIDAD",
+                    "description": "Entidad relacion del aplicativo (Uso interno SGC)",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_INFO_REQUE",
+                    "title": "COD_INFO_REQUE",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_VALOR",
+                    "title": "COD_VALOR",
+                    "description": "Codigo ID - Primary Key - Uso interno de SGC",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_VALOR",
+                    "title": "NRO_VALOR",
+                    "description": "                                ",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_VALOR",
+                    "title": "DESC_VALOR",
+                    "description": "Descripcion del la informacion del Registro",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 80.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "EST_VALOR",
+                    "title": "EST_VALOR",
+                    "description": "Estado del registro ( Activo o Inactivo ) ",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_ALT_VALOR",
+                    "title": "USER_ALT_VALOR",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_ALT_VALOR",
+                    "title": "FEC_ALT_VALOR",
+                    "description": "Fecha de Alta del registro / DATA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "USER_MODF_VALOR",
+                    "title": "USER_MODF_VALOR",
+                    "description": "Legajo del usuario que efectuo la Modificacion de la DATA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FEC_MODF_VALOR",
+                    "title": "FEC_MODF_VALOR",
+                    "description": "Fecha de Modificacion del registro",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_INFO_REQUE_VALORES",
+                    "title": "COD_INFO_REQUE_VALORES",
+                    "description": "                                ",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 5.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIM",
+            "loading": {
+                "type": "DIARIO",
+                "delta": "D+1"
+            }
+        }
+    }
+}

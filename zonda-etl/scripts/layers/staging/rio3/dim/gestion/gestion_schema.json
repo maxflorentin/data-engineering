@@ -1,0 +1,153 @@
+{
+  "file": "gestion_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/gestion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/gestion",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "tipo",
+      "type": "string"
+    },
+    {
+      "name": "llamada",
+      "type": "string"
+    },
+    {
+      "name": "contacto",
+      "type": "string"
+    },
+    {
+      "name": "baja",
+      "type": "string"
+    },
+    {
+      "name": "rellamar",
+      "type": "string"
+    },
+    {
+      "name": "visitar",
+      "type": "string"
+    },
+    {
+      "name": "activo",
+      "type": "string"
+    },
+    {
+      "name": "concosto",
+      "type": "string"
+    },
+    {
+      "name": "conproducto",
+      "type": "string"
+    },
+    {
+      "name": "rellamaauto",
+      "type": "string"
+    },
+    {
+      "name": "validaventa",
+      "type": "string"
+    },
+    {
+      "name": "novalidar",
+      "type": "string"
+    },
+    {
+      "name": "rellamadias",
+      "type": "string"
+    },
+    {
+      "name": "rellamahoras",
+      "type": "string"
+    },
+    {
+      "name": "duracion",
+      "type": "string"
+    },
+    {
+      "name": "terminacion",
+      "type": "string"
+    },
+    {
+      "name": "tg_tipo",
+      "type": "string"
+    },
+    {
+      "name": "duracion_crm",
+      "type": "string"
+    },
+    {
+      "name": "colorfila",
+      "type": "string"
+    },
+    {
+      "name": "llamadain",
+      "type": "string"
+    },
+    {
+      "name": "llamadaoutmanual",
+      "type": "string"
+    },
+    {
+      "name": "llamadaoutorigen",
+      "type": "string"
+    },
+    {
+      "name": "llamadaagenda",
+      "type": "string"
+    },
+    {
+      "name": "sincontacto",
+      "type": "string"
+    },
+    {
+      "name": "nuevoestadocontacto",
+      "type": "string"
+    },
+    {
+      "name": "nuevoestado2contacto",
+      "type": "string"
+    },
+    {
+      "name": "activo_ap",
+      "type": "string"
+    },
+    {
+      "name": "depura_agenda",
+      "type": "string"
+    },
+    {
+      "name": "usuario_modif",
+      "type": "string"
+    },
+    {
+      "name": "fecha_modif",
+      "type": "string"
+    },
+    {
+      "name": "llamadaoutinternet",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

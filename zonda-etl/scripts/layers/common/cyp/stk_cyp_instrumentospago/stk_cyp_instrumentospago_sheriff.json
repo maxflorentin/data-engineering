@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.stk_cyp_instrumentospago",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_cyp_ide_pgo"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_cyp_fec_acred", "dt_cyp_fec_movim", "dt_cyp_fec_emisioncalc", "dt_cyp_fec_emision", "dt_cyp_fec_altaenvio", "dt_cyp_fec_topeprocesam", "dt_cyp_fec_interface", "dt_cyp_fec_estinstr"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

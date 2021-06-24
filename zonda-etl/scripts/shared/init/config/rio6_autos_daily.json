@@ -1,0 +1,33 @@
+{
+  "tables": [
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "AUTT_TIPO_VEHICULOS",
+      "filePrefix": "AUTT_TIPOS_VEHICULOS_"
+    },
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "AUTT_MODELOS",
+      "filePrefix": "AUTT_MODELOS_"
+    },
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "AUTT_MARCAS",
+      "filePrefix": "AUTT_MARCAS_"
+    }
+  ,
+    {
+      "source": "RIO6",
+      "type": "FACT",
+      "name": "AUTT_VALORES_VEHICULOS",
+      "filePrefix": "AUTT_VALORES_VEHICULOS_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_RIO6-Autos-Daily"
+  }
+}

@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE  bi_corp_staging.rio74_tmya_status_log ;

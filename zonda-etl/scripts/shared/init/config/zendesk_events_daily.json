@@ -1,0 +1,27 @@
+{
+  "tables": [
+    {
+      "source": "zendesk_tk_events",
+      "type": "fact",
+      "name": "santander-ar",
+      "filePrefix": "zendesk_tk_events_santander-ar_"
+    },
+    {
+      "source": "zendesk_tk_events",
+      "type": "fact",
+      "name": "comex-santander",
+      "filePrefix": "zendesk_tk_events_comex-santander_"
+    },
+    {
+      "source": "zendesk_tk_events",
+      "type": "fact",
+      "name": "puc-santander",
+      "filePrefix": "zendesk_tk_events_puc-santander_"
+    }
+
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_ZENDESK_EVENTS-Daily"
+  }
+}

@@ -1,0 +1,128 @@
+{
+    "file": "ba_equipos_ba_alta_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos_ba_alta",
+    "location": "/santander/bi-corp/landing/rio44/fact/ba_equipos_ba_alta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/fact/ba_equipos_ba_alta",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns":
+    [
+        {
+      "name": "id_equipos",
+      "type": "string"
+    },
+   {
+      "name": "sigla",
+      "type": "string"
+    },
+   {
+      "name": "nro_serie",
+      "type": "string"
+    },
+   {
+      "name": "equipo",
+      "type": "string"
+    },
+   {
+      "name": "modelo_descri",
+      "type": "string"
+    },
+   {
+      "name": "marca_descri",
+      "type": "string"
+    },
+   {
+      "name": "apertura",
+      "type": "string"
+    },
+   {
+      "name": "reconoc_bill",
+      "type": "string"
+    },
+   {
+      "name": "funcionalidad",
+      "type": "string"
+    },
+   {
+      "name": "posicion_num",
+      "type": "string"
+    },
+   {
+      "name": "posicion_num_cc",
+      "type": "string"
+    },
+   {
+      "name": "id_zona",
+      "type": "string"
+    },
+   {
+      "name": "descri_zonal",
+      "type": "string"
+    },
+   {
+      "name": "area",
+      "type": "string"
+    },
+   {
+      "name": "posicion_nom",
+      "type": "string"
+    },
+   {
+      "name": "descri_pos_tipo",
+      "type": "string"
+    },
+   {
+      "name": "calle",
+      "type": "string"
+    },
+   {
+      "name": "numero",
+      "type": "string"
+    },
+      {
+      "name": "postal",
+      "type": "string"
+    },
+   {
+      "name": "postal_cpa",
+      "type": "string"
+    },
+      {
+      "name": "tel",
+      "type": "string"
+    },
+       {
+      "name": "localidad",
+      "type": "string"
+    },
+   {
+      "name": "provincia",
+      "type": "string"
+    },
+   {
+      "name": "f_modif",
+      "type": "string"
+    },
+   {
+      "name": "operador_descrip",
+      "type": "string"
+    },
+   {
+      "name": "red",
+      "type": "string"
+    }
+    ],
+    "extraColumns": [
+      {
+          "name": "partition_date",
+          "value": "${partition_date}",
+          "type": "string",
+          "partitionColumn": true,
+          "partitionOrder": 1
+      }
+  ]
+}

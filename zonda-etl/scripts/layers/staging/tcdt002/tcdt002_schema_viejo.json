@@ -1,0 +1,78 @@
+{
+	   "file":"tcdt002_schema",
+	   "location":"/santander/bi-corp/landing/maltc/dim/tcdt002/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/maltc/dim/tcdt002",
+	   "extension":"txt",
+	   "header":false,
+	   "fixed":true,
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "cdtabla",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cdcampo",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "poscamp",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "nuclave",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "tabval",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "ultmod",
+                        "type": "string",
+                        "width": 26
+                },
+                {
+                        "name": "banculmo",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "oficulmo",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "numter",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "usultmod",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "idf_indice",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "idf_duplic",
+                        "type": "string",
+                        "width": 1
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

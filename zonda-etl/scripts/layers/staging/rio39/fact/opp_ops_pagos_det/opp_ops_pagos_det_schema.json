@@ -1,0 +1,68 @@
+{
+  "file": "opp_ops_pagos_det_schema",
+  "location": "/santander/bi-corp/landing/rio39/fact/opp_ops_pagos_det/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio39/fact/opp_ops_pagos_det",
+  "tempDirectory": "/santander/bi-corp/temp/rio39",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 2,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+                     "name": "cod_ops",
+                     "type": "string"
+             },
+             {
+                     "name": "secuencia",
+                     "type": "string"
+             },
+            {
+                     "name": "concepto",
+                     "type": "string"
+             },
+            {
+                      "name": "dbto_cdto",
+                      "type": "porcentaje"
+             },
+            {
+                     "name": "porcentaje",
+                     "type": "string"
+            },
+            {
+                    "name": "cod_moneda",
+                    "type": "string"
+            },
+            {
+                     "name": "cotizacion",
+                     "type": "string"
+
+           },
+           {
+                   "name": "importe_origen",
+                   "type": "string"
+            },
+            {
+                    "name": "importe_pesos",
+                    "type": "string"
+             },
+            {
+                    "name": "movim_cta_ref",
+                    "type": "string"
+             },
+             {
+                   "name": "sec_mov_cta",
+                   "type": "string"
+             },
+             {
+                   "name": "importe_dolar",
+                   "type": "string"
+             },
+			 {
+			  "name": "partition_date",
+			  "type": "string",
+			  "partitionColumn": true,
+			  "partitionOrder": 1
+			 }
+	 ]
+}

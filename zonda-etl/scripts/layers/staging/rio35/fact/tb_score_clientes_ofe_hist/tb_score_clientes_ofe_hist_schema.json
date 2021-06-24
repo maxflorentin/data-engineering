@@ -1,0 +1,35 @@
+{
+  "file": "tb_score_clientes_ofe_hist_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/tb_score_clientes_ofe_hist/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/campanias/fact/corporativo",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "penumper",
+    "type": "string"
+  },
+    {
+      "name": "score",
+      "type": "string"
+    },
+    {
+      "name": "contactar",
+      "type": "string"
+    },
+    {
+      "name": "archivo",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

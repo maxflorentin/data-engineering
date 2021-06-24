@@ -1,0 +1,53 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.fm_suscripciones
+(
+cod_fdo           string,
+cod_cliente       string,
+certificado       string,
+cod_fdo_orig      string,
+cod_cli_orig      string,
+nr_oper_orig      string,
+nr_resg_orig      string,
+cod_ctod_orig     string,
+cod_can_liq       string,
+cod_agte_solic    string,
+cod_canal_solic   string,
+cod_agte_dg       string,
+cod_can_dg        string,
+cod_oper_dg       string,
+cod_agte_cd       string,
+cod_can_cd        string,
+cod_oper_cd       string,
+dtinput           string,
+hora              string,
+dtsolic           string,
+dtconver          string,
+dtultrgt          string,
+dtestorno         string,
+dtbloqueio        string,
+cod_bloqueio      string,
+dias_ut_dec       string,
+forma_pagto       string,
+tipo_cta          string,
+moeda_cta         string,
+nr_cta_tip        string,
+nr_cta_num        string,
+val_cota_base     string,
+val_apl_liq       string,
+qt_cot_apl        string,
+qt_cot_rgt        string,
+sd_cot_atu        string,
+val_cota_liq_d0   string,
+num_cancel        string,
+moeda_cambio      string,
+cotacao_pact      string,
+vl_conv_pact      string,
+dtcomprom         string,
+apl_transf        string,
+nr_oper           string,
+cliente_ac        string
+)
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '${DATA_LAKE_SERVER}/santander/bi-corp/staging/fm/fact/suscripciones'

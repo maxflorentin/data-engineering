@@ -1,0 +1,119 @@
+{
+  "tables" :[
+    {
+            "serverAka": "rv05",
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "PRODUCTOS",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/productos",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },
+     {
+            "serverAka": "rv05",
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "SEGMENTOS",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/segmentos",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --hive-delims-replacement ' ' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka": "rv05",
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "CARTERAS_BASICAS",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/carteras_basicas",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },{
+            "serverAka": "rv05",
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "campanias",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/campanias",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --columns \" nombre, fecha , nombre_com , codigo , tipo , esquema , codigo_clasificacion , clasificacion \" --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka": "rv05",
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "stnd_motivo_sw_srs_priorizados",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/stnd_motivo_sw_srs_priorizados",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --columns \"      tipo_tramite, cod_decision , cod_motivo , nro_prioridad , des_motivo , tipo_motivo  \" --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv03_parametria",
+            "database": "PARAMETRIA",
+            "table": "USUARIOS",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/admision_usuarios",
+            "schema": "ADMISION",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv03_parametria",
+            "database": "PARAMETRIA",
+            "table": "ESTADOS_ASOL",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/admision_estados_asol",
+            "schema": "ADMISION",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv03_parametria",
+            "database": "PARAMETRIA",
+            "table": "PRODUCTOS_PROMOCION",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/admision_productos_promocion",
+            "schema": "ADMISION",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv03_parametria",
+            "database": "PARAMETRIA",
+            "table": "PROMOCIONES",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/admision_promociones",
+            "schema": "ADMISION",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv03_parametria",
+            "database": "PARAMETRIA",
+            "table": "CANALES_DE_VENTA",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/admision_canales_de_venta",
+            "schema": "ADMISION",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverAka" : "rv05",
+            "database": "ALMACEN",
+            "table": "CLIENTES",
+            "table_type": "fact",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/fact/clientes",
+            "partition_field": "FECHA_NOVEDAD_LAKE",
+            "schema": "PMEMPRESAS",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table MIS_CLIENTES  --columns \"periodo,ultimo_dia_periodo,nup,numero_propuesta,numero_propuesta_global,fecha_propuesta,fecha_vencimiento_propuesta,meses_vencimiento,numero_grupo_propuesta_global,nombre_grupo_propuesta_global,numero_persona_sge,numero_grupo_persona,nombre_grupo_persona,tipo_propuesta,origen_propuesta,origen_propuesta_global,estado_propuesta,mra,linea_ini_pesos_no_ind,linea_fin_pesos_no_ind,linea_ini_pesos_ind,linea_fin_pesos_ind,linea_ini_pesos_cheques,linea_fin_pesos_cheques,linea_ini_dolares_no_ind,linea_fin_dolares_no_ind,linea_ini_dolares_ind,linea_fin_dolares_ind,linea_ini_dolares_cheques,linea_fin_dolares_cheques,linea_ini_euro_no_ind,linea_fin_euro_no_ind,linea_ini_euro_ind,linea_fin_euro_ind,linea_ini_euro_cheques,linea_fin_euro_cheques,linea_ini_gbp_no_ind,linea_fin_gbp_no_ind,linea_ini_gbp_ind,linea_fin_gbp_ind,linea_ini_gbp_cheques,linea_fin_gbp_cheques,linea_ini_otra_mon_no_ind,linea_fin_otra_mon_no_ind,linea_ini_otra_mon_ind,linea_fin_otra_mon_ind,linea_ini_otra_mon_cheques,linea_fin_otra_mon_cheques,estado_ini_propuesta_global,estado_fin_propuesta_global,linea_ini_propuesta_global_pesos,linea_fin_propuesta_global_pesos,linea_ini_propuesta_global_otra_mon,linea_fin_propuesta_global_otra_mon,calificacion_cheques,calificacion_individuos,calificacion_no_individuos,calificacion_individual_pesos,calificacion_individual_dolares,calificacion_individual_euro,calificacion_individual_gbp,calificacion_individual_otra_moneda,calificacion_individual,calificacion_global,calificacion_inicial,calificacion_final,codigo_actividad_economica,codigo_actividad_bcra,descripcion_actividad_bcra,codigo_actividad_santander,clanae97,clanae2010,descripcion_actividad_santander,grado_feve,rubro,rubro_grupo_propuesta_global,rubro_grupo_persona,responsable_comercial,responsable_riesgos,situacion_iva,situacion_iibb,marca_uge,marca_afip_ok,fecha_afip_ok,rating_propuesta_experto,rating_cliente_experto,sucursal_administradora,sucursal_administradora_grupo_propuesta_global,sucursal_administradora_grupo_persona,zona,zona_grupo_propuesta_global,zona_grupo_persona,region,region_grupo_propuesta_global,region_grupo_persona,tipo_documento,numero_documento,razon_social,tipo_empresa,tipo_persona,bucket_vencido_hace_2_semanas,bucket_vencido_hace_4_semanas,bucket_vencido_hace_30_60_dias,bucket_vencido_hace_61_90_dias,bucket_vencido_hace_91_120_dias,bucket_vencido_hace_121_180_dias,bucket_vencido_hace_181_360_dias,bucket_vencido_hace_1_3_años,bucket_vencido_hace_3_5_años,bucket_vencido_hace_mas_5_años,bucket_vencimiento_al_dia,bucket_vencimiento_2_semanas,bucket_vencimiento_4_semanas,bucket_vencimiento_30_60_dias,bucket_vencimiento_61_90_dias,bucket_vencimiento_91_120_dias,bucket_vencimiento_121_180_dias,bucket_vencimiento_181_360_dias,bucket_vencimiento_1_3_años,bucket_vencimiento_3_5_años,bucket_vencimiento_mas_5_años,importe_cartera_pesos,importe_cartera_otra_moneda,importe_cartera,importe_cartera_grupo,importe_cartera_cheques_pesos,importe_cartera_cheques_otra_moneda,importe_riesgo_pesos,importe_riesgo_otra_moneda,importe_riesgo,importe_mora_404_pesos,importe_mora_404_otra_moneda,importe_mora_404,importe_cartera_mercado,codigo_segmento,descripcion_segmento,detalle_renta,grado_bcra,prevision_bcra_pesos,prevision_bcra_otra_moneda,banca,division,stage,lgd_ponderada,pd_ponderada,ead_stage_1,ead_stage_2,ead_stage_3,provision_stage_1,provision_stage_2,provision_stage_3,rating_propuesta_fecha_valoracion,rating_propuesta_producto_demanda_mercado,rating_propuesta_accionistas_gerencia,rating_propuesta_acceso_credito,rating_propuesta_generacion_recursos,rating_propuesta_beneficio_rentabilidad,rating_propuesta_solvencia_de_empresa,rating_cliente_fecha_valoracion,rating_cliente_producto_demanda_mercado,rating_cliente_accionistas_gerencia,rating_cliente_acceso_credito,rating_cliente_generacion_recursos,rating_cliente_beneficio_rentabilidad,rating_cliente_solvencia_de_empresa,mapa_seguimiento,asistencia_mra,area_gestion,area_gestion_subjetiva,area_gestion_final,zona_gestion,zona_gestion_subjetiva,zona_gestion_final,responsable_zonal_riesgos,area_gestion_anterior,zona_gestion_anterior,cambio_area_gestion,cambio_zona_gestion,sector_madre_local,fecha_cierre_ultimo_balance_propuesta,facturacion_ultimo_balance_propuesta,generacion_ultimo_balance_propuesta,deuda_total_bcra,promedio_facturacion_post_ultimo_balance_propuesta,activo_corriente_ultimo_balance_propuesta,pasivo_corriente_ultimo_balance_propuesta,pasivo_no_corriente_ultimo_balance_propuesta,patrimonio_neto_ultimo_balance_propuesta,ebitda_ultimo_balance_propuesta,deuda_bancaria_bruta_ultimo_balance_propuesta,relacion_deuda_bancaria_ebidta_ultimo_balance_propuesta,fecha_inventario,fecha_datos_generales,fecha_datos_cartera_mora,fecha_datos_ifrs,rating_propuesta_estadistico_experto,rating_cliente_estadistico_experto,rating_cliente,rating_propuesta,dias_atraso,id_balance_propuesta,origen_balance_propuesta,grado_feve_fecha_entrada,grado_feve_fecha_revision,grado_feve_fecha_proxima_revision,grado_feve_fecha_baja,grado_scan,grado_scan_descripcion,grado_feve_descripcion,resultado_operativo_ultimo_balance_propuesta,id_balance_cliente,origen_balance_cliente,fecha_cierre_ultimo_balance_cliente,facturacion_ultimo_balance_cliente,generacion_ultimo_balance_cliente,promedio_facturacion_post_ultimo_balance_cliente,activo_corriente_ultimo_balance_cliente,pasivo_corriente_ultimo_balance_cliente,pasivo_no_corriente_ultimo_balance_cliente,patrimonio_neto_ultimo_balance_cliente,ebitda_ultimo_balance_cliente,deuda_bancaria_bruta_ultimo_balance_cliente,relacion_deuda_bancaria_ebidta_ultimo_balance_cliente,resultado_operativo_ultimo_balance_cliente,fallido,numero_grupo_altair,propuesta_tipo_rating,propuesta_rating_plus,cliente_tipo_rating,cliente_rating_plus,propuesta_fecha_aprobacion,limite_tarjeta_individuos,limite_tarjeta_empresas,limite_tarjeta_indeterminado,limite_cuenta_corriente_individuos,limite_cuenta_corriente_empresas,limite_cuenta_corriente_indeterminado,limite_prestamo_preacordado_individuos,importe_deuda_individuos,importe_deuda_empresas,importe_deuda_indenterminada,codigo_segmento_propuesta,descripcion_segmento_propuesta,detalle_renta_propuesta,importe_castigo,sector_mipyme_sugerido,mipyme_sugerido,motivo_entrada,comentario_comite_anterior,comentario_comite_actual,rating_cliente_origen,marca_mipyme_comercia,tamaño_mipyme_comercial,sector_mipyme_comercial,calificacion_individual_sin_liv,personas_responsable_comercial,personas_responsable_riesgos,cartera_media,insolvencias_acumuladas,mapa_seguimiento_anterior,marca_riesgo,marca_riesgo_grupo,proceso,tipo_tramite,grado_scan_cdm,importe_cartera_tarjeta_agro,limite_vigente_tarjeta_agro,limite_aprobado_tarjeta_agro,FECHA_NOVEDAD_LAKE\"   --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  -m 1 --bindir  {zonda_dir}/sqoop/risk/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --fields-terminated-by ';' --verbose -- --schema {schema}\n"
+      }
+  ]
+}

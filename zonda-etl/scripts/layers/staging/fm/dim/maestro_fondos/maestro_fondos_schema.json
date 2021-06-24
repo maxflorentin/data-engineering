@@ -1,0 +1,83 @@
+{
+  "file": "maestro_fondos_schema",
+  "location": "/santander/bi-corp/landing/fm/dim/maestro_fondos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/fm/dim/maestro_fondos",
+  "createTable": "bi_corp_staging.fm_maestro_fondos",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "manager_id",
+    "type": "string"
+  },
+    {
+      "name": "manager_fund_code",
+      "type": "string"
+    },
+    {
+      "name": "manager_fund_class",
+      "type": "string"
+    },
+    {
+      "name": "fund_code",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "currency",
+      "type": "string"
+    },
+    {
+      "name": "isin",
+      "type": "string"
+    },
+    {
+      "name": "fund_cnv_code",
+      "type": "string"
+    },
+    {
+      "name": "fund_custody_code",
+      "type": "string"
+    },
+    {
+      "name": "format",
+      "type": "string"
+    },
+    {
+      "name": "lack_days",
+      "type": "string"
+    },
+    {
+      "name": "fund_type_id",
+      "type": "string"
+    },
+    {
+      "name": "fact_sheet_url",
+      "type": "string"
+    },
+    {
+      "name": "regulation_url",
+      "type": "string"
+    },
+    {
+      "name": "status_id",
+      "type": "string"
+    },
+    {
+      "name": "is_enabled",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

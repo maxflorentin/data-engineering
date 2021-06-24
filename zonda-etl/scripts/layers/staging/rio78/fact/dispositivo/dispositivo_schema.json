@@ -1,0 +1,60 @@
+{
+  "file": "dispositivo_schema",
+  "location": "/santander/bi-corp/landing/rio78/fact/dispositivo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio78/fact/dispositivo",
+  "tempDirectory": "/santander/bi-corp/temp/rio78",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_terminal",
+    "type": "string"
+  },
+    {
+      "name": "token",
+      "type": "string"
+    },
+    {
+      "name": "id_runtime",
+      "type": "string"
+    },
+    {
+      "name": "device_id",
+      "type": "string"
+    },
+    {
+      "name": "device_model",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+
+    },
+    {
+      "name": "device_hardware_id",
+      "type": "string"
+    },
+    {
+      "name": "device_mac_address",
+      "type": "string"
+    },
+    {
+      "name": "device_version_so",
+      "type": "string"
+    },
+    {
+      "name": "device_os_id",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "file": "v_especies_schema",
+  "location": "/santander/bi-corp/landing/gsa/fact/v_especies/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/gsa/fact/v_especies",
+  "tempDirectory": "/santander/bi-corp/temp/gsa",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "oid_especie",
+    "type": "string"
+  },
+    {
+      "name": "secid",
+      "type": "string"
+    },
+    {
+      "name": "tipo_especie",
+      "type": "string"
+    },
+    {
+      "name": "denominacion",
+      "type": "string"
+    },
+    {
+      "name": "cod_rossi",
+      "type": "string"
+    },
+    {
+      "name": "cod_bce",
+      "type": "string"
+
+    },
+    {
+      "name": "cod_isin",
+      "type": "string"
+    },
+    {
+      "name": "cod_sam",
+      "type": "string"
+    },
+    {
+      "name": "cod_bcra",
+      "type": "string"
+    },
+    {
+      "name": "cod_cvsa",
+      "type": "string"
+    },
+    {
+      "name": "cod_atit",
+      "type": "string"
+    },
+    {
+      "name": "cod_mae",
+      "type": "string"
+    },
+    {
+      "name": "cod_fm",
+      "type": "string"
+    },
+    {
+      "name": "cod_amigo",
+      "type": "string"
+    },
+    {
+      "name": "pais_emisor",
+      "type": "string"
+    },
+    {
+      "name": "moneda_de_emision",
+      "type": "string"
+    },
+    {
+      "name": "fecha_cup_prox",
+      "type": "string"
+    },
+    {
+      "name": "fecha_cup_ant",
+      "type": "string"
+    },
+    {
+      "name": "fecha_vto",
+      "type": "string"
+    },
+    {
+      "name": "periodicidad_pagos",
+      "type": "string"
+    },
+    {
+      "name": "tipo_tasa",
+      "type": "string"
+    },
+    {
+      "name": "tasa",
+      "type": "string"
+    },
+    {
+      "name": "vr",
+      "type": "string"
+    },
+    {
+      "name": "lam_min",
+      "type": "string"
+
+    },
+    {
+      "name": "min_incre",
+      "type": "string"
+    },
+    {
+      "name": "cash_flow",
+      "type": "string"
+    },
+    {
+      "name": "tipo_cap_precio",
+      "type": "string"
+    },
+    {
+      "name": "precio_ej",
+      "type": "string"
+    },
+    {
+      "name": "fecha_ej",
+      "type": "string"
+    },
+    {
+      "name": "per_de_liq",
+      "type": "string"
+    },
+    {
+      "name": "cant_por_lote",
+      "type": "string"
+    },
+    {
+      "name": "dividend_date",
+      "type": "string"
+    },
+    {
+      "name": "dividend",
+      "type": "string"
+    },
+    {
+      "name": "amb_negociacion",
+      "type": "string"
+    },
+    {
+      "name": "observaciones",
+      "type": "string"
+    },
+    {
+      "name": "estado",
+      "type": "string"
+    },
+    {
+      "name": "subespecie",
+      "type": "string"
+    },
+    {
+      "name": "fecha_precio",
+      "type": "string"
+    },
+    {
+      "name": "plazo",
+      "type": "string"
+    },
+    {
+      "name": "titulo_publico_o_privado",
+      "type": "string"
+    },
+    {
+      "name": "lugar_default_de_custodia",
+      "type": "string"
+    },
+    {
+      "name": "sic",
+      "type": "string"
+    },
+    {
+      "name": "especie",
+      "type": "string"
+    },
+    {
+      "name": "fte_de_precio",
+      "type": "string"
+    },
+    {
+      "name": "tipo_valorizacion",
+      "type": "string"
+    },
+    {
+      "name": "moneda_de_cotizacion",
+      "type": "string"
+    },
+    {
+      "name": "clasificacion_extracto",
+      "type": "string"
+    },
+    {
+      "name": "basis",
+      "type": "string"
+    },
+    {
+      "name": "unsolicited",
+      "type": "string"
+    },
+    {
+      "name": "prodtype",
+      "type": "string"
+    },
+    {
+      "name": "intereses_corridos",
+      "type": "string"
+    },
+    {
+      "name": "producto",
+      "type": "string"
+    },
+    {
+      "name": "cod_categoria_cv",
+      "type": "string"
+    },
+    {
+      "name": "obra_publica",
+      "type": "string"
+    },
+    {
+      "name": "fecha_hasta_amb_neg",
+      "type": "string"
+    },
+    {
+      "name": "ajuste_de_capital",
+      "type": "string"
+    },
+    {
+      "name": "indice",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

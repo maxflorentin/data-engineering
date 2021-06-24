@@ -1,0 +1,129 @@
+name: LOAD_STG_COMEX_RIO4-Tables-Daily
+description: 'Load Data from RIO4'
+owner: BI-Corp
+active: true
+start_date: "2020-04-01"
+schedule_interval: '0 4 * * 1-6'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [OPERACIONES,CIERREBNA,CLIENTES,COMEXWEB_ESTADOS,CONCEPTOSBCRA,BOPERACIONES,COMEX_ESTADOS_LOG,CUOTAS,FX_PCC,OPERACIONESBITS]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: 'SQOOP_INGESTION'
+    operator: PythonOperator
+    config:
+      function_name: 'loadTableCommands'
+      function_def: |
+        def loadTableCommands(*args, **kwargs):
+              from airflow.operators.bash_operator import BashOperator
+              import json
+              import os
+              print(kwargs)
+              # VARIABLES
+              extra_args= eval(kwargs.get('extra_args'))
+              partition_date_value = kwargs.get('partition_date')
+              table_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('table_file'))
+              server_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('server_file'))
+              data_lake_server= kwargs.get('data_lake_server')
+              ## Read if tables comes with a fixed execution
+              with  open(server_file, 'r') as serverfile:
+                servers = json.loads(serverfile.read())
+              ## Read Table-file
+              with open(table_file, 'r') as configfile:
+                data = json.loads(configfile.read())
+              for table in data['tables']:
+                if table['table'] == kwargs.get('table'):
+                  partition_date = partition_date_value
+                  command = table['command']
+                  for server in servers['servers']:
+                    if table['serverConfig'] == server['serverName']:
+                      serverCommand = server
+                  for eachServerCfg in serverCommand:
+                      command = command.replace('{' + eachServerCfg + '}', serverCommand.get(eachServerCfg))
+                  for eachTableCfg in table:
+                      command = command.replace('{' + eachTableCfg + '}', table.get(eachTableCfg))
+                  ## If the execution have an specific date to process in the table cfg
+                  if eachTableCfg == 'date_to_load':
+                    partition_date = extra_args.get(table.get(eachTableCfg))
+                    print('partition_date changes to {}'.format(partition_date))
+                  command = command.replace('{partition_date}', partition_date).replace('{data_lake_server}', data_lake_server)
+                  ## SQOOP EXECUTION
+                  conf = {'date_from': partition_date}
+                  ## EXEC SQOOP COMMAND
+                  t = BashOperator(task_id='internal_task', bash_command=command, retries=3)
+                  t.execute(context=kwargs)
+                  print("SUCCESFULL SQOOP COMMAND {} ".format(command))
+                  ## DECLARE VARIABLES
+                  json_file = table.get('table').lower() + '_schema.json'
+                  json_filepath = os.path.join(kwargs.get('zonda_dir'), "repositories/zonda-etl/scripts/layers/staging", table.get('database').lower(), table.get('table_type').lower(), table.get('table').lower(), table.get('table').lower() + '_schema.json')
+                  kwargs['ti'].xcom_push(key='partition_date', value=partition_date)
+                  kwargs['ti'].xcom_push(key='json_file', value=json_file)
+                  kwargs['ti'].xcom_push(key='json_filepath', value=json_filepath)
+                  create_table_file = os.path.join(kwargs.get('zonda_dir'), "repositories/zonda-etl/scripts/layers/staging", table.get('database').lower(), table.get('table_type').lower(),table.get('table').lower(), "DDLT-Create_Staging_Table.hql")
+                  create_table_script = open(create_table_file).read()
+                  add_partition_file = os.path.join(kwargs.get('zonda_dir'), "repositories/zonda-etl/scripts/layers/staging", table.get('database').lower(), table.get('table_type').lower(), table.get('table').lower(), "ETLV-Alter_Partitions.hql")
+                  add_partition_script = open(add_partition_file).read()
+                  for options in extra_args:
+                    add_partition_script = add_partition_script.replace('{' + options + '}',str(extra_args.get(options)))
+                  kwargs['ti'].xcom_push(key='add_partition_script', value=add_partition_script)
+                  kwargs['ti'].xcom_push(key='create_table_script', value=create_table_script)
+      provide_context: true
+      op_kwargs:
+        partition_date: "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"
+        zonda_dir: $ZONDA_DIR
+        data_lake_server: $DATA_LAKE_SERVER
+        extra_args: "{{ ti.xcom_pull(task_ids='InputConfig', key='all', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"
+        table: ${e}
+        table_file: "repositories/zonda-etl/scripts/shared/sqoop/config/comex_rio4_cfg.json"
+        server_file: "repositories/zonda-etl/scripts/shared/sqoop/config/server_properties.json"
+  - name: STAGING_TABLE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: 'STAGING_${e}_Parquetize'
+      connection_id: cloudera_spark2
+      executor_cores: 4
+      executor_memory: 16G
+      num_executors: 20
+      files: ["{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='json_filepath', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"]
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+          'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='partition_date', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}",
+          'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+        }
+      application_args: ["{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='json_file', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"]
+  - name: STAGING_HIVE_CreateIfExistTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql: "{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='create_table_script', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"
+  - name: STAGING_HIVE_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql: "{{ ti.xcom_pull(task_ids='SQOOP_INGESTION_${e}', key='add_partition_script', dag_id='LOAD_STG_COMEX_RIO4-Tables-Daily') }}"
+dependencies:
+  SQOOP_INGESTION: STAGING_TABLE_Parquetize
+  STAGING_TABLE_Parquetize: STAGING_HIVE_CreateIfExistTable
+  STAGING_HIVE_CreateIfExistTable: STAGING_HIVE_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [ffarinasgil@santandertecnologia.com.ar]

@@ -1,0 +1,64 @@
+name: LOAD_CMN_Admision
+description: 'Load omdm data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '00 13 * * *'
+start_date: '2020-01-01'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [stk_adm_ind_omdmafip,stk_adm_ind_omdmbcra,stk_adm_ind_omdmdatosadicionales,stk_adm_ind_omdmdatosfinancieros,stk_adm_ind_omdmdatosuniversitarios,stk_adm_ind_omdmexperiencia,stk_adm_ind_omdmfraude,stk_adm_ind_omdmoferta,stk_adm_ind_omdmparticipantes,stk_adm_ind_omdmpoliticasevaluar,stk_adm_ind_omdmprendario,stk_adm_ind_omdmsolicitudes,stk_adm_omdm,stk_adm_omdmmotivos,stk_adm_omdmreglas,stk_adm_omdmscoring,stk_adm_pyme_omdmoperaciones, stk_adm_pyme_omdmbalance, stk_adm_pyme_omdminvernada, stk_adm_pyme_omdmtambo, stk_adm_pyme_omdmvarios, stk_adm_pyme_omdmfrutales, stk_adm_pyme_omdmsaldosactualizados, stk_adm_pyme_omdmcria, stk_adm_pyme_omdmagro, stk_adm_pyme_omdmagri, stk_adm_pyme_omdmpropuestanosis, stk_adm_pyme_omdmpropuestas, stk_adm_pyme_omdmparticipantepropuesta, stk_adm_pyme_omdmoperacionnosis, stk_adm_pyme_omdmparticipanteoperacion]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_CreateTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/DDLT-${e}.hql'
+  - name: COMMON_LoadTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/ETL-LOAD-${e}.hql'
+  - name: SHERIFF_Control
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/${e}/${e}_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['${e}_sheriff.json']
+dependencies:
+  COMMON_CreateTable: COMMON_LoadTable
+  COMMON_LoadTable: SHERIFF_Control
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [dtridico@santandertecnologia.com.ar, mlevisrossi@santandertecnologia.com.ar, fscagnettibrusatori@santandertecnologia.com.ar]

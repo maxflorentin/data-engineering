@@ -1,0 +1,64 @@
+{
+	"file": "acse_campanas_mensual_schema",
+	"location": "/santander/bi-corp/landing/acse/fact/campanas_mensual/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/fact/campanas_mensual",
+    "createTable": "bi_corp_staging.acse_campanas_mensual",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "sucursal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "contrato",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "comision",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "periodo_liq",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "fecha_liq",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "campania_mes",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "importe_mes",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "marca_reliq",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "genero_mov",
+                        "type": "string",
+                        "width": 1
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

@@ -1,0 +1,71 @@
+{
+    "file": "direcciones_schema",
+    "createTable": "bi_corp_staging.rio350_direcciones",
+    "location": "/santander/bi-corp/landing/rio350/dim/direcciones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio350/dim/direcciones",
+    "tempDirectory": "/santander/bi-corp/temp/rio350",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "direccion_id",
+            "type": "string"
+        },
+        {
+            "name": "numero",
+            "type": "string"
+        },
+        {
+            "name": "complementos",
+            "type": "string"
+        },
+        {
+            "name": "piso",
+            "type": "string"
+        },
+        {
+            "name": "barrio",
+            "type": "string"
+        },
+        {
+            "name": "calle",
+            "type": "string"
+        },
+        {
+            "name": "cod_postal",
+            "type": "string"
+        },
+        {
+            "name": "departamento",
+            "type": "string"
+        },
+        {
+            "name": "pais_id",
+            "type": "string"
+        },
+        {
+            "name": "provincia_id",
+            "type": "string"
+        },
+        {
+            "name": "localidad_id",
+            "type": "string"
+        },
+        {
+            "name": "sucu_id",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

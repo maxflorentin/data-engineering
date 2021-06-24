@@ -1,0 +1,112 @@
+{
+        "file": "MDDTCCN_schema",
+        "location": "/santander/bi-corp/landing/moria/fact/mddtccn/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/moria/fact/mddtccn",
+        "tempDirectory": "/santander/bi-corp/temp/moria/fact/mddtccn",
+        "extension": "csv",
+        "header": false,
+        "fixed": false,
+        "delimiter": ";",
+        "parquetFiles": 2,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "COD_ENTIGEN",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_ENTIDAD",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_CENTRO",
+                        "type": "string"
+                },
+                {
+                        "name": "NUM_CONTRATO",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_PRODUCTO",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_SUBPRODU",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_DIVISA",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_ENTIDADG",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_CENTROG",
+                        "type": "string"
+                },
+                {
+                        "name": "NUM_CONTRATG",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_PRODUCTG",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_SUBPRODG",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_DIVISAG",
+                        "type": "string"
+                },
+                {
+                        "name": "FEC_BAJA",
+                        "type": "string"
+                },
+                {
+                        "name": "COD_USUALTA",
+                        "type": "string"
+                },
+                {
+                        "name": "FEC_ALTAREG",
+                        "type": "string"
+                },
+                {
+                        "name": "ENTIDAD_ALTA",
+                        "type": "string"
+                },
+                {
+                        "name": "CENTRO_ALTA",
+                        "type": "string"
+                },
+                {
+                        "name": "ENTIDAD_UMO",
+                        "type": "string"
+                },
+                {
+                        "name": "CENTRO_UMO",
+                        "type": "string"
+                },
+                {
+                        "name": "USERID_UMO",
+                        "type": "string"
+                },
+                {
+                        "name": "NETNAME_UMO",
+                        "type": "string"
+                },
+                {
+                        "name": "TIMEST_UMO",
+                        "type": "string"
+                }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "date",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,396 @@
+{
+        "file": "alzxldgr_cheques",
+        "location": "/santander/bi-corp/landing/malzx/fact/alzxldgr/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malzx/fact/alzxldgr",
+		"createTable": "bi_corp_staging.malzx_alzxldgr",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": 
+					[
+					  {
+					    "name": "nro_tramite",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "nro_orden_chq",
+					    "type": "string",
+					    "width": 3
+					  },
+					  {
+					    "name": "bco_girado",
+					    "type": "string",
+					    "width": 3
+					  },
+					  {
+					    "name": "suc_girada",
+					    "type": "string",
+					    "width": 3
+					  },
+					  {
+					    "name": "cod_postal",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "nro_cheque",
+					    "type": "string",
+					    "width": 8
+					  },
+					  {
+					    "name": "cta_girada",
+					    "type": "string",
+					    "width": 11
+					  },
+					  {
+					    "name": "digito_verificador_1",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "digito_verificador_2",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "digito_verificador_3",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "cmc7_cheque",
+					    "type": "string",
+					    "width": 29
+					  },
+					  {
+					    "name": "fec_presentacion",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "filler",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "fec_compensacion",
+					    "type": "string",
+					    "width": 11
+					  },
+					  {
+					    "name": "fec_vto",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "est_cheque",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "id_est_cheque",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "cod_rech_cheque",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "mot_rech_cheque_tec",
+					    "type": "string",
+					    "width": 100
+					  },
+					  {
+					    "name": "imp_original",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "interes",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "comision",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "impuestos",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "tsa_comision_cobr",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_comision_def",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_comision_esp",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_comision_bon",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "mar_tsa_esp_uni",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "mar_bonif_imp_tsa",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "porc_bonificacion",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_fija_com",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_cost_corresp",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "cost_corresponsal",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "spr_corresponsal",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_cost_financ",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "cost_financiero",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "spr_financiero",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_cost_transacc",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "cost_transaccional",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "spr_transaccional",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "cost_minimo_corr",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "carg_fijo_adm_plan",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "carg_fijo_adm_cobr",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "mon_fijo_corr",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "tsa_fija_int",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_especial_int",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "tsa_interes",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "cod_canje_cheq",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "cod_canje_clte",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "bco_corresponsal",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "suc_corresponsal",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "form_calculo_int",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "form_calculo_com",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "form_calculo_cost",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "mar_tipo_compe",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "imp_bonificacion",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "mar_fisico_presen",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "mot_rech_cheque_ss",
+					    "type": "string",
+					    "width": 100
+					  },
+					  {
+					    "name": "resultado_cuadre_ss",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "resultado_cuadre",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "cod_mot_cuadre",
+					    "type": "string",
+					    "width": 2
+					  },
+					  {
+					    "name": "cmc7_ajustado",
+					    "type": "string",
+					    "width": 29
+					  },
+					  {
+					    "name": "imp_difer",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "fec_vto_difer",
+					    "type": "string",
+					    "width": 10
+					  },
+					  {
+					    "name": "int_difer",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "com_difer",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "carg_fijo_difer",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "impu_difer",
+					    "type": "string",
+					    "width": 13
+					  },
+					  {
+					    "name": "tim_alta",
+					    "type": "string",
+					    "width": 26
+					  },
+					  {
+					    "name": "filler_3",
+					    "type": "string",
+					    "width": 1
+					  },
+					  {
+					    "name": "ide_user_alta",
+					    "type": "string",
+					    "width": 8
+					  },
+					  {
+					    "name": "ide_term_alta",
+					    "type": "string",
+					    "width": 4
+					  },
+					  {
+					    "name": "tim_ult_modf",
+					    "type": "string",
+					    "width": 26
+					  },
+					  {
+					    "name": "ide_user_ult_modf",
+					    "type": "string",
+					    "width": 8
+					  },
+					  {
+					    "name": "term_ult_modf",
+					    "type": "string",
+					    "width": 4
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

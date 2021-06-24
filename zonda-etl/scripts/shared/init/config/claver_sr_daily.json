@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "ASGI",
+      "type": "FACT",
+      "name": "ALTA_RESET",
+      "filePrefix": "ALTARES"
+    },
+    {
+      "source": "ASGI",
+      "type": "FACT",
+      "name": "MARC_PIN",
+      "filePrefix": "NUPRACF"
+    },
+    {
+      "source": "SGI1",
+      "type": "FACT",
+      "name": "CLAVE_SR_CANALES_DIGITALES",
+      "filePrefix": "CLAVDIG"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_CLAVES_SR-Daily"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "file": "bgdtimp_stock",
+  "createTable": "bi_corp_staging.malbgc_bgdtimp_stock",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtimp/stock/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtimp/stock",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgdtimp.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

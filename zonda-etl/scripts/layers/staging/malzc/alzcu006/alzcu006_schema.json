@@ -1,0 +1,140 @@
+{
+        "file": "Data_Ingestion_MALZC_ALZCU006",
+        "location": "/santander/bi-corp/landing/malzc/fact/alzcu006/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malzc/fact/alzcu006",
+		"createTable": "bi_corp_staging.malzc_alzcu006",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [
+            {
+                "name": "COD_PROD_CUST",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "COD_SPROD_CUST",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "COD_PLAN_COM",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "DES_PLAN_COM",
+                "type": "string",
+                "width": 30
+            },
+            {
+                "name": "COD_BANCA",
+                "type": "string",
+                "width": 3
+            },
+            {
+                "name": "COD_MODALIDAD",
+                "type": "string",
+                "width": 1
+            },
+            {
+                "name": "COD_PERIODICIDAD",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "NRO_DIA_COBR",
+                "type": "string",
+                "width": 2
+            },
+            {
+                "name": "IDE_USER_ALTA",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ALTA",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "FEC_ALTA",
+                "type": "string",
+                "width": 10
+            },
+            {
+                "name": "MAR_BAJA",
+                "type": "string",
+                "width": 1
+            },
+            {
+                "name": "IDE_USER_BAJA",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_BAJA",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "TIM_BAJA",
+                "type": "string",
+                "width": 26
+            },
+            {
+                "name": "MAR_DEFAULT",
+                "type": "string",
+                "width": 1
+            },
+            {
+                "name": "COM_MIN_MENS",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "COM_MIN_CHEQUE",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "COM_RESCATE",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "COM_DIFERIMIENTO",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "COM_MAX_CHEQUE",
+                "type": "string",
+                "width": 13
+            },
+            {
+                "name": "IDE_USER_ULT_MODF",
+                "type": "string",
+                "width": 8
+            },
+            {
+                "name": "IDE_TERM_ULT_MODF",
+                "type": "string",
+                "width": 4
+            },
+            {
+                "name": "TIM_ULT_MODF",
+                "type": "string",
+                "width": 26
+            }
+        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

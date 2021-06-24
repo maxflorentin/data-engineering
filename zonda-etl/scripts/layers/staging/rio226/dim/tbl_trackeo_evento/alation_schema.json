@@ -1,0 +1,85 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_trackeo_evento",
+      "title": "tabla de descripciones del trackeo de eventos",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "tabla de descripciones del trackeo de eventos",
+      "columns": [
+        {
+          "name": "CODIGO",
+          "title": "CODIGO                       ",
+          "description": "Codigo del trackeo del evento ",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "DESCRIPCION                         ",
+          "title": "DESCRIPCION                         ",
+          "description": "Descripcion del trackeo del event",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                },
+        {
+          "name": "OPERACION                    ",
+          "title": "OPERACION                    ",
+          "description": "indica si es de operacion o no",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "VISIBLE                    ",
+          "title": "VISIBLE                    ",
+          "description": "indisica si es visibile o no",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ,
+        {
+          "name": "DESCRIPCION_USUARIO                    ",
+          "title": "DESCRIPCION_USUARIO                    ",
+          "description": "descripcion del usuario",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO APLICA",
+          "nullable": true,
+          "length": 400.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

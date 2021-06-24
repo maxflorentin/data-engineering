@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select '${month_partition_bdr}' as periodo, length(CONCAT(lpad(nvl(cast(empresa as string), '0'),5,'0'),lpad(nvl(cod_negocio_local,'0'),5,'0'),lpad(nvl(cod_baremo_local,'0'),5,'0'),nvl(fecha_desde,'00001-01-01'),nvl(fecha_hasta,'00001-01-01'),rpad(nvl(desc_baremo_local,' '),40,' '),nvl(fecha_modificacion,' '))) as longitud, CONCAT(lpad(nvl(cast(empresa as string), '0'),5,'0'),lpad(nvl(cod_negocio_local,'0'),5,'0'),lpad(nvl(cod_baremo_local,'0'),5,'0'),nvl(fecha_desde,'00001-01-01'),nvl(fecha_hasta,'00001-01-01'),rpad(nvl(desc_baremo_local,' '),40,' '),nvl(fecha_modificacion,' ')) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.map_baremos_global_local r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_BAREMOS_LOC' where and length(CONCAT(lpad(nvl(cast(empresa as string), '0'),5,'0'),lpad(nvl(cod_negocio_local,'0'),5,'0'),lpad(nvl(cod_baremo_local,'0'),5,'0'),nvl(fecha_desde,'00001-01-01'),nvl(fecha_hasta,'00001-01-01'),rpad(nvl(desc_baremo_local,' '),40,' '),nvl(fecha_modificacion,' '))) != cast(d.longitud as int)"
+    ]
+}

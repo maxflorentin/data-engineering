@@ -1,0 +1,33 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_resumen_crediticio",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": [
+        "cod_adm_numero_propuesta",
+        "cod_adm_numero_persona_sge",
+        "int_adm_anio_ganancias",
+        "int_adm_orden"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "cod_adm_numero_propuesta",
+        "cod_adm_numero_persona_sge",
+        "int_adm_anio_ganancias",
+        "dt_adm_pefecalt",
+        "int_adm_orden",
+        "ds_adm_periodo"
+      ],
+      "threshold": 0.00
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["dt_adm_pefecalt","dt_adm_pefecmod"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+  ]
+}
+

@@ -1,0 +1,119 @@
+{
+    "file": "tbl_calculador_promocion_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_calculador_promocion",
+    "location": "/santander/bi-corp/landing/rio151/fact/tbl_calculador_promocion/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/fact/tbl_calculador_promocion",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_promocion",
+            "type": "string"
+        },
+        {
+            "name": "cd_producto",
+            "type": "string"
+        },
+        {
+            "name": "cd_subproducto",
+            "type": "string"
+        },
+        {
+            "name": "cd_paquete",
+            "type": "string"
+        },
+        {
+            "name": "cd_programa_venta",
+            "type": "string"
+        },
+        {
+            "name": "vl_descubierto",
+            "type": "string"
+        },
+        {
+            "name": "vl_visa",
+            "type": "string"
+        },
+        {
+            "name": "vl_amex",
+            "type": "string"
+        },
+        {
+            "name": "vl_prestamo_personal",
+            "type": "string"
+        },
+        {
+            "name": "cd_tipo_monto_descubierto",
+            "type": "string"
+        },
+        {
+            "name": "cd_tipo_monto_visa",
+            "type": "string"
+        },
+        {
+            "name": "cd_tipo_monto_amex",
+            "type": "string"
+        },
+        {
+            "name": "cd_tipo_monto_prestamo_pers",
+            "type": "string"
+        },
+        {
+            "name": "vl_asistencia",
+            "type": "string"
+        },
+        {
+            "name": "vl_ingreso",
+            "type": "string"
+        },
+        {
+            "name": "cd_categoria",
+            "type": "string"
+        },
+        {
+            "name": "cd_producto_crm",
+            "type": "string"
+        },
+        {
+            "name": "cd_bonificacion",
+            "type": "string"
+        },
+        {
+            "name": "dt_vigencia_desde",
+            "type": "string"
+        },
+        {
+            "name": "dt_vigencia_hasta",
+            "type": "string"
+        },
+        {
+            "name": "mc_tipo_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "ds_promo_marketing",
+            "type": "string"
+        },
+        {
+            "name": "cd_detalle",
+            "type": "string"
+        },
+        {
+            "name": "expresion",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

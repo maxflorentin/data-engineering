@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_deudas_bancarias_cliente",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_fecha_deuda","cod_adm_banco"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_fecha_deuda","cod_adm_banco"],
+      "threshold": 0.0005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_pefecalt","ts_adm_pefecmod"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

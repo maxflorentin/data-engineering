@@ -1,0 +1,45 @@
+name: ARDA_Previous_Working_Day
+description: 'ARDA_Previous_Working_Day'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+schedule_interval: '0 7 * * 1-6'
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: tablon_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/DATE_PREVIOUS_WORKING_DAY_{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='ARDA_Previous_Working_Day') }}.TXT"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: True
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/arda/queries/interfaces/previous_working_day.hql'
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      command: "rm $ZONDA_DIR/outbound/DATE_PREVIOUS_WORKING_DAY_{{ ti.xcom_pull(task_ids='InputConfig', key='previous_partition_date_filter', dag_id='ARDA_Previous_Working_Day') }}.TXT"
+dependencies:
+  tablon_execution: EXECUTE_Remove_FILE
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [ffarinasgil@santandertecnologia.com.ar]

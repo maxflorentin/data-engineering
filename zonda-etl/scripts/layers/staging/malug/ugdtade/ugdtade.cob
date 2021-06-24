@@ -1,0 +1,90 @@
+           01 ADE.
+            10 CUENTA             PIC X(12).
+            10 OFICINA            PIC X(04).
+            10 ENTIDAD            PIC X(04).
+            10 FECOVALI           PIC X(10).
+            10 FEFIVALI           PIC X(10).
+            10 PERCAP             PIC X(04).
+            10 PERINT             PIC X(04).
+            10 CARECAP            PIC X(04).
+            10 CAREINT            PIC X(04).
+            10 TIPODIAS           PIC X(01).
+            10 DIA_PAGO           PIC S9(03)V COMP-3.
+            10 IND_AJUSINHA       PIC X(01).
+            10 COD_FECESPER       PIC X(01).
+            10 COD_INTCAREN       PIC X(01).
+            10 COD_SEGCAREN       PIC X(01).
+            10 PER_DIFERIDO       PIC X(04).
+            10 IND_NTRAT          PIC X(01).
+            10 MAX_CAREINT        PIC X(01).
+            10 IND_CUPONERA       PIC X(01).
+            10 NUM_CUOTAS         PIC S9(05)V COMP-3.
+            10 CODTIAMO           PIC X(01).
+            10 PROGGEOM           PIC S9(3)V9(6) COMP-3.
+            10 PROGARIT           PIC S9(07)V COMP-3.
+            10 LININCUO           PIC S9(03)V COMP-3.
+            10 TIP_REDONDEO       PIC X(01).
+            10 NUM_REDONDEO       PIC S9(13)V9(4) COMP-3.
+            10 IND_RECALCUO       PIC X(01).
+            10 PLZ_LIMITE         PIC X(04).
+            10 COD_REFRECUO       PIC X(04).
+            10 POR_REFINANC       PIC S9(3)V9(6) COMP-3.
+            10 IND_CUOEXTRA       PIC X(1).
+            10 NUM_CUOEXTRA       PIC S9(3)V COMP-3.
+            10 SWT_MESEXTRA       PIC X(12).
+            10 IND_AJUSCUOT       PIC X(01).
+            10 POR_CAPRESID       PIC S9(03)V9(6) COMP-3.
+            10 UGYFARET           PIC X(01).
+            10 DIA_COBRO          PIC X(02).
+            10 IND_CONCCOMP       PIC X(01).
+            10 IND_SOBREGIR       PIC X(01).
+            10 PERIGRA            PIC S9(03)V COMP-3.
+            10 INDLIQEN           PIC X(01).
+            10 TIP_REDUCCEN       PIC X(01).
+            10 TIP_LIQUCANC       PIC X(01).
+            10 IND_CTRENCAN       PIC X(01).
+            10 INDSUBVE           PIC X(01).
+            10 ENTSUB             PIC X(04).
+            10 CONSUB             PIC X(03).
+            10 COD_BALLOOM        PIC X(01).
+            10 NUM_CUOBALL        PIC S9(03)V COMP-3.
+            10 NUM_PROBALL        PIC S9(03)V COMP-3.
+            10 IND_TIPOTASA       PIC X(01).
+            10 DIASCAL            PIC X(01).
+            10 IND_DIASPERI       PIC X(01).
+            10 INDINANT           PIC X(01).
+            10 IND_NOM_RENOV      PIC X(01).
+            10 NUM_DIAMAXRE       PIC S9(03)V COMP-3.
+            10 NUM_MAXRENOV       PIC S9(03)V COMP-3.
+            10 PER_MAXRENOV       PIC X(04).
+            10 NUM_AUTRENOV       PIC S9(03)V COMP-3.
+            10 PER_CAIMPAVOL      PIC X(04).
+            10 PER_IMPAVOL        PIC X(04).
+            10 DIA_MINVTOCU       PIC S9(03)V COMP-3.
+            10 POR_OPCOMPRA       PIC S9(03)V9(6) COMP-3.
+            10 IMP_OPCOMPRA       PIC S9(13)V9(4) COMP-3.
+            10 NUM_DIAMAXGA       PIC S9(03)V COMP-3.
+            10 IND_FECDESMOR      PIC X(1).
+            10 TIPOREDU           PIC X(01).
+            10 PERIODICI          PIC X(04).
+            10 PER_REVCONTR       PIC X(04).
+            10 IND_LIQULPER       PIC X(01).
+            10 NUM_DIAMAXEJ       PIC S9(03)V COMP-3.
+            10 IND_LIQFLATPF        PIC X(01).
+            10 IND_CAPIT_PROG       PIC X(1).
+            10 POR_CAPIT_PROG       PIC S9(3)V9(6) COMP-3.
+            10 IND_REC_CUO_CAPIT    PIC X(1).
+            10 IND_TRAT_IMP_ARR     PIC X(1).
+            10 IND_TRAT_INT_DIF     PIC X(1).
+            10 PER_CONV_TASA        PIC S9(2) COMP-3.
+            10 DIA_FACTAUT_Q1       PIC S9(2) COMP-3.
+            10 DIA_FACTAUT_Q2       PIC S9(2) COMP-3.
+            10 DIA_PAGOAUT_Q1       PIC S9(2) COMP-3.
+            10 DIA_PAGOAUT_Q2       PIC S9(2) COMP-3.
+            10 TIPO_PREMIO       	PIC X(03).
+            10 FORMA_PAGO_PREMIO    PIC X(01).
+            10 ENTIDAD_UMO          PIC X(04).
+            10 CENTRO_UMO           PIC X(04).
+            10 USERID_UMO           PIC X(08).
+            10 NETNAME_UMO          PIC X(08).
+            10 TIMEST_UMO           PIC X(26).

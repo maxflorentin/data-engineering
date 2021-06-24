@@ -1,0 +1,17 @@
+{
+  "file": "contratos_adsf_cf_schema",
+  "location": "/santander/bi-corp/landing/adsf/fact/contratos_adsf_cf_odat/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/adsf/fact/contratos_adsf_cf_odat",
+  "createTable": "bi_corp_staging.contratos_adsf_cf",
+  "copybook": "contratos_adsf_cf.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

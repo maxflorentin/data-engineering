@@ -1,0 +1,46 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_common.bt_cla_clavedigital (
+cod_cla_entidad                 string,
+cod_per_nup                     bigint,
+cod_cla_sesion                  string,
+ds_cla_fase                     string,
+cod_cla_sysid                   string,
+cod_cla_tarea                   string,
+cod_cla_trmid                   string,
+cod_cla_userid                  string,
+cod_cla_trnid                   string,
+ds_cla_servicio                 string,
+cod_cla_canal                   string,
+cod_cla_subcanal                  string,
+cod_cla_retorno                  string,
+ds_cla_ret_texto                string,
+ts_cla_fecha                    string,
+cod_cla_sw_rc                   string,
+cod_cla_sw_ciclo                string,
+cod_cla_sw_sistema              string,
+cod_cla_sw_preguntas            string,
+cod_cla_sw_autenticacion        string,
+cod_cla_sw_pin                  string,
+cod_cla_sw_cvv2                 string,
+cod_cla_sw_otp                  string,
+cod_cla_sw_tipo                 string,
+cod_cla_sw_numero               string,
+ds_cla_nrodoc                   bigint,
+ds_cla_fecha_nac                string,
+cod_cla_pd_rc                   string,
+cod_cla_pd_ciclo                string,
+cod_cla_pd                      string,
+ts_cla_pd_fecha                 string,
+cod_cla_au_rc                   string,
+cod_cla_au_ciclo 	            string,
+cod_cla_au_tipo                 string,
+cod_cla_au_numero               string,
+cod_cla_au_offset               string,
+cod_cla_ck_rc                   string,
+cod_cla_ck_ciclo                string,
+ds_cla_detalle					string
+)
+PARTITIONED BY (PARTITION_DATE STRING)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '${DATA_LAKE_SERVER}/santander/bi-corp/common/interacciones_canales/cla/fact/bt_cla_clavedigital'

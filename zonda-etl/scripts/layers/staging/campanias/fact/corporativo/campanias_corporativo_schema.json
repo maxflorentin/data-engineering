@@ -1,0 +1,36 @@
+{
+  "file": "campanias_corporativo_schema",
+  "location": "/santander/bi-corp/landing/campanias/fact/corporativo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/campanias/fact/corporativo",
+  "createTable": "bi_corp_staging.campanias_corporativo_score",
+  "extension": "csv",
+  "delimiter": ",",
+  "header": true,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "penumper",
+    "type": "string"
+  },
+    {
+      "name": "score",
+      "type": "string"
+    },
+
+    {
+      "name": "contactar",
+      "type": "string"
+    },
+    {
+      "name": "archivo",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

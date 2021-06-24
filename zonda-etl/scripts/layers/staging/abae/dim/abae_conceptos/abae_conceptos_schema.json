@@ -1,0 +1,33 @@
+{
+	"file": "abae_conceptos_schema",
+	"location": "/santander/bi-corp/landing/abae/dim/abae_conceptos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/abae/dim/abae_conceptos",
+	"createTable": "bi_corp_staging.abae_conceptos",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "concepto",
+			"type": "string"
+		},
+		{
+			"name": "abreviacion",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

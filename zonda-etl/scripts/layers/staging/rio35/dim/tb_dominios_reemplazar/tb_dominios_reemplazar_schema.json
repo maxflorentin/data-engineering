@@ -1,0 +1,30 @@
+{
+  "file": "tb_dominios_reemplazar_schema",
+  "location": "/santander/bi-corp/landing/rio35/dim/tb_dominios_reemplazar/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/dim/tb_dominios_reemplazar",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "dominio_error",
+    "type": "string"
+  },
+    {
+    "name": "dominio_ok",
+    "type": "string"
+   }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

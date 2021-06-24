@@ -1,0 +1,33 @@
+{
+  "file": "mdr_clientes_topn",
+  "location": "/santander/bi-corp/landing/mdr/clientes_topn/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/mdr/clientes_topn",
+  "header": false ,
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "ctaxid",
+					    "type": "string",
+                        "width": 20
+					  },
+					  {
+					    "name": "shortname",
+					    "type": "string",
+                        "width": 6
+					  },
+					  {
+					    "name": "nup",
+					    "type": "string",
+                        "width": 8
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,17 @@
+{
+  "file": "bgtcipf_schema",
+  "location": "/santander/bi-corp/landing/malbgp/fact/bgtcipf/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgp/fact/bgtcipf",
+  "createTable": "bi_corp_staging.malbgp_bgtcipf",
+  "copybook": "bgtcipf.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

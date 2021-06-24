@@ -1,0 +1,20 @@
+{
+  "file": "bgdtmpa_updates",
+  "createTable": "bi_corp_staging.malbgc_bgdtmpa_updates",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtmpa/updates/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtmpa/updates",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "bgdtmpa.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

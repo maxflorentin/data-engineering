@@ -1,0 +1,35 @@
+{
+    "table": "bi_corp_common.dim_rec_casuistica",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_casuistica",
+                "ds_rec_casuistica",
+                "cod_rec_tipo_gestion",
+                "cod_rec_tipologia",
+                "fc_rec_cant_meses_primer_reclamo",
+                "fc_rec_cant_dias_resolucion",
+                "cod_rec_tipo_producto",
+                "cod_rec_sector_soporte",
+                "fc_rec_dias_warning_bcra"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_casuistica_alta",
+                "dt_rec_casuistica_modif",
+                "dt_rec_casuistica_baja"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+name: BDR_LOAD_IFRS9_Tablon
+description: 'Eventual de carga de Tablon de IFRS9 en JM_PROV_ESOTR'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: tables
+    description: 'Tables separated with comma'
+    default: santander_business_risk_ifrs9.ifrs9_tablon, bi_corp_staging.mmff_tactico_especie
+tasks:
+  - name: Load_Eventual_JM_PROV_ESOTR
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_PROV_ESOTR/Eventual IFRS9/ETLV-Load_Table-IFRS9.hql'
+  - name: Load_Perim_ifrs_tablon_prov
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_PROV_ESOTR/Eventual IFRS9/ETLV-Load_Perim_ifrs_tablon_prov-eventual.hql'
+dependencies:
+  Load_Perim_ifrs_tablon_prov: Load_Eventual_JM_PROV_ESOTR
+notifications:
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar, jhungramos@santandertecnologia.com.ar, pcurto@santandertecnologia.com.ar]

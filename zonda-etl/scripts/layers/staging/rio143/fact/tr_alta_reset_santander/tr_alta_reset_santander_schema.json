@@ -1,0 +1,53 @@
+{
+  "file": "alta_reset_schema",
+  "location": "/santander/bi-corp/landing/rio143/fact/alta_reset/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio143/fact/alta_reset",
+  "extension": "csv",
+  "header":true,
+  "parquetFiles":1,
+  "delimiter":"^",
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "tipo_operacion",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "usuario1",
+      "type": "string",
+      "width": 5
+    },
+    {
+      "name": "usuario2",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "nup",
+      "type": "string",
+      "width": 7
+
+    },
+    {
+      "name": "fecha_modificacion",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "fecha_hora_modificacion",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "cod_retorno",
+      "type": "string",
+      "width": 3
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

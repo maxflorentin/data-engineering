@@ -1,0 +1,74 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A248110"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "comex_rio39_info_tabla_codigos",
+      "title": "tabla de códigos de productos",
+      "schema": "bi_corp_staging",
+      "source": "rio39 - COMEXNET",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio39/fact/info_tabla_codigos/",
+      "type": "dim",
+      "description": "Información de código de productos",
+      "columns":
+               [
+                {
+                  "name": "codigo",
+                  "title": "codigo",
+                  "description": "codigo",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": false,
+                  "length": 10,
+                  "security": "Público"
+                },
+                {
+                  "name": "descripcion",
+                  "title": "descripcion",
+                  "description": "descripcion",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 100,
+                  "security": "Público"
+                },
+                {
+                  "name": "sector",
+                  "title": "sector",
+                  "description": "sector",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 20,
+                  "security": "Público"
+                },
+                {
+                  "name": "subproducto",
+                  "title": "subproducto",
+                  "description": "subproducto",
+                  "type": "varchar2",
+                  "personidentifier": false,
+                  "decimalseparator": "NA",
+                  "nullable": true,
+                  "length": 50,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+    "file": "centro_costos",
+    "location": "/santander/bi-corp/landing/csm/fact/centro_costos/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/cosmos/fact/centro_costos",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "createTable": "bi_corp_staging.cosmos_centro_costos",
+    "skipNotify": true,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_sucursal",
+            "type": "string"
+        },
+        {
+            "name": "cod_oficina",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "id_actor",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "id_zona",
+            "type": "string"
+        },
+        {
+            "name": "estado",
+            "type": "string"
+        },
+        {
+            "name": "red",
+            "type": "string"
+        },
+        {
+            "name": "domicilio",
+            "type": "string"
+        },
+        {
+            "name": "localidad",
+            "type": "string"
+        },
+        {
+            "name": "provincia",
+            "type": "string"
+        },
+        {
+            "name": "cod_postal",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta_interna",
+            "type": "string"
+        },
+        {
+            "name": "nup",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

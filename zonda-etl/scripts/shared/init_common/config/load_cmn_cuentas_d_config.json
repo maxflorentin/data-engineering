@@ -1,0 +1,19 @@
+{
+  "name": "Cuentas-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_MALBGC_Trx-Daily",
+      "tasks": ["STAGING_BGDTMOB_AddPartition","STAGING_BGDTMO1_AddPartition","STAGING_BGDTMO2_AddPartition"]
+    },
+    {
+      "dag_id":"LOAD_STG_Malbgc_Updates",
+      "tasks": "all"
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Cuentas"
+    }
+  ]
+}

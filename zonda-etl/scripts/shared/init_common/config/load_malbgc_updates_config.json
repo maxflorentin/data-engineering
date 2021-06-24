@@ -1,0 +1,16 @@
+{
+    "name": "MALBGC_Load_Updates_Daily",
+    "shift": -2,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_MALBGC_Updates-Daily",
+            "tasks": "STAGING_BGDTACU_UPDATES_Parquetize"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_STG_Malbgc_Updates",
+            "tasks": "all"
+        }
+    ]
+}

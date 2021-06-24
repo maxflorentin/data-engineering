@@ -1,0 +1,1137 @@
+name: LOAD_CMN_Admision_Empresas-Daily
+description: 'Load Admision Empresas data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+# schedule_interval: '00 13 * * *'
+start_date: '2020-06-10'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: COMMON_CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores/DDLT-stk_adm_empresas_proveedores.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores_prop/DDLT-stk_adm_empresas_proveedores_prop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes/DDLT-stk_adm_empresas_clientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes_prop/DDLT-stk_adm_empresas_clientes_prop.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_clientes/DDLT-stk_adm_empresas_ddjj_clientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_propuestas/DDLT-stk_adm_empresas_ddjj_propuestas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta/DDLT-stk_adm_empresas_rating_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_cliente/DDLT-stk_adm_empresas_rating_cliente.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estadosoperacion/DDLT-stk_adm_empresas_estadosoperacion.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_resumen_crediticio/DDLT-stk_adm_empresas_resumen_crediticio.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_propuestas/DDLT-stk_adm_empresas_balances_propuestas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_clientes/DDLT-stk_adm_empresas_balances_clientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ficha_feve/DDLT-stk_adm_empresas_ficha_feve.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_propue/DDLT-stk_adm_empresas_ventas_post_balance_propue.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_cliente/DDLT-stk_adm_empresas_ventas_balance_cliente.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_propuesta/DDLT-stk_adm_empresas_ventas_balance_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_client/DDLT-stk_adm_empresas_ventas_post_balance_client.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_propuesta/DDLT-stk_adm_empresas_ventas_ddjj_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_clientes/DDLT-stk_adm_empresas_ventas_ddjj_clientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_propuesta/DDLT-stk_adm_empresas_clasificacion_deudores_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_cliente/DDLT-stk_adm_empresas_clasificacion_deudores_cliente.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_lineas/DDLT-stk_adm_empresas_garantias_lineas.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_operacion/DDLT-stk_adm_empresas_garantias_operacion.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rpc/DDLT-stk_adm_empresas_rpc.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_garantias/DDLT-dim_adm_empresas_garantias.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_propuestas_grupo/DDLT-stk_adm_empresas_propuestas_grupo.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_operaciones/DDLT-stk_adm_empresas_rating_operaciones.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_plus/DDLT-stk_adm_empresas_rating_plus.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_revision_rating_ficha/DDLT-stk_adm_empresas_revision_rating_ficha.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_gnl_control_libradores/DDLT-stk_adm_empresas_gnl_control_libradores.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta_plus/DDLT-stk_adm_empresas_rating_propuesta_plus.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_propuesta/DDLT-stk_adm_empresas_equipo_directivo_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_cliente/DDLT-stk_adm_empresas_equipo_directivo_cliente.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_propuesta/DDLT-stk_adm_empresas_deudas_bancarias_propuesta.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_cliente/DDLT-stk_adm_empresas_deudas_bancarias_cliente.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_gnl_datos_complem/DDLT-stk_adm_empresas_gnl_datos_complem.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estado_origen_aplicacion_fondos/DDLT-stk_adm_empresas_estado_origen_aplicacion_fondos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_producto_demanda_mercado/DDLT-stk_adm_empresas_producto_demanda_mercado.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision/DDLT-stk_adm_empresas_feve_acta_revision.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_asistentes/DDLT-stk_adm_empresas_feve_acta_revision_asistentes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_clientes/DDLT-stk_adm_empresas_feve_acta_revision_clientes.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_garantias/DDLT-stk_adm_empresas_rating_garantias.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_relacion_lineas_productos/DDLT-dim_adm_empresas_relacion_lineas_productos.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_actividades_santander_nace/DDLT-dim_adm_empresas_actividades_santander_nace.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_promontorio_ficha/DDLT-stk_adm_empresas_promontorio_ficha.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_proveedores
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores/ETL-LOAD-stk_adm_empresas_proveedores.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_proveedores_prop
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores_prop/ETL-LOAD-stk_adm_empresas_proveedores_prop.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes/ETL-LOAD-stk_adm_empresas_clientes.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_clientes_prop
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes_prop/ETL-LOAD-stk_adm_empresas_clientes_prop.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ddjj_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_clientes/ETL-LOAD-stk_adm_empresas_ddjj_clientes.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ddjj_propuestas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_propuestas/ETL-LOAD-stk_adm_empresas_ddjj_propuestas.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta/ETL-LOAD-stk_adm_empresas_rating_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_cliente/ETL-LOAD-stk_adm_empresas_rating_cliente.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_estadosoperacion
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estadosoperacion/ETL-LOAD-stk_adm_empresas_estadosoperacion.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_resumen_crediticio
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_resumen_crediticio/ETL-LOAD-stk_adm_empresas_resumen_crediticio.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_balances_propuestas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_propuestas/ETL-LOAD-stk_adm_empresas_balances_propuestas.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_balances_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_clientes/ETL-LOAD-stk_adm_empresas_balances_clientes.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ficha_feve
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ficha_feve/ETL-LOAD-stk_adm_empresas_ficha_feve.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_propue
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_propue/ETL-LOAD-stk_adm_empresas_ventas_post_balance_propue.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_balance_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_cliente/ETL-LOAD-stk_adm_empresas_ventas_balance_cliente.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_balance_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_propuesta/ETL-LOAD-stk_adm_empresas_ventas_balance_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_client
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_client/ETL-LOAD-stk_adm_empresas_ventas_post_balance_client.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_propuesta/ETL-LOAD-stk_adm_empresas_ventas_ddjj_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_clientes/ETL-LOAD-stk_adm_empresas_ventas_ddjj_clientes.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_propuesta/ETL-LOAD-stk_adm_empresas_clasificacion_deudores_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_cliente/ETL-LOAD-stk_adm_empresas_clasificacion_deudores_cliente.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_garantias_lineas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_lineas/ETL-LOAD-stk_adm_empresas_garantias_lineas.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_garantias_operacion
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_operacion/ETL-LOAD-stk_adm_empresas_garantias_operacion.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rpc
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rpc/ETL-LOAD-stk_adm_empresas_rpc.hql'
+  - name: COMMON_LoadTable_dim_adm_empresas_garantias
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_garantias/ETL-LOAD-dim_adm_empresas_garantias.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_propuestas_grupo
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_propuestas_grupo/ETL-LOAD-stk_adm_empresas_propuestas_grupo.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_operaciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_operaciones/ETL-LOAD-stk_adm_empresas_rating_operaciones.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_plus
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_plus/ETL-LOAD-stk_adm_empresas_rating_plus.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_revision_rating_ficha
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_revision_rating_ficha/ETL-LOAD-stk_adm_empresas_revision_rating_ficha.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_gnl_control_libradores
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_gnl_control_libradores/ETL-LOAD-stk_adm_empresas_gnl_control_libradores.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_propuesta_plus
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta_plus/ETL-LOAD-stk_adm_empresas_rating_propuesta_plus.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_equipo_directivo_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_propuesta/ETL-LOAD-stk_adm_empresas_equipo_directivo_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_equipo_directivo_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_cliente/ETL-LOAD-stk_adm_empresas_equipo_directivo_cliente.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_cliente/ETL-LOAD-stk_adm_empresas_deudas_bancarias_cliente.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_propuesta
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_propuesta/ETL-LOAD-stk_adm_empresas_deudas_bancarias_propuesta.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_gnl_datos_complem
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_gnl_datos_complem/ETL-LOAD-stk_adm_empresas_gnl_datos_complem.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_estado_origen_aplicacion_fondos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estado_origen_aplicacion_fondos/ETL-LOAD-stk_adm_empresas_estado_origen_aplicacion_fondos.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_producto_demanda_mercado
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_producto_demanda_mercado/ETL-LOAD-stk_adm_empresas_producto_demanda_mercado.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_feve_acta_revision
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision/ETL-LOAD-stk_adm_empresas_feve_acta_revision.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_asistentes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_asistentes/ETL-LOAD-stk_adm_empresas_feve_acta_revision_asistentes.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_rating_garantias
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_garantias/ETL-LOAD-stk_adm_empresas_rating_garantias.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_clientes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_clientes/ETL-LOAD-stk_adm_empresas_feve_acta_revision_clientes.hql'
+  - name: COMMON_LoadTable_dim_adm_empresas_relacion_lineas_productos
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_relacion_lineas_productos/ETL-LOAD-dim_adm_empresas_relacion_lineas_productos.hql'
+  - name: COMMON_LoadTable_dim_adm_empresas_actividades_santander_nace
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/dim_adm_empresas_actividades_santander_nace/ETL-LOAD-dim_adm_empresas_actividades_santander_nace.hql'
+  - name: COMMON_LoadTable_stk_adm_empresas_promontorio_ficha
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_promontorio_ficha/ETL-LOAD-stk_adm_empresas_promontorio_ficha.hql'
+  - name: SHERIFF_Control_stk_adm_empresas_clientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes/stk_adm_empresas_clientes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_clientes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_clientes_prop
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clientes_prop/stk_adm_empresas_clientes_prop_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_clientes_prop_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta/stk_adm_empresas_rating_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_cliente/stk_adm_empresas_rating_cliente_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_cliente_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_proveedores
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores/stk_adm_empresas_proveedores_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_proveedores_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_proveedores_prop
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_proveedores_prop/stk_adm_empresas_proveedores_prop_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_proveedores_prop_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ddjj_clientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_clientes/stk_adm_empresas_ddjj_clientes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ddjj_clientes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ddjj_propuestas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ddjj_propuestas/stk_adm_empresas_ddjj_propuestas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ddjj_propuestas_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_estadosoperacion
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estadosoperacion/stk_adm_empresas_estadosoperacion_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_estadosoperacion_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_resumen_crediticio
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_resumen_crediticio/stk_adm_empresas_resumen_crediticio_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_resumen_crediticio_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_balance_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_cliente/stk_adm_empresas_ventas_balance_cliente_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_balance_cliente_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_balance_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_balance_propuesta/stk_adm_empresas_ventas_balance_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_balance_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_post_balance_propue
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_propue/stk_adm_empresas_ventas_post_balance_propue_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_post_balance_propue_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_post_balance_client
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_post_balance_client/stk_adm_empresas_ventas_post_balance_client_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_post_balance_client_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_balances_clientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_clientes/stk_adm_empresas_balances_clientes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_balances_clientes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_ddjj_clientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_clientes/stk_adm_empresas_ventas_ddjj_clientes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_ddjj_clientes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ventas_ddjj_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ventas_ddjj_propuesta/stk_adm_empresas_ventas_ddjj_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ventas_ddjj_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_ficha_feve
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_ficha_feve/stk_adm_empresas_ficha_feve_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_ficha_feve_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_clasificacion_deudores_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_cliente/stk_adm_empresas_clasificacion_deudores_cliente_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_clasificacion_deudores_cliente_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_clasificacion_deudores_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_clasificacion_deudores_propuesta/stk_adm_empresas_clasificacion_deudores_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_clasificacion_deudores_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rpc
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rpc/stk_adm_empresas_rpc_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rpc_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_garantias_lineas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_lineas/stk_adm_empresas_garantias_lineas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_garantias_lineas_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_operaciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_operaciones/stk_adm_empresas_rating_operaciones_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_operaciones_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_propuestas_grupo
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_propuestas_grupo/stk_adm_empresas_propuestas_grupo_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_propuestas_grupo_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_equipo_directivo_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_propuesta/stk_adm_empresas_equipo_directivo_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_equipo_directivo_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_equipo_directivo_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_equipo_directivo_cliente/stk_adm_empresas_equipo_directivo_cliente_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_equipo_directivo_cliente_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_deudas_bancarias_propuesta
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_propuesta/stk_adm_empresas_deudas_bancarias_propuesta_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_deudas_bancarias_propuesta_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_deudas_bancarias_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_deudas_bancarias_cliente/stk_adm_empresas_deudas_bancarias_cliente_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_deudas_bancarias_cliente_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_feve_acta_revision
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision/stk_adm_empresas_feve_acta_revision_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_feve_acta_revision_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_feve_acta_revision_asistentes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_asistentes/stk_adm_empresas_feve_acta_revision_asistentes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_feve_acta_revision_asistentes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_feve_acta_revision_clientes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_feve_acta_revision_clientes/stk_adm_empresas_feve_acta_revision_clientes_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_feve_acta_revision_clientes_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_garantias_operacion
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_garantias_operacion/stk_adm_empresas_garantias_operacion_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_garantias_operacion_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_garantias
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_garantias/stk_adm_empresas_rating_garantias_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_garantias_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_gnl_control_libradores
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_gnl_control_libradores/stk_adm_empresas_gnl_control_libradores_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_gnl_control_libradores_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_producto_demanda_mercado
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_producto_demanda_mercado/stk_adm_empresas_producto_demanda_mercado_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_producto_demanda_mercado_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_promontorio_ficha
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_promontorio_ficha/stk_adm_empresas_promontorio_ficha_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_promontorio_ficha_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_estado_origen_aplicacion_fondos
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_estado_origen_aplicacion_fondos/stk_adm_empresas_estado_origen_aplicacion_fondos_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_estado_origen_aplicacion_fondos_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_plus
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_plus/stk_adm_empresas_rating_plus_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_plus_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_rating_propuesta_plus
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_rating_propuesta_plus/stk_adm_empresas_rating_propuesta_plus_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_rating_propuesta_plus_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_revision_rating_ficha
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_revision_rating_ficha/stk_adm_empresas_revision_rating_ficha_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_revision_rating_ficha_sheriff.json' ]
+  - name: SHERIFF_Control_stk_adm_empresas_balances_propuestas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: [ '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/admision/stk_adm_empresas_balances_propuestas/stk_adm_empresas_balances_propuestas_sheriff.json' ]
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Admision_Empresas-Daily') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: [ 'stk_adm_empresas_balances_propuestas_sheriff.json' ]
+dependencies:
+  COMMON_CreateTables: [COMMON_LoadTable_stk_adm_empresas_proveedores, COMMON_LoadTable_stk_adm_empresas_proveedores_prop, COMMON_LoadTable_stk_adm_empresas_clientes, COMMON_LoadTable_stk_adm_empresas_clientes_prop, COMMON_LoadTable_stk_adm_empresas_ddjj_clientes, COMMON_LoadTable_stk_adm_empresas_ddjj_propuestas, COMMON_LoadTable_stk_adm_empresas_rating_propuesta, COMMON_LoadTable_stk_adm_empresas_rating_cliente, COMMON_LoadTable_stk_adm_empresas_estadosoperacion, COMMON_LoadTable_stk_adm_empresas_resumen_crediticio, COMMON_LoadTable_stk_adm_empresas_balances_propuestas, COMMON_LoadTable_stk_adm_empresas_balances_clientes, COMMON_LoadTable_stk_adm_empresas_ficha_feve, COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_propue, COMMON_LoadTable_stk_adm_empresas_ventas_balance_cliente, COMMON_LoadTable_stk_adm_empresas_ventas_balance_propuesta, COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_client, COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_propuesta, COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_clientes, COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_propuesta, COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_cliente, COMMON_LoadTable_stk_adm_empresas_garantias_lineas,COMMON_LoadTable_stk_adm_empresas_garantias_operacion, COMMON_LoadTable_stk_adm_empresas_rpc, COMMON_LoadTable_dim_adm_empresas_garantias, COMMON_LoadTable_stk_adm_empresas_propuestas_grupo, COMMON_LoadTable_stk_adm_empresas_rating_operaciones, COMMON_LoadTable_stk_adm_empresas_rating_plus, COMMON_LoadTable_stk_adm_empresas_rating_propuesta_plus, COMMON_LoadTable_stk_adm_empresas_equipo_directivo_propuesta, COMMON_LoadTable_stk_adm_empresas_equipo_directivo_cliente, COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_cliente, COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_propuesta, COMMON_LoadTable_stk_adm_empresas_estado_origen_aplicacion_fondos, COMMON_LoadTable_stk_adm_empresas_producto_demanda_mercado, COMMON_LoadTable_stk_adm_empresas_feve_acta_revision, COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_asistentes, COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_clientes, COMMON_LoadTable_stk_adm_empresas_rating_garantias, COMMON_LoadTable_stk_adm_empresas_revision_rating_ficha, COMMON_LoadTable_stk_adm_empresas_gnl_control_libradores, COMMON_LoadTable_dim_adm_empresas_actividades_santander_nace, COMMON_LoadTable_stk_adm_empresas_gnl_datos_complem, COMMON_LoadTable_dim_adm_empresas_relacion_lineas_productos, COMMON_LoadTable_stk_adm_empresas_promontorio_ficha]
+  COMMON_LoadTable_stk_adm_empresas_clientes: SHERIFF_Control_stk_adm_empresas_clientes
+  COMMON_LoadTable_stk_adm_empresas_clientes_prop: SHERIFF_Control_stk_adm_empresas_clientes_prop
+  COMMON_LoadTable_stk_adm_empresas_rating_propuesta: SHERIFF_Control_stk_adm_empresas_rating_propuesta
+  COMMON_LoadTable_stk_adm_empresas_rating_cliente: SHERIFF_Control_stk_adm_empresas_rating_cliente
+  COMMON_LoadTable_stk_adm_empresas_proveedores: SHERIFF_Control_stk_adm_empresas_proveedores
+  COMMON_LoadTable_stk_adm_empresas_proveedores_prop: SHERIFF_Control_stk_adm_empresas_proveedores_prop
+  COMMON_LoadTable_stk_adm_empresas_ddjj_clientes: SHERIFF_Control_stk_adm_empresas_ddjj_clientes
+  COMMON_LoadTable_stk_adm_empresas_ddjj_propuestas: SHERIFF_Control_stk_adm_empresas_ddjj_propuestas
+  COMMON_LoadTable_stk_adm_empresas_estadosoperacion: SHERIFF_Control_stk_adm_empresas_estadosoperacion
+  COMMON_LoadTable_stk_adm_empresas_resumen_crediticio: SHERIFF_Control_stk_adm_empresas_resumen_crediticio
+  COMMON_LoadTable_stk_adm_empresas_ventas_balance_cliente: SHERIFF_Control_stk_adm_empresas_ventas_balance_cliente
+  COMMON_LoadTable_stk_adm_empresas_ventas_balance_propuesta: SHERIFF_Control_stk_adm_empresas_ventas_balance_propuesta
+  COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_propue: SHERIFF_Control_stk_adm_empresas_ventas_post_balance_propue
+  COMMON_LoadTable_stk_adm_empresas_ventas_post_balance_client: SHERIFF_Control_stk_adm_empresas_ventas_post_balance_client
+  COMMON_LoadTable_stk_adm_empresas_balances_clientes: SHERIFF_Control_stk_adm_empresas_balances_clientes
+  COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_propuesta: SHERIFF_Control_stk_adm_empresas_ventas_ddjj_propuesta
+  COMMON_LoadTable_stk_adm_empresas_ventas_ddjj_clientes: SHERIFF_Control_stk_adm_empresas_ventas_ddjj_clientes
+  COMMON_LoadTable_stk_adm_empresas_ficha_feve: SHERIFF_Control_stk_adm_empresas_ficha_feve
+  COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_cliente: SHERIFF_Control_stk_adm_empresas_clasificacion_deudores_cliente
+  COMMON_LoadTable_stk_adm_empresas_clasificacion_deudores_propuesta: SHERIFF_Control_stk_adm_empresas_clasificacion_deudores_propuesta
+  COMMON_LoadTable_stk_adm_empresas_rpc: SHERIFF_Control_stk_adm_empresas_rpc
+  COMMON_LoadTable_stk_adm_empresas_garantias_lineas: SHERIFF_Control_stk_adm_empresas_garantias_lineas
+  COMMON_LoadTable_stk_adm_empresas_rating_operaciones: SHERIFF_Control_stk_adm_empresas_rating_operaciones
+  COMMON_LoadTable_stk_adm_empresas_propuestas_grupo: SHERIFF_Control_stk_adm_empresas_propuestas_grupo
+  COMMON_LoadTable_stk_adm_empresas_equipo_directivo_propuesta: SHERIFF_Control_stk_adm_empresas_equipo_directivo_propuesta
+  COMMON_LoadTable_stk_adm_empresas_equipo_directivo_cliente: SHERIFF_Control_stk_adm_empresas_equipo_directivo_cliente
+  COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_propuesta: SHERIFF_Control_stk_adm_empresas_deudas_bancarias_propuesta
+  COMMON_LoadTable_stk_adm_empresas_deudas_bancarias_cliente: SHERIFF_Control_stk_adm_empresas_deudas_bancarias_cliente
+  COMMON_LoadTable_stk_adm_empresas_feve_acta_revision: SHERIFF_Control_stk_adm_empresas_feve_acta_revision
+  COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_asistentes: SHERIFF_Control_stk_adm_empresas_feve_acta_revision_asistentes
+  COMMON_LoadTable_stk_adm_empresas_feve_acta_revision_clientes: SHERIFF_Control_stk_adm_empresas_feve_acta_revision_clientes
+  COMMON_LoadTable_stk_adm_empresas_garantias_operacion: SHERIFF_Control_stk_adm_empresas_garantias_operacion
+  COMMON_LoadTable_stk_adm_empresas_rating_garantias: SHERIFF_Control_stk_adm_empresas_rating_garantias
+  COMMON_LoadTable_stk_adm_empresas_gnl_control_libradores: SHERIFF_Control_stk_adm_empresas_gnl_control_libradores
+  COMMON_LoadTable_stk_adm_empresas_producto_demanda_mercado: SHERIFF_Control_stk_adm_empresas_producto_demanda_mercado
+  COMMON_LoadTable_stk_adm_empresas_promontorio_ficha: SHERIFF_Control_stk_adm_empresas_promontorio_ficha
+  COMMON_LoadTable_stk_adm_empresas_estado_origen_aplicacion_fondos: SHERIFF_Control_stk_adm_empresas_estado_origen_aplicacion_fondos
+  COMMON_LoadTable_stk_adm_empresas_rating_plus: SHERIFF_Control_stk_adm_empresas_rating_plus
+  COMMON_LoadTable_stk_adm_empresas_rating_propuesta_plus: SHERIFF_Control_stk_adm_empresas_rating_propuesta_plus
+  COMMON_LoadTable_stk_adm_empresas_revision_rating_ficha: SHERIFF_Control_stk_adm_empresas_revision_rating_ficha
+  COMMON_LoadTable_stk_adm_empresas_balances_propuestas: SHERIFF_Control_stk_adm_empresas_balances_propuestas
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mlevisrossi@santandertecnologia.com.ar, Mmarrocchi@santandertecnologia.com.ar]

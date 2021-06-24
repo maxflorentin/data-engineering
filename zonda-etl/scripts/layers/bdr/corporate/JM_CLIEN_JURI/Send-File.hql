@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(g5508_feoperac,g5508_s1emp,g5508_idnumcli,g5508_inffecha,g5508_impfactm,g5508_tot_acti,g5508_num_empl,g5508_orig_fac,g5508_orig_act,g5508_orig_emp,g5508_fecultmo,g5508_tdeudacl,g5508_rat_cet1,g5508_tasamora,g5508_tot_eqty,g5508_orgdepen,g5508_flgempno) AS line FROM bi_corp_bdr.jm_clien_juri WHERE partition_date = '$month_partition_bdr';

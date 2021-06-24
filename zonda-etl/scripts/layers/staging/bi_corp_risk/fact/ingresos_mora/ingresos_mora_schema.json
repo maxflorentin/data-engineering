@@ -1,0 +1,106 @@
+{
+    "file": "ingresos_mora",
+    "location": "/santander/bi-corp/landing/sql5/fact/ingresos_mora/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/sql5/fact/ingresos_mora",
+    "createTable": "bi_corp_staging.risksql5_ingresos_mora",
+    "extension": "csv",
+    "delimiter": ";",
+    "header": true,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+        {
+          "name": "periodo",
+          "type": "string"
+        },
+        {
+          "name": "clave",
+          "type": "string"
+        },
+        {
+          "name": "nup",
+          "type": "string"
+        },
+        {
+          "name": "centro",
+          "type": "string"
+        },
+        {
+          "name": "contrato",
+          "type": "string"
+        },
+        {
+          "name": "nro_ingreso",
+          "type": "string"
+        },
+        {
+          "name": "salida_mora_anterior",
+          "type": "string"
+        },
+        {
+          "name": "ingreso_mora",
+          "type": "string"
+        },
+        {
+          "name": "salida_mora",
+          "type": "string"
+        },
+        {
+          "name": "meses_fuera_de_mora_hasta_ingresar",
+          "type": "string"
+        },
+        {
+          "name": "meses_en_mora_hasta_salir",
+          "type": "string"
+        },
+        {
+          "name": "ingreso_despues_de_12_meses_fuera_de_mora",
+          "type": "string"
+        },
+        {
+          "name": "inexistente_periodo_actual",
+          "type": "string"
+        },
+        {
+          "name": "ingreso_mora_lgd",
+          "type": "string"
+        },
+        {
+          "name": "meses_en_mora_lgd",
+          "type": "string"
+        },
+        {
+          "name": "ultimo_dia_del_periodo",
+          "type": "string"
+        },
+        {
+          "name": "pagos_consecutivos",
+          "type": "string"
+        },
+        {
+          "name": "marca_reingreso",
+          "type": "string"
+        },
+        {
+          "name": "actualizado",
+          "type": "string"
+        },
+        {
+          "name": "contrato_migrado",
+          "type": "string"
+        },
+        {
+          "name": "contrato_covid",
+          "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

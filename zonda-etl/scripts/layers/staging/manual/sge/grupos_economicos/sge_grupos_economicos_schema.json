@@ -1,0 +1,44 @@
+{
+  "file": "sge_grupos_economicos",
+  "location": "/santander/bi-corp/landing/sge/dim/grupos_economicos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/sge/grupos_economicos",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true ,
+  "parquetFiles": 1 ,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "nro_grupo",
+					    "type": "string"
+					  },
+					  {
+					    "name": "nup",
+					    "type": "string"
+					  },
+					  {
+					    "name": "facturacion",
+					    "type": "string"
+					  },
+					  {
+					    "name": "total_activo",
+					    "type": "string"
+					  },
+					  {
+					    "name": "fecha_ejercicio",
+					    "type": "string"
+					  },
+					  {
+					    "name": "actividad_bcra",
+					    "type": "string"
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

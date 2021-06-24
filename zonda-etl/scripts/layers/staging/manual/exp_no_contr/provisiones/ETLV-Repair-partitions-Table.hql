@@ -1,0 +1,1 @@
+msck repair table bi_corp_staging.rubros_cargabal_provisiones;

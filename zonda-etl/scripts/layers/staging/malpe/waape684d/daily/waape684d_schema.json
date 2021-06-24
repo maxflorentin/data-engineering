@@ -1,0 +1,84 @@
+{
+  "file": "waape684d_daily_schema",
+  "location": "/santander/bi-corp/landing/malpe/fact/waape684d/daily/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malpe/fact/waape684d/daily",
+  "createTable": "bi_corp_staging.malpe_daily_waape684d",
+  "cobolTypes": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "peconper",
+      "type": "X(03)"
+    },
+{
+      "name": "o-letra",
+      "type": "X(01)"
+    },
+{
+      "name": "pecodact",
+      "type": "X(08)"
+    },
+{
+      "name": "cantidad-bal",
+      "type": "9"
+    },
+{
+      "name": "vta-tot-anual",
+      "type": "S9(13)"
+    },
+{
+      "name": "obs-repetido",
+      "type": "X(08)"
+    },
+{
+      "name": "obs-clanae",
+      "type": "X(30)"
+    },
+{
+      "name": "obs-destino",
+      "type": "X(24)"
+    },
+{
+      "name": "tipo-error",
+      "type": "X(01)"
+    },
+{
+      "name": "tipo-accion",
+      "type": "X(01)"
+    },
+{
+      "name": "filler",
+      "type": "X(03)"
+    },
+{
+      "name": "err-bal1",
+      "type": "X(01)"
+    },
+{
+      "name": "err-bal2",
+      "type": "X(01)"
+    },
+{
+      "name": "err-bal3",
+      "type": "X(01)"
+    },
+{
+      "name": "obs-balance",
+      "type": "X(38)"
+    },
+{
+      "name": "deuda-tot-cli",
+      "type": "9(15)V99"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

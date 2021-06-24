@@ -1,0 +1,94 @@
+name: LOAD_BDR_Rosetta_Ambit
+description: 'Load data from ambit to Rosetta'
+owner: BI-Corp
+active: true
+start_date: '2020-07-01'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: ambit
+    description: 'Complete ambit to control/send. Possible values: capital | icaap | cdg | stress_test | finrep | credit_risk'
+tasks:
+  - name: Run_ambit
+    operator: PythonOperator
+    config:
+      function_name: 'run_ambit'
+      function_def: |
+        def run_ambit(*args, **kwargs):
+            from airflow.operators.bash_operator import BashOperator
+
+            zonda_dir = kwargs.get('zonda_dir')
+            last_calendar_day = kwargs.get('last_calendar_day')
+
+            path_mdim = "{}/repositories/zonda-etl/scripts/layers/common/rosetta/dim/mdim/{}/ETL-LOAD-generic_mdim.hql".format(zonda_dir,kwargs.get('ambit'))
+            script_mdim = open(path_mdim).read()
+            script_mdim = script_mdim.replace('{last_calendar_day}',last_calendar_day)
+            kwargs['ti'].xcom_push(key='script_mdim',value=script_mdim)
+
+            path_tdim = "{}/repositories/zonda-etl/scripts/layers/common/rosetta/dim/tdim/{}/ETL-LOAD-generic_tdim.hql".format(zonda_dir,kwargs.get('ambit'))
+            script_tdim = open(path_tdim).read()
+            script_tdim = script_tdim.replace('{last_calendar_day}',last_calendar_day)
+            kwargs['ti'].xcom_push(key='script_tdim',value=script_tdim)
+
+            path_nkey = "{}/repositories/zonda-etl/scripts/layers/common/rosetta/fact/nkey/{}/ETL-LOAD-generic_nkey.hql".format(zonda_dir,kwargs.get('ambit'))
+            script_nkey = open(path_nkey).read()
+            script_nkey = script_nkey.replace('{last_calendar_day}',last_calendar_day)
+            kwargs['ti'].xcom_push(key='script_nkey',value=script_nkey)
+
+            path_rnkd = "{}/repositories/zonda-etl/scripts/layers/common/rosetta/fact/rnkd/{}/ETL-LOAD-generic_rnkd.hql".format(zonda_dir,kwargs.get('ambit'))
+            script_rnkd = open(path_rnkd).read()
+            script_rnkd = script_rnkd.replace('{last_calendar_day}',last_calendar_day)
+            kwargs['ti'].xcom_push(key='script_rnkd',value=script_rnkd)
+
+            return
+
+      provide_context: true
+      op_kwargs:
+        zonda_dir: "$ZONDA_DIR"
+        ambit: "{{ ti.xcom_pull(task_ids='InputConfig', key='ambit', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+        last_calendar_day: "{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+  - name: Load_mdim
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql:
+        - "{{ ti.xcom_pull(task_ids='Run_ambit', key='script_mdim', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+  - name: Load_tdim
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql:
+        - "{{ ti.xcom_pull(task_ids='Run_ambit', key='script_tdim', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+  - name: Load_nkey
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql:
+        - "{{ ti.xcom_pull(task_ids='Run_ambit', key='script_nkey', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+  - name: Load_rnkd
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: false
+      hql:
+        - "{{ ti.xcom_pull(task_ids='Run_ambit', key='script_rnkd', dag_id='LOAD_BDR_Rosetta_Ambit') }}"
+dependencies:
+  Run_ambit: Load_mdim
+  Load_mdim: Load_tdim
+  Load_tdim: [Load_nkey,Load_rnkd]
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar]

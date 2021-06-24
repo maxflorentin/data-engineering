@@ -1,0 +1,55 @@
+name: REPORT_Branches-Orden-Operativo
+description: 'NPS Branches Report To Ordenador Operativo'
+owner: BI-Corp
+active: true
+# schedule_interval: '0 21 * * 1-6'
+# start_date: '2019-11-02'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: createTable
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/nps/branches_report.hql'
+  - name: exportFile
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/branches.json"
+      show_header: 'false'
+      output_format: dsv
+      empty_file: false
+      delimiter: '|'
+      hql:
+        - "$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/nps/report_output.hql"
+  - name: sendFile
+    operator: BashOperator
+    config:
+      bash_command: "scp $ZONDA_DIR/outbound/branches.json $SERVICE_USER@dblxorafront09:/RIO226/INTERFACE"
+dependencies:
+  createTable: exportFile
+  exportFile: sendFile
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [gbernardini@santandertecnologia.com.ar,nlask@santandertecnologia.com.ar,msuliano@santandertecnologia.com.ar]

@@ -1,0 +1,51 @@
+name: LOAD_CMN_Modelo_Atencion-Daily
+description: 'Load in Common Data From Modelo Atencion'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+#start_date: '2020-06-08'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: CreateTableCarteraEjecutivo
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/modelo_atencion/stk_ate_cartera_ejecutivo/DDLT-stk_ate_cartera_ejecutivo.hql'
+
+  - name: InsertPartitionCarteraEjecutivo
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/modelo_atencion/stk_ate_cartera_ejecutivo/ETLV_LOAD-stk_ate_cartera_ejecutivo.hql'
+
+
+dependencies:
+  CreateTableCarteraEjecutivo: InsertPartitionCarteraEjecutivo
+
+notifications:
+  on_error: true
+  users: [azumarraga@santandertecnologia.com.ar]
+  channels: [$DEFAULT_SLACK_CHANNEL]
+
+

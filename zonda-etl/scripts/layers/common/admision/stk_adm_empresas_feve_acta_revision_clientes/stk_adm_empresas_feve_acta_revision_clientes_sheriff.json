@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_feve_acta_revision_clientes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_acta","cod_per_nup","id_adm_fichafeve"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_acta","cod_per_nup","id_adm_fichafeve"],
+      "threshold": 0.00005
+    }
+	  ]
+}
+

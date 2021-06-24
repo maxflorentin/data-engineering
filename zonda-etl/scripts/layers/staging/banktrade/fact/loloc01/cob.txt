@@ -1,0 +1,192 @@
+ 01  LC-RECORD-TYPE1.
+     05  L1-KEY.
+         10  L1-LC-NUMBER.
+             15  L1-GROUP                PIC X.
+             15  L1-NUMBER               PIC X(6).
+         10  L1-RECORD-TYPE              PIC X(2).
+         10  L1-TYPE-SEQUENCE            PIC X(3).
+         10  L1-RECORD-SEQUENCE          PIC X(6).
+     05  L1-A-AMEND-ADJ-IND              PIC X.
+     05  L1-A-CUST-DDA-ACCT              PIC X(15).
+     05  L1-A-AMEND-ADJ-AMOUNT           PIC S9(11)V99 COMP-3.
+     05  L1-A-ACTION-CODE                PIC X.
+     05  L1-AMEND-ADJ-RELEASE-DATE       PIC S9(7)  COMP-3.
+     05  L1-A-CURRENCY-CODE              PIC X(3).
+     05  L1-A-SHIPPING-DATE              PIC S9(7)  COMP-3.
+     05  L1-A-VALUE-DATE                 PIC S9(7)  COMP-3.
+     05  L1-A-EXPIRY-DATE                PIC S9(7)  COMP-3.
+     05  L1-AMEND-ASSIGNED-TO            PIC X(3).
+     05  L1-AUTHORIZER-ONE               PIC X(4).
+     05  L1-AUTHORIZER-TWO               PIC X(4).
+     05  L1-A-RELEASE-CODE-ONE           PIC S9(3)  COMP-3.
+     05  L1-A-RELEASE-CODE-TWO           PIC S9(3)  COMP-3.
+     05  L1-A-AMEND-SUFFIX               PIC X(1).
+     05  L1-A-AMEND-OBLIGATION-CLASS     PIC X(3).
+     05  L1-A-LOG-MODE                   PIC X.
+     05  L1-A-GUARANTEE-INFORMATION.
+         10  L1-A-GUARANTOR-DDA-ACCT     PIC X(15).
+         10  L1-A-GOV-GUAR-NUMBER        PIC X(7).
+         10  L1-A-GOV-GUAR-PERCENT       PIC S9(3)V99 COMP-3.
+         10  L1-A-GOV-GUAR-AMT-CONFIRM   PIC S9(11)V99 COMP-3.
+         10  L1-A-STD-COMM REDEFINES
+             L1-A-GOV-GUAR-AMT-CONFIRM   PIC S9(11)V99 COMP-3.
+         10  L1-A-GOV-GUAR-AMT-UNCONFIRM PIC S9(11)V99 COMP-3.
+         10  L1-A-FXADV-COMM REDEFINES
+             L1-A-GOV-GUAR-AMT-UNCONFIRM PIC S9(11)V99 COMP-3.
+         10  L1-A-GOV-AGENCY-NUMBER      PIC X(10).
+         10  L1-A-PCT-AREA  REDEFINES L1-A-GOV-AGENCY-NUMBER.
+             15 L1-A-PCT-MODIF-SWIFT-FMT PIC X(5).
+             15 L1-A-SWIFT-OVERWR-DATE   PIC S9(7)  COMP-3.
+             15 FILLER                   PIC X(1).
+         10  L1-A-GOV-COMMIT-NUMBER      PIC X(15).
+         10  L1-DRAFTS-AREA  REDEFINES L1-A-GOV-COMMIT-NUMBER.
+             15 L1-A-DRAFTS-ON-CODE      PIC X(5).
+             15 L1-ULTIMATE-DISCHG-CNTRY PIC X(5).
+             15 L1-ABOUT-INCR-DECR-IND   PIC X(1).
+             15  L1-A-MT707-MSG-IND      PIC X.
+             15  L1-INC-SWIFT-IND         PIC X.
+             15  L1-CONF-COMMISSION-IND  PIC X.
+             15 L1-A-ADJ-REINSTATE-IND   PIC X.
+         10  L1-A-PRIVATE-GUAR-PERCENT   PIC S9(3)V99  COMP-3.
+     05  L1-A-TENOR-INFO.
+         10  L1-A-TENOR-DAYS             PIC S9(3) COMP-3.
+         10  L1-A-TENOR-CODE             PIC X(3).
+         10  L1-A-TENOR-DATE             PIC S9(7) COMP-3.
+         10  L1-A-TENOR-TEXT             PIC X(50).
+     05  L1-A-CASH-COLLATERAL-INFO.
+         10  L1-A-CASH-COLL-ACTION-CD    PIC X.
+         10  L1-A-CASH-COLL-AMT          PIC S9(11)V99 COMP-3.
+         10  L1-A-CASH-COLL-DB-CR-CD     PIC X.
+         10  L1-A-CASH-COLL-CD           PIC X(5).
+         10  L1-A-CASH-DDA-ACCT          PIC X(15).
+         10  L1-A-CASH-COLL-CURR-CD      PIC X(3).
+         10  L1-A-CASH-COLL-EXCH-RATE    PIC S9(6)V9(9) COMP-3.
+         10  L1-A-CASH-COLL-SUB-ACCT     PIC S9(3)    COMP-3.
+         10  L1-A-CASH-COLL-SPOT-RATE    PIC S9(6)V9(9) COMP-3.
+         10  L1-A-PREV-LIABIL-CODE       PIC S9(9) COMP-3.
+         10  L1-A-CASH-CHECK-NO          PIC X(10).
+     05  L1-A-CONFIRMED-AMOUNTS.
+         10  L1-A-CONF-ACTION-CODE       PIC X.
+         10  L1-A-CONF-PERCENT           PIC S9(3)V99  COMP-3.
+         10  L1-A-CONF-AMT               PIC S9(11)V99 COMP-3.
+         10  L1-A-ORIG-CONF-AMT          PIC S9(11)V99 COMP-3.
+         10  L1-A-PREV-BAL-CONF          PIC S9(11)V99 COMP-3.
+     05  L1-A-UNCONFIRMED-AMOUNTS.
+         10  L1-A-UNCONFIRM-ACTION-CD    PIC X.
+         10  L1-A-UNCONFIRM-AMT          PIC S9(11)V99 COMP-3.
+         10  L1-A-PREV-BAL-UNCONF        PIC S9(11)V99 COMP-3.
+     05  L1-A-MODIFY-INFO.
+         10  L1-A-AMT-MODIFIER           PIC S9(11)V99 COMP-3.
+         10  L1-A-ABOUT-MODIFER          PIC X(1).
+         10  L1-A-PCT-MODIFER            PIC S9(3)V99  COMP-3.
+         10  L1-A-PCT-MODIFER-TYPE       PIC X.
+         10  L1-A-MODIFIER-TEXT-1        PIC X(30).
+         10  L1-A-MODIFIER-TEXT-2        PIC X(20).
+     05  L1-A-COMMISSION-INFO.
+         10  L1-A-COMM-DEBIT-CODE        PIC X(5).
+         10  L1-A-COMM-DEBIT-DDA-ACCT    PIC X(15).
+         10  L1-A-COMM-PERIOD            PIC 9(03)      COMP-3.
+         10  L1-A-COMM-IND               PIC X.
+         10  L1-A-COMM-TO-BENEF          PIC X.
+         10  L1-A-COMM-CONF-ISSUE-TIME   PIC X.
+         10  L1-A-COMM-CURR-CODE         PIC X(3).
+         10  L1-A-COMM-EXCH-RATE         PIC S9(6)V9(9) COMP-3.
+         10  L1-A-COMM-SUB-ACCT          PIC S9(3)      COMP-3.
+         10  L1-A-COMM-RATE-OVERRIDE     PIC S9(2)V9(5) COMP-3.
+         10  L1-A-COMM-AMT-OVERRIDE      PIC S9(11)V99   COMP-3.
+     05  L1-A-CABLE-LETTER-INFO.
+         10  L1-A-STD-LTR-CODE           PIC X(8).
+         10  L1-A-STD-CABLE-CODE         PIC X(8).
+         10  L1-A-CABLE-PRE-ADV-CODE     PIC X(3).
+         10  L1-A-COPY-SENT              PIC X.
+         10  L1-A-PRE-ADV-LTR-CODE       PIC X(8).
+         10  L1-A-PRE-ADV-CABLE-AIR-CODE PIC X.
+         10  L1-A-DETAIL-LETTER1         PIC X(8).
+         10  L1-A-DETAIL-LTR1-CAB-AIR-CD PIC X.
+         10  L1-A-DETAIL-LETTER2         PIC X(8).
+         10  L1-A-DETAIL-LTR2-CAB-AIR-CD PIC X.
+     05  L1-A-SOURCE-DOC-INFORMATION     PIC X(27).
+     05  L1-A-EXPIRES-AT                 PIC X(29).
+     05  L1-A-COMM-TAKEN                 PIC X.
+     05  L1-A-NEXT-ANNIVERSARY           PIC 9(7) COMP-3.
+     05  L1-A-COMM-BE-IND                PIC X.
+     05  L1-A-ADJ-EFFECT-DATE            PIC 9(7) COMP-3.
+     05  L1-A-CALC-BASIS                 PIC 9(3) COMP-3.
+     05  L1-A-PERIOD-TYPE                PIC X.
+     05  L1-A-ALIGNMENT                  PIC X.
+     05  L1-A-EFFECT-IMMEDIATE           PIC X.
+     05  L1-A-DB-PRIMARY-CODE            PIC X(05).
+     05  L1-A-DB-ACCOUNT-NO              PIC X(15).
+     05  L1-A-DB-CODE-EFFECT-IMMEDIATE   PIC X.
+     05  L1-A-PREV-OBLIGATION            PIC X(03).
+     05  L1-A-PREV-BANK-LIABILITY        PIC S9(9) COMP-3.
+     05  L1-A-ORIG-AMEND-CONF            PIC S9(11)V99 COMP-3.
+     05  L1-A-ORIG-AMEND-UNCONF          PIC S9(11)V99 COMP-3.
+     05  L1-A-WRKR-LOCATION              PIC X(06).
+     05  L1-A-ORIG-CURRENCY-CODE         PIC X(3).
+     05  L1-A-ORIG-BOOK-EXCHANGE-RATE    PIC S9(6)V9(9) COMP-3.
+     05  L1-A-ACCT-CURRENCY-CODE         PIC X(3).
+     05  L1-A-ACCT-EXCH-RATE             PIC S9(6)V9(9) COMP-3.
+     05  L1-A-REPORTING-CURRENCY-CD      PIC X(3).
+     05  L1-A-REPORTING-EXCH-RATE        PIC S9(6)V9(9) COMP-3.
+     05  L1-FIRST-DIVISION-CD            PIC X(4).
+     05  L1-SECOND-DIVISION-CD           PIC X(4).
+     05  L1-CABLE-CHARGES.
+         10  L1-WAIVE-CAB-CHARGES        PIC X.
+         10  L1-CAB-CHARGES-TO-BENEF     PIC X.
+         10  L1-CAB-CHARGES-AMT          PIC S9(7)V99   COMP-3.
+     05  L1-GENERAL-LEDGER-INFO.
+         10  L1-GL-BANK-LIABIL-CURR      PIC S9(9) COMP-3.
+         10  L1-GL-INCOME-LIABIL-CURR    PIC S9(9) COMP-3.
+     05  L1-ADJUSTMENTS-INDICATOR.
+         10  L1-STAND-BY-IND             PIC X.
+         10  L1-OFFERING-IND             PIC X.
+         10  L1-INDEMNITY-IND            PIC X.
+         10  L1-REVOCABLE-IND            PIC X.
+         10  L1-REIMBURSE-IND            PIC X.
+         10  L1-MANUAL-TICKLER-IND       PIC X.
+         10  L1-SUPERVISORY-CANCEL-IND   PIC X.
+         10  L1-TRANSSHIP-IND            PIC X.
+         10  L1-BOYCOTT-CREDIT-IND       PIC X.
+         10  L1-AUTO-SWIFT-IND REDEFINES
+             L1-BOYCOTT-CREDIT-IND       PIC X.
+         10  L1-PARTIAL-SHIPMENT-IND     PIC X.
+         10  L1-FDA-IND                  PIC X.
+         10  L1-RED-CLAUSE-IND           PIC X.
+         10  L1-MISC-IND                 PIC X.
+         10  L1-CONVERSION-CREDIT-IND    PIC X.
+         10  L1-FOREIGN-TRANSFER-IND     PIC X.
+         10  L1-DOMESTIC-TRANSFER-IND    PIC X.
+         10  L1-PRE-ADV-RELEASED-IND     PIC X.
+         10  L1-CANCEL-PENDING-IND       PIC X.
+         10  L1-STANDBY-INT-PENDING-IND  PIC X.
+         10  L1-COMM-BENEF-IND           PIC X.
+         10  L1-COMM-ISSUE-IND           PIC X.
+         10  L1-DELETE-CANDIDATE-IND     PIC X.
+         10  L1-OFFERING-APPROVED-IND    PIC X.
+         10  L1-BOYCOTT-REPORT-IND       PIC X.
+         10  L1-BOYCOTT-TAXABLE-IND      PIC X.
+         10  L1-BOYCOTT-PROHIBITED-IND   PIC X.
+         10  L1-REVALUE-IND  REDEFINES L1-BOYCOTT-PROHIBITED-IND
+                                         PIC X.
+         10  L1-ASSIGN-IND               PIC X.
+         10  L1-ACCT-55-IND              PIC X.
+         10  L1-CALL-BEFORE-PAY-IND      PIC X.
+         10  L1-CLAIM-PAYMENT-IND        PIC X.
+         10  L1-STANDBY-LTR-IND          PIC X.
+         10  L1-GOV-GUAR-IND             PIC X.
+         10  L1-LIQUOR-CREDITS-IND       PIC X.
+         10  L1-AUTO-EXT-IND REDEFINES L1-LIQUOR-CREDITS-IND
+                                         PIC X.
+         10  L1-COUNTER-TRADE-IND        PIC X.
+                 88 CUST-BRIDGE           VALUE  'C'.
+                 88 CLIENT-TRADE-INTERNET VALUE  'I'.
+                 88 LINKS                 VALUE  'L'.
+                 88 MAXTRADE              VALUE  'M'.
+                 88 TIGER                 VALUE  'T'.
+         10  L1-AUTO-ADJUST-RELSE-IND    PIC X.
+     05  L1-A-FIRST-SHIP-DATE            PIC S9(7)       COMP-3.
+     05  L1-A-BOOK-EXCHG-RATE            PIC 9(6)V9(9)   COMP-3.
+     05  L1-A-PART-SOUGHT-FROM-ACCT      PIC X(15).
+     05  L1-STANDARD-LETTER-IND          PIC X.
+     05  L1-WAIVE-COMM-IND               PIC X.

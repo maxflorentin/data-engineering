@@ -1,0 +1,33 @@
+{
+	"file": "admision_estados_asol",
+	"location": "/santander/bi-corp/landing/sql5/dim/admision_estados_asol/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_admision_estados_asol",
+	"createTable": "bi_corp_staging.risksql5_admision_estados_asol",
+	"extension": "csv",
+	"delimiter": ";",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns":
+[
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "descripcion_estado",
+    "type": "string"
+  },
+  {
+    "name": "marca_estado_terminal",
+    "type": "string"
+  }
+],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

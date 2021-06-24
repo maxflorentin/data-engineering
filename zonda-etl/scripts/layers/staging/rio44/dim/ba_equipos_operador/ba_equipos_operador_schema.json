@@ -1,0 +1,31 @@
+{
+    "file": "ba_equipos_operador_schema",
+    "createTable": "bi_corp_staging.rio44_ba_equipos_operador",
+    "location": "/santander/bi-corp/landing/rio44/dim/ba_equipos_operador/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio44/dim/ba_equipos_operador",
+    "tempDirectory": "/santander/bi-corp/temp/rio44",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_operador",
+            "type": "string"
+        },
+        {
+            "name": "operador_descrip",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

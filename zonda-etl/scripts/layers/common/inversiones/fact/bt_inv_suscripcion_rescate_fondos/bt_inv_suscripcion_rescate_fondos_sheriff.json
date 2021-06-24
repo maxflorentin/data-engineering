@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_inv_suscripcion_rescate_fondos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_inv_fondo", "cod_inv_moneda", "ds_inv_canal", "ds_inv_canal_dg", "ds_inv_canal_cd", "cod_per_nup", "cod_inv_sucursal_operativa"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_inv_cuenta", "cod_inv_fondo", "cod_inv_certificado", "cod_inv_operacion"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_inv_solic", "dt_inv_conver", "dt_inv_estorno", "dt_inv_ult_reg", "dt_inv_bloqueio", "dt_inv_comprom", "dt_inv_dtpagto"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

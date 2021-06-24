@@ -1,0 +1,161 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "TCDT002",
+      "title": "Relación tabla - campo",
+      "schema": "bi_corp_staging",
+      "source": "MALTC",
+      "query": "",
+      "type": "DIM",
+      "description": "Relación tabla - campo",
+      "columns": [
+        {
+          "name": "CDTABLA",
+          "title": "CDTABLA",
+          "description": "Código de la tabla que usa el campo indicado",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CDCAMPO",
+          "title": "CDCAMPO",
+          "description": "Código del campo de la tabla general",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "POSCAMP",
+          "title": "POSCAMP",
+          "description": "Posición de campo",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUCLAVE",
+          "title": "NUCLAVE",
+          "description": "Numero de clave",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TABVAL",
+          "title": "TABVAL",
+          "description": "Tabla de referencia ",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ULTMOD",
+          "title": "ULTMOD",
+          "description": "Timestamp",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        },
+        {
+          "name": "BANCULMO",
+          "title": "BANCULMO",
+          "description": "Código de la entidad que realizó la última modificación de datos",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "OFICULMO",
+          "title": "OFICULMO",
+          "description": "Centro última modificación",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUMTER",
+          "title": "NUMTER",
+          "description": "Número de terminal que realizó la última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "USULTMOD",
+          "title": "USULTMOD",
+          "description": "Código ID del usuario que realizó la última modificación de los datos",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IDF_INDICE",
+          "title": "IDF_INDICE",
+          "description": "Indicador de indice",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IDF_DUPLIC ",
+          "title": "IDF_DUPLIC ",
+          "description": "Indicador de indice duplicado",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

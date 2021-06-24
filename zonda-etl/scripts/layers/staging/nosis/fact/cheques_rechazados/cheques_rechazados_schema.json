@@ -1,0 +1,50 @@
+{
+	"file": "cheques_rechazados_schema",
+	"location": "/santander/bi-corp/landing/nosis/fact/cheques_rechazados/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/nosis/fact/cheques_rechazados",
+	"createTable": "bi_corp_staging.nosis_tmp_cheques_rechazados",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+		"name": "cuit",
+		"type": "string"
+	}, {
+		"name": "nro_cheque",
+		"type": "string"
+	}, {
+		"name": "fecha_rechazo",
+		"type": "string"
+	}, {
+		"name": "monto",
+		"type": "string"
+	}, {
+		"name": "causal",
+		"type": "string"
+	}, {
+		"name": "fecha_pago",
+		"type": "string"
+	}, {
+		"name": "en_revision",
+		"type": "string"
+	}, {
+		"name": "proceso_judicial",
+		"type": "string"
+	}, {
+		"name": "cuit_relacionado",
+		"type": "string"
+	}, {
+		"name": "fecha_pago_multa",
+		"type": "string"
+	}],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

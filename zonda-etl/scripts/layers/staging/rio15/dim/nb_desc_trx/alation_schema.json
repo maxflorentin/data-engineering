@@ -1,0 +1,84 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308562"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio15_nb_desc_trx",
+      "title": "Estadisticas de RIOPIFE",
+      "schema": "bi_corp_staging",
+      "source": "RIOPIF",
+      "query": "",
+      "type": "DIM",
+      "description": "Estadisticas de RIOPIFE",
+      "columns": [
+        {
+          "name": "TRANSACCION",
+          "title": "TRANSACCION",
+          "description": "Id de transaccion (Relacion Tabla NB_DESC_TRX)",
+          "type": "NUMBER(8)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Descripcion del ID",
+          "type": "VARCHAR2(60 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 60.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODULO",
+          "title": "MODULO",
+          "description": "Modulo dentro del canal",
+          "type": "VARCHAR2(3 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_TRX",
+          "title": "TIPO_TRX",
+          "description": "Tipo de modulo",
+          "type": "VARCHAR2(3 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SUBMODULO",
+          "title": "SUBMODULO",
+          "description": "Submodulo",
+          "type": "VARCHAR2(3 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

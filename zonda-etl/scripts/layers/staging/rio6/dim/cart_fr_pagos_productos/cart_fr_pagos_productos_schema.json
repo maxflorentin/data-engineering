@@ -1,0 +1,30 @@
+{
+  "file": "cart_fr_pagos_productos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_fr_pagos_productos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_fr_pagos_productos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"capg_carp_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"capg_capu_cd_producto",
+      "type":"string"
+    },
+    {
+      "name":"capg_cafp_cd_fr_pago",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,49 @@
+name: LOAD_STG_NESR_Daily
+description: 'Load chat data from NESR tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: "2019-01-01"
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: STAGING_encolador_d
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_encolador_d
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/nesr/fact/encolador_d/encolador_d_nesr_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_NESR_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['encolador_d_nesr_schema.json']
+  - name: STAGING_encolador_det_ticket
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_encolador_det_ticket
+      connection_id: cloudera_spark2
+      executor_cores: 2
+      executor_memory: 8G
+      num_executors: 1
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/nesr/fact/encolador_det_ticket/encolador_det_ticket_nesr_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_NESR_Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['encolador_det_ticket_nesr_schema.json']
+notifications:
+  on_start: false
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mflorentin@santandertecnologia.com.ar]

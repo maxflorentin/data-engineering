@@ -1,0 +1,51 @@
+{
+	"file": "cp_envios_componentes_estados_schema",
+	"location": "/santander/bi-corp/landing/rio258/fact/cp_envios_componentes_estados/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/fact/rio258_cp_envios_componentes_estados",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_envios_componentes_estados",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "cod_envio_comp_estado",
+			"type": "string"
+		},
+{
+			"name": "cod_componente",
+			"type": "string"
+		},
+{
+			"name": "cod_estado",
+			"type": "string"
+		},
+{
+			"name": "fecha_novedad",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+{
+			"name": "creado_por",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif_por",
+			"type": "string"
+		},
+{
+			"name": "cod_error",
+			"type": "string"
+		},
+{
+			"name": "desc_error",
+			"type": "string"
+		}
+	]
+}

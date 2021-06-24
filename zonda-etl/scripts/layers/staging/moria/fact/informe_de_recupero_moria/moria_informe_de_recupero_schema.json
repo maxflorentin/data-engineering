@@ -1,0 +1,21 @@
+{
+  "file": "informe_de_recupero_moria",
+  "location": "/santander/bi-corp/landing/moria/fact/informe_de_recupero_moria/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/moria/fact/moria_informe_de_recupero/",
+  "tempDirectory": "/santander/bi-corp/temp/informe_de_recupero_moria/",
+  "createEmptyPartitions": true,
+  "header": false,
+  "copybook": "MOEC1800.cob",
+  "createTable":"bi_corp_staging.moria_informe_de_recupero",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "file": "autt_tipos_vehiculos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/autt_tipo_vehiculos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/autt_tipos_vehiculos",
+  "extension":"csv",
+  "createTable": "bi_corp_staging.rio6_autt_tipos_vehiculos",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"|",
+  "columns": [
+    {
+      "name":"auth_cd_tipo_vehiculo",
+      "type": "string"
+    },
+    {
+      "name":"auth_de_tipo_vehiculo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

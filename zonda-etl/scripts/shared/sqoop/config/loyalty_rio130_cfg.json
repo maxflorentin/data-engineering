@@ -1,0 +1,46 @@
+{
+  "tables" :[
+     {
+      "serverConfig" : "dblxorafront01",
+       "serverAka": "RIO130",
+       "database": "SIEBEL",
+       "table": "TRANSACCIONES_ACUMULACIONES_VM",
+       "table_type": "fact",
+      "partition_field": "fecha_de_proceso",
+       "environment": "rio130",
+      "landing_path": "/santander/bi-corp/landing/rio130/fact/txn_acum_loy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select NUM_CUO as NUM_CUO1, PLAN_CUO as PLAN_CUO1, RUBRO as RUBRO1, PUNTOS_ACUMULADOS, PUNTOS_CANJEADOS, NUMERO, SUBTIPO, TIPO, PROGRAMA, PRODUCTO, ESTADO, MONTO, MIEMBRO, APELLIDO, NOMBRE, TIPO_TARJETA, NUMERO_TARJETA_ENVIO as NUM_TRJ, COMERCIO, COMMERCE_CITY as X_COMMERCE_CITY, COMMERCE_CODE as X_COMMERCE_CODE, COMERCIO as X_COMMER_SECTOR, CODIGO_MONEDA, FECHA_DE_CIERRE, FECHA_DE_CONSUMO, FECHA_DE_PROCESO, ESTADO_DELIVERY, ESTADO_PREV_DELIVERY, FECHA_ESTADO_DELIVERY, MOTIVO_CANCE_CANJE from SIEBEL.TRANSACCIONES_ACUMULACIONES_VM WHERE to_char({partition_field} ,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio130/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBlxorafront05",
+      "serverAka": "RIO130",
+       "database": "SIEBEL",
+       "table": "saldos_loy",
+       "table_type": "fact",
+       "environment": "rio130",
+      "landing_path": "/santander/bi-corp/landing/rio130/fact/saldos_loy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"mem_num,programa,fecha_de_vencimiento,puntos_totales,puntos_a_vencer,val_score,fecha_ultima_acc,fecha_ultima_inc\" --bindir '{zonda_dir}/sqoop/rio130/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverConfig" : "DBlxorafront05",
+      "serverAka": "RIO130",
+       "database": "SIEBEL",
+       "table": "txn_rdm_loy",
+       "table_type": "fact",
+      "partition_field": "fecha_creacion",
+       "environment": "rio130",
+      "landing_path": "/santander/bi-corp/landing/rio130/fact/txn_rdm_loy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"cod_entidad,programa,centro_redencion,desc_centro,disponibilidad_destino,cod_articulo,nombre_articulo,cod_movimiento,fecha_mov,hora_mov,cod_familia,nro_remito,cto_redencion_destino,cod_canal,id_canje,nup,tipo_doc,nro_doc,cant_art_canje,cant_puntos,costo_articulo,x_txn_estado,canal_servicio,codigo_forma_pago,cod_moneda_canje,forma_entrega,numero_tarjeta_envio,nom_y_ape,calle,altura,piso,departamento,localidad,cod_provincia,cod_postal,nro_telefono,tipo_stock,tipo_mov,usuario_id_oper,ult_actualiz,fecha_nac,tipo_voucher,monto_canje,mca_delivery,tipo_exencion,clase_exencion,importe_cargo,disponibilidad,estado_destino,pre_compra,valor_de_voucher,id_loy,numero_voucher,fecha_creacion,colidcanje\" --where \"to_char({partition_field} ,'YYYY-MM-DD')= '{partition_date}'\" --bindir '{zonda_dir}/sqoop/rio130/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+        {
+      "serverConfig" : "DBlxorafront05",
+      "serverAka": "RIO130",
+       "database": "SIEBEL",
+       "table": "catalogo_loy",
+       "table_type": "dim",
+       "environment": "rio130",
+      "landing_path": "/santander/bi-corp/landing/rio130/dim/catalogo_loy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"id_catalogo ,cod_catalogo ,catalogo ,partnum ,producto ,descripcion ,id_categoria ,linea_prodcuto ,categoria ,id_producto ,puntos ,linea_producto ,costo_punto ,nombre_categoria ,nombre_visible_cat ,fecha_vig_ini_prod ,fecha_vig_fin_prod ,medio_de_pago ,producto_agrupador ,porcentaje_desc ,fecha_show ,ubicacion_show ,origen ,stock_inicial,flujo_canje ,id_prod_par ,id_cate_par ,tipo_prod_loy \"  --bindir '{zonda_dir}/sqoop/rio130/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\n"
+    }
+  ]
+}

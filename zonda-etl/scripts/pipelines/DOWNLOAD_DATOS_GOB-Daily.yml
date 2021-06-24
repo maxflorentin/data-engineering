@@ -1,0 +1,92 @@
+name: DOWNLOAD_DATOS_GOB-Daily
+description: 'Download Data of UVA From DATOS GOB BCRA'
+owner: BI-Corp
+active: true
+start_date: '2021-05-10'
+schedule_interval: '0 6 * * *'
+catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: EXECUTE_UVA_DOWNLOAD_Script
+    operator: BashOperator
+    config:
+      command: "
+              python3.6 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/datos_gob_uva.py
+              --path catalog/sspm/dataset/94/distribution/94.2/download
+              --date {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_DATOS_GOB_UVA-Daily') }}
+              --name cer-uva-uvi-diarios
+              --folder datos_gob/uva/
+              --wd_from $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/files/
+              --wd_to $ZONDA_DIR/inbound/datos_gob/uva/"
+  - name: WaitForFiles_UVA
+    operator: ZondaFileSensor
+    config:
+      path: "$ZONDA_DIR/inbound/datos_gob/uva"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+
+  - name: EXECUTE_EMAE_ACTIVIDADES_DOWNLOAD_Script
+    operator: BashOperator
+    config:
+      command: "
+              python3.6 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/datos_gob_uva.py
+              --path catalog/sspm/dataset/11/distribution/11.3/download
+              --date {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_DATOS_GOB_UVA-Daily') }}
+              --name emae-apertura-por-sectores-valores-mensuales-indice-base-2004
+              --folder datos_gob/emae_actividades/
+              --wd_from $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/files/
+              --wd_to $ZONDA_DIR/inbound/datos_gob/emae_actividades/"
+  - name: WaitForFiles_EMAE_ACTIVIDADES
+    operator: ZondaFileSensor
+    config:
+      path: "$ZONDA_DIR/inbound/datos_gob/emae_actividades"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+
+  - name: EXECUTE_EMAE_INDICADORES_DOWNLOAD_Script
+    operator: BashOperator
+    config:
+      command: "
+              python3.6 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/datos_gob_uva.py
+              --path catalog/sspm/dataset/143/distribution/143.3/download
+              --date {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_DATOS_GOB_UVA-Daily') }}
+              --name emae-valores-anuales-indice-base-2004-mensual
+              --folder datos_gob/emae_indicadores/
+              --wd_from $ZONDA_DIR/repositories/zonda-etl/scripts/shared/web_extraction/files/
+              --wd_to $ZONDA_DIR/inbound/datos_gob/emae_indicadores/"
+  - name: WaitForFiles_EMAE_INDICADORES
+    operator: ZondaFileSensor
+    config:
+      path: "$ZONDA_DIR/inbound/datos_gob/emae_indicadores"
+      timeout: 300
+      poke_interval: 60
+      change_owner: '$SERVICE_USER:grpengineerbi'
+      soft_fail: True
+
+
+dependencies:
+  EXECUTE_UVA_DOWNLOAD_Script: WaitForFiles_UVA
+  EXECUTE_EMAE_ACTIVIDADES_DOWNLOAD_Script: WaitForFiles_EMAE_ACTIVIDADES
+  EXECUTE_EMAE_INDICADORES_DOWNLOAD_Script: WaitForFiles_EMAE_INDICADORES
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar, fscagnettibrusatori@santandertecnologia.com.ar]

@@ -1,0 +1,194 @@
+{
+	"file": "acse_contratos_schema",
+	"location": "/santander/bi-corp/landing/acse/fact/contratos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/fact/contratos",
+    "createTable": "bi_corp_staging.acse_contratos",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "sucursal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "contrato",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "sucursal_caja",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "sector_caja",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "numero_caja",
+                        "type": "string",
+                        "width": 5
+                },
+                {
+                        "name": "estado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "forma_operar",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "fec_locacion",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_vencimiento",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_baja",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "forma_pago",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "entidad_debito",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "sucursal_debito",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cuenta_debito",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "divisa_debito",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "frecuencia",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "cod_bonificacion",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "tipo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "id_deuda_pendiente",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "fec_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ind_brio",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "usuario_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "usuario_ult_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fecha_ult_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "ult_periodo_liq",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "campania",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "fec_vto_camp",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_proxima_liq",
+                        "type": "string",
+                        "width": 10
+                },
+                {
+                        "name": "ult_aniomes_desde_liq",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "ult_aniomes_hasta_liq",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "contrato_tc",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "cod_ofi_tc",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cal_parti_tc",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "cod_prod_tc",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "cod_subprod_tc",
+                        "type": "string",
+                        "width": 4
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

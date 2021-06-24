@@ -1,0 +1,159 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_domicilios_bancarios",
+            "title": "Domicilios bancarios (medios de pago)",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Domicilios bancarios (medios de pago)",
+            "columns": [
+                {
+                    "name": "CADM_CACN_CD_NACIONALIDAD",
+                    "title": "CADM_CACN_CD_NACIONALIDAD",
+                    "description": "Tipo de documento",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_CACN_NU_CEDULA_RIF",
+                    "title": "CADM_CACN_NU_CEDULA_RIF",
+                    "description": "Número de documento",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_NU_DOMICILIO",
+                    "title": "CADM_NU_DOMICILIO",
+                    "description": "Número de domicilio",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_CABA_CD_BANCO",
+                    "title": "CADM_CABA_CD_BANCO",
+                    "description": "Código de banco",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_NU_CUENTA",
+                    "title": "CADM_NU_CUENTA",
+                    "description": "Número de cuenta/tarjeta/cbu",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 25.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_TP_CUENTA",
+                    "title": "CADM_TP_CUENTA",
+                    "description": "Tipo de cuenta",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_IN_EMPLEADO",
+                    "title": "CADM_IN_EMPLEADO",
+                    "description": "Indocador de cuenta empleado",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_TP_CUENTA_BANCO",
+                    "title": "CADM_TP_CUENTA_BANCO",
+                    "description": "Tipo de cuenta banco",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_ST_CUENTA",
+                    "title": "CADM_ST_CUENTA",
+                    "description": "Estado de la cuenta",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_CD_CAUSA_ESTADO",
+                    "title": "CADM_CD_CAUSA_ESTADO",
+                    "description": "Código del estado de la cuenta",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_FE_ACT_ESTADO",
+                    "title": "CADM_FE_ACT_ESTADO",
+                    "description": "Fecha de actualización del estado",
+                    "type": "FECHA",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CADM_CD_USUARIO_ESTADO",
+                    "title": "CADM_CD_USUARIO_ESTADO",
+                    "description": "Usuario que actualizó el esatdo",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

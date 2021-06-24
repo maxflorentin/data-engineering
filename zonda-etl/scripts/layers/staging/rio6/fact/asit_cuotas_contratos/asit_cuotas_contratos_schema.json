@@ -1,0 +1,61 @@
+{
+  "file": "asit_cuotas_contratos_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/asit_cuotas_contratos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/asit_cuotas_contratos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"ascc_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"ascc_nu_contrato",
+      "type":"string"
+    },
+    {
+      "name":"ascc_nu_certificado",
+      "type":"string"
+    },
+    {
+      "name":"ascc_nu_endoso",
+      "type":"string"
+    },
+    {
+      "name":"ascc_nu_cuota",
+      "type":"string"
+    },
+    {
+      "name":"ascc_fe_desde",
+      "type":"string"
+    },{
+      "name":"ascc_fe_hasta",
+      "type": "string"
+    },
+    {
+      "name":"ascc_mt_cuota",
+      "type":"string"
+    },
+    {
+      "name":"ascc_mt_comision",
+      "type":"string"
+    },
+    {
+      "name":"ascc_st_cuota",
+      "type":"string"
+    },
+    {
+      "name":"ascc_fe_status",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

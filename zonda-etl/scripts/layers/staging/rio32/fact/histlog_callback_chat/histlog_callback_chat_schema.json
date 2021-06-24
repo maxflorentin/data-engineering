@@ -1,0 +1,63 @@
+{
+  "file": "histlog_callback_chat_schema",
+  "location": "/santander/bi-corp/landing/rio32/fact/histlog_callback_chat/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/fact/histlog_callback_chat",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "fecha",
+    "type": "string"
+  },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "documento",
+      "type": "string"
+    },
+    {
+      "name": "jsesionid",
+      "type": "string"
+    },
+    {
+      "name": "cod_app",
+      "type": "string"
+    },
+    {
+      "name": "descrip",
+      "type": "string"
+    },
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "segmento_obp",
+      "type": "string"
+    },
+    {
+      "name": "agente",
+      "type": "string"
+    },
+    {
+      "name": "asunto",
+      "type": "string"
+    },
+    {
+      "name": "interactionid",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

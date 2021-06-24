@@ -1,0 +1,84 @@
+{
+  "file": "cart_cotiza_personas_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_personas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_cotiza_personas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cacj_capj_cd_sucursal",
+      "type": "string"
+    },
+    {
+      "name":"cacj_cazb_nu_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"cacj_nu_consecutivo",
+      "type":"string"
+    },
+    {
+      "name":"cacj_cd_rol",
+      "type":"string"
+    },
+    {
+      "name":"cacj_nm_persona",
+      "type":"string"
+    },{
+      "name":"cacj_cd_sexo",
+      "type": "string"
+    },
+    {
+      "name":"cacj_fe_nac",
+      "type":"string"
+    },
+    {
+      "name":"cacj_tp_persona",
+      "type":"string"
+    },
+    {
+      "name":"cacj_in_fumador",
+      "type":"string"
+    },
+    {
+      "name":"cacj_po_partic",
+      "type":"string"
+    },
+    {
+      "name":"cacj_cd_parentesco",
+      "type":"string"
+    },
+    {
+      "name":"cacj_tp_documento",
+      "type":"string"
+    },
+    {
+      "name":"cacj_nu_documento",
+      "type":"string"
+    },
+    {
+      "name":"cacj_mt_sumaseg_renta",
+      "type":"string"
+    },
+    {
+      "name":"cacj_nu_prioridad",
+      "type":"string"
+    },
+    {
+      "name":"cacj_tp_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"cacj_nu_cuenta",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

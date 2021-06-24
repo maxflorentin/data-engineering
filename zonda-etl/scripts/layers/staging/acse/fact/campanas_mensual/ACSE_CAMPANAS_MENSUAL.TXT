@@ -1,0 +1,37 @@
+      *
+      ***** ARCHIVO DE DETALLE MENSUAL DE LAS LIQUIDACIONES ******
+      *----------------------------------------------------------*
+      ******* TIPO.REG...= FIJO                          *********
+      ******* LONGITUD   = 300                           *********
+      ******* CLAVE      = 032                           *********
+      *
+      *                                                    Desde  Hasta
+       01  WACSE590.
+      *        Sucursal, Contrato, Comision, Periodo           1     24
+           05  WACSE590-CLAVE.
+              10  WACSE590-CLAVE-ALTERNA.
+      *              Sucursal                                  1      4
+                  15 WACSE590-SUCURSAL             PIC X(04).
+      *              Contrato                                  5     16
+                  15 WACSE590-CONTRATO             PIC X(12).
+      *              Comision                                 17     18
+                  15 WACSE590-COMISION             PIC X(02).
+      *              Periodo                                  19     24
+              10  WACSE590-CLAVE-RESTO.
+                  15 WACSE590-PERIODO-LIQ          PIC 9(06).
+      *              Fecha de Liquidaciìn                     25     32
+                  15 WACSE590-FECHA-LIQ            PIC 9(08).
+      *
+      *    Datos de la liquidacion Mensual                    33    260
+           05  WACSE590-LIQUIDACION-MENSUAL.
+              10  WACSE590-LIQUIDACION-MES   OCCURS 12 TIMES.
+      *    Campania Mensual
+                  15  WACSE590-CAMPANIA-MES        PIC X(04).
+      *    Importe Mensual
+                  15  WACSE590-IMPORTE-MES         PIC 9(13)V99.
+      *    Marca reliquidacion                               261    261
+           05  WACSE590-MARCA-RELIQ                PIC X(01).
+      *    Indicador de generacion de Mov Operativo          262    262
+           05  WACSE590-GENERO-MOV                 PIC X(01).
+      *    Relleno                                           263    300
+           05  WACSE590-FILLER                     PIC X(38).

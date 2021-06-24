@@ -1,0 +1,26 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "serverAka": "RIO106",
+      "database": "OBCM",
+      "table": "TLOG_TABLA",
+      "table_type": "fact",
+      "partition_field": "TIM_INI_TRN",
+      "environment": "rio106",
+      "landing_path": "/santander/bi-corp/landing/rio106/fact/tlog_tabla",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --table \"{database}.{table}\" --columns \"IDE_EMPRESA,IDE_USUARIO,IDE_TRANSACCION,NOM_OPERACION,NOM_PRODUCTO,NOM_REQ_FRONTEND,COD_ESTADO_TRN,TIM_INI_TRN,TIM_FIN_TRN,MON_TRANSACCION,NRO_NUP_EMPRESA,NRO_NUP_INDIVIDUO  \" --where \"to_char({partition_field} ,'YYYY-MM-DD') >= '2021-05-07' and to_char({partition_field} ,'YYYY-MM-DD')<'2021-05-14' \"  --bindir '{zonda_dir}/sqoop/rio106/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET01",
+      "serverAka": "RIO106",
+      "database": "OBCM",
+      "table": "TPCS_LOG_OPERACION",
+      "table_type": "fact",
+      "partition_field": "TIM_INI_TRN",
+      "environment": "rio106",
+      "landing_path": "/santander/bi-corp/landing/rio106/fact/tpcs_log_operacion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \" select TOP.IDE_TRANSACCION,IDE_SOLICITUD,COD_OPERACION,COD_ESTADO_SOL,MON_IMPORTE1,COD_MONEDA1,CAN_ITEMS1,MON_IMPORTE2,COD_MONEDA2,CAN_ITEMS2 , to_char(TIM_INI_TRN,'YYYY-MM-DD') as PARTITION_DATE FROM {database}.{table} TOP JOIN {database}.TLOG_TABLA TLO ON (TLO.IDE_TRANSACCION = TOP.IDE_TRANSACCION) where to_char({partition_field} ,'YYYY-MM-DD') >= '2021-05-07' and to_char({partition_field} ,'YYYY-MM-DD')<'2021-05-14' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio106/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

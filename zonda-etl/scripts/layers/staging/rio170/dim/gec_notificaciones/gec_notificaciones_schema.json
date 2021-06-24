@@ -1,0 +1,63 @@
+{
+    "file": "gec_notificaciones_schema",
+    "createTable": "bi_corp_staging.rio170_gec_notificaciones",
+    "location": "/santander/bi-corp/landing/rio170/dim/gec_notificaciones/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio170/dim/gec_notificaciones",
+    "tempDirectory": "/santander/bi-corp/temp/rio170",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "codigo",
+            "type": "string"
+        },
+        {
+            "name": "sub_codigo",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "titulo",
+            "type": "string"
+        },
+        {
+            "name": "url_desktop",
+            "type": "string"
+        },
+        {
+            "name": "url_mobile",
+            "type": "string"
+        },
+        {
+            "name": "link",
+            "type": "string"
+        },
+        {
+            "name": "ind_repetible",
+            "type": "string"
+        },
+        {
+            "name": "ind_inactivable",
+            "type": "string"
+        },
+        {
+            "name": "ind_agrupable",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+{
+  "tables" :[
+    {
+      "serverAka": "rio163",
+      "serverConfig" : "DBLXORAFRONT07",
+      "database": "RTD_DATA",
+      "table": "PUSH_REGISTRY",
+      "table_type": "fact",
+      "environment": "rio163",
+      "landing_path": "/santander/bi-corp/landing/rio163/fact/push_registry",
+      "partition_field": "TO_CHAR(operation_date,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" SELECT ID ,OPERATION_DATE, DEVICE_ID, NOTIFICATION_ID ,STATE  , TO_CHAR(operation_date,'YYYY-MM-DD') AS PARTITION_DATE from {database}.{table} where {partition_field} = '{partition_date}'  AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio163/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    },
+    {
+      "serverAka": "rio163",
+      "serverConfig" : "DBLXORAFRONT07",
+      "database": "RTD_DATA",
+      "table": "PUSH_NOTIFICATIONS",
+      "table_type": "fact",
+      "environment": "rio163",
+      "landing_path": "/santander/bi-corp/landing/rio163/fact/push_notifications",
+      "partition_field": "TO_CHAR(CREATED_AT,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" SELECT ID ,DEEP_LINK, ID_MESSAGE, MESSAGE ,NUP  , CREATED_AT  , OPENED_AT , RECEIVED_AT  ,EXPIRY ,STATE,STATUS,TITLE,URL,IMAGE,TAG,DELETED_AT  from {database}.{table}  where  to_char(created_at,'YYYY-MM-DD')='{partition_date}' OR (to_char(opened_at,'YYYY-MM-DD')='{partition_date}'  and to_char(opened_at,'YYYY-MM-DD') != to_char(created_at,'YYYY-MM-DD')) OR (to_char(DELETED_AT,'YYYY-MM-DD')='{partition_date}' and to_char(opened_at,'YYYY-MM-DD') != to_char(DELETED_AT,'YYYY-MM-DD')) OR (to_char(EXPIRY,'YYYY-MM-DD')='{partition_date}' and to_char(opened_at,'YYYY-MM-DD') != to_char(EXPIRY,'YYYY-MM-DD')  and STATE='EXPIRED' ) AND \\$CONDITIONS\"  --bindir '{zonda_dir}/sqoop/rio163/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}'  --verbose\n"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "tables" :[
+       {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "OPERACIONES",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/operaciones",
+            "partition_field": "FECHAOP",
+            "split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=operaciones -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \" SELECT ESPECIE, TIPOOP, NROPERACION, CANTIDAD, PRECIO1, SPREAD, PRECIO2, INTERESESCORR, PRECIOEJ, TIPOCAMBIO, PRECIOMER, TOTALCAUCION, PORCOMISION, TASAPRECAN, PRECIO3, PRECIO4, TIPOCAMBIO2, TIPOCAMBIO3, MERCADO, CLIENTE1, CLIENTE2, CLIENTE3, OPERADOR, CONTRAESPECIE, ENTECUS1, ENTECUS2, CONTRAESPECIE2, TIPODOC, CLIENTE4, CLIENTE5, CONCEPTOEMP, FECHAVTO, FECHAEJ, FECHAPRECAN, FECHAPAGO, PLAZO, LOTES, OPERACIONREF, AFCAUCION, NROPERACION2, NROPERACION3, TOTALBRUTOCLI1, TOTALBRUTOCLI2, TOTALBRUTOCLI3, TOTALCOMISIONES, TOTALGASTOS, TOTALDERECHOS, TOTALRETENCIONES, TOTALIMPUESTOS, TOTALNETOCLI1, TOTALNETOCLI2, TOTALNETOCLI3, TOTALINTERESES, TIPOOPCION, CUSTODIA, DIASMES, DIASANIO, ESMULTIOPERACION, RB1, RB2, RB3, RB4, MB1, MB2, MB3, MB4, MB5, MB6, OBSERVACIONES, MENSAJECHEQUEO, OBSERVACDOC, USRINPUT, FECHACARGA, OBSERVAC2, OBSERVAC3, NUMERADOR, BIREALES, BISTRINGS, BIFECHAS, BIINTEGERS, BITOTALES, GRUPOOP, DIRECCION, LINSTANCIA, IMPRESA, FECHAENVIOMAE, NROALTAMAE, NROBAJAMAE, FECHAALTAMAE, ACEPTAMAE, CODERRORMAE, OBSERRORMAE, FECHACARGASYS, NRORDEN, NRMINUTABOLSA, CODCOMITENTE, CUOTAS1, CUOTAS2, FORMALIQUIDACION1, FORMALIQUIDACION2, FORMALIQUIDACION3, FORMALIQUIDACION4, MERCADO2, FECHABAJAMAE, NRBOLETO, FECHAULTCUPON, TASAINTERESESCUPON, CORREDOR, COMISION, PASECB, SISTAMORTIZACION, TABLAFERIADOS1, TABLAFERIADOS2, FECHAOP2, FECHAVTO2, PLAZOENHORAS, PLAZO2, PLAZO3, PLAZO4, TOTALAUX1, TOTALAUX2, TOTALAUX3, TOTALAUX4, TASABASE, COTIZACION1, PLAZOGRACIA, TIPOGRACIA, TOTALIVA, TOTALGANANCIAS, RB5, RB6, RB7, RB8, RB9, RB10, CB5, CB6, CB7, CB8, CB9, CB10, PORDERECHOBOLSA, PORDERECHOMERCADO, PORARANCEL, PORIMPUESTOBOLSA, PORIMPUESTO, MINDERECHOBOLSA, MINDERECHOMERCADO, MINARANCEL, MINIMPUESTOBOLSA, MINIMPUESTO, PORAFORO, PORCAUCION, ESCAUCIONADO, ESAFORADO, VEHICULO1, VEHICULO2, UDN1, UDN2, SECTOR1, SECTOR2, CENTRO1, CENTRO2, BOOK1, BOOK2, RUEDACONTINUA, CANTIMPRESIONES1, CANTIMPRESIONES2, CANTIMPRESIONES3, CARTERA, CONCEPTOBCRA, PLAZA1, PLAZA2, MERCADO3, MERCADO4, INTDEVENGADOS1, INTDEVENGADOS2, TASAVAR, TIPOTASA, TASAESPECIE, DELTATASA, OPPRECANCELAR, OPRENOVAR, PERIODOINTS, PLAZORENOVPREDETER, FECHAENVIOCV, NRALTACV, FECHAALTACV, NRBAJACV, FECHABAJACV, ACEPTACV, CODERRORCV, CUENTA1, CUENTA2, CUENTA3, CUENTA4, INTERFACEOK, AUTOCOTIZABLE, AUTOCOTIZADA, AUTOSUPERVISABLE, AUTOSUPERVISADA, CORPORATE, EXTERNA, FECHASISEXTERNO, CODSISEXTERNO, FECHAENVALTASISEXTERNO, FECHAALTASISEXTERNO, NRSISEXTERNO, FECHAENVBAJASISEXTERNO, FECHABAJASISEXTERNO, MODOCOTIZA, TIPOTICKET, SECTORRB, VALORRB1, VALORRB2, MERCADORB, COTIZACION2, PUESTO, ARBITRAJE, ROJO, CONVENIO, COLOR, OPSIOPEL, CUPON1, CUPON2, PAIS, TIPONEGOCIO, CLASEOPERACION, VTEORICO, NRPRODUCTO, SUCURSAL, TIPOTASA2, CONCEPTOBCRA2, INSTRUCCION_PAGO, GPMEP1, GPMEP2, GPMEP3, RAZONSOCIAL1, CB4, OPERADOR1, CB1, CB2, CB3, CONFIRMADA, GPMEP4, NRO_DOC_INSC, TIPO_DOC_INSC, FECHA_NACIMIENTO, CARTERA1, CO, COC, DJAI, EXCEPCION_DJAI, DJAS, EXCEPCION_DJAS, BROKER, PAIS_RESIDENCIA, CODSISEXTERNO_DET, FECHA_REF_BCRA, PRECIO_REF_BCRA, NIF, ENTIDAD, JURISDICCION, PAISHIJA, BENEFICIARIOHIJA, CONTINGENCIA, ACUMULA_SALDO, REPATRIACION, MONTO_USADO_REPA, TIPO_MON_ORIGEN, TIPO_MON_DESTINO, TIPO_MON_OPER, ACRED_AUTOMATICA, AUTOGESTION, ID_PCC, NRO_FORMULARIO_OBCM, CANAL_AUTOGESTION, CONTROL_MESA, ID_SISTEMA_EXTERNO, SECUENCIA, ID_OPERACION_BCRA, ID_ANULACION_BCRA, to_char(FECHAOP,'YYYY-MM-DD') AS FECHAOP FROM {environment}.{table} WHERE to_char(FECHAOP,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/fechaop={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "CIERREBNA",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/cierrebna",
+            "partition_field": "FECHA",
+            "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=cierrebna -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT ESPECIE, PRECIOCOMPRA, PRECIOVENTA, PRECIO1, PRECIO2, PRECIO3, PRECIO4, PRECIO5, PORCADA, MERCADO, to_char(FECHA, 'YYYY-MM-DD') AS FECHA FROM {environment}.{table} WHERE to_char(FECHA,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/fecha={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "CLIENTES",
+            "table_type": "dim",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/dim/clientes",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=clientes -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+      {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "COMEXWEB_ESTADOS",
+            "table_type": "dim",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/dim/comexweb_estados",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=comexweb_estados -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+      {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "CONCEPTOSBCRA",
+            "table_type": "dim",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/dim/conceptosbcra",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=conceptosbcra -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+
+	  },
+	  {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "CUOTAS",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/cuotas",
+            "partition_field": "FECHAOP",
+			"split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=cuotas -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.NROPERACION, A.NRCUOTA, A.CLIENTE1, A.CLIENTE2, A.VEHICULO1, A.VEHICULO2, A.ESPECIE1, A.ESPECIE2, A.ESPECIE3, A.ESPECIE4, A.CHECK1, A.CHECK2, A.CHECK3, A.CHECK4, A.CHECK5, A.CHECK6, A.CHECK7, A.CHECK8, A.CHECK9, A.CHECK10, A.RADIO1, A.RADIO2, A.RADIO3, A.RADIO4, A.RADIO5, A.RADIO6, A.RADIO7, A.RADIO8, A.RADIO9, A.RADIO10, A.FECHA1, A.FECHA2, A.FECHA3, A.FECHA4, A.FECHA5, A.FECHA6, A.FECHA7, A.FECHA8, A.FECHA9, A.FECHA10, A.MERCADO1, A.MERCADO2, A.PLAZO1, A.PLAZO2, A.PLAZO3, A.PLAZO4, A.CANTIDAD1, A.CANTIDAD2, A.CANTIDAD3, A.CANTIDAD4, A.PRECIO1, A.PRECIO2, A.PRECIO3, A.PRECIO4, A.TOTAL1, A.TOTAL2, A.TOTAL3, A.TOTAL4, A.TOTAL5, A.TOTAL6, A.TOTAL7, A.TOTAL8, A.TASA1, A.TASA2, A.EMBARQUE1, A.EMBARQUE2, A.EMBARQUE3, A.EMBARQUE4, A.CONCEPTOBCRA1, A.COC, A.CO, A.DJAI, A.EXCEPCION_DJAI, A.CODIGO_REFERENCIA, A.REFERENCIA, A.COD_OBSERVACION, A.OBSERVACION, to_char(B.FECHAOP, 'YYYY-MM-DD') AS FECHAOP2 FROM {environment}.{table} A JOIN {environment}.OPERACIONES B ON A.NROPERACION = B.NROPERACION WHERE to_char(B.FECHAOP, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "OPERACIONESBITS",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/operacionesbits",
+            "partition_field": "FECHAOP",
+			"split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=operacionesbits -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.NROPERACION, A.NRBIT, A.VALOR, to_char(B.FECHAOP, 'YYYY-MM-DD') AS FECHAOP FROM {environment}.{table} A JOIN {environment}.OPERACIONES B ON A.NROPERACION = B.NROPERACION WHERE to_char(B.FECHAOP, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "BOPERACIONES",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/boperaciones",
+            "partition_field": "FECHAOP",
+			"split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=boperaciones -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.ESPECIE, A.TIPOOP, A.NROPERACION, A.CANTIDAD, A.PRECIO1, A.SPREAD, A.PRECIO2, A.INTERESESCORR, A.PRECIOEJ, A.TIPOCAMBIO, A.PRECIOMER, A.TOTALCAUCION, A.PORCOMISION, A.TASAPRECAN, A.PRECIO3, A.PRECIO4, A.TIPOCAMBIO2, A.TIPOCAMBIO3, A.MERCADO, A.CLIENTE1, A.CLIENTE2, A.CLIENTE3, A.OPERADOR, A.CONTRAESPECIE, A.ENTECUS1, A.ENTECUS2, A.CONTRAESPECIE2, A.TIPODOC, A.CLIENTE4, A.CLIENTE5, A.CONCEPTOEMP, A.FECHAVTO, A.FECHAEJ, A.FECHAPRECAN, A.FECHAPAGO, A.PLAZO, A.LOTES, A.OPERACIONREF, A.AFCAUCION, A.NROPERACION2, A.NROPERACION3, A.TOTALBRUTOCLI1, A.TOTALBRUTOCLI2, A.TOTALBRUTOCLI3, A.TOTALCOMISIONES, A.TOTALGASTOS, A.TOTALDERECHOS, A.TOTALRETENCIONES, A.TOTALIMPUESTOS, A.TOTALNETOCLI1, A.TOTALNETOCLI2, A.TOTALNETOCLI3, A.TOTALINTERESES, A.TIPOOPCION, A.CUSTODIA, A.DIASMES, A.DIASANIO, A.ESMULTIOPERACION, A.RB1, A.RB2, A.RB3, A.RB4, A.MB1, A.MB2, A.MB3, A.MB4, A.MB5, A.MB6, A.OBSERVACIONES, A.MENSAJECHEQUEO, A.OBSERVACDOC, A.USRINPUT, A.FECHACARGA, A.OBSERVAC2, A.OBSERVAC3, A.NUMERADOR, A.BIREALES, A.BISTRINGS, A.BIFECHAS, A.BIINTEGERS, A.BITOTALES, A.GRUPOOP, A.DIRECCION, A.LINSTANCIA, A.IMPRESA, A.FECHAENVIOMAE, A.NROALTAMAE, A.NROBAJAMAE, A.FECHAALTAMAE, A.ACEPTAMAE, A.CODERRORMAE, A.OBSERRORMAE, A.FECHACARGASYS, A.NRORDEN, A.NRMINUTABOLSA, A.CODCOMITENTE, A.CUOTAS1, A.CUOTAS2, A.FORMALIQUIDACION1, A.FORMALIQUIDACION2, A.FORMALIQUIDACION3, A.FORMALIQUIDACION4, A.MERCADO2, A.FECHABAJAMAE, A.NRBOLETO, A.FECHAULTCUPON, A.TASAINTERESESCUPON, A.CORREDOR, A.COMISION, A.PASECB, A.SISTAMORTIZACION, A.TABLAFERIADOS1, A.TABLAFERIADOS2, A.FECHAOP2, A.FECHAVTO2, A.PLAZOENHORAS, A.PLAZO2, A.PLAZO3, A.PLAZO4, A.TOTALAUX1, A.TOTALAUX2, A.TOTALAUX3, A.TOTALAUX4, A.TASABASE, A.COTIZACION1, A.PLAZOGRACIA, A.TIPOGRACIA, A.TOTALIVA, A.TOTALGANANCIAS, A.RB5, A.RB6, A.RB7, A.RB8, A.RB9, A.RB10, A.CB5, A.CB6, A.CB7, A.CB8, A.CB9, A.CB10, A.PORDERECHOBOLSA, A.PORDERECHOMERCADO, A.PORARANCEL, A.PORIMPUESTOBOLSA, A.PORIMPUESTO, A.MINDERECHOBOLSA, A.MINDERECHOMERCADO, A.MINARANCEL, A.MINIMPUESTOBOLSA, A.MINIMPUESTO, A.PORAFORO, A.PORCAUCION, A.ESCAUCIONADO, A.ESAFORADO, A.VEHICULO1, A.VEHICULO2, A.UDN1, A.UDN2, A.SECTOR1, A.SECTOR2, A.CENTRO1, A.CENTRO2, A.BOOK1, A.BOOK2, A.RUEDACONTINUA, A.CANTIMPRESIONES1, A.CANTIMPRESIONES2, A.CANTIMPRESIONES3, A.CARTERA, A.CONCEPTOBCRA, A.PLAZA1, A.PLAZA2, A.MERCADO3, A.MERCADO4, A.INTDEVENGADOS1, A.INTDEVENGADOS2, A.TASAVAR, A.TIPOTASA, A.TASAESPECIE, A.DELTATASA, A.OPPRECANCELAR, A.OPRENOVAR, A.PERIODOINTS, A.PLAZORENOVPREDETER, A.FECHAENVIOCV, A.NRALTACV, A.FECHAALTACV, A.NRBAJACV, A.FECHABAJACV, A.ACEPTACV, A.CODERRORCV, A.CUENTA1, A.CUENTA2, A.CUENTA3, A.CUENTA4, A.INTERFACEOK, A.AUTOCOTIZABLE, A.AUTOCOTIZADA, A.AUTOSUPERVISABLE, A.AUTOSUPERVISADA, A.CORPORATE, A.EXTERNA, A.FECHASISEXTERNO, A.CODSISEXTERNO, A.FECHAENVALTASISEXTERNO, A.FECHAALTASISEXTERNO, A.NRSISEXTERNO, A.FECHAENVBAJASISEXTERNO, A.FECHABAJASISEXTERNO, A.MODOCOTIZA, A.TIPOTICKET, A.SECTORRB, A.VALORRB1, A.VALORRB2, A.MERCADORB, A.COTIZACION2, A.PUESTO, A.ARBITRAJE, A.ROJO, A.CONVENIO, A.COLOR, A.OPSIOPEL, A.CUPON1, A.CUPON2, A.USUARIODEL, A.FECHADEL, A.SUCURSAL, A.TIPOTASA2, A.INSTRUCCION_PAGO, A.RAZONSOCIAL1, A.GPMEP4, A.CARTERA1, A.FECHA_NACIMIENTO, A.CO, A.COC, A.DJAI, A.EXCEPCION_DJAI, A.GPMEP1, A.GPMEP2, A.DJAS, A.EXCEPCION_DJAS, A.PAIS, A.TIPONEGOCIO, A.CLASEOPERACION, A.VTEORICO, A.NRPRODUCTO, A.GPMEP3, A.CB4, A.OPERADOR1, A.CB1, A.CB2, A.CB3, A.CONFIRMADA, A.NRO_DOC_INSC, A.TIPO_DOC_INSC, A.BROKER, A.PAIS_RESIDENCIA, A.CONCEPTOBCRA2, A.FECHA_REF_BCRA, A.PRECIO_REF_BCRA, A.ACUMULA_SALDO, A.REPATRIACION, A.MONTO_USADO_REPA, A.TIPO_MON_ORIGEN, A.TIPO_MON_DESTINO, A.TIPO_MON_OPER, A.ACRED_AUTOMATICA, A.AUTOGESTION, A.CONTROL_MESA, A.CANAL_AUTOGESTION, A.NRO_FORMULARIO_OBCM, A.ID_PCC, A.ID_SISTEMA_EXTERNO, A.SECUENCIA, A.ID_OPERACION_BCRA, A.ID_ANULACION_BCRA, to_char(A.FECHAOP, 'YYYY-MM-DD') AS FECHAOP FROM {environment}.{table} A WHERE to_char(A.FECHAOP, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "FX_PCC",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/fx_pcc",
+            "partition_field": "FECHAOP",
+			"split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=fx_pcc -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.ID_PCC, A.ID_MESA, A.ID_ESTADO, A.ID_SISTEMA_EXTERNO, A.SECUENCIA, A.FECHA_PCC, A.COMPRA_VENTA, A.TIPO_OPERATORIA, A.COD_MONEDA, A.TIPO_MONEDA, A.COD_CONTRAMONEDA, A.TIPO_CONTRAMONEDA, A.MONTO_ME, A.CONCEPTO_BCRA, A.CANAL, A.SISTEMA_INVOCADOR, A.NUP, A.TIPO_DOC_INSC, A.NRO_DOC_INSC, A.TIPO_DOC_PRINC, A.NRO_DOC_PRINC, A.RAZON_SOCIAL, A.FECHA_NACIMIENTO, A.PLAZO, A.PUESTO, A.SECTOR, A.FECHA_LIQ_ME, A.FECHA_LIQ_MN, A.PAIS_RESIDENCIA, A.INSTRUMENTO_ME, A.INSTRUMENTO_MN, A.ACRED_DIRECTA, A.AUTOGESTION, A.TIPO_CIERRE, A.USUARIO_ALTA, A.FECHA_ALTA, A.CORREDOR, A.COTIZACION, A.PRECIO_INTERNO, A.PAIS_NACIONALIDAD, A.PAIS_ORIGEN, A.SUCURSAL, A.ORIGEN_OPER, A.DESTINO_OPER, A.ID_PRESTAMO, A.ID_REF_CANAL, A.JURISDICCION, A.LLAVE_SUPERVICION, A.SUBCANAL, A.NRO_FORMULARIO_OBCM, A.CANAL_AUTOGESTION, A.TIPO_OPERACION, A.CORRESPONSAL, A.BENEFICIARIO, A.PAIS_BENEFICIARIO, to_char(B.FECHAOP, 'YYYY-MM-DD') AS FECHAOP FROM {environment}.{table} A JOIN {environment}.OPERACIONES B ON A.ID_PCC = B.ID_PCC WHERE to_char(B.FECHAOP, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+	  {
+            "serverConfig" : "DBLXORABMG03",
+            "database": "RIO4",
+            "table": "COMEX_ESTADOS_LOG",
+            "table_type": "fact",
+			"environment": "SAM",
+            "landing_path": "/santander/bi-corp/landing/rio4/fact/comex_estados_log",
+            "partition_field": "FECHAOP",
+			"split_field": "to_char(FECHAOP, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table}  -Dmapreduce.output.basename=comex_estados_log -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.NRO_PROPUESTA, A.NRO_BOLETO, A.COTIZACION, A.ESTADO, A.PROCESADO, A.ID_LOG, A.FECHA_CARGA, A.FECHA_PROCESO, A.FECHA_LIQ_MON, A.FECHA_LIQ_MON_EXT, to_char(B.FECHAOP, 'YYYY-MM-DD') AS FECHAOP FROM {environment}.{table} A JOIN {environment}.OPERACIONES B ON NVL(A.NRO_BOLETO, A.NRO_PROPUESTA) = B.NROPERACION WHERE to_char(B.FECHAOP, 'yyyy-MM-dd')='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      }
+
+   ]
+}

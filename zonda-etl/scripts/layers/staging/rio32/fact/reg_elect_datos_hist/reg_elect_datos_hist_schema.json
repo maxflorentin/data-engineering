@@ -1,0 +1,35 @@
+{
+  "file": "reg_elect_datos_hist_schema",
+  "location": "/santander/bi-corp/landing/rio32/fact/reg_elect_datos_hist/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio32/fact/reg_elect_datos_hist",
+  "tempDirectory": "/santander/bi-corp/temp/rio32",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "operaciondatosid",
+    "type": "string"
+  },
+    {
+      "name": "entrada",
+      "type": "string"
+    },
+    {
+      "name": "salida",
+      "type": "string"
+    },
+    {
+      "name": "custom",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

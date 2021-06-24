@@ -1,0 +1,19 @@
+{
+  "file": "saldos_balances_diarios",
+  "location": "/santander/bi-corp/landing/moria/fact/saldos_balances_diarios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/moria/fact/saldos_balances_diarios",
+  "header": false,
+  "copybook": "saldos_balances_diarios.cob",
+  "createTable":"bi_corp_staging.moria_saldos_balances_diarios",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

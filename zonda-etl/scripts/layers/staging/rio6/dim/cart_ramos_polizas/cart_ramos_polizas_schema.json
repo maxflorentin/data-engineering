@@ -1,0 +1,110 @@
+{
+  "file": "cart_ramos_polizas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_ramos_polizas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_ramos_polizas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"carp_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"carp_de_ramo",
+      "type":"string"
+    },
+    {
+      "name":"carp_tp_ramo",
+      "type":"string"
+    },
+    {
+      "name":"carp_cd_sigla",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_financiado",
+      "type":"string"
+    },
+    {
+      "name":"carp_mt_maximo_pago",
+      "type":"string"
+    },
+    {
+      "name":"carp_nu_meses_rehabilitar",
+      "type":"string"
+    },
+    {
+      "name":"capr_in_violacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_tp_grupo",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_particular_colectivo",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_individual_colectivos",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_anulacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_fe_ultima_renovacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_st_renovacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_fe_calculo_renovacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_solicitud_anulacion",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_renovacion_automatica",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_manejo_raco",
+      "type":"string"
+    },
+    {
+      "name":"carp_in_coaseguro",
+      "type":"string"
+    },
+    {
+      "name":"carp_nu_polizas_cliente",
+      "type":"string"
+    },
+    {
+      "name":"carp_mt_sumaseg_total",
+      "type":"string"
+    },
+    {
+      "name":"carp_de_web_select",
+      "type":"string"
+    },
+    {
+      "name":"carp_st_ramo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

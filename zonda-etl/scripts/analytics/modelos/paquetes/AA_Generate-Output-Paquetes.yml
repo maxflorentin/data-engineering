@@ -1,0 +1,67 @@
+name: AA_Generate-Output-Paquetes
+description: 'Generacion de Salida Paquetes'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 12 * * *'
+start_date: '2020-07-01'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: SparkSubmitOperator
+    config:
+      name: 'ExportData-Paquetes'
+      connection_id: cloudera_spark2
+      num_executors: 10
+      executor_cores: 5
+      executor_memory: 8G
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/unloader/unloader.py'
+      files: '$ZONDA_DIR/repositories/zonda-etl/scripts/analytics/modelos/paquetes/paquetes.hql'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='AA_Generate-Output-Paquetes') }}"
+      }
+      application_args: ['--query', "$ZONDA_DIR/repositories/zonda-etl/scripts/analytics/modelos/paquetes/paquetes.hql",
+                         '--output', "/user/$SERVICE_USER/.sparkStaging/tmp/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv",
+                         '--delimiter', ";",
+                         '--header', "false"]
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/user/$SERVICE_USER/.sparkStaging/tmp/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv"
+      local_path: "/aplicaciones/bi/zonda/outbound/analytics/paquetes/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv"
+      skip_errors: false
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "/aplicaciones/bi/zonda/outbound/analytics/paquetes/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/analytics/paquetes/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm /aplicaciones/bi/zonda/outbound/analytics/paquetes/propension_paquetes_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='AA_Generate-Output-Paquetes') }}01.csv"
+dependencies:
+  report_execution: MoveFileToLocalServer
+  MoveFileToLocalServer: report_send_sftp
+  report_send_sftp : EXECUTE_Remove_FILE
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL, analytics-alerts]
+  users: [irusconi@santandertecnologia.com.ar]

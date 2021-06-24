@@ -1,0 +1,29 @@
+{
+	"file": "centro_costo_jerarquia_schema",
+	"location": "/santander/bi-corp/landing/meta4/dim/centro_costo_jerarquia/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/meta4/dim/centro_costo_jerarquia",
+	"createTable": "bi_corp_staging.meta4_centro_costo_jerarquia",
+	"extension": "csv",
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo_cc",
+			"type": "string"
+		},
+		{
+			"name": "codigo_cc_padre",
+			"type": "string"
+		}
+		
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

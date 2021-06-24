@@ -1,0 +1,140 @@
+{
+  "file": "LOAD_STG_Genesys-Daily",
+  "location": "/santander/bi-corp/landing/genesys/fact/discador_cv/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/genesys/fact/discador_cv",
+  "createTable": "bi_corp_staging.genesys_discador_cv",
+  "extension": "csv",
+  "delimiter": "|",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+          {
+                  "name": "time",
+                  "type": "string"
+          },
+          {
+                  "name": "action",
+                  "type": "string"
+          },
+          {
+                  "name": "record_handle",
+                  "type": "string"
+          },
+          {
+                  "name": "list_id",
+                  "type": "string"
+          },
+          {
+                  "name": "campaign_id",
+                  "type": "string"
+          },
+          {
+                  "name": "group_id",
+                  "type": "string"
+          },
+          {
+                  "name": "ocs_app_id",
+                  "type": "string"
+          },
+          {
+                  "name": "tenant_id",
+                  "type": "string"
+          },
+          {
+                  "name": "connection_id",
+                  "type": "string"
+          },
+          {
+                  "name": "dn",
+                  "type": "string"
+          },
+          {
+                  "name": "record_id",
+                  "type": "string"
+          },
+           {
+                  "name": "phone",
+                  "type": "string"
+          },
+           {
+                  "name": "phone_type",
+                  "type": "string"
+          },
+           {
+                  "name": "record_type",
+                  "type": "string"
+          },
+           {
+                  "name": "record_status",
+                  "type": "string"
+          },
+           {
+                  "name": "call_result",
+                  "type": "string"
+          },
+           {
+                  "name": "attempt",
+                  "type": "string"
+          },
+            {
+                  "name": "dial_sched_time",
+                  "type": "string"
+          },
+            {
+                  "name": "call_time",
+                  "type": "string"
+          },
+            {
+                  "name": "daily_from",
+                  "type": "string"
+          },
+            {
+                  "name": "daily_till",
+                  "type": "string"
+          },
+            {
+                  "name": "tz_dbid",
+                  "type": "string"
+          },
+            {
+                  "name": "tz_offset",
+                  "type": "string"
+          },
+            {
+                  "name": "agent_id",
+                  "type": "string"
+          },
+            {
+                  "name": "chain_id",
+                  "type": "string"
+          },
+            {
+                  "name": "chain_n",
+                  "type": "string"
+          },
+            {
+                  "name": "audio1",
+                  "type": "string"
+          },
+            {
+                  "name": "VDN",
+                  "type": "string"
+          },
+            {
+                  "name": "customdata",
+                  "type": "string"
+          },
+             {
+                  "name": "table_name",
+                  "type": "string"
+          }
+  ],
+  "extraColumns": [{
+          "name": "partition_date",
+          "type": "string",
+          "value": "${partition_date}",
+          "partitionColumn": true,
+          "partitionOrder": 1
+  }]
+}

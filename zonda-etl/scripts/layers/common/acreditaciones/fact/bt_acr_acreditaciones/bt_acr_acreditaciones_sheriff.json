@@ -1,0 +1,20 @@
+{
+  "table": "bi_corp_common.bt_acr_acreditaciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["dt_acr_acreditacion", "fc_acr_importe", "cod_acr_tipo_acreditacion", "cod_acr_entidad_empleado", "cod_acr_suc_empleado", "cod_acr_cta_empleado", "cod_div_divisa_empleado", "cod_per_nup_empleado", "ds_per_cuil_empleado", "ds_per_cuit_empleador"]
+    },
+	{
+      "control_id": "duplicates",
+      "field_to_check": ["dt_acr_acreditacion", "cod_acr_entidad_empleado", "cod_acr_suc_empleado", "cod_acr_cta_empleado", "cod_div_divisa_empleado", "cod_acr_entidad_empleador", "cod_acr_suc_empleador", "cod_acr_cta_empleador", "cod_div_divisa_empleador", "fc_acr_importe"],
+	  "threshold": 0.02
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_acr_acreditacion", "dt_acr_alta_cta_empleado"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

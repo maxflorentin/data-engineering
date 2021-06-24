@@ -1,0 +1,112 @@
+name: LOAD_STG_ABAE_Trf-Daily
+description: 'Load data from ABAE - transferencias - source to STG (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '30 7 * * *'
+start_date: '2020-11-26'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_ABAE_CONCEPTOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE_CONCEPTOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/dim/abae_conceptos/abae_conceptos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['abae_conceptos_schema.json']
+  - name: STAGING_ABAE_ENT_VIRTUALES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE_ENT_VIRTUALES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/dim/abae_ent_virtuales/abae_ent_virtuales_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['abae_ent_virtuales_schema.json']
+  - name: STAGING_ABAE_RECHAZOS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE_RECHAZOS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/dim/abae_rechazos/abae_rechazos_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['abae_rechazos_schema.json']
+  - name: STAGING_ABAE_CANALES_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE_CANALES_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/dim/abae_canales/abae_canales_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['abae_canales_schema.json']
+  - name: STAGING_ABAE_TRANSFERENCIAS_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ABAE_TRANSFERENCIAS_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 1
+      executor_memory: 8G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/abae/fact/abae_transferencias/abae_transferencias_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_ABAE_Trf-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['abae_transferencias_schema.json']
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msuliano@santandertecnologia.com.ar]

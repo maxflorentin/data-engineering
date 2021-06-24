@@ -1,0 +1,27 @@
+{
+  "name": "Billetes-Daily-Business",
+  "shift": -1,
+  "conditions" : [
+        {
+      "dag_id":"LOAD_CMN_Cuentas_Comisiones_Cobradas-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_CMN_Cuentas_Campania-Daily",
+      "tasks": "all"
+    },
+    {
+      "dag_id":"LOAD_CMN_Cuentas",
+      "tasks": ["bt_cue_movimientos_cuenta"]
+    },
+    {
+      "dag_id":"LOAD_CMN_Personas-Daily",
+      "tasks": ["InsertPartitionPersonas"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_BSN_Cuentas_Comisiones_Billetes-Daily"
+    }
+  ]
+}

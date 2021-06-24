@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.stk_inv_titulos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup", "ds_inv_tipo_especie", "cod_inv_moneda_emision", "cod_inv_sucursal_operativa"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_inv_cuenta", "cod_inv_especie", "cod_inv_estado_tenencia"],
+	  "threshold": 0.01
+    }
+  ]
+}

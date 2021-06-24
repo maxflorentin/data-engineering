@@ -1,0 +1,48 @@
+{
+  "file": "tmya_message_request_data_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/tmya_message_request_data/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/tmya_message_request_data",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "msg_req_id",
+    "type": "string"
+  },
+    {
+      "name": "id_entitlement",
+      "type": "string"
+    },
+    {
+      "name": "create_timestamp",
+      "type": "string"
+    },
+    {
+      "name": "manual",
+      "type": "string"
+    },
+    {
+      "name": "processed",
+      "type": "string"
+    },
+    {
+      "name": "data",
+      "type": "string"
+
+    },
+    {
+      "name": "timestamp_inicio_procesamiento",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

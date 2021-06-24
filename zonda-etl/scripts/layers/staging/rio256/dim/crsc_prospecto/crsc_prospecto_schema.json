@@ -1,0 +1,159 @@
+{
+    "file": "crsc_prospecto_schema",
+    "createTable": "bi_corp_staging.rio256_crsc_prospecto",
+    "location": "/santander/bi-corp/landing/rio256/dim/crsc_prospecto/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio256/dim/crsc_prospecto",
+    "tempDirectory": "/santander/bi-corp/temp/rio256",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "nombre",
+            "type": "string"
+        },
+        {
+            "name": "apellido",
+            "type": "string"
+        },
+        {
+            "name": "id_tramite_renaper",
+            "type": "string"
+        },
+        {
+            "name": "id_nacionalidad",
+            "type": "string"
+        },
+        {
+            "name": "id_pais_origen",
+            "type": "string"
+        },
+        {
+            "name": "fecha_nacimiento",
+            "type": "string"
+        },
+        {
+            "name": "sexo",
+            "type": "string"
+        },
+        {
+            "name": "estado_civil",
+            "type": "string"
+        },
+        {
+            "name": "mail",
+            "type": "string"
+        },
+        {
+            "name": "celular",
+            "type": "string"
+        },
+        {
+            "name": "compania_celular",
+            "type": "string"
+        },
+        {
+            "name": "id_domicilio",
+            "type": "string"
+        },
+        {
+            "name": "cuil",
+            "type": "string"
+        },
+        {
+            "name": "vino_renaper",
+            "type": "string"
+        },
+        {
+            "name": "tiempo_residencia",
+            "type": "string"
+        },
+        {
+            "name": "tipo_laboral",
+            "type": "string"
+        },
+        {
+            "name": "ingresos",
+            "type": "string"
+        },
+        {
+            "name": "indico_esuniv",
+            "type": "string"
+        },
+        {
+            "name": "acepto_tyc",
+            "type": "string"
+        },
+        {
+            "name": "genero_clave",
+            "type": "string"
+        },
+        {
+            "name": "fecha_inicio_actividad",
+            "type": "string"
+        },
+        {
+            "name": "cod_tipo_residencia",
+            "type": "string"
+        },
+        {
+            "name": "expiracion_doc",
+            "type": "string"
+        },
+        {
+            "name": "ejemplar",
+            "type": "string"
+        },
+        {
+            "name": "id_actividad",
+            "type": "string"
+        },
+        {
+            "name": "alta_mya",
+            "type": "string"
+        },
+        {
+            "name": "similitud",
+            "type": "string"
+        },
+        {
+            "name": "cliente_previo",
+            "type": "string"
+        },
+        {
+            "name": "sanidad",
+            "type": "string"
+        },
+        {
+            "name": "fecha_emision",
+            "type": "string"
+        },
+        {
+            "name": "vcto_residencia",
+            "type": "string"
+        },
+        {
+            "name": "cliente_con_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "upgrade_univ",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

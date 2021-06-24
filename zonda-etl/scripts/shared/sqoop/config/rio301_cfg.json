@@ -1,0 +1,22 @@
+{
+    "tables": [
+        {
+            "serverConfig": "DBLXBUSISRV11",
+            "database": "RIO301",
+            "table_type": "fact",
+            "environment": "rio301",
+            "table": "RENEG_OFFER",
+            "landing_path": "/santander/bi-corp/landing/rio301/fact/reneg_offer",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"RECUP.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --bindir {zonda_dir}/sqoop/rio301/reneg_offer  --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        },
+        {
+            "serverConfig": "DBLXBUSISRV11",
+            "database": "RIO301",
+            "table_type": "fact",
+            "environment": "rio301",
+            "table": "RENEG_PROCESS",
+            "landing_path": "/santander/bi-corp/landing/rio301/fact/reneg_process",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"RECUP.{table}\"  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --bindir {zonda_dir}/sqoop/rio301/reneg_process  --password '{password}' --null-string '' --null-non-string ''  --compression-codec org.apache.hadoop.io.compress.SnappyCodec --verbose\n"
+        }
+    ]
+}

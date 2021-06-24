@@ -1,0 +1,1 @@
+python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/controlm/controlm_executor.py --job_name RIO-ENRI-Dummy068

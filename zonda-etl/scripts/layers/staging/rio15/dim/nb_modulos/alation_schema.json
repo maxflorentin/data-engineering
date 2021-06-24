@@ -1,0 +1,51 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308562"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio15_nb_modulos",
+      "title": "Descripcione de los modulos",
+      "schema": "bi_corp_staging",
+      "source": "RIOPIF",
+      "query": "",
+      "type": "DIM",
+      "description": "Descripcione de los modulos",
+      "columns": [
+        {
+          "name": "MODULO",
+          "title": "MODULO",
+          "description": "Id de modulo (Relacion Tabla NB_DESC_TRX)",
+          "type": "NUMBER(8)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPCION",
+          "title": "DESCRIPCION",
+          "description": "Descripcion del ID",
+          "type": "VARCHAR2(60 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "No Aplica",
+          "nullable": false,
+          "length": 60.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

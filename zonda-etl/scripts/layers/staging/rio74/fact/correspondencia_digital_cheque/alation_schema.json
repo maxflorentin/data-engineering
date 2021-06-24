@@ -1,0 +1,62 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_correspondencia_digital_cheque",
+      "title": "detalle de envio de cartas documento que tienen cheque asociado",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "detalle de envio de cartas documento que tienen cheque asociado",
+      "columns": [
+        {
+          "name": "ID_CORRESPONDENCIA",
+          "title": "ID_CORRESPONDENCIA",
+          "description": "ID asociado a la tabla correspondencia_digital",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUMERO_CHEQUE",
+          "title": "NUMERO_CHEQUE",
+          "description": "numero de cheque",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IMPORTE",
+          "title": "IMPORTE",
+          "description": "importe del cheque",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

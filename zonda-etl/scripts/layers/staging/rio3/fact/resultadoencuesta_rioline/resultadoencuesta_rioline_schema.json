@@ -1,0 +1,54 @@
+{
+  "file": "resultadoencuesta_rioline_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/resultadoencuesta_rioline/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/resultadoencuesta_rioline",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+  {
+    "name": "operacion ",
+    "type": "string"
+  },
+  {
+    "name": "encuesta",
+    "type": "string"
+  },
+    {
+      "name": "producto",
+      "type": "string"
+    },
+  {
+    "name": "respuesta",
+    "type": "string"
+  },
+  {
+    "name": "pregunta",
+    "type": "string"
+  },
+  {
+    "name": "valor",
+    "type": "string"
+  },
+    {
+      "name": "comentario",
+      "type": "string"
+    },
+  {
+    "name": "fecha",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "fecha",
+   "type": "date",
+   "dateFormat": "yyyyMMdd",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

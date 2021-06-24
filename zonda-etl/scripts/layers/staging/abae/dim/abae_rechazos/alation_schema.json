@@ -1,0 +1,62 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307319"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "abae_rechazos",
+            "title": "Parametria + Descripcion de rechazos",
+            "schema": "bi_corp_staging",
+            "source": "ABAE",
+            "query": "",
+            "type": "DIM",
+            "description": "Parametria + Descripcion de rechazos",
+            "columns": [
+                {
+                    "name": "ERROR",
+                    "title": "ERROR",
+                    "description": "Parametria del error",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_MOVIMIENTO",
+                    "title": "TIPO_MOVIMIENTO",
+                    "description": "Tipo del error – A=Aceptada – D=Denegada – R= Rechazada",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIPCION",
+                    "title": "DESCRIPCION",
+                    "description": "Descripcion del error",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 41.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

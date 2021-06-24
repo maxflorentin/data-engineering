@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_ventas_post_balance_client",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_ventas_post_balance_client"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_ventas_post_balance_client","dt_adm_mes","ds_adm_peusualt","dt_adm_pefecalt"],
+      "threshold": 0.00
+    }
+  ]
+}
+

@@ -1,0 +1,51 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307319"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "abae_canales",
+            "title": "Parametria + Descripcion de canales",
+            "schema": "bi_corp_staging",
+            "source": "ABAE",
+            "query": "",
+            "type": "DIM",
+            "description": "Parametria + Descripcion de CANALES",
+            "columns": [
+                {
+                    "name": "CANAL",
+                    "title": "CANAL",
+                    "description": "Canala por el cual se curso la operación",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "Descripcion",
+                    "title": "Descripcion",
+                    "description": "Descripcion del Canal",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

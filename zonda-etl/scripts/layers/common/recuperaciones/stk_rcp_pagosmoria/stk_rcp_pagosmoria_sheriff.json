@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_rcp_pagosmoria",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_rcp_fechacanceoperacion"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    },
+	{
+      "control_id": "duplicates",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_rcp_cancelacion","cod_rcp_numrecibo"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_nro_cuenta","cod_suc_sucursal","cod_prod_producto","cod_prod_subproducto","cod_div_divisa","cod_rcp_cancelacion","cod_rcp_numrecibo"],
+      "threshold": 0.01
+    }
+	
+  ]
+}

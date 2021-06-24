@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125127","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "ASIT_AGRUPADORES_PXQ",
+            "title": "Agrupadores PxQ Asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Agrupadores PxQ Asistencias",
+            "columns": [
+                {
+                    "name": "ASPQ_FE_INFORMACION",
+                    "title": "ASPQ_FE_INFORMACION",
+                    "description": "Fecha de Presupuesto",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ASPQ_CD_AGRUPADOR",
+                    "title": "ASPQ_CD_AGRUPADOR",
+                    "description": "Codigo de Agrupador de canal",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ASPQ_MT_PEA",
+                    "title": "ASPQ_MT_PEA",
+                    "description": "Monto presupuesto",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

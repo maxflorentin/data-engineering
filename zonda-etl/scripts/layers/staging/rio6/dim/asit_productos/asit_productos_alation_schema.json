@@ -1,0 +1,115 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "asit_productos",
+            "title": "Productos de asistencias",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Productos de asistencias",
+            "columns": [
+                {
+                    "name": "  ASPR_CD_PRODUCTO",
+                    "title": "  ASPR_CD_PRODUCTO",
+                    "description": "Codigo de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_DE_PRODUCTO",
+                    "title": "  ASPR_DE_PRODUCTO",
+                    "description": "Descripcion de producto",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_FE_INICIO",
+                    "title": "  ASPR_FE_INICIO",
+                    "description": "Fecha de inicio",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_CD_MONEDA",
+                    "title": "  ASPR_CD_MONEDA",
+                    "description": "Codigo de moneda",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_IN_EMPLEADO",
+                    "title": "  ASPR_IN_EMPLEADO",
+                    "description": "Indicador de Empleado",
+                    "type": "Alfanumerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_ST_PRODUCTO",
+                    "title": "  ASPR_ST_PRODUCTO",
+                    "description": "Estado de producto",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_FE_STATUS",
+                    "title": "  ASPR_FE_STATUS",
+                    "description": "Numero de certificado",
+                    "type": "Date",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "  ASPR_NU_CUOTAS",
+                    "title": "  ASPR_NU_CUOTAS",
+                    "description": "Numero de endoso",
+                    "type": "Numerico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

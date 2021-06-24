@@ -1,0 +1,119 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308640"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio256_crsc_telefono_solicitud",
+            "title": "Tabla que contiene los registros telefonicos que se derivan al call para contacto del cliente",
+            "schema": "bi_corp_staging",
+            "source": "ATENEA",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla que contiene los registros telefonicos que se derivan al call para contacto del cliente",
+            "columns": [
+                {
+                    "name": "ID",
+                    "title": "ID",
+                    "description": "Identificador del registro insertado. Pk de la tabla",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PREFIJO",
+                    "title": "PREFIJO",
+                    "description": "Prefijo del teléfono de contacto del cliente",
+                    "type": "VARCHAR2(10)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "TELEFONO",
+                    "title": "TELEFONO",
+                    "description": "Número del teléfono de contacto del cliente",
+                    "type": "VARCHAR2(30)",
+                    "personIdentifier": true,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ID_SOLICITUD",
+                    "title": "ID_SOLICITUD",
+                    "description": "FK a tabla CRSC_SOLICITUD",
+                    "type": "NUMBER(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA",
+                    "title": "FECHA",
+                    "description": "Fecha de alta del registro",
+                    "type": "TIMESTAMP(6)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "",
+            "loading": {
+                "type": "",
+                "delta": "D+1"
+            }
+        }
+    }
+}

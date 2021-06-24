@@ -1,0 +1,33 @@
+{
+	"file": "atrc_rechazos_schema",
+	"location": "/santander/bi-corp/landing/atrc/dim/atrc_rechazos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/atrc/dim/atrc_rechazos",
+	"createTable": "bi_corp_staging.atrc_rechazos",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ult_modif",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

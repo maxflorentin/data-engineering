@@ -1,0 +1,1 @@
+SELECT a.dummy_column FROM (SELECT 'A' AS dummy_column) a WHERE a.dummy_column = 'B';

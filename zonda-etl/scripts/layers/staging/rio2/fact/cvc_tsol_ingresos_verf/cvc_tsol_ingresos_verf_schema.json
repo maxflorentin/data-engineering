@@ -1,0 +1,79 @@
+{
+  "file": "tsol_ingresos_verf_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tsol_ingresos_verf/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tsol_ingresos_verf",
+  "createTable": "bi_corp_staging.cvc_tsol_ingresos_verf",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_legajo",
+    "type": "string"
+  },
+  {
+    "name": "mon_ult_titular",
+    "type": "string"
+  },
+  {
+    "name": "mon_prom_titular",
+    "type": "string"
+  },
+  {
+    "name": "mon_ult_conyuge",
+    "type": "string"
+  },
+  {
+    "name": "mon_prom_conyuge",
+    "type": "string"
+  },
+  {
+    "name": "cod_verificado",
+    "type": "string"
+  },
+  {
+    "name": "des_comentario",
+    "type": "string"
+  },
+  {
+    "name": "mar_actividad_titular",
+    "type": "string"
+  },
+  {
+    "name": "mar_actividad_conyuge",
+    "type": "string"
+  },
+  {
+    "name": "mon_ult_titular_sup",
+    "type": "string"
+  },
+  {
+    "name": "mon_ult_conyuge_sup",
+    "type": "string"
+  },
+  {
+    "name": "mar_actividad_conyuge_sup",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

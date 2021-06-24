@@ -1,0 +1,19 @@
+{
+    "name": "Admision_Ind-Daily-Common",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_SCORING_IND-Daily",
+                    "tasks": "all"
+                },
+                {
+                    "dag_id":"LOAD_STG_Risk_Parametria-Daily",
+                    "tasks": ["STAGING_TABLE_Parquetize_USUARIOS","STAGING_TABLE_Parquetize_ESTADOS_ASOL","STAGING_TABLE_Parquetize_PRODUCTOS_PROMOCION","STAGING_TABLE_Parquetize_PROMOCIONES","STAGING_TABLE_Parquetize_CANALES_DE_VENTA"]
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_CMN_Admision_Ind-Daily"
+                }
+    ]
+}

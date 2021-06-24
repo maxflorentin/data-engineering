@@ -1,0 +1,48 @@
+name: LOAD_BSN_Personas-Daily
+description: 'Load Daily Personas Data'
+owner: BI-Corp
+active: true
+#schedule_interval: '00 9 * * *'
+start_date: '2020-05-04'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: -1
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables separated with comma'
+    default: bi_corp_common.stk_per_personas, bi_corp_common.stk_cue_cuentas, bi_corp_common.stk_pre_prestamos, bi_corp_common.stk_tcr_cuentas, bi_corp_common.stk_cjs_caja_seguridad, bi_corp_common.stk_seg_seguros, bi_corp_common.stk_inv_fondos, bi_corp_common.stk_inv_titulos, bi_corp_common.stk_tcr_tarjetas
+tasks:
+  - name: Create_personas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/personas/stk_personas/DDLT-Create_business_stk_personas.hql'
+  - name: Load_personas_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/personas/stk_personas/ETL_LOAD_business_stk_personas.hql'
+dependencies:
+  Create_personas_Table: Load_personas_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [fscagnettibrusatori@santandertecnologia.com.ar]

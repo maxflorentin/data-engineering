@@ -1,0 +1,172 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307993"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "aprp_waprp053",
+      "title": "Tabla de Características de Pago de la Empresa",
+      "schema": "bi_corp_staging",
+      "source": "APRP",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla de Características de Pago de la Empresa",
+      "columns": [
+        {
+          "name": "WAPRP053_NRO_LISTA",
+          "title": "WAPRP053_NRO_LISTA",
+          "description": "Número de lista",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 5.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_NRO_PROD",
+          "title": "WAPRP053_NRO_PROD",
+          "description": "Número de producto de pagos/recaudaciones",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_DES_CARAC_PAGO",
+          "title": "WAPRP053_DES_CARAC_PAGO",
+          "description": "Descripción de la característica de pago",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_MAR_CNTRL_SECU",
+          "title": "WAPRP053_MAR_CNTRL_SECU",
+          "description": "Marca de control de secuencia de los envíos",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_MAR_AUTZ",
+          "title": "WAPRP053_MAR_AUTZ",
+          "description": "Marca de si solicita autorización de envíos recibidos",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_NRO_EMPR_DISTR",
+          "title": "WAPRP053_NRO_EMPR_DISTR",
+          "description": "Empresa de distribución de documentos",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_IDE_USER_ALTA",
+          "title": "WAPRP053_IDE_USER_ALTA",
+          "description": "Identificacion de usuario de alta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_IDE_TERM_ALTA",
+          "title": "WAPRP053_IDE_TERM_ALTA",
+          "description": "Identificación terminal de alta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_FEC_HRA_ULT_MODF",
+          "title": "WAPRP053_FEC_HRA_ULT_MODF",
+          "description": "Fecha y hora de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_IDE_USER_ULT_MODF",
+          "title": "WAPRP053_IDE_USER_ULT_MODF",
+          "description": "Identificación de usuario de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_IDE_TERM_ULT_MODF",
+          "title": "WAPRP053_IDE_TERM_ULT_MODF",
+          "description": "Identificación terminal de la última modificación",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_COD_TRAT_FEC ",
+          "title": "WAPRP053_COD_TRAT_FEC ",
+          "description": "Código fecha ejecución efectiva",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "WAPRP053_MAR_EXENTA_IIBB",
+          "title": "WAPRP053_MAR_EXENTA_IIBB",
+          "description": "Marca de acreditación exenta de pago IIBB",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

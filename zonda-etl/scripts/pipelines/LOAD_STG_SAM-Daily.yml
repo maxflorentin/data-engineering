@@ -1,0 +1,62 @@
+name: LOAD_STG_SAM-Daily
+description: 'Load data from Sam tables in all data layers (Daily)'
+owner: BI-Corp
+active: true
+schedule_interval: '0 10 * * *'
+start_date: '2020-12-17'
+catchup: true
+retries: 2
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: STAGING_MER_PRI_SEC_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MER_PRI_SEC_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 3
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/sam/fact/mer_pri_sec/mer_pri_sec_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_SAM-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_SAM-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['mer_pri_sec_schema.json']
+  - name: STAGING_MER_SEC_GAR_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_MER_SEC_GAR_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 3
+      executor_memory: 4G
+      num_executors: 1
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/sam/fact/mer_sec_gar/mer_sec_gar_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_SAM-Daily') }}",
+        'spark.yarn.appMasterEnv.file_date_filter': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_SAM-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode':'dynamic'
+      }
+      application_args: ['mer_sec_gar_schema.json']
+notifications:
+  on_start: false
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mlevisrossi@santandertecnologia.com.ar]

@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_staging.emerix_pendientes_documentacion ADD IF NOT EXISTS PARTITION (partition_date='{partition_date}');

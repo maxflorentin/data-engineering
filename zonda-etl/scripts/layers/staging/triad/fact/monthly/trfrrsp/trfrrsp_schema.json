@@ -1,0 +1,19 @@
+{
+  "file": "trfrrsp",
+  "location": "/santander/bi-corp/landing/triad/fact/monthly/trfrrsp/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/triad/fact/monthly/trfrrsp/",
+  "header": false,
+  "copybook": "trfrrsp.cob",
+  "createTable":"bi_corp_staging.triad_rrm_trfrrsp",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

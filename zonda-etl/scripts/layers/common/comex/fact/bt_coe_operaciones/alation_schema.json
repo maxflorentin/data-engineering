@@ -1,0 +1,703 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "bt_coe_operaciones",
+      "title": "Operaciones de Comercio Exterior",
+      "schema": "bi_corp_common",
+      "source": "lake",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/comex/fact/bt_coe_operaciones/ETLV-LOAD-bt_coe_operaciones.hql",
+      "type": "fact",
+      "description": "Consolidado de las estadisticas diarias de las Operaciones de Comercio Exterior",
+      "columns": [
+        {
+          "name": "cod_coe_frecuencia",
+          "title": "Frecuencia de carga",
+          "description": "Identifica la frecuencia de carga de la tabla. Por defecto tiene valor D por ser diaira",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_producto_contab",
+          "title": "Código del producto contable",
+          "description": "Es el código del producto que identifica la Operación. Por ser de Comercio Exterior su valor es 50",
+          "type": "int",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_subproducto",
+          "title": "Código de Subproducto",
+          "description": "Código de Subproducto de la operación",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_info_tabla_codigos",
+            "column": "subproducto"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "rio4_cuotas",
+              "column": "conceptobcra1"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_boletos_sam_det",
+              "column": "conceptobcra"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_tipo_informacion",
+          "title": "Alias del tipo de información",
+          "description": "Determina el tipo de información que se encuenta en la tabla. Por defecto tiene valor O",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "security": "Público"
+        },
+        {
+          "name": "dt_coe_fecha_alta",
+          "title": "Fecha de Alta",
+          "description": "Fecha de alta/procesado de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "fecha_liq"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops_pagos",
+              "column": "fecha_liq"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_fec_operacion"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "dt_coe_fecha_baja",
+          "title": "Fecha de baja",
+          "description": "Fecha de baja de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "security": "Público"
+        },
+        {
+          "name": "dt_coe_fecha_venc",
+          "title": "Fecha de Vencimiento",
+          "description": "Fecha de vencimiento de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops_pagos",
+              "column": "f_vencimiento_liq"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_estado",
+          "title": "Estado de la operación",
+          "description": "Estado de la operación. Por defecto tiene valor V",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_sucursal",
+          "title": "Código Sucursal",
+          "description": "Código de la sucursal donde se realizó la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 5,
+          "sourceColumns": [{
+			  "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops",
+              "column": "acct_no"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops_pagos",
+              "column": "accountno"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_cta_suc"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_cuenta",
+          "title": "Código Cuenta",
+          "description": "Código de la Cuenta que realizó la operación",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+			  "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops",
+              "column": "acct_no"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_opp_ops_pagos",
+              "column": "accountno"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_cta_operac"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_moneda",
+          "title": "Código Moneda",
+          "description": "Código de la moneda en que se realizó la operación",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_monedas",
+            "column": "cod_bcra"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_coe_tipo_cambio_usd",
+          "title": "Tipo Cambio USD",
+          "description": "Monto del cambio a USD del día en que se realizó la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 43,
+          "sourceColumns": [{
+              "schema": "bi_corp_staging",
+              "table": "rio4_cierrebna",
+              "column": "precioventa"
+            }],
+          "security": "Público"
+        },
+		{
+          "name": "fc_coe_tipo_cambio_oper",
+          "title": "Tipo Cambio Operación",
+          "description": "Monto del cambio en que se realizó la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 43,
+          "sourceColumns": [{
+              "schema": "bi_corp_staging",
+              "table": "rio4_cierrebna",
+              "column": "precioventa"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_suc_trx",
+          "title": "Sucursal transacción",
+          "description": "Sucursal de la transacción. Valor por defecto 00000",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 5,
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_canal_trx",
+          "title": "Canal transacción",
+          "description": "Canal de la transacción",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "nro_banktrade"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_coe_nro_operacion",
+          "title": "Número Operación",
+          "description": "Número de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "nro_banktrade"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "fc_coe_importe",
+          "title": "Importe",
+          "description": "Importe de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 43,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "importe"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_imp_alta_operac_mo"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "fc_coe_importe_alta",
+          "title": "Importe alta",
+          "description": "Importe con el cual se dio de alta la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 43,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "importe"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_imp_alta_operac_mo"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_nup",
+          "title": "NUP",
+          "description": "NUP del cliente que realiza la operación",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "nup"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_nup"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_entidad_juridica",
+          "title": "Entidad Juridica",
+          "description": "Entidad Juridica. Valor por defecto 01",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_pais",
+          "title": "País",
+          "description": "País destino de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_paises",
+            "column": "descripcion"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bco_corr_cod_pais"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "dt_coe_fecha_proceso",
+          "title": "Fecha proceso",
+          "description": "Fecha en la que se ejecuto el proceso de carga",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_banco_corresponsal",
+          "title": "Banco destino",
+          "description": "Banco del destino de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_swf_bancos",
+            "column": "name1"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bco_corr"
+            }],
+          "security": "Público"
+        },
+		{"name": "ds_coe_contraparte",
+          "title": "Número Operación",
+          "description": "Número de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops",
+            "column": "ordenante"
+            },
+			{
+			 "schema": "bi_corp_staging",
+             "table": "comex_rio39_lft02",
+             "column": "lft02_bn_ord_nadd1"
+            },
+			{
+			 "schema": "bi_corp_staging",
+             "table": "comex_rio39_lft02",
+             "column": "lft02_bn_ord_nadd2"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bene_exterior"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_canal_venta",
+          "title": "Canal Operación",
+          "description": "Canal de venta de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops_pagos",
+            "column": "liq_bkt"
+            },
+			{
+             "schema": "bi_corp_staging",
+             "table": "comex_rio39_opp_ops",
+             "column": "nro_banktrade"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_origen"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "dt_coe_fecha_carga",
+          "title": "Fecha Carga",
+          "description": "Fecha de carga de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops_pagos",
+            "column": "f_carga"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_ciudad_banco_corresp",
+          "title": "Ciudad destino",
+          "description": "Ciudad del banco destino de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_swf_bancos",
+            "column": "city_heading"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bco_corr_ciudad"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_sector",
+          "title": "Sector",
+          "description": "Sector en el cual se clasifica la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_boletos_sam",
+            "column": "sector"
+            },
+			{
+             "schema": "bi_corp_staging",
+             "table": "comex_rio39_lft00",
+             "column": "lft0_suffix"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_interfaces_tipo_mov",
+              "column": "tipo_transaccion"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_domicilio_contraparte",
+          "title": "Domicilio beneficiario",
+          "description": "Domicilio del banco beneficiario de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_trf",
+            "column": "benef_domic"
+            },
+			{
+			 "schema": "bi_corp_staging",
+             "table": "comex_rio39_lft02",
+             "column": "lft02_bn_ord_nadd2"
+            },
+			{
+			 "schema": "bi_corp_staging",
+             "table": "comex_rio39_lft02",
+             "column": "lft02_bn_ord_nadd3"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bene_dom"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_pais_ordenante",
+          "title": "País ordenante",
+          "description": "País ordenante de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_paises",
+            "column": "descripcion"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bene_dom"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "ds_coe_banco_corresponsal_rio",
+          "title": "Número Operación",
+          "description": "Número de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "si02_t0akctas",
+            "column": "nbordenx"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_bco_corr_rio"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "fc_coe_importe_moneda_nacional",
+          "title": "Importe pesos",
+          "description": "Importe en pesos argentinos de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 43,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops_pagos",
+            "column": "importe"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_boletos_sam",
+              "column": "cotizacion"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "rio4_operaciones",
+              "column": "totalbrutocli1"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "comex_rio39_lft01",
+              "column": "lft01_exch_rt_disp"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_imp_operac_ml"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_nup_titular",
+          "title": "NUP Titular",
+          "description": "NUP del titular de la cuenta que realiza la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malpe_pedt008",
+            "column": "penumper"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_conceptobcra",
+          "title": "Concepto BCRA",
+          "description": "Concepto de la operación para el BCRA",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops_pagos",
+            "column": "conceptobcra"
+            }],
+          "security": "Público"
+        },
+		{
+		  "name": "cod_coe_moneda_cuenta_orig",
+          "title": "Cuenta Moneda",
+          "description": "Tipo de cuenta de la moneda de la operación",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "comex_rio39_opp_ops_pagos",
+            "column": "accountno_moneda"
+            },
+			{
+              "schema": "bi_corp_staging",
+              "table": "abkt_mov_diarios",
+              "column": "bkt_banca"
+            }],
+          "security": "Público"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

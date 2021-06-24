@@ -1,0 +1,73 @@
+{
+  "file": "bcra_cheques_rechazados",
+  "location": "/santander/bi-corp/landing/bcra/cheques/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/bcra/bcra_cheques_rechazados",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+                                        [
+                                          {
+                            "name": "cuit",
+                            "type": "string",
+                            "width": 11
+                          },
+                                        {
+                            "name": "nro_cheque",
+                            "type": "string",
+                            "width": 10
+                          },
+                                                {
+                            "name": "fecha_rechazo",
+                            "type": "string",
+                            "width": 8
+                          },
+                                                {
+                            "name": "monto",
+                            "type": "string",
+                            "width": 15
+                          },
+                                                {
+                            "name": "causal",
+                            "type": "string",
+                            "width": 1
+                          },
+                                                {
+                            "name": "fecha_levantamiento",
+                            "type": "string",
+                            "width": 8
+                          },
+                                                {
+                            "name": "revision",
+                            "type": "string",
+                            "width": 1
+                          },
+                                                {
+                            "name": "judicial",
+                            "type": "string",
+                            "width": 1
+                          },
+                                                {
+                            "name": "cuit_relacionado",
+                            "type": "string",
+                            "width": 11
+                          },
+                                                {
+                            "name": "pago_multa",
+                            "type": "string",
+                            "width": 15
+                          },
+                                                        {
+                            "name": "otro",
+                            "type": "string",
+                            "width": 2
+                          }
+                                        ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

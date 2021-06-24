@@ -1,0 +1,146 @@
+{
+    "file": "log_cuotaphone_history",
+    "location": "/santander/bi-corp/landing/sql5/fact/log_cuotaphone_history/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/garra/fact/log_cuotaphone",
+	"createTable": "bi_corp_staging.garra_log_cuotaphone",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+		{
+		"name": "GITCCUO_COD_ENTIGEN",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_NUM_PERSONA",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_ENTIDAD",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_CENTRO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_NUM_CONTRATO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_PRODUCTO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_SUBPRODU",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_DIVISA",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_NUM_SECUENCIA",
+		"type": "integer"
+		},
+		{
+		"name": "GITCCUO_FEC_CUOTAPHONE",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_CUENTA_VISA",
+		"type": "long"
+		},
+		{
+		"name": "GITCCUO_COD_MARCA_INI",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_SUBMARCA_INI",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_MARCA_SEG_INI",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_TIP_REESTRUCT_INI",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_MARCA_ACT",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_SUBMARCA_ACT",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_FEC_CAMBIO_SEG",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_MARCA_SEG_ACT",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_TIP_REESTRUCT_ACT",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_FEC_CURA",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_FEC_EMPEORA",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_FEC_NORMALIZA",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_COD_CRITERIO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_MOTIVO_CAMBIO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_NUM_REE",
+		"type": "integer"
+		},
+		{
+		"name": "GITCCUO_ENTIDAD_UMO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_CENTRO_UMO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_USERID_UMO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_NETNAME_UMO",
+		"type": "string"
+		},
+		{
+		"name": "GITCCUO_TIMEST_UMO",
+		"type": "string"
+		}
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

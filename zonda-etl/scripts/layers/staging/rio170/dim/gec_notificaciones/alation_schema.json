@@ -1,0 +1,209 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308870"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio170_gec_notificaciones",
+            "title": "Tabla maestra de notificaciones del Gestor de eventos (GEC)",
+            "schema": "bi_corp_staging",
+            "source": "GEC",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tabla maestra de notificaciones del Gestor de eventos (GEC)",
+            "columns": [
+                {
+                    "name": "CODIGO",
+                    "title": "CODIGO",
+                    "description": "Codigo unico de la notificacion",
+                    "type": "VARCHAR2 (6 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 6.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUB_CODIGO",
+                    "title": "SUB_CODIGO",
+                    "description": "sub_Codigo de la notificacion (siempre 1)",
+                    "type": "NUMBER (2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESCRIPCION",
+                    "title": "DESCRIPCION",
+                    "description": "Descripcion de la notificacion",
+                    "type": "VARCHAR2 (100 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TITULO",
+                    "title": "TITULO",
+                    "description": "No se usa -> se movio a la tabla GEC_MENSAJES",
+                    "type": "VARCHAR2 (128 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 128.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "URL_DESKTOP",
+                    "title": "URL_DESKTOP",
+                    "description": "No se usa -> se movio a la tabla GEC_MENSAJES",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "URL_MOBILE",
+                    "title": "URL_MOBILE",
+                    "description": "No se usa -> se movio a la tabla GEC_MENSAJES",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LINK",
+                    "title": "LINK",
+                    "description": "No se usa -> se movio a la tabla GEC_MENSAJES",
+                    "type": "VARCHAR2 (512 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 512.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_REPETIBLE",
+                    "title": "IND_REPETIBLE",
+                    "description": "Indica si la notificacion puede llegar repetida en la interface de origen de MYA",
+                    "type": "VARCHAR2 (1 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_INACTIVABLE",
+                    "title": "IND_INACTIVABLE",
+                    "description": "Indica si la notificacion del cliente se puede inactivar",
+                    "type": "VARCHAR2 (1 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "IND_AGRUPABLE",
+                    "title": "IND_AGRUPABLE",
+                    "description": "Indica si la notificacion se puede agrupar con otras identicas durante la carga",
+                    "type": "VARCHAR2 (1 Byte)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

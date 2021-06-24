@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "META4",
+      "type": "DIM",
+      "name": "CENTRO_COSTO",
+      "filePrefix": "TAUX_CENTROCOSTO_"
+    },
+    {
+      "source": "META4",
+      "type": "DIM",
+      "name": "CENTRO_COSTO_JERARQUIA",
+      "filePrefix": "Centro_costos_jerarquia_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_META4-Daily"
+  }
+}

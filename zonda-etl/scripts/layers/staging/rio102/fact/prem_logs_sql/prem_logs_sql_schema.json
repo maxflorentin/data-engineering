@@ -1,0 +1,43 @@
+{
+	"file": "prem_logs_sql_schema",
+	"location": "/santander/bi-corp/landing/rio102/fact/prem_logs_sql/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/fact/rio102_prem_logs_sql",
+	"tempDirectory": "/santander/bi-corp/temp/prem_logs_sql",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "id_ejecucion",
+			"type": "string"
+		},
+{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "id_evento",
+			"type": "string"
+		},
+{
+			"name": "orden_id",
+			"type": "string"
+		},
+{
+			"name": "sql",
+			"type": "string"
+		},
+{
+			"name": "fecha_ejecucion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

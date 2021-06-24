@@ -1,0 +1,436 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308723"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "atrc_transferencias",
+            "title": "Backend de Transferencias",
+            "schema": "bi_corp_staging",
+            "source": "ATRC",
+            "query": "",
+            "type": "FACT",
+            "description": "Backend de Transferencias",
+            "columns": [
+                {
+                    "name": "ENTIDAD_ORIGEN",
+                    "title": "ENTIDAD_ORIGEN",
+                    "description": "Entidad emisora de la transferencia",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUCURSAL_ORIGEN",
+                    "title": "SUCURSAL_ORIGEN",
+                    "description": "Numero de la sucursal origen",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUENTA_ORIGEN",
+                    "title": "CUENTA_ORIGEN",
+                    "description": "Numero de cuenta en formato Altair",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUIT_ORIGEN",
+                    "title": "CUIT_ORIGEN",
+                    "description": "CUIT/CUIL/DNI del originante",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CBU_ORIGEN",
+                    "title": "CBU_ORIGEN",
+                    "description": "Puede venir un CBU o CVU. Para CVU viene informado con ceros adelante",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RAZON_SOCIAL_ORIGEN",
+                    "title": "RAZON_SOCIAL_ORIGEN",
+                    "description": "Razon social de la persona fisica o juridica",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 16.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "ENTIDAD_DESTINO",
+                    "title": "ENTIDAD_DESTINO",
+                    "description": "Entidad receptora de la transferencia",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SUCURSAL_DESTINO",
+                    "title": "SUCURSAL_DESTINO",
+                    "description": "Numero de la sucursal origen",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUENTA_DESTINO",
+                    "title": "CUENTA_DESTINO",
+                    "description": "Numero de cuenta en formato Altair",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CUIT_DESTINO",
+                    "title": "CUIT_DESTINO",
+                    "description": "CUIT/CUIL/DNI del originante",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "CBU_DESTINO",
+                    "title": "CBU_DESTINO",
+                    "description": "Puede venir un CBU o CVU. Para CVU viene informado con ceros adelante",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "RAZON_SOCIAL_DESTINO",
+                    "title": "RAZON_SOCIAL_DESTINO",
+                    "description": "Razon social de la persona fisica o juridica",
+                    "type": "VARCHAR",
+                    "personIdentifier": true,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 16.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_ALTA",
+                    "title": "HORA_ALTA",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_DEBITO",
+                    "title": "FECHA _DEBITO",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_DEBITO",
+                    "title": "HORA_DEBITO",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ENVIO_RIESGO",
+                    "title": "FECHA_ENVIO_RIESGO",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_ENVIO_RIESGO",
+                    "title": "HORA_ENVIO_RIESGO",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_RTA_RIESGO",
+                    "title": "FECHA_RTA_RIESGO",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_RTA_RIESGO",
+                    "title": "HORA_RTA_RIESGO",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_CREDITO",
+                    "title": "FECHA_CREDITO",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_CREDITO",
+                    "title": "HORA_CREDITO",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ENVIO_CAMARA",
+                    "title": "FECHA_ENVIO_CAMARA",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_ENVIO_CAMARA",
+                    "title": "HORA_ENVIO_CAMARA",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_RTA_CAMARA",
+                    "title": "FECHA_RTA_CAMARA",
+                    "description": "AAAA-MM-DD",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA_RTA_CAMARA",
+                    "title": "HORA_RTA_CAMARA",
+                    "description": "HH:MM:SS",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CONCEPTO",
+                    "title": "CONCEPTO",
+                    "description": "Concepto por el cual se realiza la transferencia, por ejemplo ALQ, VAR, HON",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "REFERENCIA",
+                    "title": "REFERENCIA",
+                    "description": "Texto complementario para identificar una la transferencia",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "IMPORTE",
+                    "title": "IMPORTE",
+                    "description": "Sin comas, ultimos 2 digitos son los decimales",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MONEDA",
+                    "title": "MONEDA",
+                    "description": "Moneda de la operación",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PRODUCTO",
+                    "title": "PRODUCTO",
+                    "description": "Producto por el cual se esta haciendo la transferencia",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMARA",
+                    "title": "CAMARA",
+                    "description": "Camara por la cual se trato la transferencia",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CANAL",
+                    "title": "CANAL",
+                    "description": "Canal por el que se cargo la operación",
+                    "type": "NUMERICO ENTERO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_TRANSF",
+                    "title": "TIPO_TRANSF",
+                    "description": "Se informa si es Emitida (E) o Recibida (R)",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_TRANSF_CAMARA",
+                    "title": "ID_TRANSF_CAMARA",
+                    "description": "Número de la operación, dependiendo el tipo de operacion puede venir solo números o numeros y letras",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ESTADO",
+                    "title": "ESTADO",
+                    "description": "A:Aprobada - R:Rechazada",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOTIVO_RECHAZO",
+                    "title": "MOTIVO_RECHAZO",
+                    "description": "Codigo que indica el motivo por el cual se rechazo una operación",
+                    "type": "VARCHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "SIN SIGNO DECIMAL",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "file": "solicitud_preevaluacion_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/solicitud_preevaluacion/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/solicitud_preevaluacion",
+  "createTable": "bi_corp_staging.alcen_solicitud_preevaluacion",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+           {
+                    "name": "cod_sucursal",
+                    "type": "string"
+                },
+{
+                    "name": "nro_solicitud",
+                    "type": "string"
+                },
+{
+                    "name": "cod_sucursal_preev",
+                    "type": "string"
+                },
+{
+                    "name": "nro_solicitud_preev",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

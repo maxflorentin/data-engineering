@@ -1,0 +1,18 @@
+{
+    "name": "Garra_Updates-Daily-Stg",
+    "shift": -1,
+    "conditions" : [
+                {
+                    "dag_id":"LOAD_STG_Garra-Daily",
+                    "tasks": "all"
+                }
+    ],
+    "trigger":[
+                {
+                    "dag_id":"LOAD_STG_GARRA_Updates-Daily"
+                },
+                {
+                    "dag_id":"LOAD_STG_GARRA_Updates_Log_Cuotaphone-Daily"
+                }
+    ]
+}

@@ -1,0 +1,8 @@
+{
+	"executes":[{"query":"SELECT trim(b.penumdoc) as id, MAX(a.fecha_score_comp) as behavioural_score_date, cast(SUM(a.score_comp) as double) as behavioural_score, cast(SUM(a.saldo_capital) as double) as capital_balance, cast(SUM(a.saldo_int_deven) as double) as accrued_int_balance, cast(SUM(a.saldo_int_doc) as double) as documented_int_balance, cast(SUM(a.saldo_iva_pendiente) as double) as pending_iva_balance, cast(SUM(a.saldo_seguro) as double) as insurance_balance, cast(SUM(a.saldo_ajuste) as double) as adjustments_balance FROM santander_business_risk_arda.ifrs9_tabla a LEFT JOIN ( SELECT penumper,max(penumdoc) as penumdoc FROM bi_corp_staging.malpe_pedt015 WHERE partition_date = '{p_pedt015}' and trim(petipdoc)='T' OR trim(petipdoc)='L' group by penumper) as b ON(trim(a.num_persona)=trim(b.penumper) ) where a.data_date_part = '{p_ifrs9_tabla}' AND a.data_timestamp_part IN (( select MAX(data_timestamp_part) from santander_business_risk_arda.ifrs9_tabla where data_date_part='{p_ifrs9_tabla}')) group by trim(b.penumdoc)",
+				"database":"metrics",
+				"collection":"customer_behaviour_score"}
+	]
+
+
+}

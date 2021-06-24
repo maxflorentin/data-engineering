@@ -1,0 +1,33 @@
+{
+	"file": "abae_rechazos_schema",
+	"location": "/santander/bi-corp/landing/abae/dim/abae_rechazos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/abae/dim/abae_rechazos",
+	"createTable": "bi_corp_staging.abae_rechazos",
+	"extension": "csv",
+	"header": false,
+	"fixed": false,
+	"skipNotify": true,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "error",
+			"type": "string"
+		},
+		{
+			"name": "tipo_movimiento",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

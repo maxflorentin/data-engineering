@@ -1,0 +1,44 @@
+{
+	"file": "encuestas_schema",
+	"location": "/santander/bi-corp/landing/rio170/dim/encuestas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio170/dim/encuestas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_nps_encuestas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_encuesta",
+			"type": "string"
+		},
+        {
+			"name": "codigo",
+			"type": "string"
+		},
+        {
+			"name": "canal",
+			"type": "string"
+		},
+        {
+			"name": "descripcion",
+			"type": "string"
+		},
+        {
+			"name": "fecha_inicio",
+			"type": "string"
+		},
+        {
+			"name": "fecha_fin",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

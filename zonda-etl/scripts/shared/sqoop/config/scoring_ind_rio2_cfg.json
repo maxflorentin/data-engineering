@@ -1,0 +1,264 @@
+{
+  "tables" :[
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_solicitud",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/solicitud",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM ALCEN.solicitud WHERE trunc(FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tdatos_adicionales",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tdatos_adicionales",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.TDATOS_ADICIONALES t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_testado",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/testado",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.TESTADO t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_testado_cvcsri_srs",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/testado_cvcsri_srs",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.TESTADO_CVCSRI_SRS t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_vestado_cvcsri",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vestado_cvcsri",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.VESTADO_CVCSRI t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_testado_asol",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/testado_asol",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.TESTADO_ASOL t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tpreseleccion",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tpreseleccion",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select * From ALCEN.TPRESELECCION where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_participante",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/participante",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.PARTICIPANTE t LEFT JOIN ALCEN.SOLICITUD s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_solicitud_preevaluacion",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/solicitud_preevaluacion",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.solicitud_preevaluacion t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_solicitud_propuesta",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/solicitud_propuesta",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.solicitud_propuesta t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_laboral",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/laboral",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.laboral t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tposible_fraude",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tposible_fraude",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.tposible_fraude t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tramites_ptovta_tarjeta",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tramites_ptovta_tarjeta",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.tramites_ptovta_tarjeta t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_ttramites_hash",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/ttramites_hash",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select p.*, s.fec_proceso from alcen.ttramites_hash p left join alcen.omdm s on p.TIPO_TRAMITE = s.TIPO_TRAMITE and p.COD_TRAMITE = s.COD_TRAMITE where trunc(s.fec_proceso) = to_date('{partition_date}', 'yyyy-mm-dd') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_vestado_cvcsri",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/vestado_cvcsri",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.vestado_cvcsri t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_afip",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/afip",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM ALCEN.afip t WHERE \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_tlegajos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tlegajos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM CVC.tlegajos t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_tsol_estado",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tsol_estado",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM CVC.tsol_estado t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_tsol_ingresos_verf",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tsol_ingresos_verf",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM CVC.tsol_ingresos_verf t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_tparticipante",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/tparticipante",
+      "table_type": "fact",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT t.* FROM CVC.tparticipante t LEFT JOIN ALCEN.solicitud s ON s.COD_SUCURSAL = t.COD_SUCURSAL AND s.NRO_SOLICITUD = t.NRO_SOLICITUD WHERE trunc(s.FEC_INGRESO_SCO) > TO_DATE('2015-01-01','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tmotivo_sw_srs",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tmotivo_sw_srs",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select * From ALCEN.TMOTIVO_SW_SRS where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tmodelo",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tmodelo",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select * From ALCEN.TMODELO where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tmarca",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tmarca",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select * From ALCEN.TMARCA where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "alcen_tconcesionario",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tconcesionario",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select * From ALCEN.TCONCESIONARIO where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_testado",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/testado",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select p.* from cvc.testado p where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "rio2",
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "cvc_tresolucion_srs",
+      "landing_path": "/santander/bi-corp/landing/rio2/dim/tresolucion_srs",
+      "table_type": "dim",
+      "environment": "rio2",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select p.* from cvc.tresolucion_srs p where \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'   --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

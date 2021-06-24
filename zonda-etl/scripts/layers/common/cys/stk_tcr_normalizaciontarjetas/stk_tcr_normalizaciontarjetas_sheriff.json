@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_tcr_normalizaciontarjetas",
+  "partition_date": "${partition_date}",
+  "controls": [
+      {
+          "control_id": "null_values",
+          "field_to_check": [
+              "partition_date","cod_per_nup","cod_suc_sucursal","cod_suc_sucursal","cod_nro_cuenta","cod_prod_producto","cod_prod_subproducto",
+              "cod_div_divisa","int_tcr_secuencia","dt_tcr_fechacuotaphone","cod_tcr_cuentabase","cod_tcr_marcainicial","cod_tcr_submarcainicial",
+              "cod_tcr_marcasegini","cod_tcr_tiporeestructuracionini","cod_tcr_marcaactual","cod_tcr_submarcaactual"],
+          "threshold": 0
+      },
+       {
+          "control_id": "date_format",
+          "field_to_check": [
+           "dt_tcr_fechacambioseg","dt_tcr_fechacuotaphone","dt_tcr_fechacura","dt_tcr_fechaempeora","dt_tcr_fechanormaliza"
+          ],
+          "pattern": "yyyy-MM-dd",
+          "threshold": 0
+      }
+  ]
+}

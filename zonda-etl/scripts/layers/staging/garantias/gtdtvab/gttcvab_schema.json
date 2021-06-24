@@ -1,0 +1,19 @@
+{
+  "file": "gttcvab_schema",
+  "location": "/santander/bi-corp/landing/garantias/fact/gtdtvab/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/garantias/fact/gtdtvab",
+  "extension": "DAT",
+  "header": false,
+  "parquetFiles": 3,
+  "copybook": "copybook_gttcvab_schema.txt",
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "date",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

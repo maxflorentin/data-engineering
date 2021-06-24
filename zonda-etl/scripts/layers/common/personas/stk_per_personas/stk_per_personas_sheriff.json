@@ -1,0 +1,29 @@
+{
+  "table": "bi_corp_common.stk_per_personas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check":[ "cod_per_nup"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_nup"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_per_segmentoduro"],
+      "threshold": 0.005
+    },
+        {
+      "control_id": "null_values",
+      "field_to_check": ["ds_per_segmento"],
+      "threshold": 0.005
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_per_fechanacimiento"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

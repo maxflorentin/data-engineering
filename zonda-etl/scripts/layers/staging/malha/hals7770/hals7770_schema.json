@@ -1,0 +1,52 @@
+{
+	"file": "hals7770_schema",
+	"location": "/santander/bi-corp/landing/malha/fact/hals7770/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/malha/fact/hals7770",
+	"tempDirectory": "/santander/bi-corp/temp/malha/fact/hals7770",
+    "createTable": "bi_corp_staging.malha_hals7770",
+	"extension": "csv",
+	"header": false,
+	"delimiter": ";",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "centro",
+			"type": "string"
+		},
+		{
+			"name": "centro-descripcion",
+			"type": "string"
+		},
+		{
+			"name": "cuenta_contable_pl1",
+			"type": "string"
+		},
+		{
+			"name": "cuenta_descripcion",
+			"type": "string"
+		},
+		{
+			"name": "saldo_mes",
+			"type": "string"
+		},
+		{
+			"name": "saldo_promedio_mes",
+			"type": "string"
+		},
+		{
+			"name": "cuenta_bcr_pl9",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "date",
+		"value": "${partition_date}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

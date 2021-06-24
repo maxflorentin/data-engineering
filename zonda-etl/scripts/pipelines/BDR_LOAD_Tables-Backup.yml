@@ -1,0 +1,194 @@
+name: BDR_LOAD_Tables-Backup
+description: 'LOAD BDR Tables for the New Default engine in local schema'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+# catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+tasks:
+  - name: Load_jm_clien_juri_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIEN_JURI/Backup/Load_Table_backup.hql'
+  - name: Load_jm_client_bii_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CLIENT_BII/Backup/Load_Table_backup.hql'
+  - name: Load_jm_contr_bis_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_BIS/Backup/Load_Table_backup.hql'
+  - name: Load_jm_contr_otros_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CONTR_OTROS/Backup/Load_Table_backup.hql'
+  - name: Load_jm_ctos_cance_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CTOS_CANCE/Backup/Load_Table_backup.hql'
+  - name: Load_JM_EAD_CONTR_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EAD_CONTR/Backup/Load_Table_backup.hql'
+  - name: Load_jm_expos_no_con_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_EXPOS_NO_CON/Backup/Load_Table_backup.hql'
+  - name: Load_jm_flujos_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_FLUJOS/Backup/Load_Table_backup.hql'
+  - name: Load_jm_grup_econo_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GRUP_ECONO/Backup/Load_Table_backup.hql'
+  - name: Load_jm_grup_rela_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GRUP_RELA/Backup/Load_Table_backup.hql'
+  - name: Load_jm_interv_cto_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INTERV_CTO/Backup/Load_Table_backup.hql'
+  - name: Load_jm_posic_contr_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_POSIC_CONTR/Backup/Load_Table_backup.hql'
+  - name: Load_JM_PROV_ESOTR_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_PROV_ESOTR/Backup/Load_Table_backup.hql'
+  - name: Load_jm_trz_cont_ren_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_TRZ_CONT_REN/Backup/Load_Table_backup.hql'
+  - name: Load_jm_vta_carter_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_VTA_CARTER/Backup/Load_Table_backup.hql'
+  - name: Load_JM_GARANT_CTO_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARANT_CTO/Backup/Load_Table_backup.hql'
+  - name: Load_JM_GARA_REAL_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_GARA_REAL/Backup/Load_Table_backup.hql'
+  - name: Load_JM_CAL_EMISION_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_EMISION/Backup/Load_Table_backup.hql'
+  - name: Load_JM_CAL_IN_CL_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_IN_CL/Backup/Load_Table_backup.hql'
+  - name: Load_JM_CAL_EXT_CL_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_CAL_EXT_CL/Backup/Load_Table_backup.hql'
+  - name: Load_JM_VAL_GARA_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_VAL_GARA/Backup/Load_Table_backup.hql'
+  - name: Load_JM_INF_AD_CLI_bkup
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/bdr/corporate/JM_INF_AD_CLI/Backup/Load_Table_backup.hql'
+notifications:
+  on_start: true
+  on_success: true
+  channels: [$DEFAULT_SLACK_CHANNEL]

@@ -1,0 +1,278 @@
+name: LOAD_STG_MALHA-Daily
+description: 'Load data from MALHA tables in STG (Daily)'
+owner: BI-Corp
+active: true
+start_date: '2019-10-29'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+tasks:
+  - name: STAGING_WAHAC680_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_WAHAC680_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac680/wahac680_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_landing': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date_staging': "{{ ti.xcom_pull(task_ids='InputConfig', key='previous_date_from', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['wahac680_schema.json']
+  - name: STAGING_WAHAC680_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac680/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac680/ETLV-Alter_Partitions.hql'
+  - name: STAGING_WAHAC690_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_WAHAC690_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac690/wahac690_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date_landing': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.yarn.appMasterEnv.partition_date_staging': "{{ ti.xcom_pull(task_ids='InputConfig', key='previous_date_from', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['wahac690_schema.json']
+  - name: STAGING_WAHAC690_AddPartition
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac690/DDLT-Create_Staging_Table.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/wahac690/ETLV-Alter_Partitions.hql'
+  - name: CopyToStagingHADT001
+    operator: ZondaHDFSOperator
+    config:
+      operation: CP
+      hdfs_source_path: "/santander/bi-corp/landing/malha/dim/hadt001/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}/BARP_CTB_HADT001_D{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALHA-Daily') }}"
+      hdfs_destination_path: "/santander/bi-corp/staging/malha/dim/hadt001/"
+      partition_date: "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}"
+      skip_errors: true
+  - name: CopyToStagingHADT040
+    operator: ZondaHDFSOperator
+    config:
+      operation: CP
+      hdfs_source_path: "/santander/bi-corp/landing/malha/dim/hadt040/partition_date={{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}/BARP_CTB_HADT040_D{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='LOAD_STG_MALHA-Daily') }}"
+      hdfs_destination_path: "/santander/bi-corp/staging/malha/dim/hadt040/"
+      skip_errors: true
+  - name: STAGING_BALANCE_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BALANCE_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/balance/balance_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['balance_schema.json']
+  - name: STAGING_BALANCEM_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_BALANCEM_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/balancem/balancem_schema.json']
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py,$ZONDA_DIR/repositories/zonda-etl/lib/pyzonda/egg/pyzonda-1.0.21-py3.7.egg'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['balancem_schema.json']
+  - name: STAGING_HADT006_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_hadt006_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt006/hadt006_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt006/hadt006.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt006_schema.json']
+
+  - name: STAGING_HADT068_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HADT068_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt0680/hadt0680_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt0680/hadt0680.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt0680_schema.json']
+
+  - name: STAGING_HALS7770_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HALS7770_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hals7770/hals7770_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hals7770_schema.json']
+  - name: STAGING_ALHA9600_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ALHA9600_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/alha9600/alha9600_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['alha9600_schema.json']
+  - name: STAGING_ALHA9601_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_ALHA9601_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/alha9601/alha9601_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['alha9601_schema.json']
+  - name: STAGING_HADT012_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HADT012_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt012/hadt012_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt012/hadt012.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt012_schema.json']
+  - name: STAGING_HADT047_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HADT047_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt047/hadt047_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt047/hadt047.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt047_schema.json']
+  - name: STAGING_HADT061_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HADT061_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt061/hadt061_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt061/hadt061.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt061_schema.json']
+  - name: STAGING_HADT069_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STAGING_HADT069_Parquetize
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 3
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt069/hadt069_schema.json','$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/malha/hadt069/hadt069.cob']
+      jars: '$ZONDA_DIR/repositories/guyra/jars/spark-cobol-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/cobol-parser-0.5.6.jar,$ZONDA_DIR/repositories/guyra/jars/scodec-core_2.11-1.10.3.jar'
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_MALHA-Daily') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['hadt069_schema.json']
+dependencies:
+  CopyToStagingHADT001: CopyToStagingHADT040
+  STAGING_WAHAC680_Parquetize: STAGING_WAHAC680_AddPartition
+  STAGING_WAHAC690_Parquetize: STAGING_WAHAC690_AddPartition
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [nbucardo@santandertecnologia.com.ar,maflorentin@santandertecnologia.com.ar]

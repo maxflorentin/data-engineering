@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "MESAC",
+      "type": "FACT",
+      "name": "MESAC_TEST_INVERSOR_USUARIO",
+      "filePrefix": "MESAC_TEST_INVERSOR_USUARIO_"
+    },
+    {
+      "source": "MESAC",
+      "type": "DIM",
+      "name": "MESAC_PERFILES_INVERSOR",
+      "filePrefix": "MESAC_PERFILES_INVERSOR_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Mesac-Daily"
+  }
+}

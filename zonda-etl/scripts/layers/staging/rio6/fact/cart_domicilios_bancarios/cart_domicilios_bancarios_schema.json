@@ -1,0 +1,65 @@
+{
+  "file": "cart_domicilios_bancarios_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_domicilios_bancarios/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_domicilios_bancarios",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cadm_cacn_cd_nacionalidad",
+      "type": "string"
+    },
+    {
+      "name":"cadm_cacn_nu_cedula_rif",
+      "type":"string"
+    },
+    {
+      "name":"cadm_nu_domicilio",
+      "type":"string"
+    },
+    {
+      "name":"cadm_caba_cd_banco",
+      "type":"string"
+    },
+    {
+      "name":"cadm_nu_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"cadm_tp_cuenta",
+      "type":"string"
+    },{
+      "name":"cadm_in_empleado",
+      "type": "string"
+    },
+    {
+      "name":"cadm_tp_cuenta_banco",
+      "type":"string"
+    },
+    {
+      "name":"cadm_st_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"cadm_cd_causa_estado",
+      "type":"string"
+    },
+    {
+      "name":"cadm_fe_act_estado",
+      "type": "string"
+    },
+    {
+      "name":"cadm_cd_usuario_estado",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

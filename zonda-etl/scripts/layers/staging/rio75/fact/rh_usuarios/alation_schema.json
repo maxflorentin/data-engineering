@@ -1,0 +1,414 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_usuarios",
+      "title": "Datos generales de los usuarios del Contact Center, la mayor parte de los datos se cargan en el alta de manera automática consultando la base RIO37 (BUP)",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Datos generales de los usuarios del Contact Center, la mayor parte de los datos se cargan en el alta de manera automática consultando la base RIO37 (BUP)",
+      "columns": [
+        {
+          "name": "C_USUARIORH",
+          "title": "C_USUARIORH",
+          "description": "Código de usuario en SLC",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USUARIONT",
+          "title": "C_USUARIONT",
+          "description": "Legajo de red (AXXXXXX, BXXXXXX)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 7.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USUARIO_RIO3",
+          "title": "C_USUARIO_RIO3",
+          "description": "Usuario de RIO3",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 7.0,
+
+          "security": "Publico"                },
+        {
+          "name": "N_LEGAJO_BUP",
+          "title": "N_LEGAJO_BUP",
+          "description": "Legajo BUP",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "N_LEG_ADMIN",
+          "title": "N_LEG_ADMIN",
+          "description": "Legajo admin, en general coincide con C_USUARIONT",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_NOMBRE",
+          "title": "D_NOMBRE",
+          "description": "Nombre del usuario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 30.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_APELLIDO",
+          "title": "D_APELLIDO",
+          "description": "Apellido del usuario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 30.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_CUIT_CUIL",
+          "title": "D_CUIT_CUIL",
+          "description": "Cuil del usuario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 13.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "T_DOCUMENTO",
+          "title": "T_DOCUMENTO",
+          "description": "Tipo de documento del usuairo",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 6.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "N_DOCUMENTO",
+          "title": "N_DOCUMENTO",
+          "description": "Número de documeto del usuario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "F_NACIMIENTO",
+          "title": "F_NACIMIENTO",
+          "description": "Fecha de nacimiento (formato YYYYMMDD)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "I_SEXO",
+          "title": "I_SEXO",
+          "description": "Sexo (M, F)",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_TELEFONO1",
+          "title": "D_TELEFONO1",
+          "description": "Teléfono 1 (BUP)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 24.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_TELEFONO2",
+          "title": "D_TELEFONO2",
+          "description": "Teléfono 2 (BUP)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 24.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_INTERNO",
+          "title": "D_INTERNO",
+          "description": "Interno",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 24.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_EMAIL",
+          "title": "D_EMAIL",
+          "description": "Dirección de correo electrónico (@santander…)",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 90.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_CALLE",
+          "title": "D_CALLE",
+          "description": "Domicilio - Calle",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 55.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_NUMERO",
+          "title": "D_NUMERO",
+          "description": "Domicilio - Número",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_PISO",
+          "title": "D_PISO",
+          "description": "Domicilio - Piso",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 6.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_DEPTO",
+          "title": "D_DEPTO",
+          "description": "Domicilio - Departamento",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 5.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_LOCALIDAD",
+          "title": "D_LOCALIDAD",
+          "description": "Domicilio - Localidad",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 30.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_COD_POSTAL",
+          "title": "D_COD_POSTAL",
+          "description": "Domicilio - Código Postal",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_PROVINCIA",
+          "title": "D_PROVINCIA",
+          "description": "Domicilio - Provincia",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "D_TIPO_EMPLEADO",
+          "title": "D_TIPO_EMPLEADO",
+          "description": "Tipo de empleado, efectivo o contratado",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "V_HORA_IN",
+          "title": "V_HORA_IN",
+          "description": "Horario laboral actual in",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "V_HORA_OUT",
+          "title": "V_HORA_OUT",
+          "description": "Horario laboral actual out",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_INGRESO",
+          "title": "F_INGRESO",
+          "description": "Fecha de ingreso (formato YYYYMMDD)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_EGRESO",
+          "title": "F_EGRESO",
+          "description": "Fecha de egreso (formato YYYYMMDD)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_ESTADO_BUP",
+          "title": "D_ESTADO_BUP",
+          "description": "Descripción del estado en BUP (Pend.Aprob, Inactivo, Activo)",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+
+          "security": "Publico"                },
+        {
+          "name": "D_CCOSTO",
+          "title": "D_CCOSTO",
+          "description": "Centro de Costo al momento del alta en SLC",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 7.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_MOTIVO_BAJA",
+          "title": "C_MOTIVO_BAJA",
+          "description": "Motivo Baja (se carga cuando al momento del egreso, relacionado con la tabla RH_MOTIVOS_BAJA)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USU_BKP",
+          "title": "C_USU_BKP",
+          "description": "Código de usuario en SLC (C_USUARIORH de la tabla RH_USUARIOS) del bkp en caso de baja",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_CARGA_BAJA",
+          "title": "F_CARGA_BAJA",
+          "description": "Fecha de carga de la baja",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "N_USUARIO_RACF",
+          "title": "N_USUARIO_RACF",
+          "description": "Usuario RACF",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_ID_TELEFONICO",
+          "title": "C_ID_TELEFONICO",
+          "description": "Número de ID telefónico asignado al operador",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

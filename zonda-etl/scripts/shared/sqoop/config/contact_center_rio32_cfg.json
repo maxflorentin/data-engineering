@@ -1,0 +1,141 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "REG_ELECT_HEADERS_HIST",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/reg_elect_headers_hist",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHAINICIO,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=reg_elect_headers_hist -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select HEADERID , NOMBRE ,VERSION,NUMERO,TO_CHAR(fechainicio,'YYYY-MM-DD HH24:mi:ss') as fechainicio,TO_CHAR(FECHAFINALIZACION,'YYYY-MM-DD HH24:mi:ss') as FECHAFINALIZACION ,BACKEND,USUARIO,TERMINAL,STATUS,ESTADO,ESREVERSIBLE,ESREVERSA,REVERTIDA,CANALID,CANALVERSION,SUBCANALID,DOCUMENTOTIPO,DOCUMENTONUMERO,CUENTAORIGENTIPO,CUENTAORIGENNUMERO,CUENTAORIGENSUCURSAL,CUENTADESTINOTIPO,CUENTADESTINONUMERO,CUENTADESTINOSUCURSAL,IMPORTE, TIPOCLIENTE,REVERSADAID,BIMONETARIA,AGENDADA, HORAINICIO, HORAFINALIZACION, CANALTIPO,SUBCANALTIPO, IDSECUNDARIO, IMPORTETXT, SERVICIOPAGADO,SIMULACION, IDENTIFICACIONPIN,SESSIONID, VERIFICACION, ESGENUINO, APLICACION, IDAUTORIZANTE,TO_CHAR(FECHAINICIO,'YYYY-MM-DD') AS PARTITION_DATE  from {environment}.{table} WHERE  TO_CHAR(FECHAINICIO,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}'  --hive-delims-replacement ' ' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "REG_ELECT_DATOS_HIST",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/reg_elect_datos_hist",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(B.FECHAINICIO,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=reg_elect_datos_hist -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select A.OPERACIONDATOSID , A.ENTRADA ,A.SALIDA,A.CUSTOM,TO_CHAR(B.FECHAINICIO,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} A  JOIN  TEL.REG_ELECT_HEADERS_HIST B ON  B.HEADERID=A.OPERACIONDATOSID WHERE TO_CHAR(B.FECHAINICIO,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "RLN_TRANSACCIONES",
+      "table_type": "dim",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/dim/rln_transacciones",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=rln_transacciones -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select ID ,NOMBRE,IDFAMILIA,DESCRIPCION,ROBUSTECIDA  FROM {environment}.{table} WHERE \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^'  --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTCLIENTESSESION",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histclientessesion",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histclientessesion -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select SESION,OPERADORA,CLAVE,TIPODOC,DOCUMENTO,RAZONSOCIAL,NACIMIENTO,DOMICILIOPART,CANTPRODUCTOS,TIPOPERSONA,NROUNICOPERSONA,CANTFAXPENDIENTES,FIRMANTESESION,IDFIRMANTE,PINFIRMANTE,INDSINONIMO,MDLWOK,NODOARBOLIVR,FECHA,NOMBREALTAIR,PRIMERAPELLIDO,SEGUNDOAPELLIDO,NROUNICOPERSONAALTAIR,IDRACF,PWDRACF,NOCTURNO,TIPOPUBLICIDAD,MARCAIP,MARCAANPH, SEMAFOROFACTURACION,SEMAFORORENTABILIDAD, SEMAFORORIESGO,MARCACV, IDCONTACTO, IDSERVICIO,IDCONVERSACION, CATCLIENTE, ESMONOPRODUCTO,TIPOCLAVE,MORA,HORARIOMORA ,TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTDATOSRUTEO_NA",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histdatosruteo_na",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histdatosruteo_na -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,SESION,VDN_ENTRADA,CODIGOAPP,OPCION_IVR,ULTIMO_USUARIO_RECLAMO,RECLAMO,SINIESTRO,VDN_SALIDA,VQ,GRUPO_AGENTES,GRUPO_AGENTES_DES,VQ_ESTADISTICA,HABILIDAD_1,HABILIDAD_2,OPERADOR_TIT_CARTERA,OPERADOR_SUP1_CARTERA,OPERADOR_SUP2_CARTERA,ULTIMO_OPERADOR_SOLICITUD,ULTIMO_GRUPO_RECLAMO,ULTIMO_GRUPO_SOLICITUD,PUNTAJE_PRIORIDAD,HABILIDADES_BONUS,ALERTAS,PF_VENCIDO,TC_A_VENCER,USUARIO_OLB,MORA,CORREO, SOLICITUD,CAMPANIA_ACTIVA, ENCUESTA_NEGATIVA,AUDIO, ACCION, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir  --hive-delims-replacement ' ' --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTDATOSRUTEO",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histdatosruteo",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histdatosruteo -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,SESION,VDN_ENTRADA,CODIGOAPP,OPCION_IVR,ULTIMO_USUARIO_RECLAMO,RECLAMO,SINIESTRO,VDN_SALIDA,VQ,GRUPO_AGENTES,GRUPO_AGENTES_DES,VQ_ESTADISTICA,HABILIDAD_1,HABILIDAD_2,OPERADOR_TIT_CARTERA,OPERADOR_SUP1_CARTERA,OPERADOR_SUP2_CARTERA,ULTIMO_OPERADOR_SOLICITUD,ULTIMO_GRUPO_RECLAMO,ULTIMO_GRUPO_SOLICITUD,PUNTAJE_PRIORIDAD,HABILIDADES_BONUS,ALERTAS,PF_VENCIDO,TC_A_VENCER,USUARIO_OLB,MORA,CORREO, SOLICITUD,CAMPANIA_ACTIVA, ENCUESTA_NEGATIVA, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir  --hive-delims-replacement ' ' --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTLOG_DERIVACION_HABILIDADES",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histlog_derivacion_habilidades",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histlog_derivacion_habilidades -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,NUP,DOCUMENTO, CONNECTIONID,VQ,GRUPO_AGENTES,GRUPO_AGENTES_DES,HABILIDAD_1,HABILIDAD_2,AGENTE,DESCRIP,COD_APP,SESION, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^'  --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTLOG_CALLBACK_CHAT",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histlog_callback_chat",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histlog_callback_chat -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,NUP,DOCUMENTO,JSESIONID,COD_APP,DESCRIP,CANAL,SEGMENTO_OBP,AGENTE,ASUNTO,INTERACTIONID, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir  --hive-delims-replacement ' ' --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTLOG_CALLBACK",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histlog_callback",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histlog_callback -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,NUP,DOCUMENTO,SESIONID,COD_APP,DESCRIP,ANI,OPCION_IVR, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir  --hive-delims-replacement ' ' --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTESTADPREATENDEDOR",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histestadpreatendedor",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histestadpreatendedor -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,SESION,OPCION_1,OPCION_2,OPCION_3,OPCION_4,OPCION_5, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "SEG_DERIVACION_INTELIGENTE_NA",
+      "table_type": "dim",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/dim/seg_derivacion_inteligente_na",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=seg_derivacion_inteligente_na -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select TIPO_VDN_ENTRADA ,APLICACION,TIPO_RENTA,NOMBRE_PRODUCTO,OPCION_IVR,TIPO_PERSONA, NOMBRE_VDN_SALIDA,NOMBRE_VQ_SALIDA,GRUPO_AGENTES,GRUPO_AGENTES_DESBORDE,NOMBRE_VQ_ESTADISTICA,HABILIDAD_REQ_1,HABILIDAD_REQ_2, COD_CARTERA,AUDIO,ACCION  FROM {environment}.{table} WHERE \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^'  --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "SEG_DERIVACION_INTELIGENTE",
+      "table_type": "dim",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/dim/seg_derivacion_inteligente",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=seg_derivacion_inteligente -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select TIPO_VDN_ENTRADA ,APLICACION,TIPO_RENTA,NOMBRE_PRODUCTO,OPCION_IVR,TIPO_PERSONA, NOMBRE_VDN_SALIDA,NOMBRE_VQ_SALIDA,GRUPO_AGENTES,GRUPO_AGENTES_DESBORDE,NOMBRE_VQ_ESTADISTICA,HABILIDAD_REQ_1,HABILIDAD_REQ_2, COD_CARTERA FROM {environment}.{table} WHERE \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1  --hive-delims-replacement ' ' --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorabcatel01.ar.bsch",
+      "database": "RIO32",
+      "table": "HISTLOG_SLAUTO",
+      "table_type": "fact",
+      "environment": "TEL",
+      "landing_path": "/santander/bi-corp/landing/rio32/fact/histlog_slauto",
+      "partition_field": "PARTITION_DATE",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.output.basename=histlog_slauto -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select FECHA,NUP,DOCUMENTO ,SESIONID,COD_APP,DESCRIP, TO_CHAR(FECHA,'YYYY-MM-DD') AS PARTITION_DATE  FROM {environment}.{table} WHERE TO_CHAR(FECHA,'YYYY-MM-DD')= '{partition_date}' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio32/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --hive-delims-replacement ' ' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

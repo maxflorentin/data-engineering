@@ -1,0 +1,119 @@
+{
+  "file": "mer_vw_exposicion_crediticia_bp_schema",
+  "location": "/santander/bi-corp/landing/rio4/dim/mer_vw_exposicion_crediticia_bp/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio4/dim/mer_vw_exposicion_crediticia_bp",
+  "createTable": "bi_corp_staging.mer_vw_exposicion_crediticia_bp",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "tipo_operacion",
+                    "type": "string"
+                },
+                {
+                    "name": "nroperacion",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_concertacion",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_inicio",
+                    "type": "string"
+                },
+                {
+                    "name": "razonsocial",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_finalizacion",
+                    "type": "string"
+                },
+                {
+                    "name": "codigo_sam",
+                    "type": "string"
+                },
+                {
+                    "name": "tipo_doc",
+                    "type": "string"
+                },
+                {
+                    "name": "nro_doc",
+                    "type": "string"
+                },
+                {
+                    "name": "valor_nocional",
+                    "type": "string"
+                },
+                {
+                    "name": "garantia",
+                    "type": "string"
+                },
+                {
+                    "name": "mtm",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_real",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_potencial",
+                    "type": "string"
+                },
+                {
+                    "name": "exp_crediticia",
+                    "type": "string"
+                },
+                {
+                    "name": "rec_banco",
+                    "type": "string"
+                },
+                {
+                    "name": "nup",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_rec_banco",
+                    "type": "string"
+                },
+                {
+                    "name": "factor_riesgo_1",
+                    "type": "string"
+                },
+                {
+                    "name": "compra_venta_fr1",
+                    "type": "string"
+                },
+                {
+                    "name": "factor_riesgo_2",
+                    "type": "string"
+                },
+                {
+                    "name": "compra_venta_fr2",
+                    "type": "string"
+                },
+                {
+                    "name": "nroperacion_murex",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

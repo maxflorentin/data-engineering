@@ -1,0 +1,79 @@
+{
+	"file": "acse_rel_contrato_campana_schema",
+	"location": "/santander/bi-corp/landing/acse/fact/rel_contrato_campana/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/fact/rel_contrato_campana",
+    "createTable": "bi_corp_staging.acse_rel_contrato_campana",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "sucursal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "contrato",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "fec_desde",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "campania",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "fec_hasta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "estado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "usuario_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "usuario_alt_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_ult_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "pgm_origen",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "marca_reliq",
+                        "type": "string",
+                        "width": 1
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

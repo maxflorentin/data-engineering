@@ -1,0 +1,189 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "maltc_tcdt081",
+      "title": "COTIZACIONES",
+      "schema": "bi_corp_staging",
+      "source": "TCDT081",
+      "query": "",
+      "type": "FACT",
+      "description": "COTIZACIONES",
+      "columns": [
+        {
+          "name": "TCDT081_FHCAMBIO",
+          "title": "FHCAMBIO ",
+          "description": "Fecha de cambio de la divisa",
+          "type": "D",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_CDDIVISS",
+          "title": "CDDIVISS ",
+          "description": "Código SWIFT",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_INDDIVBI",
+          "title": "INDDIVBI ",
+          "description": "Indicador de tipo de cotización",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_INDCOT",
+          "title": "INDCOT   ",
+          "description": "Indicador si la divisa cotiza (S/N)",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_CAMBFIX",
+          "title": "CAMBFIX  ",
+          "description": "Cambio medio ",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_CAMBBAJO ",
+          "title": "CAMBBAJO ",
+          "description": "Cambio comprador de la divisa ",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_CAMBALTO",
+          "title": "CAMBALTO ",
+          "description": "Cambio Vendedor de la divisa",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_SEGMENTO",
+          "title": "SEGMENTO ",
+          "description": "Segmento del cliente",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_ULTMOD",
+          "title": "ULTMOD   ",
+          "description": "Timestamp",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_BANCULMO",
+          "title": "BANCULMO ",
+          "description": "Código de la entidad que realizó la última modificación de datos",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_OFICULMO",
+          "title": "OFICULMO ",
+          "description": "Código del centro que realizó la última modificación",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_NUMTER",
+          "title": "NUMTER   ",
+          "description": "Número de terminal que realizó la última modificación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_USULTMOD",
+          "title": "USULTMOD ",
+          "description": "Código ID del usuario que realizó la última modificación de los datos",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TCDT081_TCCENTIT",
+          "title": "TCCENTIT",
+          "description": "Entidad",
+          "type": "P",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

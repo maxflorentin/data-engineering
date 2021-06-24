@@ -1,0 +1,130 @@
+{
+  "file": "nb_tl_estadisticas_schema",
+  "location": "/santander/bi-corp/landing/rio15/fact/nb_tl_estadisticas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio15/fact/nb_tl_estadisticas",
+  "tempDirectory": "/santander/bi-corp/temp/rio15",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "cuit",
+      "type": "string"
+    },
+    {
+      "name": "transaccion",
+      "type": "string"
+    },
+    {
+      "name": "cod_error",
+      "type": "string"
+    },
+    {
+      "name": "pid",
+      "type": "string"
+    },
+    {
+      "name": "tipo",
+      "type": "string"
+    },
+    {
+      "name": "comprobante",
+      "type": "string"
+    },
+    {
+      "name": "importe",
+      "type": "string"
+    },
+    {
+      "name": "moneda",
+      "type": "string"
+    },
+    {
+      "name": "tipo_cuenta",
+      "type": "string"
+    },
+    {
+      "name": "cod_sucursal",
+      "type": "string"
+    },
+    {
+      "name": "estado",
+      "type": "string"
+    },
+    {
+      "name": "id_solicitud",
+      "type": "string"
+    },
+    {
+      "name": "nro_cuenta",
+      "type": "string"
+    },
+    {
+      "name": "tipo_cuenta_crd",
+      "type": "string"
+    },
+    {
+      "name": "nro_cuenta_crd",
+      "type": "string"
+    },
+    {
+      "name": "cod_sucursal_crd",
+      "type": "string"
+    },
+    {
+      "name": "f_alta_registro",
+      "type": "string"
+    },
+    {
+      "name": "tipo_empresa",
+      "type": "string"
+    },
+    {
+      "name": "destinatario",
+      "type": "string"
+    },
+    {
+      "name": "tipo_teclado",
+      "type": "string"
+    },
+    {
+      "name": "nup",
+      "type": "string"
+    },
+    {
+      "name": "rpi_medio_pago",
+      "type": "string"
+    },
+    {
+      "name": "rpi_cuitempsev",
+      "type": "string"
+    },
+    {
+      "name": "rpi_id_servicio",
+      "type": "string"
+    },
+    {
+      "name": "rpi_nomfantasia",
+      "type": "string"
+    },
+    {
+      "name": "rpi_identclienteemp",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fecha",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

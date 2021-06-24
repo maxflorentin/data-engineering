@@ -1,0 +1,260 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A273003"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio147_transaction_log",
+      "title": "TRANSACCIONES QUE REALIZA EL CLIENTE MIENTRAS NAVEGA LA APLICACIÓN OBP",
+      "schema": "bi_corp_staging",
+      "source": "MOBP",
+      "query": "",
+      "type": "FACT",
+      "description": "TRANSACCIONES QUE REALIZA EL CLIENTE MIENTRAS NAVEGA LA APLICACIÓN OBP",
+      "columns": [
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "FECHA DE LA OPERACIÓN",
+          "type": "DATE        ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"
+        },
+        {
+          "name": "DOCUMENTO",
+          "title": "DOCUMENTO",
+          "description": "DOCUMENTO DEL CLIENTE",
+          "type": "NUMBER(15)  ",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_DE_NACIMIENTO",
+          "title": "FECHA_DE_NACIMIENTO",
+          "description": "FECH DE NACIMIENTO DEL CLIENTE",
+          "type": "DATE        ",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"
+        },
+        {
+          "name": "CANAL_ACCESO",
+          "title": "CANAL_ACCESO",
+          "description": "CANAL DE ACCESO (SIN US0)",
+          "type": "VARCHAR2(1) ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TRANSACCION",
+          "title": "TRANSACCION",
+          "description": "ID DE LA TRANSACCIÓN",
+          "type": "NUMBER(8)   ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COD_ERROR",
+          "title": "COD_ERROR",
+          "description": "CÓDIGO DE ERROR DE LA OPERACIÓN",
+          "type": "NUMBER(8)   ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PID",
+          "title": "PID",
+          "description": "PROCESS ID DE LINUX",
+          "type": "NUMBER(8)   ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO",
+          "title": "TIPO",
+          "description": "Se pensó para indicar si la operación se trataba de un requerimiento al host/backend (P=Pregunta) o era la respuesta del mismo (R=Respuesta). Hoy se graba siempre “R”",
+          "type": "VARCHAR2(1) ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PROCESADO",
+          "title": "PROCESADO",
+          "description": "USADO POR OBP CUANDO SE PASABA LOS DATOS DESDE DISCOVERER",
+          "type": "NUMBER(1)   ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COMPROBANTE",
+          "title": "COMPROBANTE",
+          "description": "NÚMERO DE COMPROBANTE DE LA OPERACIÓN EN EL CASO QUE APLIQUE",
+          "type": "VARCHAR2(25)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 25.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IMPORTE",
+          "title": "IMPORTE",
+          "description": "IMPORTE DE LA OPERACIÓN EN EL CASO QUE APLIQUE",
+          "type": "NUMBER(17,2)",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": true,
+          "length": "17,2",
+          "security": "Publico"
+        },
+        {
+          "name": "MONEDA",
+          "title": "MONEDA",
+          "description": "MONEDA DE LA OPERACIÓN EN EL CASO QUE APLIQUE",
+          "type": "VARCHAR2(3) ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "F_ALTA_REGISTRO",
+          "title": "F_ALTA_REGISTRO",
+          "description": "FECHA DE ALTA DEL REGISTRO EN LA TABLA",
+          "type": "DATE        ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NUP DEL CLIENTE",
+          "type": "NUMBER(22)  ",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_TECLADO",
+          "title": "TIPO_TECLADO",
+          "description": "INDICA SI EL TIPO DE TECLADO UTILIZADO ES FÍSICO O VIRTUAL",
+          "type": "VARCHAR2(1) ",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IP",
+          "title": "IP",
+          "description": "IP DESDE DONDE SE REALIZA LA OPERACIÓN",
+          "type": "VARCHAR2(15)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NOM_SERVER",
+          "title": "NOM_SERVER",
+          "description": "NOMBRE DEL SERVIDOR EN DONDE SE GUARDA EL LOG",
+          "type": "VARCHAR2(32)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 32.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUM_LOG",
+          "title": "NUM_LOG",
+          "description": "NOMBRE DEL LOG",
+          "type": "VARCHAR2(32)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 32.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CUENTA_ORIGEN",
+          "title": "CUENTA_ORIGEN",
+          "description": "CUENTA ORIGEN DE LA OPERACIÓN EN EL CASO QUE APLIQUE",
+          "type": "VARCHAR2(22)",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CUENTA_DESTINO",
+          "title": "CUENTA_DESTINO",
+          "description": "CUENTA DESTINO DE LA OPERACIÓN EN EL CASO QUE APLIQUE",
+          "type": "VARCHAR2(22)",
+          "personIdentifier": true,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DISPOSITIVO",
+          "title": "DISPOSITIVO",
+          "description": "INDICA SI LA OPERACIÓN FUE REALIZADA DESDE DESKTOP O MOBILE",
+          "type": "VARCHAR2(22)",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

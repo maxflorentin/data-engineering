@@ -1,0 +1,69 @@
+{
+	"file": "acse_modulos_fisicos_schema",
+	"location": "/santander/bi-corp/landing/acse/fact/modulos_fisicos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/fact/modulos_fisicos",
+    "createTable": "bi_corp_staging.acse_modulos_fisicos",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "sucursal_caja",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "sector_caja",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "numero_caja",
+                        "type": "string",
+                        "width": 5
+                },
+                {
+                        "name": "tipo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "estado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ind_ocupacion",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "fecha_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fecha_baja",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "usuario_ult_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "contrato",
+                        "type": "string",
+                        "width": 12
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

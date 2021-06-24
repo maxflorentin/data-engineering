@@ -1,0 +1,413 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_contacto",
+      "title": "CONTACTO",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "CONTACTO",
+      "columns": [
+        {
+          "name": "CONTACTO",
+          "title": "CONTACTO",
+          "description": "Clave numerica del contacto",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "TIPODOC",
+          "title": "TIPODOC",
+          "description": "Tipo de Doc (DNI,LE,LC,CI,CUT)",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "NRODOC",
+          "title": "NRODOC",
+          "description": "Nro Doc del contacto",
+          "type": "NUMBER",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "EXPEDIDA",
+          "title": "EXPEDIDA",
+          "description": "PROVINCIA que expidió el documento",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NACIO",
+          "title": "NACIO",
+          "description": "Fecha de nacimiento",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "FECHAALTA",
+          "title": "FECHAALTA",
+          "description": "Fecha de alta en el origen",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "APELLIDO",
+          "title": "APELLIDO",
+          "description": "Apellido del contacto",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 40.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "NOMBRE",
+          "title": "NOMBRE",
+          "description": "Nombre del contacto",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 20.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "TELEDISC1",
+          "title": "TELEDISC1",
+          "description": "Prefijo del nro de telefono",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 6.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TEL_1",
+          "title": "TEL_1",
+          "description": "Nro de telefono primario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 12.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "POSTAL1",
+          "title": "POSTAL1",
+          "description": "Codigo Postal primario",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TELEDISC2",
+          "title": "TELEDISC2",
+          "description": "Prefijo del nro de telefono 2",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 6.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TEL_2",
+          "title": "TEL_2",
+          "description": "Nro de telefono secundario",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 12.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "POSTAL2",
+          "title": "POSTAL2",
+          "description": "Codigo postal secundario",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "INTERNO",
+          "title": "INTERNO",
+          "description": "Número de interno telefónico del teléfono primario",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ORIGEN",
+          "title": "ORIGEN",
+          "description": "Codigo de origen",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "MEDIO",
+          "title": "MEDIO",
+          "description": "Codigo de medio ",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ESTADO",
+          "title": "ESTADO",
+          "description": "Estado del contacto en el origen (valores posibles 1,2,3,4)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "SEXO",
+          "title": "SEXO",
+          "description": "Sexo del contacto",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Confidencial"                },
+        {
+          "name": "USUARIO",
+          "title": "USUARIO",
+          "description": "Usuario que trabajo dio de alta al contacto en el origen",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CLIFONDOS",
+          "title": "CLIFONDOS",
+          "description": "EN DESUSO",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NIVCLIFON",
+          "title": "NIVCLIFON",
+          "description": "EN DESUSO",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CLIENTE",
+          "title": "CLIENTE",
+          "description": "Determina si es cliente o no del banco",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "SUCURSAL",
+          "title": "SUCURSAL",
+          "description": "Sucursal del contacto",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CLAVEHOST",
+          "title": "CLAVEHOST",
+          "description": "NUP",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 46.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CONYTIPODOC",
+          "title": "CONYTIPODOC",
+          "description": "Tipo de documento del cónyuge",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CONYNRODOC",
+          "title": "CONYNRODOC",
+          "description": "Número de documento del cónyuge",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 11.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CAPTURADO",
+          "title": "CAPTURADO",
+          "description": "Marca para identificar cuando un representante está trabajando con el contacto",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "INCONTACTABLE",
+          "title": "INCONTACTABLE",
+          "description": "Indica si el contacto dejo de ser contactable",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CANTOPERAC",
+          "title": "CANTOPERAC",
+          "description": "Cantidad de operaciones",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ULTOPERACION",
+          "title": "ULTOPERACION",
+          "description": "Nro de la ultima operación en el sistema",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPO_PERSONA",
+          "title": "TIPO_PERSONA",
+          "description": "Tipo de persona",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "TIPO_CLIENTE",
+          "title": "TIPO_CLIENTE",
+          "description": "Tipo de cliente",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 1.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ESTADO2",
+          "title": "ESTADO2",
+          "description": "Estado2 del contacto en el origen (valores posibles 1,2,3,4,5,6)",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 2.0,
+
+          "security": "Publico"                },
+        {
+          "name": "FECHA_MODIFICACION",
+          "title": "FECHA_MODIFICACION",
+          "description": "Fecha de última modificación",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_rating_garantias",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_penumper","ts_adm_fecproceso"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_penumper","ts_adm_fecproceso","cod_per_nup"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecproceso","ts_adm_fecvtoprop","ts_adm_fecvaloracion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

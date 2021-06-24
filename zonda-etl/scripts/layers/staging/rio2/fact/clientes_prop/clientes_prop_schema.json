@@ -1,0 +1,47 @@
+{
+  "file": "clientes_prop_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/clientes_prop/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/clientes_prop",
+  "createTable": "bi_corp_staging.sge_clientes_prop",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+       [
+          {
+            "name": "nro_prop",
+            "type": "string"
+          },
+          {
+            "name": "nom_cliente",
+            "type": "string"
+          },
+          {
+            "name": "cod_cliente",
+            "type": "string"
+          },
+          {
+            "name": "plz_cobro",
+            "type": "string"
+          },
+          {
+            "name": "porc_ventas",
+            "type": "string"
+          },
+          {
+            "name": "ref_obtenidas",
+            "type": "string"
+          }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

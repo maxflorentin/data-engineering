@@ -1,0 +1,63 @@
+{
+  "file": "rh_empresas_schema",
+  "location": "/santander/bi-corp/landing/rio75/dim/rh_empresas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio75/dim/rh_empresas",
+  "tempDirectory": "/santander/bi-corp/temp/rio75",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [
+    {
+      "name": "c_empresa",
+      "type": "string"
+    },
+    {
+      "name": "d_empresa",
+      "type": "string"
+    },
+    {
+      "name": "f_alta",
+      "type": "string"
+    },
+    {
+      "name": "f_baja",
+      "type": "string"
+    },
+    {
+      "name": "i_activo",
+      "type": "string"
+    },
+    {
+      "name": "d_domicilio",
+      "type": "string"
+    },
+    {
+      "name": "c_usu_resp",
+      "type": "string"
+    },
+    {
+      "name": "i_liquidable",
+      "type": "string"
+    },
+    {
+      "name": "c_horas_laborales",
+      "type": "string"
+    },
+    {
+      "name": "c_horas_lactancia",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+	"file": "exa_dim_cons_establecimientos",
+	"location": "/santander/bi-corp/landing/exa/dim/exa_dim_cons_establecimientos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/exa/dim/exa_dim_cons_establecimientos",
+	"tempDirectory": "/santander/bi-corp/temp/exa_dim_cons_establecimientos",
+	"createTable": "bi_corp_staging.exa_dim_cons_establecimientos",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "ID_ESTABLECIMIENTO",
+			"type":"string"
+		},
+{
+			"name": "NOMBRE",
+			"type":"string"
+		},
+{
+			"name": "GENERICO",
+			"type":"string"
+		}
+	],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

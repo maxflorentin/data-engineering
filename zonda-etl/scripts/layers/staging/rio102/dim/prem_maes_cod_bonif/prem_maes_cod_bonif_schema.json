@@ -1,0 +1,100 @@
+{
+	"file": "prem_maes_cod_bonif_schema",
+	"location": "/santander/bi-corp/landing/rio102/dim/prem_maes_cod_bonif/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/dim/rio102_prem_maes_cod_bonif",
+	"tempDirectory": "/santander/bi-corp/temp/prem_maes_cod_bonif",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "codigo_bono",
+			"type": "string"
+		},
+{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "nombre",
+			"type": "string"
+		},
+{
+			"name": "fecha_desde",
+			"type": "string"
+		},
+{
+			"name": "fecha_hasta",
+			"type": "string"
+		},
+{
+			"name": "monto_tope",
+			"type": "string"
+		},
+{
+			"name": "porc_visa",
+			"type": "string"
+		},
+{
+			"name": "porc_amex",
+			"type": "string"
+		},
+{
+			"name": "productos",
+			"type": "string"
+		},
+{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "desmarcacion",
+			"type": "string"
+		},
+{
+			"name": "suscriptores",
+			"type": "string"
+		},
+{
+			"name": "monto_desde",
+			"type": "string"
+		},
+{
+			"name": "monto_hasta",
+			"type": "string"
+		},
+{
+			"name": "plan",
+			"type": "string"
+		},
+{
+			"name": "porc_bonif",
+			"type": "string"
+		},
+{
+			"name": "id_secuencia",
+			"type": "string"
+		},
+{
+			"name": "cuota_1",
+			"type": "string"
+		},
+{
+			"name": "cuota_2",
+			"type": "string"
+		},
+{
+			"name": "cuota_3",
+			"type": "string"
+		}
+	],"extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

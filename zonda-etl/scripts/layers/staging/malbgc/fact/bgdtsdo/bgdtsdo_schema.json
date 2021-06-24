@@ -1,0 +1,19 @@
+{
+  "file": "bgdtsdo",
+  "location": "/santander/bi-corp/landing/malbgc/fact/bgdtsdo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/malbgc/fact/bgdtsdo",
+  "createTable": "bi_corp_staging.malbgc_bgdtsdo",
+  "header": false,
+  "copybook": "bgdtsdo.cob",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

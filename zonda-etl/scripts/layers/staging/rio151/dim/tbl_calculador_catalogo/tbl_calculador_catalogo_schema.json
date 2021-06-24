@@ -1,0 +1,47 @@
+{
+    "file": "tbl_calculador_catalogo_schema",
+    "createTable": "bi_corp_staging.rio151_tbl_calculador_catalogo",
+    "location": "/santander/bi-corp/landing/rio151/dim/tbl_calculador_catalogo/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio151/dim/tbl_calculador_catalogo",
+    "tempDirectory": "/santander/bi-corp/temp/rio151",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cd_beneficio",
+            "type": "string"
+        },
+        {
+            "name": "cd_promocion",
+            "type": "string"
+        },
+        {
+            "name": "cd_beneficio_mkt",
+            "type": "string"
+        },
+        {
+            "name": "ds_beneficio",
+            "type": "string"
+        },
+        {
+            "name": "dt_vigencia_desde",
+            "type": "string"
+        },
+        {
+            "name": "dt_vigencia_hasta",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

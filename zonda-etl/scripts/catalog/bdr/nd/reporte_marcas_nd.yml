@@ -1,0 +1,56 @@
+name: REPORTE_MARCAS_ND
+description: 'REPORTE_MARCAS_ND'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 0 1 * *'
+#start_date: '2018-03-01'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: report_execution
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      output_file: "$ZONDA_DIR/outbound/jm_out_cto_nd_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='REPORTE_MARCAS_ND') }}.txt"
+      show_header: 'true'
+      output_format: dsv
+      empty_file: False
+      delimiter: ';'
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/catalog/bdr/nd/jm_out_cto_nd_report.hql'
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/jm_out_cto_nd_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='REPORTE_MARCAS_ND') }}.txt"
+      remote_filepath: "/aplicaciones/toWindows03/BDR/jm_out_cto_nd_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='REPORTE_MARCAS_ND') }}.txt"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_FILE
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/jm_out_cto_nd_{{ ti.xcom_pull(task_ids='InputConfig', key='month', dag_id='REPORTE_MARCAS_ND') }}.txt"
+dependencies:
+  report_execution: report_send_sftp
+  report_send_sftp : EXECUTE_Remove_FILE
+notifications:
+  on_start: true
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [amolina@santandertecnologia.com.ar]

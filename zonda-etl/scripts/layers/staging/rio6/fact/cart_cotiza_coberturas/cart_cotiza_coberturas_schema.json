@@ -1,0 +1,86 @@
+{
+  "file": "cart_cotiza_coberturas_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_coberturas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_cotiza_coberturas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cack_capj_cd_sucursal",
+      "type": "string"
+    },
+    {
+      "name":"cack_cazb_nu_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"cack_carp_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"cack_capu_cd_producto",
+      "type":"string"
+    },
+    {
+      "name":"cack_capb_cd_plan",
+      "type":"string"
+    },{
+      "name":"cack_carb_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"cack_cacb_cd_cobertura",
+      "type":"string"
+    },
+    {
+      "name":"cack_nu_asegurado",
+      "type":"string"
+    },
+    {
+      "name":"cack_mt_comision",
+      "type":"string"
+    },
+    {
+      "name":"cack_mt_prima",
+      "type":"string"
+    },{
+      "name":"cack_mt_suma_asegurada",
+      "type": "string"
+    },
+    {
+      "name":"cack_po_deducible",
+      "type":"string"
+    },
+    {
+      "name":"cack_mt_deducible",
+      "type":"string"
+    },
+    {
+      "name":"cack_po_recargo",
+      "type":"string"
+    },
+    {
+      "name":"cack_po_riesgo",
+      "type":"string"
+    },{
+      "name":"cack_ta_tasa",
+      "type": "string"
+    },
+    {
+      "name":"cack_mt_valor_real",
+      "type":"string"
+    },
+    {
+      "name":"cack_po_bonif",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

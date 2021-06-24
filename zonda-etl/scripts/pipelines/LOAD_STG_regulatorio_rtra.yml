@@ -1,0 +1,48 @@
+name: LOAD_STG_regulatorio_rtra
+description: 'LOAD rtra regulatorio por ftp'
+owner: BI-Corp
+active: true
+start_date: '2018-03-01'
+catchup: false
+retries: 1
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+tasks:
+  - name: STG_Cream-regulatorio_Parquetize
+    operator: SparkSubmitOperator
+    config:
+      name: STG_Cream-regulatorio
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 2
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cream/fact/regulatorio/regulatorio_schema.json']
+      application: '$ZONDA_DIR/repositories/guyra/src/guyra.py'
+      py_files: '$ZONDA_DIR/repositories/guyra/src/config_file.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_STG_regulatorio_rtra') }}",
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic'
+      }
+      application_args: ['regulatorio_schema.json']
+  - name: Repair_Table
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/cream/fact/regulatorio/ETLV-Repair-partitions-Table.hql'
+dependencies:
+  STG_Cream-regulatorio_Parquetize: Repair_Table
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar,jhungramos@santandertecnologia.com.ar,pcurto@santandertecnologia.com.ar]

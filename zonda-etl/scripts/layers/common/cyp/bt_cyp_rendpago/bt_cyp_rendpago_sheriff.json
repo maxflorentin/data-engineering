@@ -1,0 +1,29 @@
+{
+  "table": "bi_corp_common.bt_cyp_rendpago",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": [
+        "cod_cyp_nro_organismo"
+      ]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "ts_cyp_fecha_pago"
+      ],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "dt_cyp_fec_acred",
+        "dt_cyp_fec_emision",
+        "dt_cyp_fec_deb",
+        "dt_cyp_fecha_vto"
+      ],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

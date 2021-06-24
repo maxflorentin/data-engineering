@@ -1,0 +1,47 @@
+{
+  "tables" :[
+       {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "SI02",
+            "table": "SWIFT_MSG_QUEUE",
+            "table_type": "fact",
+			"environment": "SWIFTDEV",
+            "landing_path": "/santander/bi-corp/landing/si02/fact/swift_msg_queue",
+            "partition_field": "SWIFT_DATE",
+            "split_field": "to_char(SWIFT_DATE, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.KEY, A.SWIFT_MSG, A.QUEUE, A.STATE, A.SEQ, A.DEST, A.URGENT, A.SUBMISSION_KEY, A.SPAIN_DATE, A.SWIFT_SESSION, A.SWIFT_ISN, A.UNDEL_CODE, A.VERSION, A.C_USER, A.M_USER, A.C_DATE, A.M_DATE, A.S_USER, A.S_DATE, A.L_USER, A.INCOMING_KEY, A.PRINTED, A.FKSWFMSGBX, A.FKDISTLIST, A.PK, A.FK_PARENT, A.FK_OWNER_OBJ, A.FK_EXTENSION, A.FKCHANNELX, A.GPI, A.GUID, A.FIELD_119, A.MT_FONDOS, to_char(A.SWIFT_DATE,'YYYY-MM-DD') AS SWIFT_DATE FROM {environment}.{table} A WHERE to_char(A.SWIFT_DATE,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/swift_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "SI02",
+            "table": "SWFMSGBODY",
+            "table_type": "fact",
+			"environment": "SWIFTDEV",
+            "landing_path": "/santander/bi-corp/landing/si02/fact/swfmsgbody",
+            "partition_field": "SWIFT_DATE",
+            "split_field": "to_char(SWIFT_DATE, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --query \"SELECT A.QUEUE, A.SEQ, A.LINE_ORDER, A.FIELD, A.SUB_FIELD, A.SUB_LINE, A.TXCOMMENT, A.TEXT_VAL, A.NUMBER_VAL, A.DATE_VAL, to_char(B.SWIFT_DATE,'YYYY-MM-DD') AS SWIFT_DATE FROM {environment}.{table} A JOIN {environment}.SWIFT_MSG_QUEUE B ON A.QUEUE = B.QUEUE AND A.SEQ = B.SEQ WHERE to_char(B.SWIFT_DATE,'YYYY-MM-DD') ='{partition_date}' AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "SI02",
+            "table": "INFO_BANCOS",
+            "table_type": "dim",
+			"environment": "AKON",
+            "landing_path": "/santander/bi-corp/landing/si02/dim/info_bancos",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORABMG01",
+            "database": "SI02",
+            "table": "T0AKCTAS",
+            "table_type": "dim",
+			"environment": "AKON",
+            "landing_path": "/santander/bi-corp/landing/si02/dim/t0akctas",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}'  --table \"{environment}.{table}\" --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --compression-codec org.apache.hadoop.io.compress.SnappyCodec --delete-target-dir --fields-terminated-by '|' --num-mappers 1 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      }
+
+
+
+  ]
+}

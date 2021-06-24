@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_obcm_transacciones",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_obcm_empresa", "cod_obcm_usuario", "cod_obcm_transaccion"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_obcm_inicio_trn", "ts_obcm_fin_trn"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}

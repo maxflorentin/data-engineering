@@ -1,0 +1,86 @@
+{
+  "tables" :[
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_consorcios",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_consorcios",
+      "partition_field": "TO_CHAR(FECHAALTA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"    id ,razon_social ,cuit_consorcio ,admin_consorcio ,codarea_tel,dni,email ,es_admin_consorcio ,motivo_iniciativa ,numero_tel,sucursal,cod_area_no_admin,dni_no_admin ,email_no_admin,nom_app_no_admin,tel_no_admin,fechaalta  \" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_cooperativa",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_cooperativa",
+      "partition_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id ,nombre_apellido_rte,nup_referente ,cod_area_tel_rte ,numero_tel_rte ,email_referente,nombre_apellido_rdo,dni_referido,cod_area_tel_rdo,numero_tel_rdo, email_referido , fecha   \" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_duo",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_duo",
+      "partition_field": "TO_CHAR(fecha_alta,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id ,nombre,dni ,telefono ,email ,fecha_alta ,provincia  ,es_cliente  \" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_referidos500k",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_referidos500k",
+      "partition_field": "TO_CHAR(fechaalta,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id, rfte_nup,rfte_nombre,rfte_apellido ,rfte_nrodni,rfte_afinidad ,rfdo_nombre,rfdo_apellido , rfdo_nrodni ,rfdo_cod_area_tel ,rfdo_nro_tel, rfdo_email ,cod_rechazo, tipo , premio ,cod_campania ,cod_origen,ip , fechaalta   \" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_referidos",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_referidos",
+      "partition_field": "TO_CHAR(fecha,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" id,nombre,nrodni,genero,email,nro_celular,legajo,ip,fecha,programa \" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_select_eventos",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_select_eventos",
+      "partition_field": "TO_CHAR(fechaalta,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nombre,apellido,cod_area_celular,nro_celular,email,eventos_participar ,localidad ,fechaalta ,ip,tipodni,nrodni\" --where \" {partition_field} ='{partition_date}'\"  --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+
+    },
+    {
+      "serverAka": "RIO29",
+      "serverConfig" : "RIO29DB",
+      "database": "portal",
+      "table": "t_form_work_cafe",
+      "table_type": "fact",
+      "environment": "RIO29",
+      "landing_path": "/santander/bi-corp/landing/rio29/fact/t_form_work_cafe",
+      "partition_field": "TO_CHAR(fechaalta,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \" nombre ,nrodni ,email ,nro_celular ,motivo ,sucursal ,fecha_op1,horario_op1 ,fecha_op2 ,horario_op2 ,ip ,fechaalta ,id \" --where \" {partition_field} ='{partition_date}'\"   --bindir '{zonda_dir}/sqoop/{database}/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'     -m 1  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+     "file": "motivos_rechazo_schema",
+     "location": "/santander/bi-corp/landing/rio39/dim/motivos_rechazo/partition_date=${partition_date_filter}",
+     "destination": "/santander/bi-corp/staging/rio39/dim/motivos_rechazo",
+     "tempDirectory": "/santander/bi-corp/temp/rio39",
+     "extension": "csv",
+     "delimiter": "|",
+     "header": false,
+     "parquetFiles": 1,
+     "compression": "gzip",
+     "columns":
+     [
+            {
+             "name": "id",
+             "type": "string"
+            },
+            {
+             "name": "motivo_interno",
+             "type": "string"
+            },
+            {
+             "name": "motivo_externo",
+             "type": "string"
+            },
+            {
+             "name": "activo",
+             "type": "string"
+            },
+            {
+             "name": "usu_modif",
+             "type": "string"
+            },
+            {
+             "name": "fecha_modif",
+             "type": "string"
+            },
+            {
+             "name": "id_agrupador",
+             "type": "string"
+            }
+	 ],
+	 "extraColumns": [
+		{
+			"name": "partition_date",
+			"type": "string",
+			"value": "${partition_date_filter}",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

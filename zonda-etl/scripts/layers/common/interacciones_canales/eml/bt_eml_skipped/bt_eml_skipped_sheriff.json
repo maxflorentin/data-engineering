@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_eml_skipped",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_eml_riid","cod_eml_campania"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_eml_fecha"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}

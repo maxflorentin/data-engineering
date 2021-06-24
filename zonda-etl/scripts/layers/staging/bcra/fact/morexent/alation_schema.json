@@ -1,0 +1,172 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308844"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "bcra_morexent",
+            "title": "Diseño de registro MOROSOS",
+            "schema": "bi_corp_staging",
+            "source": "MOREXENT",
+            "query": "",
+            "type": "FACT",
+            "description": "Diseño de registro MOROSOS",
+            "columns": [
+                {
+                    "name": "FECHA_INFORMACION",
+                    "title": "FECHA_INFORMACION",
+                    "description": "Fecha de información",
+                    "type": "N",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "DENOMINACION",
+                    "title": "DENOMINACION",
+                    "description": "Denominación del ente residual informante",
+                    "type": "A",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 160.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_IDENTIFICACION",
+                    "title": "TIPO_IDENTIFICACION",
+                    "description": "11 = clave de identificación fiscal (CUIT,CUIL ó CDI)",
+                    "type": "N",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 6.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "NUMERO_IDENTIFICACION",
+                    "title": "NUMERO_IDENTIFICACION",
+                    "description": "Número de identificación",
+                    "type": "A",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "PROCESO_JUDICIAL",
+                    "title": "PROCESO_JUDICIAL",
+                    "description": "Proceso judicial/ revisión. 0:Dato no observado  1:Información sometida a proceso judicial  2:Información sometida a revisión",
+                    "type": "N",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "",
+                    "title": "",
+                    "description": "",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "Tipo de dato",
+                    "title": "Tipo de dato",
+                    "description": "",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "A",
+                    "title": "A",
+                    "description": "Alfanumérico",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "N",
+                    "title": "N",
+                    "description": "Numérico",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "P",
+                    "title": "P",
+                    "description": "Empaquetado",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "D",
+                    "title": "D",
+                    "description": "Date DB2",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "V",
+                    "title": "V",
+                    "description": "Varchar DB2",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "S",
+                    "title": "S",
+                    "description": "Timestamp DB2",
+                    "type": "",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Mensual",
+            "loading": {
+                "type": "",
+                "delta": "D+1"
+            }
+        }
+    }
+}

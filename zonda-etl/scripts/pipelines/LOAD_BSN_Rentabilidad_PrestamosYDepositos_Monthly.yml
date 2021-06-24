@@ -1,0 +1,48 @@
+name: LOAD_BSN_Rentabilidad_PrestamosYDepositos_Monthly
+description: 'Load in Business Data from Rentabilidad Prestamos y Depositos'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 11 * * 1-6'
+start_date: '2020-09-10'
+catchup: false
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to get max partition'
+    default: bi_corp_common.dim_areanegocio_marca      
+tasks:
+  - name: CreateTables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/rentabilidad/agg_cdg_prestamosdepositos_monthly/DDLT-agg_cdg_prestamosdepositos_monthly.hql'
+  - name: InsertPartition_agg_cdg_prestamosdepositos_monthly
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/business/rentabilidad/agg_cdg_prestamosdepositos_monthly/ETLV-agg_cdg_prestamosdepositos_monthly.hql'
+dependencies:
+  CreateTables: InsertPartition_agg_cdg_prestamosdepositos_monthly
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maurogonzalez@santandertecnologia.com.ar, maflorentin@santandertecnologia.com.ar, aleivajacquelin@santandertecnologia.com.ar, itroisi@santandertecnologia.com.ar]

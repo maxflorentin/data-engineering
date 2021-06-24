@@ -1,0 +1,17 @@
+{
+  "file": "zbdtapf_schema",
+  "location": "/santander/bi-corp/landing/malbgp/fact/zbdtapf/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malbgp/fact/zbdtapf",
+  "createTable": "bi_corp_staging.malbgp_zbdtapf",
+  "copybook": "zbdtapf.cob",
+  "threshold": 0.7,
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

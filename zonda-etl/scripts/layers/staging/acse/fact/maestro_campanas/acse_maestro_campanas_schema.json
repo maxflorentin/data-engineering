@@ -1,0 +1,119 @@
+{
+  "file": "acse_maestro_campanas_schema",
+  "location": "/santander/bi-corp/landing/acse/fact/maestro_campanas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/acse/fact/maestro_campanas",
+    "createTable": "bi_corp_staging.acse_maestro_campanas",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+                {
+                        "name": "campania",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "fec_desde",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_hasta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "descripcion",
+                        "type": "string",
+                        "width": 40
+                },
+                {
+                        "name": "unidad_medida",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "cant_medida",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "porcentaje",
+                        "type": "string",
+                        "width": 5
+                },
+                {
+                        "name": "ind_brio",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "ind_emple",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "producto_paq",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "subprodu_paq_desde",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "subprodu_paq_hasta",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "sucursal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "grupo_caja",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "tipo_campania",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "estado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "usuario_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_alta",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "usuario_ult_act",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_ult_act",
+                        "type": "string",
+                        "width": 8
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

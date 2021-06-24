@@ -1,0 +1,50 @@
+{
+  "tables": [
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_RECHAZOS",
+      "filePrefix": "ATRC_RECHAZOS_"
+    },
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_ENTIDADES",
+      "filePrefix": "ATRC_ENTIDADES_"
+    },
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_CAMARAS",
+      "filePrefix": "ATRC_CAMARAS_"
+    },
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_PRODUCTOS",
+      "filePrefix": "ATRC_PRODUCTOS_"
+    },
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_CONCEPTOS",
+      "filePrefix": "ATRC_CONCEPTOS_"
+    },
+    {
+      "source": "ATRC",
+      "type": "DIM",
+      "name": "ATRC_CANALES",
+      "filePrefix": "ATRC_CANALES_"
+    },
+    {
+      "source": "ATRC",
+      "type": "FACT",
+      "name": "ATRC_TRANSFERENCIAS",
+      "filePrefix": "ATRC_TRANSFERENCIAS_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_ATRC-Daily"
+  }
+}

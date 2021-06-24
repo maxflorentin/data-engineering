@@ -1,0 +1,27 @@
+{
+	"file": "cp_canales_venta_schema",
+	"location": "/santander/bi-corp/landing/rio258/dim/cp_canales_venta/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio258/dim/rio258_cp_canales_venta",
+	"tempDirectory": "/santander/bi-corp/temp/rio258_cp_canales_venta",
+	"extension": "csv",
+	"delimiter": "%",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_canal_venta",
+			"type": "string"
+		},
+{
+			"name": "desc_canal_venta",
+			"type": "string"
+		},
+{
+			"name": "ultima_modif",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

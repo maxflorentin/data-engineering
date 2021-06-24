@@ -1,0 +1,19 @@
+{
+  "file": "cloudera-logs",
+  "location": "/santander/bi-corp/landing/cloudera_logs/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/cloudera/cloudera_logs/",
+  "extension": "json",
+  "createTable": "bi_corp_staging.cloudera_logs",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "snappy",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "file": "testado_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/testado/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/testado",
+  "createTable": "bi_corp_staging.alcen_testado",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "cod_canal",
+    "type": "string"
+  },
+  {
+    "name": "fec_ingreso_rio2",
+    "type": "string"
+  },
+  {
+    "name": "fec_envio_sw1",
+    "type": "string"
+  },
+  {
+    "name": "fec_envio_sw2",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_sw",
+    "type": "string"
+  },
+  {
+    "name": "fec_desicion_sw",
+    "type": "string"
+  },
+  {
+    "name": "mar_pedido_veraz",
+    "type": "string"
+  },
+  {
+    "name": "mar_reutiliza_veraz",
+    "type": "string"
+  },
+  {
+    "name": "fec_envio_veraz",
+    "type": "string"
+  },
+  {
+    "name": "fec_recep_veraz",
+    "type": "string"
+  },
+  {
+    "name": "fec_ingreso_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_asig_ana_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_ini_resol_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_fin_resol_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_retro_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_reasig_ana_srs",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_srs",
+    "type": "string"
+  },
+  {
+    "name": "fec_resol_suc",
+    "type": "string"
+  },
+  {
+    "name": "cod_resol_suc",
+    "type": "string"
+  },
+  {
+    "name": "fec_resol_altas",
+    "type": "string"
+  },
+  {
+    "name": "cod_resol_altas",
+    "type": "string"
+  },
+  {
+    "name": "fec_retro",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_retro",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_actual",
+    "type": "string"
+  },
+  {
+    "name": "fec_estado_actual",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_asol",
+    "type": "string"
+  },
+  {
+    "name": "fec_estado_asol",
+    "type": "string"
+  },
+  {
+    "name": "nom_sector_altas",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

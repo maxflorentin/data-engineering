@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(concat(g7025_s1emp, lpad(g7025_contra1, 9, '0'), g7025_emp_ant, lpad(g7025_cont_ant, 9, '0'), g7025_motrenu, g7025_fealtrel, g7025_fec_mod, nvl(g7025_imprestr,\"-0000000000000000\"), g7025_coddiv, g7025_motrenug, g7025_fec_baja)) as longitud, concat(g7025_s1emp, lpad(g7025_contra1, 9, '0'), g7025_emp_ant, lpad(g7025_cont_ant, 9, '0'), g7025_motrenu, g7025_fealtrel, g7025_fec_mod, nvl(g7025_imprestr,\"-0000000000000000\"), g7025_coddiv, g7025_motrenug, g7025_fec_baja) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_trz_cont_ren r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_TRZ_CONT_REN' where partition_date = '$month_partition_bdr' and length(concat(g7025_s1emp, lpad(g7025_contra1, 9, '0'), g7025_emp_ant, lpad(g7025_cont_ant, 9, '0'), g7025_motrenu, g7025_fealtrel, g7025_fec_mod, nvl(g7025_imprestr,\"-0000000000000000\"), g7025_coddiv, g7025_motrenug, g7025_fec_baja)) != cast(d.longitud as int)"
+    ]
+}

@@ -1,0 +1,31 @@
+{
+	"file": "config_bdr_variables_schema",
+	"location": "/santander/bi-corp/landing/bdr/config/config_bdr_variables/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/bdr/config/config_bdr_variables",
+	"tempDirectory": "/santander/bi-corp/temp/config_bdr_variables",
+	"extension": "csv",
+	"delimiter": ";",
+	"header": true,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "table",
+			"type": "string",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		},
+		{
+			"name": "month_partition_date",
+			"type": "string"
+		},
+		{
+			"name": "last_working_day_arda",
+			"type": "string"
+		},
+		{
+			"name": "json_extra_params",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,65 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_cp_envios_eliminados",
+            "title": "CONTIENE TODOS LOS ENVÍOS QUE FUERON DEPURADOS POR EL SISTEMA EN UNA FECHA POSTERIOR A SU CREACIÓN",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE TODOS LOS ENVÍOS QUE FUERON DEPURADOS POR EL SISTEMA EN UNA FECHA POSTERIOR A SU CREACIÓN",
+            "columns": [
+                {
+                    "name": "CRUPIER_ID",
+                    "title": "CRUPIER_ID",
+                    "description": "CÓDIGO DEL ENIOS CROSS APLICACIONES",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA",
+                    "title": "FECHA",
+                    "description": "FECHA CUANDO FUE DEPURADO EL ENVÍO DE LA TABLA CP_ENVIOS",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

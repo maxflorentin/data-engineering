@@ -1,0 +1,71 @@
+{
+    "file": "motivo_visita_v2_schema",
+    "createTable": "bi_corp_staging.rio154_motivo_visita_v2",
+    "location": "/santander/bi-corp/landing/rio154/dim/motivo_visita_v2/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/dim/motivo_visita_v2",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_motivo",
+            "type": "string"
+        },
+        {
+            "name": "id_motivo_padre",
+            "type": "string"
+        },
+        {
+            "name": "descripcion",
+            "type": "string"
+        },
+        {
+            "name": "prioridad",
+            "type": "string"
+        },
+        {
+            "name": "duracion",
+            "type": "string"
+        },
+        {
+            "name": "id_canal",
+            "type": "string"
+        },
+        {
+            "name": "id_sector",
+            "type": "string"
+        },
+        {
+            "name": "orden",
+            "type": "string"
+        },
+        {
+            "name": "activo",
+            "type": "string"
+        },
+        {
+            "name": "tag",
+            "type": "string"
+        },
+        {
+            "name": "id_tipo_stack",
+            "type": "string"
+        },
+        {
+            "name": "tiene_flujo_sol",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

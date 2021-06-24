@@ -1,0 +1,128 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308785", "A308777"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "TCDTGEN",
+      "title": "Tablas Corporativas Generales",
+      "schema": "bi_corp_staging",
+      "source": "MALTC",
+      "query": "HQL del ETL",
+      "type": "DIM",
+      "description": "Tablas Corporativas Generales",
+      "columns": [
+        {
+          "name": "GENTABLA",
+          "title": "GEN_TABLA",
+          "description": "Tabla",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_ENTIDAD",
+          "title": "GEN_ENTIDAD",
+          "description": "Entidad",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_IDIOMA",
+          "title": "GEN_IDIOMA",
+          "description": "Idioma",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_CLAVE",
+          "title": "GEN_CLAVE",
+          "description": "Clave",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 19.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_DATOS",
+          "title": "GEN_DATOS",
+          "description": "Datos",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 250.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_TIMEST_ALT",
+          "title": "GEN_TIMEST_ALT",
+          "description": "Fecha de alta",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_USUARIO_ALT",
+          "title": "GEN_USUARIO_ALT",
+          "description": "Usuario que realiza el alta ",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_TIMEST_MOD",
+          "title": "GEN_TIMEST_MOD",
+          "description": "Fecha de modificación",
+          "type": "S",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GEN_USUARIO_MOD",
+          "title": "GEN_USUARIO_MOD",
+          "description": "Usuario que realizó la moficación",
+          "type": "A",
+          "personIdentifier": false,
+          "decimalSeparator": "N/A",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

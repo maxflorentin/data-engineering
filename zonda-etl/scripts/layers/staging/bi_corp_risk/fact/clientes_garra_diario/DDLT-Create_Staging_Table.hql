@@ -1,0 +1,68 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_risk.raw_clientes_garra_diario(
+        periodo string ,
+        nup string ,
+        grado_bcra string ,
+        codigo_marca_cliente string,
+        codigo_submarca_cliente string,
+        fecha_alta_marca_cliente string,
+        fecha_alta_submarca_cliente string,
+        codigo_gestor string,
+        codigo_situacion_irregular string,
+        marca_feve string ,
+        importe_riesgo double,
+        importe_irregular double ,
+        marca_topn string,
+        codigo_kgl string,
+        primer_apellido string,
+        nombre string,
+        tipo_persona string,
+        tipo_documento string,
+        numero_documento string,
+        codigo_actividad string,
+        segmento string,
+        subsegmento string,
+        marca_pyme string,
+        banca string,
+        division string,
+        sucursal_administradora string ,
+        empleado string,
+        tipo_sociedad string,
+        domicilio string,
+        localidad string,
+        provincia string,
+        pais string,
+        codigo_postal string,
+        sexo string,
+        fecha_alta_cliente string,
+        fecha_nacimiento string,
+        telefono string,
+        estado_civil string,
+        nacional string,
+        monto_ingresos_brutos double,
+        monto_ingresos_grupo_familiar double,
+        monto_gastos double,
+        monto_ingresos double,
+        profesion string,
+        tipo_actividad string,
+        cargo_empresa string,
+        nivel_estudio string,
+        universidad string,
+        ramo_empresa string,
+        codigo_responsabilidad_iva string,
+        codigo_responsabilidad_ganancia string,
+        codigo_responsabilidad_ingresos_brutos string,
+        fecha_ultima_acreditacion string,
+        tipo_paquete string,
+        indicador_riesgo string,
+        marca_bp string,
+        origen string)
+    PARTITIONED BY (
+      fecha_actualiza string)
+    ROW FORMAT SERDE
+      'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+    STORED AS INPUTFORMAT
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+    OUTPUTFORMAT
+      'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+    LOCATION
+      '${DATA_LAKE_SERVER}/santander/bi-corp/sandbox/rda/staging/clientes_garra_diario'

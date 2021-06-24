@@ -1,0 +1,43 @@
+{
+  "file": "mer_fx_categorias_schema",
+  "location": "/santander/bi-corp/landing/rio286/dim/mer_fx_categorias/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio286/dim/mer_fx_categorias",
+  "createTable": "bi_corp_staging.mer_fx_categorias",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "id_categoria",
+                    "type": "string"
+                },
+                {
+                    "name": "desc_categoria",
+                    "type": "string"
+                },
+                {
+                    "name": "habilitado",
+                    "type": "string"
+                },
+                {
+                    "name": "fecha_ult_act",
+                    "type": "string"
+                },
+                {
+                    "name": "usuario_ult_act",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

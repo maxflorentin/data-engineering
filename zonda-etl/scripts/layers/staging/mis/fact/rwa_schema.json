@@ -1,0 +1,35 @@
+{
+	   "file":"rwa_schema",
+	   "location":"/santander/bi-corp/sandbox/bi/mis/rwa/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/sandbox/bi/mis/parquet_files/rwa/",
+       "createTable": "analytics.pf_rwa_historico",
+	   "extension":"csv",
+	   "header":true,
+       "delimiter": ";",
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "fecha",
+                        "type": "string"
+                },
+                {
+                        "name": "penumper",
+                        "type": "string"
+                },
+                {
+                        "name": "rwa",
+                        "type": "string"
+                },
+                {
+                        "name": "segmento_n2",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

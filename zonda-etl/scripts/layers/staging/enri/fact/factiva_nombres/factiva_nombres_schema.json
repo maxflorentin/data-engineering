@@ -1,0 +1,41 @@
+{
+        "file": "factiva_nombres",
+        "location": "/santander/bi-corp/landing/enri/fact/factiva_nombres/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/enri/fact/factiva_nombres",
+        "tempDirectory": "/santander/bi-corp/temp/factiva_nombres",
+        "createTable": "bi_corp_staging.enri_factiva_nombres",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "delimiter": ";",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "id",
+                        "type": "string"
+                },
+                {
+                        "name": "seq_name",
+                        "type": "string"
+                },
+                {
+                        "name": "type_name",
+                        "type": "string"
+                },
+                {
+                        "name": "name",
+                        "type": "string"
+                },
+                {
+                        "name": "type_record",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

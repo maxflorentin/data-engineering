@@ -1,0 +1,16 @@
+{
+  "file": "ugdtads_schema",
+  "location": "/santander/bi-corp/landing/malug/fact/ugdtads/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/malug/fact/ugdtads",
+  "createTable": "bi_corp_staging.malug_ugdtads",
+  "copybook": "ugdtads.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

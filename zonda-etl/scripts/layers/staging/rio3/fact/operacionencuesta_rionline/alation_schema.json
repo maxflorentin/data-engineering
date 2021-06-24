@@ -1,0 +1,149 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307856"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio3_operacion",
+      "title": "DETALLE DE OPERACIÓN ASOCIADA A ENCUESTA",
+      "schema": "bi_corp_staging",
+      "source": "SIVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "DETALLE DE OPERACIÓN ASOCIADA A ENCUESTA",
+      "columns": [
+        {
+          "name": "OPERACION",
+          "title": "OPERACION",
+          "description": "operación asociada a la encuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"                },
+        {
+          "name": "ENCUESTA",
+          "title": "ENCUESTA",
+          "description": "codigo de la encuesta",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"                },
+        {
+          "name": "PRODUCTO",
+          "title": "PRODUCTO",
+          "description": "producto asociado a la encuesta",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"                },
+        {
+          "name": "SUCURSAL",
+          "title": "SUCURSAL",
+          "description": "numero de sucursal",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"                },
+        {
+          "name": "NROCUENTA",
+          "title": "NROCUENTA",
+          "description": "numero de cuenta asociado al producto",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "NUPTITULAR",
+          "title": "NUPTITULAR",
+          "description": "nup del titular del producto",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"                },
+        {
+          "name": "NUMERO_VISA",
+          "title": "NUMERO_VISA",
+          "description": "numero de tarjeta visa",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "CUENTA_VISA",
+          "title": "CUENTA_VISA",
+          "description": "cuenta de la tarjeta visa",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "NUMERO_AMEX",
+          "title": "NUMERO_AMEX",
+          "description": "numero de tarjeta american express",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "CUENTA_AMEX",
+          "title": "CUENTA_AMEX",
+          "description": "cuenta de la tarjeta american express",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "NUMERO_MASTER",
+          "title": "NUMERO_MASTER",
+          "description": "numero de tarjeta mastercard",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                },
+        {
+          "name": "CUENTA_MASTER",
+          "title": "CUENTA_MASTER",
+          "description": "cuenta de la tarjeta mastercard",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": 20.0,
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

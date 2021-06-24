@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(g5515_feoperac,g5515_s1emp,g5515_grup_eco,g5515_idnumcli,g5515_rol_jera,g5515_fecultmo) AS line FROM bi_corp_bdr.jm_grup_rela WHERE partition_date = '$month_partition_bdr';

@@ -1,0 +1,44 @@
+{
+        "file": "control_usd",
+        "location": "/santander/bi-corp/landing/malbgc/fact/control_usd/partition_date=${partition_date_filter}/CONTROL_USD-${file_date_filter}.DAT",
+        "destination": "/santander/bi-corp/staging/malbgc/fact/control_usd",
+        "tempDirectory": "/santander/bi-corp/temp/control_usd",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "delimiter": ";",
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [{
+                        "name": "sucursal",
+                        "type": "string"
+                },
+                {
+                        "name": "cuenta",
+                        "type": "string"
+                },
+                {
+                        "name": "cod_op",
+                        "type": "string"
+                },
+                {
+                        "name": "importe",
+                        "type": "string"
+                },
+                {
+                        "name": "partition_date",
+                        "type": "string"
+                },
+                {
+                        "name": "extraction_date",
+                        "type": "string"
+                }
+         ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

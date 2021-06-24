@@ -1,0 +1,41 @@
+{
+  "file": "encuestas_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/encuestas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/encuestas",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+    "name": "codigo",
+    "type": "string"
+    },
+    {
+    "name": "descri",
+    "type": "string"
+    },
+    {
+    "name": "activo",
+    "type": "string"
+    },
+    {
+    "name": "producto",
+    "type": "string"
+    },
+    {
+    "name": "tipo",
+    "type": "string"
+    }
+  ],
+ "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+ }]
+}

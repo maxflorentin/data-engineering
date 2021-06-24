@@ -1,0 +1,159 @@
+{
+	   "file":"base_historica_compensacion_history_schema",
+	   "location":"/santander/bi-corp/landing/acle/history/base_historica_compensacion/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/acle/fact/base_historica_compensacion",
+       "extension":"txt",
+	   "header":false,
+	   "fixed":true,
+	   "parquetFiles":1,
+	   "compression":"gzip",
+        "columns": [{
+                        "name": "tipo_reg",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "banco_cmc7",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "sucursal_cmc7",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "nro_cheque_cmc7",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "nro_cuenta_cmc7",
+                        "type": "string",
+                        "width": 11
+                },
+                {
+                        "name": "fecha_compensacion",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "tipo_cheque",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "cod_postal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "importe",
+                        "type": "string",
+                        "width": 13
+                },
+                {
+                        "name": "fec_pres",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "fec_deposito",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "mot_rech_ppal",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "mot_rech_depo",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "estado",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "pto_intercambio",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "bco_recep",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "canal_ingreso",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "bco_corresp",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "suc_corresp",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "plazo",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "suc_acred",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cta_acred",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "suc_origen",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "suc_girada",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cta_girada",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "moneda",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "nro_caja",
+                        "type": "string",
+                        "width": 9
+                },
+                {
+                        "name": "volumen",
+                        "type": "string",
+                        "width": 5
+                }
+         ],
+         "mirrorColumns": [{
+                  "name": "partition_date",
+                  "type": "date",
+                  "target": "fecha_compensacion",
+                  "dateFormat": "yyyyMMdd",
+                  "partitionColumn": true,
+                  "partitionOrder": 1
+  }]
+}

@@ -1,0 +1,170 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                [
+                    "A204202"
+                ]
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "malbgc_bgdttra_stock",
+            "title": "Cuentas Personales",
+            "schema": "bi_corp_staging",
+            "source": "MALBGC",
+            "type": "FACT",
+            "description": "Cuentas Personales",
+            "columns": [
+                {
+                    "name": "tra_concepto",
+                    "title": "tra_concepto",
+                    "description": "CODIGO DE CONCEPTO                       ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "tra_comision",
+                    "title": "tra_comision",
+                    "description": "CODIGO DE LA COMISION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "tra_fecha_desde",
+                    "title": "tra_fecha_desde",
+                    "description": "FECHA DE INICIO DE VALIDEZ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "tra_saldo_hasta",
+                    "title": "tra_saldo_hasta",
+                    "description": "SALDO HASTA DONDE COMPRENDE EL TRAMO",
+                    "type": "numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 17.0
+                },
+                {
+                    "name": "tra_fecha_hasta",
+                    "title": "tra_fecha_hasta",
+                    "description": "FECHA FIN DE VALIDEZ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 10.0
+                },
+                {
+                    "name": "tra_comi_im",
+                    "title": "tra_comi_im",
+                    "description": "IMPORTE A COBRAR POR COMISION",
+                    "type": "numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 17.0
+                },
+                {
+                    "name": "tra_comi_po",
+                    "title": "tra_comi_po",
+                    "description": "PORCENTAJE DE LA COMISION",
+                    "type": "numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "tra_comi_max",
+                    "title": "tra_comi_max",
+                    "description": "IMPORTE MAXIMO A COBRAR POR LA COMISION",
+                    "type": "numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 17.0
+                },
+                {
+                    "name": "tra_comi_min",
+                    "title": "tra_comi_min",
+                    "description": "IMPORTE MINIMO A COBRAR POR LA COMISION",
+                    "type": "numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "punto",
+                    "nullable": false,
+                    "length": 17.0
+                },
+                {
+                    "name": "tra_entidad_umo",
+                    "title": "tra_entidad_umo",
+                    "description": "ENTIDAD ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "tra_centro_umo",
+                    "title": "tra_centro_umo",
+                    "description": "CENTRO ULTIMA MODIFICACION           ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0
+                },
+                {
+                    "name": "tra_userid_umo",
+                    "title": "tra_userid_umo",
+                    "description": "USUARIO ULTIMA MODIFICACION          ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "tra_netname_umo",
+                    "title": "tra_netname_umo",
+                    "description": "TERMINAL ULTIMA MODIFICACION         ",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0
+                },
+                {
+                    "name": "tra_timest_umo",
+                    "title": "tra_timest_umo",
+                    "description": "FECHA, HORA DE LA ULTIMA MODIFICACION",
+                    "type": "string",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 26.0
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

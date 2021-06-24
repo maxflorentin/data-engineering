@@ -1,0 +1,105 @@
+{
+  "file": "vc_venta",
+  "location": "/santander/bi-corp/landing/moria/fact/vc_venta/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/moria/fact/vc_venta",
+  "extension": "csv",
+  "delimiter": ";",
+  "parquetFiles": 1,
+  "createTable": "bi_corp_staging.moria_vc_ventas",
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "idventa",
+      "type": "string"
+    },
+    {
+      "name": "idfideicomiso",
+      "type": "string"
+    },
+    {
+      "name": "idpreventa",
+      "type": "string"
+    },
+    {
+      "name": "cotizacion",
+      "type": "string"
+    },
+    {
+      "name": "fecha_corte",
+      "type": "string"
+    },
+    {
+      "name": "ip",
+      "type": "string"
+    },
+    {
+      "name": "usuario",
+      "type": "string"
+    },
+    {
+      "name": "estado",
+      "type": "string"
+    },
+    {
+      "name": "fecha_preventa",
+      "type": "string"
+    },
+    {
+      "name": "clientes_agregados",
+      "type": "string"
+    },
+    {
+      "name": "clientes_excluidos",
+      "type": "string"
+    },
+    {
+      "name": "fecha_venta",
+      "type": "string"
+    },
+    {
+      "name": "usuario_alta",
+      "type": "string"
+    },
+    {
+      "name": "timest_alta",
+      "type": "string"
+    },
+    {
+      "name": "usuario_envio",
+      "type": "string"
+    },
+    {
+      "name": "timest_envio",
+      "type": "string"
+    },
+    {
+      "name": "usuario_aprobacion",
+      "type": "string"
+    },
+    {
+      "name": "timest_aprobacion",
+      "type": "string"
+    },
+    {
+      "name": "motivo_rechazo",
+      "type": "string"
+    },
+    {
+      "name": "fec_ajuste1",
+      "type": "string"
+    },
+    {
+      "name": "fec_ajuste2",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

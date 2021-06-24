@@ -1,0 +1,19 @@
+{
+    "name": "report_zend_gnet_cust_serv_d_config",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_Getnet-Daily",
+            "tasks": "STAGING_merchants_Parquetize"
+        },
+        {
+            "dag_id": "LOAD_STG_ZENDESK-Daily",
+            "tasks": ["STAGING_Zendesk_TK_Getnet_AddPartition", "STAGING_Zendesk_USR_Getnet_AddPartition"]
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "GETNET_ZEND_CUST_SERV_REPORT"
+        }
+    ]
+}

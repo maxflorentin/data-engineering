@@ -1,0 +1,337 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308863"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "amuc_amuc550",
+            "title": "Interfaz de cheques rechazados en Multas para TRIAD",
+            "schema": "bi_corp_staging",
+            "source": "AMUC",
+            "query": "",
+            "type": "fact",
+            "description": "Interfaz de cheques rechazados en Multas para TRIAD",
+            "columns": [
+                {
+                    "name": "550_entidad",
+                    "title": "WAMUC560-ENTIDAD",
+                    "description": "Entidad de la cuenta, siempre '0072'",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_sucursal",
+                    "title": "WAMUC560-SUCURSAL",
+                    "description": "Sucursal de la cuenta",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_cuenta",
+                    "title": "WAMUC560-CUENTA",
+                    "description": "Número de cuenta",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_producto",
+                    "title": "WAMUC560-PRODUCTO",
+                    "description": "Producto",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_subproducto",
+                    "title": "WAMUC560-SUBPRODUCTO",
+                    "description": "Subproducto",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_divisa",
+                    "title": "WAMUC560-DIVISA",
+                    "description": "Divisa",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_comprobante",
+                    "title": "WAMUC560-COMPROBANTE",
+                    "description": "Número de comprobante (= número de cheque)",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_motivo",
+                    "title": "WAMUC560-MOTIVO",
+                    "description": "Motivo de rechazo administrado por Multas",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_fecha_rechazo",
+                    "title": "WAMUC560-FECHA-RECHAZO",
+                    "description": "Fecha de rechazo (formato aaaa-mm-dd)",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_fec_pag",
+                    "title": "WAMUC560-FEC-PAG",
+                    "description": "Fecha de pago (formato aaaa-mm-dd). Es la fecha de rescate del cheque.",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_persona_empresa",
+                    "title": "WAMUC560-PERSONA-EMPRESA",
+                    "description": "Tipo de persona. F: física; J: jurídica",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_firmante_1",
+                    "title": "WAMUC560-FIRMANTE (01)",
+                    "description": "Nro. de firmante (1ra. ocurrencia)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_firmante_2",
+                    "title": "WAMUC560-FIRMANTE (02)",
+                    "description": "Nro. de firmante (2da. ocurrencia)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_firmante_3",
+                    "title": "WAMUC560-FIRMANTE (03)",
+                    "description": "Nro. de firmante (3ra. ocurrencia)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_firmante_4",
+                    "title": "WAMUC560-FIRMANTE (04)",
+                    "description": "Nro. de firmante (4ta. ocurrencia)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_firmante_5",
+                    "title": "WAMUC560-FIRMANTE (05)",
+                    "description": "Nro. de firmante (5ta. ocurrencia)",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_codigo",
+                    "title": "WAMUC560-CODIGO",
+                    "description": "Código operativo con el que imputa el movimiento de rechazo",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_subcodi",
+                    "title": "WAMUC560-SUBCODI",
+                    "description": "Subcódigo operativo con el que imputa el movimiento de rechazo",
+                    "type": "Numérico",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_indicador_computable",
+                    "title": "WAMUC560-INDICADOR-COMPUTABLE ",
+                    "description": "Marca de rechazado sin fondo computable. SI: es computable; NO: no es computable",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_importe",
+                    "title": "WAMUC560-IMPORTE",
+                    "description": "Importe del cheque",
+                    "type": "Float",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_fec_cierre",
+                    "title": "WAMUC560-FEC-CIERRE",
+                    "description": "Fecha de Cierre en formato  AAAA-MM-DD",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 10,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_nro_persona",
+                    "title": "WAMUC560-NRO-PERSONA",
+                    "description": "Numero de persona",
+                    "type": "String",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 8,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "550_m_sin_fondo_nres",
+                    "title": "WAMUC560-M-SIN-FONDO-NRES",
+                    "description": "Marca de Rechazado Sin Fondo No Rescatado",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_m_sin_fondo_fter",
+                    "title": "WAMUC560-M-SIN-FONDO-FTER",
+                    "description": "Marca de Rechazado por Sin Fondos Rescatado fuera de termino",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_m_sin_fondo_res",
+                    "title": "WAMUC560-M-SIN-FONDO-RES",
+                    "description": "Marca de Rechazado Sin Fondo rescatado",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_m_formales_nres",
+                    "title": "WAMUC560-M-FORMALES-NRES",
+                    "description": "Marca de Rechazado Formales No Rescatado",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_m_formales_fter",
+                    "title": "WAMUC560-M-FORMALES-FTER",
+                    "description": "Marca de Rechazado Formales Rescatado fuera de termino",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "550_m_formales_res",
+                    "title": "WAMUC560-M-FORMALES-RES",
+                    "description": "Marca de Rechazado Formales Rescatados",
+                    "type": "Int",
+                    "personIdentifier": false,
+                    "decimalSeparator": "No aplica",
+                    "nullable": false,
+                    "length": 1,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Incremental",
+                "delta": "D+1"
+            }
+        }
+    }
+}

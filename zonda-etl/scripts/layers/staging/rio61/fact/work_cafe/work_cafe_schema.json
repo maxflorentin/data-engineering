@@ -1,0 +1,168 @@
+{
+	"file": "work_cafe_schema",
+	"location": "/santander/bi-corp/landing/rio61/fact/work_cafe/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio61/fact/work_cafe",
+	"createTable": "bi_corp_staging.rio61_nps_work_cafe",
+	"extension": "csv",
+	"header": true,
+	"fixed": false,
+	"delimiter": "|",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "workcafe_submot",
+			"type": "string"
+		},
+		{
+			"name": "fecha_encuesta",
+			"type": "string"
+		},
+		{
+			"name": "id_respuesta",
+			"type": "string"
+		},
+		{
+			"name": "access_point",
+			"type": "string"
+		},
+		{
+			"name": "hotspot",
+			"type": "string"
+		},
+		{
+			"name": "tags",
+			"type": "string"
+		},
+		{
+			"name": "metodoautenticacion",
+			"type": "string"
+		},
+		{
+			"name": "cumpleanios",
+			"type": "string"
+		},
+		{
+			"name": "edad",
+			"type": "string"
+		},
+		{
+			"name": "rango_edad",
+			"type": "string"
+		},
+		{
+			"name": "dni",
+			"type": "string"
+		},
+		{
+			"name": "direccion_correo_electronico",
+			"type": "string"
+		},
+		{
+			"name": "genero",
+			"type": "string"
+		},
+		{
+			"name": "telefono_fijo1",
+			"type": "string"
+		},
+		{
+			"name": "nombre",
+			"type": "string"
+		},
+		{
+			"name": "userid",
+			"type": "string"
+		},
+		{
+			"name": "campania",
+			"type": "string"
+		},
+		{
+			"name": "pagina_campania",
+			"type": "string"
+		},
+		{
+			"name": "redireccion_campania",
+			"type": "string"
+		},
+		{
+			"name": "navegador",
+			"type": "string"
+		},
+		{
+			"name": "version_navegador",
+			"type": "string"
+		},
+		{
+			"name": "categoria_dispositivo",
+			"type": "string"
+		},
+		{
+			"name": "mac_address",
+			"type": "string"
+		},
+		{
+			"name": "sistema_operativo",
+			"type": "string"
+		},
+		{
+			"name": "idioma",
+			"type": "string"
+		},
+		{
+			"name": "usuario_red_social",
+			"type": "string"
+		},
+		{
+			"name": "ssid",
+			"type": "string"
+		},
+		{
+			"name": "login",
+			"type": "string"
+		},
+		{
+			"name": "logout",
+			"type": "string"
+		},
+		{
+			"name": "recomendar_banco",
+			"type": "string"
+		},
+		{
+			"name": "nps_workcafe",
+			"type": "string"
+		},
+		{
+			"name": "comentario_alerta_nps",
+			"type": "string"
+		},
+		{
+			"name": "comentario_mejora_nps",
+			"type": "string"
+		},
+		{
+			"name": "comentario_recomendacion_nps",
+			"type": "string"
+		},
+		{
+			"name": "etiquetas",
+			"type": "string"
+		},
+		{
+			"name": "fecha_proceso",
+			"type": "string"
+		},
+		{
+			"name": "fecha_carga",
+			"type": "string"
+		}
+	],
+	"extraColumns": [{
+		"name": "partition_date",
+		"type": "string",
+		"value": "${partition_date_filter}",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

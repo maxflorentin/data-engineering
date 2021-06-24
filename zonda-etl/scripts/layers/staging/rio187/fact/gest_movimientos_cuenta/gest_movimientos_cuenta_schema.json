@@ -1,0 +1,167 @@
+{
+    "file": "gest_movimientos_cuenta_schema",
+    "createTable": "bi_corp_staging.rio187_gest_movimientos_cuenta",
+    "location": "/santander/bi-corp/landing/rio187/fact/gest_movimientos_cuenta/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio187/fact/gest_movimientos_cuenta",
+    "tempDirectory": "/santander/bi-corp/temp/rio187",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "id_gestion",
+            "type": "string"
+        },
+        {
+            "name": "nro_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "sucursal_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "divisa_cuenta",
+            "type": "string"
+        },
+        {
+            "name": "nro_comprobante",
+            "type": "string"
+        },
+        {
+            "name": "cod_operativo",
+            "type": "string"
+        },
+        {
+            "name": "fecha_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "monto_movimiento",
+            "type": "string"
+        },
+        {
+            "name": "ind_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "fecha_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "monto_devolucion",
+            "type": "string"
+        },
+        {
+            "name": "cod_rubro",
+            "type": "string"
+        },
+        {
+            "name": "nro_establecimiento",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_alta",
+            "type": "string"
+        },
+        {
+            "name": "fecha_alta",
+            "type": "string"
+        },
+        {
+            "name": "id_usuario_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_modif",
+            "type": "string"
+        },
+        {
+            "name": "fecha_baja",
+            "type": "string"
+        },
+        {
+            "name": "nombre_establecimiento",
+            "type": "string"
+        },
+        {
+            "name": "cod_autorizacion",
+            "type": "string"
+        },
+        {
+            "name": "nro_cupon",
+            "type": "string"
+        },
+        {
+            "name": "nombre_empresa",
+            "type": "string"
+        },
+        {
+            "name": "empresa_b24",
+            "type": "string"
+        },
+        {
+            "name": "monto_reclamado",
+            "type": "string"
+        },
+        {
+            "name": "tasa_promedio",
+            "type": "string"
+        },
+        {
+            "name": "monto_interes",
+            "type": "string"
+        },
+        {
+            "name": "monto_comision",
+            "type": "string"
+        },
+        {
+            "name": "id_motivo",
+            "type": "string"
+        },
+        {
+            "name": "cod_op_brio_grupo",
+            "type": "string"
+        },
+        {
+            "name": "cod_op_brio_subgrupo",
+            "type": "string"
+        },
+        {
+            "name": "nro_tarjeta_debito",
+            "type": "string"
+        },
+        {
+            "name": "id_atm",
+            "type": "string"
+        },
+        {
+            "name": "id_vouchar",
+            "type": "string"
+        },
+        {
+            "name": "direccion_establecimiento",
+            "type": "string"
+        },
+        {
+            "name": "cod_brio_devolucion",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

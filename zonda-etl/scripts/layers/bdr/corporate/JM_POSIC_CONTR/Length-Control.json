@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(e0621_feoperac, e0621_s1emp, e0621_contra1, E0621_CTA_CONT, e0621_tip_impt, e0621_fec_mes, E0621_AGRCTACB, e0621_importh, e0621_coddiv, e0621_fecultmo, E0621_CENTCTBL, E0621_CTACGBAL)) as longitud, CONCAT(e0621_feoperac, e0621_s1emp, e0621_contra1, E0621_CTA_CONT, e0621_tip_impt, e0621_fec_mes, E0621_AGRCTACB, e0621_importh, e0621_coddiv, e0621_fecultmo, E0621_CENTCTBL, E0621_CTACGBAL) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_posic_contr r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_POSIC_CONTR' where partition_date = '$month_partition_bdr' and length(CONCAT(e0621_feoperac, e0621_s1emp, e0621_contra1, E0621_CTA_CONT, e0621_tip_impt, e0621_fec_mes, E0621_AGRCTACB, e0621_importh, e0621_coddiv, e0621_fecultmo, E0621_CENTCTBL, E0621_CTACGBAL)) != cast(d.longitud as int)"
+    ]
+}

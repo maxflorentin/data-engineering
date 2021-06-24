@@ -1,0 +1,38 @@
+{
+  "file": "cart_actividades_economicas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_actividades_economicas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_actividades_economicas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"caae_cd_actividad",
+      "type": "string"
+    },
+    {
+      "name":"caae_de_actividad",
+      "type":"string"
+    },
+    {
+      "name":"caae_cd_indole_categoria",
+      "type":"string"
+    },
+    {
+      "name":"caae_st_actividad",
+      "type":"string"
+    },
+    {
+      "name":"caae_mca_sujeto_oblig",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

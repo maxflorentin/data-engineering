@@ -1,0 +1,107 @@
+{
+    "file": "acnl_acnl801d",
+    "location": "/santander/bi-corp/landing/macnl/acnl801d/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/acnl/fact/acnl801d/",
+    "extension": "csv",
+    "header": false,
+    "fixed": true,
+    "createTable": "bi_corp_staging.acnl_acnl801d",
+    "cobolTypes": true,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+        {
+            "name": "tipo_cliente",
+            "type": "X(01)"
+        },
+        {
+            "name": "sucursal_cuenta",
+            "type": "9(03)"
+        },
+        {
+            "name": "sucursal_maquina",
+            "type": "9(03)"
+        },
+        {
+            "name": "canal",
+            "type": "X(05)"
+        },
+        {
+            "name": "maquina",
+            "type": "X(05)"
+        },
+        {
+            "name": "fecha_amd",
+            "type": "9(08)"
+        },
+        {
+            "name": "hora",
+            "type": "9(06)"
+        },
+        {
+            "name": "transaccion",
+            "type": "9(06)"
+        },
+        {
+            "name": "servicio_adom",
+            "type": "9(03)"
+        },
+        {
+            "name": "ori_rev",
+            "type": "X(01)"
+        },
+        {
+            "name": "fecha_amd_proceso",
+            "type": "9(08)"
+        },
+        {
+            "name": "marca_persona",
+            "type": "X(01)"
+        },
+        {
+            "name": "nup",
+            "type": "X(08)"
+        },
+        {
+            "name": "usuario",
+            "type": "X(08)"
+        },
+        {
+            "name": "importe",
+            "type": "9(12)V99"
+        },
+        {
+            "name": "divisa",
+            "type": "X(03)"
+        },
+        {
+            "name": "cant_cheques",
+            "type": "X(03)"
+        },
+        {
+            "name": "producto",
+            "type": "X(02)"
+        },
+        {
+            "name": "subproducto",
+            "type": "X(04)"
+        },
+        {
+            "name": "tipo_operacion",
+            "type": "X(01)"
+        },
+        {
+            "name": "datos",
+            "type": "X(57)"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

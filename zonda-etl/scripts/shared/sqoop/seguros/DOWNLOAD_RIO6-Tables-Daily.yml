@@ -1,0 +1,86 @@
+name: DOWNLOAD_RIO6-Tables-Daily
+description: 'Load Data from RIO6'
+owner: BI-Corp
+active: true
+start_date: "2020-10-20"
+schedule_interval: '0 3 * * *'
+retries: 3
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  values: [CART_CERTIFICADOS,CART_OPERACIONES,CART_OPERACIONES_DIARIAS,CART_CANALES,CART_CAUSAS_ANULACION_RECIBOS,CART_CLASIFICACION_PRODUCTOS,CART_CLIENTES,CART_PRODPLANES,CART_PRODUCTOS,CART_RAMOS_POLIZAS,CART_RETENCION_CUESTIONARIOS,CART_RETENCION_RESULTADOS,CART_SEGMENTOS_CUADRANTES,CART_SUCURSAL_BANCO,CART_TIPOS_CUENTAS,CART_TIPOS_DOCUMENTOS,CART_USUARIOS,CART_ZONA_SUCURSAL,CG_REF_CODES,ASIT_CLIENTES,ASIT_COBERTURAS,ASIT_COBERTURAS_DETALLE,ASIT_CONTRATOS,ASIT_COTIZACIONES,ASIT_CUOTAS_CONTRATOS,ASIT_OPERACIONES_CONTRATOS,ASIT_PLANES,ASIT_PLANES_DETALLE,ASIT_PRODUCTOS,ASIT_PRODUCTOS_CANALES,ASIT_PRODUCTOS_COBERTURAS,ASIT_PRODUCTOS_DEBITOS,ASIT_PRODUCTOS_PLANES,ASIT_PRODUCTOS_RAMOS,ASIT_PRODUCTOS_SEGMENTOS,INFT2_AGRUPADORES,INFT2_AGRUPADORES_CANALES,CAJT_CATEGORIAS_IVA,CAJT_CONDICIONES_GANANCIAS,CART_ACTIVIDADES_ECONOMICAS,CART_CIUDADES,CART_COMPANIAS,CART_COTIZA_BANCO,CART_COTIZA_COBERTURAS,CART_COTIZA_COMPONENTES,CART_COTIZA_PERSONAS,CART_DOMICILIOS_BANCARIOS,CART_ESTADOS,CART_FR_PAGOS,CART_FR_PAGOS_PRODUCTOS,CART_MAESTRO_FLOTA,CART_MONEDAS,CART_ZONAS_POSTALES,CELT_MARCAS,CELT_MODELOS,AUTT_CERTIFICADOS,CART_AGENTE_INSTITORIO,CART_SINIESTROS_AGE_INST,AUTT_VEHICULOS,HOGT_CERTIFICADOS,HOGT_TP_VIVIENDA,AUTT_MARCAS,AUTT_MODELOS,AUTT_TIPOS_VEHICULOS,AUTT_VALORES_VEHICULOS,SINT_SINIESTROS,CAJT_CALENDARIO,ASIT_AGRUPADORES_PXQ,INFT2_AGRUPADORES_PXQ,CART_COBERTURAS,CART_RIESGOS_CUBIERTOS,INFV2_ANULACIONES, BATB_DATOS_RIO35]
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: 'SQOOP_INGESTION'
+    operator: PythonOperator
+    config:
+      function_name: 'loadTableCommands'
+      function_def: |
+        def loadTableCommands(*args, **kwargs):
+              from airflow.operators.bash_operator import BashOperator
+              import json
+              import os
+              print(kwargs)
+              # VARIABLES
+              extra_args= eval(kwargs.get('extra_args'))
+              partition_date_value = kwargs.get('partition_date')
+              table_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('table_file'))
+              server_file= os.path.join(kwargs.get('zonda_dir'),kwargs.get('server_file'))
+              data_lake_server= kwargs.get('data_lake_server')
+
+              ## Read if tables comes with a fixed execution
+              with  open(server_file, 'r') as serverfile:
+                servers = json.loads(serverfile.read())
+              ## Read Table-file
+              with open(table_file, 'r') as configfile:
+                data = json.loads(configfile.read())
+              for table in data['tables']:
+                if table['table'] == kwargs.get('table'):
+                  partition_date = partition_date_value
+                  command = table['command']
+                  for server in servers['servers']:
+                    if table['serverConfig'] == server['serverName']:
+                      serverCommand = server
+                  for eachServerCfg in serverCommand:
+                      command = command.replace('{' + eachServerCfg + '}', serverCommand.get(eachServerCfg))
+                  for eachTableCfg in table:
+                    tableProperty = table.get(eachTableCfg)
+                    if eachTableCfg == 'landing_path' and data_lake_server.__contains__('s3a'):
+                      tableProperty = tableProperty.replace('/santander/bi-corp/landing', '/data/sqoop').replace('fact/', '').replace('dim/', '')
+                    command = command.replace('{' + eachTableCfg + '}', tableProperty)
+                  ## If the execution have an specific date to process in the table cfg
+                  if eachTableCfg == 'date_to_load':
+                    partition_date = extra_args.get(table.get(eachTableCfg))
+                    print('partition_date changes to {}'.format(partition_date))
+                  command = command.replace('{partition_date}', partition_date).replace('{data_lake_server}', data_lake_server)
+                  ## SQOOP EXECUTION
+                  conf = {'date_from': partition_date}
+                  ## EXEC SQOOP COMMAND
+                  t = BashOperator(task_id='internal_task', bash_command=command, retries=3)
+                  t.execute(context=kwargs)
+                  print("SUCCESFULL SQOOP COMMAND {} ".format(command))
+      provide_context: true
+      op_kwargs:
+        partition_date: "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='DOWNLOAD_RIO6-Tables-Daily') }}"
+        zonda_dir: $ZONDA_DIR
+        data_lake_server: $DATA_LAKE_SERVER
+        extra_args: "{{ ti.xcom_pull(task_ids='InputConfig', key='all', dag_id='DOWNLOAD_RIO6-Tables-Daily') }}"
+        table: ${e}
+        table_file: "repositories/zonda-etl/scripts/shared/sqoop/config/seguros_rio6_cfg.json"
+        server_file: "repositories/zonda-etl/scripts/shared/sqoop/config/server_properties.json"
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [msanguinetti@santandertecnologia.com.ar]

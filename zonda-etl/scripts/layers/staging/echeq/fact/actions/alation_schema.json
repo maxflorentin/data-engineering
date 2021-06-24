@@ -1,0 +1,172 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307819"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "echeq_actions",
+            "title": "ACCIONES",
+            "schema": "bi_corp_staging",
+            "source": "ECHEQ",
+            "query": "",
+            "type": "FACT",
+            "description": "ACCIONES",
+            "columns": [
+                {
+                    "name": "operation_id",
+                    "title": "OPERATION_ID",
+                    "description": "OPERATION_ID",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 24.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "cheque_id",
+                    "title": "CHEQUE_ID",
+                    "description": "CHEQUE_ID",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 15.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "operation",
+                    "title": "OPERATION",
+                    "description": "OPERATION WEBSERVICE",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "status",
+                    "title": "STATUS",
+                    "description": "STATUS",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "target",
+                    "title": "TARGET",
+                    "description": "TARGET COELSA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "executed",
+                    "title": "EXECUTED",
+                    "description": "TimeStamp ejecución",
+                    "type": "TIMESTAMP(6) WITH TIME ZONE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 13.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "msg",
+                    "title": "MSG",
+                    "description": "Mensaje (json)",
+                    "type": "CLOB",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "req",
+                    "title": "REQ",
+                    "description": "REQUEST (json)",
+                    "type": "CLOB",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "res",
+                    "title": "RES",
+                    "description": "RESPONSE (json)",
+                    "type": "CLOB",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 4000.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "cuit",
+                    "title": "CUIT",
+                    "description": "CUIT",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "N/A",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Confidencial"
+                },
+                {
+                    "name": "emisor",
+                    "title": "EMISOR",
+                    "description": "Sin uso actual",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "receptor",
+                    "title": "RECEPTOR",
+                    "description": "Sin uso actual",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": ".",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+				{
+                    "name": "posted",
+                    "title": "POSTED",
+                    "description": "TimeStamp recepción",
+                    "type": "TIMESTAMP(6) WITH TIME ZONE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 13.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "Incremental",
+                "delta": "D+1"
+            }
+        }
+    }
+}

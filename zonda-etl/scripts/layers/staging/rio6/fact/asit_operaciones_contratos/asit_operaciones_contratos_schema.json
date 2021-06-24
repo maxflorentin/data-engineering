@@ -1,0 +1,63 @@
+{
+  "file": "asit_operaciones_contratos_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/asit_operaciones_contratos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/asit_operaciones_contratos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"asoc_cd_operacion",
+      "type": "string"
+    },
+    {
+      "name":"asoc_cd_sub_operacion",
+      "type":"string"
+    },
+    {
+      "name":"asoc_fe_operacion",
+      "type":"string"
+    },
+    {
+      "name":"asoc_cd_usuario",
+      "type":"string"
+    },
+    {
+      "name":"asoc_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"asoc_nu_contrato",
+      "type":"string"
+    },{
+      "name":"asoc_nu_certificado",
+      "type": "string"
+    },
+    {
+      "name":"asoc_nu_endoso",
+      "type":"string"
+    },
+    {
+      "name":"asoc_de_endoso",
+      "type":"string"
+    },
+    {
+      "name":"asoc_tp_documento",
+      "type":"string"
+    },
+    {
+      "name":"asoc_nu_documento",
+      "type": "string"
+    },
+    {
+      "name":"asoc_de_operacion",
+      "type": "string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }]
+}

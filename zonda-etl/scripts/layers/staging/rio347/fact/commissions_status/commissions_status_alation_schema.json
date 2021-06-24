@@ -1,0 +1,126 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+             "steward": ["A198986","A308258"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "COMMISSIONS_STATUS",
+            "title": "Registra el estado de las comisiones cobradas de Custodia y Eventos corporativos de ROSSI DB: RIO347",
+            "schema": "bi_corp_staging",
+            "source": "ROSSI",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Registra el estado de las comisiones cobradas de Custodia y Eventos corporativos de ROSSI DB: RIO347",
+            "columns": [
+                {
+                    "name": "CUSTOMERID",
+                    "title": "CUSTOMERID",
+                    "description": "Numero Único de Persona",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SECURITIES_CONTRACT_CODE",
+                    "title": "SECURITIES_CONTRACT_CODE",
+                    "description": "Número de contrato de la cuenta títulos (código altair)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "OFFICE_CODE",
+                    "title": "OFFICE_CODE",
+                    "description": "Oficina/Sucursal del contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGIN",
+                    "title": "ORIGIN",
+                    "description": "Origen de la comisión.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACTIONID",
+                    "title": "ACTIONID",
+                    "description": "Referencia evento corporativo que generó la comisión.\nEl campo será null si la comisión es por custodia.",
+                    "type": "CHAR",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERIOD",
+                    "title": "PERIOD",
+                    "description": "Periodo sobre el cual se toma la tenencia para efectuar el cobró de la comisión.\nSolo aplica a comisiones de custodia. En caso de eventos corporativos debiera ser nulo.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PAYMENT_DATE",
+                    "title": "PAYMENT_DATE",
+                    "description": "Fecha en la cual se debita el dinero de la cuenta del cliente. Fecha en la que se liquida el evento.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATION_DATE",
+                    "title": "CREATION_DATE",
+                    "description": "Fecha de creación del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "UPDATE_DATE",
+                    "title": "UPDATE_DATE",
+                    "description": "Última fecha de actualización del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

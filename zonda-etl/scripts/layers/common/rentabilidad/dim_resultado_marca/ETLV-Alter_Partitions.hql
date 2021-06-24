@@ -1,0 +1,1 @@
+ALTER TABLE bi_corp_common.dim_resultado_marca ADD IF NOT EXISTS PARTITION (partition_date='{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_Mapping_Marca') }}');

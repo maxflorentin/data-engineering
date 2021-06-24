@@ -1,0 +1,139 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307459"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cosmos_tipos_gestion",
+            "title": "TIPOS DE GESTIÓN COMO RECLAMOS, PEDIDOS, ETC.",
+            "schema": "bi_corp_staging",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "TIPOS DE GESTIÓN COMO RECLAMOS, PEDIDOS, ETC.",
+            "columns": [
+                {
+                    "name": "ID_TIPO_GESTION",
+                    "title": "ID_TIPO_GESTION",
+                    "description": "NÚMERO IDENTIFICADOR DE LA ENTIDAD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_TIPO_GESTION",
+                    "title": "DESC_TIPO_GESTION",
+                    "description": "DESCRIPCIÓN DE LA ENTIDAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 30.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_BAJA",
+                    "title": "FECHA_BAJA",
+                    "description": "FECHA DE BAJA DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "INFORMA_BCRA",
+                    "title": "INFORMA_BCRA",
+                    "description": "INDICA SI EL TIPO DE GESTIÓN SE INFORMA AL BCRA",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PREFIJO_TICKET",
+                    "title": "PREFIJO_TICKET",
+                    "description": "PREFIJO DEL NUMERO DE TICKET PE PEDIDO / RE RECLAMO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_TIPOS_GESTION_SGC",
+                    "title": "ID_TIPOS_GESTION_SGC",
+                    "description": "NÚMERO IDENTIFICADOR DE LA ENTIDAD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 22.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

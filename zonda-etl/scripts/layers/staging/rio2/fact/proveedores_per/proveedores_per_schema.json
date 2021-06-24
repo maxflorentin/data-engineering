@@ -1,0 +1,66 @@
+{
+  "file": "proveedores_per_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/proveedores_per/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/proveedores_per",
+  "createTable": "bi_corp_staging.sge_proveedores_per",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "nro_ultima_prop",
+      "type": "string"
+    },
+    {
+      "name": "cod_prov",
+      "type": "string"
+    },
+    {
+      "name": "nom_prov",
+      "type": "string"
+    },
+    {
+      "name": "plz_pago",
+      "type": "string"
+    },
+    {
+      "name": "porc_compras",
+      "type": "string"
+    },
+    {
+      "name": "ref_obt",
+      "type": "string"
+    },
+    {
+      "name": "cod_usu_alta",
+      "type": "string"
+    },
+    {
+      "name": "fec_alta",
+      "type": "string"
+    },
+    {
+      "name": "cod_usu_mod",
+      "type": "string"
+    },
+    {
+      "name": "fec_mod",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

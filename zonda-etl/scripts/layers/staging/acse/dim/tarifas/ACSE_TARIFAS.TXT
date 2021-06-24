@@ -1,0 +1,30 @@
+*                                                                         
+      ***** ARCHIVO DE TARIFAS DE CAJA DE SEGURIDAD     ********
+      *--------------------------------------------------------*
+      ******* TIPO.REG...= FIJO                        *********
+      ******* LONGITUD   = 80                          *********
+      *
+      *                                                    Desde  Hasta
+       01  WACSE400.
+      *        Comision, Zona, Tipo y Vigencia                 1     14
+           05  WACSE400-CLAVE.
+      *              Tipo de comision                          1      2
+                  10 WACSE400-COMISION             PIC X(02).
+      *              Codigo de Zona                            3      4
+                  10 WACSE400-ZONA                 PIC 9(02).
+ID1952*              Tipo de Caja                              5      6
+ID1952*           10 WACSE400-TIPO-CAJA            PIC 9(02).
+ID1952*              Grupo de Caja                             5      6
+ID1952            10 WACSE400-GRUPO-CAJA           PIC 9(02).
+ID1952*              Tipo persona                              7      7
+ID1952            10 WACSE400-TIPO-PERSONA         PIC X(01).
+      *              Fecha Vigencia Desde                      8     15
+                  10 WACSE400-FEC-VIG-DESDE        PIC 9(08).
+      *
+      *        Fecha de Vigencia hasta                        16     23
+           05  WACSE400-FEC-VIG-HASTA              PIC 9(08).
+      *        Importe de la Comision                         24     38
+           05  WACSE400-IMP-COMISION               PIC 9(13)V99.
+      *        Relleno                                        39     80
+ID1952*    05  WACSE400-FILLER                     PIC X(43).
+ID1952     05  WACSE400-FILLER                     PIC X(42).

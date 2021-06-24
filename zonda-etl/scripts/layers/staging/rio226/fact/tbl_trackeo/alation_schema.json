@@ -1,0 +1,95 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308887","A307763"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio226_tbl_trackeo",
+      "title": "se trackea todos los lugares donde va pasando el ejecutivo dentro de una ficha de un cliente",
+      "schema": "bi_corp_staging",
+      "source": "MASCHE",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "se trackea todos los lugares donde va pasando el ejecutivo dentro de una ficha de un cliente",
+      "columns": [
+        {
+          "name": "INTERACCION",
+          "title": "INTERACCION",
+          "description": "cd_interaccion de la crmcc_interaccion.tbl_interaccion",
+          "type": "number",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 18.0,
+
+          "security": "Publico"                },
+        {
+          "name": "CODIGO_EVENTO",
+          "title": "CODIGO_EVENTO",
+          "description": "codigo del evento que se trackea (tbl_trackeo_evento)",
+          "type": "number",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 4.0,
+
+          "security": "Publico"                },
+        {
+          "name": "FECHA_EVENTO",
+          "title": "FECHA_EVENTO",
+          "description": "fecha del evento",
+          "type": "timestamp",
+          "personIdentifier": false,
+          "decimalSeparator": "no aplica",
+          "nullable": false,
+          "length": 6.0,
+
+          "security": "Publico"                },
+        {
+          "name": "INFORMACION_ADICIONAL",
+          "title": "INFORMACION_ADICIONAL",
+          "description": "se utiliza en casos muy particulares que hay q guardar info adicional",
+          "type": "varchar2",
+          "personIdentifier": false,
+          "decimalSeparator": "no aplica",
+          "nullable": true,
+          "length": 4000.0,
+
+          "security": "Publico"                },
+        {
+          "name": "NRO_LLAMADO",
+          "title": "NRO_LLAMADO",
+          "description": "numero sesion del ivr",
+          "type": "number",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "ID_TRACKEO_TRANSACCION",
+          "title": "ID_TRACKEO_TRANSACCION",
+          "description": "se iba a utilizar para joinear con TBL_INTERACCION_TRANSACCION",
+          "type": "number",
+          "personIdentifier": false,
+          "decimalSeparator": 0.0,
+          "nullable": true,
+          "length": "*",
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

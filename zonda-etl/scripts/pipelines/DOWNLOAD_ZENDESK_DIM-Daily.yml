@@ -1,0 +1,53 @@
+name: DOWNLOAD_ZENDESK_DIM-Daily
+description: 'Download Data of API Zendesk for tickets fields,forms, groups and brands '
+owner: BI-Corp
+active: true
+start_date: '2020-11-01'
+schedule_interval: '0 5 * * *'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Zendesk_Tk_Forms
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/zendesk_tickets_forms/zendesk_tickets_forms_download.py
+      --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}
+      --partition_date_unix {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_unix', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}"
+  - name: Zendesk_Tk_Fields
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/zendesk_tickets_fields/zendesk_tickets_fields_download.py
+      --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}
+      --partition_date_unix {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_unix', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}"
+  - name: Zendesk_Groups
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/zendesk_groups/zendesk_groups_download.py
+      --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}
+      --partition_date_unix {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_unix', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}"
+  - name: Zendesk_Brands
+    operator: BashOperator
+    config:
+      command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/zendesk_brands/zendesk_brands_download.py
+      --partition_date_filter {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_filter', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}
+      --partition_date_unix {{ ti.xcom_pull(task_ids='InputConfig', key='partition_date_unix', dag_id='DOWNLOAD_ZENDESK_DIM-Daily') }}"
+
+
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [mcaamano@santandertecnologia.com.ar]

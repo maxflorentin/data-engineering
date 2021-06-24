@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(CONCAT(e9954_feoperac,e9954_s1emp,e9954_idnumcli,e9954_feccali,e9954_tipmodel,e9954_tipmode2,e9954_idmodel,e9954_tipo,e9954_idpunsco,e9954_feccaduc,e9954_c1tarpun,e9954_c1spid,e9954_c1digcon,e0621_fecultmo,e9954_motivfor,e9954_idpunsc2,e9954_fecrepfi,e9954_fecinofc)) as longitud, CONCAT(e9954_feoperac,e9954_s1emp,e9954_idnumcli,e9954_feccali,e9954_tipmodel,e9954_tipmode2,e9954_idmodel,e9954_tipo,e9954_idpunsco,e9954_feccaduc,e9954_c1tarpun,e9954_c1spid,e9954_c1digcon,e0621_fecultmo,e9954_motivfor,e9954_idpunsc2,e9954_fecrepfi,e9954_fecinofc) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_cal_in_cl r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_CAL_IN_CL' where partition_date = '$month_partition_bdr' and length(CONCAT(e9954_feoperac,e9954_s1emp,e9954_idnumcli,e9954_feccali,e9954_tipmodel,e9954_tipmode2,e9954_idmodel,e9954_tipo,e9954_idpunsco,e9954_feccaduc,e9954_c1tarpun,e9954_c1spid,e9954_c1digcon,e0621_fecultmo,e9954_motivfor,e9954_idpunsc2,e9954_fecrepfi,e9954_fecinofc)) != cast(d.longitud as int)"
+    ]
+}

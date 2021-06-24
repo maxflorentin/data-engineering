@@ -1,0 +1,22 @@
+{
+  "file": "vestado_cvcsri_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/vestado_cvcsri/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/vestado_cvcsri",
+  "createTable": "bi_corp_staging.alcen_vestado_cvcsri",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

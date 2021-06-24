@@ -1,0 +1,53 @@
+CREATE EXTERNAL TABLE IF NOT EXISTS bi_corp_staging.rio6_cart_agente_institorio(
+    crai_nu_orden                  string,
+    crai_fe_registracion           string,
+    crai_carp_cd_ramo              string,
+    crai_capo_nu_poliza            string,
+    crai_cace_nu_certificado       string,
+    crai_capu_cd_producto          string,
+    crai_capb_cd_plan              string,
+    crai_cace_fe_desde             string,
+    crai_tp_doc_aseg               string,
+    crai_nu_doc_aseg               string,
+    crai_nm_aseg                   string,
+    crai_tp_doc_tom                string,
+    crai_nu_doc_tom                string,
+    crai_nm_tom                    string,
+    crai_nm_beneficiario1          string,
+    crai_nm_beneficiario2          string,
+    crai_nm_beneficiario3          string,
+    crai_nm_beneficiario4          string,
+    crai_nm_beneficiario5          string,
+    crai_cd_prov_aseg              string,
+    crai_cd_ciudad_aseg            string,
+    crai_cd_postal_aseg            string,
+    crai_dom_aseg                  string,
+    crai_cd_prov_riesgo            string,
+    crai_cd_ciudad_riesgo          string,
+    crai_cd_postal_riesgo          string,
+    crai_dom_riesgo                string,
+    crai_mt_suma_asegurada         string,
+    crai_mt_premio                 string,
+    crai_cacm_cd_compania          string,
+    crai_auma_cd_marca             string,
+    crai_aumo_cd_modelo            string,
+    crai_auvv_ano                  string,
+    crai_nu_patente                string,
+    crai_nu_tarj_deb_aseg          string,
+    crai_nu_tarj_visa_aseg         string,
+    crai_nu_tarj_amex_aseg         string,
+    crai_observaciones             string,
+    crai_fe_cobro_cuota1           string,
+    crai_fe_wkf_venta              string,
+    crai_ub_riesgo_ssn             string,
+    crai_bien_asegurar_ssn         string,
+    crai_riesgo_cubierto_ssn       string,
+    crai_cace_fe_hasta             string,
+    crai_nu_poliza_origen          string
+)
+
+PARTITIONED BY (partition_date string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe'
+STORED AS INPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat'
+OUTPUTFORMAT 'org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat'
+LOCATION '${DATA_LAKE_SERVER}/santander/bi-corp/staging/rio6/fact/cart_agente_institorio';

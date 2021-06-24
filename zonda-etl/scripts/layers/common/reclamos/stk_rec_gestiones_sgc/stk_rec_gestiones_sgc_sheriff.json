@@ -1,0 +1,45 @@
+{
+    "table": "bi_corp_common.stk_rec_gestiones_sgc",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": ["cod_rec_gestion_nro"]
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_entidad",
+                "cod_rec_sector",
+                "cod_rec_gestion_nro",
+                "cod_rec_circuito",
+                "cod_rec_tipo_circuito",
+                "flag_rec_decision_comer",
+                "flag_rec_replteo",
+                "flag_rec_rta_inmed",
+                "fc_rec_imp_autz_solicitado",
+                "fc_rec_imp_autz_autorizado",
+                "fc_rec_imp_autz_resolucion",
+                "cod_rec_tipo_persona",
+                "cod_rec_crm",
+                "cod_rec_inic_user_alta",
+                "cod_rec_prioridad",
+                "cod_rec_conforme",
+                "cog_rec_grupo_empresa",
+                "cod_rec_nro_cta",
+                "cod_rec_nro_firm_cta"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "ts_rec_gestion_alta",
+                "ts_rec_bandeja_actual",
+                "ts_rec_max_resol"
+            ],
+            "pattern": "yyyy-MM-dd HH:mm:ss",
+            "threshold": 0.01
+        }
+    ]
+}

@@ -1,0 +1,28 @@
+{
+    "table": "bi_corp_common.dim_rec_actor",
+    "partition_date": "${partition_date}",
+    "controls": [
+        {
+            "control_id": "duplicates",
+            "field_to_check": []
+        },
+        {
+            "control_id": "null_values",
+            "field_to_check": [
+                "cod_rec_actor",
+                "cod_rec_tipo_actor",
+                "ds_rec_actor"
+            ],
+            "threshold": 0.01
+        },
+        {
+            "control_id": "date_format",
+            "field_to_check": [
+                "dt_rec_actor_alta",
+                "dt_rec_actor_modif"
+            ],
+            "pattern": "yyyy-MM-dd",
+            "threshold": 0.01
+        }
+    ]
+}

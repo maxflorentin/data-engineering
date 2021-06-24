@@ -1,0 +1,33 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "TMP2_SORPRESA_CASCADA_HIST",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/tmp2_sorpresa_cascada_hist",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT PENUMPER ,SORPRESA_SUSCRIPTO ,SORPRESA_SUSCRIPTOR ,TO_CHAR(AS_OF_DATE,'YYYY-MM-DD') AS PARTITION_DATE     FROM {table} where  \\$CONDITIONS\"  --bindir '/aplicaciones/bi/zonda/sqoop/rio35/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "RIES_MOTOR_INFINITY",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/ries_motor_infinity",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT PENUMPER ,CODIGO_RECHAZO ,MOTIVO_RECHAZO ,APELLIDO, NOMBRE, PRODUCTO_PAQ,SUBPRODU_PAQ,LINEA_PESOS,LINEA_DOLARES, PRES_PESOS_DISPONIBLE, PRES_DOLARES_DISPONIBLE,CUOTA_PESOS,CUOTA_DOLARES, TO_CHAR(FECHA_PROCESO,'YYYY-MM-DD') AS PARTITION_DATE     FROM {table} where  \\$CONDITIONS\"  --bindir '/aplicaciones/bi/zonda/sqoop/rio35/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig" : "dbexap01-scan",
+      "serverAka": "rio35",
+      "table": "TMP_NOVA_HIST",
+      "table_type": "fact",
+      "environment": "rio35",
+      "landing_path": "/santander/bi-corp/landing/rio35/fact/tmp_nova_hist",
+      "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{environment}' --username '{username}' --query \"SELECT PENUMPER ,NOVA_TITULAR ,NOVA_USUARIO , TO_CHAR(AS_OF_DATE,'YYYY-MM-DD') AS PARTITION_DATE     FROM {table} where  \\$CONDITIONS\"  --bindir '/aplicaciones/bi/zonda/sqoop/rio35/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose --null-string '' --null-non-string ''\n"
+    }
+
+
+  ]
+}

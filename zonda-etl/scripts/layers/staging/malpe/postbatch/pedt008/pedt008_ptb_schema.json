@@ -1,0 +1,141 @@
+{
+        "file": "pedt008_malpe_ptb",
+        "location": "/santander/bi-corp/landing/malpe-post-batch/fact/pedt008/partition_date=${partition_date_filter}",
+        "destination": "/santander/bi-corp/staging/malpe-post-batch/fact/pedt008",
+        "extension": "csv",
+        "header": false,
+        "fixed": true,
+        "createTable": "bi_corp_staging.malpe_ptb_pedt008",
+        "parquetFiles": 5,
+        "compression": "gzip",
+        "columns":
+                  [
+                    {
+                      "name": "pecdgent",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "penumper",
+                      "type": "string",
+                      "width": 8
+                    },
+                    {
+                      "name": "penumcon",
+                      "type": "string",
+                      "width": 12
+                    },
+                    {
+                      "name": "pecodofi",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "pecodent",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "pecalpar",
+                      "type": "string",
+                      "width": 2
+                    },
+                    {
+                      "name": "peordpar",
+                      "type": "string",
+                      "width": 3
+                    },
+                    {
+                      "name": "peordpar_sgn",
+                      "type": "string",
+                      "width": 1
+                    },
+                    {
+                      "name": "pecodpro",
+                      "type": "string",
+                      "width": 2
+                    },
+                    {
+                      "name": "pecodsub",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "pefecbrb",
+                      "type": "string",
+                      "width": 10
+                    },
+                    {
+                      "name": "peestrel",
+                      "type": "string",
+                      "width": 1
+                    },
+                    {
+                      "name": "peresint",
+                      "type": "string",
+                      "width": 5
+                    },
+                    {
+                      "name": "peresint_sgn",
+                      "type": "string",
+                      "width": 1
+                    },
+                    {
+                      "name": "pemarpaq",
+                      "type": "string",
+                      "width": 1
+                    },
+                    {
+                      "name": "pemotbaj",
+                      "type": "string",
+                      "width": 2
+                    },
+                    {
+                      "name": "petipdoc",
+                      "type": "string",
+                      "width": 2
+                    },
+                    {
+                      "name": "penumdoc",
+                      "type": "string",
+                      "width": 11
+                    },
+                    {
+                      "name": "peusualt",
+                      "type": "string",
+                      "width": 8
+                    },
+                    {
+                      "name": "pefecalt",
+                      "type": "string",
+                      "width": 10
+                    },
+                    {
+                      "name": "peusumod",
+                      "type": "string",
+                      "width": 8
+                    },
+                    {
+                      "name": "petermod",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "pesucmod",
+                      "type": "string",
+                      "width": 4
+                    },
+                    {
+                      "name": "pehstamp",
+                      "type": "string",
+                      "width": 26
+                    }
+                  ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

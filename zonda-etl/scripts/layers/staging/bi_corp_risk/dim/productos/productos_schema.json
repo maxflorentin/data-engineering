@@ -1,0 +1,75 @@
+{
+	"file": "productos_schema",
+	"location": "/santander/bi-corp/landing/sql5/dim/productos/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/SQL5/dim/risksql5_productos",
+	"tempDirectory": "/santander/bi-corp/temp/productos",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [{
+			"name": "codigo_producto",
+			"type": "string"
+		},
+		{
+			"name": "codigo_subproducto",
+			"type": "string"
+		},
+		{
+			"name": "descripcion",
+			"type": "string"
+		},
+		{
+			"name": "categoria_particulares",
+			"type": "string"
+		},
+		{
+			"name": "categoria_carterizados",
+			"type": "string"
+		},
+		{
+			"name": "categoria_cartera",
+			"type": "string"
+		},
+		{
+			"name": "refinanciacion",
+			"type": "string"
+		}, {
+			"name": "tipo_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "origen_de_la_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_desde",
+			"type": "string"
+		},
+		{
+			"name": "contingente",
+			"type": "string"
+		}, {
+			"name": "uva",
+			"type": "string"
+		}, {
+			"name": "codigo_producto_mora",
+			"type": "string"
+		},
+		{
+			"name": "codigo_subproducto_mora",
+			"type": "string"
+		},
+		{
+			"name": "tipo_producto",
+			"type": "string"
+		},
+		{
+			"name": "fecha_informacion",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1
+		}
+	]
+}

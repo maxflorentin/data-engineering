@@ -1,0 +1,39 @@
+{
+  "file": "abae_maespers",
+  "location": "/santander/bi-corp/landing/abae/fact/maespers/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/abae/fact/maespers/",
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "createTable": "bi_corp_staging.abae_maespers",
+  "cobolTypes": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "per_nup",
+      "type": "X(008)"
+    },
+    {
+      "name": "per_numero_tarjeta",
+      "type": "X(019)"
+    },
+    {
+      "name": "per_origen",
+      "type": "X(001)"
+    },
+    {
+      "name": "per_libre",
+      "type": "X(020)"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

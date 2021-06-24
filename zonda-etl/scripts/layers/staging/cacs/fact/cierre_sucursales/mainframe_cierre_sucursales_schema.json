@@ -1,0 +1,53 @@
+{
+	   "file":"cacs_mf_cierre_sucursales_schema",
+	   "location":"/santander/bi-corp/landing/cacs/fact/fusion_sucursales/partition_date=${partition_date_filter}",
+	   "destination":"/santander/bi-corp/staging/cacs/fact/cacs_mf_cierre_sucursales",
+       "createTable": "bi_corp_staging.cacs_mf_cierre_sucursales",
+	   "compression":"gzip",
+       "columns": [
+       {
+                        "name":"location_code",
+                        "type": "string",
+                        "width": 6
+                },
+{
+                        "name":"acct_num",
+                        "type": "string",
+                        "width": 18
+                },
+{
+                        "name":"sucurso",
+                        "type": "string",
+                        "width": 4
+                },
+{
+                        "name":"location_coded",
+                        "type": "string",
+                        "width": 6
+                },
+{
+                        "name":"acct_numd",
+                        "type": "string",
+                        "width": 18
+                },
+{
+                        "name":"sucursd",
+                        "type": "string",
+                        "width": 4
+                },
+{
+                        "name":"fecha_proceso",
+                        "type": "string",
+                        "width": 8
+                }
+         ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

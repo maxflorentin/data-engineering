@@ -1,0 +1,204 @@
+name: LOAD_BDR_Rosetta_SEND
+description: 'Write the JSONs of every Rosetta domain code ( RNKEY- NKEY)'
+owner: BI-Corp
+active: true
+start_date: "2019-10-24"
+# schedule_interval: '00 13 * * *'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+loop:
+  ## values: ['00005','00004','00013','00001','00007','00006']
+  values: ['00005','00004','00013','00001','00007','00006']
+  iterator: e
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: -1
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Remove_HDFS_RNKD_TMP
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -rm -r /santander/bi-corp/temp/rosetta_writter/rnkd/${e}/*"
+  - name: Remove_HDFS_NKEY_TMP
+    operator: BashOperator
+    config:
+      bash_command: "hdfs dfs -rm -r /santander/bi-corp/temp/rosetta_writter/nkey/${e}/*"
+  - name: ROSETTA_WRITTER
+    operator: SparkSubmitOperator
+    config:
+      name: 'ROSETTA_Writter_${e}'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 58G
+      num_executors: 10
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/rosetta_writter/rosetta_write_rnkd.py'
+      conf: {
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+        'spark.yarn.executor.memoryOverhead': 6G
+      }
+      application_args: ['--domain_code', "${e}",
+                         '--partition_date',"{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_SEND')}}"]
+  - name: Remove_Local_Dir
+    operator: BashOperator
+    config:
+      bash_command: "rm -f $ZONDA_DIR/tmp/rosetta/files/rnkd/${e}/*"
+  - name: MoveFileToLocalServer
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/santander/bi-corp/temp/rosetta_writter/rnkd/${e}/*.json"
+      local_path: "$ZONDA_DIR/tmp/rosetta/files/rnkd/${e}/"
+      skip_errors: false
+  - name: 'SendDataFTP'
+    operator: PythonOperator
+    config:
+      function_name: 'senderCommand'
+      function_def: |
+        def senderCommand(*args, **kwargs):
+                                      from airflow.contrib.operators.sftp_operator import SFTPOperator
+                                      import os
+                                      import zipfile
+                                      import zlib
+
+                                      # VARIABLES
+                                      local_filepath = kwargs.get('local_filepath')
+                                      remote_filepath = kwargs.get('remote_filepath')
+                                      ssh_conn_id = kwargs.get('ssh_conn_id')
+
+                                      for file in os.listdir(local_filepath):
+                                          zip_filepath_from = os.path.join(local_filepath, file.replace(".json", ""))
+                                          zip_filepath_to = os.path.join(remote_filepath, file.replace(".json", ".zip"))
+                                          os.chdir(local_filepath)
+                                          with zipfile.ZipFile("%s.zip" % (zip_filepath_from), "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                                              zf.write(file)
+                                          zf.close()
+                                          os.remove(file)
+
+                                          ##SEND
+                                          send = SFTPOperator(task_id='send_sftp', ssh_conn_id= ssh_conn_id,local_filepath= "%s.zip" % (file.replace(".json", "")), remote_filepath = zip_filepath_to, operation = "put",create_intermediate_dirs=False ,retries=3)
+                                          send.execute(context=kwargs)
+      provide_context: true
+      op_kwargs:
+        local_filepath: "$ZONDA_DIR/tmp/rosetta/files/rnkd/${e}/"
+        remote_filepath: "/rosetta/00017/input/"
+        ssh_conn_id: "sftp_ssh_rosetta"
+  - name: ROSETTA_WRITTER_NKEY
+    operator: SparkSubmitOperator
+    config:
+      name: 'ROSETTA_Writter_NKEY_${e}'
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 58G
+      num_executors: 10
+      application: "$ZONDA_DIR/repositories/zonda-etl/scripts/shared/rosetta_writter/rosetta_write_nkey.py"
+      conf: {
+        'spark.sql.sources.partitionOverwriteMode': 'dynamic',
+        'spark.yarn.executor.memoryOverhead': 6G
+      }
+      application_args: ['--domain_code', "${e}",
+                         '--partition_date',"{{ ti.xcom_pull(task_ids='InputConfig', key='last_calendar_day_arda', dag_id='LOAD_BDR_Rosetta_SEND')}}"]
+  - name: Remove_Local_Dir_NKEY
+    operator: BashOperator
+    config:
+      bash_command: "rm -f $ZONDA_DIR/tmp/rosetta/files/nkey/${e}/*"
+  - name: MoveFileToLocalServer_NKEY
+    operator: ZondaHDFSOperator
+    config:
+      operation: copyToLocal
+      remote_path: "/santander/bi-corp/temp/rosetta_writter/nkey/${e}/*.json"
+      local_path: "$ZONDA_DIR/tmp/rosetta/files/nkey/${e}/"
+      skip_errors: false
+  - name: 'SendDataFTP_NKEY'
+    operator: PythonOperator
+    config:
+      function_name: 'senderCommand'
+      function_def: |
+        def senderCommand(*args, **kwargs):
+                              from airflow.contrib.operators.sftp_operator import SFTPOperator
+                              import os
+                              import zipfile
+                              import zlib
+
+                              # VARIABLES
+                              local_filepath = kwargs.get('local_filepath')
+                              remote_filepath = kwargs.get('remote_filepath')
+                              ssh_conn_id = kwargs.get('ssh_conn_id')
+
+                              for file in os.listdir(local_filepath):
+                                  zip_filepath_from = os.path.join(local_filepath, file.replace(".json", ""))
+                                  zip_filepath_to = os.path.join(remote_filepath, file.replace(".json", ".zip"))
+                                  os.chdir(local_filepath)
+                                  with zipfile.ZipFile("%s.zip" % (zip_filepath_from), "w", compression=zipfile.ZIP_DEFLATED) as zf:
+                                      zf.write(file)
+                                  zf.close()
+                                  os.remove(file)
+
+                                  ##SEND
+                                  send = SFTPOperator(task_id='send_sftp', ssh_conn_id= ssh_conn_id,local_filepath= "%s.zip" % (file.replace(".json", "")), remote_filepath = zip_filepath_to, operation = "put",create_intermediate_dirs=False ,retries=3)
+                                  send.execute(context=kwargs)
+      provide_context: true
+      op_kwargs:
+        local_filepath: "$ZONDA_DIR/tmp/rosetta/files/nkey/${e}/"
+        remote_filepath: "/rosetta/00017/input/"
+        ssh_conn_id: "sftp_ssh_rosetta"
+  - name: 'Control_File_Trigger'
+    operator: PythonOperator
+    config:
+      function_name: 'senderControlCommand'
+      function_def: |
+          def senderControlCommand(*args, **kwargs):
+                from airflow.contrib.operators.sftp_operator import SFTPOperator
+                import os
+                from zipfile import ZipFile
+                from datetime import datetime
+                now = datetime.now()
+                date_time = now.strftime("%Y%m%d%H%M%S")
+
+              # VARIABLES
+                remote_filepath = kwargs.get('remote_filepath')
+                nkey_filepath = kwargs.get('nkey_filepath')
+                rnkd_filepath = kwargs.get('rnkd_filepath')
+                ssh_conn_id = kwargs.get('ssh_conn_id')
+
+                control_data_file_from = os.path.join(rnkd_filepath,"trigger_" + date_time + ".trg")
+                control_data_file_to = os.path.join(remote_filepath,"trigger_" + date_time + ".trg")
+
+                with open(control_data_file_from, "a") as myfile:
+                  for file in os.listdir(nkey_filepath):
+                    myfile.write(file + '\n')
+                  for file in os.listdir(rnkd_filepath):
+                    if not(file == ("trigger_" + date_time + ".trg")):
+                      myfile.write(file + '\n')
+                myfile.close()
+              ##SEND
+                send = SFTPOperator(task_id='send_sftp_control_file', ssh_conn_id= ssh_conn_id,local_filepath= control_data_file_from, remote_filepath = control_data_file_to, operation = "put",create_intermediate_dirs=False ,retries=3)
+                send.execute(context=kwargs)
+      provide_context: true
+      op_kwargs:
+        nkey_filepath: "$ZONDA_DIR/tmp/rosetta/files/nkey/${e}/"
+        rnkd_filepath: "$ZONDA_DIR/tmp/rosetta/files/rnkd/${e}/"
+        remote_filepath: "/rosetta/00017/input/"
+        ssh_conn_id: "sftp_ssh_rosetta"
+dependencies:
+  Remove_HDFS_RNKD_TMP: ROSETTA_WRITTER
+  Remove_HDFS_NKEY_TMP: ROSETTA_WRITTER_NKEY
+  ROSETTA_WRITTER: Remove_Local_Dir
+  Remove_Local_Dir: MoveFileToLocalServer
+  MoveFileToLocalServer: SendDataFTP
+  ROSETTA_WRITTER_NKEY: Remove_Local_Dir_NKEY
+  Remove_Local_Dir_NKEY: MoveFileToLocalServer_NKEY
+  MoveFileToLocalServer_NKEY: SendDataFTP_NKEY
+  SendDataFTP: Control_File_Trigger
+  SendDataFTP_NKEY: Control_File_Trigger
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [hpolitano@santandertecnologia.com.ar]

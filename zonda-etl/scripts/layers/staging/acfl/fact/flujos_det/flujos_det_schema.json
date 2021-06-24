@@ -1,0 +1,87 @@
+{
+  "file": "flujos_det_schema",
+  "location": "/santander/bi-corp/landing/acfl/fact/flujos_det/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/acfl/fact/flujos_det",
+  "createTable": "bi_corp_staging.acfl_flujos_det",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "id_flujo",
+    "type": "string"
+  },
+{
+    "name": "fechavto",
+    "type": "string"
+  },
+{
+    "name": "saldo",
+    "type": "string"
+  },
+{
+    "name": "capital",
+    "type": "string"
+  },
+{
+    "name": "tasa",
+    "type": "string"
+  },
+{
+    "name": "intereses",
+    "type": "string"
+  },
+{
+    "name": "cobrado_pagado",
+    "type": "string"
+  },
+{
+    "name": "fec_ajuste",
+    "type": "string"
+  },
+{
+    "name": "val_ajuste",
+    "type": "string"
+  },
+{
+    "name": "monto_cer",
+    "type": "string"
+  },
+{
+    "name": "capitalizacion",
+    "type": "string"
+  },
+{
+    "name": "monto_cvs",
+    "type": "string"
+  },
+{
+    "name": "tasa_base",
+    "type": "string"
+  },
+{
+    "name": "ints_tbase",
+    "type": "string"
+  },
+{
+    "name": "ints_spread",
+    "type": "string"
+  },
+{
+    "name": "origen_tasa",
+    "type": "string"
+  },
+{
+    "name": "spread",
+    "type": "string"
+  }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

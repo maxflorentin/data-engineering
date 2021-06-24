@@ -1,0 +1,163 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307913"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "gtdtrgc",
+      "title": "TABLA DE RELACIONES DE LAS GARANTIAS CON CLIENTES",
+      "schema": "bi_corp_staging",
+      "source": "MALGT.ALTAIR",
+      "query": "",
+      "type": "FACT",
+      "description": "TABLA DE RELACIONES DE LAS GARANTIAS CON CLIENTES",
+      "columns": [
+        {
+          "name": "GTTCRGC_RGC_COD_ENTIDAD",
+          "title": "COD_ENTIDAD ",
+          "description": "CODIGO DE ENTIDAD ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_NUM_GARANTIA",
+          "title": "NUM_GARANTIA",
+          "description": "NUMERO DE GARANTIA",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 9.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_COD_RELACION",
+          "title": "COD_RELACION",
+          "description": "TIPO DE RELACION  ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_NUM_PERSONA",
+          "title": "NUM_PERSONA",
+          "description": "NUMERO DE PERSONA ",
+          "type": "CHAR",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_FEC_FINVALI",
+          "title": "FEC_FINVALI ",
+          "description": "FECHA FIN VALIDEZ ",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_FEC_INIVALI",
+          "title": "FEC_INIVALI ",
+          "description": "FECHA INICIO VALIDEZ",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_NUM_SECCLIEN",
+          "title": "NUM_SECCLIEN",
+          "description": "NUMERO DE SECUENCIA ",
+          "type": "DECIMAL",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 9.0,
+
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_ENTIDAD_UMO",
+          "title": "ENTIDAD_UMO ",
+          "description": "ENTIDAD ULTIMA MODIFICACION                 ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_CENTRO_UMO",
+          "title": "CENTRO_UMO  ",
+          "description": "CENTRO ULTIMA MODIFICACION                  ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_USERID_UMO",
+          "title": "USERID_UMO  ",
+          "description": "USERID ULTIMA MODIFICACION                  ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_NETNAME_UMO",
+          "title": "NETNAME_UMO ",
+          "description": "TERMINAL ULTIMA MODIFICACION                ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "GTTCRGC_RGC_TIMEST_UMO",
+          "title": "TIMEST_UMO  ",
+          "description": "TIMESTAMP                                   ",
+          "type": "TIMESTAMP",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 26.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

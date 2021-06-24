@@ -1,0 +1,46 @@
+{
+  "file": "marc_pin_schema",
+  "location": "/santander/bi-corp/landing/rio53/fact/marc_pin/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio53/fact/marc_pin",
+  "tempDirectory": "/santander/bi-corp/temp/rio53",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "penumper",
+      "type": "string"
+    },
+    {
+      "name": "tipo_clave",
+      "type": "string"
+    },
+    {
+      "name": "fecha_alta",
+      "type": "string"
+    },
+    {
+      "name": "fecha_cambio",
+      "type": "string"
+    },
+    {
+      "name": "fecha_acceso",
+      "type": "string"
+
+    },
+    {
+      "name": "marca_bloqueo",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+
+
+}

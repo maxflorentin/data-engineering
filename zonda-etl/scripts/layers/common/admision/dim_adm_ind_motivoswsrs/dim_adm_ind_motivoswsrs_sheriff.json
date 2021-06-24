@@ -1,0 +1,15 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_motivoswsrs",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_grupodecision","cod_adm_motivo"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_grupodecision","cod_adm_motivo"],
+        "threshold": 0.30
+      }
+    ]
+  }

@@ -1,0 +1,33 @@
+name: CONFLUENCE_ALATION_UPDATE
+description: 'Update Alation with Confluence Alation'
+owner: CDO
+active: true
+start_date: "2021-06-07"
+schedule_interval: '0 5 * * MON'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+tasks:
+  - name: UPDATE_ALATION
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/shared/cdo/update_alation_confluence.py"
+  - name: report_send_sftp
+    operator: SFTPOperator
+    config:
+      connection_id: "sftp_transmi"
+      local_filepath: "$ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='CONFLUENCE_ALATION_UPDATE') }}_resumen.xlsx"
+      remote_filepath: "/aplicaciones/toWindows03/BI-CORP/outbound/HIVE_METASTORE/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='CONFLUENCE_ALATION_UPDATE') }}_resumen.xlsx"
+      operation: "put"
+      create_intermediate_dirs: False
+  - name: EXECUTE_Remove_Resum
+    operator: BashOperator
+    config:
+      bash_command: "rm $ZONDA_DIR/outbound/{{ ti.xcom_pull(task_ids='InputConfig', key='process_date', dag_id='CONFLUENCE_ALATION_UPDATE') }}_resumen.xlsx"
+dependencies:
+  UPDATE_ALATION: report_send_sftp
+  report_send_sftp: EXECUTE_Remove_Resum
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [jcifuentesduran@santandertecnologia.com.ar]

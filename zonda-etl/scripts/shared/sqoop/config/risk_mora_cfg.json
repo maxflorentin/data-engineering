@@ -1,0 +1,44 @@
+{
+  "tables" :[
+    {
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "COMITE",
+            "table_type": "fact",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/fact/comite",
+            "schema": "MORA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },
+     {
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "MORA_MARCAS_COMITE",
+            "table_type": "dim",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/dim/mora_marcas_comite",
+            "schema": "PARAMETRIA",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --hive-delims-replacement ' ' --verbose -- --schema {schema}\n"
+      },
+    {
+            "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+            "database": "ALMACEN",
+            "table": "REESTRUCTURACIONES",
+            "table_type": "fact",
+            "environment": "bi_corp_risk",
+            "landing_path": "/santander/bi-corp/landing/sql5/fact/reestructuraciones",
+            "schema": "PMEMPRESAS",
+            "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+      },
+      {
+              "serverConfig" : "DBRIESGOSRV05.ar.bsch",
+              "database": "ALMACEN",
+              "table": "SUCURSALES",
+              "table_type": "dim",
+              "environment": "bi_corp_risk",
+              "landing_path": "/santander/bi-corp/landing/sql5/dim/sucursales",
+              "schema": "PARAMETRIA",
+              "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:jtds:sqlserver://{serverName}:{port};domain={domain};databasename={database};USENTLMV2=true'  --username '{username}' --table \"{table}\"  --connection-manager org.apache.sqoop.manager.SQLServerManager --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' -m 1  --bindir  {zonda_dir}/sqoop/risk_stg/{table} --password '{password}' --driver net.sourceforge.jtds.jdbc.Driver --delete-target-dir --null-string '' --null-non-string '' --fields-terminated-by '|' --verbose -- --schema {schema}\n"
+        }
+  ]
+}

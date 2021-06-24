@@ -1,0 +1,104 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308761","A308250"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "MAESTRO CANALES",
+            "title": "Tabla con informacion de Canales y sus descripciones",
+            "schema": "bi_corp_staging",
+            "source": "Fondos",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Tabla con informacion de Canales y sus descripciones",
+            "columns": [
+                {
+                    "name": "AGENT_CODE",
+                    "title": "AGENT_CODE",
+                    "description": "codigo de agente colocador",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CODE",
+                    "title": "CODE",
+                    "description": "codigo de canal",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HAME",
+                    "title": "HAME",
+                    "description": "nombre del canal",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 35.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TYPE",
+                    "title": "TYPE",
+                    "description": "tipo",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "STATUS",
+                    "title": "STATUS",
+                    "description": "estado 1-0",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MARK",
+                    "title": "MARK",
+                    "description": "Marca Adicional (BP)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ORIGIN",
+                    "title": "ORIGIN",
+                    "description": "Origen (FM-Fonsis)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

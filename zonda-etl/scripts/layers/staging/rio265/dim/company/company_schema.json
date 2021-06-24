@@ -1,0 +1,42 @@
+{
+  "file": "company_schema",
+  "location": "/santander/bi-corp/landing/rio265/dim/rio265_company/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio265/dim/rio265_company",
+  "tempDirectory": "/santander/bi-corp/temp/rio265_company",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+    {
+      "name": "numest",
+      "type": "string"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "enddate",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date_filter}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

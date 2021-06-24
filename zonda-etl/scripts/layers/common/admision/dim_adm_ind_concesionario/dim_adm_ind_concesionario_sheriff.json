@@ -1,0 +1,26 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_concesionario",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_concesionario"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_concesionario"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["ds_adm_nomconcesionario","ts_adm_fecaprobacion"],
+        "threshold": 0.005
+      },
+     {
+        "control_id": "date_format",
+        "field_to_check": ["ts_adm_fecaprobacion"],
+        "pattern": "yyyy-MM-dd",
+        "threshold": 0.01
+      }
+    ]
+  }

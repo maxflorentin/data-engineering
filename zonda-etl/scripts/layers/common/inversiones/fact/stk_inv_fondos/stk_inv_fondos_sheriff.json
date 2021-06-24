@@ -1,0 +1,14 @@
+{
+  "table": "bi_corp_common.stk_inv_fondos",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["ds_inv_fondo", "cod_inv_moneda", "cod_per_nup", "cod_inv_sucursal_operativa"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_inv_cuenta", "cod_inv_fondo"]
+    }
+  ]
+}

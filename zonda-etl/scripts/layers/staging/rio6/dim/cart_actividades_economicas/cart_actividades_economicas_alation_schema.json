@@ -1,0 +1,82 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_actividades_economicas",
+            "title": "Actividades económicas",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Actividades económicas",
+            "columns": [
+                {
+                    "name": "CAAE_CD_ACTIVIDAD",
+                    "title": "CAAE_CD_ACTIVIDAD",
+                    "description": "Código de la actividad",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAAE_DE_ACTIVIDAD",
+                    "title": "CAAE_DE_ACTIVIDAD",
+                    "description": "Descripción de la actividad",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 200.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAAE_CD_INDOLE_CATEGORIA",
+                    "title": "CAAE_CD_INDOLE_CATEGORIA",
+                    "description": "Código de la indole de la categoria",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAAE_ST_ACTIVIDAD",
+                    "title": "CAAE_ST_ACTIVIDAD",
+                    "description": "Estado de la actividad",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAAE_MCA_SUJETO_OBLIG",
+                    "title": "CAAE_MCA_SUJETO_OBLIG",
+                    "description": "Marca de sujeto obligado",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

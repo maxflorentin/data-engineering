@@ -1,0 +1,33 @@
+{
+	"file": "ac_contenidos_schema",
+	"location": "/santander/bi-corp/landing/rio170/dim/ac_contenidos/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/dim/ac_contenidos",
+	"tempDirectory": "/santander/bi-corp/temp/rio170",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_ac_contenidos",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_accion_comercial",
+			"type": "string"
+		},
+        {
+			"name": "cod_clave",
+			"type": "string"
+		},
+        {
+			"name": "valor",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

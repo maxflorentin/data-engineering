@@ -1,0 +1,31 @@
+{
+  "file": "correspondencia_digital_cheque_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/correspondencia_digital_cheque/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/correspondencia_digital_cheque",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_correspondencia",
+    "type": "string"
+  },
+    {
+      "name": "numero_cheque",
+      "type": "string"
+    },
+    {
+      "name": "importe",
+      "type": "string"
+    },
+    {
+      "name": "partition_date",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

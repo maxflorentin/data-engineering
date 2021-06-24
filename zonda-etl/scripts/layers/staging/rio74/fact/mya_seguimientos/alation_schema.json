@@ -1,0 +1,150 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_mya_seguimientos",
+      "title": "Regitra clicks sobre links enviados en las novedades,  relacionado con tmya_messag_log mediante msg_id",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Regitra clicks sobre links enviados en las novedades,  relacionado con tmya_messag_log mediante msg_id",
+      "columns": [
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "numero de cliente de banco",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 10.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MSG_ID",
+          "title": "MSG_ID",
+          "description": "id del log del mensaje relacionado con tmya_message_log",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LINK",
+          "title": "LINK",
+          "description": "url ",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 150.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ENTITLEMENT",
+          "title": "ENTITLEMENT",
+          "description": "id de la novedad",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 64.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESTINATION",
+          "title": "DESTINATION",
+          "description": "destino que realizo el click",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 256.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_ENVIO",
+          "title": "FECHA_ENVIO",
+          "description": "fecha de registracion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_LOG",
+          "title": "FECHA_LOG",
+          "description": "fecha de log del mensaje",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COND1",
+          "title": "COND1",
+          "description": "parametro para registrar datos sobre el click",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COND2",
+          "title": "COND2",
+          "description": "parametro para registrar datos sobre el click",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COND3",
+          "title": "COND3",
+          "description": "parametro para registrar datos sobre el click",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COND4",
+          "title": "COND4",
+          "description": "parametro para registrar datos sobre el click",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NO",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

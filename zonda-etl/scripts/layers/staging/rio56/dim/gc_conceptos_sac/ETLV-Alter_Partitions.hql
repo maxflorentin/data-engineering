@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio56_gc_conceptos_sac ;

@@ -1,0 +1,315 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_entitlement",
+      "title": "Tabla de novedades",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "DIM",
+      "description": "Tabla de novedades",
+      "columns": [
+        {
+          "name": "ID_ENTITLEMENT",
+          "title": "ID_ENTITLEMENT",
+          "description": "codigo de entitlement - primary key",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ENTITLEMENT",
+          "title": "ENTITLEMENT",
+          "description": "descripcion de entitlement que va en las notificacion y metricas",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 64.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPTION",
+          "title": "DESCRIPTION",
+          "description": "descripcion del entitlement",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 300.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LONG_DESCRIPTION",
+          "title": "LONG_DESCRIPTION",
+          "description": "descripcion larga del entitlement",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 900.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LABEL",
+          "title": "LABEL",
+          "description": "asunto del mensaje",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 128.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEFAULT_FREQUENCY",
+          "title": "DEFAULT_FREQUENCY",
+          "description": "frecuencia de envio",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEFAULT_TIMEFRAME",
+          "title": "DEFAULT_TIMEFRAME",
+          "description": "tiempo de envio",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DEFAULT_DAYS_TO_MATURITY",
+          "title": "DEFAULT_DAYS_TO_MATURITY",
+          "description": "cantidad de dias de envios",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_STATUS",
+          "title": "ID_STATUS",
+          "description": "0 inhabilitado - 1 habilitado",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "VISIBLE",
+          "title": "VISIBLE",
+          "description": "visible en el front de suscripciones",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "VISIBLE_SEARCH",
+          "title": "VISIBLE_SEARCH",
+          "description": "visible en el front de suscripciones",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DESCRIPTION_SEARCH",
+          "title": "DESCRIPTION_SEARCH",
+          "description": "descripcion que figura para la busqueda en los FE",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 64.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FORMAT_INPUT",
+          "title": "FORMAT_INPUT",
+          "description": "formateador de texto para la conversion a xml",
+          "type": "CLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4000.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PRIORITY",
+          "title": "PRIORITY",
+          "description": "prioridad del mensaje",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_SUBCHANNELBANK_DEFAULT",
+          "title": "ID_SUBCHANNELBANK_DEFAULT",
+          "description": "subcanal por el cual generalmente se invoca",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_CHANNELBANK_DEFAULT",
+          "title": "ID_CHANNELBANK_DEFAULT",
+          "description": "canal por el cual generalmente se invoca",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SAMPLE_INPUT",
+          "title": "SAMPLE_INPUT",
+          "description": "ejemplo del xml de entrada",
+          "type": "CLOB",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4000.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_RULE",
+          "title": "ID_RULE",
+          "description": "regla que aplica al mensaje al momento de enviarse",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_PROVIDER",
+          "title": "ID_PROVIDER",
+          "description": "indica como va a ser procesado el mensaje",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TTL",
+          "title": "TTL",
+          "description": "time to live",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NEWSLETTER",
+          "title": "NEWSLETTER",
+          "description": "bandera si es del tipo newsletter el mensaje",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PAGE_SHOW",
+          "title": "PAGE_SHOW",
+          "description": "referencia a que pagina se muestra",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_FILTER",
+          "title": "ID_FILTER",
+          "description": "codigo de filtro",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TIPO_ESPECIAL",
+          "title": "TIPO_ESPECIAL",
+          "description": "bandera de tipo de mensaje especial",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 40.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ACNL",
+          "title": "ACNL",
+          "description": "sincronizacion con ACNL para suscripcion",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "URL",
+          "title": "URL",
+          "description": "url",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 200.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

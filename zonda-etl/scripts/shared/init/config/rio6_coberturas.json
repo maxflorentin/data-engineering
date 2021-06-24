@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "COBERTURAS",
+      "filePrefix": "SEGUROS_COBERTURAS_"
+    },
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "COBERTURAS_DETALLE",
+      "filePrefix": "SEGUROS_COBERTURAS_DETALLES_"
+    },
+    {
+      "source": "RIO6",
+      "type": "DIM",
+      "name": "PLANES_COBERTURAS",
+      "filePrefix": "SEGUROS_PLANES_COBERTURAS_DETALLES_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_RIO6-Coberturas-Daily"
+  }
+}

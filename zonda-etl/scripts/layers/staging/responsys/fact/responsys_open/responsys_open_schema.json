@@ -1,0 +1,68 @@
+{
+  "file": "responsys_open_schema",
+  "location": "/santander/bi-corp/landing/responsys/fact/open/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/responsys/fact/open",
+  "tempDirectory": "/santander/bi-corp/temp/responsys",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [  {
+    "name": "event_type_id",
+    "type": "string"
+  },
+    {
+      "name": "account_id",
+      "type": "string"
+    },
+    {
+      "name": "list_id",
+      "type": "string"
+    },
+    {
+      "name": "riid",
+      "type": "string"
+    },
+    {
+      "name": "customer_id",
+      "type": "string"
+    },
+    {
+      "name": "event_captured_dt",
+      "type": "string"
+    },
+    {
+      "name": "event_stored_dt",
+      "type": "string"
+    },
+    {
+      "name": "campaign_id",
+      "type": "string"
+    },
+    {
+      "name": "launch_id",
+      "type": "string"
+    },
+    {
+      "name": "email_format",
+      "type": "string"
+    },
+    {
+      "name": "fecha_carga",
+      "type": "string"
+    },
+    {
+      "name": "fecha_proceso",
+      "type": "string"
+    }
+  ],"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "event_captured_dt",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

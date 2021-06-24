@@ -1,0 +1,492 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309594"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "stk_per_personas",
+      "title": "Personas",
+      "schema": "bi_corp_common",
+      "source": "lake",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/personas/stk_per_personas/ETL-LOAD-stk_per_personas.hql",
+      "type": "fact",
+      "description": "Stock de Personas-Clientes ",
+      "columns": [
+        {
+          "name": "cod_pla_plazofijo",
+          "title": "Codigo del Plazo Fijo",
+          "description": "Codigo del Plazo Fijo que se conforma por la concatenacion de Entidad, Centro de Alta, Cuenta, Producto, Subproducto, Divida y Secuencia ",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 48,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_entidad"
+          },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_centro_alta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_cuenta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_subprodu"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_divisa"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_secuencia"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_entidad",
+          "title": "Codigo de Entidad",
+          "description": "Codigo de Entidad",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_entidad"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_sucursal",
+          "title": "Centro de alta de la Cuenta",
+          "description": "Centro de alta de la Cuenta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_centro_alta"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_pla_sucursal",
+          "title": "Descripcion del Centro de alta de la Cuenta",
+          "description": "Descripcion del Centro de alta de la Cuenta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 200,
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_cuenta",
+          "title": "Numero de Cuenta",
+          "description": "Numero de Cuenta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_cuenta"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_producto",
+          "title": "Producto",
+          "description": "Producto",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_producto"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_subproducto",
+          "title": "Subproducto",
+          "description": "Subproducto",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_subprodu"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_pla_producto",
+          "title": "Descripcion del Producto",
+          "description": "Descripcion del Producto",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 200,
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_divisa",
+          "title": "Divisa",
+          "description": "Divisa del Certificado",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_divisa"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_secuencia",
+          "title": "Secuencia de la Imposicion",
+          "description": "Secuencia de la Imposicion",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 5,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_secuencia"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_per_nup",
+          "title": "NUP de la persona",
+          "description": "NUP de la persona",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_wabgpper",
+            "column": "wabgpper_nup"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_secrenovacion",
+          "title": "Secuencia de Renovacion",
+          "description": "Secuencia de Renovacion del Certificado",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 5,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_secuencia_ren"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_plazo",
+          "title": "Plazo de Vencimiento del Certificado",
+          "description": "Numero de Dias/Meses/Anios del Plazo de Vencimiento del Certificado",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 5,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_plazo"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_estado",
+          "title": "Estado",
+          "description": "Indicador del Estado del Certificado/Imposicion",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_ind_estado"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_pla_estado",
+          "title": "Descripcion del Estado",
+          "description": "Descripcion del Estado del Certificado/Imposicion",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 200,
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_saldoinicial",
+          "title": "Saldo Nominal Inicial",
+          "description": "Saldo Nominal Inicial",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 17,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_saldo_inicial"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_tasa",
+          "title": "Tasa",
+          "description": "Suma de Tipo de Interes Fijo a Alquilar y Tipo de Interes Fijo a Liquidar",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 13,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_tipoint"
+          },
+            {
+              "schema": "bi_corp_staging",
+              "table": "malbgp_bgtcipf",
+              "column": "ipf_ipf_inc_porc_vig"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_canalapertura",
+          "title": "Canal de Apertura",
+          "description": "Codigo de Canal Apertura",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_canal_apertura"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_pla_canalapertura",
+          "title": "Descripcion de Canal Apertura",
+          "description": "Descripcion de Canal Apertura",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 200,
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_impcta",
+          "title": "Importe Cobrado contra Cargo en Cuenta",
+          "description": "Cantida de Importe Cobrado contra Cargo en Cuenta",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 17,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_importe_cta"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_impsincta",
+          "title": "Importe Cobrando Sin Cuenta Asociada",
+          "description": "Cantidad de Importe Cobrando Sin Cuenta Asociada",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 17,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_importe_cta"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_inteabo",
+          "title": "Intereses Abonados desde Renovacion",
+          "description": "Cantidad de Intereses Abonados desde Renovacion",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 17,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_inteabo"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "fc_pla_intperiodo",
+          "title": "Intereses Periodificados (Parte No Consolidada)",
+          "description": "Cantidad de Intereses Periodificados (Parte No Consolidada)",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 17,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_int_period"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "dt_pla_fechaalta",
+          "title": "Fecha de Alta del Certificado",
+          "description": "Fecha de Alta del Certificado",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_fecha_alta"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "dt_pla_fechaopera",
+          "title": "Fecha De Operación (Fecha Ingreso IPF)",
+          "description": "Fecha De Operación (Fecha Ingreso IPF)",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_fecha_opera"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "dt_pla_fechavencimiento",
+          "title": "Fecha del Proximo Vencimiento",
+          "description": "Fecha del Proximo Vencimiento",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_fecha_proven"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_tarifavig",
+          "title": "Tarifa Aplicada en Imposicion Vigente",
+          "description": "Tarifa Aplicada en Imposicion Vigente",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_tarifa_vig"
+          }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_pla_indcustodia",
+          "title": "Tipo de Custodia",
+          "description": "Tipo de Custodia",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "malbgp_bgtcipf",
+            "column": "ipf_ipf_ind_custodia"
+          }],
+          "security": "Público"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Stock",
+        "delta": "D+1"
+      }
+    }
+  }
+}

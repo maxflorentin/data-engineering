@@ -1,0 +1,116 @@
+{
+  "tables" :[
+   {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_RETENCION_CUESTIONARIOS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_retencion_cuestionarios",
+      "partition_field": "TO_CHAR(CREC_FE_PROCESO,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query  \" select crec_nu_interaccion,crec_cd_usuario,crec_fe_proceso,crec_cd_nacionalidad,crec_nu_cedula_rif,crec_nm_cliente,crec_fe_nacimiento,crec_in_sexo,crec_cd_ramo,crec_nu_poliza,crec_nu_certificado,crec_de_ramo,crec_de_producto,crec_de_plan,crec_fe_vigencia_poliza,crec_cd_sucursal_emision,crec_cd_cuenta_debito,crec_nu_cuenta_debito,crec_cd_evaluacion,crec_cd_causa_baja,crec_cd_recomendacion,crec_tx_algo_mas,crec_tx_mantener,crec_tx_agregar,crec_in_costos,crec_in_recomendado,crec_in_prestigio,crec_in_beneficios,crec_in_otros_productos,crec_in_apertura,crec_in_otros_motivos,crec_tp_cuestionario,crec_mt_cuota,crec_tp_resultado,crec_in_gruas,crec_in_recepcion,crec_in_atencion,crec_in_siniestros,crec_in_debitos,crec_nu_poliza_nuevo,crec_nu_certificado_nuevo,crec_fe_comision,crec_cd_canal,crec_cd_renta,crec_cd_ramo_nuevo, TO_CHAR(CREC_FE_PROCESO,'YYYY-MM-DD') from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "ASIT_COTIZACIONES",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/asit_cotizaciones",
+      "partition_field": "TO_CHAR(asco_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select asco_coti_json,asco_nu_cotizacion,asco_fe_cotizacion,asco_tp_documento,asco_nu_documento,asco_in_enviada,TO_CHAR(asco_fe_cotizacion,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "ASIT_OPERACIONES_CONTRATOS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/asit_operaciones_contratos",
+      "partition_field": "TO_CHAR(asoc_fe_operacion,'YYYY-MM-DD')",
+      "split_field": "asoc_fe_operacion",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select asoc_cd_operacion,asoc_cd_sub_operacion,asoc_fe_operacion,asoc_cd_usuario,asoc_cd_ramo,asoc_nu_contrato,asoc_nu_certificado,asoc_nu_endoso,asoc_de_endoso,asoc_tp_documento,asoc_nu_documento,asoc_de_operacion, TO_CHAR(asoc_fe_operacion,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2021-03-12' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_COTIZA_BANCO",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_banco",
+      "partition_field": "TO_CHAR(cazb_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cazb_capj_cd_sucursal,cazb_nu_cotizacion,cazb_carp_cd_ramo,cazb_capu_cd_producto,cazb_capb_cd_plan,cazb_fe_cotizacion,cazb_cd_funcionario_banc,cazb_tp_tasacion,cazb_capo_cd_sucursal,cazb_capo_nu_poliza,cazb_cacn_cd_nacionalidad,cazb_cacn_cd_cliente,cazb_fr_pago_elegida,cazb_in_emitida,cazb_cazr_cd_causa,cazb_cace_nu_certificado,cazb_mt_suma_asegurada,cazb_caes_cd_estado,cazb_mt_premio,cazb_mt_pago_inicial,cazb_mt_pago_siguiente,cazb_nm_solicitante,cazb_fe_nac_conyuge,cazb_in_sexo_conyuge,cazb_po_sumaseg_cony,cazb_fe_nac_hijo1,cazb_mt_renta_hijo1,cazb_fe_nac_hijo2,cazb_mt_renta_hijo2,cazb_fe_nac_hijo3,cazb_mt_renta_hijo3,cazb_fe_nac_hijo4,cazb_mt_renta_hijo4,cazb_fe_nac_hijo5,cazb_mt_renta_hijo5,cazb_fe_nac_hijo6,cazb_mt_renta_hijo6,cazb_fe_nac_hijo7,cazb_mt_renta_hijo7,cazb_fe_nac_hijo8,cazb_mt_renta_hijo8,cazb_alfa_conyuge,cazb_beta_conyuge,cazb_alfa_titular,cazb_beta_titular,cazb_plazo_tit,cazb_alfa_accid,cazb_beta_accid,cazb_plazo_accid,cazb_mt_recargo,cazb_caes_cd_ciudad,cazb_cazp_cd_postal,cazb_cd_uso,cazb_nu_nup_canal,cazb_ccam_cd_campania,cazb_aupz_cd_zona,cazb_capb_in_inspeccion,cazb_camf_nu_flota,cazb_cd_tipo_accesorio,cazb_mt_suma_aseg_accesorio,cazb_auma_cd_marca,cazb_aumo_cd_modelo,cazb_ano_vehiculo,cazb_adtb_po_bonif,cazb_atbo_tp_bonif,cazb_ateb_tp_escala,cazb_nu_presupuesto_cia,cazb_in_0km,cazb_mt_robo_cont,cazb_cema_cd_marca,cazb_cemo_cd_modelo,cazb_id_dispositivo_movil,cazb_in_riesgo_cliente,cazb_mt_ingresos_cliente, TO_CHAR(cazb_fe_cotizacion,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2021-03-13' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_COTIZA_COBERTURAS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_coberturas",
+      "partition_field": "TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cack_capj_cd_sucursal,cack_cazb_nu_cotizacion,cack_carp_cd_ramo,cack_capu_cd_producto,cack_capb_cd_plan,cack_carb_cd_ramo,cack_cacb_cd_cobertura,cack_nu_asegurado,cack_mt_comision,cack_mt_prima,cack_mt_suma_asegurada,cack_po_deducible,cack_mt_deducible,cack_po_recargo,cack_po_riesgo,cack_ta_tasa,cack_mt_valor_real,cack_po_bonif,TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD') partition_date from rector.cart_cotiza_coberturas ccc inner join  rector.cart_cotiza_banco ccb on (ccc.cack_capj_cd_sucursal = ccb.cazb_capj_cd_sucursal and ccc.cack_cazb_nu_cotizacion = ccb.cazb_nu_cotizacion and ccc.cack_carp_cd_ramo = ccb.cazb_carp_cd_ramo and ccc.cack_capu_cd_producto = ccb.cazb_capu_cd_producto and ccc.cack_capb_cd_plan = ccb.cazb_capb_cd_plan) where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+     {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_COTIZA_COMPONENTES",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_componentes",
+      "partition_field": "TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cacx_capj_cd_sucursal,cacx_cazb_nu_cotizacion,cacx_carp_cd_ramo,cacx_capu_cd_producto,cacx_capb_cd_plan,cacx_cafp_cd_fr_pago,cacx_capp_cd_componente,cacx_mt_componente,cacx_ta_componente,TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD') partition_date from rector.cart_cotiza_componentes ccc inner join  rector.cart_cotiza_banco ccb on (ccc.cacx_capj_cd_sucursal = ccb.cazb_capj_cd_sucursal and ccc.cacx_cazb_nu_cotizacion = ccb.cazb_nu_cotizacion and ccc.cacx_carp_cd_ramo = ccb.cazb_carp_cd_ramo and ccc.cacx_capu_cd_producto = ccb.cazb_capu_cd_producto and ccc.cacx_capb_cd_plan = ccb.cazb_capb_cd_plan) where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_COTIZA_PERSONAS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_personas",
+      "partition_field": "TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select cacj_capj_cd_sucursal,cacj_cazb_nu_cotizacion,cacj_nu_consecutivo,cacj_cd_rol,cacj_nm_persona,cacj_cd_sexo,cacj_fe_nac,cacj_tp_persona,cacj_in_fumador,cacj_po_partic,cacj_cd_parentesco,cacj_tp_documento,cacj_nu_documento,cacj_mt_sumaseg_renta,cacj_nu_prioridad,cacj_tp_cuenta,cacj_nu_cuenta,TO_CHAR(ccb.cazb_fe_cotizacion,'YYYY-MM-DD') partition_date from rector.cart_cotiza_personas ccp inner join  rector.cart_cotiza_banco ccb on (ccp.cacj_capj_cd_sucursal = ccb.cazb_capj_cd_sucursal and ccp.cacj_cazb_nu_cotizacion = ccb.cazb_nu_cotizacion) where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20'  AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_MAESTRO_FLOTA",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_maestro_flota",
+      "partition_field": "TO_CHAR(camf_fe_cotizacion,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select camf_capj_cd_sucursal,camf_nu_flota,camf_fe_cotizacion,camf_cacn_cd_nacionalidad,camf_cacn_nu_cedula_rif,camf_nombre_cliente,camf_apellido_cliente,camf_fe_nac,camf_cacn_direc,camf_cjiv_cd_categoria,camf_mt_premio,camf_caae_cd_actividad,camf_caes_cd_estado,camf_caci_cd_ciudad,camf_cazp_zn_postal,camf_nu_telefono,camf_caus_cd_usuario,camf_de_empresa,camf_cd_relacionamiento,camf_caae_cd_indole_categoria,camf_fe_status,camf_carp_cd_ramo,camf_camo_cd_moneda,camf_de_cuenta_debito,camf_de_siniestralidad,camf_st_flota,camf_capo_nu_poliza,camf_nm_contacto,camf_cacm_cd_compania,camf_cace_cd_suc_debito,camf_st_orden,camf_cia_aseguradora,camf_fe_envio,camf_causa_anulacion,camf_fe_desde,camf_fe_hasta,camf_nu_prestamo,camf_fe_vig_prestamo,camf_cuotas_prestamo,camf_nm_firmante,camf_nu_doc_firmante,camf_nu_tel_firmante,camf_dir_email_firmante,camf_personeria_firmante, TO_CHAR(camf_fe_cotizacion,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_OPERACIONES_DIARIAS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_operaciones_diarias",
+      "partition_field": "TO_CHAR(caod_fe_operacion,'YYYY-MM-DD')",
+      "split_field": "CAOD_FE_OPERACION",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select rowidtochar(rowid) caod_rowid,caod_caop_cd_operacion,caod_cd_sub_operacion,caod_fe_operacion,caod_hr_operacion,caod_cd_usuario,caod_st_a,caod_st_b,caod_st_c,caod_de_terminal,caod_casu_cd_sucursal,caod_carp_cd_ramo,caod_capo_nu_poliza,caod_cace_nu_certificado,caod_cacn_cd_nacionalidad,caod_cacn_nu_cedula_rif,caod_caps_cd_proveedor,caod_care_nu_recibo,caod_cain_nu_inspeccion,caod_caso_nu_solicitud,caod_capd_cd_productor,caod_sisi_nu_siniestro,caod_sims_nu_movimiento,caod_cd_accion_evento ,caod_cazc_cd_zona_cobro,caod_calo_cd_localidad,caod_casu_cd_suc_impresion,caod_caur_unidad_produccion,caod_cadm_nu_domicilio,caod_capj_cd_sucursal_banco,caod_siglas_interface,caod_st_interface,caod_capu_cd_producto,caod_nu_endoso,caod_fe_interface,caod_de_operacion,caod_de_endoso,caod_de_define_endoso,caod_fe_endoso,caod_cd_suc_debito, TO_CHAR(caod_fe_operacion,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2021-04-27' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_RETENCION_RESULTADOS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_retencion_resultados",
+      "partition_field": "TO_CHAR(CRES_FE_PROCESO,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"select cres_nu_interaccion,cres_cd_usuario,cres_fe_proceso,cres_cd_nacionalidad,cres_nu_cedula_rif,cres_nm_cliente,cres_fe_nacimiento,cres_tp_resultado,cres_de_observaciones,cres_cd_resultado, to_char(cres_fe_proceso,'YYYY-MM-DD') partition_date  from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2020-10-20' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "dblxorafront01.ar.bsch",
+      "database": "RECTOR",
+      "table": "CART_RIESGOS_CUBIERTOS",
+      "table_type": "fact",
+      "environment": "rio6",
+      "landing_path": "/santander/bi-corp/landing/rio6/fact/cart_riesgos_cubiertos",
+      "partition_field": "TO_CHAR(carc_fe_efectiva,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \" select carc_casu_cd_sucursal,carc_carp_cd_ramo,carc_capo_nu_poliza,carc_cace_nu_certificado,carc_fe_efectiva,carc_nu_asegurado,carc_carb_cd_ramo,carc_cacb_cd_cobertura,carc_mt_suma_asegurada,carc_mt_prima_anual,carc_mt_prima_bruta,carc_mt_comision,carc_ta_riesgo,carc_po_comision,carc_fe_inclusion,carc_in_sumarizacion,carc_capl_cd_plan,carc_mt_valor_real,carc_po_deducible,carc_mt_deducible,carc_calo_localidad,carc_po_riesgo,carc_po_descuento,carc_po_recargo,carc_mt_prima_aporte_cia,carc_fe_desde,carc_fe_hasta,carc_in_aumento_fijo_prov,carc_cd_bien,carc_po_participacion_bien,carc_fe_mod_cobertura,carc_mt_bono_produccion,carc_po_bonif, TO_CHAR(carc_fe_efectiva,'YYYY-MM-DD') partition_date from {database}.{table} where {partition_field} >= '2019-01-01' AND {partition_field} < '2021-04-28' AND \\$CONDITIONS \" --bindir '{zonda_dir}/sqoop/rio6/{table}' --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --null-string '' --null-non-string '' --hive-delims-replacement ' ' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

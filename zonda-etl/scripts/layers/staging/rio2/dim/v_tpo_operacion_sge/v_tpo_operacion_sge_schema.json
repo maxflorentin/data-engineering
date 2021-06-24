@@ -1,0 +1,75 @@
+{
+  "file": "v_tpo_operacion_sge_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/v_tpo_operacion_sge/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/v_tpo_operacion_sge",
+  "createTable": "bi_corp_staging.sge_v_tpo_operacion_sge",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+           {
+                    "name": "cod_operacion",
+                    "type": "string"
+                },
+{
+                    "name": "desc_operacion",
+                    "type": "string"
+                },
+{
+                    "name": "peusualt",
+                    "type": "string"
+                },
+{
+                    "name": "peusumod",
+                    "type": "string"
+                },
+{
+                    "name": "pefecalt",
+                    "type": "string"
+                },
+{
+                    "name": "pefecmod",
+                    "type": "string"
+                },
+{
+                    "name": "cod_grupo",
+                    "type": "string"
+                },
+{
+                    "name": "cod_subgrupo",
+                    "type": "string"
+                },
+{
+                    "name": "cod_gartia",
+                    "type": "string"
+                },
+{
+                    "name": "mar_oper_preaprobados",
+                    "type": "string"
+                },
+{
+                    "name": "por_ponderado",
+                    "type": "string"
+                },
+{
+                    "name": "mar_estandarizado",
+                    "type": "string"
+                },
+{
+                    "name": "mar_mm",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

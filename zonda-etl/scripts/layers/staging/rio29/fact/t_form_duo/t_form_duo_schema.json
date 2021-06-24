@@ -1,0 +1,54 @@
+{
+  "file": "t_form_duo_schema",
+  "location": "/santander/bi-corp/landing/rio29/fact/t_form_duo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio29/fact/t_form_duo",
+  "tempDirectory": "/santander/bi-corp/temp/rio29",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "nombre",
+      "type": "string"
+    },
+    {
+      "name": "dni",
+      "type": "string"
+    },
+    {
+      "name": "telefono",
+      "type": "string"
+    },
+    {
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "fecha_alta",
+      "type": "string"
+    },
+    {
+      "name": "provincia",
+      "type": "string"
+    },
+    {
+      "name": "es_cliente",
+      "type": "string"
+    }
+  ]
+,"mirrorColumns": [{
+  "name": "partition_date",
+  "target": "fecha_alta",
+  "type": "date",
+  "dateFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+  "partitionColumn": true,
+  "partitionOrder": 1
+}]
+}

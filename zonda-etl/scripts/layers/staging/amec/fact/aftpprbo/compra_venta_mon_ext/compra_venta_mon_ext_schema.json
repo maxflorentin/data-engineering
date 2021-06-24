@@ -1,0 +1,151 @@
+{
+  "file": "compra_venta_mon_ext_schema",
+  "location": "/santander/bi-corp/landing/meamec/fact/aftpprbo/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/amec/fact/aftpprbo/compra_venta_mon_ext",
+  "createTable": "bi_corp_staging.amec_compra_venta_mon_ext",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 6,
+  "compression": "gzip",
+  "columns": [{
+    "name": "nup",
+    "type": "string"
+    },
+    {
+      "name": "can",
+      "type": "string"
+    },
+    {
+      "name": "desc_canal",
+      "type": "string"
+    },
+    {
+      "name": "fecha_op",
+      "type": "string"
+    },
+    {
+      "name": "fecha_hora_ingreso",
+      "type": "string"
+    },
+    {
+      "name": "scb",
+      "type": "string"
+    },
+    {
+      "name": "scc",
+      "type": "string"
+    },
+    {
+      "name": "cuenta",
+      "type": "string"
+    },
+    {
+      "name": "clas_bol",
+      "type": "string"
+    },
+    {
+      "name": "cv",
+      "type": "string"
+    },
+    {
+      "name": "anu",
+      "type": "string"
+    },
+    {
+      "name": "bd",
+      "type": "string"
+    },
+    {
+      "name": "monto_orig",
+      "type": "string"
+    },
+    {
+      "name": "monto_destino",
+      "type": "string"
+    },
+    {
+      "name": "mori",
+      "type": "string"
+    },
+    {
+      "name": "desc_morig",
+      "type": "string"
+    },
+    {
+      "name": "mdes",
+      "type": "string"
+    },
+    {
+      "name": "desc_mdest",
+      "type": "string"
+    },
+    {
+      "name": "descripcion_operacion",
+      "type": "string"
+    },
+    {
+      "name": "cotizac",
+      "type": "string"
+    },
+    {
+      "name": "tdoc",
+      "type": "string"
+    },
+    {
+      "name": "nro_doc",
+      "type": "string"
+    },
+    {
+      "name": "td_bcra",
+      "type": "string"
+    },
+    {
+      "name": "doc_bcra",
+      "type": "string"
+    },
+    {
+      "name": "fec_naci",
+      "type": "string"
+    },
+    {
+      "name": "ofic_tran",
+      "type": "string"
+    },
+    {
+      "name": "ofic_auto",
+      "type": "string"
+    },
+    {
+      "name": "io",
+      "type": "string"
+    },
+    {
+      "name": "descrip_cod_orig",
+      "type": "string"
+    },
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "descrip_cod_dest",
+      "type": "string"
+    },
+    {
+      "name": "emp",
+      "type": "string"
+    },
+    {
+      "name": "nro_tarjeta",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

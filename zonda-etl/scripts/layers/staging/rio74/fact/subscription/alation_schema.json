@@ -1,0 +1,183 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_subscription",
+      "title": "Subscripciones a mensajes y avisos, relacionada con subscriber mediante el campo id_subscriber y destination mediante id_subscription, id_device, seqnum",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "Subscripciones a mensajes y avisos, relacionada con subscriber mediante el campo id_subscriber y destination mediante id_subscription, id_device, seqnum",
+      "columns": [
+        {
+          "name": "ID_SUBSCRIPTION",
+          "title": "ID_SUBSCRIPTION",
+          "description": "codigo de suscription - primary key",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_ENTITLEMENT",
+          "title": "ID_ENTITLEMENT",
+          "description": "codigo de entitlement",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_SUBSCRIBER",
+          "title": "ID_SUBSCRIBER",
+          "description": "nup del cliente",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 16.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_DEVICE",
+          "title": "ID_DEVICE",
+          "description": "dispositivo de envio de notificaciones",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SEQNUM",
+          "title": "SEQNUM",
+          "description": "secuencia de numeracion por device",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_TIMEFRAME",
+          "title": "ID_TIMEFRAME",
+          "description": "codigo de tiempo de envio",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_STATUS",
+          "title": "ID_STATUS",
+          "description": "estado de la suscripcion",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_DAYS_TO_MATURITY",
+          "title": "ID_DAYS_TO_MATURITY",
+          "description": "cantidad de dias de envios",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_FREQUENCY",
+          "title": "ID_FREQUENCY",
+          "description": "frecuencia de envios ",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MORE_DATA",
+          "title": "MORE_DATA",
+          "description": "campo de observaciones",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 128.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ONE_TIME",
+          "title": "ONE_TIME",
+          "description": "indica si se suscribe por unica vez",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CREATE_DATE",
+          "title": "CREATE_DATE",
+          "description": "fecha de creacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MODIFY_DATE",
+          "title": "MODIFY_DATE",
+          "description": "fecha de modificacion",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_OPERADOR",
+          "title": "ID_OPERADOR",
+          "description": "operador que da el alta o la modificacion del registro",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

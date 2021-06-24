@@ -1,0 +1,60 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_monedas",
+            "title": "Monedas",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Monedas",
+            "columns": [
+                {
+                    "name": "CAMO_CD_MONEDA",
+                    "title": "CAMO_CD_MONEDA",
+                    "description": "Código de la moneda",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMO_DE_MONEDA",
+                    "title": "CAMO_DE_MONEDA",
+                    "description": "Descripción de la moneda",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CAMO_SM_MONEDA",
+                    "title": "CAMO_SM_MONEDA",
+                    "description": "Símbolo de la moneda",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

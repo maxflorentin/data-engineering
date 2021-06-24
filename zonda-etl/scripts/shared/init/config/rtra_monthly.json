@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "RTRA",
+      "type": "FACT",
+      "name": "economico",
+      "filePrefix": "RTRA_ARGENTINA_FM_"
+    },
+    {
+      "source": "RTRA",
+      "type": "FACT",
+      "name": "regulatorio",
+      "filePrefix": "RTRA_REG_ARGENTINA_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_RTRA-Monthly"
+  }
+}

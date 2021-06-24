@@ -1,0 +1,165 @@
+{
+        "file": "Data_Ingestion_MALZC_ALZCU001",
+        "location": "/santander/bi-corp/landing/malzc/fact/alzcu001/partition_date=${partition_date}",
+        "destination": "/santander/bi-corp/staging/malzc/fact/alzcu001",
+		"createTable": "bi_corp_staging.malzc_alzcu001",
+        "extension": "dat",
+        "header": false,
+        "fixed": true,
+        "parquetFiles": 1,
+        "compression": "gzip",
+        "columns": [
+              {
+                  "name": "NRO_OPERACION",
+                  "type": "string",
+                  "width": 17
+              },
+              {
+                  "name": "COD_ENTIDAD",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "COD_PROD_CUST",
+                  "type": "string",
+                  "width": 2
+              },
+              {
+                  "name": "COD_SPROD_CUST",
+                  "type": "string",
+                  "width": 2
+              },
+              {
+                  "name": "COD_SUCURSAL",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "NRO_CUENTA",
+                  "type": "string",
+                  "width": 12
+              },
+              {
+                  "name": "COD_DIVISA",
+                  "type": "string",
+                  "width": 3
+              },
+              {
+                  "name": "COD_SPROD_COTRT",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "IDE_CBU",
+                  "type": "string",
+                  "width": 26
+              },
+              {
+                  "name": "COD_PLAN_COM",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "COD_BANCA",
+                  "type": "string",
+                  "width": 3
+              },
+              {
+                  "name": "COD_CANAL",
+                  "type": "string",
+                  "width": 2
+              },
+              {
+                  "name": "FEC_OPERACION",
+                  "type": "string",
+                  "width": 10
+              },
+              {
+                  "name": "IDE_NUP",
+                  "type": "string",
+                  "width": 8
+              },
+              {
+                  "name": "NRO_BOLETA_RECAU",
+                  "type": "string",
+                  "width": 18
+              },
+              {
+                  "name": "NRO_CLIENTE_REF",
+                  "type": "string",
+                  "width": 22
+              },
+              {
+                  "name": "IDE_PAGO_PIRYP",
+                  "type": "string",
+                  "width": 19
+              },
+              {
+                  "name": "COD_SUC_ORIGEN",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "FEC_VALOR",
+                  "type": "string",
+                  "width": 10
+              },
+              {
+                  "name": "CAN_VALORES",
+                  "type": "string",
+                  "width": 8
+              },
+              {
+                  "name": "IMP_TOTAL",
+                  "type": "string",
+                  "width": 13
+              },
+              {
+                  "name": "IDE_USER_ALTA",
+                  "type": "string",
+                  "width": 8
+              },
+              {
+                  "name": "IDE_TERM_ALTA",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "FEC_ALTA",
+                  "type": "string",
+                  "width": 10
+              },
+              {
+                  "name": "FEC_ESTADO_OPE",
+                  "type": "string",
+                  "width": 10
+              },
+              {
+                  "name": "COD_ESTADO_OPE",
+                  "type": "string",
+                  "width": 2
+              },
+              {
+                  "name": "IDE_USER_ULT_MODF",
+                  "type": "string",
+                  "width": 8
+              },
+              {
+                  "name": "IDE_TERM_ULT_MODF",
+                  "type": "string",
+                  "width": 4
+              },
+              {
+                  "name": "TIM_ULT_MODF",
+                  "type": "string",
+                  "width": 26
+              }
+          ],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "source": "acle",
+      "type": "fact",
+      "name": "base_historica_compensacion",
+      "filePrefix": "base_historica_compensacion_"
+    },
+    {
+      "source": "acle",
+      "type": "fact",
+      "name": "base_historica_fuera_canje",
+      "filePrefix": "base_historica_fuera_canje_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_Acle-Daily"
+  }
+}

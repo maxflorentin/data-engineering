@@ -1,0 +1,82 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A125117","A009271"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cart_ciudades",
+            "title": "Localidades",
+            "schema": "bi_corp_staging",
+            "source": "RECTOR",
+            "query": "HQL del ETL",
+            "type": "DIM",
+            "description": "Localidades",
+            "columns": [
+                {
+                    "name": "CACI_CAES_CD_ESTADO",
+                    "title": "CACI_CAES_CD_ESTADO",
+                    "description": "Código de la provincia",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACI_CD_CIUDAD",
+                    "title": "CACI_CD_CIUDAD",
+                    "description": "Código de la localidad",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACI_DE_CIUDAD",
+                    "title": "CACI_DE_CIUDAD",
+                    "description": "Descripción de la localidad",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 40.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACI_CD_ZONA_SISMICA",
+                    "title": "CACI_CD_ZONA_SISMICA",
+                    "description": "Código de la zona sismica",
+                    "type": "NUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CACI_ST_CIUDAD",
+                    "title": "CACI_ST_CIUDAD",
+                    "description": "Código del estado de la localidad",
+                    "type": "ALFANUMERICO",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

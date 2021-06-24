@@ -1,0 +1,161 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A307459"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "cosmos_codigos_operativos_cuenta",
+            "title": "CÓDIGOS OPERATIVOS DE CUENTA BANCARIA",
+            "schema": "bi_corp_staging",
+            "source": "COSMOS",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CÓDIGOS OPERATIVOS DE CUENTA BANCARIA",
+            "columns": [
+                {
+                    "name": "COD_OPERATIVO",
+                    "title": "COD_OPERATIVO",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_CORTA",
+                    "title": "DESC_CORTA",
+                    "description": "DESCRIPCIÓN DE LA ENTIDAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 14.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESC_LARGA",
+                    "title": "DESC_LARGA",
+                    "description": "DESCRIPCIÓN DE LA ENTIDAD",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 34.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_ANULACION",
+                    "title": "COD_ANULACION",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CLASIF_MOV",
+                    "title": "CLASIF_MOV",
+                    "description": "TIPO DE MOVIMIENTO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 6.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CONCEPTO_BRIO",
+                    "title": "COD_CONCEPTO_BRIO",
+                    "description": "CÓDIGO RELACIONAL",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_ALTA",
+                    "title": "ID_USUARIO_ALTA",
+                    "description": "USUARIO QUE DIO DE ALTA EL REGISTRO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_ALTA",
+                    "title": "FECHA_ALTA",
+                    "description": "FECHA DE ALTA",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ID_USUARIO_MODIF",
+                    "title": "ID_USUARIO_MODIF",
+                    "description": "USUARIO QUE MODIFICÓ EL CIRCUITO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_MODIF",
+                    "title": "FECHA_MODIF",
+                    "description": "FECHA DE MODIFICACION",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_BAJA",
+                    "title": "FECHA_BAJA",
+                    "description": "FECHA DE BAJA DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 7.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_DESTINO",
+                    "title": "TIPO_DESTINO",
+                    "description": "TIPO DE DESTINO",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "N/A",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "Daily",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "table": "bi_corp_common.dim_adm_ind_productopromocion",
+    "partition_date": "${partition_date}",
+    "controls": [
+      {
+        "control_id": "duplicates",
+        "field_to_check": ["cod_adm_producto","ds_adm_producto","ds_adm_productodetalle"]
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["cod_adm_producto"],
+        "threshold": 0.00
+      },
+      {
+        "control_id": "null_values",
+        "field_to_check": ["ds_adm_producto","ds_adm_productodetalle"],
+        "threshold": 0.005
+      }
+    ]
+  }

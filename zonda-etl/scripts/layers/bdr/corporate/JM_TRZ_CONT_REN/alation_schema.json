@@ -1,0 +1,714 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_trz_cont_ren",
+         "title":"Información de refinanciaciones y reestructuraciones",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contiene información del contrato nuevo y el contrato antiguo en el caso de reestructuraciones y refinanciaciones de contratos de productos de activo.",
+         "columns":[
+            {
+               "name":"g7025_coddiv",
+               "title":"Divisa",
+               "description":"Código iso de la divisa asociado al importe reestructurado",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_new_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_divisa"
+                  }
+               ]
+            },
+            {
+               "name":"g7025_cont_ant",
+               "title":"Identificador BDR antiguo",
+               "description":"Código del antiguo identificador de contrato bdr",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_entidad"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod-centrod "
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"num-contratd"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod-productd"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod-subprodd"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod-divisad   "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig-new-entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig-new-cent-alta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig-new-cuenta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig-new-divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-entidad      "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-centro-alta  "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-num-contrato "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-producto  "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-subprodu  "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc-divisa       "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod-entidad "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod-centro  "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"num-contrato"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod-producto"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod-subprodu"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod-divisa  "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-pecodentd"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-pecodofid"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-penumcond"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-pecodprod"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-pecodsubd"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c-pecodmond"
+                  }
+               ]
+            },
+            {
+               "name":"g7025_contra1",
+               "title":"Identificador BDR nuevo ",
+               "description":"Código del nuevo identificador de contrato bdr",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_entidad"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_centro"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"num_contrato"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_producto"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_subprodu"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_new_entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_new_cent_alta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_new_cuenta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_new_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_centro_alta"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_num_contrato"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_producto"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_subprodu"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_entidad"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_centro"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"num_contrato"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_producto"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_subprodu"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"cod_divisa"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pecodentd"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pecodofid"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"penumcond"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pecodprod"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pecodsubd"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pecodmond"
+                  }
+               ]
+            },
+            {
+               "name":"g7025_emp_ant",
+               "title":"Empresa antigua",
+               "description":"Código de la entidad antigua",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g7025_fealtrel",
+               "title":"Fecha relación",
+               "description":"Fecha en que se produce el cambio del identificador y el inicio de la nueva relación ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"fec_refinanc"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtmig",
+                     "column":"mig_old_fech_baja"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"fecha_saldo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"mddtccn",
+                     "column":"fec_altareg"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"peec867c_pefecalt_orig"
+                  }
+               ]
+            },
+            {
+               "name":"g7025_fec_baja",
+               "title":"Fecha de Baja",
+               "description":"Fecha en la que finaliza la relación",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g7025_fec_mod",
+               "title":"Fecha modificación",
+               "description":"Fecha de última modificación del registro",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g7025_imprestr",
+               "title":"Importe reestructurado",
+               "description":"Importe por el cuál se reestructura el contrato. en los casos en los que exista una renumeración de contratos por reestructuración de una operación y ese importe no sea el 100% del contrato, habrá que informar en éste el importe por el cuál se ha reestructurado la operación",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"imp_refnacdl"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malbgc_zbdtppc",
+                     "column":"ppc_saldo_cierre"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pesigns1"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"malpe_peec867c",
+                     "column":"pesdoant"
+                  }
+               ]
+            },
+            {
+               "name":"g7025_motrenu",
+               "title":"Motivo renumeración",
+               "description":"Código de baremo local que indica el motivo del cambio del código del identificador (refinanciación, reconducción, etc….), ",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g7025_motrenug",
+               "title":"Motivo Renumeración Global",
+               "description":"Código de motivo de renumeración global",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g7025_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

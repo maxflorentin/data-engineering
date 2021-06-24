@@ -1,0 +1,112 @@
+{
+  "file": "producto_schema",
+  "location": "/santander/bi-corp/landing/rio3/dim/producto/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/dim/producto",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "descri",
+      "type": "string"
+    },
+    {
+      "name": "producto_asol",
+      "type": "string"
+    },
+    {
+      "name": "icono",
+      "type": "string"
+    },
+    {
+      "name": "verenarbol",
+      "type": "string"
+    },
+    {
+      "name": "visible_grilla",
+      "type": "string"
+    },
+    {
+      "name": "activo",
+      "type": "string"
+    },
+    {
+      "name": "descri_crm",
+      "type": "string"
+    },
+    {
+      "name": "ofrecer",
+      "type": "string"
+    },
+    {
+      "name": "familia",
+      "type": "string"
+    },
+    {
+      "name": "automatico",
+      "type": "string"
+    },
+    {
+      "name": "orden",
+      "type": "string"
+    },
+    {
+      "name": "cellstation",
+      "type": "string"
+    },
+    {
+      "name": "prioridad",
+      "type": "string"
+    },
+    {
+      "name": "internet",
+      "type": "string"
+    },
+    {
+      "name": "pathicono",
+      "type": "string"
+    },
+    {
+      "name": "proveedorid",
+      "type": "string"
+    },
+    {
+      "name": "version_esquema",
+      "type": "string"
+    },
+    {
+      "name": "tipoinfinity",
+      "type": "string"
+    },
+    {
+      "name": "dias_recordatorio_internet",
+      "type": "string"
+    },
+    {
+      "name": "identificarivr",
+      "type": "string"
+    },
+    {
+      "name": "valida_scoring",
+      "type": "string"
+    },
+    {
+      "name": "cant_max_dias_desbloqueo",
+      "type": "string"
+    }
+  ],
+ "extraColumns": [{
+  "name": "partition_date",
+  "type": "string",
+  "value": "${partition_date_filter}",
+  "partitionColumn": true,
+  "partitionOrder": 1
+ }]
+}

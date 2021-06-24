@@ -1,0 +1,200 @@
+{
+  "file": "vq_interval_schema",
+  "location": "/santander/bi-corp/landing/infomart/fact/vq/interval/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/infomart/fact/vq/interval",
+  "createTable": "bi_corp_staging.infomart_vq_interval",
+  "extension": "csv",
+  "delimiter": "\t",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "canal",
+      "type": "string"
+    },
+    {
+      "name": "vq",
+      "type": "string"
+    },
+    {
+      "name": "tipo_interaccion",
+      "type": "string"
+    },
+    {
+      "name": "fecha",
+      "type": "string"
+    },
+    {
+      "name": "intervalo",
+      "type": "string"
+    },
+    {
+      "name": "interacciones_vq",
+      "type": "string"
+    },
+    {
+      "name": "interaccion_resp",
+      "type": "string"
+    },
+    {
+      "name": "vel_prom_resp",
+      "type": "string"
+    },
+    {
+      "name": "porcentaje_interacciones_resp",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_ring",
+      "type": "string"
+    },
+    {
+      "name": "interacciones_abandonadas",
+      "type": "string"
+    },
+    {
+      "name": "tiempo_prom_aban",
+      "type": "string"
+    },
+    {
+      "name": "abandono_porce",
+      "type": "string"
+    },
+    {
+      "name": "interacciones_no_cursadas",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_0_5",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_0_10",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_5_10",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_10_15",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_15_20",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_20_25",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_25_30",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_30_60",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_60_90",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_90_120",
+      "type": "string"
+    },
+    {
+      "name": "contestadas_120_mas",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_0_5",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_0_10",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_0_20",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_5_10",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_10_15",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_15_20",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_20_25",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_25_30",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_30_60",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_60_90",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_90_120",
+      "type": "string"
+    },
+    {
+      "name": "abandonadas_120_mas",
+      "type": "string"
+    },
+    {
+      "name": "cant_interaccion_aten_sla10",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_aten_sla10",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_nivel_ser_sla10_90por",
+      "type": "string"
+    },
+    {
+      "name": "cant_interaccion_aten_sla20",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_aten_sla20",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_nivel_ser_sla20_90por",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_nivel_ser_sla20_85por",
+      "type": "string"
+    },
+    {
+      "name": "porc_interaccion_nivel_ser_sla20_80por",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

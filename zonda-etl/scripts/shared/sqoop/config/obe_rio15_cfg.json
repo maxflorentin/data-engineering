@@ -1,0 +1,51 @@
+{
+  "tables" :[
+    {
+      "serverConfig" : "DBLXORAINET03",
+      "database": "BBANK",
+      "table": "NB_TL_ESTADISTICAS",
+      "table_type": "fact",
+      "environment": "rio15",
+      "landing_path": "/santander/bi-corp/landing/rio15/fact/nb_tl_estadisticas",
+      "partition_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "split_field": "TO_CHAR(FECHA,'YYYY-MM-DD')",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"fecha,cuit,transaccion,cod_error,pid,tipo,comprobante,importe,moneda,tipo_cuenta,cod_sucursal,estado,id_solicitud,nro_cuenta,tipo_cuenta_crd,nro_cuenta_crd,cod_sucursal_crd,f_alta_registro,tipo_empresa,destinatario,tipo_teclado,nup,rpi_medio_pago,rpi_cuitempsev,rpi_id_servicio, rpi_nomfantasia,rpi_identclienteemp \" --where \" {partition_field} = '{partition_date}' \" --bindir '{zonda_dir}/sqoop/rio15/{table}' --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --hive-delims-replacement ' ' --num-mappers 6 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET03",
+      "database": "BBANK",
+      "table": "NB_DESC_TRX",
+      "table_type": "dim",
+      "environment": "rio15",
+      "landing_path": "/santander/bi-corp/landing/rio15/dim/nb_desc_trx",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"transaccion,descripcion,modulo,tipo_trx,submodulo \" --bindir '{zonda_dir}/sqoop/rio15/{table}' --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET03",
+      "database": "BBANK",
+      "table": "NB_MODULOS",
+      "table_type": "dim",
+      "environment": "rio15",
+      "landing_path": "/santander/bi-corp/landing/rio15/dim/nb_modulos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"modulo,descripcion \" --bindir '{zonda_dir}/sqoop/rio15/{table}' --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET03",
+      "database": "BBANK",
+      "table": "NB_SUBMODULOS",
+      "table_type": "dim",
+      "environment": "rio15",
+      "landing_path": "/santander/bi-corp/landing/rio15/dim/nb_submodulos",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"submodulo,descripcion \" --bindir '{zonda_dir}/sqoop/rio15/{table}' --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    },
+    {
+      "serverConfig" : "DBLXORAINET03",
+      "database": "BBANK",
+      "table": "NB_TIPO_TRX",
+      "table_type": "dim",
+      "environment": "rio15",
+      "landing_path": "/santander/bi-corp/landing/rio15/dim/nb_tipo_trx",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng  --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.{table}\" --columns \"tipo_trx,descripcion_tipo \" --bindir '{zonda_dir}/sqoop/rio15/{table}' --target-dir  '{data_lake_server}{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}' --verbose\n"
+    }
+  ]
+}

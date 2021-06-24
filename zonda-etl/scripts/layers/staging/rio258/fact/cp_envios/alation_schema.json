@@ -1,0 +1,479 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": [
+                "A308338"
+            ],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "rio258_cp_envios",
+            "title": "CONTIENE TODOS LOS ENVÍOS Y SU INFORMACIÓN DETALLADA",
+            "schema": "bi_corp_staging",
+            "source": "DELIVERY",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "CONTIENE TODOS LOS ENVÍOS Y SU INFORMACIÓN DETALLADA",
+            "columns": [
+                {
+                    "name": "CRUPIER_ID",
+                    "title": "CRUPIER_ID",
+                    "description": "CÓDIGO DEL ENVIO CROSS APLICACIONES",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CLIENTE",
+                    "title": "COD_CLIENTE",
+                    "description": "CÓDIGO ÚNICO DEL CLIENTE PARA EL MODELO DE DELIVERY",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_SUCURSAL",
+                    "title": "COD_SUCURSAL",
+                    "description": "CÓDIGO DE SUCURSAL",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "SPublico"
+                },
+                {
+                    "name": "NRO_SOLICITUD_ASOL",
+                    "title": "NRO_SOLICITUD_ASOL",
+                    "description": "CÓDIGO DE SOLICITUD",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_PAQUETE",
+                    "title": "NRO_PAQUETE",
+                    "description": "NÚMERO DE PAQUETE",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "NRO_CTA_PAQUETE",
+                    "title": "NRO_CTA_PAQUETE",
+                    "description": "NÚMERO DE CUENTA PAQUETE",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_OPERACION",
+                    "title": "COD_OPERACION",
+                    "description": "CÓDIGO DE LA OPERACIÓN",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": false,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "FECHA_REGISTRO",
+                    "title": "FECHA_REGISTRO",
+                    "description": "FECHA DE CREACIÓN DEL REGISTRO",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CANAL_VENTA",
+                    "title": "COD_CANAL_VENTA",
+                    "description": "CÓDIGO DEL CANAL DE VENTA",
+                    "type": "VARCHAR2(2)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 2.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "EJECUTIVO_COMERCIAL",
+                    "title": "EJECUTIVO_COMERCIAL",
+                    "description": "LEGAJO DEL EJECUTIVO COMERCIAL",
+                    "type": "VARCHAR2(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CALLE",
+                    "title": "CALLE",
+                    "description": "NOMBRE DE LA CALLE",
+                    "type": "VARCHAR2(100)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+                },
+                {
+                    "name": "ALTURA",
+                    "title": "ALTURA",
+                    "description": "ALTURA DE LA CALLE",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "PISO",
+                    "title": "PISO",
+                    "description": "NÚMERO DE PISO DE LA DIRECCIÓN",
+                    "type": "VARCHAR2(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "DEPTO",
+                    "title": "DEPTO",
+                    "description": "DEPARTAMENTO DE LA DIRECCIÓN",
+                    "type": "VARCHAR2(5)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 5.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_POSTAL",
+                    "title": "COD_POSTAL",
+                    "description": "CÓDIGO POSTAL DE LA DIRECCIÓN",
+                    "type": "VARCHAR2(10)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 10.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "LOCALIDAD",
+                    "title": "LOCALIDAD",
+                    "description": "LOCALIDAD DE LA DIRECCIÓN",
+                    "type": "VARCHAR2(100)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 100.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TELEFONO",
+                    "title": "TELEFONO",
+                    "description": "TELÉFONO DE CONTACTO DEL CLIENTE",
+                    "type": "VARCHAR2(30)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 30.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Secreto"
+                },
+                {
+                    "name": "COD_PAQUETE",
+                    "title": "COD_PAQUETE",
+                    "description": "CÓDIGO DEL PAQUETE",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_BARRA",
+                    "title": "COD_BARRA",
+                    "description": "CÓDIGO DE BARRA",
+                    "type": "VARCHAR2(33)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 33.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF",
+                    "title": "ULTIMA_MODIF",
+                    "description": "FECHA DE ULTIMA MODIFICACIÓN",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREADO_POR",
+                    "title": "CREADO_POR",
+                    "description": "SISTEMA QUE CREÓ EL REGISTRO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "ULTIMA_MODIF_POR",
+                    "title": "ULTIMA_MODIF_POR",
+                    "description": "SISTEMA QUE MODIFICÓ POR ÚLTIMA VEZ EL REGISTRO",
+                    "type": "VARCHAR2(50)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 50.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_PRODUCTO",
+                    "title": "COD_PRODUCTO",
+                    "description": "CÓDIGO DE PRODUCTO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_DOM",
+                    "title": "TIPO_DOM",
+                    "description": "TIPO DE DOMICILIO",
+                    "type": "VARCHAR2(21)",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": 21.0,
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                },
+                {
+                    "name": "EXP_PARTIAL",
+                    "title": "EXP_PARTIAL",
+                    "description": "ES PARTE DE UNA EXPEDICIÓN PARCIAL O NO",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "",
+                    "nullable": true,
+                    "length": "",
+                    "sourceColumns": [
+                        {
+                            "schema": "source schema",
+                            "table": "source table",
+                            "column": "source column"
+                        }
+                    ],
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

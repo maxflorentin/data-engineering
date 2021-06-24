@@ -1,0 +1,28 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_rating_cliente",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_penumper"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_penumper"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": [
+        "dt_adm_pefecalt",
+        "dt_adm_pefecmod",
+        "dt_adm_fecha_valoracion",
+        "dt_adm_fecha_valoracion_ant",
+        "dt_adm_fecha_valoracion_garra"
+      ],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.00
+    }
+  ]
+}
+

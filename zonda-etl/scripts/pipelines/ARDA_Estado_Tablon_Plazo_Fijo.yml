@@ -1,0 +1,29 @@
+name: ARDA_Estado_Tablon_Plazo_Fijo
+description: 'ARDA_Estado_Tablon_Plazo_Fijo'
+owner: BI-Corp
+active: true
+start_date: '2021-01-01'
+schedule_interval: '0 */1 * * 1-6'
+retries: 0
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: ControlM_Status
+    operator: BashOperator
+    config:
+      bash_command: "python3 $ZONDA_DIR/repositories/zonda-etl/scripts/api/controlm/controlm_status.py --job_name ARG_SUPRA_00000485 --order_date {{ ti.xcom_pull(task_ids='InputConfig', key='previous_partition_date_short', dag_id='ARDA_Estado_Tablon_Plazo_Fijo') }}"
+notifications:
+  on_error: false
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [ffarinasgil@santandertecnologia.com.ar]

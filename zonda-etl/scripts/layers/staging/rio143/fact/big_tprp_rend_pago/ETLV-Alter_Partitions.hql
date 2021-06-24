@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio143_big_tprp_rend_pago ;

@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(g4128_feoperac, g4128_s1emp, g4128_contra1, g4128_tipintev, g4128_tipintv2, g4128_numordin, g4128_idnumcli, g4128_formintv,g4128_porpartn, g4128_fecultmo) AS line FROM bi_corp_bdr.test_jm_interv_cto WHERE partition_date = '$month_partition_bdr';

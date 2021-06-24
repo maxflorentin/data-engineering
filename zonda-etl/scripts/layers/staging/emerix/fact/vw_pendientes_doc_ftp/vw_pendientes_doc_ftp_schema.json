@@ -1,0 +1,152 @@
+{
+	"file": "pendientes_documentacion_schema",
+	"location": "/santander/bi-corp/landing/emerix/fact/pendientes_documentacion/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/emerix/fact/emerix_pendientes_documentacion",
+	"tempDirectory": "/santander/bi-corp/temp/emerix_pendientes_documentacion",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+	{
+			"name": "zona_suc_adm",
+			"type": "string"
+		},
+{
+			"name": "suc_adm",
+			"type": "string"
+		},
+{
+			"name": "sucursal_nombre",
+			"type": "string"
+		},
+{
+			"name": "posicion",
+			"type": "string"
+		},
+{
+			"name": "tipo_doc",
+			"type": "string"
+		},
+{
+			"name": "num_doc",
+			"type": "string"
+		},
+{
+			"name": "gestor ",
+			"type": "string"
+		},
+{
+			"name": "nombre_gestor",
+			"type": "string"
+		},
+{
+			"name": "num_cliente",
+			"type": "string"
+		},
+{
+			"name": "nombre_apellido",
+			"type": "string"
+		},
+{
+			"name": "apellido_cliente",
+			"type": "string"
+		},
+{
+			"name": "banca",
+			"type": "string"
+		},
+{
+			"name": "califacion",
+			"type": "string"
+		},
+{
+			"name": "fecha_ingreso_emerix",
+			"type": "string"
+		},
+{
+			"name": "riesgo_total",
+			"type": "string"
+		},
+{
+			"name": "contrato",
+			"type": "string"
+		},
+{
+			"name": "estado_contable",
+			"type": "string"
+		},
+{
+			"name": "alta_cuenta",
+			"type": "string"
+		},
+{
+			"name": "marca",
+			"type": "string"
+		},
+{
+			"name": "sub_marca",
+			"type": "string"
+		},
+{
+			"name": "garantia",
+			"type": "string"
+		},
+{
+			"name": "fecha_vencimiento_cuenta",
+			"type": "string"
+		},
+{
+			"name": "cta_deuda_venc",
+			"type": "string"
+		},
+{
+			"name": "esc_nombre_corto",
+			"type": "string"
+		},
+{
+			"name": "est_nombre_corto",
+			"type": "string"
+		},
+{
+			"name": "dias_mora_contrato",
+			"type": "string"
+		},
+{
+			"name": "age_cod",
+			"type": "string"
+		},
+{
+			"name": "age_nombre",
+			"type": "string"
+		},
+{
+			"name": "sob_fec_est",
+			"type": "string"
+		},
+{
+			"name": "cantidad_dias_en_estado",
+			"type": "string"
+		},
+{
+			"name": "cantidad_dias_en_escenario",
+			"type": "string"
+		},
+{
+			"name": "prod",
+			"type": "string"
+		},
+{
+			"name": "segmento",
+			"type": "string"
+		}
+	],"extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }]
+}

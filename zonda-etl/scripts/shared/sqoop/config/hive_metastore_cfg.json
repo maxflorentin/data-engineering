@@ -1,0 +1,14 @@
+{
+  "tables": [
+    {
+      "serverConfig": "dblxorazero01",
+      "database": "srv_rio195_ap",
+      "table": "hive_metastore_report",
+      "table_type": "fact",
+      "environment": "hive_metastore",
+      "landing_path": "/santander/bi-corp/landing/hive_metastore/fact/hive_metastore_report",
+      "split_field": "TBL_ID",
+      "command": "sqoop import -Dmapreduce.output.basename={table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT db.DB_ID,db.NAME,db.OWNER_NAME,tbl.TBL_ID,tbl.TBL_NAME,tbl.TBL_TYPE,cv2.COLUMN_NAME,cv2.TYPE_NAME,tp.PARAM_KEY,tp.PARAM_VALUE FROM DBS db JOIN TBLS tbl ON db.DB_ID = tbl.DB_ID JOIN SDS s ON tbl.SD_ID = s.SD_ID JOIN COLUMNS_V2 cv2 ON cv2.CD_ID = s.CD_ID JOIN TABLE_PARAMS tp ON tbl.TBL_ID = tp.TBL_ID WHERE tp.PARAM_KEY LIKE 'transient_lastDdlTime' AND \\$CONDITIONS UNION ALL SELECT db.DB_ID,db.NAME,db.OWNER_NAME,tbl.TBL_ID,tbl.TBL_NAME,tbl.TBL_TYPE,part.PARTITION_COLUMN AS COLUMN_NAME,'Partition Column' AS TYPE_NAME,tp.PARAM_KEY,tp.PARAM_VALUE FROM DBS db JOIN TBLS tbl ON db.DB_ID = tbl.DB_ID JOIN SDS s ON tbl.SD_ID = s.SD_ID JOIN ( SELECT DISTINCT TBL_ID,SUBSTR(PART_NAME, 1, INSTR(PART_NAME , '=')-1) AS PARTITION_COLUMN FROM HIVE.PARTITIONS) part ON tbl.TBL_ID = part.TBL_ID JOIN TABLE_PARAMS tp ON tbl.TBL_ID = tp.TBL_ID WHERE tp.PARAM_KEY LIKE 'transient_lastDdlTime' AND \\$CONDITIONS\" --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 1 --bindir {zonda_dir}/sqoop/hive_metastore/hive_metastore_report --fields-terminated-by ';' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose\n"
+    }
+  ]
+}

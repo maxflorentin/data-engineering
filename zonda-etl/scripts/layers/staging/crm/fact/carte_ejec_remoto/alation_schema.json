@@ -1,0 +1,95 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308766"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "crm_carte_ejec_remoto",
+      "title": "Ejecutivo Remoto",
+      "schema": "bi_corp_staging",
+      "source": "CRM ",
+      "query": "",
+      "type": "FACT",
+      "description": "Ejecutivo Remoto",
+      "columns": [
+        {
+          "name": "USER_ID",
+          "title": "USER_ID",
+          "description": "LEGAJO DEL EJECUTIVO",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "PRESTADO",
+          "title": "PRESTADO",
+          "description": "SI EL NUP ES PRESTADO",
+          "type": "VARCHAR2",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP",
+          "title": "NUP",
+          "description": "NUP DEL CLIENTE",
+          "type": "INTEGER",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": "",
+          "security": "Publico"
+        },
+        {
+          "name": "GRUPO",
+          "title": "GRUPO",
+          "description": "JERARQUIA DE OFICIAL",
+          "type": "INTEGER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": "",
+          "security": "Publico"
+        },
+        {
+          "name": "FEC_HASTA",
+          "title": "FEC_HASTA",
+          "description": "FECHA DE PERTENENCIA (HASTA)",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 0.0,
+          "security": "Secreto|Confidencial|Restringido|Interno|Publico"
+        },
+        {
+          "name": "FEC_DESDE",
+          "title": "FEC_DESDE",
+          "description": "FECHA DE PERTENENCIA (DESDE)",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 0.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

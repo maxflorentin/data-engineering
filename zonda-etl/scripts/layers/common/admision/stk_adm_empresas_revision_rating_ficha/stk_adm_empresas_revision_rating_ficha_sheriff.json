@@ -1,0 +1,21 @@
+{
+  "table": "bi_corp_common.stk_adm_empresas_revision_rating_ficha",
+"partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["id_adm_ficharevision"]
+    },
+    {
+      "control_id": "null_values",
+      "field_to_check": ["id_adm_ficharevision","id_adm_revisionestado","ds_adm_revisionestado"],
+      "threshold": 0.00005
+    },
+   {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fechainicio","ts_adm_fechafinalizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}

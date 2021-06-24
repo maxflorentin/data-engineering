@@ -1,0 +1,84 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A308585"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio74_pmr_mail",
+      "title": "informacion sobre rebote de mails",
+      "schema": "bi_corp_staging",
+      "source": "mensajes y avisos",
+      "query": "",
+      "type": "FACT",
+      "description": "informacion sobre rebote de mails",
+      "columns": [
+        {
+          "name": "ID_MAIL",
+          "title": "ID_MAIL",
+          "description": "ID de la tabla",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_REASON",
+          "title": "ID_REASON",
+          "description": "ID asociado a la tabla pmr_reason",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        },
+        {
+          "name": "DATE_REJECT",
+          "title": "DATE_REJECT",
+          "description": "fecha de rechazo o rebote",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "E_MAIL",
+          "title": "E_MAIL",
+          "description": "email",
+          "type": "VARCHAR2",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 256.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "ID_SIGNATURE",
+          "title": "ID_SIGNATURE",
+          "description": "ID asociado a la tabla pmr_signature",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

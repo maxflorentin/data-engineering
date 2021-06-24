@@ -1,0 +1,6 @@
+{
+    "logTable": "bi_corp_bdr.long_controles",
+    "queries": [
+        "select r.partition_date as periodo, length(concat(g4128_feoperac, g4128_s1emp, lpad( g4128_contra1, 9, '0' ), g4128_tipintev, g4128_tipintv2, g4128_numordin, g4128_idnumcli, g4128_formintv,g4128_porpartn, g4128_fecultmo)) as longitud, concat(g4128_feoperac, g4128_s1emp, lpad( g4128_contra1, 9, '0' ), g4128_tipintev, g4128_tipintv2, g4128_numordin, g4128_idnumcli, g4128_formintv,g4128_porpartn, g4128_fecultmo) as detalle, from_unixtime(unix_timestamp()) as op_timestamp, d.tabla as tabla from bi_corp_bdr.jm_interv_cto r left join bi_corp_bdr.tablas_info d on d.tabla = 'JM_INTERV_CTO' where partition_date = '$month_partition_bdr' and length(concat(g4128_feoperac, g4128_s1emp, lpad( g4128_contra1, 9, '0' ), g4128_tipintev, g4128_tipintv2, g4128_numordin, g4128_idnumcli, g4128_formintv,g4128_porpartn, g4128_fecultmo)) != cast(d.longitud as int)"
+    ]
+}

@@ -1,0 +1,5183 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A307625"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "bt_nps_nps",
+      "title": "Consolidado de Encuestas",
+      "schema": "bi_corp_common",
+      "source": "lake",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/nps/fact/bt_nps_nps/ETL-LOAD-BT_NPS_NPS.hql",
+      "type": "fact",
+      "description": "Consolidado de Encuestas Qualtrics y OBP/MOBP",
+      "columns": [
+        {
+          "name": "cod_per_nup",
+          "title": "NUP de la persona",
+          "description": "NUP de la persona a la que se le realizo la encuesta",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "penumber"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "penumber"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "penumber"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "penumber"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "nup"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "nup_empresa"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "nup"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_nps_respuesta",
+          "title": "Response Id de la llamada a Qualtrics",
+          "description": "Response Id de la llamada a Qualtrics, en caso de OBP/MOBP sera null",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "responseid"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "response_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "response_id"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "cod_per_nro_doc",
+          "title": "Numero de Documento",
+          "description": "Numero de Documento del encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 22,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "mer_cuit"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "cuit"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "cuit"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "cuit"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "nro_doc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "cuit_Empresa"
+            },
+            {
+              "schema": "bi_corp_common",
+              "table": "stk_per_personas",
+              "column": "ds_per_numdoc"
+            }],
+          "security": "Confidencial"
+        },
+        {
+          "name": "cod_nps_nro_ubicacion",
+          "title": "Numero de Ubicacion",
+          "description": "Numero de Ubicacion de la encuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "grupo_usuario"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "hotspot"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "suc_operacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "centro_alta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "nro_ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "sucursal_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "cod_suc_uc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "cod_oferta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "ubicacion"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_agrupados",
+          "title": "Agrupado de NPS",
+          "description": "1 = detractor\n2 = neutro\n3 = promotor\n\n\n\n\n\n13:40\n1 = cuando nps va de 0 a 6\n2= cuando nps va de 7 a 8\n3 = cuando nps va de 9 a 10",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "red_social_nps"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "q1_nps_group"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "respuesta_1"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "respuesta_1"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_canal",
+          "title": "Canal",
+          "description": "Canal de la Encuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_onboard_dig",
+            "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "CANAL"
+            },
+             {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "desc_canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "desc_canal_venta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "desc_canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "cod_canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "codigo_canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "corresponsalia"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "origen"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "codigo_canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "canal"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_descripcion",
+          "title": "Descripcion de la Encuesta",
+          "description": "Descripcion de la Encuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "desc_transaccion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "agrup_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "agrup_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "descripcion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "descripcion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "descripcion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "categoria_descripcion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "descripcion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "gestion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "gestion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "motivo_reclamo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "motivo_reclamo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "de_ramo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "motivo_visita"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "desc_transaccion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "submotivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "desc_articulo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "intent"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "sector"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "tipo_evento"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "tipo_transacc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "canal"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_desc_ubicacion",
+          "title": "Descripcion Ubicacion",
+          "description": "Descripcion de la Ubicacion",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_caja",
+            "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "nombre_suc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "nombre_suc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "ubicacion"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "sucursal_nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "nombre_suc"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_edad",
+          "title": "Edad",
+          "description": "Edad del Encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "edad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "edad"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_ejecutivo",
+          "title": "Nombre del Ejecutivo",
+          "description": "Nombre del Ejecutivo que atendio al encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_caja",
+            "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "apellido"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "usuario"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "col_name"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "ejecutivo"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_legajo",
+          "title": "Legajo del Empleado",
+          "description": "Legajo del Empleado que atendio al encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_caja",
+            "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "cod_usuario"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "legajo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "usuarioventa"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "ejecutivo"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "asesor"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "usuario_venta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "legajo"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_mejor_prod",
+          "title": "Mejor Producto",
+          "description": "Mejor Producto del Encuestado",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 50,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "desc_mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "desc_mejor_producto"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "desc_mej_prod"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "desc_mej_prod"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "desc_mejor_prod"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_momento_critico",
+          "title": "Momento Critico",
+          "description": "Momento Critico del Encuestado. Hace referencia a la encuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 40,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_cont_cent",
+            "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "momento_critico"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "canal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "canal"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_negocio",
+          "title": "Negocio",
+          "description": "Negocio del Encuestado",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_cont_cent",
+            "column": "negocio"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "negocio"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "negocio"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "negocio"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_nombre",
+          "title": "Nombre",
+          "description": "Nombre del Encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 100,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "mer_legal_name"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "legal_name"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "legal_name"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "name"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "nombre"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "nombre"
+            },
+            {
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "ds_per_nombre"
+            },
+            {
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "ds_per_apellido"
+            }],
+          "security": "Confidencial"
+        },
+        {
+          "name": "ds_nps_nombre_sucursal",
+          "title": "Sucursal",
+          "description": "Sucursal del Encuestado",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 30,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "nombre_sucursal"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "nombre_suc"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_renta",
+          "title": "Renta",
+          "description": "Renta",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "renta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "renta"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_rentabilidad",
+          "title": "Rentabilidad",
+          "description": "Rentabilidad",
+          "type": "decimal",
+          "personIdentifier": false,
+          "decimalSeparator": ".",
+          "nullable": false,
+          "length": 12,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_caja",
+            "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "rentabilidad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "rentabilidad"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_segmento",
+          "title": "Segmento",
+          "description": "Segmento de la Persona",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "ds_per_segmento"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_sexo",
+          "title": "Sexo",
+          "description": "Sexo del Encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1,
+          "sourceColumns": [{
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "cod_per_sexo"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_tipo_doc",
+          "title": "Tipo de Documento",
+          "description": "Tipo de Documento del Encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "ds_per_tipodoc"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_tipo_encuesta",
+          "title": "Encuesta",
+          "description": "Encuesta Realizada",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 200,
+          "security": "Público"
+        },
+        {
+          "name": "dt_nps_fecha_encuesta",
+          "title": "Fecha Encuesta",
+          "description": "Fecha en la que se envia la encuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 10,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "partition_date"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_antiguedad_meses",
+          "title": "Meses de Antiguedad",
+          "description": "Meses de Antiguedad del encuestado",
+          "type": "int",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_caja",
+            "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "antiguedad_en_meses"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "antiguedad"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "antiguedad"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_orden",
+          "title": "Orden de la Pregunta",
+          "description": "Orden de la Pregunta en la Encuesta",
+          "type": "int",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 2,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "question_id"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "question_id"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_pregunta",
+          "title": "Pregunta",
+          "description": "Pregunta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 1000,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "question_desc"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "question_desc"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_nps_respuesta",
+          "title": "Respuesta",
+          "description": "Respuesta",
+          "type": "string",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 3600,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "respuesta"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "respuesta_1"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "respuesta_2"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "respuesta_1"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "respuesta_2"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "ds_per_subsegmento",
+          "title": "Sub segmento",
+          "description": "Sub segmento del Encuestado",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_common",
+            "table": "stk_per_personas",
+            "column": "ds_per_subsegmento"
+            }],
+          "security": "Público"
+        },
+        {
+          "name": "partition_date",
+          "title": "Fecha de la particion",
+          "description": "Fecha de la particion",
+          "type": "string",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": 20,
+          "sourceColumns": [{
+            "schema": "bi_corp_staging",
+            "table": "qualtrics_nps_atm",
+            "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_caja_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_rs",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cont_cent_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_cosmos",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_select",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboard_dig_dlv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_dlv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_plataforma_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_reclamos_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_65",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_seguros",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_sust_tarj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_tas",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_inversiones",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_pym",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_ejecutivo_remoto",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_superclub_fisico",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_alta",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_promo",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_td",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_consumo_tc",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_watson",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_pj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_relacional_duo",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_comex",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_prendarios",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_onboarding_90d",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_mpago",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_dongle",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_corresponsalias",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_empresa_pas",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_baja_cliente_pj",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_getnet_cust_serv",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_work_cafe_efic",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_banfield",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_casa_central",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_cordoba",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_fisherton",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_la_plata",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_leloir",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mardel",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_mendoza",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_oronio",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_san_juan",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_tucuman",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_nodo_wilde",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_emp",
+              "column": "partition_date"
+            },
+            {
+              "schema": "bi_corp_staging",
+              "table": "qualtrics_nps_canales_ind",
+              "column": "partition_date"
+            }],
+          "security": "Público"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

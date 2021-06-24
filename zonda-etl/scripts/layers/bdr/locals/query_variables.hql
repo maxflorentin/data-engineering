@@ -1,0 +1,1 @@
+select '{{ var.json.remiseria_team.var1 }}' as remisero_star, '{{ var.json.bdr_team.var3 }}' as remisero_tech_lead, '{{ var.json.bdr_team.var1 }}' as mdq_traveler

@@ -1,0 +1,1 @@
+SELECT DISTINCT CONCAT(r9736_feoperac,r9736_s1emp,r9736_contra1,r9736_fvtacart,r9736_imppdte,r9736_precioob,r9736_ind_credit) AS line FROM bi_corp_bdr.jm_vta_carter WHERE partition_date = '$month_partition_bdr';

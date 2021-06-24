@@ -1,0 +1,31 @@
+{
+  "file": "adc_sucursales_ingresos_schema",
+  "location": "/santander/bi-corp/landing/rio35/fact/adc_sucursales_ingresos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/fact/adc_sucursales_ingresos",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+    {
+      "name": "suc",
+      "type": "string"
+    },
+    {
+      "name": "sucursal",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

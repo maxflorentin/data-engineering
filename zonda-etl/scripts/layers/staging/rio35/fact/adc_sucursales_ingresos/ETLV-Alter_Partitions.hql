@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio35_adc_sucursales_ingresos;

@@ -1,0 +1,38 @@
+{
+  "file": "tbl_trackeo_evento_schema",
+  "location": "/santander/bi-corp/landing/rio226/dim/tbl_trackeo_evento/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio226/dim/tbl_trackeo_evento",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [{
+    "name": "CODIGO",
+    "type": "string"
+  },
+    {
+      "name": "DESCRIPCION",
+      "type": "string"
+    },
+    {
+      "name": "OPERACION",
+      "type": "string"
+    },
+    {
+      "name": "VISIBLE",
+      "type": "string"
+    },
+    {
+      "name": "DESCRIPCION_USUARIO",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

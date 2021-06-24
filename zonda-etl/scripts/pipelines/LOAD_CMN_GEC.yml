@@ -1,0 +1,211 @@
+name: LOAD_CMN_GEC
+description: 'Load GEC Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+#schedule_interval: '0 9 * * *'
+#start_date: '2020-08-30'
+# catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: bt_gec_ofertas_presentadas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/bt_gec_ofertas_presentadas/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_ofertas_contenido
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_ofertas_contenido/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_ofertas
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_ofertas/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_grupo_mensajes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_grupo_mensajes/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_mensajes
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_mensajes/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_notificaciones
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_notificaciones/ETLV-Load_Common_Table.hql'
+  - name: bt_gec_notificacion_canal_cliente
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/bt_gec_notificacion_canal_cliente/ETLV-Load_Common_Table.hql'
+  - name: dim_gec_canales
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_canales/ETLV-Load_Common_Table.hql'
+  - name: SHERIFF_bt_gec_ofertas_presentadas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_gec_ofertas_presentadas
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/bt_gec_ofertas_presentadas/bt_gec_ofertas_presentadas_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_gec_ofertas_presentadas_sheriff.json']
+  - name: SHERIFF_dim_gec_ofertas_contenido
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_dim_gec_ofertas_contenido
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_ofertas_contenido/dim_gec_ofertas_contenido_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['dim_gec_ofertas_contenido_sheriff.json']
+  - name: SHERIFF_dim_gec_ofertas
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_dim_gec_ofertas
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_ofertas/dim_gec_ofertas_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['dim_gec_ofertas_sheriff.json']
+  - name: SHERIFF_dim_gec_grupo_mensajes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_dim_gec_grupo_mensajes
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_grupo_mensajes/dim_gec_grupo_mensajes_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['dim_gec_grupo_mensajes_sheriff.json']
+  - name: SHERIFF_dim_gec_mensajes
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_dim_gec_mensajes
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_mensajes/dim_gec_mensajes_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['dim_gec_mensajes_sheriff.json']
+  - name: SHERIFF_dim_gec_notificaciones
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_dim_gec_notificaciones
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/dim_gec_notificaciones/dim_gec_notificaciones_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['dim_gec_notificaciones_sheriff.json']
+  - name: SHERIFF_bt_gec_notificacion_canal_cliente
+    operator: SparkSubmitOperator
+    config:
+      name: SHERIFF_Control_bt_gec_notificacion_canal_cliente
+      connection_id: cloudera_spark2
+      executor_cores: 5
+      executor_memory: 8G
+      num_executors: 5
+      files: ['$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/gec/bt_gec_notificacion_canal_cliente/bt_gec_notificacion_canal_cliente_sheriff.json']
+      application: '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/sheriff/sheriff.py'
+      conf: {
+        'spark.yarn.appMasterEnv.partition_date': "{{ ti.xcom_pull(task_ids='InputConfig', key='partition_date', dag_id='LOAD_CMN_GEC') }}",
+        'spark.yarn.appMasterEnv.KAFKA_BROKERS': "$KAFKA_BROKERS",
+        'spark.yarn.appMasterEnv.QA_KAFKA_TOPIC': "$QA_KAFKA_TOPIC"
+      }
+      application_args: ['bt_gec_notificacion_canal_cliente_sheriff.json']
+dependencies:
+  dim_gec_canales: [dim_gec_ofertas_contenido, bt_gec_ofertas_presentadas, bt_gec_notificacion_canal_cliente, dim_gec_grupo_mensajes]
+  bt_gec_ofertas_presentadas: SHERIFF_bt_gec_ofertas_presentadas
+  bt_gec_notificacion_canal_cliente: SHERIFF_bt_gec_notificacion_canal_cliente
+  dim_gec_notificaciones: SHERIFF_dim_gec_notificaciones
+  dim_gec_mensajes: SHERIFF_dim_gec_mensajes
+  dim_gec_grupo_mensajes: SHERIFF_dim_gec_grupo_mensajes
+  dim_gec_ofertas: SHERIFF_dim_gec_ofertas
+  dim_gec_ofertas_contenido: SHERIFF_dim_gec_ofertas_contenido
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [pabnunez@santandertecnologia.com.ar]

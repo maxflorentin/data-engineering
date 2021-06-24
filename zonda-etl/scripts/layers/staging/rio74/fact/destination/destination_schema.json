@@ -1,0 +1,95 @@
+{
+  "file": "destination_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/destination/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/destination",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_subscriber",
+    "type": "string"
+  },
+    {
+      "name": "id_device",
+      "type": "string"
+    },
+    {
+      "name": "seqnum",
+      "type": "string"
+    },
+    {
+      "name": "id_channel",
+      "type": "string"
+    },
+    {
+      "name": "destination",
+      "type": "string"
+    },
+    {
+      "name": "create_date",
+      "type": "string"
+
+    },
+    {
+      "name": "modify_date",
+      "type": "string"
+    },
+    {
+      "name": "id_status",
+      "type": "string"
+    },
+    {
+      "name": "estado",
+      "type": "string"
+    },
+    {
+      "name": "reject_count",
+      "type": "string"
+    },
+    {
+      "name": "reject_date1",
+      "type": "string"
+    },
+    {
+      "name": "reject_date2",
+      "type": "string"
+    },
+    {
+      "name": "solucion_fecha",
+      "type": "string"
+    },
+    {
+      "name": "id_operador",
+      "type": "string"
+    },
+    {
+      "name": "validado",
+      "type": "string"
+    },
+    {
+      "name": "channel_bank",
+      "type": "string"
+    },
+    {
+      "name": "sub_channel_bank",
+      "type": "string"
+    },
+    {
+      "name": "validate_date",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

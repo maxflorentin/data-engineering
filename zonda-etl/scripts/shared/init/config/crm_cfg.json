@@ -1,0 +1,26 @@
+{
+  "tables": [
+    {
+      "source": "CRM",
+      "type": "FACT",
+      "name": "CARTE_EJEC_REMOTO",
+      "filePrefix": "DCARTE_EJEC_REMOTO_"
+    },
+    {
+      "source": "CRM",
+      "type": "FACT",
+      "name": "TCAB_PYC_MASCHE",
+      "filePrefix": "DTCAB_PYC_"
+    },
+    {
+      "source": "CRM",
+      "type": "FACT",
+      "name": "TEJEC_CARTE",
+      "filePrefix": "DTEJEC_CARTE_"
+    }
+  ],
+  "trigger": {
+    "condition": "all",
+    "dag": "LOAD_STG_CRM-Daily"
+  }
+}

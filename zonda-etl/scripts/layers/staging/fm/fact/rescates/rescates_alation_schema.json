@@ -1,0 +1,467 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308761","A308250"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "FM_RESCATES",
+            "title": "Vista historica de la tabla redemption, tiene toda la información de las rescates realizadas. DB: RIO264",
+            "schema": "bi_corp_staging",
+            "source": "Fondos",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Vista historica de la tabla redemption, tiene toda la información de las rescates realizadas. VW_DLAKE_REDEMPTION DB: RIO264",
+            "columns": [
+                {
+                    "name": "COD_FDO",
+                    "title": "COD_FDO",
+                    "description": "Código del fondo.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CLIENTE",
+                    "title": "COD_CLIENTE",
+                    "description": "Es la concatenación del campo agent_code (por defecto tiene valor 001) y el campo customer_code (Cuenta titulo).",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CERTIFICADO",
+                    "title": "CERTIFICADO",
+                    "description": "Certificado.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NR_RGT",
+                    "title": "NR_RGT",
+                    "description": "Numero de secuencia del rescate.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_FDO_DEST",
+                    "title": "COD_FDO_DEST",
+                    "description": "Código de fondo destino en transferencias.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CLI_DEST",
+                    "title": "COD_CLI_DEST",
+                    "description": "Código de cliente destino en transferencias.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NR_CERT_DEST",
+                    "title": "NR_CERT_DEST",
+                    "description": "Numero de certificado destino en transferencias.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_AGTE_SOLIC",
+                    "title": "COD_AGTE_SOLIC",
+                    "description": "Código de agente solicitante, por defecto tiene valor  1",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CANAL_SOLIC",
+                    "title": "COD_CANAL_SOLIC",
+                    "description": "Código del canal solicitante",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_AGTE_DG",
+                    "title": "COD_AGTE_DG",
+                    "description": "Código de agente digitador.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CAN_DG",
+                    "title": "COD_CAN_DG",
+                    "description": "Código de canal digitador.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_OPER_DG",
+                    "title": "COD_OPER_DG",
+                    "description": "Código de operador digitador.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_AGTE_CD",
+                    "title": "COD_AGTE_CD",
+                    "description": "Código de agente dueño.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CAN_CD",
+                    "title": "COD_CAN_CD",
+                    "description": "Código de canal dueño.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_OPER_CD",
+                    "title": "COD_OPER_CD",
+                    "description": "Código de operador dueño.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DTINPUT",
+                    "title": "DTINPUT",
+                    "description": "Fecha de carga de la operación.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "HORA",
+                    "title": "HORA",
+                    "description": "No se guarda este valor en la tabla redemption, se manda por default 000000",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DTSOLIC",
+                    "title": "DTSOLIC",
+                    "description": "Fecha solicitud de la operación.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DTCONVER",
+                    "title": "DTCONVER",
+                    "description": "Fecha valor.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DTPAGTO",
+                    "title": "DTPAGTO",
+                    "description": "Fecha de pago (liquidación).",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "DTESTORNO",
+                    "title": "DTESTORNO",
+                    "description": "Fecha de extorno.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "FORMA_PAGTO",
+                    "title": "FORMA_PAGTO",
+                    "description": "Forma de pago de la suscripción (Ej: cuenta corriente)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "TIPO_CTA",
+                    "title": "TIPO_CTA",
+                    "description": "Tipo de cuenta.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOEDA_CTA",
+                    "title": "MOEDA_CTA",
+                    "description": "Divisa de la cuenta.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 1.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NR_CTA_TIP",
+                    "title": "NR_CTA_TIP",
+                    "description": "Tipo de la cuenta de pago.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NR_CTA_NUM",
+                    "title": "NR_CTA_NUM",
+                    "description": "Numero de cuenta de pago.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERC_COMIS",
+                    "title": "PERC_COMIS",
+                    "description": "Porcentaje de comisión.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": true,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_RGT_BRT",
+                    "title": "VAL_RGT_BRT",
+                    "description": "Importe bruto.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_RGT_LIQ",
+                    "title": "VAL_RGT_LIQ",
+                    "description": "Importe liquidado.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_CUST_RGT",
+                    "title": "VAL_CUST_RGT",
+                    "description": "Cantidad de coste reducido.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 2.0,
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "QT_COT_RGT",
+                    "title": "QT_COT_RGT",
+                    "description": "Cantidad de cuotas partes.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VAL_COTA_RGT",
+                    "title": "VAL_COTA_RGT",
+                    "description": "Valor de la cuota parte.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 8.0,
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NUM_CANCEL",
+                    "title": "NUM_CANCEL",
+                    "description": "Marca de registros cancelados (si tiene (S) es ignorada).",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "MOEDA_CAMBIO",
+                    "title": "MOEDA_CAMBIO",
+                    "description": "Divisa de cambio.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COTACAO_INDI",
+                    "title": "COTACAO_INDI",
+                    "description": "Cuenta indicativa.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VL_CONV_PACT",
+                    "title": "VL_CONV_PACT",
+                    "description": "Valor de conversión pactado.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 17.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COD_CAN_LIQ",
+                    "title": "COD_CAN_LIQ",
+                    "description": "Código del canal de liquidación.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NR_OPER",
+                    "title": "NR_OPER",
+                    "description": "Numero de operación.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 10.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "LIQU_RGT",
+                    "title": "LIQU_RGT",
+                    "description": "Código de liquidación del rescate.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 9.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CLIENTE_AC",
+                    "title": "CLIENTE_AC",
+                    "description": "Es la concatenación del campo agent_code (por defecto tiene valor 001) y el campo customer_code (Cuenta titulo).",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "file": "exp_no_contr_balance",
+  "location": "/santander/bi-corp/landing/manual/exp_no_contr/balance/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/exp_no_contr/balance",
+  "header": false,
+ 	"parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+					  {
+					    "name": "sociedad",
+					    "type": "string",
+					    "width": 5
+					  },
+					  {
+					    "name": "cargabal",
+					    "type": "string",
+					    "width": 22
+					  },
+					  {
+					    "name": "sociedad_eliminacion",
+					    "type": "string",
+					    "width": 5
+					  },
+					  {
+					    "name": "importe",
+					    "type": "string",
+					    "width": 19
+					  },
+					  {
+					    "name": "cod_moneda",
+					    "type": "string",
+					    "width": 23
+					  }
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

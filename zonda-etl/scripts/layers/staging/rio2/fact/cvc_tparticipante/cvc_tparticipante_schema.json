@@ -1,0 +1,55 @@
+{
+  "file": "tparticipante_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tparticipante/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tparticipante",
+  "createTable": "bi_corp_staging.cvc_tparticipante",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_sucursal",
+    "type": "string"
+  },
+  {
+    "name": "nro_solicitud",
+    "type": "string"
+  },
+  {
+    "name": "nro_participante",
+    "type": "string"
+  },
+  {
+    "name": "nom_apellido",
+    "type": "string"
+  },
+  {
+    "name": "nom_nombre",
+    "type": "string"
+  },
+  {
+    "name": "tpo_doc",
+    "type": "string"
+  },
+  {
+    "name": "nro_doc",
+    "type": "string"
+  },
+  {
+    "name": "fec_nacimiento",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

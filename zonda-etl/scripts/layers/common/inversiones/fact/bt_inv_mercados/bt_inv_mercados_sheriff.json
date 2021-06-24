@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_inv_mercados",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_inv_especie", "cod_inv_cuenta", "cod_per_nup", "ds_inv_especie", "cod_inv_tipo_operacion", "cod_inv_moneda", "dt_inv_orden", "cod_inv_sucursal_operativa"]
+    },
+	{
+      "control_id": "duplicates",
+      "field_to_check": ["ds_inv_mercado", "cod_inv_cuenta", "cod_inv_especie", "cod_inv_tipo_operacion", "cod_inv_operacion", "cod_inv_orden", "cod_inv_boleto"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_inv_orden", "dt_inv_concertacion", "dt_inv_liq"],
+      "pattern": "yyyy-MM-dd"
+    }
+  ]
+}

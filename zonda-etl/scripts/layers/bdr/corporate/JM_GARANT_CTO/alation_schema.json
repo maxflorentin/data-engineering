@@ -1,0 +1,996 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_garant_cto",
+         "title":"Garantías Contrato BIS",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"En esta tabla se establecerá la relación entre las garantias/garantes, y los contratos",
+         "columns":[
+            {
+               "name":"g4124_biengar1",
+               "title":"Identificador de la garantía",
+               "description":"Identificador único de la garantía dentro de la entidad. en el caso de tratarse de una garantía personal en este campo se incluirá la clave única de identificación del cliente. en caso de tratarse de una garantía real este identificador estará dado de alta en la tabla “3.5.2 – garantía real”.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae_cod_entidad "
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"rgc_num_persona"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae_num_garantia"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_cob_inic",
+               "title":"Porcentaje de Cobertura Inicial",
+               "description":"Porcentaje de la operación que estaba cubierto por la garantia/garante en el momento de asociación de la garantía a la operación",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_cod_gar",
+               "title":"Código de garantía",
+               "description":"Jerarquía completa de tipo de garantía, en los diferentes niveles definidos localmente (p.ej. garantías prendarias, personales, hipotecarias; dentro de éstas con uso vivienda o comercial, etc.)",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"des_textored"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_cod_gar2",
+               "title":"Código de Garantía Local",
+               "description":"Código de garantía local. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los distintos niveles de garantías",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"des_textored"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_coddiv",
+               "title":"Divisa",
+               "description":"Divisa en que están expresados los importes de las garantias.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_comf_let",
+               "title":"Tipo de Comfort Letter",
+               "description":"Código identificativo del tipo de comfort letter. en caso de no tratarse de un comfort letter este campo se informará con el código correspondiente al valor ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_contra1",
+               "title":"Identificador del contrato",
+               "description":"Clave única de identificación del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_est_gara",
+               "title":"Estado Garantía",
+               "description":"Código indicativo del estado en que se encuentra una garantía",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_fecbaja",
+               "title":"Fecha de baja de la relación",
+               "description":"Fecha en la que se dio de baja, o se estima que se dará de baja, la asignación de cada garantía a cada contrato. en caso de inexistencia de esta información este campo se informará con el valor 9999-12-31.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_fec_bajrelac"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_fecini",
+               "title":"Fecha de inicio de la relación",
+               "description":"Fecha en que se asignó la garantía al contrato.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtrgo",
+                     "column":"rgo_fec_altrelac"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_fecvcto",
+               "title":"Fecha de vencimiento",
+               "description":"Fecha prevista para el vencimiento de la relación garantía-contrato, transcurrida la cual en principio no tendrá validez esta relación, y la garantía dejará de prestar cobertura a la operación. en caso de inexistencia de esta información este campo se informará con el valor 9999-12-31.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae-fec-vcto"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_idnumcli",
+               "title":"Identificador del Cliente",
+               "description":"Identificador del cliente asociado a la garantía. en caso de tipo de garantía personal, corresponderá con el avalista del contrato. se ha incluído el atributo en la tabla por la posibilidad de que exista un cliente garantizando dos veces un contrato, en cuyo caso se incluirá el código del garante en éste atributo y los correspondientes códigos de garantías en el biengar1 (id. de la garantía) de ésta misma tabla.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_imp_actu",
+               "title":"Nominal Cobertura Actual",
+               "description":"Importe de la garantía asociado al contrato. en caso de garantías compartidas, el importe que le corresponda según criterio de reparto. en caso de garantías no compartidas, este importe coincidirá con el importe de valoración de la garantía.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_impt_nom",
+               "title":"Nominal Cobertura inicial",
+               "description":"Importe de la operación garantizada por la garantía/garante en el momento de asociación de la garantía a la operación",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":17,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_ind_pign",
+               "title":"Pignoración en regla",
+               "description":"Este indicador se marcará con una ‘s’ en caso de que se trate de una pignoración en regla, es decir el tipo de instrumentación es una pignoración y el bien que constituye la garantía está bloqueado en tanto que preste cobertura al contrato. en cualquier otro caso el campo se marcará con una ‘n’",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_codigo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_entidad "
+                  }
+               ]
+            },
+            {
+               "name":"g4124_indblo",
+               "title":"Identificador de Bloqueo",
+               "description":"Informa si el aval ha sido bloqueado antes de ejecutarse. se informará con ‘s’ si está bloqueado y con ‘n’ en cualquier otro caso",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_indcobpf",
+               "title":"Identificador de Cobertura Perfecta",
+               "description":"Marca de cobertura perfecta (en el caso de cds). se informará con ‘s’ si está bloqueado y con ‘n’ en cualquier otro caso",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_indrgosb",
+               "title":"Identificador de Riesgo Soberano",
+               "description":"Marca que indica que pertenece al sector “soberano”. los soberanos tienen un tratamiento diferenciado, se utiliza una tabla de calificación de países emitida por una eca (agencias de crédito a la exportación). los valores de esta marca serán “s” (si soberano) y “n” (no soberano)",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_n_impago",
+               "title":"N-ésimo impago",
+               "description":"Momento del impago del subyacente en el que se ejecuta el derivado de crédito",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_num_aseg",
+               "title":"Número de Asegurados",
+               "description":"En el caso de garantías en forma de seguro, se informa en este campo el número de asegurados del contrato de seguro, con el fin de poder prorratear la cobertura entre los asegurados.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_ordapgar",
+               "title":"Orden de prelación de una garantía",
+               "description":"Es la posición en la que se aplica la garantía sobre el contrato garantizado. una garantía puede garantizar diferentes contratos y solo en uno de ellos puede tener orden de prelación 1",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_porcober",
+               "title":"Porcentaje de Cobertura Actual",
+               "description":"Porcentaje de la operación cubierto por la garantia/garante actualmente. en caso de no haber sufrido ninguna modificación, o en el momento de asociación de la garantía/garante al contrato, este importe coincidirá con el campo de porcentaje de cobertura inicial",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_rangohip",
+               "title":"Rango hipotecario",
+               "description":"Es un flag que identifica si un bien tiene cargas externas o no. n: no existen cargas externas, s: existen cargas externas.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_repaporc",
+               "title":"Porcentaje de reparto",
+               "description":"Porcentaje que se está aplicando del valor de la garantía a ese contrato. si la garantía solo se aplica a un contrato este porcentaje será del 100%’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4124_tip_aval",
+               "title":"Tipo Aval",
+               "description":"Código indicativo de si el aval que constituye la garantía es pleno o condicionado (garantes). en caso de tratarse de una garantía real este campo se informará con el código correspondiente al valor ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_codigo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_entidad"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_tip_cobe",
+               "title":"Tipo Cobertura",
+               "description":"Identifica si la garantía es genérica o específica",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtmae",
+                     "column":"mae-tip-cobertur"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_tip_gara",
+               "title":"Tipo de garantía",
+               "description":"Indicador de si se trata de una garantía personal o real",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"des_textored"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_tipo_ins",
+               "title":"Tipo Instrumentación",
+               "description":"Tipo instrumentación. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar los distintos tipos de instrumentación. el tipo de instrumentación será la documentación relacionada con la garantia, y que asegura que esta será exigible en caso de incumplimiento de la obligación del pago. básicamente existen dos tipos de instrumentación:  - afectación: cuando solo existe un documento de intenciones sobre el bien - pignoración: cuando existe escritura pública sobre la pignoración del bien",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_codigo"
+                  },
+                  {
+                     "schema":"bi_corp_staging",
+                     "table":"gtdtcod",
+                     "column":"cod_entidad"
+                  }
+               ]
+            },
+            {
+               "name":"g4124_valaseju",
+               "title":"Validación de Asesoría Jurídica",
+               "description":"Marca (s / n) que permite la consideración o no de la garantía al momento de mitigar según la finalidad",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de particion del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

@@ -1,0 +1,30 @@
+{
+  "file": "actividades_santander_nace_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/actividades_santander_nace/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/actividades_santander_nace",
+  "createTable": "bi_corp_staging.sge_actividades_santander_nace",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "codigo",
+      "type": "string"
+    },
+    {
+      "name": "codigo_nace",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

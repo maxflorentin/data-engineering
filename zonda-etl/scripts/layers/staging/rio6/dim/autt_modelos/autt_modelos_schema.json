@@ -1,0 +1,70 @@
+{
+  "file": "autt_modelos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/autt_modelos_bis/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/autt_modelos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"|",
+  "columns": [
+    {
+      "name":"aumo_auma_cd_marca",
+      "type": "string"
+    },
+    {
+      "name":"aumo_cd_modelo",
+      "type":"string"
+    },
+    {
+      "name":"aumo_de_modelo",
+      "type":"string"
+    },
+    {
+      "name":"aumo_auth_cd_tipo_veh",
+      "type":"string"
+    },
+    {
+      "name":"aumo_in_importado",
+      "type":"string"
+    },
+    {
+      "name":"aumo_auus_cd_uso",
+      "type":"string"
+    },
+    {
+      "name":"aumo_cp_carga_pasajeros",
+      "type":"string"
+    },
+    {
+      "name":"aumo_tp_riesgo_conductor",
+      "type":"string"
+    },
+    {
+      "name":"aumo_peso_kilogramos",
+      "type":"string"
+    },
+    {
+      "name":"aumo_cd_clase",
+      "type":"string"
+    },
+    {
+      "name":"aumo_in_carga_pasajeros",
+      "type":"string"
+    },
+    {
+      "name":"aumo_in_excluir",
+      "type":"string"
+    },
+    {
+      "name":"aumo_carp_cd_ramo",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

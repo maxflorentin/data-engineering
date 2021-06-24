@@ -1,0 +1,370 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309193"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio78_estadisticas",
+      "title": "Tabla que registra todos accesos a los distintos servicios. Se registra la actividad histórica (desde el día anterior a la fecha actual, hacia atrás)",
+      "schema": "bi_corp_staging",
+      "source": "RIO78 Mobile Banking Individuos",
+      "query": "",
+      "type": "FACT",
+      "description": "Tabla que registra todos accesos a los distintos servicios. Se registra la actividad histórica (desde el día anterior a la fecha actual, hacia atrás)",
+      "columns": [
+        {
+          "name": "ID_ESTADISTICA",
+          "title": "ID_ESTADISTICA",
+          "description": "Id de la estadística con la que se registra la operación",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA",
+          "title": "FECHA",
+          "description": "Fecha de ejecución de la operación",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "TRANSACCION",
+          "title": "TRANSACCION",
+          "description": "Identificación de la operación ejecutada.",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "NUP_EMPRESA",
+          "title": "NUP_EMPRESA",
+          "description": "NUP de la Empresa que realizó la operación",
+          "type": "VARCHAR2(8 BYTE)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "NUP_INDIVIDUO",
+          "title": "NUP_INDIVIDUO",
+          "description": "NUP del individuo que realizó la operación",
+          "type": "VARCHAR2(8 BYTE)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IMPORTE_DEBITO",
+          "title": "IMPORTE_DEBITO",
+          "description": "Dato (importe débito) informativo en una operación monetaria",
+          "type": "NUMBER(12,2)",
+          "personIdentifier": false,
+          "decimalSeparator": ",",
+          "nullable": true,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IMPORTE_CREDITO",
+          "title": "IMPORTE_CREDITO",
+          "description": "Dato (importe crédito) informativo en una operación monetaria",
+          "type": "NUMBER(12,2)",
+          "personIdentifier": false,
+          "decimalSeparator": ",",
+          "nullable": true,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "MONEDA",
+          "title": "MONEDA",
+          "description": "Dato (moneda) informativo en una operación monetaria",
+          "type": "VARCHAR2(4 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "IP",
+          "title": "IP",
+          "description": "Dirección IP por la que se realizó la operación",
+          "type": "VARCHAR2(50 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Publico"
+        },
+        {
+          "name": "TOKEN",
+          "title": "TOKEN",
+          "description": "Dato con el que se identifica el dispositivo con el que se realizó la operación",
+          "type": "VARCHAR2(100 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 100.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COMPROBANTE",
+          "title": "COMPROBANTE",
+          "description": "Dato (comprobante) informativo de la operación realizada",
+          "type": "VARCHAR2(25 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 25.0,
+          "security": "Publico"
+        },
+        {
+          "name": "CUENTA_ORIGEN",
+          "title": "CUENTA_ORIGEN",
+          "description": "Dato (cuenta origen) informativo en una operación monetaria",
+          "type": "VARCHAR2(22 BYTE)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "CUENTA_DESTINO",
+          "title": "CUENTA_DESTINO",
+          "description": "Dato (cuenta destino) informativo de una operación monetaria",
+          "type": "VARCHAR2(22 BYTE)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 22.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "NRO_SOLICITUD",
+          "title": "NRO_SOLICITUD",
+          "description": "Dato (número de solicitud) informativo de la operación realizada",
+          "type": "NUMBER(8,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 8.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EST_SOLICITUD",
+          "title": "EST_SOLICITUD",
+          "description": "Dato (estado de la solicitud) informativo de la operación realizada",
+          "type": "NUMBER(2,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 2.0,
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_INICIO_TRN",
+          "title": "FECHA_INICIO_TRN",
+          "description": "Dato (fecha de inicio) informativo de la operación realizada",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "FECHA_FIN_TRN",
+          "title": "FECHA_FIN_TRN",
+          "description": "Dato (fecha de fin) informativo de la operación realizada",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": "-",
+          "security": "Publico"
+        },
+        {
+          "name": "CUIT_EMPRESA",
+          "title": "CUIT_EMPRESA",
+          "description": "Cuit de la empresa ",
+          "type": "NUMBER(11,0)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 11.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "DOCUMENTO",
+          "title": "DOCUMENTO",
+          "description": "DNI del cliente que realizó la operación",
+          "type": "NUMBER(15,0)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "IMPORTE_DEBITO_USD",
+          "title": "IMPORTE_DEBITO_USD",
+          "description": "dato (importe débito dólar) informativo de una operación monetaria",
+          "type": "NUMBER(12,2)",
+          "personIdentifier": false,
+          "decimalSeparator": ",",
+          "nullable": true,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "SERVIDOR",
+          "title": "SERVIDOR",
+          "description": "Servidor donde se ejecutó la operación.",
+          "type": "VARCHAR2(30 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COD_RES",
+          "title": "COD_RES",
+          "description": "Código de respuesta del servicio ejecutado. Identifica si fue exitoso o no",
+          "type": "NUMBER(3,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 3.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LATITUD",
+          "title": "LATITUD",
+          "description": "Valor de localización",
+          "type": "VARCHAR2(30 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "LONGITUD",
+          "title": "LONGITUD",
+          "description": "Valor de localización",
+          "type": "VARCHAR2(30 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 30.0,
+          "security": "Publico"
+        },
+        {
+          "name": "VERSION",
+          "title": "VERSION",
+          "description": "Versión de la aplicación con la que se realizó la operación",
+          "type": "VARCHAR2(7 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 7.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EMAIL_DEST",
+          "title": "EMAIL_DEST",
+          "description": "Dato (email  destinatario) informativo de la operación realizada",
+          "type": "VARCHAR2(50 BYTE)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 50.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "DOCUMENTO_DEST",
+          "title": "DOCUMENTO_DEST",
+          "description": "Dato (dni destinatario) informativo de la operación realizada",
+          "type": "NUMBER(15,0)",
+          "personIdentifier": true,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 15.0,
+          "security": "Confidencial"
+        },
+        {
+          "name": "MONEDA_DEBITO",
+          "title": "MONEDA_DEBITO",
+          "description": "Dato (moneda) informativo de la operación realizada",
+          "type": "VARCHAR2(4 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "COTIZACION",
+          "title": "COTIZACION",
+          "description": "Dato (cotización) informativo de una operación monetaria",
+          "type": "NUMBER(12,2)",
+          "personIdentifier": false,
+          "decimalSeparator": ",",
+          "nullable": true,
+          "length": 12.0,
+          "security": "Publico"
+        },
+        {
+          "name": "EMPSERV",
+          "title": "EMPSERV",
+          "description": "Nombre de empresa p/pagos",
+          "type": "VARCHAR2(4 BYTE)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 4.0,
+          "security": "Publico"
+        },
+        {
+          "name": "ID_TERMINAL",
+          "title": "ID_TERMINAL",
+          "description": "Id aleatorio que se asigna al dispositivo",
+          "type": "NUMBER(38,0)",
+          "personIdentifier": false,
+          "decimalSeparator": "NA",
+          "nullable": true,
+          "length": 38.0,
+          "security": "Publico"
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "INCREMENTAL",
+        "delta": "D+1"
+      }
+    }
+  }
+}

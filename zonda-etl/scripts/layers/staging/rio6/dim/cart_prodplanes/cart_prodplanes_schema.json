@@ -1,0 +1,98 @@
+{
+  "file": "cart_prodplanes_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_prodplanes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_prodplanes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"capb_carp_cd_ramo",
+      "type": "string"
+    },
+    {
+      "name":"capb_capu_cd_producto",
+      "type":"string"
+    },
+    {
+      "name":"capb_cd_plan",
+      "type":"string"
+    },
+    {
+      "name":"capb_fe_inicio",
+      "type":"string"
+    },
+    {
+      "name":"capb_de_plan",
+      "type":"string"
+    },
+    {
+      "name":"capb_mt_maximo",
+      "type":"string"
+    },
+    {
+      "name":"capb_cacm_cd_compania",
+      "type":"string"
+    },
+    {
+      "name":"capb_po_comision",
+      "type":"string"
+    },
+    {
+      "name":"capb_in_inspeccion",
+      "type":"string"
+    },
+    {
+      "name":"capb_mt_minimo",
+      "type":"string"
+    },
+    {
+      "name":"capb_nu_edad_min",
+      "type":"string"
+    },
+    {
+      "name":"capb_nu_edad_max",
+      "type":"string"
+    },
+    {
+      "name":"capb_st_plan",
+      "type":"string"
+    },
+    {
+      "name":"capb_de_plan_larga",
+      "type":"string"
+    },
+    {
+      "name":"capb_nu_edad_anu",
+      "type":"string"
+    },
+    {
+      "name":"capb_cd_categoria",
+      "type":"string"
+    },
+    {
+      "name":"capb_cd_clasificacion",
+      "type":"string"
+    },
+    {
+      "name":"capb_po_coeficiente",
+      "type":"string"
+    },
+    {
+      "name":"capb_cd_producto_renovar",
+      "type":"string"
+    },
+    {
+      "name":"capb_cd_plan_renovar",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

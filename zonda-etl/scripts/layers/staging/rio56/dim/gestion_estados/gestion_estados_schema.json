@@ -1,0 +1,119 @@
+{
+    "file": "gestion_estados",
+    "location": "/santander/bi-corp/landing/rio56/dim/gestion_estados/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/gestion_estados",
+    "tempDirectory": "/santander/bi-corp/temp/gestion_estados",
+    "createTable": "bi_corp_staging.rio56_gestion_estados",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_sector",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_nro",
+            "type": "string"
+        },
+        {
+            "name": "cod_est_gest",
+            "type": "string"
+        },
+        {
+            "name": "fec_est_gest",
+            "type": "string"
+        },
+        {
+            "name": "tpo_medio",
+            "type": "string"
+        },
+        {
+            "name": "cod_rta_resol_predef",
+            "type": "string"
+        },
+        {
+            "name": "cod_contc",
+            "type": "string"
+        },
+        {
+            "name": "cod_niv_conf",
+            "type": "string"
+        },
+        {
+            "name": "indi_impre_masiva",
+            "type": "string"
+        },
+        {
+            "name": "imp_gest_estado",
+            "type": "string"
+        },
+        {
+            "name": "cod_mone_imp",
+            "type": "string"
+        },
+        {
+            "name": "cod_carta",
+            "type": "string"
+        },
+        {
+            "name": "cod_sect_asign_espec",
+            "type": "string"
+        },
+        {
+            "name": "tmp_est_gest",
+            "type": "string"
+        },
+        {
+            "name": "user_estado",
+            "type": "string"
+        },
+        {
+            "name": "cod_sect_estado",
+            "type": "string"
+        },
+        {
+            "name": "cod_bandeja",
+            "type": "string"
+        },
+        {
+            "name": "orden_estado",
+            "type": "string"
+        },
+        {
+            "name": "cod_responsab_est",
+            "type": "string"
+        },
+        {
+            "name": "actor_nro_orden",
+            "type": "string"
+        },
+        {
+            "name": "comentario",
+            "type": "string"
+        },
+        {
+            "name": "ide_gestion_sec",
+            "type": "string"
+        },
+        {
+            "name": "ind_modf_fec_resol",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

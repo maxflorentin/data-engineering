@@ -1,0 +1,1120 @@
+{
+   "objectMetadata":{
+      "active":"true",
+      "governance":{
+         "steward":[
+            "A308939"
+         ],
+         "documentation":"",
+         "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+         "owner":"Roberto D´Empaire, Marcos Devoto",
+         "businessSteward":[
+            "a307461"
+         ],
+         "level":"Intermediate",
+         "verified":"Si",
+         "dataQuality":""
+      },
+      "schedule":{
+         "periodicity":"Mensual",
+         "loading":{
+            "type":"Total",
+            "delta":"D+3 / D+5"
+         }
+      },
+      "table":{
+         "schema":"bi_corp_bdr",
+         "name":"jm_contr_bis",
+         "title":"Información de Contratos",
+         "source":"Lake",
+         "type":"Fact",
+         "description":"Esta tabla contiene información básica del contrato. Es obligatorio incluir un registro en esta tabla para la identificación de todos aquellos contratos que supongan un riesgo de crédito para la entidad.",
+         "columns":[
+            {
+               "name":"g4095_coddiv",
+               "title":"Divisa",
+               "description":"Código de divisa asociada al contrato, en este campo se almacenará el código correspondiente a la divisa asociada al contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":3,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_contra1",
+               "title":"Identificador de contrato",
+               "description":"Clave de identificación única del contrato dentro de la entidad",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_entidad"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_centro"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"num_cuenta"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_producto"
+                  },
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"cod_subprodu_altair"
+                  }
+               ]
+            },
+            {
+               "name":"g4095_contra2",
+               "title":"Identificador del contrato padre",
+               "description":"Clave única de identificación del contrato padre asociado dentro de la entidad. por ejemplo sera utilizado para las estructuras dentro de los contratos para mercados financieros. en caso de no existir contrato padre este campo se informará con el valor ‘0’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_deudprel",
+               "title":"Prelación de la Deuda",
+               "description":"Código de identificación que contiene los distintos tipos de prelación de la deuda. necesario para los slotting models de determinadas entidades.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_feccance",
+               "title":"Fecha Cancelación",
+               "description":"Fecha en la que, por el motivo que sea, se cancela el contrato. se entiende que el contrato está cancelado cuando deja de estar vivo, y que está vivo mientras que tenga un límite o saldo distinto de cero. la fecha se informará en formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_fecentvi",
+               "title":"Fecha entrada en vigor contrato",
+               "description":"Fecha en la que el contrato entra en vigor, se precisa para una nueva operativa en la que el contrato tiene una fecha de alta diferente a la fecha en la que realmente el cliente puede disponer del mismo",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_fechaper",
+               "title":"Fecha Apertura",
+               "description":"Fecha en la que se abre el contrato. la fecha se informará en formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_business_risk_arda",
+                     "table":"contratos",
+                     "column":"fec_alta_cto"
+                  }
+               ]
+            },
+            {
+               "name":"g4095_fecnovac",
+               "title":"Fecha Novación",
+               "description":"Fecha de novación de un contrato. la novación o renovación de un contrato se aplica a contratos de créditos vencidos cuando se cambian las condiciones del contrato a su vencimiento. supone una nueva firma de contrato para el cliente pero en los sistemas informáticos se puede mantener el mismo número de contrato.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_fecrees",
+               "title":"Fecha Reconducción",
+               "description":"Fecha de reconducción del contrato. la reconducción consiste en la renegociación de las condiciones de un contrato dando lugar al cierre del contrato actual y apertura de uno nuevo, si bien tan bien es posible el mantenimiento del contrato actual reflejando las nuevas condiciones que han sido renegociadas. esta renegociación suele atender a la conveniencia de modificar las condiciones para evitar que el contrato entre en estado de mora, si bien tan bien es posible que la renegociación se produzca para adecuar el contrato a las condiciones actuales del mercado.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_reesctr"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"tip_reestruct"
+                  }
+               ]
+            },
+            {
+               "name":"g4095_fecrefi",
+               "title":"Fecha Refinanciación",
+               "description":"Fecha de refinanciación de un contrato. la refinanciación consiste en la renegociación de las condiciones de un contrato dando lugar al cierre del contrato actual y apertura de uno nuevo, si bien tan bien es posible el mantenimiento del contrato actual reflejando las nuevas condiciones que han sido renegociadas. la característica que define la refinanciación es que se produce sobre un contrato que se encuentra actualmente (o ha estado frecuentemente) en situación de mora, y con el fin de reconducir la situación.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               },
+               "sourceColumns":[
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"cod_reesctr"
+                  },
+                  {
+                     "schema":"santander_landing_altair",
+                     "table":"guec8086",
+                     "column":"tip_reestruct"
+                  }
+               ]
+            },
+            {
+               "name":"g4095_fecultmo",
+               "title":"Fecha Modificación",
+               "description":"Fecha de modificación del registro.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_fecve2",
+               "title":"Fecha  Vencimiento Actual",
+               "description":"Fecha actualizada de vencimiento de la última obligación de pago asociada al contrato. en caso de contratos sin fecha de vencimiento definida informar con el valor 9999-12-31, cuando la fecha de vencimiento no se haya modificado este campo será informado con la misma fecha que el vencimiento original.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_fecvento",
+               "title":"Fecha Vencimiento Original",
+               "description":"Fecha original de vencimiento de la última obligación de pago asociada al contrato. en caso de contratos sin fecha de vencimiento definida informar con el valor 9999-12-31. la fecha se informará en formato aaaa-mm-dd",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_feoperac",
+               "title":"Fecha datos",
+               "description":"Fecha de los datos que se están informando. ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_cana2",
+               "title":"Canal Contratación",
+               "description":"Canal contratación del contrato. canal a través del cual se realizó la contratación",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_canal",
+               "title":"Canal Comercial",
+               "description":"Canal comercial del contrato. canal a través del cual se estableció la propuesta",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_natur",
+               "title":"Naturaleza del Contrato",
+               "description":"Puesto que un contrato puede tener mas de una naturaleza en función de su situación o saldos, este campo se utilizará para la identificación de las operaciones intragrupo.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_nsuby",
+               "title":"Naturaleza Activo Subyacente",
+               "description":"Para contratos de derivados, naturaleza del subyacente del contrato",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_pais",
+               "title":"País",
+               "description":"País donde se encuentra la sucursal gestora del contrato. se informará con el código de país iso",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_id_prod",
+               "title":"Agrupador de Producto",
+               "description":"Código de producto agrupado según baremo, asociado al contrato",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idcolate",
+               "title":"Identificador del Acuerdo Colateral",
+               "description":"Clave única de identificación del acuerdo colateral relacionado con el contrato.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idemis",
+               "title":"Tipo de identificación de emisiones",
+               "description":"Tipo de identificación asociado al contrato que es una emisión (p.e: isin, cusip,…). en caso de no tratarse de una emisión se informará con el código correspondiente a ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Javier Herrou <jherrou@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idemisi",
+               "title":"Código de identificación de emisiones",
+               "description":"Código de identificación asociado al contrato que constituye la garantía (deuda pública, acciones, rf privada, futuros, otros activos financieros, resto activos financieros) que garantiza el contrato con riesgo. ",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"",
+                  "businessReference":"Javier Herrou <jherrou@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idfinald",
+               "title":"Finalidad local",
+               "description":"Código de finalidad local para la que solicitó el crédito en la propuesta arrastrada al contrato. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para identificar las finalidades",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idfinali",
+               "title":"Finalidad",
+               "description":"Finalidad para la que solicitó el crédito en la propuesta arrastrada al contrato",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idneting",
+               "title":"Identificador del Acuerdo Netting ",
+               "description":"Clave única de identificación del acuerdo netting relacionado con el contrato.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idpro_lc",
+               "title":"Agrupador de Producto Local",
+               "description":"Código de producto local agrupado según baremo, asociado al contrato. el código a introducir en este campo será el correspondiente al baremo estandar local que haya sido designado en cada entidad para la identificación de las familias de productos",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idprolc2",
+               "title":"Agrupador producto Local 2",
+               "description":"Segundo código de producto local agrupado según baremo, asociado al contrato.",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_idsucur",
+               "title":"Sucursal",
+               "description":"Código de la sucursal gestora del contrato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":40,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_ind_titu",
+               "title":"Indicador Titulizado",
+               "description":"Identificador (si/no) que marca aquellas operaciones que forman parte de una cartera  titulizada.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_indava",
+               "title":"Indicador Aval Ejecutado",
+               "description":"Marca que indica que el aval ha sido ejecutado. en contratos deudores que se aperturan al ejecutar un aval se les pone la marca de “aval ejecutado”.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_inddeud",
+               "title":"Indicador Deuda Pública",
+               "description":"Marca que indica que el contrato/operación se corresponde con una emisión de deuda pública.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_inddeud2",
+               "title":"Indicador Deuda Subordinada",
+               "description":"Marca que indica que el contrato / operación se corresponde con una emisión de deuda subordinada.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_indlim",
+               "title":"Indicador Límite Cancela",
+               "description":"Marca indicativa de que el límite es unilateralmente cancelable por la entidad.",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":1,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_s1emp",
+               "title":"Empresa",
+               "description":"Código de la entidad (ver pestaña 'empresa')",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_tip_inte",
+               "title":"Tipo de interés",
+               "description":"Clase de tipo de interés asociado al contrato. en caso de que el contrato no tenga un tipo de interés específico se informará con el valor correspondiente a ‘no aplica’",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":5,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "A308939"
+                  ],
+                  "owner":"Roberto Hendrie\nJulio Sager\nNicolás Intrieri\nChristian Fregosi",
+                  "businessReference":"Ruben Elvio Espinola <respinola@santander.com.ar>, Veronica Contrera <vcontrera@santander.com.ar>, Carlos Daniel Pitton <cpitton@santander.com.ar>, Martin Alejandro Hirschfeld <mhirschfeld@santander.com.ar>, Ezequiel Ovidio Martinez <ezmartinez@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"g4095_vencorig",
+               "title":"Vencimiento original en meses",
+               "description":"Número de meses original hasta el vencimiento de la última obligación de pago asociada al contrato. necesario para la trazabilidad de la asignación de la lgd de upls",
+               "type":"numeric",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":9,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"No",
+                  "level":"Intermediate"
+               }
+            },
+            {
+               "name":"partition_date",
+               "title":"",
+               "description":"Fecha de partición del dato",
+               "type":"string",
+               "personIdentifier":"No",
+               "decimalSeparator":"No Aplica",
+               "length":10,
+               "nullable":"No",
+               "governance":{
+                  "steward":[
+                     "a231009"
+                  ],
+                  "owner":"Esteban Pérez Bodria",
+                  "businessReference":"Lucas Sebastian Garelli Melero <lgarellimerelo@santander.com.ar>",
+                  "businessSteward":[
+                     "a307461"
+                  ],
+                  "expert":[
+
+                  ],
+                  "verified":"Si",
+                  "ownerNegocio":"GESTIÓN FINANCIERA, RIESGOS",
+                  "locallyAplicable":"Yes",
+                  "level":"Intermediate"
+               }
+            }
+         ]
+      }
+   }
+}

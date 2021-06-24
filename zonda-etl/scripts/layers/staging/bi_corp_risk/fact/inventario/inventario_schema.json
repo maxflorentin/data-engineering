@@ -1,0 +1,127 @@
+{
+	"file": "inventario_schema",
+	"location": "/santander/bi-corp/sandbox/rda/landing/inventario/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/sandbox/rda/staging/inventario",
+	"tempDirectory": "/santander/bi-corp/temp/inventario",
+	"extension": "csv",
+	"delimiter": ",",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [{
+			"name": "periodo",
+			"type": "string"
+		},
+		{
+			"name": "fecha_ejecucion_garra",
+			"type": "date",
+			"partitionColumn": true,
+			"partitionOrder": 1,
+			"dateFormat" : "yyyy-MM-dd HH:mm:ss"
+		},
+		{
+			"name": "nup",
+			"type": "string"
+		},
+		{
+			"name": "sucursal",
+			"type": "string"
+		},
+		{
+			"name": "nro_cuenta",
+			"type": "string"
+		},
+		{
+			"name": "codigo_producto",
+			"type": "string"
+		},
+		{
+			"name": "codigo_subproducto",
+			"type": "string"
+		},
+		{
+			"name": "divisa",
+			"type": "string"
+		},
+		{
+			"name": "fecha_situacion_irregular",
+			"type": "string"
+		},
+		{
+			"name": "fecha_alta_producto",
+			"type": "string"
+		},
+		{
+			"name": "fecha_vencimiento_producto",
+			"type": "string"
+		},
+		{
+			"name": "dias_atraso",
+			"type": "int"
+		},
+		{
+			"name": "dias_atraso_calculado",
+			"type": "int"
+		},
+		{
+			"name": "marca",
+			"type": "string"
+		},
+		{
+			"name": "submarca",
+			"type": "string"
+		},
+		{
+			"name": "codigo_segmento",
+			"type": "string"
+		},
+		{
+			"name": "descripcion_segmento",
+			"type": "string"
+		},
+		{
+			"name": "detalle_renta",
+			"type": "string"
+		},
+		{
+			"name": "tipo_producto",
+			"type": "string"
+		},
+		{
+			"name": "descripcion_producto",
+			"type": "string"
+		},
+		{
+			"name": "tipo_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "motivo_riesgo_sub_est",
+			"type": "string"
+		},
+		{
+			"name": "clasificacion_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "fecha_clasificacion_reestructuracion",
+			"type": "string"
+		},
+		{
+			"name": "via_ingreso",
+			"type": "string"
+		},
+		{
+			"name": "importe_riesgo",
+			"type": "string"
+		},
+		{
+			"name": "importe_irregular",
+			"type": "string"
+		},
+		{
+			"name": "contrato_citi",
+			"type": "boolean"
+		}
+	]
+}

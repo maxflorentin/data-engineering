@@ -1,0 +1,119 @@
+{
+  "file": "claves_sr_canales_schema",
+  "location": "/santander/bi-corp/landing/sgi1/fact/clave_sr_canales_digitales/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/sgi1/fact/clave_sr_canales_digitales",
+  "createTable": "bi_corp_staging.sgi1_claves_sr_canales",
+  "extension": "csv",
+  "header":true,
+  "parquetFiles":1,
+  "compression":"gzip",
+  "columns": [
+    {
+      "name": "entidad",
+      "type": "string",
+      "width": 4
+    } ,
+    {
+      "name": "nup",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "sesion",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "fase",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "ind1",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "ind2",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "sysid",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "task_sgn",
+      "type": "string",
+      "width": 1
+    },
+    {
+      "name": "task",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "trmid",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "userid",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "trnid",
+      "type": "string",
+      "width": 4
+    },
+    {
+      "name": "servicio",
+      "type": "string",
+      "width": 13
+    },
+    {
+      "name": "canal",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "subcanal",
+      "type": "string",
+      "width": 2
+    },
+    {
+      "name": "ret_code",
+      "type": "string",
+      "width": 8
+    },
+    {
+      "name": "ret_texto",
+      "type": "string",
+      "width": 40
+    },
+    {
+      "name": "stamp",
+      "type": "string",
+      "width": 26
+    },
+    {
+      "name": "detalle1",
+      "type": "string",
+      "width": 60
+    },
+    {
+      "name": "detalle2",
+      "type": "string",
+      "width": 60
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

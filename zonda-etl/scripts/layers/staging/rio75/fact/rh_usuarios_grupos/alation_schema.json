@@ -1,0 +1,95 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A303089"
+      ],
+      "level": "Basic"
+    },
+    "table": {
+      "name": "rio75_rh_usuarios_grupos",
+      "title": "Tabla histórica de la relación usuarios/grupos",
+      "schema": "bi_corp_staging",
+      "source": "SLCVD",
+      "query": "HQL del ETL",
+      "type": "FACT",
+      "description": "Tabla histórica de la relación usuarios/grupos",
+      "columns": [
+        {
+          "name": "N_UG_ID",
+          "title": "N_UG_ID",
+          "description": "Id de la relación usuario/grupo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 10.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_USUARIORH",
+          "title": "C_USUARIORH",
+          "description": "Código de usuario SLC (RH_USUARIOS) que tuvo un cambio en el grupo",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "C_GRUPORH",
+          "title": "C_GRUPORH",
+          "description": "Código del grupo (RH_GRUPOS) al que pertenece luego del cambio ",
+          "type": "NUMBER",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 8.0,
+
+          "security": "Publico"                },
+        {
+          "name": "F_ALTA",
+          "title": "F_ALTA",
+          "description": "Fecha de alta del registro",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "F_BAJA",
+          "title": "F_BAJA",
+          "description": "Fecha de baja de la relación usuario/grupo, se carga cuando al mismo usuario se le asigna un nuevo grupo",
+          "type": "DATE",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": true,
+          "length": "",
+
+          "security": "Publico"                },
+        {
+          "name": "I_ACTIVO",
+          "title": "I_ACTIVO",
+          "description": "Indica que es el último grupo que tiene asignado el usuario ('S' = es el último grupo asignado, por lo tanto el activo; 'N' = no es el grupo activo)",
+          "type": "CHAR",
+          "personIdentifier": false,
+          "decimalSeparator": "",
+          "nullable": false,
+          "length": 1.0,
+
+          "security": "Publico"                }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "STOCK",
+        "delta": "D+1"
+      }
+    }
+  }
+}

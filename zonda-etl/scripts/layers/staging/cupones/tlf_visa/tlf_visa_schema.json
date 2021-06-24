@@ -1,0 +1,15 @@
+{
+	"file": "tlf_visa",
+	"location": "/santander/bi-corp/landing/cupones/tlf_visa/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/cupones/tlf_visa",
+	"createTable": "bi_corp_staging.abae_tlf_visa",
+	"copybook": "tlf_visa.cob",
+    "threshold": 0.7,
+	"extraColumns": [{
+		"name": "partition_date",
+		"value": "${partition_date_filter}",
+		"type": "string",
+		"partitionColumn": true,
+		"partitionOrder": 1
+	}]
+}

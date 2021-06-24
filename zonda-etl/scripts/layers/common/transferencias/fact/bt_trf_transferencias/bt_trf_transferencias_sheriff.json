@@ -1,0 +1,15 @@
+{
+  "table": "bi_corp_common.bt_trf_transferencias",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_trf_entidad_origen", "cod_trf_entidad_destino"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_trf_fecha_alta","ts_trf_fecha_debito","ts_trf_fecha_env_riesgo","ts_trf_fecha_credito","ts_trf_fecha_env_camara","ts_trf_fecha_rta_camara"],
+      "pattern": "yyyy-MM-dd HH:mm:ss"
+    }
+  ]
+}

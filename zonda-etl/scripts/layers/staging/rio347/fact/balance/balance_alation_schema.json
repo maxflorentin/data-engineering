@@ -1,0 +1,137 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A198986","A308258"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "BALANCE",
+            "title": "Registra las Tenencias valorizadas de los contratos de ROSSI y MEGARA\nTabla: BALANCE\nDB: RIO347",
+            "schema": "bi_corp_staging",
+            "source": "ROSSI Y MEGARA",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Registra las Tenencias valorizadas de los contratos de ROSSI y MEGARA\nTabla: BALANCE\nDB: RIO347",
+            "columns": [
+                {
+                    "name": "SECURITIES_CONTRACT_CODE",
+                    "title": "SECURITIES_CONTRACT_CODE",
+                    "description": "Número de contrato de la cuenta títulos (código altair)",
+                    "type": "VARCHAR2",
+                    "personIdentifier": true,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 12.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "OFFICE_CODE",
+                    "title": "OFFICE_CODE",
+                    "description": "Oficina/Sucursal del contrato",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ASSETID",
+                    "title": "ASSETID",
+                    "description": "Especie en tenencia por el cliente.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "NOMINALS",
+                    "title": "NOMINALS",
+                    "description": "Cantidad de nominales en tenencia de la especie.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 20.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "HOLDING_STATUS",
+                    "title": "HOLDING_STATUS",
+                    "description": "Estado de la tenencia.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PLACE_HOLDING",
+                    "title": "PLACE_HOLDING",
+                    "description": "Lugar donde se encuentran los titulos.",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": 50.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "VALUE_DATE",
+                    "title": "VALUE_DATE",
+                    "description": "Fecha de la tenencia.",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "ASSET_PRICE",
+                    "title": "ASSET_PRICE",
+                    "description": "Precio de la especie.",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": 4.0,
+                    "nullable": true,
+                    "length": 16.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CREATION_DATE",
+                    "title": "CREATION_DATE",
+                    "description": "Fecha de creación del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                },
+                {
+                    "name": "UPDATE_DATE",
+                    "title": "UPDATE_DATE",
+                    "description": "Última fecha de actualización del registro",
+                    "type": "TIMESTAMP",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": true,
+                    "length": "NA",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "STOCK",
+                "delta": "D+1"
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+{
+	"file": "accion_comercial_schema",
+	"location": "/santander/bi-corp/landing/rio170/dim/accion_comercial/partition_date=${partition_date}",
+	"destination": "/santander/bi-corp/staging/rio170/dim/accion_comercial",
+	"tempDirectory": "/santander/bi-corp/temp/rio170",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_accion_comercial",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "cod_accion_comercial",
+			"type": "string"
+		},
+        {
+			"name": "cod_origen_fuente",
+			"type": "string"
+		},
+        {
+			"name": "desc_nombre_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_carga_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_inicio_ac",
+			"type": "string"
+		},
+        {
+			"name": "fe_fin_ac",
+			"type": "string"
+		},
+        {
+			"name": "indic_activa",
+			"type": "string"
+		},
+        {
+			"name": "cod_producto",
+			"type": "string"
+		},
+        {
+			"name": "cod_categoria",
+			"type": "string"
+		},
+        {
+			"name": "cod_tipo_ac",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

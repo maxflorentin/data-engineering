@@ -1,0 +1,30 @@
+{
+  "file": "nrm_ddn_postal_schema",
+  "location": "/santander/bi-corp/landing/rio35/dim/nrm_ddn_postal/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio35/dim/nrm_ddn_postal",
+  "tempDirectory": "/santander/bi-corp/temp/rio35",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [          {
+    "name": "ddn",
+    "type": "string"
+  },
+    {
+    "name": "codpostal",
+    "type": "string"
+   }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

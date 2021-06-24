@@ -1,0 +1,99 @@
+{
+  "file": "abae_maesctas",
+  "location": "/santander/bi-corp/landing/abae/fact/maesctas/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/abae/fact/maesctas/",
+  "extension": "csv",
+  "header": false,
+  "fixed": true,
+  "createTable": "bi_corp_staging.abae_maesctas",
+  "cobolTypes": true,
+  "parquetFiles": 3,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "cta_entidad",
+      "type": "9(4)"
+    },
+    {
+      "name": "cta_centro",
+      "type": "9(4)"
+    },
+    {
+      "name": "cta_cuenta_prod",
+      "type": "9(03)"
+    },
+    {
+      "name": "cta_cuenta_nro",
+      "type": "9(09)"
+    },
+    {
+      "name": "cta_divisa",
+      "type": "X(3)"
+    },
+    {
+      "name": "cta_firmante",
+      "type": "9(03)"
+    },
+    {
+      "name": "cta_nro_tarjeta",
+      "type": "X(19)"
+    },
+    {
+      "name": "cta_tipo_cta_banelco",
+      "type": "9(02)"
+    },
+    {
+      "name": "cta_estado",
+      "type": "9"
+    },
+    {
+      "name": "cta_plan_sueldo",
+      "type": "X"
+    },
+    {
+      "name": "cta_fast_cash",
+      "type": "X"
+    },
+    {
+      "name": "cta_suscriptor",
+      "type": "X(11)"
+    },
+    {
+      "name": "cta_fec_alta",
+      "type": "9(08)"
+    },
+    {
+      "name": "cta_usuario_alta",
+      "type": "X(08)"
+    },
+    {
+      "name": "cta_fec_ult_act",
+      "type": "9(08)"
+    },
+    {
+      "name": "cta_usuario_ult_act",
+      "type": "X(08)"
+    },
+    {
+      "name": "cta_marca_vincula",
+      "type": "X(02)"
+    },
+    {
+      "name": "cta_cta_preferida",
+      "type": "X(01)"
+    },
+    {
+      "name": "cta_filler",
+      "type": "X(24)"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

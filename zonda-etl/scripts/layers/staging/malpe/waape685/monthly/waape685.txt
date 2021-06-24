@@ -1,0 +1,27 @@
+******************************************************************00010000
+      * PROYECTO: OBTENCION DE CLIENTES MIPYME                         *00020000
+      * NOMBRE DEL OBJETO:  WAAPE685                                   *00030000
+      *                                                                *00040000
+      * ARCHIVO MIPYME CON DEUDA INFORMADA                             *00050000
+      *                                                                *00070000
+      * LONGITUD TOTAL DEL REGISTRO EN BYTES :     243                 *00080002
+      *                                                                *00090000
+      ******************************************************************00100000
+      * MODIFICACION     : SE INCORPORA DEUDA PRETAMOS Y DEUDA MIPYME  *00110000
+      * PETICION         : POR AUMENTO LIMITES MIPYME ID 4530          *00120000
+      * AUTOR            : RUBEN SANCHEZ                               *00130000
+      * FECHA            : 10-06-2013                                  *00140000
+      ******************************************************************00330000
+       COPY WAAPE683.                                                   00340000
+      *   ---------------------------------------------- HASTA AQUI:219 00345602
+       03 WAAPE685-REG-CPA.                                             00340000
+          05 WAAPEPYM-ISEC4110-IMP-DEUDA-T   PIC   9(15)V9(02).         00009400
+      *   -- DEUDA TOTAL -------------------------------->HASTA AQUI:23600351418
+          05 WAAPEPYM-ISEC4110-IMP-DEUDA-P   PIC   9(15)V9(02).         00009400
+      *   -- DEUDA PRESTAMOS (SUBCONJUNTO DEUDA TOTAL) -->HASTA AQUI:25300351418
+          05 WAAPEPYM-ISEC4110-IMP-DEUDA-M   PIC   9(15)V9(02).         00009400
+      *   -- DEUDA MIPYME (SUBCONJ. DEUDA DE PRESTAMOS) ->HASTA AQUI:27000351418
+      ******************************************************************00520000
+      *                        F  I  N                                 *00530000
+      ******************************************************************00540000
+                                                                        00550000

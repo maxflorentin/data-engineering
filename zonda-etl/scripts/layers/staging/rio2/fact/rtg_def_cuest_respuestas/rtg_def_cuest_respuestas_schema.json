@@ -1,0 +1,37 @@
+{
+  "file": "rtg_def_cuest_respuestas_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/rtg_def_cuest_respuestas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/rtg_def_cuest_respuestas",
+  "createTable": "bi_corp_staging.sge_rtg_def_cuest_respuestas",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "columns": [
+    {
+      "name": "id_respuesta",
+      "type": "string"
+    },
+    {
+      "name": "id_pregunta",
+      "type": "string"
+    },
+    {
+      "name": "x_respuesta",
+      "type": "string"
+    },
+    {
+      "name": "n_woe",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+        "name": "partition_date",
+        "type": "string",
+        "value": "${partition_date_filter}",
+        "partitionColumn": true,
+        "partitionOrder": 1
+    }
+  ]
+}

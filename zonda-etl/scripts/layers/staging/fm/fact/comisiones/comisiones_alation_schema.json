@@ -1,0 +1,170 @@
+{
+    "objectMetadata": {
+        "active": true,
+        "governance": {
+            "steward": ["A308761","A308250"],
+            "level": "Basic"
+        },
+        "table": {
+            "name": "COMISIONES",
+            "title": "Tabla con informacion de Comisiones",
+            "schema": "bi_corp_staging",
+            "source": "Fondos",
+            "query": "HQL del ETL",
+            "type": "FACT",
+            "description": "Tabla con informacion de Comisiones",
+            "columns": [
+                {
+                    "name": "PERSON",
+                    "title": "PERSON",
+                    "description": "Nup",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCOUNT",
+                    "title": "ACCOUNT",
+                    "description": "cuenta",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 8.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "SHARES",
+                    "title": "SHARES",
+                    "description": "cantidad de cuotas partes",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 17.4,
+                    "security": "Publico"
+                },
+                {
+                    "name": "MANAGER_ID",
+                    "title": "MANAGER_ID",
+                    "description": "sociedad gerente",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 38.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "FUND_CODE",
+                    "title": "FUND_CODE",
+                    "description": "fondo depositaria",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 38.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "PATRIMONY",
+                    "title": "PATRIMONY",
+                    "description": "patrimonio del cliente",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 17.2,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DATE_PROCESS",
+                    "title": "DATE_PROCESS",
+                    "description": "fecha de comision",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 2.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "CALC_DATE",
+                    "title": "CALC_DATE",
+                    "description": "fecha que se ejecuto el calculo",
+                    "type": "DATE",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 3.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "DESTINATION",
+                    "title": "DESTINATION",
+                    "description": "area",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 11.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACCOUNTING_CENTER",
+                    "title": "ACCOUNTING_CENTER",
+                    "description": "centro contable",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 4.0,
+                    "security": "Publico"
+                },
+                {
+                    "name": "ACOUNNTING_ACCOUNT",
+                    "title": "ACOUNNTING_ACCOUNT",
+                    "description": "cuenta contable",
+                    "type": "VARCHAR2",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                },
+                {
+                    "name": "PERCENTAGE",
+                    "title": "PERCENTAGE",
+                    "description": "porcentaje de comision",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": 38.1,
+                    "security": "Publico"
+                },
+                {
+                    "name": "COMMISSION",
+                    "title": "COMMISSION",
+                    "description": "importe de comision",
+                    "type": "NUMBER",
+                    "personIdentifier": false,
+                    "decimalSeparator": "NA",
+                    "nullable": false,
+                    "length": "",
+                    "security": "Publico"
+                }
+            ]
+        },
+        "schedule": {
+            "periodicity": "DIARIO",
+            "loading": {
+                "type": "INCREMENTAL",
+                "delta": "D+1"
+            }
+        }
+    }
+}

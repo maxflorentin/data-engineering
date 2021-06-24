@@ -1,0 +1,80 @@
+{
+  "file": "mrg_juridica",
+  "location": "/santander/bi-corp/landing/manual/adicional_juridica/mrg_juridica/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/manual/adicional_juridica/mrg_juridica",
+  "extension": "csv",
+  "delimiter": ";",
+  "header": true,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+					[
+						{
+							"name": "fecha",
+							"type": "string"
+						},
+						{
+							"name": "empresa",
+							"type": "string"
+						},
+						{
+							"name": "exposicion",
+							"type": "string"
+						},
+						{
+							"name": "calificada_localmente",
+							"type": "string"
+						},
+						{
+							"name": "identificador_cliente",
+							"type": "string"
+						},
+						{
+							"name": "fecha_informacion",
+							"type": "string"
+						},
+						{
+							"name": "facturacion",
+							"type": "string"
+						},
+						{
+							"name": "total_activos_cliente",
+							"type": "string"
+						},
+						{
+							"name": "numero_empleados",
+							"type": "string"
+						},
+						{
+							"name": "origen_facturacion",
+							"type": "string"
+						},
+						{
+							"name": "origen_activos",
+							"type": "string"
+						},
+						{
+							"name": "cod_cargabal",
+							"type": "string"
+						},
+						{
+							"name": "total_deuda_cliente",
+							"type": "string"
+						},
+						{
+							"name": "marca_facturacion",
+							"type": "string"
+						},
+						{
+							"name": "rating",
+							"type": "string"
+						}
+					],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

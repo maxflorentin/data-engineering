@@ -1,0 +1,36 @@
+{
+	"file": "preguntas_schema",
+	"location": "/santander/bi-corp/landing/rio170/dim/preguntas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio170/dim/preguntas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_nps_preguntas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_encuesta",
+			"type": "string"
+		},
+        {
+			"name": "orden_pregunta",
+			"type": "string"
+		},
+        {
+			"name": "pregunta_desktop",
+			"type": "string"
+		},
+        {
+			"name": "pregunta_mobile",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

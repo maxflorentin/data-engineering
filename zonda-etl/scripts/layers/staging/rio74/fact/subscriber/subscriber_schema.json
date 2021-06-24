@@ -1,0 +1,99 @@
+{
+  "file": "subscriber_schema",
+  "location": "/santander/bi-corp/landing/rio74/fact/subscriber/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio74/fact/subscriber",
+  "tempDirectory": "/santander/bi-corp/temp/rio74",
+  "extension": "csv",
+  "delimiter": "|",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "skipNotify": true,
+  "columns": [{
+    "name": "id_subscriber",
+    "type": "string"
+  },
+    {
+      "name": "id_status",
+      "type": "string"
+    },
+    {
+      "name": "idtype",
+      "type": "string"
+    },
+    {
+      "name": "idnumber",
+      "type": "string"
+    },
+    {
+      "name": "givenname",
+      "type": "string"
+    },
+    {
+      "name": "surname",
+      "type": "string"
+
+    },
+    {
+      "name": "telnumber",
+      "type": "string"
+    },
+    {
+      "name": "legaltype",
+      "type": "string"
+    },
+    {
+      "name": "birthdate",
+      "type": "string"
+    },
+    {
+      "name": "id_channelbank",
+      "type": "string"
+    },
+    {
+      "name": "id_subchannelbank",
+      "type": "string"
+    },
+    {
+      "name": "privatebank",
+      "type": "string"
+    },
+    {
+      "name": "personalbank",
+      "type": "string"
+    },
+    {
+      "name": "create_date",
+      "type": "string"
+    },
+    {
+      "name": "modify_date",
+      "type": "string"
+    },
+    {
+      "name": "id_channelbank_ini",
+      "type": "string"
+    },
+    {
+      "name": "id_subchannelbank_ini",
+      "type": "string"
+    },
+    {
+      "name": "id_operador",
+      "type": "string"
+    },
+    {
+      "name": "tyc_whatsapp",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}

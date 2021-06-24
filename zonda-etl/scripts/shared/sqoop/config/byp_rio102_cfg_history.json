@@ -1,0 +1,160 @@
+{
+  "tables" :[
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "PREM_CLIENTES_CAMPANIA",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/prem_clientes_campania",
+            "partition_field": "PERIODO",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_CLIENTES_CAMPANIA\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOV_PTOS_SUPERCLUB",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_nov_ptos_superclub",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_PTOS_SUPERCLUB\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_TC",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_tc",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_TC\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_TD",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_td",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_TD\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOV_CUOTA_SEGURO",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_nov_cuota_seguro",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_CUOTA_SEGURO\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_INVERSIONES",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_inversiones",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_INVERSIONES\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_CAMP_BONIF",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_camp_bonif",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_CAMP_BONIF\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_MILLAS_AA",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_millas_aa",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_MILLAS_AA\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOV_MONTO_CTA_TC",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_nov_monto_cta_tc",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_MONTO_CTA_TC\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_SORTEO",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_sorteo",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_SORTEO\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOV_ARCH_DELIVERY",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_nov_arch_delivery",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_ARCH_DELIVERY\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOVEDADES_MONTO_CTA",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_novedades_monto_cta",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_MONTO_CTA\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      },
+    {
+            "serverConfig" : "DBLXORAFRONT05",
+            "database": "PREM",
+            "table": "MVW_PREM_NOV_COSTO_SORPRESA",
+            "table_type": "fact",
+            "environment": "rio102",
+            "landing_path": "/santander/bi-corp/landing/rio102/fact/mvw_prem_nov_costo_sorpresa",
+            "partition_field": "FECHA_PROC",
+            "partition_field_value": "2019-12-03",
+            "split_field": "IDPROMO",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --table \"{database}.PREM_NOVEDADES_COSTO_SORPRESA\"   --target-dir  '{landing_path}/partition_date={partition_date}'  -m 1  --password '{password}'  --delete-target-dir --fields-terminated-by '#' --verbose\n"
+      }
+  ]
+}

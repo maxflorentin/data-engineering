@@ -1,0 +1,44 @@
+{
+    "file": "atm_remanentes",
+    "location": "/santander/bi-corp/landing/rio155/fact/atm_remanentes/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio155/fact/atm_remanentes",
+    "tempDirectory": "/santander/bi-corp/temp/rio155",
+    "createTable": "bi_corp_staging.rio155_atm_remanentes",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "skipNotify": true,
+    "columns": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "fecha",
+            "type": "string"
+        },
+        {
+            "name": "terminal",
+            "type": "string"
+        },
+        {
+            "name": "divisa",
+            "type": "string"
+        },
+        {
+            "name": "remanente",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

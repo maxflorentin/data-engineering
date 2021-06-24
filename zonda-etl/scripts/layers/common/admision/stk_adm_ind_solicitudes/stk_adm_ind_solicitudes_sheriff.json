@@ -1,0 +1,22 @@
+{
+  "table": "bi_corp_common.stk_adm_ind_solicitudes",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_adm_tramite"]
+    },
+	{
+      "control_id": "null_values",
+      "field_to_check": ["cod_adm_tramite","cod_suc_sucursal","cod_adm_nrosolicitud","ts_adm_fecingresosco","ds_adm_maralta","flag_adm_motivosupnoforzaje"],
+      "threshold": 0.00
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_adm_fecingresoscoring","ts_adm_fecingresorio2","ts_adm_fecenviosw1","ts_adm_fecenviosw2","ts_adm_fecdesicionsw","ts_adm_fecingresosrs","ts_adm_fecasig_anasrs","ts_adm_fecini_resolsrs","ts_adm_fecfin_resolsrs","ts_adm_fecresolsuc","ts_adm_fecresolaltas","ts_adm_fec_estado_actual","ts_adm_fec_estado_asol","ts_adm_fecswsrs","ts_adm_fecingresosco","ts_adm_fecingresouni","ts_adm_fecegresouni","ts_adm_estado_31","dt_adm_fecestado10","dt_adm_fecestado13","dt_adm_fecestado12","ts_adm_fecingresocvc","ts_adm_feciniresolcvc","ts_adm_fecfinresolcvc","ts_adm_fecingresosri","ts_adm_feciniresolsri","ts_adm_fecfinresolsri","dt_adm_fecaltaminima","dt_adm_fecultresolriesgos","dt_adm_fecresolucionpreevaluacion","dt_adm_fecaltinh","dt_adm_fecvtoinh","dt_adm_fecnacimiento","dt_adm_fecaltaprodcb","dt_adm_fecmarjuanito","dt_adm_fecaltaminima"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.SSS",
+      "threshold": 0.00
+    }
+	  ]
+}
+

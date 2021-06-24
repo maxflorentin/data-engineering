@@ -1,0 +1,67 @@
+{
+    "file": "sucursales_schema",
+    "createTable": "bi_corp_staging.rio154_sucursales",
+    "location": "/santander/bi-corp/landing/rio154/dim/sucursales/partition_date=${partition_date_filter}",
+    "destination": "/santander/bi-corp/staging/rio154/dim/sucursales",
+    "tempDirectory": "/santander/bi-corp/temp/rio154",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "suc_nro",
+            "type": "string"
+        },
+        {
+            "name": "ofi_nro",
+            "type": "string"
+        },
+        {
+            "name": "hora_desde",
+            "type": "string"
+        },
+        {
+            "name": "hora_hasta",
+            "type": "string"
+        },
+        {
+            "name": "descri",
+            "type": "string"
+        },
+        {
+            "name": "zona_llamado",
+            "type": "string"
+        },
+        {
+            "name": "region",
+            "type": "string"
+        },
+        {
+            "name": "cant_puestos_caja_disp",
+            "type": "string"
+        },
+        {
+            "name": "tec",
+            "type": "string"
+        },
+        {
+            "name": "alta_tec",
+            "type": "string"
+        },
+        {
+            "name": "tipo_tec",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date_filter}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

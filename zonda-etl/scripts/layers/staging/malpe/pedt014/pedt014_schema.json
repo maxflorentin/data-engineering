@@ -1,0 +1,17 @@
+{
+    "file": "pedt014_schema",
+    "location": "/santander/bi-corp/landing/malpe/fact/pedt014/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/malpe/fact/pedt014",
+    "createTable": "bi_corp_staging.malpe_pedt014",
+    "copybook": "pedt014.cob",
+    "threshold": 0.7,
+    "extraColumns": [
+      {
+        "name": "partition_date",
+        "value": "${partition_date}",
+        "type": "string",
+        "partitionColumn": true,
+        "partitionOrder": 1
+      }
+    ]
+  }

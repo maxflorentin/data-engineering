@@ -1,0 +1,32 @@
+{
+  "tables" :[
+        {
+            "serverConfig" : "DBLXORAINET01",
+            "database": "RIO78",
+            "table": "LOGMB.DISPOSITIVO",
+            "type": "fact",
+            "landing_path": "/santander/bi-corp/landing/rio78/fact/dispositivo",
+            "partition_field": "FECHA",
+            "split_field": "to_char(FECHA, 'YYYY-MM-DD')",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{table}\" --where \"to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'\" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/dispositivo'--target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 6 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAINET01",
+            "database": "RIO78",
+            "table": "LOGMB.TRANSACCION",
+            "type": "dim",
+            "staging_path": "/santander/bi-corp/staging/rio78/dim/transaccion",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --table \"{table}\" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/transaccion'--target-dir '{staging_path}' --delete-target-dir --num-mappers 1 --password '{password}' --verbose\n"
+      },
+      {
+            "serverConfig" : "DBLXORAINET01",
+            "database": "RIO78",
+            "table": "LOGMB.ESTADISTICAS_HISTORICO",
+            "type": "fact",
+            "landing_path": "/santander/bi-corp/landing/rio78/fact/estadisticas",
+            "partition_field": "FECHA",
+            "split_field": "MES",
+            "command": "sqoop import -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}' --username '{username}' --query \"SELECT ID_ESTADISTICA,FECHA,TRANSACCION,NUP_EMPRESA,NUP_INDIVIDUO,IMPORTE_DEBITO,IMPORTE_CREDITO,MONEDA,IP,TOKEN,COMPROBANTE,CUENTA_ORIGEN,CUENTA_DESTINO ,NRO_SOLICITUD,EST_SOLICITUD, FECHA_INICIO_TRN , FECHA_FIN_TRN ,CUIT_EMPRESA,DOCUMENTO ,IMPORTE_DEBITO_USD ,SERVIDOR,COD_RES, LATITUD,LONGITUD,VERSION,EMAIL_DEST,DOCUMENTO_DEST,MONEDA_DEBITO,COTIZACION,EMPSERV,ID_TERMINAL,MES FROM {table} WHERE to_char({partition_field} ,'YYYY-MM-DD') ='{partition_date}'AND extract(year FROM FECHA)= SUBSTR('{partition_date}',1,4 ) AND EXTRACT(MONTH FROM FECHA) = SUBSTR('{partition_date}',6,2 ) AND \\$CONDITIONS\" --bindir '/aplicaciones/bi/zonda/sqoop/{database}/estadisticas' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '|' --num-mappers 10 --password '{password}' --split-by \"{split_field}\" --verbose\n"
+      }
+  ]
+}

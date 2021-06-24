@@ -1,0 +1,52 @@
+{
+  "file": "zendesk_groups_santander-ar",
+  "location": "/santander/bi-corp/landing/zendesk_gr/dim/santander-ar/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/zendesk/dim/gr/santander-ar",
+  "extension": "csv",
+  "header": false,
+  "delimiter": "^",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "url",
+      "type": "string"
+    },
+    {
+      "name": "name",
+      "type": "string"
+    },
+
+    {
+      "name": "description",
+      "type": "string"
+    },
+    {
+      "name": "default",
+      "type": "string"
+    },
+    {
+      "name": "deleted",
+      "type": "string"
+    },
+    {
+      "name": "created_at",
+      "type": "string"
+    },
+    {
+      "name": "updated_at",
+      "type": "string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

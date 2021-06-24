@@ -1,0 +1,71 @@
+{
+  "file": "rpc_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/rpc/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/rpc",
+  "createTable": "bi_corp_staging.sge_rpc",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+           {
+                    "name": "id_rpc",
+                    "type": "string"
+                },
+{
+                    "name": "nro_prop",
+                    "type": "string"
+                },
+{
+                    "name": "imp_importe_calif",
+                    "type": "string"
+                },
+{
+                    "name": "imp_resp_pat_comp",
+                    "type": "string"
+                },
+{
+                    "name": "justificacion",
+                    "type": "string"
+                },
+{
+                    "name": "fec_calificacion",
+                    "type": "string"
+                },
+{
+                    "name": "cod_usu_alta",
+                    "type": "string"
+                },
+{
+                    "name": "fec_estados_contables",
+                    "type": "string"
+                },
+{
+                    "name": "duracion",
+                    "type": "string"
+                },
+{
+                    "name": "rel_porc",
+                    "type": "string"
+                },
+{
+                    "name": "penumper",
+                    "type": "string"
+                },
+{
+                    "name": "mar_imprimir_acta",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

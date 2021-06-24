@@ -1,0 +1,120 @@
+{
+  "file": "cart_tipos_cuentas_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_tipos_cuentas/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_tipos_cuentas",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"ctcu_cd_cuenta",
+      "type": "string"
+    },
+    {
+      "name":"ctcu_st_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_in_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_nm_cuenta",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_nu_desde",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_nu_hasta",
+      "type":"string"
+    },{
+      "name":"ctcu_mascara_tarj",
+      "type": "string"
+    },
+    {
+      "name":"ctcu_pos_num_tarj",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_long_num_tarj",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_pos_digito",
+      "type":"string"
+    },{
+      "name":"ctcu_long_digito",
+      "type": "string"
+    },
+    {
+      "name":"ctcu_pos_subdig",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_long_subdig",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_digito_desde",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_digito_hasta",
+      "type": "string"
+    },
+    {
+      "name":"ctcu_subdig_desde",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_subdig_hasta",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_fe_ultvcto",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_fe_equip",
+      "type": "string"
+    },
+    {
+      "name":"ctcu_cd_sumatoria",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_cd_calc_dig",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_div_modulo",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_regla_validacion",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_regla_sumatoria",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_regla_digito",
+      "type":"string"
+    },
+    {
+      "name":"ctcu_tp_cuenta",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

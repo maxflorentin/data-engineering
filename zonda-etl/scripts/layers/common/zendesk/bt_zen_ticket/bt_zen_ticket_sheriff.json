@@ -1,0 +1,18 @@
+{
+  "table": "bi_corp_common.bt_zen_ticket",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_zen_ticket"],
+      "threshold": 0.1
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_zen_creacion","ts_zen_actualizacion"],
+      "pattern": "yyyy-MM-dd HH:mm:ss.ffffff",
+      "threshold": 0.01
+
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "file": "nb_submodulos_schema",
+  "location": "/santander/bi-corp/landing/rio15/dim/nb_submodulos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio15/dim/nb_submodulos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"submodulo",
+      "type": "string"
+    },
+    {
+      "name":"descripcion",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

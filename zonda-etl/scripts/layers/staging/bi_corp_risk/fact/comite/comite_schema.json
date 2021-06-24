@@ -1,0 +1,158 @@
+{
+    "file": "comite",
+    "location": "/santander/bi-corp/landing/sql5/fact/comite/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/sql5/fact/comite",
+    "createTable": "bi_corp_staging.risksql5_comite",
+    "extension": "csv",
+    "delimiter": "|",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "snappy",
+    "columns": [
+      {
+        "name": "periodo",
+        "type": "string"
+      },
+      {
+        "name": "nup",
+        "type": "string"
+      },
+      {
+        "name": "cuit",
+        "type": "string"
+      },
+      {
+        "name": "razon_social",
+        "type": "string"
+      },
+      {
+        "name": "segmento",
+        "type": "string"
+      },
+      {
+        "name": "deuda",
+        "type": "string"
+      },
+      {
+        "name": "importe_riesgo",
+        "type": "string"
+      },
+      {
+        "name": "dias_atraso",
+        "type": "string"
+      },
+      {
+        "name": "ead",
+        "type": "string"
+      },
+      {
+        "name": "pd",
+        "type": "string"
+      },
+      {
+        "name": "lgd",
+        "type": "string"
+      },
+      {
+        "name": "rating",
+        "type": "string"
+      },
+      {
+        "name": "tipo_rating",
+        "type": "string"
+      },
+      {
+        "name": "bcra_clasificacion_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bcra_criterio_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bcra_prevision_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bde_clasificacion_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bde_criterio_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bde_stage_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bde_porcentaje_prevision_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bde_provision_inicial",
+        "type": "string"
+      },
+      {
+        "name": "bcra_clasificacion_final",
+        "type": "string"
+      },
+      {
+        "name": "bcra_criterio_final",
+        "type": "string"
+      },
+      {
+        "name": "bcra_prevision_final",
+        "type": "string"
+      },
+      {
+        "name": "bde_stage_final",
+        "type": "string"
+      },
+      {
+        "name": "bde_porcentaje_provision_final",
+        "type": "string"
+      },
+      {
+        "name": "bde_clasificacion_final",
+        "type": "string"
+      },
+      {
+        "name": "bde_criterio_final",
+        "type": "string"
+      },
+      {
+        "name": "bde_provision_final",
+        "type": "string"
+      },
+      {
+        "name": "excluido",
+        "type": "string"
+      },
+      {
+        "name": "cantidad_contratos_irregulares",
+        "type": "string"
+      },
+      {
+        "name": "fecha_informacion",
+        "type": "string"
+      },
+      {
+        "name": "calificacion",
+        "type": "string"
+      },
+      {
+        "name": "comite_anterior",
+        "type": "string"
+      }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

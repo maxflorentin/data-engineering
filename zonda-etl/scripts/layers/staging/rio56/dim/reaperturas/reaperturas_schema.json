@@ -1,0 +1,43 @@
+{
+    "file": "reaperturas",
+    "location": "/santander/bi-corp/landing/rio56/dim/reaperturas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/reaperturas",
+    "tempDirectory": "/santander/bi-corp/temp/reaperturas",
+    "createTable": "bi_corp_staging.rio56_reaperturas",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+      {
+            "name": "cod_entidad",
+            "type": "string"
+        }, 
+{
+            "name": "ide_gestion_nro",
+            "type": "string"
+        }, 
+{
+            "name": "ide_gestion_sector",
+            "type": "string"
+        }, 
+{
+            "name": "ide_nro_reapertura",
+            "type": "string"
+        }, 
+{
+            "name": "nro_orden",
+            "type": "string"
+        } 
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

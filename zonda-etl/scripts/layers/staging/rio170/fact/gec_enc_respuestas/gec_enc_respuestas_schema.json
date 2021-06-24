@@ -1,0 +1,44 @@
+{
+	"file": "respuestas_schema",
+	"location": "/santander/bi-corp/landing/rio170/fact/respuestas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio170/fact/respuestas",
+	"extension": "csv",
+	"delimiter": "|",
+	"header": false,
+	"createTable": "bi_corp_staging.rio170_nps_respuestas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+		{
+			"name": "id_encuesta",
+			"type": "string"
+		},
+        {
+			"name": "nup",
+			"type": "string"
+		},
+        {
+			"name": "fecha",
+			"type": "string"
+		},
+        {
+			"name": "orden_pregunta",
+			"type": "string"
+		},
+        {
+			"name": "respuesta",
+			"type": "string"
+		},
+        {
+			"name": "fecha_carga",
+			"type": "string"
+		}
+	],
+        "extraColumns": [{
+                "name": "partition_date",
+                "type": "string",
+                "value": "${partition_date_filter}",
+                "partitionColumn": true,
+                "partitionOrder": 1
+        }]
+}

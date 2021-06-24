@@ -1,0 +1,109 @@
+{
+	"file": "prem_solicitudes_schema",
+	"location": "/santander/bi-corp/landing/rio102/dim/prem_solicitudes/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/rio102/dim/rio102_prem_solicitudes",
+	"tempDirectory": "/santander/bi-corp/temp/prem_solicitudes",
+	"extension": "csv",
+	"delimiter": "#",
+	"header": false,
+	"parquetFiles": 6,
+	"compression": "gzip",
+	"columns": [
+{
+			"name": "id_solicitud",
+			"type": "string"
+		},
+{
+			"name": "id_premiacion",
+			"type": "string"
+		},
+{
+			"name": "fecha_alta",
+			"type": "string"
+		},
+{
+			"name": "fecha_desde",
+			"type": "string"
+		},
+{
+			"name": "fecha_hasta",
+			"type": "string"
+		},
+{
+			"name": "periodicidad",
+			"type": "string"
+		},
+{
+			"name": "origen_datos",
+			"type": "string"
+		},
+{
+			"name": "id_usuario",
+			"type": "string"
+		},
+{
+			"name": "tipo_interfaz",
+			"type": "string"
+		},
+{
+			"name": "codigo_camp",
+			"type": "string"
+		},
+{
+			"name": "descrip_camp",
+			"type": "string"
+		},
+{
+			"name": "m_gestion",
+			"type": "string"
+		},
+{
+			"name": "accion_ra",
+			"type": "string"
+		},
+{
+			"name": "id_usuario_peticion",
+			"type": "string"
+		},
+{
+			"name": "fecha_ult_modificacion",
+			"type": "string"
+		},
+{
+			"name": "f_dia",
+			"type": "string"
+		},
+{
+			"name": "f_semana",
+			"type": "string"
+		},
+{
+			"name": "f_dia_ejec",
+			"type": "string"
+		},
+{
+			"name": "id_usuario_ult_modificacion",
+			"type": "string"
+		},
+{
+			"name": "sector_auto",
+			"type": "string"
+		},
+{
+			"name": "sector_ctrl",
+			"type": "string"
+		},
+{
+			"name": "estado_auto",
+			"type": "string"
+		}
+	],"extraColumns": [
+  {
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+
+}

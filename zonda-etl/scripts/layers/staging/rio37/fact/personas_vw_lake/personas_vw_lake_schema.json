@@ -1,0 +1,99 @@
+{
+  "file": "personas_vw_lake",
+  "location": "/santander/bi-corp/landing/rio37/fact/personas_vw_lake/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio37/fact/personas_vw_lake",
+  "createTable": "bi_corp_staging.personas_vw_lake",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+               {
+                    "name": "bup_legajo",
+                    "type": "string"
+                },
+{
+                    "name": "bup_usuario",
+                    "type": "string"
+                },
+{
+                    "name": "bup_nombre",
+                    "type": "string"
+                },
+{
+                    "name": "bup_apellido",
+                    "type": "string"
+                },
+{
+                    "name": "bup_email",
+                    "type": "string"
+                },
+{
+                    "name": "cuil",
+                    "type": "string"
+                },
+                {
+                    "name": "estado_laboral",
+                    "type": "string"
+                },
+                {
+                    "name": "tel_directo",
+                    "type": "string"
+                },
+                {
+                    "name": "tel_exte",
+                    "type": "string"
+                },
+                {
+                    "name": "tel_celular",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_puesto",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_descripcion_puesto",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_ccostos",
+                    "type": "string"
+                },
+                {
+                    "name": "ccostos_descripcion",
+                    "type": "string"
+                },
+                {
+                    "name": "ubicacion_descripcion",
+                    "type": "string"
+                },
+                {
+                    "name": "jefe_directo",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_emp_ppal",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_fec_eff",
+                    "type": "string"
+                },
+                {
+                    "name": "bup_accion",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

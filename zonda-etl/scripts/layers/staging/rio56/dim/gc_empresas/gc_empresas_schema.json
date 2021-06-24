@@ -1,0 +1,115 @@
+{
+    "file": "gc_empresas",
+    "location": "/santander/bi-corp/landing/rio56/dim/gc_empresas/partition_date=${partition_date}",
+    "destination": "/santander/bi-corp/staging/rio56/dim/gc_empresas",
+    "tempDirectory": "/santander/bi-corp/temp/gc_empresas",
+    "createTable": "bi_corp_staging.rio56_gc_empresas",
+    "extension": "csv",
+    "delimiter": "^",
+    "header": false,
+    "parquetFiles": 1,
+    "compression": "gzip",
+    "columns": [
+        {
+            "name": "cod_entidad",
+            "type": "string"
+        },
+        {
+            "name": "tpo_doc_empr",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc_empr",
+            "type": "string"
+        },
+        {
+            "name": "sec_doc_empr",
+            "type": "string"
+        },
+        {
+            "name": "tpo_empr",
+            "type": "string"
+        },
+        {
+            "name": "fec_ini_activ_empr",
+            "type": "string"
+        },
+        {
+            "name": "cod_activ_empr",
+            "type": "string"
+        },
+        {
+            "name": "nom_comer_empr",
+            "type": "string"
+        },
+        {
+            "name": "razon_social_empr",
+            "type": "string"
+        },
+        {
+            "name": "ide_nup_empr",
+            "type": "string"
+        },
+        {
+            "name": "ape_resp_empr",
+            "type": "string"
+        },
+        {
+            "name": "nom_resp_empr",
+            "type": "string"
+        },
+        {
+            "name": "tpo_doc2_empr",
+            "type": "string"
+        },
+        {
+            "name": "nro_doc2_empr",
+            "type": "string"
+        },
+        {
+            "name": "cod_suc_empr",
+            "type": "string"
+        },
+        {
+            "name": "cod_segm_empr",
+            "type": "string"
+        },
+        {
+            "name": "cod_crm_empr",
+            "type": "string"
+        },
+        {
+            "name": "semf_ingreso_crm",
+            "type": "string"
+        },
+        {
+            "name": "semf_renta_crm",
+            "type": "string"
+        },
+        {
+            "name": "semf_riesgo_crm",
+            "type": "string"
+        },
+        {
+            "name": "rentabilidad_promedio",
+            "type": "string"
+        },
+        {
+            "name": "color_semaforo",
+            "type": "string"
+        },
+        {
+            "name": "color_semaf_riesgo",
+            "type": "string"
+        }
+    ],
+    "extraColumns": [
+        {
+            "name": "partition_date",
+            "value": "${partition_date}",
+            "type": "string",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

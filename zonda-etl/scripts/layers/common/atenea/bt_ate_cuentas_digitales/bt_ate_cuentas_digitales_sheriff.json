@@ -1,0 +1,19 @@
+{
+  "table": "bi_corp_common.bt_ate_cuentas_digitales",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_ate_solicitud"]
+    },
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_ate_solicitud"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["ts_ate_creacion","ts_ate_alta"],
+      "pattern": "yyyy-MM-dd hh:mm:ss"
+    }
+  ]
+}

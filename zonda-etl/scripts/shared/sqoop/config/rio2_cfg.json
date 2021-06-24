@@ -1,0 +1,54 @@
+{
+  "tables" :[
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "omdm_respuesta_tramites",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/omdm_respuesta_tramites",
+      "table_type": "fact",
+      "environment": "rio2",
+      "split_field": "t.cod_tramite",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"Select t.*, omdm.fec_proceso From ALCEN.OMDM_RESPUESTA_TRAMITES t LEFT JOIN ALCEN.OMDM omdm ON omdm.tipo_tramite=t.tipo_tramite AND omdm.cod_tramite=t.cod_tramite where trunc(omdm.fec_proceso) = TO_DATE('{partition_date}','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 8  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "omdm",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/omdm",
+      "table_type": "fact",
+      "environment": "rio2",
+      "split_field": "cod_tramite",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT * FROM ALCEN.OMDM where trunc(fec_proceso) = TO_DATE('{partition_date}','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 8  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "omdm_motivos",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/omdm_motivos",
+      "table_type": "fact",
+      "environment": "rio2",
+      "split_field": "m.cod_tramite",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT m.*,omdm.FEC_PROCESO FROM ALCEN.OMDM_MOTIVOS m LEFT JOIN ALCEN.OMDM omdm ON omdm.tipo_tramite=m.tipo_tramite AND omdm.cod_tramite=m.cod_tramite where trunc(omdm.fec_proceso) = TO_DATE('{partition_date}','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 8  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "omdm_regla_decision_razon",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/omdm_regla_decision_razon",
+      "table_type": "fact",
+      "environment": "rio2",
+      "split_field": "cod_inqy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT r.*, omdm.FEC_PROCESO FROM ALCEN.OMDM_REGLA_DECISION_RAZON r LEFT JOIN ALCEN.OMDM omdm ON omdm.cod_tramite=r.cod_inqy WHERE trunc(omdm.fec_proceso) = TO_DATE('{partition_date}','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 8  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    },
+    {
+      "serverConfig": "DBLXORAFRONT03",
+      "database": "RIO2",
+      "table": "omdm_scoring",
+      "landing_path": "/santander/bi-corp/landing/rio2/fact/omdm_scoring",
+      "table_type": "fact",
+      "environment": "rio2",
+      "split_field": "cod_inqy",
+      "command": "sqoop import -Dmapreduce.output.basename={environment}_{table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}/{service}'  --username '{username}' --query \"SELECT s.*, omdm.FEC_PROCESO FROM ALCEN.OMDM_SCORING s LEFT JOIN ALCEN.OMDM omdm ON omdm.cod_tramite=s.cod_inqy WHERE trunc(omdm.fec_proceso) = TO_DATE('{partition_date}','YYYY-MM-DD') AND \\$CONDITIONS\" --bindir '{zonda_dir}/sqoop/{database}/{table}'  --target-dir '{data_lake_server}{landing_path}/partition_date={partition_date}'  --num-mappers 8  --split-by '{split_field}'  --fields-terminated-by '^' --hive-delims-replacement ' ' --password '{password}'  --delete-target-dir  --verbose --null-string '' --null-non-string ''\n"
+    }
+  ]
+}

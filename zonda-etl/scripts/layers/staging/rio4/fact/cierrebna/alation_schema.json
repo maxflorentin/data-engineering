@@ -1,0 +1,151 @@
+{
+  "objectMetadata": {
+    "active": true,
+    "governance": {
+      "steward": [
+        "A309591"
+      ],
+      "level": "Intermediate"
+    },
+    "table": {
+      "name": "rio4_cierrebna",
+      "title": "Cierre BNA",
+      "schema": "bi_corp_staging",
+      "source": "rio4",
+      "query": "$ZONDA_DIR/repositories/zonda-etl/scripts/layers/staging/rio4/fact/cierrebna/",
+      "type": "fact",
+      "description": "La tabla contiene los precios de la especie segun BNA al cierre de la fecha",
+      "columns":
+               [
+                {
+                  "name": "fecha",
+                  "title": "FECHA",
+                  "description": "Fecha de la divisa negociada",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 7,
+                  "security": "Público"
+                },
+                {
+                  "name": "especie",
+                  "title": "ESPECIE",
+                  "description": "Divisa negociada en la operacion  - (Codigo de Especie asignado en el aplicativo MESAMF)",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 6,
+                  "security": "Público"
+                },
+                {
+                  "name": "preciocompra",
+                  "title": "PRECIOCOMPRA",
+                  "description": "Precio de Compra de la especie segun BNA al cierre de la fecha",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precioventa",
+                  "title": "PRECIOVENTA",
+                  "description": "Precio de Venta de la especie segun BNA al cierre de la fecha",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precio1",
+                  "title": "PRECIO1",
+                  "description": "Campo no utilizado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precio2",
+                  "title": "PRECIO2",
+                  "description": "Campo no utilizado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precio3",
+                  "title": "PRECIO3",
+                  "description": "Campo no utilizado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precio4",
+                  "title": "PRECIO4",
+                  "description": "Campo no utilizado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "precio5",
+                  "title": "PRECIO5",
+                  "description": "Campo no utilizado",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": ".",
+                  "nullable": true,
+                  "length": 22,
+                  "security": "Público"
+                },
+                {
+                  "name": "porcada",
+                  "title": "PORCADA",
+                  "description": "Indica la base en que está expresado el precio",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                },
+                {
+                  "name": "mercado",
+                  "title": "MERCADO",
+                  "description": "Codigo del mercado al cual Corresponden los precios",
+                  "type": "string",
+                  "personIdentifier": false,
+                  "decimalSeparator": "NA",
+                  "nullable": true,
+                  "length": 3,
+                  "security": "Público"
+                }
+               ]
+    },
+    "schedule": {
+      "periodicity": "Daily",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

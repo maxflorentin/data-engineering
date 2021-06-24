@@ -1,0 +1,170 @@
+{
+  "file": "solicitud_schema",
+  "location": "/santander/bi-corp/landing/rio3/fact/solicitud/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio3/fact/solicitud",
+  "tempDirectory": "/santander/bi-corp/temp/rio3",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+  [
+      {
+    "name": "solicitud",
+    "type": "string"
+  },
+ {
+    "name": "circular",
+    "type": "string"
+  },
+ {
+    "name": "promocion",
+    "type": "string"
+  },
+ {
+    "name": "delivery",
+    "type": "string"
+  },
+ {
+    "name": "canal",
+    "type": "string"
+  },
+ {
+    "name": "sucursal",
+    "type": "string"
+  },
+ {
+    "name": "familia",
+    "type": "string"
+  },
+ {
+    "name": "programa",
+    "type": "string"
+  },
+ {
+    "name": "lista",
+    "type": "string"
+  },
+ {
+    "name": "vehiculo",
+    "type": "string"
+  },
+ {
+    "name": "oferta1",
+    "type": "string"
+  },
+ {
+    "name": "oferta2",
+    "type": "string"
+  },
+ {
+    "name": "oferta3",
+    "type": "string"
+  },
+ {
+    "name": "anio",
+    "type": "string"
+  },
+ {
+    "name": "mes",
+    "type": "string"
+  },
+ {
+    "name": "estado",
+    "type": "string"
+  },
+ {
+    "name": "cambioestado",
+    "type": "string"
+  },
+ {
+    "name": "uniqueid",
+    "type": "string"
+  },
+ {
+    "name": "solicitud_asol",
+    "type": "string"
+  },
+ {
+    "name": "returncode_asol",
+    "type": "string"
+  },
+ {
+    "name": "observaciones_asol",
+    "type": "string"
+  },
+ {
+    "name": "nrocuenta_asol",
+    "type": "string"
+  },
+ {
+    "name": "usuario",
+    "type": "string"
+  },
+ {
+    "name": "fechaimpresol",
+    "type": "string"
+  },
+ {
+    "name": "domicilioresumen",
+    "type": "string"
+  },
+ {
+    "name": "promocion_asol",
+    "type": "string"
+  },
+ {
+    "name": "ultoperacionvisita",
+    "type": "string"
+  },
+ {
+    "name": "comentario",
+    "type": "string"
+  },
+ {
+    "name": "campania",
+    "type": "string"
+  },
+ {
+    "name": "prioperacion",
+    "type": "string"
+  },
+ {
+    "name": "fecha_prioperacion",
+    "type": "string"
+  },
+ {
+    "name": "circuito",
+    "type": "string"
+  },
+ {
+    "name": "rpt_fcambio",
+    "type": "string"
+  },
+ {
+    "name": "idjournal",
+    "type": "string"
+  },
+ {
+    "name": "oficial",
+    "type": "string"
+  },
+ {
+    "name": "solicitud_portal",
+    "type": "string"
+  },
+ {
+    "name": "dependencia",
+    "type": "string"
+  }
+  ]
+ ,"mirrorColumns": [{
+   "name": "partition_date",
+   "target": "cambioestado",
+   "type": "date",
+   "dateFormat": "yyyyMMdd",
+   "partitionColumn": true,
+   "partitionOrder": 1
+ }]
+}

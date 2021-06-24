@@ -1,0 +1,109 @@
+{
+	"file": "acse_comisiones_cobradas_schema",
+	"location": "/santander/bi-corp/landing/acse/fact/comisiones_cobradas/partition_date=${partition_date_filter}",
+	"destination": "/santander/bi-corp/staging/acse/fact/comisiones_cobradas",
+    "createTable": "bi_corp_staging.acse_comisiones_cobradas",
+	"parquetFiles": 1,
+	"compression": "gzip",
+	"columns": [
+                {
+                        "name": "sucursal",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "contrato",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "comision",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "periodo_liq",
+                        "type": "string",
+                        "width": 6
+                },
+                {
+                        "name": "fecha_liq",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "cod_concepto",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "imp_concepto",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "imp_impuesto",
+                        "type": "string",
+                        "width": 15
+                },
+                {
+                        "name": "forma_pago",
+                        "type": "string",
+                        "width": 1
+                },
+                {
+                        "name": "entidad_debito",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "sucursal_debito",
+                        "type": "string",
+                        "width": 4
+                },
+                {
+                        "name": "cuenta_debito",
+                        "type": "string",
+                        "width": 12
+                },
+                {
+                        "name": "divisa_debito",
+                        "type": "string",
+                        "width": 3
+                },
+                {
+                        "name": "fecha_pago",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "codigo_canal",
+                        "type": "string",
+                        "width": 2
+                },
+                {
+                        "name": "numper",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "usuario_oper",
+                        "type": "string",
+                        "width": 8
+                },
+                {
+                        "name": "campania",
+                        "type": "string",
+                        "width": 4
+                }
+    ],
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "type": "string",
+      "value": "${partition_date_filter}",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+    ]
+}

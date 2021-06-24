@@ -1,0 +1,1 @@
+MSCK REPAIR TABLE bi_corp_staging.rio6_cg_ref_codes;

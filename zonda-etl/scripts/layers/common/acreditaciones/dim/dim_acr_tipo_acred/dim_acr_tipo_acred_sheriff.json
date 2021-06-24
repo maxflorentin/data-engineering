@@ -1,0 +1,14 @@
+{
+  "table": "bi_corp_common.dim_acr_tipo_acred",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "null_values",
+      "field_to_check": ["cod_acr_sistema", "ds_acr_sistema", "cod_acr_tipo_acred", "ds_acr_tipo_acred"]
+    },
+	{
+      "control_id": "duplicates",
+      "field_to_check": ["cod_acr_sistema"]
+    }
+  ]
+}

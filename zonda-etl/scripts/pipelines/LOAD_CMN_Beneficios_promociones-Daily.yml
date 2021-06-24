@@ -1,0 +1,37 @@
+name: LOAD_CMN_Beneficios_promociones-Daily
+description: 'Load Beneficios y Promociones Data from staging to common layer (Daily)'
+owner: BI-Corp
+active: true
+# schedule_interval: '0 7 * * *'
+start_date: '2020-08-10'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+  - name: mode
+    description: 'Partition level'
+    default: days
+tasks:
+  - name: Create_and_Load_Fact_tables
+    operator: ZondaHiveOperator
+    config:
+      connection_id: cloudera_hive_beeline
+      schema: default
+      is_hql_file: true
+      hql:
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/promociones/fact/bt_pro_movimientos_promocionados/DDLT-Create_common_bt_pro_movimientos_promocionados.hql'
+        - '$ZONDA_DIR/repositories/zonda-etl/scripts/layers/common/promociones/fact/bt_pro_movimientos_promocionados/ETL-LOAD-bt_pro_movimientos_promocionados.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [maurogonzalez@santandertecnologia.com.ar,itroisi@santandertecnologia.com.ar]
+
+

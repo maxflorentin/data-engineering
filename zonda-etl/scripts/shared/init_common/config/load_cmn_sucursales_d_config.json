@@ -1,0 +1,27 @@
+{
+    "name": "LOAD_CMN_Sucursales",
+    "shift": -1,
+    "conditions": [
+        {
+            "dag_id": "LOAD_STG_RIO154-Daily",
+            "tasks": ["STAGING_TABLE_Parquetize_ENC_TURNO","STAGING_TABLE_Parquetize_ENC_ESTADO","STAGING_TABLE_Parquetize_MOTIVO_VISITA_V2","STAGING_TABLE_Parquetize_SUCURSALRIO"]
+        },
+        {
+            "dag_id":"LOAD_STG_RIO151-Daily",
+            "tasks": ["STAGING_TABLE_Parquetize_TBL_INTERACCION_PRODUCTO","STAGING_TABLE_Parquetize_TBL_INTERACCION_ALERTA","STAGING_TABLE_Parquetize_TBL_CANAL_VENTA","STAGING_TABLE_Parquetize_TBL_CANAL_COMUNICACION","STAGING_TABLE_Parquetize_TBL_INTERACCION"]
+        },
+        {
+            "dag_id": "LOAD_STG_ACNL801-Daily",
+            "tasks": "STAGING_ACNL801D_Parquetize"
+        },
+        {
+            "dag_id": "LOAD_STG_RIO350-Daily",
+            "tasks": "all"
+        }
+    ],
+    "trigger": [
+        {
+            "dag_id": "LOAD_CMN_Sucursales"
+        }
+    ]
+}

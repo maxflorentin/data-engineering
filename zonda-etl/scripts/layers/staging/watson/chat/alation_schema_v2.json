@@ -1,0 +1,259 @@
+{
+  "objectMetadata": {
+    "governance": {
+      "steward": [
+        "A307834"
+      ],
+      "validator": [
+        "A307806"
+      ],
+      "level": "Básico"
+    },
+    "table": {
+      "application": "WATSON",
+      "name": "watson_chat",
+      "title": "Chats de Watson",
+      "schema": "bi_corp_staging",
+      "type": "fact",
+      "description": "Registro de chats provenientes de Watson",
+      "columns": [
+        {
+          "name": "canal",
+          "title": "Canal",
+          "description": "Canal de origen (APPM/TBAN)",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "jsessionid",
+          "title": "JSessionID",
+          "description": "Identificador de sesión",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fechahora",
+          "title": "Fecha/Hora",
+          "description": "Fecha/Hora del evento, en formato dd/mm/yyyy HH:mm:ss",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "emisortipo",
+          "title": "Tipo de Emisor",
+          "description": "Tipo de emisor que genero el chat (AGENT/CLIENT/EXTERNAL/SUPERVISOR)",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "emisornomrbre",
+          "title": "Nombre de Emisor",
+          "description": "Nombre del emisor del mensaje",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "message",
+          "title": "Message",
+          "description": "Texto del mensaje enviado",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "intent",
+          "title": "Intent",
+          "description": "Intent detectada por WATSON para ese mensaje",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "confidence",
+          "title": "Confidence",
+          "description": "Confidence con la que Watson detectó el intent (valor numérico con decimales, va entre 0 y 1)",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "ask_answer_was_useful",
+          "title": "Ask Answer was Useful",
+          "description": "Señala si Watson envía flag para consultar si la respuesta fue útil o no",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "possiblequestions",
+          "title": "Possible Questions",
+          "description": "Señala si Watson envía flag para mostrar otras posibles preguntas que el cliente puede haber querido hacer",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "suggestion_topics",
+          "title": "Suggestion Topics",
+          "description": "Señala si Watson envía flag para mostrar tópicos sugeridos",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "options",
+          "title": "Options",
+          "description": "Señala si Watson envía flag para mostrar opciones asociadas a la consulta realizada necesarias para poder continuar con el diálogo",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "nupcliente",
+          "title": "NUP Cliente",
+          "description": "NUP del cliente que está chateando",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "idgenesys",
+          "title": "ID Genesys",
+          "description": "ID único de comunicación GENESYS",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "transferidoahumano",
+          "title": "Transferido Humano",
+          "description": "Flag que señala si la comunicación fue transferida a agente o no",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fuepossiblequestions",
+          "title": "Flag Possible Questions",
+          "description": "Señala si el Message enviado por el cliente corresponde a una selección realizada de una possibleQuestion enviada por Watson",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fuesuggestion_topics",
+          "title": "Flag Suggestion Topics",
+          "description": "Señala si el Message enviado por el cliente corresponde a una selección realizada de una sugerencia enviada por Watson",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "fueoptions",
+          "title": "Flag Options",
+          "description": "Señala si el Message enviado por el cliente corresponde a una selección realizada de una opción enviada por Watson",
+          "type": "string",
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        },
+        {
+          "name": "partition_date",
+          "title": "Partition Date",
+          "description": "Fecha de partición en formato yyyy-mm-dd",
+          "type": "string",
+          "length": 10,
+          "decimalSeparator": "NA",
+          "nullable": false,
+          "classification": {
+            "group": "xxx",
+            "security": "Público"
+          }
+        }
+      ]
+    },
+    "schedule": {
+      "periodicity": "Diario",
+      "loading": {
+        "type": "Incremental",
+        "delta": "D+1"
+      }
+    }
+  }
+}

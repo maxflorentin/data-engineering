@@ -1,0 +1,26 @@
+{
+  "file": "cart_clasificacion_productos_schema",
+  "location": "/santander/bi-corp/landing/rio6/dim/cart_clasificacion_productos/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/dim/cart_clasificacion_productos",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cacy_cd_clase",
+      "type": "string"
+    },
+    {
+      "name":"cacy_de_clase",
+      "type":"string"
+    }
+  ],
+  "extraColumns": [{
+    "name": "partition_date",
+    "type": "string",
+    "value": "${partition_date_filter}",
+    "partitionColumn": true,
+    "partitionOrder": 1
+  }]
+}

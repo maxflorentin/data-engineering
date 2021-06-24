@@ -1,0 +1,16 @@
+{
+  "table": "bi_corp_common.stk_tcr_cuentas",
+  "partition_date": "${partition_date}",
+  "controls": [
+    {
+      "control_id": "duplicates",
+      "field_to_check": ["cod_tcr_tipo_cuenta","cod_tcr_cuenta"]
+    },
+    {
+      "control_id": "date_format",
+      "field_to_check": ["dt_tcr_fecha_alta","dt_tcr_ult_modif_fec","dt_tcr_fecha_baja","dt_tcr_fecha_ultimo_pago","dt_tcr_fecha_cierre","dt_tcr_fecha_proximo_cierre","dt_tcr_fecha_ultima_compra","dt_tcr_fecha_ultimo_vto","dt_tcr_fecha_ultimo_vto_orig","dt_tcr_fecha_proximo_vto","dt_tcr_fecha_irregularidad","dt_tcr_no_renov_fecha","dt_tcr_fecha_alta_original","dt_tcr_fecha_baja_original"],
+      "pattern": "yyyy-MM-dd",
+      "threshold": 0.01
+    }
+  ]
+}

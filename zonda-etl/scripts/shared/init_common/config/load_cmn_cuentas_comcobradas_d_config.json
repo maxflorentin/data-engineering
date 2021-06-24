@@ -1,0 +1,15 @@
+{
+  "name": "Cuentas_Comisiones_Cobradas-Daily-Common",
+  "shift": -1,
+  "conditions" : [
+    {
+      "dag_id":"LOAD_STG_MALBGC-Daily",
+      "tasks": ["STAGING_bgeclco_Parquetize"]
+    }
+  ],
+  "trigger":[
+    {
+      "dag_id":"LOAD_CMN_Cuentas_Comisiones_Cobradas-Daily"
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "file": "tramites_ptovta_tarjeta_schema",
+  "location": "/santander/bi-corp/landing/rio2/fact/tramites_ptovta_tarjeta/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/fact/tramites_ptovta_tarjeta",
+  "createTable": "bi_corp_staging.alcen_tramites_ptovta_tarjeta",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+	   [
+             {
+                    "name": "cod_sucursal",
+                    "type": "string"
+                },
+{
+                    "name": "nro_solicitud",
+                    "type": "string"
+                },
+{
+                    "name": "nro_tramite_fe",
+                    "type": "string"
+                },
+{
+                    "name": "marca_telefono",
+                    "type": "string"
+                },
+{
+                    "name": "cod_zona",
+                    "type": "string"
+                },
+{
+                    "name": "marca_datos_adic",
+                    "type": "string"
+                },
+{
+                    "name": "marca_tarjeta_visa",
+                    "type": "string"
+                },
+{
+                    "name": "tipo_tarjeta_visa",
+                    "type": "string"
+                },
+{
+                    "name": "lim_tarjeta_visa",
+                    "type": "string"
+                },
+{
+                    "name": "marca_tarjeta_amex",
+                    "type": "string"
+                },
+{
+                    "name": "tipo_tarjeta_amex",
+                    "type": "string"
+                },
+{
+                    "name": "lim_tarjeta_amex",
+                    "type": "string"
+                },
+{
+                    "name": "ver_documento",
+                    "type": "string"
+                },
+{
+                    "name": "mar_pide_datos_ingresos",
+                    "type": "string"
+                },
+{
+                    "name": "val_ingresos",
+                    "type": "string"
+                },
+{
+                    "name": "rango_rnet",
+                    "type": "string"
+                },
+{
+                    "name": "ingresos_verificados",
+                    "type": "string"
+                },
+{
+                    "name": "fec_rnet",
+                    "type": "string"
+                },
+{
+                    "name": "tpo_preeval",
+                    "type": "string"
+                },
+{
+                    "name": "cod_tramite_reu",
+                    "type": "string"
+                },
+{
+                    "name": "marca_tarjeta_master",
+                    "type": "string"
+                },
+{
+                    "name": "tipo_tarjeta_master",
+                    "type": "string"
+                },
+{
+                    "name": "lim_tarjeta_master",
+                    "type": "string"
+                }
+       ],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

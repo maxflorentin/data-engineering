@@ -1,0 +1,43 @@
+{
+  "file": "testado_schema",
+  "location": "/santander/bi-corp/landing/rio2/dim/testado/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio2/dim/testado",
+  "createTable": "bi_corp_staging.cvc_testado",
+  "extension": "csv",
+  "delimiter": "^",
+  "header": false,
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "columns":
+[
+  {
+    "name": "cod_estado",
+    "type": "string"
+  },
+  {
+    "name": "des_estado",
+    "type": "string"
+  },
+  {
+    "name": "cod_sector",
+    "type": "string"
+  },
+  {
+    "name": "cod_estado_alcen",
+    "type": "string"
+  },
+  {
+    "name": "mar_egresado_final",
+    "type": "string"
+  }
+],
+        "extraColumns": [
+        {
+            "name": "partition_date",
+            "type": "string",
+            "value": "${partition_date_filter}",
+            "partitionColumn": true,
+            "partitionOrder": 1
+        }
+    ]
+}

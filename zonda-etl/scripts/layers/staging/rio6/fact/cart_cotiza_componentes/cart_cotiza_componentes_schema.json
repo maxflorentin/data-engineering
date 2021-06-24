@@ -1,0 +1,52 @@
+{
+  "file": "cart_cotiza_componentes_schema",
+  "location": "/santander/bi-corp/landing/rio6/fact/cart_cotiza_componentes/partition_date=${partition_date_filter}",
+  "destination": "/santander/bi-corp/staging/rio6/fact/cart_cotiza_componentes",
+  "extension":"csv",
+  "parquetFiles": 1,
+  "compression": "gzip",
+  "delimiter":"^",
+  "columns": [
+    {
+      "name":"cacx_capj_cd_sucursal",
+      "type": "string"
+    },
+    {
+      "name":"cacx_cazb_nu_cotizacion",
+      "type":"string"
+    },
+    {
+      "name":"cacx_carp_cd_ramo",
+      "type":"string"
+    },
+    {
+      "name":"cacx_capu_cd_producto",
+      "type":"string"
+    },
+    {
+      "name":"cacx_capb_cd_plan",
+      "type":"string"
+    },{
+      "name":"cacx_cafp_cd_fr_pago",
+      "type": "string"
+    },
+    {
+      "name":"cacx_capp_cd_componente",
+      "type":"string"
+    },
+    {
+      "name":"cacx_mt_componente",
+      "type":"string"
+    },
+    {
+      "name":"cacx_ta_componente",
+      "type":"string"
+    },
+    {
+    "name": "partition_date",
+    "type": "string",
+    "partitionColumn": true,
+    "partitionOrder": 1
+    }
+  ]
+}

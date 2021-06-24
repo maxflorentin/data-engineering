@@ -1,0 +1,38 @@
+name: CORE_Cloudera_logs_table_classifier_Manual
+description: 'Load data from Cloudera Logs in table Cloudera_logs_Export'
+owner: BI-Corp
+active: true
+#schedule_interval: '15 3 * * *'
+#start_date: '2020-03-10'
+#catchup: true
+retries: 3
+retry_delay: 30
+include_dummy_task: true
+max_active_runs: 1
+input:
+  - name: date_from
+    description: 'Date From in format YYYY-MM-DD'
+  - name: date_to
+    description: 'Date To in format YYYY-MM-DD'
+  - name: shift
+    description: 'Shift in days'
+    default: 0
+  - name: mode
+    description: 'Partition level'
+    default: days
+  - name: tables
+    description: 'Tables to Get Max Partition date'
+    default: santander_business_risk_arda.nomina_empleados,bi_corp_staging.cloudera_logs_tables
+tasks:
+  - name: Load_Cloudera_logs_export
+    operator: ZondaHiveOperator
+    config:
+        connection_id: cloudera_hive_beeline
+        schema: default
+        is_hql_file: true
+        hql:
+          - '$ZONDA_DIR/repositories/zonda-etl/scripts/shared/navigator-api/table-usage-query.hql'
+notifications:
+  on_error: true
+  channels: [$DEFAULT_SLACK_CHANNEL]
+  users: [luccontreras@santandertecnologia.com.ar]

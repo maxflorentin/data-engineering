@@ -1,0 +1,16 @@
+{
+  "file": "gtdtcod",
+  "location": "/santander/bi-corp/landing/garantias/fact/gtdtcod/partition_date=${partition_date}",
+  "destination": "/santander/bi-corp/staging/garantias/gtdtcod",
+  "createTable": "bi_corp_staging.gtdtcod",
+  "copybook": "gtdtcod.cob",
+  "extraColumns": [
+    {
+      "name": "partition_date",
+      "value": "${partition_date}",
+      "type": "string",
+      "partitionColumn": true,
+      "partitionOrder": 1
+    }
+  ]
+}
