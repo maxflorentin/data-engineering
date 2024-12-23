@@ -1,9 +1,0 @@
-{
-    "serverAka": "rio187",
-    "database": "CSM",
-    "table": "gest_motdes_acciones",
-    "table_type": "fact",
-    "environment": "RIO187",
-    "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_motdes_acciones/partition_date=${partition_date}",
-    "command": "sqoop import -Dmapreduce.output.basename= {table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \\\"{table}\\\" --columns \\\"ID_GESTION, ID_ACCION, VALOR_ACCION, COD_GRUPO, ID_USUARIO_ALTA, FECHA_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, FECHA_BAJA, IND_ORIGEN\\\" --bindir '/aplicaciones/bi/zonda/sqoop/rio187/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\\n"
-}

@@ -1,8 +1,0 @@
-CREATE TABLE GEC01.CLASIF_CRM
-(
-  COD_ENTIDAD       CHAR(4 BYTE)                NOT NULL,
-  TPO_PERS          CHAR(1 BYTE)                NOT NULL,
-  COD_CRM           VARCHAR2(2 BYTE)            NOT NULL,
-  DESC_CRM          VARCHAR2(30 BYTE),
-  ID_CLASIF_SELECT  INTEGER
-)

@@ -1,9 +1,0 @@
-{
-    "serverAka": "rio187",
-    "database": "CSM",
-    "table": "gest_cuenta",
-    "table_type": "fact",
-    "environment": "RIO187",
-    "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_cuenta/partition_date=${partition_date}",
-    "command": "sqoop import -Dmapreduce.output.basename= {table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \\\"{table}\\\" --columns \\\"ID_GESTION, ORDEN_ESTADO, SUCURSAL_CUENTA, NRO_CUENTA, DIVISA_CUENTA, APLICACION_CUENTA, COD_MONEDA, COSTO_CUENTA, NRO_CONVENIO, COD_CONVENIO, MONTO_CONVENIO, SUSCRIPTOR, COD_CAMPANIA, MONTO_CAMPANIA, COD_CAMPANIA_RECL, COD_CONVENIO_UNIV, COD_UNIVERSIDAD, MONTO_CONVENIO_UNIV, FECHA_DESDE_CAMPANIA, DESC_UNIVERSIDAD, COD_PRODUCTO, COD_SUBPRODUCTO, ES_CUENTA_DEFECTO, FECHA_BAJA, FECHA_ALTA, ID_USUARIO_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, FECHA_HASTA_CAMPANIA, IND_TIENE_CONVENIO, NRO_TARJETA, IND_TRJ_DENUNCIANTE, IND_CHIP, NUP_TITULAR_TARJETA, IND_CONTACTO_COMERCIO, V_ESTADO_RELACION, ID_REQUERIMIENTO_PREMIACION, SUCURSAL_CUENTA_DESTINO, NRO_CUENTA_DESTINO, NRO_CONVENIO_RECL, COD_CONVENIO_RECL, SUSCRIPTOR_RECL, MONTO_CONVENIO_RECL, APLICACION_CUENTA_DESTINO\\\" --bindir '/aplicaciones/bi/zonda/sqoop/rio187/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\\n"
-}
