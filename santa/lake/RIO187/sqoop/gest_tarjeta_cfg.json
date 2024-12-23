@@ -1,9 +1,0 @@
-{
-    "serverAka": "rio187",
-    "database": "CSM",
-    "table": "gest_tarjeta",
-    "table_type": "fact",
-    "environment": "RIO187",
-    "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_tarjeta/partition_date=${partition_date}",
-    "command": "sqoop import -Dmapreduce.output.basename= {table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \\\"{table}\\\" --columns \\\"ID_GESTION, ORDEN_ESTADO, COD_PRODUCTO_ALTAIR, SUCURSAL_CUENTA, NRO_CUENTA, COD_ESTADO_CUENTA, FECHA_ALTA_CUENTA, NRO_TARJETA, META_CONSUMO_ANUAL, CONSUMO_ACUM_PERIODO_ACT, IND_TITULARIDAD, COD_PRODUCTO_AMAS, DIGITO_VERIFICADOR, PROD_PAQUETE_CUENTA, SUBPROD_PAQUETE_CUENTA, NRO_CARTERA, MONTO_SALDO_ACREEDOR, IND_DEV_ACREEDOR, FECHA_DEV_ACREEDOR, MONTO_DEV_ACREEDOR, ASDO, PAGO_MINIMO, MONTO_MAXIMO_DEV, MONTO_PARCIAL_DEV, COD_MOTIVO_BAJA_CTA, MONTO_DEV_ACREEDOR_USD, MONTO_SALDO_ACREEDOR_USD, FECHA_DEV_ACREEDOR_USD, IND_DEV_ACREEDOR_USD, ID_USUARIO_ALTA, FECHA_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, FECHA_BAJA, FECHA_ULTIMO_CIERRE, IND_TRJ_DENUNCIANTE, IND_CHIP, NUP_TITULAR_TARJETA, IND_CONTACTO_COMERCIO\\\" --bindir '/aplicaciones/bi/zonda/sqoop/rio187/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\\n"
-}

@@ -1,9 +1,0 @@
-{
-    "serverAka": "rio187",
-    "database": "CSM",
-    "table": "gest_movimientos_tarjeta",
-    "table_type": "fact",
-    "environment": "RIO187",
-    "landing_path": "/santander/bi-corp/landing/rio187/fact/gest_movimientos_tarjeta/partition_date=${partition_date}",
-    "command": "sqoop import -Dmapreduce.output.basename= {table} -Dmapreduce.job.queuename=root.dataeng --connect 'jdbc:oracle:thin:@{serverName}:{port}:{service}' --username '{username}' --table \\\"{table}\\\" --columns \\\"ID_GESTION, NRO_MOVIMIENTO, COD_PRODUCTO_ALTAIR, NRO_CUENTA, NRO_TARJETA, FECHA_MOVIMIENTO, NRO_COMPROBANTE, COD_AUTORIZACION, NRO_ESTABLECIMIENTO, DESC_MOVIMIENTO, COD_OPERATIVO, COD_MONEDA, MONTO_MOVIMIENTO, IND_DEVOLUCION, FECHA_DEVOLUCION, FECHA_EXPORTACION, FECHA_CIERRE_RESUMEN, MONTO_DEVOLUCION, COD_RUBRO, ID_USUARIO_ALTA, FECHA_ALTA, ID_USUARIO_MODIF, FECHA_MODIF, FECHA_BAJA, TASA_PROMEDIO, MONTO_INTERES, MONTO_COMISION, CANT_CUOTA, NRO_CUOTA, FECHA_CIERRE_CARTERA, NRO_CUPON, CANT_CUOTAS_RECLAMADAS, MONTO_RECLAMADO, ID_VOUCHAR, ESTABLECIMIENTO, DIRECCION_ESTABLECIMIENTO, BCO_PAGADOR, COD_AJUSTE_DEVOLUCION, COD_SUBAJUSTE_DEVOLUCION\\\" --bindir '/aplicaciones/bi/zonda/sqoop/rio187/{table}' --target-dir  '{landing_path}/partition_date={partition_date}' --delete-target-dir --fields-terminated-by '^' --num-mappers 1 --password '{password}'  --verbose\\n"
-}
